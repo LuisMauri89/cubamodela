@@ -10,15 +10,24 @@
 
   <body>
 
-  	<div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
-          <%= value %>
+    <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div id="flash-messages-container" class="col-md-12">
+          <%= render 'layouts/flash_messages' %>
         </div>
-      <% end %>
-    </div>
+      </div>
+      <div class="row">
+        <div id="banner-container" class="col-md-12">
+          <%= render 'layouts/banner_home_page' %>
+        </div>
+      </div>
 
-    <div class="container">
+      <div class="row">
+        <div id="navbar-container" class="col-md-12">
+          <%= render 'layouts/navbar_home_page' %>
+        </div>
+      </div>
+
       <%= yield %>
     </div>
     

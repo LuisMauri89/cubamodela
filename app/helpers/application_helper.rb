@@ -17,4 +17,18 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  # For devise flash messages keys
+  def get_bootstrap_key_from_devise_key(key)
+    case key
+    when "notice"
+      "success"
+    when "alert"
+      "warning"
+    when "error"
+      "danger"
+    else
+      "success"
+    end
+  end
+
 end

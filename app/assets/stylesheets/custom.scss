@@ -1,0 +1,11 @@
+/*Expand Boostrap container 100%*/
+#main-container{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+/*Affix Boostrap top after scroll matches offset-top and expand navbar 100%*/
+.affix{
+	top: 0px;
+	width: 100%;
+}
