@@ -7,24 +7,15 @@
 		</div>
 
 		<ul class="nav navbar-nav">
-			<li><a href="#">Servicios</a></li>
-			<li><a href="#">Modelos</a></li>
-			<li><a href="#">Fotografos</a></li>
-			<li><a href="#">Descubre Cuba</a></li>
-			<li><a href="#">Que hacemos</a></li>
+			<li><a href="#services-container">Services</a></li>
+			<li><a href="#models-container">Models</a></li>
+			<li><a href="#discover-container">Discover</a></li>
+			<li><a href="#about-us-container">About us</a></li>
 		</ul>
-		<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "navbar-form navbar-right" }) do |f| %>
-			<div class="form-group">
-				<%= f.email_field :email, autofocus: true, placeholder: "Email", class: "form-control" %>
-				<%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
-				<% if devise_mapping.rememberable? -%>
-					  	<div class="checkbox">
-					      	<%= f.check_box :remember_me %>
-					      	<%= f.label :remember_me %>
-					    </div>
-  				<% end -%>
-			</div>
-			<%= f.submit "Log in", class: "btn btn-success" %>
+		<% if user_signed_in? %>
+			<%= render 'layouts/signed_in_true' %>
+		<% else %>
+			<%= render 'layouts/signed_in_false' %>
 		<% end %>
 	</div>
 </nav>

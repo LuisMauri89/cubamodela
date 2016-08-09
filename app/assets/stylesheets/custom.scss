@@ -1,11 +1,23 @@
-/*Expand Boostrap container 100%*/
+/* ScrollSpy Boostrap requires position relative 
+body {
+  position: relative;
+  padding-top: 50px;
+}
+*/
+
+/* Expand Boostrap container 100% */
 #main-container{
 	padding-left: 0px;
 	padding-right: 0px;
 }
 
-/*Affix Boostrap top after scroll matches offset-top and expand navbar 100%*/
+/* Affix Boostrap top after scroll matches offset-top and expand navbar 100% */
 .affix{
 	top: 0px;
 	width: 100%;
+}
+
+/* Flash messages box margin bottom 0px */
+#alert-messages-box{
+	margin-bottom: 0px;
 }

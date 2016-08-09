@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804181611) do
+ActiveRecord::Schema.define(version: 20160807192042) do
+
+  create_table "profile_models", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "mobile_phone"
+    t.string   "land_phone"
+    t.string   "address"
+    t.string   "email"
+    t.decimal  "chest"
+    t.decimal  "waist"
+    t.decimal  "hips"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -27,7 +41,10 @@ ActiveRecord::Schema.define(version: 20160804181611) do
     t.integer  "kind",                   default: 0
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "profileable_type"
+    t.integer  "profileable_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["profileable_type", "profileable_id"], name: "index_users_on_profileable_type_and_profileable_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
