@@ -1,0 +1,134 @@
+<%= form_for(@profile) do |f| %>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-2">
+			<p class="text-right text-success">Profile completed [%]</p>
+		</div>
+		<div class="col-md-8">
+			<div class="progress">
+			  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @profile.profile_complete_progress_percentage %>" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= @profile.profile_complete_progress_percentage %>%;">
+			    <%= @profile.profile_complete_progress_percentage %>%
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-3">
+		  <ul class="nav nav-pills nav-stacked" role="tablist">
+		    <li role="presentation" class="active">
+		    	<a href="#personal-info" aria-controls="personal-info" role="tab" data-toggle="tab">
+		    		Information
+		    	</a>
+		    </li>
+		    <li role="presentation">
+		    	<a href="#body-sizes" aria-controls="body-sizes" role="tab" data-toggle="tab">
+		    		Sizes
+	    		</a>
+		    	</li>
+		    <li role="presentation">
+		    	<a href="#skills" aria-controls="skills" role="tab" data-toggle="tab">
+		    		Skills
+		    	</a>
+	    	</li>
+		  </ul>
+		</div>
+		<div class="col-md-7">
+		  <div class="well">
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="personal-info">
+			    	<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Name</h3>
+					  </div>
+					  <div class="panel-body">
+					  	<div class="row">
+							<div class="col-md-6">
+							    <div class="form-group">
+							      <%= f.label :first_name %><br />
+							      <%= f.text_field :first_name, placeholder: "First name", class: "form-control" %>
+							    </div>
+					    	</div>
+					    	<div class="col-md-6">
+					    		<div class="form-group">
+							      <%= f.label :last_name %><br />
+							      <%= f.text_field :last_name, placeholder: "Last name", class: "form-control" %>
+							    </div>
+					    	</div>
+					    </div>
+					  </div>
+					</div>
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Contact</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="row">
+							<div class="col-md-6">
+							    <div class="form-group">
+							      <%= f.label :mobile_phone %><br />
+							      <%= f.text_field :mobile_phone, placeholder: "Mobile", class: "form-control" %>
+							    </div>
+					    	</div>
+					    	<div class="col-md-6">
+					    		<div class="form-group">
+							      <%= f.label :land_phone %><br />
+							      <%= f.text_field :land_phone, placeholder: "Land Phone", class: "form-control" %>
+							    </div>
+					    	</div>
+					    </div>
+					    <div class="form-group">
+					      <%= f.label :address %><br />
+					      <%= f.text_area :address, size: "60x3", placeholder: "Address", class: "form-control" %>
+					    </div>
+					  </div>
+					</div>
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Procedence</h3>
+					  </div>
+					  <div class="panel-body">
+					    Nacionalidad, Provincia
+					  </div>
+					</div>
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="body-sizes">
+			    	<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Body sizes</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="row">
+							<div class="col-md-4">
+							    <div class="form-group">
+							      <%= f.label :chest %><br />
+							      <%= f.text_field :chest, placeholder: "Chest", class: "form-control" %>
+							    </div>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<div class="form-group">
+							      <%= f.label :waist %><br />
+							      <%= f.text_field :waist, placeholder: "Waist", class: "form-control" %>
+							    </div>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<div class="form-group">
+							      <%= f.label :hips %><br />
+							      <%= f.text_field :hips, placeholder: "Hips", class: "form-control" %>
+							    </div>
+					    	</div>
+					    </div>
+					  </div>
+					</div>
+		    	</div>
+			    <div role="tabpanel" class="tab-pane" id="skills">
+			    	Skills
+			    </div>
+			  </div>
+		  </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10">
+			<%= f.submit "Save all", class: "btn btn-success pull-right" %>
+		</div>
+	</div>
+<% end %>

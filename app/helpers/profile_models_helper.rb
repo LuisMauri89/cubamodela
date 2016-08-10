@@ -1,0 +1,2 @@
+module ProfileModelsHelper
+end
