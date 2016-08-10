@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'static_pages/aboutus'
 
 # Model Profile routes
-  resources :profile_models
+  resources :profile_model
 
 # Root
   root to: 'static_pages#home'
