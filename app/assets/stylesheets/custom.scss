@@ -21,3 +21,14 @@ body {
 #alert-messages-box{
 	margin-bottom: 0px;
 }
+
+/* Home page panel with sign up, add some padding */
+#sign-up-home-page-panel-body-container{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+/* Navbar user signed in container, add some right padding */
+#navbar-signed-in-settings-container{
+	padding-right: 20px;
+}

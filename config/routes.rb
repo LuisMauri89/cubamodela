@@ -1,11 +1,16 @@
-Rails.application.routes.draw do	
-	
+Rails.application.routes.draw do
+
+# Devise routes
   devise_for :users
+
 # For Static Pages (like home page)		
   get 'static_pages/home'
   get 'static_pages/help'
   get 'static_pages/contact'
   get 'static_pages/aboutus'
+
+# Model Profile routes
+  resources :profile_models
 
 # Root
   root to: 'static_pages#home'
