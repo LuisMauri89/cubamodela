@@ -1,18 +1,45 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-
 <% if user_signed_in? %>
 	<h1>User: <%= current_user.email %>, Role: <%= current_user.role %>, Kind: <%= current_user.kind %></h1>
 <% end %>
 
-<div class="row">
-    <div class="col-md-7">
-        <h1>Some text</h1>
+<% if user_signed_in? %>
+<% else %>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Plataforma de modelaje y fotografía en Cuba</h1>
+        </div>
     </div>
-    <div class="col-md-4">
-        <%= render "layouts/sign_up_home_page" %>
+    <div class="row">
+        <div class="col-md-6">
+            Obten servicio
+        </div>
+        <div class="col-md-6">
+            <h2>Se descubierto!</h2>
+            <div class="well">
+                <h2>Modelo Profesional</h2>
+                <h2>Modelo Aficionado</h2>
+                <h2>Fotografo</h2>
+            </div>
+            <button class="btn btn-success btn-lg" type="button" data-toggle="collapse" data-target="#collapse-sign-up-form" aria-expanded="false" aria-controls="collapse-sign-up-form">
+                Register now and rise your carreer
+            </button>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="collapse" id="collapse-sign-up-form">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h1>Some text</h1>
+                    </div>
+                    <div class="col-md-4">
+                        <%= render "layouts/sign_up_home_page" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
 
 <div class="row">
     <div class="col-md-6">

@@ -27,6 +27,13 @@ class ProfileModelsController < ApplicationController
   end
 
   def update
+    @profile = ProfileModel.find(params[:id])
+    if @profile.update_attributes(profile_params)
+      flash[:success] = "Your profile has been updated " + @profile.full_name
+      redirect_to '/'
+    else
+      render 'edit'
+    end
   end
 
   def destroy
