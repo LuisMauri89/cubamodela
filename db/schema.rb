@@ -10,7 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160807192042) do
+ActiveRecord::Schema.define(version: 20160811230803) do
+
+  create_table "colors", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expertises", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expertises_profile_models", id: false, force: :cascade do |t|
+    t.integer "profile_model_id"
+    t.integer "expertise_id"
+    t.index ["expertise_id"], name: "index_expertises_profile_models_on_expertise_id"
+    t.index ["profile_model_id"], name: "index_expertises_profile_models_on_profile_model_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages_profile_models", id: false, force: :cascade do |t|
+    t.integer "profile_model_id"
+    t.integer "language_id"
+    t.index ["language_id"], name: "index_languages_profile_models_on_language_id"
+    t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id"
+  end
 
   create_table "profile_models", force: :cascade do |t|
     t.string   "first_name"
@@ -22,8 +54,19 @@ ActiveRecord::Schema.define(version: 20160807192042) do
     t.decimal  "chest"
     t.decimal  "waist"
     t.decimal  "hips"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "ayes_color_id"
+    t.integer  "current_province_id"
+    t.string   "gender"
+    t.index ["ayes_color_id"], name: "index_profile_models_on_ayes_color_id"
+    t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

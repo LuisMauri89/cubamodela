@@ -12,6 +12,22 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-md-offset-4 col-md-4">
+			<% if @profile.errors.any? %>
+			  <div id="error_explanation">
+			    <div class="alert alert-danger">
+			      The form contains <%= pluralize(@profile.errors.count, "error") %>.
+			    </div>
+			    <ul>
+			    <% @profile.errors.full_messages.each do |msg| %>
+			      <li><%= msg %></li>
+			    <% end %>
+			    </ul>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-offset-1 col-md-3">
 		  <ul class="nav nav-pills nav-stacked" role="tablist">
 		    <li role="presentation" class="active">
@@ -20,7 +36,7 @@
 		    	</a>
 		    </li>
 		    <li role="presentation">
-		    	<a href="#body-sizes" aria-controls="body-sizes" role="tab" data-toggle="tab">
+		    	<a href="#body-specs" aria-controls="body-specs" role="tab" data-toggle="tab">
 		    		Sizes
 	    		</a>
 		    	</li>
@@ -86,16 +102,31 @@
 					    <h3 class="panel-title">Procedence</h3>
 					  </div>
 					  <div class="panel-body">
-					    Nacionalidad, Provincia
+					    <div class="row">
+							<div class="col-md-offset-1 col-md-6">
+								<div class="form-group">
+							      <%= f.label :current_province_id %><br />
+							      <%= f.select :current_province_id, Province.all.collect {|c| [ c.name, c.id ] }, class: "form-control" %>
+							    </div>
+							</div>
+				    	</div>
 					  </div>
 					</div>
 			    </div>
-			    <div role="tabpanel" class="tab-pane" id="body-sizes">
+			    <div role="tabpanel" class="tab-pane" id="body-specs">
 			    	<div class="panel panel-primary">
 					  <div class="panel-heading">
-					    <h3 class="panel-title">Body sizes</h3>
+					    <h3 class="panel-title">Body specs</h3>
 					  </div>
 					  <div class="panel-body">
+					  	<div class="row">
+							<div class="col-md-offset-1 col-md-6">
+								<div class="form-group">
+							      <%= f.label :ayes_color_id %><br />
+							      <%= f.select :ayes_color_id, Color.all.collect {|c| [ c.name, c.id ] }, class: "form-control" %>
+							    </div>
+							</div>
+				    	</div>
 					    <div class="row">
 							<div class="col-md-4">
 							    <div class="form-group">
@@ -120,7 +151,32 @@
 					</div>
 		    	</div>
 			    <div role="tabpanel" class="tab-pane" id="skills">
-			    	Skills
+			    	<div class="row">
+						<div class="col-md-offset-1 col-md-6">
+							<div class="form-group">
+						      <%= f.label "Languages" %><br />
+						      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
+							    <div class="collection-check-box">
+							      <%= l.check_box %>
+							      <%= l.label %>
+							    </div>
+							  <% end %>
+						    </div>
+						</div>
+			    	</div>
+			    	<div class="row">
+						<div class="col-md-offset-1 col-md-6">
+							<div class="form-group">
+						      <%= f.label "Skills" %><br />
+						      <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |b| %>
+							    <div class="collection-check-box">
+							      <%= b.check_box %>
+							      <%= b.label %>
+							    </div>
+							  <% end %>
+						    </div>
+						</div>
+			    	</div>
 			    </div>
 			  </div>
 		  </div>

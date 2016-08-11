@@ -2,6 +2,12 @@ class ProfileModel < ApplicationRecord
 	# User
 	has_one :user, as: :profileable, dependent: :destroy
 
+	# Nomenclators
+	belongs_to :ayes_color, class_name: "Color", foreign_key: "ayes_color_id", optional: true
+	belongs_to :current_province, class_name: "Province", foreign_key: "current_province_id", optional: true
+	has_and_belongs_to_many :expertises, dependent: :destroy
+	has_and_belongs_to_many :languages, dependent: :destroy
+
 	#Check if profile is completed
 	def profile_complete?
 		not(self.first_name.nil?) && not(self.last_name.nil?)

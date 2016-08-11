@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  
+  resources :languages
+  resources :expertises
 # Devise routes
   devise_for :users
 
@@ -9,8 +11,14 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
   get 'static_pages/aboutus'
 
-# Model Profile routes
+# Models Profile routes
   resources :profile_models
+
+# Colors routes
+  resources :colors
+
+# Provinces routes
+  resources :provinces
 
 # Root
   root to: 'static_pages#home'
