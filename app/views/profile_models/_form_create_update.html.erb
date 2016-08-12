@@ -47,8 +47,8 @@
 	    	</li>
 		  </ul>
 		</div>
-		<div class="col-md-7">
-		  <div class="well">
+		<div class="col-md-6">
+		  <div id="model-profile-fields-container" class="well">
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="personal-info">
 			    	<div class="panel panel-primary">
@@ -56,6 +56,23 @@
 					    <h3 class="panel-title">Name</h3>
 					  </div>
 					  <div class="panel-body">
+					  	<div class="row">
+							<div class="col-md-12">
+								<%= f.label :gender %>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-md-3">
+									    	<%= f.radio_button :gender, "Female" %>
+		    								<%= f.label :gender, 'Female' %>
+	    								</div>
+	    								<div class="col-md-3">
+									    	<%= f.radio_button :gender, "Male" %>
+		    								<%= f.label :gender, 'Male' %>
+	    								</div>
+									</div>
+							    </div>
+							</div>
+				    	</div>
 					  	<div class="row">
 							<div class="col-md-6">
 							    <div class="form-group">
@@ -103,10 +120,15 @@
 					  </div>
 					  <div class="panel-body">
 					    <div class="row">
-							<div class="col-md-offset-1 col-md-6">
+							<div class="col-md-6">
 								<div class="form-group">
 							      <%= f.label :current_province_id %><br />
 							      <%= f.select :current_province_id, Province.all.collect {|c| [ c.name, c.id ] }, class: "form-control" %>
+							    </div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+							      Nacionalidad
 							    </div>
 							</div>
 				    	</div>
@@ -120,27 +142,34 @@
 					  </div>
 					  <div class="panel-body">
 					  	<div class="row">
-							<div class="col-md-offset-1 col-md-6">
+							<div class="col-md-12">
 								<div class="form-group">
 							      <%= f.label :ayes_color_id %><br />
-							      <%= f.select :ayes_color_id, Color.all.collect {|c| [ c.name, c.id ] }, class: "form-control" %>
+							      <div class="row">
+								      <% Color.all.each do |color| %>
+								      	<div class="col-md-2">
+										    <%= f.radio_button :ayes_color_id, color.id %>
+										    <%= f.label :ayes_color_id, color.name %>
+									    </div>
+									  <% end %>
+								  </div>
 							    </div>
 							</div>
 				    	</div>
 					    <div class="row">
-							<div class="col-md-4">
+							<div class="col-md-2">
 							    <div class="form-group">
 							      <%= f.label :chest %><br />
 							      <%= f.text_field :chest, placeholder: "Chest", class: "form-control" %>
 							    </div>
 					    	</div>
-					    	<div class="col-md-4">
+					    	<div class="col-md-2">
 					    		<div class="form-group">
 							      <%= f.label :waist %><br />
 							      <%= f.text_field :waist, placeholder: "Waist", class: "form-control" %>
 							    </div>
 					    	</div>
-					    	<div class="col-md-4">
+					    	<div class="col-md-2">
 					    		<div class="form-group">
 							      <%= f.label :hips %><br />
 							      <%= f.text_field :hips, placeholder: "Hips", class: "form-control" %>
@@ -149,42 +178,85 @@
 					    </div>
 					  </div>
 					</div>
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Body cloth</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+							      <%= f.label :size_shoes %><br />
+							      <%= f.text_field :size_shoes, placeholder: "Shoes", class: "form-control" %>
+							    </div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+							      <%= f.label :size_cloth %><br />
+							      <%= f.text_field :size_cloth, placeholder: "Dress/Suit", class: "form-control" %>
+							    </div>
+							</div>
+				    	</div>
+					  </div>
+					</div>
 		    	</div>
 			    <div role="tabpanel" class="tab-pane" id="skills">
-			    	<div class="row">
-						<div class="col-md-offset-1 col-md-6">
-							<div class="form-group">
-						      <%= f.label "Languages" %><br />
-						      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
-							    <div class="collection-check-box">
-							      <%= l.check_box %>
-							      <%= l.label %>
+				    <div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Languages</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+							      <%= f.label "I speak" %><br />
+							      <div class="row">
+								      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
+								      	<div class="col-md-3">
+										    <div class="checkbox-container">
+										      <%= l.check_box %>
+										      <%= l.label %>
+										    </div>
+									    </div>
+									  <% end %>
+							       </div>
 							    </div>
-							  <% end %>
-						    </div>
-						</div>
-			    	</div>
-			    	<div class="row">
-						<div class="col-md-offset-1 col-md-6">
-							<div class="form-group">
-						      <%= f.label "Skills" %><br />
-						      <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |b| %>
-							    <div class="collection-check-box">
-							      <%= b.check_box %>
-							      <%= b.label %>
+							</div>
+				    	</div>
+					  </div>
+					</div>
+					<div class="panel panel-primary">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">Aptitudes</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+							      <%= f.label "I can" %><br />
+							      <div class="row">
+								      <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |e| %>
+								      	<div class="col-md-3">
+										    <div class="checkbox-container">
+										      <%= e.check_box %>
+										      <%= e.label %>
+										    </div>
+										</div>
+									  <% end %>
+								  </div>
 							    </div>
-							  <% end %>
-						    </div>
-						</div>
-			    	</div>
+							</div>
+				    	</div>
+					  </div>
+					</div>
 			    </div>
 			  </div>
 		  </div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-offset-1 col-md-10">
-			<%= f.submit "Save all", class: "btn btn-success pull-right" %>
+		<div class="col-md-offset-1 col-md-9">
+			<%= f.submit "Save all", class: "btn btn-success btn-lg pull-right" %>
 		</div>
 	</div>
 <% end %>

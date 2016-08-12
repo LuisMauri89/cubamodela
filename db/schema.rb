@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811230803) do
+ActiveRecord::Schema.define(version: 20160811234936) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20160811230803) do
     t.integer  "ayes_color_id"
     t.integer  "current_province_id"
     t.string   "gender"
+    t.integer  "size_shoes"
+    t.integer  "size_cloth"
     t.index ["ayes_color_id"], name: "index_profile_models_on_ayes_color_id"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
   end
