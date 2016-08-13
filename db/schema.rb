@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812104753) do
+ActiveRecord::Schema.define(version: 20160813180737) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20160812104753) do
     t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id"
   end
 
+  create_table "nationalities", force: :cascade do |t|
+    t.string   "name_es"
+    t.string   "name_en"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profile_models", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -60,8 +67,10 @@ ActiveRecord::Schema.define(version: 20160812104753) do
     t.string   "gender"
     t.integer  "size_shoes"
     t.integer  "size_cloth"
+    t.integer  "nationality_id"
     t.index ["ayes_color_id"], name: "index_profile_models_on_ayes_color_id"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
+    t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"
   end
 
   create_table "provinces", force: :cascade do |t|

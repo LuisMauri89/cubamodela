@@ -123,12 +123,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 							      <%= f.label :current_province_id %><br />
-							      <%= f.select :current_province_id, Province.all.collect {|c| [ c.name, c.id ] }, class: "form-control" %>
+							      <%= f.select :current_province_id, Province.all.collect {|p| [ p.name, p.id ] }, class: "form-control" %>
 							    </div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-							      Nacionalidad
+							      <%= f.label :nationality_id %><br />
+							      <%= f.select :nationality_id, Nationality.all.collect {|n| [ n.name_es, n.id ] }, class: "form-control" %>
 							    </div>
 							</div>
 				    	</div>

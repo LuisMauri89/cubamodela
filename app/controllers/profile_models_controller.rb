@@ -45,7 +45,7 @@ class ProfileModelsController < ApplicationController
       params.require(:profile_model).permit(:first_name, :last_name, :mobile_phone,
                                             :land_phone, :address, :chest, :waist, 
                                             :hips, :ayes_color_id, :current_province_id, 
-                                            :gender, :size_shoes, :size_cloth,
+                                            :gender, :size_shoes, :size_cloth, :nationality_id,
                                             expertise_ids:[], language_ids:[])
     end
 end

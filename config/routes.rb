@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :nationalities
   resources :languages
   resources :expertises
 # Devise routes
