@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:kind])
   end
 
+  def after_sign_up_path_for(resource)
+	if current_user.profileable.nil?
+		new_profile_model_path
+	else
+		edit_profile_model_path(current_user.profileable)
+	end
+  end
+
 end

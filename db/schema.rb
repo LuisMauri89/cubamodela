@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811234936) do
+ActiveRecord::Schema.define(version: 20160812104753) do
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20160811234936) do
     t.string   "mobile_phone"
     t.string   "land_phone"
     t.string   "address"
-    t.string   "email"
     t.decimal  "chest"
     t.decimal  "waist"
     t.decimal  "hips"
