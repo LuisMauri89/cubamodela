@@ -9,6 +9,10 @@ class ProfileModel < ApplicationRecord
 	has_and_belongs_to_many :languages, dependent: :destroy
 	belongs_to :nationality, optional: true
 
+	# Pictures
+	has_many :albums, as: :profileable, dependent: :destroy
+	has_many :photos, through: :albums
+
 	#Check if profile is completed
 	def profile_complete?
 		not(self.first_name.nil?) && not(self.last_name.nil?)

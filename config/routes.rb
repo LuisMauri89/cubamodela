@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :nationalities
-  resources :languages
-  resources :expertises
 # Devise routes
   devise_for :users
 
@@ -20,6 +17,18 @@ Rails.application.routes.draw do
 
 # Provinces routes
   resources :provinces
+
+# Languages routes
+  resources :languages
+
+# Expertises routes
+  resources :expertises
+
+# Nationalities routes
+  resources :nationalities
+
+# Albums routes
+  resources :albums, only: [:new, :create, :edit, :update, :destroy]
 
 # Root
   root to: 'static_pages#home'

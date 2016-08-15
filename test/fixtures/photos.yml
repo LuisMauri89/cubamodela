@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: 
+  description: MyString
+  func: MyString
+  attachable: one
+  attachable_type: Attachable
+
+two:
+  image: 
+  description: MyString
+  func: MyString
+  attachable: two
+  attachable_type: Attachable

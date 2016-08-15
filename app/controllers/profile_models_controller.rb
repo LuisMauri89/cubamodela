@@ -6,15 +6,17 @@ class ProfileModelsController < ApplicationController
   end
 
   def new
-    @profile = ProfileModel.new
+    @profile = ProfileModel.create
+    current_user.profileable = @profile
+    current_user.save
+
+    redirect_to edit_profile_model_path(@profile)
   end
 
   def create
     @profile = ProfileModel.new(profile_params)
-    current_user.profileable = @profile
 
     if @profile.save
-      current_user.save
       flash[:success] = "Your profile has been created - !!!Congratulations " + @profile.full_name
       redirect_to '/'
     else
@@ -24,6 +26,7 @@ class ProfileModelsController < ApplicationController
 
   def edit
     @profile = ProfileModel.find(params[:id])
+    @albums = @profile.albums
   end
 
   def update

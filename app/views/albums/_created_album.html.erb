@@ -1,0 +1,24 @@
+<div id="panel-<%= @album.id %>" class="panel panel-primary">
+  <div class="panel-heading">
+  	<div class="row">
+		<div class="col-md-10">
+			<div id="form-edit-album-<%= @album.id %>-container">
+		  	</div>
+		    <h3 id="title-<%= @album.id %>" class="panel-title"><%= @album.name %></h3>
+		</div>
+		<div class="col-md-2">
+    		<%= link_to 'Delete', album_path(@album), method: :delete, remote: true, class: "btn btn-danger btn-xs pull-right" %>
+    		<%= link_to 'Edit', edit_album_path(@album), remote: true, class: "btn btn-success btn-xs pull-right" %>
+		</div>
+	</div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+		<div class="col-md-12">
+			<div id="<%= current_user.profileable.first_name %>-album-<%= @album.name %>">
+				Add Pics
+			</div>
+		</div>
+	</div>
+  </div>
+</div>

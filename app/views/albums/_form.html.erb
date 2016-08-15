@@ -1,0 +1,6 @@
+<%= form_for @album, remote: true, html: { class: "form-inline" } do |f| %>
+	<div class="form-group">
+      <%= f.text_field :name, placeholder: "Name", class: "form-control input-sm" %>
+    </div>
+    <%= f.submit class: "btn btn-success btn-xs" %>
+<% end %>

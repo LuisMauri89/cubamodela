@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813180737) do
+ActiveRecord::Schema.define(version: 20160814200031) do
+
+  create_table "albums", force: :cascade do |t|
+    t.string   "name"
+    t.string   "profileable_type"
+    t.integer  "profileable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "identifier"
+    t.index ["identifier"], name: "index_albums_on_identifier"
+    t.index ["profileable_type", "profileable_id"], name: "index_albums_on_profileable_type_and_profileable_id"
+  end
 
   create_table "colors", force: :cascade do |t|
     t.string   "name"
@@ -49,6 +60,20 @@ ActiveRecord::Schema.define(version: 20160813180737) do
     t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "description"
+    t.string   "func"
+    t.string   "attachable_type"
+    t.integer  "attachable_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_photos_on_attachable_type_and_attachable_id"
   end
 
   create_table "profile_models", force: :cascade do |t|
