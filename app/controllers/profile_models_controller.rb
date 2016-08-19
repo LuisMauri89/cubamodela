@@ -26,16 +26,24 @@ class ProfileModelsController < ApplicationController
 
   def edit
     @profile = ProfileModel.find(params[:id])
-    @albums = @profile.albums
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
     @profile = ProfileModel.find(params[:id])
-    if @profile.update_attributes(profile_params)
-      flash[:success] = "Your profile has been updated " + @profile.full_name
-      redirect_to '/'
-    else
-      render 'edit'
+
+    respond_to do |format|
+      if @profile.update_attributes(profile_params)
+        format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.full_name + '.' }
+        format.js
+      else
+        format.html { render action: 'edit' }
+        format.js
+      end
     end
   end
 

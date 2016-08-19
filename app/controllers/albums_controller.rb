@@ -1,4 +1,12 @@
 class AlbumsController < ApplicationController
+  def index
+    @albums = current_user.profileable.albums
+
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def new
   	@album = Album.new
 

@@ -1,1 +1,47 @@
-<%= render 'form_create_update' %> 
+<div class="row">
+	<div class="col-md-12">
+		<div class="row">
+			<div class="col-md-offset-1 col-md-2">
+				<p class="text-right text-success">Profile completed [%]</p>
+			</div>
+			<div class="col-md-8">
+				<div class="progress">
+				  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @profile.profile_complete_progress_percentage %>" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= @profile.profile_complete_progress_percentage %>%;">
+				    <%= @profile.profile_complete_progress_percentage %>%
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="profile-picture-container">
+					<div style="width: 200px;height:200px;">
+						<%= image_tag "banner_home_page.jpg", class: "img-responsive img-circle", alt: "Profile Picture" %>
+					</div>
+				</div>
+				<div id="profile-main-menu-container" class="well well-sm" role="navigation">
+					<ul class="nav nav-pills nav-justified">
+					  <li role="presentation" id="profile_menu_info" class="profile_menu active">
+					  	<%= link_to 'Profile', edit_profile_model_path(current_user.profileable), remote: true %>
+					  </li>
+					  <li role="presentation" id="profile_menu_albums" class="profile_menu">
+					  	<%= link_to 'Albums', albums_path, remote: true %>
+					  </li>
+					  <li role="presentation" id="profile_menu_cv" class="profile_menu">
+					  	<%= link_to 'Curriculum', "#", remote: true %>
+					  </li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+				<div id="model-profile-info-container">
+				</div>
+				<div id="pofile-model-container">
+					<%= render 'form' %> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

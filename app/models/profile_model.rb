@@ -1,4 +1,8 @@
 class ProfileModel < ApplicationRecord
+	# Validations
+	validates :first_name, length: { in: 3..20 }
+	validates :last_name, length: { in: 3..20 }
+
 	# User
 	has_one :user, as: :profileable, dependent: :destroy
 

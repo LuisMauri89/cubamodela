@@ -1,4 +1,9 @@
-$('#form-edit-album-<%= @album.id %>-container').empty();
-$('#title-<%= @album.id %>').text('Album <%= @album.name %>');
-$('#title-<%= @album.id %>').show();
-$('#panel-<%= @album.id %> a').show();
+<% if @album.errors.any? %>
+	$('#model-profile-info-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#form-edit-album-<%= @album.id %>-container').empty();
+	$('#title-<%= @album.id %>').text('Album <%= @album.name %>');
+	$('#title-<%= @album.id %>').show();
+	$('#panel-<%= @album.id %> a').show();
+	$('#model-profile-info-container').html("<%= j render 'action_info', text: @album.name + " updated" %>");
+<% end %>

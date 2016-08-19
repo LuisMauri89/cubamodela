@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :nationalities
 
 # Albums routes
-  resources :albums, only: [:new, :create, :edit, :update, :destroy]
+  resources :albums
 
 # Root
   root to: 'static_pages#home'

@@ -18,8 +18,8 @@ body {
 }
 
 /* Flash messages box margin bottom 0px */
-#alert-messages-box{
-	margin-bottom: 0px;
+.alert-messages-box{
+	margin-bottom: 0px !important;
 }
 
 /* Home page panel with sign up, add some padding */
@@ -33,10 +33,19 @@ body {
 	padding-right: 20px;
 }
 
-/* Well for model profile fields container fixed height 
-#profile-model-fields-container{
-	height: 800px;
+/* Profile picture edit, add some margin */
+#profile-picture-container{
+	margin-top: 10px;
+	margin-left: 40%;
+	margin-right: 40%;
 }
-*/
+
+/* Profile main menu edit, add some margin */
+#profile-main-menu-container{
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-bottom: 10px;
+}
+
 
 

@@ -14,13 +14,7 @@
 	    <span class="sr-only">Toggle Dropdown</span>
 	  </button>
 	  <ul class="dropdown-menu">
-	    <li><a href="#">Action</a></li>
-	    <li><a href="#">Another action</a></li>
-	    <li><a href="#">Something else here</a></li>
-	    <li role="separator" class="divider"></li>
-	    <li>
-    		<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-	    </li>
+	    <%= render 'layouts/signed_in_true_options' %>
 	  </ul>
 	</div>
 	<%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-success navbar-btn" %>

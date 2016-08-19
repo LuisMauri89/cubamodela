@@ -1,3 +1,8 @@
-$('#form-new-album-container').empty()
-$('#new-album-link').show();
-$('#albums-container').append("<%= j render 'created_album' %>")
+<% if @album.errors.any? %>
+	$('#model-profile-info-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#form-new-album-container').empty()
+	$('#new-album-link').show();
+	$('#albums-container').append("<%= j render 'created_album' %>")
+	$('#model-profile-info-container').html("<%= j render 'action_info', text: 'created' %>");
+<% end %>

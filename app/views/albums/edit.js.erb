@@ -1,3 +1,4 @@
 $('#title-<%= @album.id %>').hide();
 $('#panel-<%= @album.id %> a').hide();
 $('#form-edit-album-<%= @album.id %>-container').html("<%= j render 'form' %>");
+$('#edit_album_<%= @album.id %>').append("<%= j render 'cancel_form', edit: true %>");

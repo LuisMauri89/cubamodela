@@ -1,4 +1,7 @@
 class Album < ApplicationRecord
+  # Validations
+  validates :name, length: { in: 3..20 }
+
   # Associatons
   belongs_to :profileable, polymorphic: true
   has_many :photos, as: :attachable, dependent: :destroy
