@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Sign Up for FREE</h3>
   </div>
@@ -24,11 +24,11 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :kind %><br />
+      <%= f.label :kind, 'What are you?' %><br />
       <%= f.select(:kind, User.kinds.keys.map {|kind| [kind.titleize,kind]}, class: "form-control") %>
     </div>
 
-    <%= f.submit "Sign up NOW", class: "btn btn-success pull-right" %>
+    <%= f.submit "Sign up NOW", class: "btn btn-success btn-block" %>
   <% end %>
   </div>
   <div class="panel-footer">
@@ -42,10 +42,10 @@
     </div>
     <div class="row">
       <div class="col-md-offset-2 col-md-4">
-        <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary" %><br />
+        <%= link_to "Log in", new_session_path(resource_name), class: "btn btn-success" %><br />
       </div>
       <div class="col-md-offset-2 col-md-4">
-        <%= link_to "Recover", new_password_path(resource_name), class: "btn btn-primary" %><br />
+        <%= link_to "Recover", new_password_path(resource_name), class: "btn btn-success" %><br />
       </div>
     </div>
   </div>

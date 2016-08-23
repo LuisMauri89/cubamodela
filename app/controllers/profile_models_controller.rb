@@ -7,6 +7,7 @@ class ProfileModelsController < ApplicationController
 
   def new
     @profile = ProfileModel.create
+    build_profile_meta
     current_user.profileable = @profile
     current_user.save
 
@@ -58,5 +59,11 @@ class ProfileModelsController < ApplicationController
                                             :hips, :ayes_color_id, :current_province_id, 
                                             :gender, :size_shoes, :size_cloth, :nationality_id,
                                             expertise_ids:[], language_ids:[])
+    end
+
+    def build_profile_meta
+      @profile.albums.create(name: "Profile Photo")
+      @profile.albums.create(name: "Profesional Book")
+      @profile.albums.create(name: "Polaroid")
     end
 end

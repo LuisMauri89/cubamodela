@@ -38,23 +38,39 @@ class AlbumsController < ApplicationController
 
   def update
   	@album = Album.find(params[:id])
-  	@old_value_name = @album.name
 
   	respond_to do |format|
-  		if @album.update_attributes(album_params)
-  			format.js
-  		else
-  			format.js
-  		end
+      if can_update_or_delete?
+    		if @album.update_attributes(album_params)
+    			format.js
+    		else
+    			format.js
+    		end
+      else
+        format.js
+      end
   	end
+  end
+
+  def delete
+    @album = Album.find(params[:album_id])
+    can_update_or_delete?
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
     @album = Album.find(params[:id])
     
     respond_to do |format|
-      if @album.destroy
-        format.js
+      if can_update_or_delete?
+        if @album.destroy
+          format.js
+        else
+          format.js
+        end
       else
         format.js
       end
@@ -65,5 +81,15 @@ class AlbumsController < ApplicationController
 
     def album_params
       params.require(:album).permit(:name)
+    end
+
+    def can_update_or_delete?
+      default_values = ["Profile Photo", "Profesional Book", "Polaroid"]
+      if default_values.include?(@album.name)
+        @album.errors[:base] << "SORRY, this album can't be updated or removed."
+        return false
+      else
+        return true
+      end
     end
 end

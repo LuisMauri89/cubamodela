@@ -1,9 +1,8 @@
-/* ScrollSpy Boostrap requires position relative 
+/* ScrollSpy Boostrap requires position relative */
 body {
   position: relative;
   padding-top: 50px;
 }
-*/
 
 /* Expand Boostrap container 100% */
 #main-container{
@@ -11,15 +10,23 @@ body {
 	padding-right: 0px;
 }
 
-/* Affix Boostrap top after scroll matches offset-top and expand navbar 100% */
+/* Affix Boostrap top after scroll matches offset-top and expand navbar 100% 
 .affix{
 	top: 0px;
 	width: 100%;
 }
+*/
 
 /* Flash messages box margin bottom 0px */
 .alert-messages-box{
 	margin-bottom: 0px !important;
+}
+
+/* Home page banner */
+.banner-thumbnail-image{
+	width: 200px;
+	height: 200px;
+	padding: 5px;
 }
 
 /* Home page panel with sign up, add some padding */
@@ -36,15 +43,59 @@ body {
 /* Profile picture edit, add some margin */
 #profile-picture-container{
 	margin-top: 10px;
-	margin-left: 40%;
-	margin-right: 40%;
+	margin-left: 45%;
+	margin-right: 45%;
 }
 
 /* Profile main menu edit, add some margin */
 #profile-main-menu-container{
-	margin-left: 25%;
-	margin-right: 25%;
-	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+
+/* Profile model, add 100% cell width */
+#profile_model_current_province_id{
+	width: 100% !important;
+}
+
+#profile_model_nationality_id{
+	width: 100% !important;
+}
+
+/* Home sign up select kind, add 50% cell width */
+#user_kind{
+	width: 50% !important;
+}
+
+/* Home page line users count */
+#home-line-users-amounts{
+	height: 80px;
+	background-color: gray;
+	color: white;
+}
+
+.profile-album-photos-container{
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+.field_with_errors{
+	padding: 0px !important;
+  	background-color: transparent !important;
+  	display: block !important;
+}
+
+.field_with_errors label{
+	color: #a94442;
+}
+
+.field_with_errors .form-control{
+	border-color: #a94442;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.field_with_errors .form-control:focus{
+	border-color: #843534;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
 }
 
 

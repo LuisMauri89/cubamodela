@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default affix-top" data-spy="affix" data-offset-top="350", data-offset-bottom="200">
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<%= link_to root_path, class: "navbar-brand" do %>
@@ -8,9 +8,11 @@
 
 		<ul class="nav navbar-nav">
 			<li><a href="#services-container">Services</a></li>
+			<li><a href="#us-container">About us</a></li>
+			<li><a href="#partners-container">Partners</a></li>
 			<li><a href="#models-container">Models</a></li>
-			<li><a href="#discover-container">Discover</a></li>
-			<li><a href="#about-us-container">About us</a></li>
+			<li><a href="#photographers-container">Photographers</a></li>
+			<li><a href="#cuba-container">Discover</a></li>
 		</ul>
 		<% if user_signed_in? %>
 			<%= render 'layouts/signed_in_true' %>

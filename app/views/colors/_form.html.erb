@@ -1,22 +1,20 @@
-<%= form_for(color) do |f| %>
-  <% if color.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(color.errors.count, "error") %> prohibited this color from being saved:</h2>
+<%= form_for(color, html: { class: "form-horizontal" }) do |f| %>
 
+  <% if color.errors.any? %>
+    <div class="alert alert-danger text-center">
+      The form contains <%= pluralize(color.errors.count, "error") %>.
       <ul>
-      <% color.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% color.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group text-center">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "Color Name", class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit "Create Color", class: "btn btn-success btn-block" %>
 <% end %>

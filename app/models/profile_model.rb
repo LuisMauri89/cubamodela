@@ -1,7 +1,16 @@
 class ProfileModel < ApplicationRecord
 	# Validations
-	validates :first_name, length: { in: 3..20 }
-	validates :last_name, length: { in: 3..20 }
+	validates :first_name, length: { in: 3..20 }, allow_blank: true
+	validates :last_name, length: { in: 3..20 }, allow_blank: true
+	validates :mobile_phone, length: { in: 8..20 }, allow_blank: true
+	validates :land_phone, length: { in: 8..20 }, allow_blank: true
+	validates :address, length: { maximum: 100 }, allow_blank: true
+	validates :chest, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
+	validates :waist, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
+	validates :hips, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
+	validates :gender, inclusion: { in: %w(Female Male) }, allow_blank: true
+	validates :size_shoes, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 50 }, allow_blank: true
+	validates :size_cloth, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
 
 	# User
 	has_one :user, as: :profileable, dependent: :destroy

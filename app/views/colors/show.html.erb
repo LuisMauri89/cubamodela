@@ -1,9 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well well-lg" style="margin-top:30px;margin-left:200px;margin-right:200px;">
+  		<h3 class="text-center">Show Color</h3>
+  		<div class="row">
+  			<div class="col-md-offset-4 col-md-4">
+  				<h3>Name: <%= @color.name %></h3>
+	  		</div>
+		</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @color.name %>
-</p>
+		<div class="row">
+  			<div class="col-md-12">
+				<%= link_to 'Back', colors_path, class: "btn btn-success pull-right" %>
+				<%= link_to 'Edit', edit_color_path(@color), class: "btn btn-primary pull-right" %>
+			</div>
+  		</div>
+  	</div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_color_path(@color) %> |
-<%= link_to 'Back', colors_path %>
+

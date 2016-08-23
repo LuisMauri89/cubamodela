@@ -1,6 +1,6 @@
 class Album < ApplicationRecord
   # Validations
-  validates :name, length: { in: 3..20 }
+  validates :name, presence: true, length: { in: 3..20 }, uniqueness: { scope: :profileable }
 
   # Associatons
   belongs_to :profileable, polymorphic: true

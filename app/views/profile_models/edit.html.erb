@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<div class="row">
+		<div class="row" style="padding-top:10px;">
 			<div class="col-md-offset-1 col-md-2">
 				<p class="text-right text-success">Profile completed [%]</p>
 			</div>
@@ -15,23 +15,25 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div id="profile-picture-container">
-					<div style="width: 200px;height:200px;">
-						<%= image_tag "banner_home_page.jpg", class: "img-responsive img-circle", alt: "Profile Picture" %>
+					<div style="width: 150px; margin-bottom:20px;">
+						<%= image_tag "pmp.JPG", class: "img-responsive img-rounded", alt: "Profile Picture" %>
 					</div>
 				</div>
-				<div id="profile-main-menu-container" class="well well-sm" role="navigation">
-					<ul class="nav nav-pills nav-justified">
-					  <li role="presentation" id="profile_menu_info" class="profile_menu active">
-					  	<%= link_to 'Profile', edit_profile_model_path(current_user.profileable), remote: true %>
-					  </li>
-					  <li role="presentation" id="profile_menu_albums" class="profile_menu">
-					  	<%= link_to 'Albums', albums_path, remote: true %>
-					  </li>
-					  <li role="presentation" id="profile_menu_cv" class="profile_menu">
-					  	<%= link_to 'Curriculum', "#", remote: true %>
-					  </li>
-					</ul>
-				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div id="profile-main-menu-container" class="col-md-offset-3 col-md-6">
+				<ul class="nav nav-pills nav-justified">
+				  <li role="presentation" id="profile_menu_info" class="profile_menu active">
+				  	<%= link_to 'Profile', edit_profile_model_path(current_user.profileable), remote: true %>
+				  </li>
+				  <li role="presentation" id="profile_menu_albums" class="profile_menu">
+				  	<%= link_to 'Albums', albums_path, remote: true %>
+				  </li>
+				  <li role="presentation" id="profile_menu_cv" class="profile_menu">
+				  	<%= link_to 'Curriculum', "#", remote: true %>
+				  </li>
+				</ul>
 			</div>
 		</div>
 		<div class="row">
@@ -41,6 +43,7 @@
 				<div id="pofile-model-container">
 					<%= render 'form' %> 
 				</div>
+				<div id="profile-modal" class="modal fade"></div>
 			</div>
 		</div>
 	</div>

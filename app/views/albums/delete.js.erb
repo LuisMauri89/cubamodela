@@ -1,0 +1,6 @@
+<% if @album.errors.any? %>
+	$('#model-profile-info-container').html("<%= j render 'errors' %>");
+<% else %>
+	$("#profile-modal").html("<%= escape_javascript(render 'delete') %>")
+	$("#profile-modal").modal("show")
+<% end %>

@@ -1,27 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary"  style="margin:30px;">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center">Colors</h1>
+      </div>
+      <div class="panel-body" style="padding-left:100px;padding-right:100px;">
+        <table class="table">
+          <thead class="bg-info">
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
 
-<h1>Colors</h1>
+          <tbody>
+            <% @colors.each do |color| %>
+              <tr>
+                <td><h4><%= color.name %></h4></td>
+                <td>
+                  <%= link_to 'Destroy', color, method: :delete, class: "btn btn-danger pull-right", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit', edit_color_path(color), class: "btn btn-success pull-right" %>
+                  <%= link_to 'Show', color, class: "btn btn-primary pull-right" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <br>
 
-  <tbody>
-    <% @colors.each do |color| %>
-      <tr>
-        <td><%= color.name %></td>
-        <td><%= link_to 'Show', color %></td>
-        <td><%= link_to 'Edit', edit_color_path(color) %></td>
-        <td><%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Color', new_color_path %>
+        <%= link_to 'New Color', new_color_path, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -54,4 +54,13 @@ module ApplicationHelper
     end
   end
 
+  # For users counts
+  def get_models_count
+    ProfileModel.count
+  end
+
+  # For forms with errors
+  def add_error_styles()
+  end
+
 end

@@ -6,519 +6,1271 @@
 <% else %>
     <div class="row">
         <div class="col-md-12">
-            <h1>Plataforma de modelaje y fotografía en Cuba</h1>
+            <h1 class="text-center" style="margin-top:30px;margin-bottom:50px;">Plataforma de modelaje y fotografía en Cuba</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
-            Obten servicio
+        <div class="col-md-7 text-center">
+            Aqui una imagen con excelente calidad, diagrama del flujo de la web, el modelo entra, el contractor crea casting, lo invita, etc.
         </div>
-        <div class="col-md-6">
-            <h2>Se descubierto!</h2>
-            <div class="well">
-                <h2>Modelo Profesional</h2>
-                <h2>Modelo Aficionado</h2>
-                <h2>Fotografo</h2>
-            </div>
-            <button class="btn btn-success btn-lg" type="button" data-toggle="collapse" data-target="#collapse-sign-up-form" aria-expanded="false" aria-controls="collapse-sign-up-form">
-                Register now and rise your carreer
-            </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="collapse" id="collapse-sign-up-form">
-                <div class="row">
-                    <div class="col-md-7">
-                        <h1>Some text</h1>
-                    </div>
-                    <div class="col-md-4">
-                        <%= render "home_sign_up" %>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-4">
+            <%= render "home_sign_up" %>
         </div>
     </div>
 <% end %>
 
 <div class="row">
-    <div class="col-md-6">
-      <p>
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-      </p>
+    <div class="col-md-12">
+        <div id="home-line-users-amounts" style="background-color: gray;">
+            <div class="row text-center">
+                <div class="col-md-2">
+                    <h2>Models: <span><%= get_models_count %></span></h2>
+                </div>
+                <div class="col-md-3">
+                    <h2>Photographers: <span>35</span></h2>
+                </div>
+                <div class="col-md-2">
+                    <h2>Places: <span>125</span></h2>
+                </div>
+                <div class="col-md-2">
+                    <h2>Services: <span>9</span></h2>
+                </div>
+                <div class="col-md-3">
+                    <h2>Other: <span>56</span></h2>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-6">
-      <p>
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-        # Puma can serve each request in a thread from an internal thread pool.
-        # The `threads` method setting takes two numbers a minimum and maximum.
-        # Any libraries that use thread pools should be configured to match
-        # the maximum value specified for Puma. Default is set to 5 threads for minimum
-        # and maximum, this matches the default thread size of Active Record.
-        #
-        threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
-        threads threads_count, threads_count
-
-        # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
-        #
-        port        ENV.fetch("PORT") { 3000 }
-
-        # Specifies the `environment` that Puma will run in.
-        #
-        environment ENV.fetch("RAILS_ENV") { "development" }
-
-        # Specifies the number of `workers` to boot in clustered mode.
-        # Workers are forked webserver processes. If using threads and workers together
-        # the concurrency of the application would be max `threads` * `workers`.
-        # Workers do not work on JRuby or Windows (both of which do not support
-        # processes).
-        #
-        # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
-
-        # Use the `preload_app!` method when specifying a `workers` number.
-        # This directive tells Puma to first boot the application and load code
-        # before forking the application. This takes advantage of Copy On Write
-        # process behavior so workers use less memory. If you use this option
-        # you need to make sure to reconnect any threads in the `on_worker_boot`
-        # block.
-        #
-        # preload_app!
-
-        # The code in the `on_worker_boot` will be called if you are using
-        # clustered mode by specifying a number of `workers`. After each worker
-        # process is booted this block will be run, if you are using `preload_app!`
-        # option you will want to use this block to reconnect to any threads
-        # or connections that may have been created at application boot, Ruby
-        # cannot share connections between processes.
-        #
-        # on_worker_boot do
-        #   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
-        # end
-
-        # Allow puma to be restarted by `rails restart` command.
-        plugin :tmp_restart
-      </p>
-    </div>
-    <div class="clearfix"></div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="services-container">
+            <h1>Services</h1>
+            <p>
+                Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="us-container">
+            <h1>About US</h1>
+            <p>
+                Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="partners-container">
+            <h1>Partners</h1>
+            <p>
+                Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="models-container">
+            <h1>Models</h1>
+            <p>
+                Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="photographers-container">
+            <h1>Photographers</h1>
+            <p>
+                Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="cuba-container">
+            <h1>Discover Cuba</h1>
+            <p>
+                Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+               Some setup you must do manually if you haven't yet:
+                1. Ensure you have defined default url options in your environments files. Here
+                 is an example of default_url_options appropriate for a development environment
+                 in config/environments/development.rb:
+                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+                 In production, :host should be set to the actual host of your application.
+                2. Ensure you have defined root_url to *something* in your config/routes.rb.
+                 For example:
+                   root to: "home#index"
+                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
+                 For example:
+                4. You can copy Devise views (for customization) to your app by running:
+               rails g devise:views
+            </p>
+        </div>
+    </div>
+</div>
+      
+    

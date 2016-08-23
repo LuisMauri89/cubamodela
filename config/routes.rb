@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  
+
 # Devise routes
-  devise_for :users
+  devise_for :users, :path => 'account'
+
+# Users routes
+  resources :users, only: [:index]
 
 # For Static Pages (like home page)		
   get 'static_pages/home'
@@ -28,7 +31,9 @@ Rails.application.routes.draw do
   resources :nationalities
 
 # Albums routes
-  resources :albums
+  resources :albums do
+    get 'delete'
+  end
 
 # Root
   root to: 'static_pages#home'

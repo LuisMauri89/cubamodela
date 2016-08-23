@@ -74,14 +74,14 @@
 	  </div>
 	  <div class="panel-body">
 	    <div class="row">
-			<div class="col-md-6">
-				<div class="form-group">
+			<div class="col-md-3">
+				<div class="form-group text-center">
 			      <%= f.label :current_province_id %><br />
 			      <%= f.select :current_province_id, Province.all.collect {|p| [ p.name, p.id ] }, class: "form-control" %>
 			    </div>
 			</div>
-			<div class="col-md-6">
-				<div class="form-group">
+			<div class="col-md-3">
+				<div class="form-group text-center">
 			      <%= f.label :nationality_id %><br />
 			      <%= f.select :nationality_id, Nationality.all.collect {|n| [ n.name_es, n.id ] }, class: "form-control" %>
 			    </div>
@@ -96,7 +96,7 @@
 	  <div class="panel-body">
 	  	<div class="row">
 			<div class="col-md-12">
-				<div class="form-group">
+				<div class="form-group text-center">
 			      <%= f.label :ayes_color_id %><br />
 			      <div class="row">
 				      <% Color.all.each do |color| %>
@@ -110,57 +110,48 @@
 			</div>
 		</div>
 	    <div class="row">
-			<div class="col-md-3">
-			    <div class="form-group">
+			<div class="col-md-2">
+			    <div class="form-group text-center">
 			      <%= f.label :chest %><br />
-			      <%= f.text_field :chest, placeholder: "Chest", class: "form-control" %>
+			      <%= f.text_field :chest, placeholder: "Chest", class: "form-control text-center" %>
 			    </div>
 	    	</div>
-	    	<div class="col-md-3">
-	    		<div class="form-group">
+	    	<div class="col-md-2">
+	    		<div class="form-group text-center">
 			      <%= f.label :waist %><br />
-			      <%= f.text_field :waist, placeholder: "Waist", class: "form-control" %>
+			      <%= f.text_field :waist, placeholder: "Waist", class: "form-control text-center" %>
 			    </div>
 	    	</div>
-	    	<div class="col-md-3">
-	    		<div class="form-group">
+	    	<div class="col-md-2">
+	    		<div class="form-group text-center">
 			      <%= f.label :hips %><br />
-			      <%= f.text_field :hips, placeholder: "Hips", class: "form-control" %>
+			      <%= f.text_field :hips, placeholder: "Hips", class: "form-control text-center" %>
 			    </div>
 	    	</div>
+	    	<div class="col-md-2">
+				<div class="form-group text-center">
+			      <%= f.label :size_shoes %><br />
+			      <%= f.text_field :size_shoes, placeholder: "Shoes", class: "form-control text-center" %>
+			    </div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group text-center">
+			      <%= f.label :size_cloth %><br />
+			      <%= f.text_field :size_cloth, placeholder: "Dress/Suit", class: "form-control text-center" %>
+			    </div>
+			</div>
 	    </div>
 	  </div>
 	</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Body cloth</h3>
+	    <h3 class="panel-title">Aptitudes</h3>
 	  </div>
 	  <div class="panel-body">
-	    <div class="row">
-			<div class="col-md-4">
-				<div class="form-group">
-			      <%= f.label :size_shoes %><br />
-			      <%= f.text_field :size_shoes, placeholder: "Shoes", class: "form-control" %>
-			    </div>
-			</div>
-			<div class="col-md-4">
-				<div class="form-group">
-			      <%= f.label :size_cloth %><br />
-			      <%= f.text_field :size_cloth, placeholder: "Dress/Suit", class: "form-control" %>
-			    </div>
-			</div>
-		</div>
-	  </div>
-	</div>
-	<div class="panel panel-primary">
-	  <div class="panel-heading">
-	    <h3 class="panel-title">Languages</h3>
-	  </div>
-	  <div class="panel-body">
-	    <div class="row">
+	  	<div class="row">
 			<div class="col-md-12">
-				<div class="form-group">
-			      <%= f.label "I speak" %><br />
+				<div class="form-group text-center">
+			      <%= f.label "I speak:" %><br />
 			      <div class="row">
 				      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
 				      	<div class="col-md-3">
@@ -174,17 +165,10 @@
 			    </div>
 			</div>
 		</div>
-	  </div>
-	</div>
-	<div class="panel panel-primary">
-	  <div class="panel-heading">
-	    <h3 class="panel-title">Aptitudes</h3>
-	  </div>
-	  <div class="panel-body">
 	    <div class="row">
 			<div class="col-md-12">
-				<div class="form-group">
-			      <%= f.label "I can" %><br />
+				<div class="form-group text-center">
+			      <%= f.label "I can:" %><br />
 			      <div class="row">
 				      <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |e| %>
 				      	<div class="col-md-3">
