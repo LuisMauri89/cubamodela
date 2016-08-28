@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     get 'delete'
   end
 
+# Photos routes
+  resources :photos, only: [:create, :destroy] 
+
 # Root
   root to: 'static_pages#home'
 
