@@ -30,13 +30,16 @@ Rails.application.routes.draw do
 # Nationalities routes
   resources :nationalities
 
+# Photos concern
+  concern :attachable do
+    resources :photos
+  end 
+
 # Albums routes
   resources :albums do
+    concerns :attachable
     get 'delete'
   end
-
-# Photos routes
-  resources :photos, only: [:create, :destroy] 
 
 # Root
   root to: 'static_pages#home'
