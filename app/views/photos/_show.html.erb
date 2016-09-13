@@ -1,0 +1,22 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+  <div class="modal-header">
+    <h3>From album: <%= @album.name %></h3>
+  </div>
+  <div class="modal-body">
+    <div class="img-thumbnail">
+      <%= image_tag @photo.image.url, alt: @photo.image.url, style: "width: 100%;" %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div id="delete-photo-confirm-container">
+      <p>Are you sure you wish to delete this photo?</p>
+      <%= link_to 'Delete', album_photo_path(@album, @photo), method: :delete, remote: true, class: "btn btn-danger" %>
+      <button id="btn-cancel-delete-photo" type="button" class="btn btn-primary">Cancel</button>
+    </div>
+    <button id="btn-delete-photo" type="button" class="btn btn-danger">Delete</button>
+    <%= link_to "Close", "#", class: "btn btn-danger", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
+    <div id="modal-photo-info-container"></div>
+  </div>
+  </div>
+</div>

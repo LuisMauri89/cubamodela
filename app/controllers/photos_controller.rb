@@ -1,7 +1,12 @@
 class PhotosController < ApplicationController
 
   def show
+  	@album = Album.find(params[:album_id])
+  	@photo = Photo.find(params[:id])
 
+  	respond_to do |format|
+  		format.js
+  	end
   end	
 
   def new
@@ -35,6 +40,16 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+  	@album = Album.find(params[:album_id])
+  	@photo = Photo.find(params[:id])
+
+  	respond_to do |format|
+  		if @photo.destroy
+  			format.js
+  		else
+  			format.js
+  		end
+  	end
   end
 
   private

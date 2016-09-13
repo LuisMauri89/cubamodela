@@ -1,0 +1,16 @@
+$("#profile-modal").html("<%= j render 'show' %>");
+$("#delete-photo-confirm-container").hide();
+$("#profile-modal").modal("show");
+
+
+$("#btn-delete-photo").click(function(){
+	$("#btn-delete-photo").hide();
+	$("#btn-dismiss-show-photo").hide();
+	$("#delete-photo-confirm-container").show();
+});
+
+$("#btn-cancel-delete-photo").click(function(){
+	$("#delete-photo-confirm-container").hide();
+	$("#btn-delete-photo").show();
+	$("#btn-dismiss-show-photo").show();
+});

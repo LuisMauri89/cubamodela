@@ -1,0 +1,7 @@
+<% if @photo.errors.any? %>
+	$('#modal-photo-info-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#panel-<%= @album.id %>').remove();
+	$('#model-profile-info-container').html("<%= j render 'action_info', text: @album.name + ' removed' %>");
+<% end %>
+$("#profile-modal").modal("hide");
