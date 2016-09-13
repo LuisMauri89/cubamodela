@@ -1,0 +1,5 @@
+<%= link_to(album_photo_path(@album, @photo), remote: true, html_options: { class: "" }) do %>
+	<div class="img-thumbnail">
+		<%= image_tag @photo.image.url(:profile), alt: @photo.image.url(:profile) %>
+	</div>
+<% end %>

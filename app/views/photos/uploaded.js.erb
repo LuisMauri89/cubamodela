@@ -1,0 +1,5 @@
+<% if @album.photos.count > 1 %>
+	$("#body-album-<%= @album.id %>").append("<%= j render 'upload' %>");
+<% else %>
+	$("#body-album-<%= @album.id %>").html("<%= j render 'upload' %>");
+<% end %>

@@ -32,7 +32,9 @@ Rails.application.routes.draw do
 
 # Photos concern
   concern :attachable do
-    resources :photos
+    resources :photos do
+      get 'uploaded'
+    end
   end 
 
 # Albums routes

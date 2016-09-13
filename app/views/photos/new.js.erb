@@ -1,0 +1,17 @@
+Dropzone.autoDiscover = false;
+
+$("#profile-modal").html("<%= j render 'form' %>");
+
+var album_dropzone = new Dropzone (".dropzone", {
+	maxFilesize: 256,
+	paramName: "photo[image]",
+	addRemoveLinks: false,
+	acceptedFiles:'.jpg, .png, .jpeg, .gif'
+});
+
+album_dropzone.on("success", function(file, response) {
+	var uploaded_photo_url = "/albums/<%= @album.id %>/photos/" + response.photo_id + "/uploaded";
+	$.getScript(uploaded_photo_url);
+});
+
+$("#profile-modal").modal("show");
