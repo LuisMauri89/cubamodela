@@ -28,31 +28,78 @@ class ProfileModel < ApplicationRecord
 
 	#Check if profile is completed
 	def profile_complete?
-		not(self.first_name.nil?) && not(self.last_name.nil?)
+		parameters_with_values = self.generate_array_of_param_with_value
+
+		parameters_with_values.each do |p|
+			return p if p
+		end
+
+		return false
 	end
 
 	def profile_complete_progress
 		progress = 0
+		parameters_with_values = self.generate_array_of_param_with_value
 
-		if not self.first_name.nil?
-			progress += 1
-		end
+		progress = parameters_with_values.reject{ |p| p }.length
 
-		if not self.last_name.nil?
-			progress += 1
-		end
+		return progress
 	end
 
 	def profile_complete_progress_total
-		progress = 2
+		total = 16
 	end
 
 	def profile_complete_progress_percentage
-		progress = 50 #(profile_complete_progress * 100)/profile_complete_progress_total
+		progress = (self.profile_complete_progress * 100)/self.profile_complete_progress_total
 	end
 
 	# Get full name
 	def full_name
-		self.first_name + " " + self.last_name
+		if self.first_name and self.last_name
+			self.first_name + " " + self.last_name
+		else
+			"Unknown"
+		end
+	end
+
+	def get_profile_model_profile_picture_url
+		begin
+			return self.albums.where(name: "Profile Photo").first.photos.last.image.url(:profile)
+		rescue
+			return "missing_profile_picture.jpg"
+		end
+	end
+
+	def generate_array_of_param_with_value
+		parameters_with_values = [self.first_name.empty?, self.last_name.empty?, self.gender.nil?, self.mobile_phone.empty?, self.land_phone.empty?, self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
+		parameters_with_values << self.add_expertises_to_progress
+		parameters_with_values << self.add_languages_to_progress
+
+		return parameters_with_values
+	end
+
+	def add_expertises_to_progress
+		begin
+			if self.expertises.any?
+				return false
+			end
+
+			return true
+		rescue
+			return true
+		end
+	end
+
+	def add_languages_to_progress
+		begin
+			if self.languages.any?
+				return false
+			end
+
+			return true
+		rescue
+			return true
+		end
 	end
 end

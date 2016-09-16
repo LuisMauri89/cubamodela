@@ -41,7 +41,7 @@
 
               <div class="form-group">
                 <%= f.label :kind, 'What are you?' %><br />
-                <%= f.select(:kind, User.kinds.keys.map {|kind| [kind.titleize,kind]}, class: "form-control") %>
+                <%= f.select(:kind, User.kinds.keys.reject{ |k| k == "other" }.map {|kind| [kind.titleize,kind]}, class: "form-control") %>
               </div>
 
               <%= f.submit "Sign up NOW", class: "btn btn-success btn-block" %>

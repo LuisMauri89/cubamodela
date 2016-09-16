@@ -54,6 +54,7 @@ body {
 	margin-top: 10px;
 	margin-left: 45%;
 	margin-right: 45%;
+	margin-bottom: 20px;
 }
 
 /* Profile main menu edit, add some margin */
@@ -115,8 +116,31 @@ body {
 }
 
 /* For bootstrap btn class */
-.btn{
+.btn-primary, .btn-danger, .btn-succes, .btn-info, .btn-warning{
 	color: #fff !important;
+}
+
+/* For modal, show photo wide */
+#model-profile-show-photo-modal{
+	width: auto;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+/* For list of images no hover */
+a.link-image:hover{
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: transparent !important;
+}
+
+/* For list of images in index views */
+#models-list-container{
+	padding: 20px;
+}
+
+.list-photo-item{
+	margin-right: 20px;
 }
 
 

@@ -1,5 +1,12 @@
-<% if @album.photos.count > 1 %>
-	$("#body-album-<%= @album.id %>").append("<%= j render 'upload' %>");
+<% if @photo_type == "profile" %>
+	$("#profile-picture").empty();
+	$("#profile-picture").html("<%= j render 'upload' %>");
+	$("#profile-modal").modal("hide");
 <% else %>
-	$("#body-album-<%= @album.id %>").html("<%= j render 'upload' %>");
+	<% if @album.photos.count > 1 %>
+		$("#body-album-<%= @album.id %>").append("<%= j render 'upload' %>");
+	<% else %>
+		$("#body-album-<%= @album.id %>").empty();
+		$("#body-album-<%= @album.id %>").html("<%= j render 'upload' %>");
+	<% end %>
 <% end %>

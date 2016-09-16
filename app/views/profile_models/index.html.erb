@@ -1,2 +1,9 @@
-<h1>ProfileModel#index</h1>
-<p>Find me in app/views/profile_model/index.html.erb</p>
+<div id="models-list-container">
+	<% @models.each do |model| %>
+		<div class="img-thumbnail list-photo-item">
+			<%= link_to(profile_model_path(model), remote: true, class: "link-image") do %>
+					<%= image_tag model.get_profile_model_profile_picture.image.url(:profile), alt: "Model Photo", class: "img-circle" %>	
+			<% end %>
+		</div>
+	<% end %>
+</div>

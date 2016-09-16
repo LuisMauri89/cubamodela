@@ -1,32 +1,31 @@
 class ProfileModelsController < ApplicationController
   def index
+    @models = ProfileModel.all
   end
 
   def show
   end
 
   def new
-    @profile = ProfileModel.create
-    build_profile_meta
-    current_user.profileable = @profile
-    current_user.save
+    if current_user.profileable.nil?
+      @profile = ProfileModel.create
+      build_profile_meta
+      current_user.profileable = @profile
+      current_user.save
 
-    redirect_to edit_profile_model_path(@profile)
+      redirect_to edit_profile_model_path(@profile)
+    else
+      redirect_to edit_profile_model_path(current_user.profileable)
+    end
   end
 
   def create
-    @profile = ProfileModel.new(profile_params)
-
-    if @profile.save
-      flash[:success] = "Your profile has been created - !!!Congratulations " + @profile.full_name
-      redirect_to '/'
-    else
-      render 'new'
-    end
+    redirect_to new_profile_model_path
   end
 
   def edit
     @profile = ProfileModel.find(params[:id])
+    @album_profile_picture = @profile.albums.where(name: "Profile Photo").first
 
     respond_to do |format|
       format.html
@@ -39,6 +38,7 @@ class ProfileModelsController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(profile_params)
+        @update_progress = @profile.profile_complete_progress_percentage
         format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.full_name + '.' }
         format.js
       else

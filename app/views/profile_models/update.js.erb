@@ -2,4 +2,6 @@
 	$('#model-profile-info-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#model-profile-info-container').html("<%= j render 'action_info' %>");
+	$("#profile-completed-progress-container").empty();
+	$("#profile-completed-progress-container").html("<%= j render 'progress_bar' %>");
 <% end %>
