@@ -47,7 +47,7 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def profile_complete_progress_total
-		total = 16
+		total = 18
 	end
 
 	def profile_complete_progress_percentage
@@ -63,9 +63,9 @@ class ProfileModel < ApplicationRecord
 		end
 	end
 
-	def get_profile_model_profile_picture_url
+	def get_profile_model_profile_picture_url(size)
 		begin
-			return self.albums.where(name: "Profile Photo").first.photos.last.image.url(:profile)
+			return self.albums.where(name: "Profile Photo").first.photos.last.image.url(size)
 		rescue
 			return "missing_profile_picture.jpg"
 		end
@@ -75,6 +75,8 @@ class ProfileModel < ApplicationRecord
 		parameters_with_values = [self.first_name.empty?, self.last_name.empty?, self.gender.nil?, self.mobile_phone.empty?, self.land_phone.empty?, self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
 		parameters_with_values << self.add_expertises_to_progress
 		parameters_with_values << self.add_languages_to_progress
+		parameters_with_values << self.add_profile_picture_album_to_progress
+		parameters_with_values << self.add_profesional_book_album_to_progress
 
 		return parameters_with_values
 	end
@@ -94,6 +96,32 @@ class ProfileModel < ApplicationRecord
 	def add_languages_to_progress
 		begin
 			if self.languages.any?
+				return false
+			end
+
+			return true
+		rescue
+			return true
+		end
+	end
+
+	def add_profile_picture_album_to_progress
+		begin
+			profile_picture_album = self.albums.where(name: "Profile Photo").first
+			if profile_picture_album.photos.any?
+				return false
+			end
+
+			return true
+		rescue
+			return true
+		end
+	end
+
+	def add_profesional_book_album_to_progress
+		begin
+			profesional_book_album = self.albums.where(name: "Profesional Book").first
+			if profesional_book_album.photos.any?
 				return false
 			end
 

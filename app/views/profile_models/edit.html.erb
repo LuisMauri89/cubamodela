@@ -18,7 +18,7 @@
 			<div class="col-md-12">
 				<div id="profile-picture-container" class="text-center">
 					<div id="profile-picture", style="margin-bottom: 5px;">
-						<%= image_tag @profile.get_profile_model_profile_picture_url, alt: "Model Photo", class: "img-rounded" %>
+						<%= image_tag @profile.get_profile_model_profile_picture_url(:profile), alt: "Model Photo", class: "img-rounded" %>
 					</div>
 					<%= link_to 'Change', new_album_photo_path(@album_profile_picture, type: "profile"), remote: true, class: "btn btn-success btn-xs" %>
 				</div>

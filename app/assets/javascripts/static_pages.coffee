@@ -27,7 +27,7 @@ $(document).on "turbolinks:load", ->
 		triggerAnimations(items);
 
 	$('.notify').waypoint (direction) ->
-		alert("waypoint works");
+		
 
 
 	$('#test').click ->

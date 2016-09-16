@@ -1,13 +1,8 @@
 <div id="navbar-signed-in-settings-container" class="navbar-right">
-	<% if current_user.profileable.nil? %>
-		<p class="navbar-text"> Signed in as <%= link_to current_user.email, new_profile_model_path %>
-	</p>
-	<% else %>
-		<p class="navbar-text"> Signed in as <%= link_to current_user.email, edit_profile_model_path(current_user.profileable) %>
-	<% end %>
+	<%= image_tag current_user.profileable.get_profile_model_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded" %>
 	<div class="btn-group">
 	  <button type="button" class="btn btn-default" aria-label="Left Align">
-	    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+	    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 	  </button>
 	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    <span class="caret"></span>

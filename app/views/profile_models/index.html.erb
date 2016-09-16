@@ -2,7 +2,7 @@
 	<% @models.each do |model| %>
 		<div class="img-thumbnail list-photo-item">
 			<%= link_to(profile_model_path(model), remote: true, class: "link-image") do %>
-					<%= image_tag model.get_profile_model_profile_picture.image.url(:profile), alt: "Model Photo", class: "img-circle" %>	
+					<%= image_tag model.get_profile_model_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>	
 			<% end %>
 		</div>
 	<% end %>
