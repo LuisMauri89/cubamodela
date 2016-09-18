@@ -4,6 +4,7 @@
     <h3>From album: <%= @album.name %></h3>
   </div>
   <div class="modal-body">
+    <div id="model-modal-info-container"></div>
     <%= image_tag @photo.image.url, alt: @photo.image.url, class: "img-thumbnail img-responsive" %>
   </div>
   <div class="modal-footer">
@@ -14,7 +15,6 @@
     </div>
     <button id="btn-delete-photo" type="button" class="btn btn-danger">Delete</button>
     <%= link_to "Close", "#", class: "btn btn-danger", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
-    <div id="modal-photo-info-container"></div>
   </div>
   </div>
 </div>

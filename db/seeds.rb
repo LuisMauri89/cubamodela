@@ -8,3 +8,6 @@
 
 # Seed Colors Table
 
+# Site admins
+User.create(email: "lmaurimtfbwy@gmail.com", password: "Smotciss2307", password_confirmation: "Smotciss2307", role: "admin", kind: "other")
+

@@ -18,7 +18,7 @@
 		<div class="col-md-12">
 			<div id="body-album-<%= @album.id %>" class="profile-album-photos-container">
 				<h4 class="pull-left" style="margin-right: 30px;">No pictures in this album. Add some...</h4>
-				<%= link_to 'Upload', new_album_photo_path(@album), remote: true, class: "btn btn-success" %>
+				<%= link_to 'Upload', new_album_photo_path(@album, type: "album"), remote: true, class: "btn btn-success" %>
 			</div>
 		</div>
 	</div>

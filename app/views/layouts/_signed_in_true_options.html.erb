@@ -1,5 +1,29 @@
-<li><%= link_to "Account", edit_user_registration_path %></li>
-<li><%= link_to "Profile", get_profile_path %></li>
-<li><a href="#">Inbox</a></li>
-<li role="separator" class="divider"></li>
-<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+<% case current_user.role %>
+<% when "admin" %>
+	<li><%= link_to "Control Panel", "#" %></li>
+	<li><a href="#">Inbox</a></li>
+	<li role="separator" class="divider"></li>
+	<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+<% when "user" %>
+	<% case current_user.kind %>
+	<% when "contractor" %>
+		<li><%= link_to "Account", edit_user_registration_path %></li>
+		<li><%= link_to "Profile", get_profile_path %></li>
+		<li><%= link_to "Castings", "#" %></li>
+		<li><a href="#">Inbox</a></li>
+		<li role="separator" class="divider"></li>
+		<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+	<% when "model" %>
+		<li><%= link_to "Account", edit_user_registration_path %></li>
+		<li><%= link_to "Profile", get_profile_path %></li>
+		<li><a href="#">Inbox</a></li>
+		<li role="separator" class="divider"></li>
+		<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+	<% when "photographer" %>
+		<li><%= link_to "Account", edit_user_registration_path %></li>
+		<li><%= link_to "Profile", get_profile_path %></li>
+		<li><a href="#">Inbox</a></li>
+		<li role="separator" class="divider"></li>
+		<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+	<% end %>
+<% end %>

@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   def show
-  	@album = Album.find(params[:album_id])
+  	set_photo_belongs_to
   	@photo = Photo.find(params[:id])
 
   	respond_to do |format|
@@ -10,8 +10,8 @@ class PhotosController < ApplicationController
   end	
 
   def new
-  	@album = Album.find(params[:album_id])
   	set_photo_type
+  	set_photo_belongs_to
 
   	respond_to do |format|
   		format.js
@@ -42,7 +42,7 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-  	@album = Album.find(params[:album_id])
+  	set_photo_belongs_to
   	@photo = Photo.find(params[:id])
 
   	respond_to do |format|
