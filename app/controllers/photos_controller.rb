@@ -19,13 +19,12 @@ class PhotosController < ApplicationController
   end
 
   def create
-  	set_photo_type
   	@photo = Photo.new(photo_params)
   	save_photo_belongs_to
 
   	respond_to do |format|
   		if @photo.save
-  			format.json { render json: { message: "success", photo_id: @photo.id, photo_type: @photo_type }, status: 200 }
+  			format.json { render json: { message: "success", photo_id: @photo.id, photo_type: @photo.func }, status: 200 }
   		else
 	    	format.json { render json: { error: @photo.errors.full_messages.join(',') }, status: 400 }
   		end
@@ -75,11 +74,11 @@ class PhotosController < ApplicationController
   	end
 
   	def set_photo_type
-  		@photo_type = params[:type].to_s || "none"
+  		@photo_type = params[:type].to_s || params[:photo][:func].to_s
   		case @photo_type
   		when "profile"
   			@maxFiles = 1
-  		else
+  		when "album"
   			@maxFiles = 1000	
   		end
   	end

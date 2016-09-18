@@ -9,10 +9,7 @@
 		    <%= f.file_field :image %><br>
 		    <%= f.submit "Upload Image" %>
 		  </div>
-		  <% if @photo_type == "profile" %>
-		  	<%= f.hidden_field :func, value: "profile" %>
-		    <%= hidden_field_tag 'type', @photo_type %>
-		  <% end %>
+		  <%= f.hidden_field :func, value: @photo_type %>
 		<% end %>
 	  </div>
 	  <div class="modal-footer">

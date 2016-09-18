@@ -1,8 +1,9 @@
-<% if @photo_type == "profile" %>
+<% case @photo_type %>
+<% when "profile" %>
 	$("#profile-picture").empty();
 	$("#profile-picture").html("<%= j render 'upload' %>");
 	$("#profile-modal").modal("hide");
-<% else %>
+<% when "album" %>
 	<% if @album.photos.count > 1 %>
 		$("#body-album-<%= @album.id %>").append("<%= j render 'upload' %>");
 	<% else %>
