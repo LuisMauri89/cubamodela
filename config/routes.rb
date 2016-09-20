@@ -43,6 +43,9 @@ Rails.application.routes.draw do
     get 'delete'
   end
 
+# Studies routes
+  resources :studies
+
 # Root
   root to: 'static_pages#home'
 

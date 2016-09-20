@@ -13,7 +13,7 @@ class ProfileModel < ApplicationRecord
 	validates :size_cloth, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
 
 	# User
-	has_one :user, as: :profileable, dependent: :destroy
+	has_one :user, as: :profileable
 
 	# Nomenclators
 	belongs_to :ayes_color, class_name: "Color", foreign_key: "ayes_color_id", optional: true
@@ -25,6 +25,9 @@ class ProfileModel < ApplicationRecord
 	# Pictures
 	has_many :albums, as: :profileable, dependent: :destroy
 	has_many :photos, through: :albums
+
+	# Studies
+	has_many :studies, as: :ownerable, dependent: :destroy
 
 	#Check if profile is completed
 	def profile_complete?

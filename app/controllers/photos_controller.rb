@@ -1,18 +1,15 @@
 class PhotosController < ApplicationController
+  before_action :set_photo, only: [:show, :uploaded, :destroy]
+  before_action :set_photo_belongs_to, only: [:show, :new, :uploaded, :destroy]
+  before_action :set_photo_type, only: [:new, :uploaded, :destroy]
 
   def show
-  	set_photo_belongs_to
-  	@photo = Photo.find(params[:id])
-
   	respond_to do |format|
   		format.js
   	end
   end	
 
   def new
-  	set_photo_type
-  	set_photo_belongs_to
-
   	respond_to do |format|
   		format.js
   	end
@@ -32,19 +29,12 @@ class PhotosController < ApplicationController
   end
 
   def uploaded
-  	set_photo_type
-  	set_photo_belongs_to
-  	@photo = Photo.find(params[:photo_id])
-
   	respond_to do |format|
   		format.js
   	end
   end
 
   def destroy
-  	set_photo_belongs_to
-  	@photo = Photo.find(params[:id])
-
   	respond_to do |format|
   		if @photo.destroy
   			format.js
@@ -60,11 +50,8 @@ class PhotosController < ApplicationController
       params.require(:photo).permit(:image, :description, :func, :type)
   	end
 
-  	def save_photo_belongs_to
-  		if params[:album_id]
-  			album = Album.find(params[:album_id])
-  			@photo.attachable = album
-  		end
+  	def set_photo
+  		@photo = Photo.find(params[:id])
   	end
 
   	def set_photo_belongs_to
@@ -80,6 +67,13 @@ class PhotosController < ApplicationController
   			@maxFiles = 1
   		when "album"
   			@maxFiles = 1000	
+  		end
+  	end
+
+  	def save_photo_belongs_to
+  		if params[:album_id]
+  			album = Album.find(params[:album_id])
+  			@photo.attachable = album
   		end
   	end
 end

@@ -1,4 +1,6 @@
 class ProfileModelsController < ApplicationController
+  before_action :set_profile, only: [:edit, :update, :destroy]
+
   def index
     @models = ProfileModel.all
   end
@@ -24,7 +26,6 @@ class ProfileModelsController < ApplicationController
   end
 
   def edit
-    @profile = ProfileModel.find(params[:id])
     @album_profile_picture = @profile.albums.where(name: "Profile Photo").first
 
     respond_to do |format|
@@ -34,8 +35,6 @@ class ProfileModelsController < ApplicationController
   end
 
   def update
-    @profile = ProfileModel.find(params[:id])
-
     respond_to do |format|
       if @profile.update_attributes(profile_params)
         @update_progress = @profile.profile_complete_progress_percentage
@@ -59,6 +58,10 @@ class ProfileModelsController < ApplicationController
                                             :hips, :ayes_color_id, :current_province_id, 
                                             :gender, :size_shoes, :size_cloth, :nationality_id,
                                             expertise_ids:[], language_ids:[])
+    end
+
+    def set_profile
+      @profile = ProfileModel.find(params[:id])
     end
 
     def build_profile_meta

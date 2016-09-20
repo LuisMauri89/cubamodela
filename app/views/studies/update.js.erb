@@ -1,0 +1,10 @@
+<% if @study.errors.any? %>
+	$('#model-info-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#form-edit-study-<%= @study.id %>').empty();
+	$('#study-title-<%= @study.id %>').text('<%= @study.title %>');
+	$('#study-place-<%= @study.id %>').text('<%= @study.place %>');
+	$('#study-desc-<%= @study.id %>').text('<%= @study.description %>');
+	$('.row-study-<%= @study.id %>').show();
+	$('#model-info-container').html("<%= j render 'action_info', text: @study.title + ' updated' %>");
+<% end %>

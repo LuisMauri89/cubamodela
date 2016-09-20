@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :set_album, only: [:edit, :update, :delete, :destroy]
+
   def index
     @albums = current_user.profileable.albums
 
@@ -29,16 +31,12 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-  	@album = Album.find(params[:id])
-
   	respond_to do |format|
   		format.js
   	end
   end
 
   def update
-  	@album = Album.find(params[:id])
-
   	respond_to do |format|
       if can_update_or_delete?
     		if @album.update_attributes(album_params)
@@ -53,7 +51,6 @@ class AlbumsController < ApplicationController
   end
 
   def delete
-    @album = Album.find(params[:album_id])
     can_update_or_delete?
 
     respond_to do |format|
@@ -62,8 +59,6 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
-    @album = Album.find(params[:id])
-    
     respond_to do |format|
       if can_update_or_delete?
         if @album.destroy
@@ -81,6 +76,10 @@ class AlbumsController < ApplicationController
 
     def album_params
       params.require(:album).permit(:name)
+    end
+
+    def set_album
+      @album = Album.find(params[:id])
     end
 
     def can_update_or_delete?

@@ -34,7 +34,7 @@
 				  	<%= link_to 'Albums', albums_path, remote: true %>
 				  </li>
 				  <li role="presentation" id="profile_menu_cv" class="profile_menu">
-				  	<%= link_to 'Curriculum', "#", remote: true %>
+				  	<%= link_to 'Curriculum', studies_path, remote: true %>
 				  </li>
 				</ul>
 			</div>
@@ -43,7 +43,7 @@
 			<div class="col-md-offset-1 col-md-10">
 				<div id="model-info-container">
 				</div>
-				<div id="pofile-model-container">
+				<div id="profile-container">
 					<%= render 'form' %> 
 				</div>
 				<div id="profile-modal" class="modal fade"></div>

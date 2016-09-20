@@ -1,0 +1,26 @@
+<%= form_for @study, remote: true do |f| %>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, placeholder: "Title", class: "form-control text-center" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :place %>
+        <%= f.text_field :place, placeholder: "Place", class: "form-control text-center" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, size: "60x8", placeholder: "Description of the study", class: "form-control text-center" %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit class: "btn btn-success btn-xs" %>
+<% end %>

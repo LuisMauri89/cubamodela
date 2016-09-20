@@ -29,5 +29,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # Profile
-  belongs_to :profileable, polymorphic: true, optional: true
+  belongs_to :profileable, polymorphic: true, optional: true, dependent: :destroy
 end

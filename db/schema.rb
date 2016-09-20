@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814200031) do
+ActiveRecord::Schema.define(version: 20160919212953) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -102,6 +102,17 @@ ActiveRecord::Schema.define(version: 20160814200031) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "studies", force: :cascade do |t|
+    t.string   "title"
+    t.string   "place"
+    t.string   "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "ownerable_type"
+    t.integer  "ownerable_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_studies_on_ownerable_type_and_ownerable_id"
   end
 
   create_table "users", force: :cascade do |t|
