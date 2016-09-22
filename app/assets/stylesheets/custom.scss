@@ -120,15 +120,24 @@ body {
 }
 
 /* For bootstrap btn class */
-.btn-primary, .btn-danger, .btn-succes, .btn-info, .btn-warning, .navbar-btn{
+.btn-primary, .btn-danger, .btn-succes, .btn-info, .btn-warning, .navbar-btn, .btn-block{
 	color: #fff !important;
 }
 
 /* For modal, show photo wide */
-#model-profile-show-photo-modal{
+#photo-modal-large{
 	width: auto;
 	margin-left: 100px;
 	margin-right: 100px;
+}
+
+#photo-modal-medium{
+	width: auto;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.carousel-show-resume{
 }
 
 /* For list of images no hover */
@@ -145,6 +154,16 @@ a.link-image:hover{
 
 .list-photo-item{
 	margin-right: 20px;
+}
+
+.panel-spec{
+	padding: 5px 20px !important;
+	margin: 3px !important;
+}
+
+.panel-spec:hover{
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #337ab7;
+	color: #337ab7;
 }
 
 

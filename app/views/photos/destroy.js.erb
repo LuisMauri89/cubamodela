@@ -1,7 +1,8 @@
 <% case @photo_type %>
 <% when "album" %>
 	<% if @photo.errors.any? %>
-		$("#model-modal-info-container").html("<%= j render 'errors' %>");
+		$("#model-info-container").html("<%= j render 'errors' %>");
+		$("#profile-modal").modal("hide");
 	<% else %>
 		$("#photo-<%= @album.id %><%= @photo.id %>").parent().remove();
 		$("#profile-modal").modal("hide");

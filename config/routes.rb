@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get 'static_pages/aboutus'
 
 # Models Profile routes
-  resources :profile_models
+  resources :profile_models do
+    get 'show_resume', on: :member
+  end
 
 # Colors routes
   resources :colors
@@ -33,14 +35,14 @@ Rails.application.routes.draw do
 # Photos concern
   concern :attachable do
     resources :photos do
-      get 'uploaded'
+      get 'uploaded', on: :member
     end
   end 
 
 # Albums routes
   resources :albums do
     concerns :attachable
-    get 'delete'
+    get 'delete', on: :member
   end
 
 # Studies routes

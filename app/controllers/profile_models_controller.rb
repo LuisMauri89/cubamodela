@@ -1,11 +1,18 @@
 class ProfileModelsController < ApplicationController
-  before_action :set_profile, only: [:edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
     @models = ProfileModel.all
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def show_resume
   end
 
   def new

@@ -74,6 +74,50 @@ class ProfileModel < ApplicationRecord
 		end
 	end
 
+	def get_profile_model_profesional_book_album_photos
+		begin
+			return self.albums.where(name: "Profesional Book").first.photos
+		rescue
+			return []
+		end
+	end
+
+	def get_profile_model_profesional_book_album_photos_count
+		begin
+			return self.albums.where(name: "Profesional Book").first.photos.count
+		rescue
+			return 0
+		end
+	end
+
+	def get_languages_formated
+		lang_formated = ""
+		self.languages.each_with_index do |language, index|
+			if index == 0
+				lang_formated += language.name
+			else
+				lang_formated += " / "
+				lang_formated += language.name
+			end
+		end
+
+		return lang_formated
+	end
+
+	def get_expertises_formated
+		exp_formated = ""
+		self.expertises.each_with_index do |expertise, index|
+			if index == 0
+				exp_formated += expertise.name
+			else
+				exp_formated += " / "
+				exp_formated += expertise.name
+			end
+		end
+
+		return exp_formated
+	end
+
 	def generate_array_of_param_with_value
 		parameters_with_values = [self.first_name.empty?, self.last_name.empty?, self.gender.nil?, self.mobile_phone.empty?, self.land_phone.empty?, self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
 		parameters_with_values << self.add_expertises_to_progress
