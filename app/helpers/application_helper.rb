@@ -40,7 +40,7 @@ module ApplicationHelper
       when "model"
         new_profile_model_path
       when "photographer"
-        new_profile_model_path
+        new_profile_photographer_path
       end
     else
       case current_user.kind
@@ -49,7 +49,7 @@ module ApplicationHelper
       when "model"
         edit_profile_model_path(current_user.profileable)
       when "photographer"
-        edit_profile_model_path(current_user.profileable)
+        edit_profile_photographer_path(current_user.profileable)
       end
     end
   end

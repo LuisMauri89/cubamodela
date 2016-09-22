@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     get 'show_resume', on: :member
   end
 
+# Photographers Profile routes
+  resources :profile_photographers do
+    get 'show_resume', on: :member
+  end
+
 # Colors routes
   resources :colors
 

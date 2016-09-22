@@ -1,0 +1,2 @@
+module ProfilePhotographersHelper
+end

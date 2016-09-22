@@ -9,11 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_up_path_for(resource)
-	if current_user.profileable.nil?
-		new_profile_model_path
-	else
-		edit_profile_model_path(current_user.profileable)
-	end
+  	get_profile_path
   end
 
 end

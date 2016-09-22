@@ -1,25 +1,16 @@
-class ProfileModel < ApplicationRecord
-	# Validations
+class ProfilePhotographer < ApplicationRecord
+  	# Validations
 	validates :first_name, length: { in: 3..20 }, allow_blank: true
 	validates :last_name, length: { in: 3..20 }, allow_blank: true
 	validates :mobile_phone, length: { in: 8..20 }, allow_blank: true
 	validates :land_phone, length: { in: 8..20 }, allow_blank: true
 	validates :address, length: { maximum: 100 }, allow_blank: true
-	validates :chest, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
-	validates :waist, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
-	validates :hips, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :gender, inclusion: { in: %w(Female Male) }, allow_blank: true
-	validates :size_shoes, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 50 }, allow_blank: true
-	validates :size_cloth, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
 
 	# User
 	has_one :user, as: :profileable
 
 	# Nomenclators
-	belongs_to :ayes_color, class_name: "Color", foreign_key: "ayes_color_id", optional: true
-	belongs_to :current_province, class_name: "Province", foreign_key: "current_province_id", optional: true
-	has_and_belongs_to_many :expertises, dependent: :destroy
-	has_and_belongs_to_many :languages, dependent: :destroy
 	belongs_to :nationality, optional: true
 
 	# Pictures
@@ -90,66 +81,12 @@ class ProfileModel < ApplicationRecord
 		end
 	end
 
-	def get_languages_formated
-		lang_formated = ""
-		self.languages.each_with_index do |language, index|
-			if index == 0
-				lang_formated += language.name
-			else
-				lang_formated += " / "
-				lang_formated += language.name
-			end
-		end
-
-		return lang_formated
-	end
-
-	def get_expertises_formated
-		exp_formated = ""
-		self.expertises.each_with_index do |expertise, index|
-			if index == 0
-				exp_formated += expertise.name
-			else
-				exp_formated += " / "
-				exp_formated += expertise.name
-			end
-		end
-
-		return exp_formated
-	end
-
 	def generate_array_of_param_with_value
-		parameters_with_values = [self.first_name.empty?, self.last_name.empty?, self.gender.nil?, self.mobile_phone.empty?, self.land_phone.empty?, self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
-		parameters_with_values << self.add_expertises_to_progress
-		parameters_with_values << self.add_languages_to_progress
+		parameters_with_values = [self.first_name.nil? ? true : self.first_name.empty?, self.last_name.nil? ? true : self.last_name.empty?, self.gender.nil?, self.mobile_phone.nil? ? true : self.mobile_phone.empty?, self.land_phone.nil? ? true : self.land_phone.empty?, self.address.nil? ? true : self.address.empty?, self.nationality.nil?]
 		parameters_with_values << self.add_profile_picture_album_to_progress
 		parameters_with_values << self.add_profesional_book_album_to_progress
 
 		return parameters_with_values
-	end
-
-	def add_expertises_to_progress
-		begin
-			if self.expertises.any?
-				return false
-			end
-
-			return true
-		rescue
-			return true
-		end
-	end
-
-	def add_languages_to_progress
-		begin
-			if self.languages.any?
-				return false
-			end
-
-			return true
-		rescue
-			return true
-		end
 	end
 
 	def add_profile_picture_album_to_progress

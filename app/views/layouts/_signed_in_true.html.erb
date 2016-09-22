@@ -2,7 +2,7 @@
 	<% if current_user.admin? %>
 		Signed in as Admin: <%= current_user.email %>
 	<% else %>
-		<%= image_tag current_user.profileable.get_profile_model_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded" %>
+		<%= image_tag current_user.profileable.nil? ? "missing_profile_picture.jpg" : current_user.profileable.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded" %>
 	<% end %>
 	<div class="btn-group">
 	  <button type="button" class="btn btn-default" aria-label="Left Align">

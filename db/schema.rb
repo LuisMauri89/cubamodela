@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919212953) do
+ActiveRecord::Schema.define(version: 20160922174307) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -96,6 +96,19 @@ ActiveRecord::Schema.define(version: 20160919212953) do
     t.index ["ayes_color_id"], name: "index_profile_models_on_ayes_color_id"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
     t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"
+  end
+
+  create_table "profile_photographers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "mobile_phone"
+    t.string   "land_phone"
+    t.string   "address"
+    t.string   "gender"
+    t.integer  "nationality_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id"
   end
 
   create_table "provinces", force: :cascade do |t|
