@@ -1,4 +1,5 @@
 class ExpertisesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_expertise, only: [:show, :edit, :update, :destroy]
 
   # GET /expertises

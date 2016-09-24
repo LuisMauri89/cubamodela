@@ -26,9 +26,13 @@ $(document).on "turbolinks:load", ->
 		items = $(e.relatedTarget).find("[data-animation ^= 'animated']");
 		triggerAnimations(items);
 
-	$('.notify').waypoint (direction) ->
-		
+	funcWaypoint = (direction) ->
+		if direction == 'down'
+			container = $(this);
+			items = container.find("[data-animation ^= 'animated']");
+			triggerAnimations(items);
 
+	$('.notify').waypoint(funcWaypoint, { offset:'95%' });
 
 	$('#test').click ->
 		alert("My example alert box.");

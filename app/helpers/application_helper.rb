@@ -36,20 +36,20 @@ module ApplicationHelper
     if current_user.profileable.nil?
       case current_user.kind
       when "contractor"
-        new_profile_model_path
+        return new_profile_model_path
       when "model"
-        new_profile_model_path
+        return new_profile_model_path
       when "photographer"
-        new_profile_photographer_path
+        return new_profile_photographer_path
       end
     else
       case current_user.kind
       when "contractor"
-        edit_profile_model_path(current_user.profileable)
+        return edit_profile_model_path(current_user.profileable)
       when "model"
-        edit_profile_model_path(current_user.profileable)
+        return edit_profile_model_path(current_user.profileable)
       when "photographer"
-        edit_profile_photographer_path(current_user.profileable)
+        return edit_profile_photographer_path(current_user.profileable)
       end
     end
   end
@@ -57,6 +57,10 @@ module ApplicationHelper
   # For users counts
   def get_models_count
     ProfileModel.count
+  end
+
+  def get_photographers_count
+    ProfilePhotographer.count
   end
 
   # For forms with errors

@@ -120,7 +120,7 @@ body {
 }
 
 /* For bootstrap btn class */
-.btn-primary, .btn-danger, .btn-succes, .btn-info, .btn-warning, .navbar-btn, .btn-block{
+.btn-primary, .btn-danger, .btn-success, .btn-info, .btn-warning, .navbar-btn, .btn-block{
 	color: #fff !important;
 }
 
@@ -164,6 +164,44 @@ a.link-image:hover{
 .panel-spec:hover{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #337ab7;
 	color: #337ab7;
+}
+
+.img-center-horizontal{
+	margin: 0 auto !important;
+}
+
+.btn-center-horizontal{
+	margin: 0 auto !important;
+}
+
+.img-focus:hover{
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #337ab7; 
+}
+
+#us-container{
+	background-image: url(/assets/10.JPG);
+	/* background-color: #337ab7; */
+}
+
+h2#us-primary{
+	color: black;
+}
+
+h3#us-secondary{
+	color: black;
+	font-weight: bolder;
+}
+
+.row-no-space, .cell-no-space{
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.row-no-space{
+	border-color: white !important;
+	border-width: 5px !important;
+	border-style: solid !important;
+	margin-right: 5px !important;
 }
 
 

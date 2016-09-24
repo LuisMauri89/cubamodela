@@ -1,4 +1,5 @@
 class ProfilePhotographersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,9 +11,6 @@ class ProfilePhotographersController < ApplicationController
       format.html
       format.js
     end
-  end
-
-  def show_resume
   end
 
   def new

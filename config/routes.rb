@@ -13,14 +13,10 @@ Rails.application.routes.draw do
   get 'static_pages/aboutus'
 
 # Models Profile routes
-  resources :profile_models do
-    get 'show_resume', on: :member
-  end
+  resources :profile_models
 
 # Photographers Profile routes
-  resources :profile_photographers do
-    get 'show_resume', on: :member
-  end
+  resources :profile_photographers
 
 # Colors routes
   resources :colors
