@@ -119,7 +119,7 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def generate_array_of_param_with_value
-		parameters_with_values = [self.first_name.empty?, self.last_name.empty?, self.gender.nil?, self.mobile_phone.empty?, self.land_phone.empty?, self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
+		parameters_with_values = [self.first_name.nil? ? true : self.first_name.empty?, self.last_name.nil? ? true : self.last_name.empty?, self.gender.nil?, self.mobile_phone.nil? ? true : self.mobile_phone.empty?, self.land_phone.nil? ? true : self.land_phone.empty?, self.address.nil? ? true : self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
 		parameters_with_values << self.add_expertises_to_progress
 		parameters_with_values << self.add_languages_to_progress
 		parameters_with_values << self.add_profile_picture_album_to_progress

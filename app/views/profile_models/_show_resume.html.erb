@@ -48,7 +48,7 @@
         <% end %>
       </div>
       <div class="col-md-5">
-        <h3 class="lead panel panel-default panel-spec">Ayes: <em><%= @profile.ayes_color.name %></em></h3>
+        <h3 class="lead panel panel-default panel-spec">Ayes: <em><%= @profile.ayes_color.name unless @profile.ayes_color.nil? %></em></h3>
         <h3 class="lead panel panel-default panel-spec"">Chest: <em><%= @profile.chest %> / <%= (@profile.chest/2.54).to_i %>''</em></h3>
         <h3 class="lead panel panel-default panel-spec">Waist: <em><%= @profile.waist %> / <%= (@profile.waist/2.54).to_i %>''</em></h3>
         <h3 class="lead panel panel-default panel-spec">Hips: <em><%= @profile.hips %> / <%= (@profile.hips/2.54).to_i %>''</em></h3>

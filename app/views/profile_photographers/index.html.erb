@@ -1,7 +1,7 @@
 <div id="models-list-container">
 	<% @photographers.each do |photographer| %>
 		<div class="img-thumbnail list-photo-item">
-			<%= link_to(profile_photographer_path(photographer), remote: true, class: "link-image") do %>
+			<%= link_to(show_resume_profile_photographer_path(photographer), remote: true, class: "link-image") do %>
 					<%= image_tag photographer.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>	
 			<% end %>
 		</div>

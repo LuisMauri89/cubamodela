@@ -1,6 +1,6 @@
 class ProfilePhotographersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
+  before_action :set_profile, only: [:show, :show_resume, :edit, :update, :destroy]
 
   def index
     @photographers = ProfilePhotographer.all
@@ -9,6 +9,11 @@ class ProfilePhotographersController < ApplicationController
   def show
     respond_to do |format|
       format.html
+    end
+  end
+
+  def show_resume
+    respond_to do |format|
       format.js
     end
   end

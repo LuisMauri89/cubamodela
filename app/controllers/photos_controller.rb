@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :uploaded, :destroy]
   before_action :set_photo, only: [:show, :uploaded, :destroy]
   before_action :set_photo_belongs_to, only: [:show, :new, :uploaded, :destroy]
   before_action :set_photo_type, only: [:show, :new, :uploaded, :destroy]

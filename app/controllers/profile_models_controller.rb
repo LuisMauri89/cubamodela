@@ -1,6 +1,7 @@
 class ProfileModelsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
+  before_action :set_profile, only: [:show, :show_resume, :edit, :update, :destroy]
+  #before_action :check_if_can, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @models = ProfileModel.all
@@ -9,6 +10,11 @@ class ProfileModelsController < ApplicationController
   def show
     respond_to do |format|
       format.html
+    end
+  end
+
+  def show_resume
+    respond_to do |format|
       format.js
     end
   end
@@ -32,6 +38,7 @@ class ProfileModelsController < ApplicationController
 
   def edit
     @album_profile_picture = @profile.albums.where(name: "Profile Photo").first
+    authorize! :edit, @profile
 
     respond_to do |format|
       format.html
@@ -67,6 +74,10 @@ class ProfileModelsController < ApplicationController
 
     def set_profile
       @profile = ProfileModel.find(params[:id])
+    end
+
+    def check_if_can
+      authorize! action_name, @profile
     end
 
     def build_profile_meta
