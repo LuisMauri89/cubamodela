@@ -1,0 +1,13 @@
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" aria-label="Left Align">
+    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+  </button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+	<li><%= link_to t('menu.locales.en'), change_locale_path(:en) %></li>
+	<li><%= link_to t('menu.locales.es'), change_locale_path(:es) %></li>
+  </ul>
+</div>

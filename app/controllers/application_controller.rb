@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :set_locale
   before_action :configure_permitted_parameters_for_devise, if: :devise_controller?
   protect_from_forgery with: :exception
 
@@ -17,6 +18,18 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
 	  flash[:error] = "Access denied!"
 	  redirect_to root_url
+  end
+
+  # For internationalization
+  def set_locale
+    if cookies[:current_locale] && I18n.available_locales.include?(cookies[:current_locale].to_sym)
+      locale = cookies[:current_locale].to_sym
+    else
+      locale = I18n.default_locale
+      cookies.permanent[:current_locale] = locale
+    end
+
+    I18n.locale = locale
   end
 
 end

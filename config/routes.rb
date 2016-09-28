@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+# For internationalization
+  get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
+
 # Devise routes
   devise_for :users, :path => 'account'
 

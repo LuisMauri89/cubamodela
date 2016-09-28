@@ -2,7 +2,7 @@
 <% else %>
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center" style="margin-top:30px;margin-bottom:50px;">Plataforma de modelaje y fotografía en Cuba</h1>
+            <h1 class="text-center" style="margin-top:30px;margin-bottom:50px;font-family: 'actor-regular';">Plataforma de modelaje y fotografía en Cuba</h1>
         </div>
     </div>
     <div class="row">
@@ -19,20 +19,17 @@
     <div class="col-md-12">
         <div id="home-line-users-amounts" style="background-color: #337ab7;">
             <div class="row text-center">
-                <div class="col-md-2">
-                    <h2><em>Models:</em> <span><%= get_models_count %></span></h2>
+                <div class="col-md-3">
+                    <h2><em><%= t('views.static_pages.home.models_text') %>:</em> <span><%= get_models_count %></span></h2>
                 </div>
                 <div class="col-md-3">
-                    <h2><em>Photographers:</em> <span><%= get_photographers_count %></span></h2>
-                </div>
-                <div class="col-md-2">
-                    <h2><em>Places:</em> <span>125</span></h2>
-                </div>
-                <div class="col-md-2">
-                    <h2><em>Services:</em> <span>9</span></h2>
+                    <h2><em><%= t('views.static_pages.home.photographers_text') %>:</em> <span><%= get_photographers_count %></span></h2>
                 </div>
                 <div class="col-md-3">
-                    <h2><em>Other:</em> <span>56</span></h2>
+                    <h2><em><%= t('views.static_pages.home.places_text') %>:</em> <span>125</span></h2>
+                </div>
+                <div class="col-md-3">
+                    <h2><em><%= t('views.static_pages.home.services_text') %>:</em> <span>9</span></h2>
                 </div>
             </div>
         </div>
@@ -42,7 +39,7 @@
 <div class="row">
     <div class="col-md-12">
         <div id="services-container" class="notify">
-            <h1 class="text-center" style="margin-top: 30px; margin-bottom: 40px;">Services</h1>
+            <h1 class="text-center" style="margin-top: 30px; margin-bottom: 40px;"><%= t('views.static_pages.home.sections.services.header') %></h1>
             <div class="row" style="margin-bottom: 20px;">
               <div class="col-md-3">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="1s">
@@ -109,8 +106,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="us-container" class="notify" style="padding-bottom: 20px;">
-            <h1 class="text-center" style="padding-top: 30px; padding-bottom: 10px; color:black;">About US</h1>
+        <div id="us-container" class="notify">
+            <h1 id="us-header" class="text-center"><%= t('views.static_pages.home.sections.us.header') %></h1>
             <div class="row" style="margin-bottom: 20px;">
               <div class="col-md-5">
                 <div class="text-center">
@@ -119,22 +116,22 @@
               </div>
               <div class="col-md-7">
                 <div class="text-center">
-                  <h2 id="us-primary" data-animation="animated zoomIn" data-delay="1s">We came into this industry with only one porpuse</h2>
-                  <h3 id="us-secondary" data-animation="animated zoomIn" data-delay="2s">BRING THE MODELS AT YOUR HAND</h3>
+                  <h2 id="us-text-0" data-animation="animated zoomIn" data-delay="0.5s"><%= t('views.static_pages.home.sections.us.text_0') %></h2>
+                  <h3 id="us-text-1" data-animation="animated zoomIn" data-delay="1s"><%= t('views.static_pages.home.sections.us.text_1').upcase %></h3>
                 </div>
-                <div class="row row-no-space row-white-border" data-animation="animated fadeIn" data-delay="2.5s">
+                <div class="row row-no-space row-white-border" data-animation="animated fadeIn" data-delay="1.5s">
                   <div class="col-md-4 cell-no-space">
-                    <div data-animation="animated bounceInDown" data-delay="3s">
+                    <div data-animation="animated bounceInDown" data-delay="2s">
                       <%= image_tag "m-1.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                     </div>
                   </div>
                   <div class="col-md-4 cell-no-space">
-                    <div data-animation="animated bounceInDown" data-delay="3.5s">
+                    <div data-animation="animated bounceInDown" data-delay="2.5s">
                       <%= image_tag "m-2.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                     </div>
                   </div>
                   <div class="col-md-4 cell-no-space">
-                    <div data-animation="animated bounceInDown" data-delay="4s">
+                    <div data-animation="animated bounceInDown" data-delay="3s">
                       <%= image_tag "m-3.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                     </div>
                   </div>
@@ -144,8 +141,8 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="text-center">
-                <h3 style="width: 60%; margin: 0 auto; color: white;">
-                  Some setup you must do manually if you haven't yet:1. Ensure you have defined default url options in your environments files. Hereis an example of default_url_options appropriate for a development environmentin config/environments/development.rb:config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }In production, :host should be set to the actual host of your application.2. Ensure you have defined root_url to *something* in your config/routes.rb.For example:
+                <h3 id="us-text-2" style="width: 60%; margin: 0 auto; color: white;">
+                  <%= t('views.static_pages.home.sections.us.text_2') %>
                 </h3>
               </div>
               </div>  
@@ -157,8 +154,8 @@
 <div class="row">
     <div class="col-md-12">
         <div id="partners-container" class="notify" style="padding-right: 50px; padding-left: 50px; padding-bottom: 30px;">
-            <h1 class="text-center" style="padding-top: 30px; padding-bottom: 10px; color:black;">Our Partners</h1>
-            <div class="row" style="padding: 10px;">
+            <h1 class="text-center" style="padding-top: 30px; padding-bottom: 10px; color:black;"><%= t('views.static_pages.home.sections.partners.header') %></h1>
+            <div class="row" style="padding: 30px; margin-bottom: 30px;">
               <div class="col-md-3">
                 <div data-animation="animated zoomIn" data-delay="0.5s">
                   <%= image_tag "partner.jpg", class: "img-responsive img-rounded img-center-horizontal", alt: "Services" %>
@@ -180,7 +177,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding: 30px; margin-bottom: 30px;">
               <div class="col-md-3">
                 <div data-animation="animated zoomIn" data-delay="2.5s">
                   <%= image_tag "partner-2.gif", class: "img-responsive img-rounded img-center-horizontal", alt: "Services" %>
@@ -209,21 +206,21 @@
 <div class="row">
     <div class="col-md-12">
         <div id="models-container" class="notify" style="padding-top:10px; padding-bottom: 40px;">
-            <h1 class="text-center" style="padding-top: 10px; padding-bottom: 10px; color:white;">Models</h1>
+            <h1 class="text-center" style="padding-top: 10px; padding-bottom: 10px; color:black;"><%= t('views.static_pages.home.sections.models.header') %></h1>
             <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="1s">
                   <%= image_tag "m-1.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                 </div>
                 <div class="img-over-caption" data-animation="animated rotateIn" data-delay="3s">
-                  <h3>NEW FACES</h3>
+                  <h3><%= t('views.static_pages.home.sections.models.photo_0_text').upcase %></h3>
                 </div>
               </div>
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="1.5s">
                   <%= image_tag "m-2.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                   <div class="img-over-caption" data-animation="animated rotateIn" data-delay="3.5s">
-                    <h3>MEN</h3>
+                    <h3><%= t('views.static_pages.home.sections.models.photo_1_text').upcase %></h3>
                   </div>
                 </div>
               </div>
@@ -231,7 +228,7 @@
                 <div data-animation="animated bounceInDown" data-delay="2s">
                   <%= image_tag "m-3.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                   <div class="img-over-caption" data-animation="animated rotateIn" data-delay="4s">
-                    <h3>WOMEN</h3>
+                    <h3><%= t('views.static_pages.home.sections.models.photo_2_text').upcase %></h3>
                   </div>
                 </div>
               </div>
@@ -239,7 +236,7 @@
                 <div data-animation="animated bounceInDown" data-delay="2.5s">
                   <%= image_tag "m-1.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                   <div class="img-over-caption" data-animation="animated rotateIn" data-delay="4.5s">
-                    <h3>STYLE</h3>
+                    <h3><%= t('views.static_pages.home.sections.models.photo_3_text').upcase %></h3>
                   </div>
                 </div>
               </div>
@@ -254,7 +251,7 @@
 <div class="row">
     <div class="col-md-12">
         <div id="photographers-container" class="notify" style="padding-top:10px; padding-bottom: 40px;">
-            <h1 class="text-center" style="padding-top: 10px; padding-bottom: 10px; color:black;">Photographers</h1>
+            <h1 class="text-center" style="padding-top: 10px; padding-bottom: 10px; color:black;"><%= t('views.static_pages.home.sections.photographers.header') %></h1>
             <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
               <div class="col-md-6 cell-no-space">
                 <div data-animation="animated bounceInLeft" data-delay="1s">
@@ -301,7 +298,7 @@
 <div class="row">
     <div class="col-md-12">
         <div id="cuba-container" class="notify">
-            <h1>Discover Cuba</h1>
+            <h1><%= t('views.static_pages.home.sections.discover.header') %></h1>
             <p>
                 Some setup you must do manually if you haven't yet:
                 1. Ensure you have defined default url options in your environments files. Here

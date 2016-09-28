@@ -1,0 +1,106 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  hello: "Hola Mundo"
+  menu:
+    items:
+      services: "Servicios"
+      us: "Nosotros"
+      partners: "Asociados"
+      models: "Modelos"
+      photographers: "Fotografos"
+      discover: "Descubre"
+    messages:
+      admin: "Loggeado como Admin: "
+    options:
+      control_panel: "Panel de Control"
+      inbox: "Bandeja"
+      account: "Cuenta"
+      profile: "Perfil"
+      castings: "Castings"
+      log_out: "Salir"
+    locales:
+      en: "Ingles"
+      es: "Espanol"
+  banners:
+    carousel:
+      slide_0:
+        header: "Encuentra las modelos que necesitas"
+        button_follow: "Ver mas..."
+      slide_1:
+        header: "Encuentra los mejores fotografos con increible talento"
+        button_follow: "Ver mas..."
+      slide_2:
+        header: "Descubre CUBA como nunca antes"
+        button_follow: "Ver mas..."
+  forms:
+    buttons:
+      log_in: "Entrar"
+      log_up: "Registrarse"
+      log_out: "Salir"
+      recover: "Recuperar"
+    remember_me: "Recordarme"
+  activerecord:
+    attributes:
+      user:
+        email: "Correo"
+        password: "Contrasena"
+        password_confirmation: "Confirme Contrasena"
+        kind: "Que eres?"
+        kind_options:
+          contractor: "Contratador"
+          model: "Modelo"
+          photographer: "Fotografo"
+  views:
+    static_pages:
+      home:
+        sign_up_form:
+          header: "Registrate GRATIS"
+          submit_button: "Registrate AHORA"
+          account_text: "Ya tienes una cuenta?"
+          recover_text: "Olvidaste tu contrasena?"
+        models_text: "Modelos"
+        photographers_text: "Fotografos"
+        places_text: "Lugares"
+        services_text: "Servicios"
+        other_text: "Otros"
+        sections:
+          services:
+            header: "Servicios"
+          us:
+            header: "Nosotros"
+            text_0: "Entramos a la industria con un solo proposito"
+            text_1: "Llevarle los modelos hasta su mano"
+            text_2: "Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano"
+          partners:
+            header: "Asociados"
+          models:
+            header: "Modelos"
+            photo_0_text: "Nuevas Caras"
+            photo_1_text: "Hombres"
+            photo_2_text: "Mujeres"
+            photo_3_text: "Estilo"
+          photographers:
+            header: "Fotografos"
+          discover:
+            header: "Descubre"
+

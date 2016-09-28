@@ -21,3 +21,85 @@
 
 en:
   hello: "Hello world"
+  menu:
+    items:
+      services: "Services"
+      us: "About us"
+      partners: "Partners"
+      models: "Models"
+      photographers: "Photographers"
+      discover: "Discover"
+    messages:
+      admin: "Signed in as Admin: "
+    options:
+      control_panel: "Control Panel"
+      inbox: "Inbox"
+      account: "Account"
+      profile: "Profile"
+      castings: "Castings"
+      log_out: "Log out"
+    locales:
+      en: "English"
+      es: "Spanish"
+  banners:
+    carousel:
+      slide_0:
+        header: "Find models that fits your needs"
+        button_follow: "Find out more..."
+      slide_1:
+        header: "Find the best photographers width amazing talent"
+        button_follow: "Find out more..."
+      slide_2:
+        header: "Discover CUBA like never before"
+        button_follow: "Find out more..."
+  forms:
+    buttons:
+      log_in: "Log in"
+      log_up: "Sign up"
+      log_out: "Log out"
+      recover: "Recover"
+    remember_me: "Remember me"
+  activerecord:
+    attributes:
+      user:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        kind: "What are you?"
+        kind_options:
+          contractor: "Contractor"
+          model: "Model"
+          photographer: "Photographer"
+  views:
+    static_pages:
+      home:
+        sign_up_form:
+          header: "Sign Up for FREE"
+          submit_button: "Sign up NOW"
+          account_text: "Already have an account?"
+          recover_text: "Forgot your password?"
+        models_text: "Models"
+        photographers_text: "Photographers"
+        places_text: "Places"
+        services_text: "Services"
+        other_text: "Other"
+        sections:
+          services:
+            header: "Services"
+          us:
+            header: "About us"
+            text_0: "We came into this industry with only one porpuse"
+            text_1: "Bring the models at your hand"
+            text_2: "Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand"
+          partners:
+            header: "Partners"
+          models:
+            header: "Models"
+            photo_0_text: "New Faces"
+            photo_1_text: "Men"
+            photo_2_text: "Women"
+            photo_3_text: "Style"
+          photographers:
+            header: "Photographers"
+          discover:
+            header: "Discover"
