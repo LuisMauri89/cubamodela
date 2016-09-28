@@ -89,8 +89,8 @@ es:
           us:
             header: "Nosotros"
             text_0: "Entramos a la industria con un solo proposito"
-            text_1: "Llevarle los modelos hasta su mano"
-            text_2: "Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano Llevarle los modelos hasta su mano"
+            text_1: "\"Llevarle los modelos hasta su mano\""
+            text_2: "On scroll animation is a technique which has gained popularity over the past several months. It suits one-page websites as well as websites with many illustrations perfectly, giving them a more dynamic appearance. However, the animations can be applied to any element as we will soon see."
           partners:
             header: "Asociados"
           models:
@@ -102,5 +102,5 @@ es:
           photographers:
             header: "Fotografos"
           discover:
-            header: "Descubre"
+            header: "Descubre Cuba"
 

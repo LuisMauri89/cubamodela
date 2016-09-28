@@ -89,8 +89,8 @@ en:
           us:
             header: "About us"
             text_0: "We came into this industry with only one porpuse"
-            text_1: "Bring the models at your hand"
-            text_2: "Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand Bring the models at your hand"
+            text_1: "\"Bring the models at your hand\""
+            text_2: "On scroll animation is a technique which has gained popularity over the past several months. It suits one-page websites as well as websites with many illustrations perfectly, giving them a more dynamic appearance. However, the animations can be applied to any element as we will soon see."
           partners:
             header: "Partners"
           models:
@@ -102,4 +102,4 @@ en:
           photographers:
             header: "Photographers"
           discover:
-            header: "Discover"
+            header: "Discover Cuba"

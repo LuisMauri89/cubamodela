@@ -52,3 +52,25 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face{
+	font-family: 'aladin-regular';
+	src: asset-url('Aladin-Regular.eot');
+	src: asset-url('Aladin-Regular.eot?#iefix') format('embedded-opentype'),
+		 asset-url('Aladin-Regular.woff') format('woff'),
+		 asset-url('Aladin-Regular.ttf') format('truetype'),
+		 asset-url('Aladin-Regular.svg#aladin-regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face{
+	font-family: 'arizonia-regular';
+	src: asset-url('Arizonia-Regular.eot');
+	src: asset-url('Arizonia-Regular.eot?#iefix') format('embedded-opentype'),
+		 asset-url('Arizonia-Regular.woff') format('woff'),
+		 asset-url('Arizonia-Regular.ttf') format('truetype'),
+		 asset-url('Arizonia-Regular.svg#arizonia-regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

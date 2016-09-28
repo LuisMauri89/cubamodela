@@ -93,13 +93,6 @@ body {
 	width: 50% !important;
 }
 
-/* Home page line users count */
-#home-line-users-amounts{
-	height: 80px;
-	background-color: gray;
-	color: white;
-}
-
 /* Profile albums adding some scroll area */
 .profile-album-photos-container{
 	max-height: 300px;
@@ -193,6 +186,58 @@ a.link-image:hover{
 }
 
 /* For home page */
+#home-line-users-amounts-container{
+	height: 80px;
+	background-color: #337ab7;
+	color: white;
+}
+
+#home-line-users-amounts-container .badge{
+	font-family: 'aladin-regular';
+	font-size: 25px;
+	background-color: #3e8f3e;
+	color: white;
+}
+
+#services-container{
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+
+#services-container > #services-header{
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+#services-container > .row{
+	margin-bottom: 20px;
+}
+
+#services-container .row:first-child h3{
+	margin: 3px 50px !important;
+}
+
+#services-container .row:last-child h3{
+	margin: 3px 100px !important;
+}
+
+#services-container  h4{
+	font-family: 'arizonia-regular';
+	font-size: 40px;
+}
+
+#services-container  h3 small{
+	font-family: 'actor-regular';
+	font-size: 20px;
+}
+
+#services-container  a{
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+	font-family: 'arizonia-regular';
+	font-size: 25px;
+}
+
 #us-container{
 	background: url(/assets/10.JPG) no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -204,7 +249,7 @@ a.link-image:hover{
 	color: white;
 }
 
-#us-container #us-header{
+#us-container > #us-header{
 	padding-top: 30px; 
 	padding-bottom: 10px;
 }
@@ -220,9 +265,8 @@ a.link-image:hover{
 }
 
 #us-container #us-text-2{
-	color: white;
 	font-family: 'adventpro-semibold' !important;
-	font-size: 25px;
+	font-size: 30px;
 	width: 60%; 
 	margin: 0 auto;
 }
@@ -246,19 +290,131 @@ a.link-image:hover{
 	-o-background-size: cover;
 	background-size: cover;
 	background-color: #337ab7;
+	color: white;
+	padding-top:10px; 
+	padding-bottom: 40px;
 }
 
-.img-over-caption{
+#models-container > #models-header{
+	padding-top: 10px; 
+	padding-bottom: 10px; 
+	color:black;
+}
+
+#models-container .img-over-caption{
 	position: absolute;
 	top: 45%;
 	left: 25%;
 }
 
-.img-over-caption h3{
-	color: white;
+#models-container .img-over-caption > h3{
 	font-weight: bold;
-	font-style: italic;
-	font-size: 35px !important;
+	font-size: 50px !important;
+	font-family: 'aladin-regular';
+}
+
+#models-container > #models-footer{
+	padding: 10px; 
+	margin-top: 20px;
+}
+
+#models-container > #models-footer > a{
+	font-family: 'aladin-regular';
+	font-size: 30px;
+}
+
+#photographers-container{
+	padding-top: 10px; 
+	padding-bottom: 40px;
+	color: black;
+}
+
+#photographers-container > #photographers-header{
+	padding-top: 10px; 
+	padding-bottom: 10px; 
+}
+
+#photographers-container .img-over-caption.img-over-caption-left-up{
+	position: absolute;
+	bottom: 3%;
+	right: 10%;
+}
+
+#photographers-container .img-over-caption.img-over-caption-right-up{
+	position: absolute;
+	bottom: 3%;
+	left: 10%;
+}
+
+#photographers-container .img-over-caption.img-over-caption-left-bottom{
+	position: absolute;
+	top: 3%;
+	right: 10%;
+}
+
+#photographers-container .img-over-caption.img-over-caption-right-bottom{
+	position: absolute;
+	top: 3%;
+	left: 10%;
+}
+
+#photographers-container .img-over-caption > h3{
+	font-weight: bold;
+	font-size: 50px !important;
+	font-family: 'aladin-regular';
+}
+
+#photographers-container > #photographers-footer{
+	padding: 10px; margin-top: 20px;
+}
+
+#photographers-container > #photographers-footer > a{
+	font-family: 'aladin-regular';
+	font-size: 30px;
+}
+
+#partners-container{
+	color:black;
+	padding-right: 50px;
+	padding-left: 50px;
+	padding-bottom: 30px;
+}
+
+#partners-container > #partners-header{
+	padding-top: 30px; 
+	padding-bottom: 10px; 
+}
+
+#partners-container > .row{
+	padding: 30px; 
+	margin-bottom: 30px;
+}
+
+#cuba-container{
+	background: url(/assets/15.JPG) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: #337ab7;
+	color: grey;
+	padding-top:10px; 
+	padding-bottom: 40px;
+}
+
+#cuba-container > #cuba-header{
+	padding-top: 30px; 
+	padding-bottom: 10px;
+}
+
+/*#cuba-container img{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+*/
+#cuba-container > #cuba-footer{
+	font-size: 30px;
 }
 
 

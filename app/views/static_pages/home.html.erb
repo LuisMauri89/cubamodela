@@ -17,19 +17,19 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="home-line-users-amounts" style="background-color: #337ab7;">
+        <div id="home-line-users-amounts-container">
             <div class="row text-center">
                 <div class="col-md-3">
-                    <h2><em><%= t('views.static_pages.home.models_text') %>:</em> <span><%= get_models_count %></span></h2>
+                    <h2><%= t('views.static_pages.home.models_text') %>  <span class="badge"><%= get_models_count %></span></h2>
                 </div>
                 <div class="col-md-3">
-                    <h2><em><%= t('views.static_pages.home.photographers_text') %>:</em> <span><%= get_photographers_count %></span></h2>
+                    <h2><%= t('views.static_pages.home.photographers_text') %>  <span class="badge"><%= get_photographers_count %></span></h2>
                 </div>
                 <div class="col-md-3">
-                    <h2><em><%= t('views.static_pages.home.places_text') %>:</em> <span>125</span></h2>
+                    <h2><%= t('views.static_pages.home.places_text') %>  <span class="badge">125</span></h2>
                 </div>
                 <div class="col-md-3">
-                    <h2><em><%= t('views.static_pages.home.services_text') %>:</em> <span>9</span></h2>
+                    <h2><%= t('views.static_pages.home.services_text') %>  <span class="badge">9</span></h2>
                 </div>
             </div>
         </div>
@@ -39,38 +39,38 @@
 <div class="row">
     <div class="col-md-12">
         <div id="services-container" class="notify">
-            <h1 class="text-center" style="margin-top: 30px; margin-bottom: 40px;"><%= t('views.static_pages.home.sections.services.header') %></h1>
-            <div class="row" style="margin-bottom: 20px;">
+            <h1 id="services-header" class="text-center"><%= t('views.static_pages.home.sections.services.header') %></h1>
+            <div class="row">
               <div class="col-md-3">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="1s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Transportation</h4>
-                  <h4 style="margin: 3px 50px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="1.5s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Places</h4>
-                  <h4 style="margin: 3px 50px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="2s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Translator</h4>
-                  <h4 style="margin: 3px 50px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="2.5s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Location</h4>
-                  <h4 style="margin: 3px 50px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
             </div>
@@ -79,24 +79,24 @@
                 <div class="text-center" data-animation="animated fadeIn" data-delay="3s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Models</h4>
-                  <h4 style="margin: 3px 100px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="3.5s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Photographers</h4>
-                  <h4 style="margin: 3px 100px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="text-center" data-animation="animated fadeIn" data-delay="4s">
                   <%= image_tag "pmp.JPG", size: "200x200", class: "img-responsive img-circle img-center-horizontal img-focus", alt: "Services" %>
                   <h4>Help</h4>
-                  <h4 style="margin: 3px 100px;"><small>Secondary text, breve description del service</small></h4>
-                  <%= link_to "more on this...", "#", class: "btn btn-default btn-xs" %>
+                  <h3><small>Secondary text, breve description del service</small></h3>
+                  <%= link_to "more on this...", "#", class: "btn btn-primary btn-xs" %>
                 </div>
               </div>
             </div>
@@ -153,9 +153,9 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="partners-container" class="notify" style="padding-right: 50px; padding-left: 50px; padding-bottom: 30px;">
-            <h1 class="text-center" style="padding-top: 30px; padding-bottom: 10px; color:black;"><%= t('views.static_pages.home.sections.partners.header') %></h1>
-            <div class="row" style="padding: 30px; margin-bottom: 30px;">
+        <div id="partners-container" class="notify">
+            <h1 id="partners-header" class="text-center"><%= t('views.static_pages.home.sections.partners.header') %></h1>
+            <div class="row">
               <div class="col-md-3">
                 <div data-animation="animated zoomIn" data-delay="0.5s">
                   <%= image_tag "partner.jpg", class: "img-responsive img-rounded img-center-horizontal", alt: "Services" %>
@@ -177,7 +177,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" style="padding: 30px; margin-bottom: 30px;">
+            <div class="row">
               <div class="col-md-3">
                 <div data-animation="animated zoomIn" data-delay="2.5s">
                   <%= image_tag "partner-2.gif", class: "img-responsive img-rounded img-center-horizontal", alt: "Services" %>
@@ -205,8 +205,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="models-container" class="notify" style="padding-top:10px; padding-bottom: 40px;">
-            <h1 class="text-center" style="padding-top: 10px; padding-bottom: 10px; color:black;"><%= t('views.static_pages.home.sections.models.header') %></h1>
+        <div id="models-container" class="notify">
+            <h1 id="models-header" class="text-center"><%= t('views.static_pages.home.sections.models.header') %></h1>
             <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="1s">
@@ -241,7 +241,7 @@
                 </div>
               </div>
             </div>
-            <div class="text-center" style="padding: 10px; margin-top: 20px;">
+            <div id="models-footer" class="text-center">
               <%= link_to "DISCOVER MORE...", "#", class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "5s" } %>
             </div>
         </div>
@@ -250,21 +250,21 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="photographers-container" class="notify" style="padding-top:10px; padding-bottom: 40px;">
-            <h1 class="text-center" style="padding-top: 10px; padding-bottom: 10px; color:black;"><%= t('views.static_pages.home.sections.photographers.header') %></h1>
+        <div id="photographers-container" class="notify">
+            <h1 id="photographers-header" class="text-center"><%= t('views.static_pages.home.sections.photographers.header') %></h1>
             <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
               <div class="col-md-6 cell-no-space">
                 <div data-animation="animated bounceInLeft" data-delay="1s">
                   <%= image_tag "5.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
                 </div>
-                <div class="img-over-caption" data-animation="animated rotateIn" data-delay="3s">
+                <div class="img-over-caption img-over-caption-left-up" data-animation="animated rotateIn" data-delay="3s">
                   <h3>INDOOR</h3>
                 </div>
               </div>
               <div class="col-md-6 cell-no-space">
                 <div data-animation="animated bounceInRight" data-delay="1.5s">
                   <%= image_tag "10.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption" data-animation="animated rotateIn" data-delay="3.5s">
+                  <div class="img-over-caption img-over-caption-right-up" data-animation="animated rotateIn" data-delay="3.5s">
                     <h3>STREET</h3>
                   </div>
                 </div>
@@ -274,7 +274,7 @@
               <div class="col-md-6 cell-no-space">
                 <div data-animation="animated bounceInLeft" data-delay="2s">
                   <%= image_tag "10.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption" data-animation="animated rotateIn" data-delay="4s">
+                  <div class="img-over-caption img-over-caption-left-bottom" data-animation="animated rotateIn" data-delay="4s">
                     <h3>WILD</h3>
                   </div>
                 </div>
@@ -282,13 +282,13 @@
               <div class="col-md-6 cell-no-space">
                 <div data-animation="animated bounceInRight" data-delay="2.5s">
                   <%= image_tag "15.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption" data-animation="animated rotateIn" data-delay="4.5s">
+                  <div class="img-over-caption img-over-caption-right-bottom" data-animation="animated rotateIn" data-delay="4.5s">
                     <h3>NATURE</h3>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="text-center" style="padding: 10px; margin-top: 20px;">
+            <div id="photographers-footer" class="text-center">
               <%= link_to "DISCOVER MORE...", "#", class: "btn btn-success btn-lg", data:{ animation: "animated fadeInUpBig", delay: "5s" } %>
             </div>
         </div>
@@ -298,204 +298,22 @@
 <div class="row">
     <div class="col-md-12">
         <div id="cuba-container" class="notify">
-            <h1><%= t('views.static_pages.home.sections.discover.header') %></h1>
-            <p>
-                Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-               Some setup you must do manually if you haven't yet:
-                1. Ensure you have defined default url options in your environments files. Here
-                 is an example of default_url_options appropriate for a development environment
-                 in config/environments/development.rb:
-                   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-                 In production, :host should be set to the actual host of your application.
-                2. Ensure you have defined root_url to *something* in your config/routes.rb.
-                 For example:
-                   root to: "home#index"
-                3. Ensure you have flash messages in app/views/layouts/application.html.erb.
-                 For example:
-                4. You can copy Devise views (for customization) to your app by running:
-               rails g devise:views
-            </p>
+            <h1 id="cuba-header" class="text-center"><%= t('views.static_pages.home.sections.discover.header') %></h1>
+            <div class="row row-no-space">
+              <div class="col-md-6 cell-no-space">
+                <div>
+                  <%= image_tag "5.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services", data:{ animation: "animated bounceInLeft", delay: "1s" } %>   
+                </div>
+              </div>
+              <div class="col-md-6 cell-no-space">
+                <div>
+                  <%= image_tag "5.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services", data:{ animation: "animated bounceInRight", delay: "1s" } %>
+                </div>
+              </div>
+            </div>
+            <div id="cuba-footer" class="text-center">
+              <%= link_to "DISCOVER MORE...", "#", class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "1.5s" } %>
+            </div>
         </div>
     </div>
 </div>
