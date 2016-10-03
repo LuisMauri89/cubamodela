@@ -29,6 +29,9 @@ class ProfileModel < ApplicationRecord
 	# Studies
 	has_many :studies, as: :ownerable, dependent: :destroy
 
+	# Inbox
+	has_many :messages, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
+
 	#Check if profile is completed
 	def profile_complete?
 		parameters_with_values = self.generate_array_of_param_with_value

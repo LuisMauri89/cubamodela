@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922174307) do
+ActiveRecord::Schema.define(version: 20160929215817) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 20160922174307) do
     t.integer "language_id"
     t.index ["language_id"], name: "index_languages_profile_models_on_language_id"
     t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "body"
+    t.string   "footer"
+    t.string   "ownerable_type"
+    t.integer  "ownerable_id"
+    t.string   "asociateable_type"
+    t.integer  "asociateable_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "readed",            default: false
+    t.index ["asociateable_type", "asociateable_id"], name: "index_messages_on_asociateable_type_and_asociateable_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_messages_on_ownerable_type_and_ownerable_id"
   end
 
   create_table "nationalities", force: :cascade do |t|

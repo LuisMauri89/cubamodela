@@ -56,6 +56,12 @@ Rails.application.routes.draw do
 # Studies routes
   resources :studies
 
+# Messages routes
+  resources :messages do
+    get '/read_all/', to: 'messages#read_all', as: :read_all, on: :collection
+    get '/unread_all/', to: 'messages#unread_all', as: :unread_all, on: :collection
+  end
+
 # Root
   root to: 'static_pages#home'
 

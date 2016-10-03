@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyString
+  footer: MyString
+  ownerable: one
+  ownerable_type: Ownerable
+  asociateable: one
+  asociateable_type: Asociateable
+
+two:
+  title: MyString
+  body: MyString
+  footer: MyString
+  ownerable: two
+  ownerable_type: Ownerable
+  asociateable: two
+  asociateable_type: Asociateable

@@ -1,0 +1,34 @@
+<div id="messages-container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div id="model-info-container">
+      </div>
+      <div id="inbox-actions-container">
+        <%= link_to "Read all", read_all_messages_path, remote: true, class: "btn btn-primary btn-sm" %>
+        <%= link_to "Unread all", unread_all_messages_path, remote: true, class: "btn btn-primary btn-sm" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <div id="messages-list-container">
+        <div class="list-group">
+          <% @messages.each_with_index do |message, index| %>
+              <%= link_to(message_path(message), remote: true, class: "list-group-item " + get_readed_class(message)) do %>
+                <h4 id="message-<%= message.id %>" class="list-group-item-heading"><%= message.title %></h4>
+                <p class="list-group-item-text"><%= message.body[0..100] %></p>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div id="current-message-container">
+        <%= render 'no_messages' %>
+      </div>
+    </div>
+  </div>
+
+</div>
