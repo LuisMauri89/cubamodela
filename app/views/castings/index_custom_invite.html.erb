@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+  	<div id="invite-castings-wrapper" class="well well-lg">
+  		<h3 class="text-center">Your active castings</h3>
+  		<div class="row text-center">
+  			<div class="col-md-12">
+	  			<% @castings.each do |casting| %>
+					<%= link_to casting.title, invite_casting_path(casting, @profile), class: "btn btn-primary btn-block" %>
+				<% end %>
+	  		</div>
+		</div>
+
+		<div class="row model-bottom-actions">
+  			<div class="col-md-12">
+				<%= link_to 'Back', profile_models_path, class: "btn btn-primary pull-right" %>
+			</div>
+  		</div>
+  	</div>
+  </div>
+</div>

@@ -72,6 +72,7 @@ resources :castings do
   get 'cancel', on: :member
   get 'activate', on: :member
   get '/custom/index/:profile_id', to: 'castings#index_custom', as: :custom_index, on: :collection
+  get '/custom/index/invite/:profile_id', to: 'castings#index_custom_invite', as: :custom_index_invite, on: :collection
   get '/invite/index/', to: 'castings#index_invite', on: :member
   get '/invited/index/', to: 'castings#index_invited', on: :member
   get '/confirmed/index/', to: 'castings#index_confirmed', on: :member

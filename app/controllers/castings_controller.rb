@@ -1,7 +1,7 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_casting, only: [:show, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
-  before_action :set_profile, only: [:invite, :confirm]
+  before_action :set_profile, only: [:invite, :confirm, :index_custom_invite]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
   before_action :check_if_can, only: [:manage, :edit, :edit_photos, :update, :close, :cancel, :destroy]
   before_action :set_pagination_data, only: [:index]
@@ -17,6 +17,10 @@ class CastingsController < ApplicationController
   end
 
   def index_custom
+  end
+
+  def index_custom_invite
+    @castings = Casting.actives.limit(2)
   end
 
   def index_invite
@@ -117,13 +121,17 @@ class CastingsController < ApplicationController
       @intent = @casting.invite_model(@profile)
     elsif @list_item == "applied"
       @intent = @casting.confirm_model(@profile)
+    else
+      @intent = @casting.invite_model(@profile)
     end
 
     respond_to do |format|
       if @intent.save
         Message.create(template: "inbox_message_casting_invitation", ownerable: @profile, asociateable: @casting)
+        format.html { redirect_to profile_models_path, notice: 'Invitation successfully.' }
         format.js
       else
+        format.html { redirect_to request.referrer, notice: "Invitation failed" }
         format.js
       end
     end
