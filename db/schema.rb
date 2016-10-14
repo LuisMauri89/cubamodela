@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929215817) do
+ActiveRecord::Schema.define(version: 20161014160252) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,29 @@ ActiveRecord::Schema.define(version: 20160929215817) do
     t.integer  "identifier"
     t.index ["identifier"], name: "index_albums_on_identifier"
     t.index ["profileable_type", "profileable_id"], name: "index_albums_on_profileable_type_and_profileable_id"
+  end
+
+  create_table "castings", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.datetime "expiration_date"
+    t.string   "ownerable_type"
+    t.integer  "ownerable_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "status",          default: 0
+    t.integer  "access_type",     default: 0
+    t.datetime "casting_date"
+    t.datetime "shooting_date"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id"
+  end
+
+  create_table "castings_modalities", id: false, force: :cascade do |t|
+    t.integer "casting_id"
+    t.integer "modality_id"
+    t.index ["casting_id"], name: "index_castings_modalities_on_casting_id"
+    t.index ["modality_id"], name: "index_castings_modalities_on_modality_id"
   end
 
   create_table "colors", force: :cascade do |t|
@@ -42,6 +65,16 @@ ActiveRecord::Schema.define(version: 20160929215817) do
     t.index ["profile_model_id"], name: "index_expertises_profile_models_on_profile_model_id"
   end
 
+  create_table "intents", force: :cascade do |t|
+    t.integer  "casting_id"
+    t.integer  "status",           default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "profile_model_id"
+    t.index ["casting_id"], name: "index_intents_on_casting_id"
+    t.index ["profile_model_id"], name: "index_intents_on_profile_model_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -56,9 +89,6 @@ ActiveRecord::Schema.define(version: 20160929215817) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "title"
-    t.string   "body"
-    t.string   "footer"
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
     t.string   "asociateable_type"
@@ -66,8 +96,24 @@ ActiveRecord::Schema.define(version: 20160929215817) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.boolean  "readed",            default: false
+    t.integer  "template",          default: 0
+    t.string   "title"
+    t.string   "description"
     t.index ["asociateable_type", "asociateable_id"], name: "index_messages_on_asociateable_type_and_asociateable_id"
     t.index ["ownerable_type", "ownerable_id"], name: "index_messages_on_ownerable_type_and_ownerable_id"
+  end
+
+  create_table "modalities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "modalities_profile_models", id: false, force: :cascade do |t|
+    t.integer "profile_model_id"
+    t.integer "modality_id"
+    t.index ["modality_id"], name: "index_modalities_profile_models_on_modality_id"
+    t.index ["profile_model_id"], name: "index_modalities_profile_models_on_profile_model_id"
   end
 
   create_table "nationalities", force: :cascade do |t|
@@ -100,14 +146,15 @@ ActiveRecord::Schema.define(version: 20160929215817) do
     t.decimal  "chest"
     t.decimal  "waist"
     t.decimal  "hips"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "ayes_color_id"
     t.integer  "current_province_id"
     t.string   "gender"
     t.integer  "size_shoes"
     t.integer  "size_cloth"
     t.integer  "nationality_id"
+    t.boolean  "reviewed",            default: false
     t.index ["ayes_color_id"], name: "index_profile_models_on_ayes_color_id"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
     t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"

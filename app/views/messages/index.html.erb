@@ -18,7 +18,7 @@
           <% @messages.each_with_index do |message, index| %>
               <%= link_to(message_path(message), remote: true, class: "list-group-item " + get_readed_class(message)) do %>
                 <h4 id="message-<%= message.id %>" class="list-group-item-heading"><%= message.title %></h4>
-                <p class="list-group-item-text"><%= message.body[0..100] %></p>
+                <p class="list-group-item-text"><%= message.description %></p>
               <% end %>
           <% end %>
         </div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :modalities
 # For internationalization
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
@@ -61,6 +62,25 @@ Rails.application.routes.draw do
     get '/read_all/', to: 'messages#read_all', as: :read_all, on: :collection
     get '/unread_all/', to: 'messages#unread_all', as: :unread_all, on: :collection
   end
+
+# Castings routes
+resources :castings do
+  get 'edit_photos', on: :member
+  concerns :attachable
+  get 'manage', on: :member
+  get 'close', on: :member
+  get 'cancel', on: :member
+  get 'activate', on: :member
+  get '/custom/index/:profile_id', to: 'castings#index_custom', as: :custom_index, on: :collection
+  get '/invite/index/', to: 'castings#index_invite', on: :member
+  get '/invited/index/', to: 'castings#index_invited', on: :member
+  get '/confirmed/index/', to: 'castings#index_confirmed', on: :member
+  get '/favorites/index/', to: 'castings#index_favorites', on: :member
+  get '/applied/index/', to: 'castings#index_applied', on: :member
+  get '/apply/:profile_id', to: 'castings#apply', as: :apply, on: :member
+  get '/invite/:profile_id', to: 'castings#invite', as: :invite, on: :member
+  get '/confirm/:profile_id', to: 'castings#confirm', as: :confirm, on: :member
+end
 
 # Root
   root to: 'static_pages#home'

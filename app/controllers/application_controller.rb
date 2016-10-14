@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:kind])
   end
 
-  def after_sign_up_path_for(resource)
-  	get_profile_path
-  end
+  # def after_sign_up_path_for(resource)
+  # 	get_profile_path
+  # end
 
   # For CanCanCan
   rescue_from CanCan::AccessDenied do |exception|
@@ -30,6 +30,29 @@ class ApplicationController < ActionController::Base
     end
 
     I18n.locale = locale
+  end
+
+  # For profiles access methods
+  def get_profile_path
+    if current_user.profileable.nil?
+      case current_user.kind
+      when "contractor"
+        return new_profile_model_path
+      when "model"
+        return new_profile_model_path
+      when "photographer"
+        return new_profile_photographer_path
+      end
+    else
+      case current_user.kind
+      when "contractor"
+        return edit_profile_model_path(current_user.profileable)
+      when "model"
+        return edit_profile_model_path(current_user.profileable)
+      when "photographer"
+        return edit_profile_photographer_path(current_user.profileable)
+      end
+    end
   end
 
 end

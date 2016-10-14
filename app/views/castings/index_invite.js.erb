@@ -1,0 +1,11 @@
+<% if @index == 0 %>
+	$("#current-list-item-container").empty();
+	$("#current-list-item-container").html("<%= j render 'index_invite' %>");
+<% else %>
+	$("#selected-list-item-container").append("<%= j render 'index_invite_more' %>");
+	$("#models-invite-load-more").empty();
+	$("#models-invite-load-more").html("<%= j render 'load_more_invite' %>");
+<% end %>
+	$('#model-info-container').empty();
+	$(".list-group-item").removeClass('active');
+	$("#list-item-<%= @list_item %>").parent().addClass('active');

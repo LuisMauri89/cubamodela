@@ -15,8 +15,21 @@
 		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% when "model" %>
 		<li><%= link_to t('menu.options.account'), edit_user_registration_path %></li>
-		<li><%= link_to t('menu.options.profile'), get_profile_path %></li>
-		<li><%= link_to t('menu.options.inbox'), messages_path %></li>
+		<li id="navbar-option-profile">
+			<%= link_to get_profile_path do %>
+				<%= t('menu.options.profile') %> <span class="badge"><%= get_profile_percent %></span>
+			<% end %>		
+		</li>
+		<li>
+			<%= link_to messages_path do %>
+				<%= t('menu.options.inbox') %> <span class="badge"><%= get_profile_inbox_count %></span>
+			<% end %>	
+		</li>
+		<li>
+			<%= link_to "#" do %>
+				<%= t('menu.options.reservations') %> <span class="badge">5</span>
+			<% end %>	
+		</li>
 		<li role="separator" class="divider"></li>
 		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% when "photographer" %>

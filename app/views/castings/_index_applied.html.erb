@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-md-12">
+		<div id="selected-list-item-container">
+			<% @intents.each do |intent| %>
+				<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item">
+					<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
+							<%= image_tag intent.profile_model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>	
+					<% end %>
+					<br/>
+					<%= link_to "invite", invite_casting_path(@casting, intent.profile_model, list_item: "applied"), remote: true, class: "btn btn-success btn-xs pull-right" %>
+				</div>
+			<% end %>
+		</div>
+		<div id="selected-list-item-container-bottom"></div>
+	</div>
+</div>

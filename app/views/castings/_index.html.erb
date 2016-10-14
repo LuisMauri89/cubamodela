@@ -1,0 +1,9 @@
+<% @castings.each do |casting| %>
+	<div class="row row-small-padding-vertical">
+		<div class="col-md-12">
+			<div class="single-casting-container bg-primary">
+				<%= render 'index_casting', casting: casting %>
+			</div>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,48 @@
+<div id="manage-casting-container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div id="model-info-container">
+      </div>
+      <div id="actions-container">
+        <%= render 'actions_container' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <div id="list-container">
+        <div class="list-group">
+          <%= link_to(invite_index_casting_path(@casting, list_item: 'invite'), remote: true, class: "list-group-item active") do %>
+            <h4 id="list-item-invite" class="list-group-item-heading">Invite</h4>
+            <p class="list-group-item-text">Find new models and invite them.</p>
+          <% end %>
+          <%= link_to(invited_index_casting_path(@casting, list_item: 'invited'), remote: true, class: "list-group-item") do %>
+            <h4 id="list-item-invited" class="list-group-item-heading">Invited</h4>
+            <p class="list-group-item-text">Models you invite.</p>
+          <% end %>
+          <%= link_to(confirmed_index_casting_path(@casting, list_item: 'confirmed'), remote: true, class: "list-group-item") do %>
+            <h4 id="list-item-confirmed" class="list-group-item-heading">Confirmed</h4>
+            <p class="list-group-item-text">Models who confirm.</p>
+          <% end %>
+          <%= link_to(favorites_index_casting_path(@casting, list_item: 'favorites'), remote: true, class: "list-group-item") do %>
+            <h4 id="list-item-favorites" class="list-group-item-heading">Favorites</h4>
+            <p class="list-group-item-text">Your favorites.</p>
+          <% end %>
+          <%= link_to(applied_index_casting_path(@casting, list_item: 'applied'), remote: true, class: "list-group-item") do %>
+            <h4 id="list-item-applied" class="list-group-item-heading">Applied</h4>
+            <p class="list-group-item-text">Models who are interested.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div id="current-list-item-container">
+        <%= render 'index_invite' %>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="profile-modal" class="modal fade"></div>

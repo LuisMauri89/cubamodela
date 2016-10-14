@@ -5,7 +5,7 @@
 	  </div>
 	  <div class="modal-body">
 	  	<div id="model-modal-info-container"></div>
-	    <%= form_for(Photo.new, url: album_photos_path(@album), html: { multipart: true, class: "dropzone"}) do |f|  %>
+	    <%= form_for(Photo.new, url: @form_url, html: { multipart: true, class: "dropzone"}) do |f|  %>
 		  <div class="fallback">
 		    <%= f.file_field :image %><br>
 		    <%= f.submit "Upload Image" %>

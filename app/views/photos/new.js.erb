@@ -1,6 +1,6 @@
 Dropzone.autoDiscover = false;
 
-$("#profile-modal").html("<%= j render 'form' %>");
+$("#modal-container").html("<%= j render 'form' %>");
 
 var dropzone = new Dropzone (".dropzone", {
 	maxFilesize: 256,
@@ -11,8 +11,7 @@ var dropzone = new Dropzone (".dropzone", {
 });
 
 dropzone.on("success", function(file, response) {
-	var uploaded_photo_url;
-	uploaded_photo_url = "/albums/<%= @album.id %>/photos/" + response.photo_id + "/uploaded?type=" + response.photo_type;
+	var uploaded_photo_url = "<%= @uploaded_url %>" + response.photo_id + "/uploaded?type=" + response.photo_type;;	
 	$.getScript(uploaded_photo_url);
 });
 
@@ -21,4 +20,4 @@ dropzone.on("error", function(file, response){
 	$('#model-modal-info-container').html("<div id=\"alert-messages-box\" class=\"alert alert-success alert-dismissible\" role=\"alert\">\n  <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n    <span aria-hidden=\"true\">\n      &times;\n    <\/span>\n  <\/button>\n" + response.error + ".\n<\/div>");
 });
 
-$("#profile-modal").modal("show");
+$("#modal-container").modal("show");

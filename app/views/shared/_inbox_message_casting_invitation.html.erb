@@ -1,0 +1,37 @@
+<div class="row bg-primary message-section">
+	<div class="col-md-11">
+		<div class="text-center">
+			<h2>You have been invited to casting <%= @message.asociateable.title %></h2>
+		</div>
+	</div>
+	<div class="col-md-1">
+		<div class="text-center">
+			<%= button_to(message_path(@message), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "pull-right") do %>
+			  <span class="glyphicon glyphicon-trash glyphicon-trash-blue" aria-hidden="true"></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-justify">
+			<p>Aqui un texto explicando y demas <%= @message.asociateable.description %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-center">
+			<p><%= @message.asociateable.expiration_date %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<%= link_to "See casting", casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to "Confirm", confirm_casting_path(@message.asociateable, current_user.profileable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
+	</div>
+</div>

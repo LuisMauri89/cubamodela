@@ -32,6 +32,13 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def get_kind_collection
+    collection = [[t('activerecord.attributes.user.kind_options.select'), 'white']]
+    User.kinds.keys.reject{ |k| k == "other" || k == "white" }.map {|kind| collection << [t('activerecord.attributes.user.kind_options.' + kind),kind]}
+
+    return collection
+  end
+
   # For devise flash messages keys
   def get_bootstrap_key_from_devise_key(key)
     case key
@@ -69,6 +76,22 @@ module ApplicationHelper
     end
   end
 
+  def get_profile_percent
+    if current_user.profileable.nil?
+      return "0%"
+    else
+      return current_user.profileable.profile_complete_progress_percentage.to_s << "%"
+    end
+  end
+
+  def get_profile_inbox_count
+    if current_user.profileable.nil?
+      return "0"
+    else
+      return current_user.profileable.messages.where(readed: false).count.to_s
+    end
+  end
+
   # For users counts
   def get_models_count
     ProfileModel.count
@@ -76,10 +99,6 @@ module ApplicationHelper
 
   def get_photographers_count
     ProfilePhotographer.count
-  end
-
-  # For forms with errors
-  def add_error_styles()
   end
 
 end

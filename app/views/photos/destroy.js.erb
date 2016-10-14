@@ -2,9 +2,17 @@
 <% when "album" %>
 	<% if @photo.errors.any? %>
 		$("#model-info-container").html("<%= j render 'errors' %>");
-		$("#profile-modal").modal("hide");
+		$("#modal-container").modal("hide");
 	<% else %>
 		$("#photo-<%= @album.id %><%= @photo.id %>").parent().remove();
-		$("#profile-modal").modal("hide");
+		$("#modal-container").modal("hide");
+	<% end %>
+<% when "casting" %>
+	<% if @photo.errors.any? %>
+		$("#model-info-container").html("<%= j render 'errors' %>");
+		$("#modal-container").modal("hide");
+	<% else %>
+		$("#casting-photo-<%= @photo.id %>").parent().remove();
+		$("#modal-container").modal("hide");
 	<% end %>
 <% end %>

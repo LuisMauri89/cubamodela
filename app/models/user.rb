@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # Validations
+  validates :kind, inclusion: { in: %w(contractor model photographer other) }
 
   # Role
   enum role: [:user, :admin]
@@ -10,7 +12,7 @@ class User < ApplicationRecord
   end
 
   # Kind
-  enum kind: [:contractor, :model, :photographer, :other]
+  enum kind: [:white, :contractor, :model, :photographer, :other]
 
   after_initialize :set_default_kind, if: :new_record?
 
@@ -18,7 +20,7 @@ class User < ApplicationRecord
     if self.admin?
       self.other!
     else
-      self.kind ||= :contractor
+      self.kind ||= :white
     end
   end
 

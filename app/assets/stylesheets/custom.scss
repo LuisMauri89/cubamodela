@@ -90,7 +90,7 @@ body {
 
 /* Home sign up select kind, add 50% cell width */
 #user_kind{
-	width: 50% !important;
+	width: 60% !important;
 }
 
 /* Profile albums adding some scroll area */
@@ -116,6 +116,16 @@ body {
 }
 
 .field_with_errors .form-control:focus{
+	border-color: #843534;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
+}
+
+.field_with_errors select{
+	border-color: #a94442;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.field_with_errors select{
 	border-color: #843534;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
 }
@@ -413,6 +423,7 @@ a.link-image:hover{
 	left: 0px;
 }
 */
+
 #cuba-container > #cuba-footer{
 	font-size: 30px;
 }
@@ -439,6 +450,7 @@ a.link-image:hover{
 
 #current-message-container{
 	padding: 20px 40px;
+	min-height: 450px;
 	max-height: 450px;
 	overflow-y: scroll;
 }
@@ -457,6 +469,82 @@ a.link-image:hover{
 
 .glyphicon-trash-blue{
 	color: #337ab7 !important;
+}
+
+/* For casting */
+#form-new-casting-wrapper, #form-casting-photos-wrapper{
+	margin-top:5%;
+	margin-left:10%;
+	margin-right:10%;
+}
+
+#form-casting-container{
+	margin-left:15%;
+	margin-right:15%;
+}
+
+#list-castings-container{
+	margin: 0 20px !important;
+}
+
+#list-castings-load-more{
+	padding: 20px 10px;
+	margin: 10px 10px;
+}
+
+.single-casting-container{
+	padding: 20px 40px;
+}
+
+.single-casting-container p{
+	font-size: 20px;
+}
+
+.single-casting-container a{
+	margin-right: 5px;
+}
+
+.casting-title{
+	margin-bottom: 20px;
+}
+
+.row-small-padding-vertical{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.row-medium-padding-vertical{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.model-bottom-actions{
+	margin-top: 20px !important;
+}
+
+.btn-small-right-margin{
+	margin-right: 5px !important;
+}
+
+#manage-casting-container{
+	margin-bottom: 30px;
+}
+
+#actions-container{
+	background-color: #e7e7e7;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+}
+
+#list-container{
+	padding: 50px 10px;
+	background-color: #e7e7e7;
+}
+
+#current-list-item-container{
+	padding: 20px 40px;
+	max-height: 450px;
+	overflow-y: scroll;
 }
 
 

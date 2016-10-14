@@ -48,7 +48,9 @@
         <% end %>
       </div>
       <div class="col-md-5">
-        <h3 class="lead panel panel-default panel-spec">Nationality: <em><%= @profile.nationality.name_es %></em></h3>
+        <% if @profile.nationality.present? %>
+          <h3 class="lead panel panel-default panel-spec">Nationality: <em><%= @profile.nationality.name_es %></em></h3>
+        <% end %>
         <%= link_to 'See more...', profile_photographer_path(@profile), class: "btn btn-primary btn-block" %>
         <%= link_to 'Invite', "#", remote: true, class: "btn btn-success btn-block" %>
       </div>

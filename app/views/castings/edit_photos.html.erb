@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+  	<div id="form-casting-photos-wrapper" class="well well-lg">
+  		<h3 class="text-center">Casting reference photos</h3>
+      <div id="model-info-container"></div>
+  		<div class="row text-center">
+  			<div class="col-md-12">
+	  			<div id="casting-photos-container">
+            <% @casting.photos.each do |photo| %>
+              <%= link_to(casting_photo_path(@casting, photo, type: "casting"), remote: true, class: "link-image") do %>
+                <div id="casting-photo-<%= photo.id %>" class="img-thumbnail list-photo-item">
+                  <%= image_tag photo.image.url(:profile), alt: "Model Photo", class: "img-rounded" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+	  		</div>
+		</div>
+
+		<div class="row row-small-padding-vertical">
+  			<div class="col-md-12">
+        <%= link_to 'Castings', castings_path, class: "btn btn-success pull-right" %>
+        <%= link_to 'Edit', edit_casting_path(@casting), class: "btn btn-success pull-right btn-small-right-margin" %>
+        <%= link_to 'Upload', new_casting_photo_path(@casting, type: "casting"), remote: true, class: "btn btn-success pull-right btn-small-right-margin" %>
+			</div>
+  		</div>
+  	</div>
+  </div>
+  <div id="modal-container" class="modal fade"></div>
+</div>

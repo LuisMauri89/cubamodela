@@ -1,0 +1,15 @@
+<div class="alert alert-success alert-dismissible alert-messages-box" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">
+      &times;
+    </span>
+  </button>
+  The casting has been activated, some dates has been changed, if you want to correct them go <%= link_to "here", edit_casting_path(@casting) %>.
+  <br/>
+  Expiration date: <%= @casting.expiration_date %>
+  <br/>
+  Casting date: <%= @casting.casting_date %>
+  <br/>
+  Shooting date: <%= @casting.shooting_date %>
+  <br/>
+</div>

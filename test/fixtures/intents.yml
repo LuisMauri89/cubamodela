@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aplicable: one
+  aplicable_type: Aplicable
+  casting: one
+  status: 1
+
+two:
+  aplicable: two
+  aplicable_type: Aplicable
+  casting: two
+  status: 1

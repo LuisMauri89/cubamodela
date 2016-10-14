@@ -65,8 +65,9 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirm Password"
-        kind: "What are you?"
+        kind: "What profile are you?"
         kind_options:
+          select: "Select profile"
           contractor: "Contractor"
           model: "Model"
           photographer: "Photographer"

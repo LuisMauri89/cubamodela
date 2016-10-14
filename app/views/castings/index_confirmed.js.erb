@@ -1,0 +1,5 @@
+$(".list-group-item").removeClass('active');
+$("#list-item-<%= @list_item %>").parent().addClass('active');
+$('#model-info-container').empty();
+$("#current-list-item-container").empty();
+$("#current-list-item-container").html("<%= j render 'index_confirmed' %>");

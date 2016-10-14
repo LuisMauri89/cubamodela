@@ -12,14 +12,22 @@ class ProfileModel < ApplicationRecord
 	validates :size_shoes, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 50 }, allow_blank: true
 	validates :size_cloth, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
 
+	#Scopes
+	scope :ready, lambda { where(reviewed: true).order("created_at ASC") }
+
 	# User
 	has_one :user, as: :profileable
+
+	# Castings
+	has_many :intents
+	has_many :castings, through: :intents
 
 	# Nomenclators
 	belongs_to :ayes_color, class_name: "Color", foreign_key: "ayes_color_id", optional: true
 	belongs_to :current_province, class_name: "Province", foreign_key: "current_province_id", optional: true
 	has_and_belongs_to_many :expertises, dependent: :destroy
 	has_and_belongs_to_many :languages, dependent: :destroy
+	has_and_belongs_to_many :modalities, dependent: :destroy
 	belongs_to :nationality, optional: true
 
 	# Pictures
@@ -53,7 +61,7 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def profile_complete_progress_total
-		total = 18
+		total = 19
 	end
 
 	def profile_complete_progress_percentage
@@ -65,7 +73,7 @@ class ProfileModel < ApplicationRecord
 		if self.first_name and self.last_name
 			self.first_name + " " + self.last_name
 		else
-			"Unknown"
+			"Missing Name"
 		end
 	end
 
@@ -121,10 +129,11 @@ class ProfileModel < ApplicationRecord
 		return exp_formated
 	end
 
-	def generate_array_of_param_with_value
+	def generate_array_of_param_with_value #.present?
 		parameters_with_values = [self.first_name.nil? ? true : self.first_name.empty?, self.last_name.nil? ? true : self.last_name.empty?, self.gender.nil?, self.mobile_phone.nil? ? true : self.mobile_phone.empty?, self.land_phone.nil? ? true : self.land_phone.empty?, self.address.nil? ? true : self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
 		parameters_with_values << self.add_expertises_to_progress
 		parameters_with_values << self.add_languages_to_progress
+		parameters_with_values << self.add_modalities_to_progress
 		parameters_with_values << self.add_profile_picture_album_to_progress
 		parameters_with_values << self.add_profesional_book_album_to_progress
 
@@ -146,6 +155,18 @@ class ProfileModel < ApplicationRecord
 	def add_languages_to_progress
 		begin
 			if self.languages.any?
+				return false
+			end
+
+			return true
+		rescue
+			return true
+		end
+	end
+
+	def add_modalities_to_progress
+		begin
+			if self.modalities.any?
 				return false
 			end
 
@@ -179,5 +200,9 @@ class ProfileModel < ApplicationRecord
 		rescue
 			return true
 		end
+	end
+
+	def can_apply?(casting)
+		return not(casting_ids.include?(casting.id))
 	end
 end

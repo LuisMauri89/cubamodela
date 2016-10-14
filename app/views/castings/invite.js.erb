@@ -1,0 +1,8 @@
+<% if @intent.errors.any? %>
+	$('#model-info-container').html("<%= j render 'errors_manage' %>");
+<% else %>
+	$('#model-info-container').html("<%= j render 'action_info', text: 'Model invited' %>");
+	<% if @list_item == "applied" %>
+		$('#model-<%= @casting.id %>-<%= @profile.id %>').remove();
+	<% end %>
+<% end %>

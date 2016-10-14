@@ -65,8 +65,9 @@ es:
         email: "Correo"
         password: "Contrasena"
         password_confirmation: "Confirme Contrasena"
-        kind: "Que eres?"
+        kind: "Que perfil buscas?"
         kind_options:
+          select: "Seleccione un perfil"
           contractor: "Contratador"
           model: "Modelo"
           photographer: "Fotografo"

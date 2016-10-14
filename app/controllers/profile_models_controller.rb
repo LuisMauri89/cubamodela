@@ -1,10 +1,10 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
   before_action :set_profile, only: [:show, :show_resume, :edit, :update, :destroy]
-  before_action :check_if_can, only: [:new, :create, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:edit, :update, :destroy]
 
   def index
-    @models = ProfileModel.all
+    @models = ProfileModel.ready
   end
 
   def show
@@ -23,6 +23,9 @@ class ProfileModelsController < ApplicationController
     if current_user.profileable.nil?
       @profile = ProfileModel.create
       build_profile_meta
+
+      authorize! :new, @profile
+
       current_user.profileable = @profile
       current_user.save
 
@@ -47,7 +50,7 @@ class ProfileModelsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @profile.update_attributes(profile_params)
+      if @profile.update(profile_params)
         @update_progress = @profile.profile_complete_progress_percentage
         format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.full_name + '.' }
         format.js
@@ -68,7 +71,8 @@ class ProfileModelsController < ApplicationController
                                             :land_phone, :address, :chest, :waist, 
                                             :hips, :ayes_color_id, :current_province_id, 
                                             :gender, :size_shoes, :size_cloth, :nationality_id,
-                                            expertise_ids:[], language_ids:[])
+                                            :reviewed, expertise_ids:[], language_ids:[], 
+                                            modality_ids:[])
     end
 
     def set_profile

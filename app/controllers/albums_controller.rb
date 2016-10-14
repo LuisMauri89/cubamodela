@@ -40,7 +40,7 @@ class AlbumsController < ApplicationController
   def update
   	respond_to do |format|
       if can_update_or_delete?
-    		if @album.update_attributes(album_params)
+    		if @album.update(album_params)
     			format.js
     		else
     			format.js

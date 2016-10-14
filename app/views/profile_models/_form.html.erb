@@ -182,6 +182,23 @@
 			    </div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group text-center">
+			      <%= f.label "Modalities:" %><br />
+			      <div class="row">
+				      <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name do |e| %>
+				      	<div class="col-md-3">
+						    <div class="checkbox-container">
+						      <%= e.check_box %>
+						      <%= e.label %>
+						    </div>
+						</div>
+					  <% end %>
+				  </div>
+			    </div>
+			</div>
+		</div>
 	  </div>
 	</div>
   <% end %>

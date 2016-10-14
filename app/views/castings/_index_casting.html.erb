@@ -1,0 +1,67 @@
+<div class="row casting-title">
+	<div class="col-md-8">
+		<h2><%= casting.title %></h2>
+	</div>
+	<div class="col-md-4">
+		<h4>Expiration date: <%= casting.expiration_date %> [<%= get_days_for_expiration(casting.expiration_date) %>]</h4>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="row">
+			<div class="col-md-4">
+				<%= image_tag casting.ownerable.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-rounded" %>
+			</div>
+			<div class="col-md-8">
+				<p><%= casting.description %></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h4>Location</h4>
+				<p><%= casting.location %></p>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-12">
+				<% if casting.photos.any? %>
+					<%= image_tag casting.get_first_references_photo.image.url, alt: "Model Photo", class: "img-thumbnail img-responsive" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<% if casting.photos.any? %>
+					<% casting.get_rest_references_photo.each do |ref_photo| %>
+						<div class="img-thumbnail">
+							<%= image_tag ref_photo.image.url(:list), alt: "Model Photo" %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row row-medium-padding-vertical">
+	<div class="col-md-4">
+		<h5>Published at: <%= casting.created_at %></h5>
+	</div>
+	<div class="col-md-8">
+		<%= link_to "See more...", casting_path(casting), class: "btn btn-success pull-right" %>
+		<% if current_user.model? && casting.active? && casting.free? && current_user.profileable.can_apply?(casting) %>
+			<%= link_to "Apply", apply_casting_path(casting, current_user.profileable), class: "btn btn-success pull-right" %>
+		<% end %>
+	</div>
+</div>
+
+<div class="row text-danger">
+	<div class="col-md-12">
+		<% if casting.personal? %>
+			<p>This casting is private, it can't be applied, just invited.</p>
+		<% end %>
+	</div>
+</div>
