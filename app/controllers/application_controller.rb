@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
     if current_user.profileable.nil?
       case current_user.kind
       when "contractor"
-        return new_profile_model_path
+        return new_profile_contractor_path
       when "model"
         return new_profile_model_path
       when "photographer"
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     else
       case current_user.kind
       when "contractor"
-        return edit_profile_model_path(current_user.profileable)
+        return edit_profile_contractor_path(current_user.profileable)
       when "model"
         return edit_profile_model_path(current_user.profileable)
       when "photographer"

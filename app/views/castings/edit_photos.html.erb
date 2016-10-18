@@ -20,6 +20,7 @@
 		<div class="row row-small-padding-vertical">
   			<div class="col-md-12">
         <%= link_to 'Castings', castings_path, class: "btn btn-success pull-right" %>
+        <%= link_to 'Manage', manage_casting_path(@casting), class: "btn btn-success pull-right btn-small-right-margin" %>
         <%= link_to 'Edit', edit_casting_path(@casting), class: "btn btn-success pull-right btn-small-right-margin" %>
         <%= link_to 'Upload', new_casting_photo_path(@casting, type: "casting"), remote: true, class: "btn btn-success pull-right btn-small-right-margin" %>
 			</div>

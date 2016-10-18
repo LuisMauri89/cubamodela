@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :modalities
 # For internationalization
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
@@ -26,6 +25,9 @@ Rails.application.routes.draw do
     get 'show_resume', on: :member
   end
 
+# Models Profile routes
+  resources :profile_contractors
+
 # Colors routes
   resources :colors
 
@@ -37,6 +39,9 @@ Rails.application.routes.draw do
 
 # Expertises routes
   resources :expertises
+
+# Modalities routes
+  resources :modalities
 
 # Nationalities routes
   resources :nationalities
@@ -71,7 +76,7 @@ resources :castings do
   get 'close', on: :member
   get 'cancel', on: :member
   get 'activate', on: :member
-  get '/custom/index/:profile_id', to: 'castings#index_custom', as: :custom_index, on: :collection
+  get '/custom/index/', to: 'castings#index_custom', as: :custom_index, on: :collection
   get '/custom/index/invite/:profile_id', to: 'castings#index_custom_invite', as: :custom_index_invite, on: :collection
   get '/invite/index/', to: 'castings#index_invite', on: :member
   get '/invited/index/', to: 'castings#index_invited', on: :member
@@ -81,6 +86,11 @@ resources :castings do
   get '/apply/:profile_id', to: 'castings#apply', as: :apply, on: :member
   get '/invite/:profile_id', to: 'castings#invite', as: :invite, on: :member
   get '/confirm/:profile_id', to: 'castings#confirm', as: :confirm, on: :member
+end
+
+resources :bookings do
+  get '/custom/index/', to: 'bookings#index_custom', as: :custom_index, on: :collection
+  get '/confirm/:profile_id', to: 'bookings#confirm', as: :confirm, on: :member
 end
 
 # Root

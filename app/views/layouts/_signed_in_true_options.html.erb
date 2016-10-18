@@ -8,9 +8,27 @@
 	<% case current_user.kind %>
 	<% when "contractor" %>
 		<li><%= link_to t('menu.options.account'), edit_user_registration_path %></li>
-		<li><%= link_to t('menu.options.profile'), get_profile_path %></li>
-		<li><%= link_to t('menu.options.castings'), "#" %></li>
-		<li><a href="#">Inbox</a></li>
+		<li id="navbar-option-profile">
+			<%= link_to get_profile_path do %>
+				<%= t('menu.options.profile') %> <span class="badge"><%= get_profile_percent %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to custom_index_castings_path do %>
+				<%= t('menu.options.castings') %> <span class="badge"><%= get_active_castings_count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to custom_index_bookings_path do %>
+				<%= t('menu.options.bookings') %> <span class="badge"><%= get_active_bookings_count %></span>
+			<% end %>
+		</li>
+		<li>
+			<%= link_to messages_path do %>
+				<%= t('menu.options.inbox') %> <span class="badge"><%= get_profile_inbox_count %></span>
+			<% end %>
+		</li>
+		<li><%= link_to "New Casting", new_casting_path %></li>
 		<li role="separator" class="divider"></li>
 		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% when "model" %>

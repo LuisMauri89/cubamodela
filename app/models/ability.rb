@@ -33,18 +33,27 @@ class Ability
     if user.admin?
         can :manage, :all
     elsif user.contractor?
+        can :create, ProfileContractor
+        can :update, ProfileContractor do |profile|
+            profile.try(:user) == user
+        end
         can :create, Casting
-        can [:edit_photos, :manage, :update, :close, :cancel, :destroy], Casting do |casting|
+        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel, :destroy], Casting do |casting|
             casting.try(:ownerable) == user.profileable
+        end
+        can [:index_custom, :index_custom_invite], Casting
+        can :create, Booking
+        can [:update, :destroy], Booking do |booking|
+            booking.try(:profile_contractor) == user.profileable
         end
     elsif user.model?
-        can :create, Casting
-        can [:edit_photos, :manage, :update, :close, :cancel, :destroy], Casting do |casting|
-            casting.try(:ownerable) == user.profileable
-        end
         can :create, ProfileModel
         can :update, ProfileModel do |profile|
             profile.try(:user) == user
+        end
+        can [:confirm, :apply], Casting
+        can :confirm , Booking do |booking|
+            booking.try(:profile_model) == user.profileable
         end
     elsif user.photographer?
         can :create, ProfileModel

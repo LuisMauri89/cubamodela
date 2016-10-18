@@ -79,7 +79,8 @@
           <h3 class="lead panel panel-default panel-spec">Expertises: <em><%= @profile.get_expertises_formated %></em></h3>
         <% end %>
         <%= link_to 'See more...', profile_model_path(@profile), class: "btn btn-primary btn-block" %>
-        <%= link_to 'Invite', custom_index_invite_castings_path(@profile), class: "btn btn-success btn-block" %>
+        <%= link_to 'Invite', custom_index_invite_castings_path(@profile), class: "btn btn-primary btn-block" %>
+        <%= link_to 'Booking', new_booking_path(profile_id: @profile), class: "btn btn-primary btn-block" %>
       </div>
     </div>
     <div class="row">

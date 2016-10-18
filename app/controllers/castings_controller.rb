@@ -1,9 +1,10 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:show, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
-  before_action :set_profile, only: [:invite, :confirm, :index_custom_invite]
+  before_action :set_casting, only: [:show, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
+  before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
-  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :update, :close, :cancel, :destroy]
+  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :confirm, :apply, :update, :close, :cancel, :destroy]
+  before_action :check_if_can_profile, only: [:confirm, :apply]
   before_action :set_pagination_data, only: [:index]
   before_action :set_pagination_data_invite, only: [:manage, :index_invite]
 
@@ -17,10 +18,11 @@ class CastingsController < ApplicationController
   end
 
   def index_custom
+    @castings = current_user.profileable.castings.order("created_at DESC")
   end
 
   def index_custom_invite
-    @castings = Casting.actives.limit(2)
+    @castings = current_user.profileable.castings.where(status: "active").order("created_at DESC")
   end
 
   def index_invite
@@ -212,7 +214,12 @@ class CastingsController < ApplicationController
     end
 
     def check_if_can
+      @casting ||= Casting.new
       authorize! action_name.to_s.to_sym, @casting
+    end
+
+    def check_if_can_profile
+      authorize! action_name.to_s.to_sym, @profile
     end
 
     def set_pagination_data
@@ -243,6 +250,6 @@ class CastingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def casting_params
-      params.require(:casting).permit(:title, :description, :location, :expiration_date, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[])
+      params.require(:casting).permit(:title, :description, :location, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[])
     end
 end

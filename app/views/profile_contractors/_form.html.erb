@@ -1,0 +1,102 @@
+<div id="profile-model-fields-container" class="well">
+  <%= form_for(@profile, remote: true) do |f| %>
+	<div class="row">
+		<div class="col-md-12">
+			<%= f.submit "Save changes", class: "btn btn-success btn-block btn-ms" %><br />
+		</div>
+	</div>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Name</h3>
+	  </div>
+	  <div class="panel-body">
+	  	<div class="row">
+			<div class="col-md-6">
+			    <div class="form-group text-center">
+			      <%= f.label :first_name %><br />
+			      <%= f.text_field :first_name, placeholder: "First name", class: "form-control text-center" %>
+			    </div>
+	    	</div>
+	    	<div class="col-md-6">
+	    		<div class="form-group text-center">
+			      <%= f.label :last_name %><br />
+			      <%= f.text_field :last_name, placeholder: "Last name", class: "form-control text-center" %>
+			    </div>
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Contact</h3>
+	  </div>
+	  <div class="panel-body">
+	    <div class="row">
+			<div class="col-md-3">
+			    <div class="form-group text-center">
+			      <%= f.label :mobile_phone %><br />
+			      <%= f.text_field :mobile_phone, placeholder: "Mobile", class: "form-control text-center" %>
+			    </div>
+	    	</div>
+	    	<div class="col-md-3">
+	    		<div class="form-group text-center">
+			      <%= f.label :land_phone %><br />
+			      <%= f.text_field :land_phone, placeholder: "Land Phone", class: "form-control text-center" %>
+			    </div>
+	    	</div>
+	    	<div class="col-md-3">
+	    		<div class="form-group text-center">
+			      <%= f.label :address %><br />
+			      <%= f.text_area :address, size: "60x3", placeholder: "Address", class: "form-control text-center" %>
+			    </div>
+	    	</div>
+	    	<div class="col-md-3">
+	    		<div class="form-group text-center">
+			      <%= f.label :represent %><br />
+			      <%= f.text_area :represent, size: "60x3", placeholder: "Represent", class: "form-control text-center" %>
+			    </div>
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Procedence</h3>
+	  </div>
+	  <div class="panel-body">
+	    <div class="row">
+			<div class="col-md-3">
+				<div class="form-group text-center">
+			      <%= f.label :nationality_id %><br />
+			      <%= f.select :nationality_id, Nationality.all.collect {|n| [ n.name_es, n.id ] }, class: "form-control" %>
+			    </div>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Aptitudes</h3>
+	  </div>
+	  <div class="panel-body">
+	  	<div class="row">
+			<div class="col-md-12">
+				<div class="form-group text-center">
+			      <%= f.label "I speak:" %><br />
+			      <div class="row">
+				      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
+				      	<div class="col-md-3">
+						    <div class="checkbox-container">
+						      <%= l.check_box %>
+						      <%= l.label %>
+						    </div>
+					    </div>
+					  <% end %>
+			       </div>
+			    </div>
+			</div>
+		</div>
+	  </div>
+	</div>
+  <% end %>
+</div>

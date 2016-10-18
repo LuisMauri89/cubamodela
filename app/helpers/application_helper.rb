@@ -58,7 +58,7 @@ module ApplicationHelper
     if current_user.profileable.nil?
       case current_user.kind
       when "contractor"
-        return new_profile_model_path
+        return new_profile_contractor_path
       when "model"
         return new_profile_model_path
       when "photographer"
@@ -67,7 +67,7 @@ module ApplicationHelper
     else
       case current_user.kind
       when "contractor"
-        return edit_profile_model_path(current_user.profileable)
+        return edit_profile_contractor_path(current_user.profileable)
       when "model"
         return edit_profile_model_path(current_user.profileable)
       when "photographer"
@@ -92,6 +92,22 @@ module ApplicationHelper
     end
   end
 
+  def get_active_castings_count
+    if current_user.profileable.nil?
+      return "0"
+    else
+      return current_user.profileable.castings.where(status: "active").count.to_s
+    end
+  end
+
+  def get_active_bookings_count
+    if current_user.profileable.nil?
+      return "0"
+    else
+      return current_user.profileable.bookings.count.to_s
+    end
+  end
+
   # For users counts
   def get_models_count
     ProfileModel.count
@@ -99,6 +115,10 @@ module ApplicationHelper
 
   def get_photographers_count
     ProfilePhotographer.count
+  end
+
+  def get_contractors_count
+    ProfileContractor.count
   end
 
 end

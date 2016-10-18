@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   # Status
-  enum template: [:unset, :inbox_message_casting_invitation]
+  enum template: [:unset, :inbox_message_casting_invitation, :inbox_message_booking_invitation]
 
   after_initialize :set_default_template, if: :new_record?
 
@@ -15,6 +15,9 @@ class Message < ApplicationRecord
   	when "inbox_message_casting_invitation"
   		self.title = "New Invitation"
   		self.description = "You have been invited to a new casting"
+    when "inbox_message_booking_invitation"
+      self.title = "New Booking"
+      self.description = "You have been booked"
   	end
   end
 

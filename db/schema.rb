@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014160252) do
+ActiveRecord::Schema.define(version: 20161018192851) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 20161014160252) do
     t.integer  "identifier"
     t.index ["identifier"], name: "index_albums_on_identifier"
     t.index ["profileable_type", "profileable_id"], name: "index_albums_on_profileable_type_and_profileable_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "status",                default: 0
+    t.text     "description"
+    t.text     "location"
+    t.datetime "casting_date"
+    t.datetime "shooting_date"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "profile_contractor_id"
+    t.integer  "profile_model_id"
+    t.index ["profile_contractor_id", "profile_model_id"], name: "index_bookings_on_profile_contractor_id_and_profile_model_id"
+    t.index ["profile_contractor_id"], name: "index_bookings_on_profile_contractor_id"
+    t.index ["profile_model_id"], name: "index_bookings_on_profile_model_id"
   end
 
   create_table "castings", force: :cascade do |t|
@@ -81,6 +96,13 @@ ActiveRecord::Schema.define(version: 20161014160252) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "languages_profile_contractors", id: false, force: :cascade do |t|
+    t.integer "language_id"
+    t.integer "profile_contractor_id"
+    t.index ["language_id"], name: "index_languages_profile_contractors_on_language_id"
+    t.index ["profile_contractor_id"], name: "index_languages_profile_contractors_on_profile_contractor_id"
+  end
+
   create_table "languages_profile_models", id: false, force: :cascade do |t|
     t.integer "profile_model_id"
     t.integer "language_id"
@@ -135,6 +157,18 @@ ActiveRecord::Schema.define(version: 20161014160252) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["attachable_type", "attachable_id"], name: "index_photos_on_attachable_type_and_attachable_id"
+  end
+
+  create_table "profile_contractors", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "represent"
+    t.string   "mobile_phone"
+    t.string   "land_phone"
+    t.string   "address"
+    t.integer  "nationality_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "profile_models", force: :cascade do |t|

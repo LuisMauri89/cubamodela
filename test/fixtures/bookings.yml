@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 1
+  ProfileContractor: one
+  ProfileModel: one
+  description: MyText
+  location: MyText
+  casting_date: 2016-10-18 14:02:10
+  shooting_date: 2016-10-18 14:02:10
+
+two:
+  status: 1
+  ProfileContractor: two
+  ProfileModel: two
+  description: MyText
+  location: MyText
+  casting_date: 2016-10-18 14:02:10
+  shooting_date: 2016-10-18 14:02:10

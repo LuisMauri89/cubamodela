@@ -21,6 +21,8 @@ class ProfileModel < ApplicationRecord
 	# Castings
 	has_many :intents
 	has_many :castings, through: :intents
+	has_many :bookings, dependent: :destroy
+  	has_many :profile_contractors, through: :bookings
 
 	# Nomenclators
 	belongs_to :ayes_color, class_name: "Color", foreign_key: "ayes_color_id", optional: true

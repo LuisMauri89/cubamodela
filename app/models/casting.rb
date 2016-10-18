@@ -24,6 +24,7 @@ class Casting < ApplicationRecord
   validate :expiration_date_cannot_be_in_the_past
   validate :casting_date_cannot_be_in_the_past
   validate :shooting_date_cannot_be_in_the_past
+  validates :access_type, inclusion: { in: %w(Free Personal) }
 
   #Scopes
   scope :actives, lambda { where(status: "active").order("created_at DESC") }
@@ -134,7 +135,7 @@ class Casting < ApplicationRecord
   end
 
   def apply_model(profile)
-    if self.personal? || self.closed? || self.canceled? || self.casting_date <= Date.today
+    if self.personal? || self.closed? || self.canceled? || self.casting_date <= Date.today || not(profile.can_apply?(self))
       return invalid_intent
     else
       intent = Intent.where(profile_model_id: profile.id).first
@@ -150,7 +151,7 @@ class Casting < ApplicationRecord
 
   def invalid_intent
     intent = Intent.new
-    intent.errors[:base] << "can't operate on a old casting or canceled or private."
+    intent.errors[:base] << "can't operate on a old casting or canceled or private or already applied."
 
     return intent
   end
