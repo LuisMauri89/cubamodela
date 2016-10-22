@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 # Models Profile routes
   resources :profile_models do
     get 'show_resume', on: :member
+    get 'show_for_review', on: :member
+    get 'publish', on: :member
+    get 'no_publish', on: :member
   end
 
 # Photographers Profile routes
@@ -69,29 +72,36 @@ Rails.application.routes.draw do
   end
 
 # Castings routes
-resources :castings do
-  get 'edit_photos', on: :member
-  concerns :attachable
-  get 'manage', on: :member
-  get 'close', on: :member
-  get 'cancel', on: :member
-  get 'activate', on: :member
-  get '/custom/index/', to: 'castings#index_custom', as: :custom_index, on: :collection
-  get '/custom/index/invite/:profile_id', to: 'castings#index_custom_invite', as: :custom_index_invite, on: :collection
-  get '/invite/index/', to: 'castings#index_invite', on: :member
-  get '/invited/index/', to: 'castings#index_invited', on: :member
-  get '/confirmed/index/', to: 'castings#index_confirmed', on: :member
-  get '/favorites/index/', to: 'castings#index_favorites', on: :member
-  get '/applied/index/', to: 'castings#index_applied', on: :member
-  get '/apply/:profile_id', to: 'castings#apply', as: :apply, on: :member
-  get '/invite/:profile_id', to: 'castings#invite', as: :invite, on: :member
-  get '/confirm/:profile_id', to: 'castings#confirm', as: :confirm, on: :member
-end
+  resources :castings do
+    get 'edit_photos', on: :member
+    concerns :attachable
+    get 'manage', on: :member
+    get 'close', on: :member
+    get 'cancel', on: :member
+    get 'activate', on: :member
+    get '/custom/index/', to: 'castings#index_custom', as: :custom_index, on: :collection
+    get '/custom/index/invite/:profile_id', to: 'castings#index_custom_invite', as: :custom_index_invite, on: :collection
+    get '/invite/index/', to: 'castings#index_invite', on: :member
+    get '/invited/index/', to: 'castings#index_invited', on: :member
+    get '/confirmed/index/', to: 'castings#index_confirmed', on: :member
+    get '/favorites/index/', to: 'castings#index_favorites', on: :member
+    get '/applied/index/', to: 'castings#index_applied', on: :member
+    get '/apply/:profile_id', to: 'castings#apply', as: :apply, on: :member
+    get '/invite/:profile_id', to: 'castings#invite', as: :invite, on: :member
+    get '/confirm/:profile_id', to: 'castings#confirm', as: :confirm, on: :member
+  end
 
-resources :bookings do
-  get '/custom/index/', to: 'bookings#index_custom', as: :custom_index, on: :collection
-  get '/confirm/:profile_id', to: 'bookings#confirm', as: :confirm, on: :member
-end
+# Bookings routes
+  resources :bookings do
+    get '/custom/index/', to: 'bookings#index_custom', as: :custom_index, on: :collection
+    get '/confirm/:profile_id', to: 'bookings#confirm', as: :confirm, on: :member
+  end
+
+# Admin routes
+  scope '/admin' do
+    get '/control_panel/', to: 'admin#control_panel', as: :control_panel
+    get '/model_pending_review/', to: 'admin#model_pending_review', as: :model_pending_review
+  end
 
 # Root
   root to: 'static_pages#home'

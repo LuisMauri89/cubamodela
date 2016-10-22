@@ -14,6 +14,7 @@ class ProfileModel < ApplicationRecord
 
 	#Scopes
 	scope :ready, lambda { where(reviewed: true).order("created_at ASC") }
+	scope :not_ready, lambda { where(reviewed: false).order("created_at ASC") }
 
 	# User
 	has_one :user, as: :profileable
@@ -72,7 +73,7 @@ class ProfileModel < ApplicationRecord
 
 	# Get full name
 	def full_name
-		if self.first_name and self.last_name
+		if self.first_name.present? and self.last_name.present?
 			self.first_name + " " + self.last_name
 		else
 			"Missing Name"
@@ -206,5 +207,9 @@ class ProfileModel < ApplicationRecord
 
 	def can_apply?(casting)
 		return not(casting_ids.include?(casting.id))
+	end
+
+	def publish
+		self.reviewed = true
 	end
 end

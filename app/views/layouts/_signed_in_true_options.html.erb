@@ -1,6 +1,6 @@
 <% case current_user.role %>
 <% when "admin" %>
-	<li><%= link_to t('menu.options.control_panel'), "#" %></li>
+	<li><%= link_to t('menu.options.control_panel'), control_panel_path %></li>
 	<li><a href="#">t('menu.options.inbox')</a></li>
 	<li role="separator" class="divider"></li>
 	<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>

@@ -1,2 +1,23 @@
-<h1>ProfileModel#show</h1>
-<p>Find me in app/views/profile_model/show.html.erb</p>
+<% if @profile.reviewed %>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<div id="profile-picture-container" class="text-center">
+				<div id="profile-picture", style="margin-bottom: 5px;">
+					<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			
+		</div>
+	</div>
+<% else %>
+	<h1>Sorry this profile is pending review</h1>
+<% end %>

@@ -1,27 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary"  style="margin:30px;">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center">Expertises</h1>
+      </div>
+      <div class="panel-body" style="padding-left:100px;padding-right:100px;">
+        <table class="table">
+          <thead class="bg-info">
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
 
-<h1>Expertises</h1>
+          <tbody>
+            <% @expertises.each do |expertise| %>
+              <tr>
+                <td><h4><%= expertise.name %></h4></td>
+                <td>
+                  <%= link_to 'Destroy', expertise, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit', edit_expertise_path(expertise), class: "btn btn-primary pull-right btn-small-right-margin" %>
+                  <%= link_to 'Show', expertise, class: "btn btn-primary pull-right btn-small-right-margin" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <br>
 
-  <tbody>
-    <% @expertises.each do |expertise| %>
-      <tr>
-        <td><%= expertise.name %></td>
-        <td><%= link_to 'Show', expertise %></td>
-        <td><%= link_to 'Edit', edit_expertise_path(expertise) %></td>
-        <td><%= link_to 'Destroy', expertise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Expertise', new_expertise_path %>
+        <%= link_to 'New Expertise', new_expertise_path, class: "btn btn-primary" %>
+        <%= link_to 'Control Panel', control_panel_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

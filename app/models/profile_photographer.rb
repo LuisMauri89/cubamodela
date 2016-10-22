@@ -51,7 +51,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	# Get full name
 	def full_name
-		if self.first_name and self.last_name
+		if self.first_name.present? and self.last_name.present?
 			self.first_name + " " + self.last_name
 		else
 			"Unknown"

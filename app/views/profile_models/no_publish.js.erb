@@ -1,0 +1,5 @@
+<% if @profile.errors.any? %>
+	$('#model-info-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#model-info-container').html("<%= j render 'action_info' %>");
+<% end %>

@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-md-12">
+		<div id="model-info-container">
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<%= link_to "Publish", publish_profile_model_path(@profile), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to "No Publish", no_publish_profile_model_path(@profile), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
+	</div>
+</div>

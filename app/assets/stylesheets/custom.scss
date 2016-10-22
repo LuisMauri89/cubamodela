@@ -2,7 +2,7 @@
 body {
   position: relative;
   padding-top: 50px;
-  font-family: 'actor-regular' !important;
+  font-family: 'roboto-thin' !important;
 }
 
 /* Expand Boostrap container 100% */
@@ -561,6 +561,11 @@ a.link-image:hover{
 .panel-body-nomenclator{
 	padding-left:100px;
 	padding-right:100px;
+}
+
+/* For Admin */
+.admin-margin-medium{
+	margin: 50px !important;
 }
 
 

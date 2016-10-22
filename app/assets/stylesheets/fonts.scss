@@ -1,4 +1,15 @@
 @font-face{
+	font-family: 'roboto-thin';
+	src: asset-url('Roboto-Thin.eot');
+	src: asset-url('Roboto-Thin.eot?#iefix') format('embedded-opentype'),
+		 asset-url('Roboto-Thin.woff') format('woff'),
+		 asset-url('Roboto-Thin.ttf') format('truetype'),
+		 asset-url('Roboto-Thin.svg#roboto-thin') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face{
 	font-family: 'amarante-regular';
 	src: asset-url('Amarante-Regular.eot');
 	src: asset-url('Amarante-Regular.eot?#iefix') format('embedded-opentype'),

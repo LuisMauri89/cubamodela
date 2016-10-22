@@ -18,9 +18,9 @@
               <tr>
                 <td><h4><%= color.name %></h4></td>
                 <td>
-                  <%= link_to 'Destroy', color, method: :delete, class: "btn btn-danger pull-right", data: { confirm: 'Are you sure?' } %>
-                  <%= link_to 'Edit', edit_color_path(color), class: "btn btn-success pull-right" %>
-                  <%= link_to 'Show', color, class: "btn btn-primary pull-right" %>
+                  <%= link_to 'Destroy', color, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit', edit_color_path(color), class: "btn btn-primary pull-right btn-small-right-margin" %>
+                  <%= link_to 'Show', color, class: "btn btn-primary pull-right btn-small-right-margin" %>
                 </td>
               </tr>
             <% end %>
@@ -29,7 +29,8 @@
 
         <br>
 
-        <%= link_to 'New Color', new_color_path, class: "btn btn-success" %>
+        <%= link_to 'New Color', new_color_path, class: "btn btn-primary" %>
+        <%= link_to 'Control Panel', control_panel_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

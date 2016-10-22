@@ -2,13 +2,13 @@
   <div class="col-md-12">
     <div class="panel panel-primary panel-nomenclator">
       <div class="panel-heading">
-        <h1 class="panel-title text-center">Users</h1>
+        <h1 class="panel-title text-center">Models pending review</h1>
       </div>
       <div class="panel-body panel-body-nomenclator">
         <table class="table">
           <thead class="bg-info">
             <tr>
-              <th class="text-center">User</th>
+              <th class="text-center">Model</th>
               <th class="text-center">Email</th>
               <th class="text-center">Created at</th>
               <th class="text-center">Actions</th>
@@ -16,16 +16,16 @@
           </thead>
 
           <tbody>
-            <% @users.each do |user| %>
+            <% @models.each do |model| %>
               <tr>
                 <td>
-                  <%= image_tag user.profileable.nil? ? "missing_profile_picture.jpg" : user.profileable.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
-                  <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.full_name  %></h4>
+                  <%= image_tag model.nil? ? "missing_profile_picture.jpg" : model.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
+                  <h4 class="pull-left" style="margin-left:10px;"><%= model.full_name  %></h4>
                 </td>
-                <td class="text-center"><h4><%= user.email %></h4></td>
-                <td class="text-center"><h4><%= user.created_at %></h4></td>
+                <td class="text-center"><h4><%= model.user.email %></h4></td>
+                <td class="text-center"><h4><%= model.created_at %></h4></td>
                 <td>
-                  <%= link_to 'Some action', "#", class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  <%= link_to 'Edit', show_for_review_profile_model_path(model), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>
             <% end %>

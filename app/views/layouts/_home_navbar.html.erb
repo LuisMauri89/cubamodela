@@ -7,12 +7,10 @@
 		</div>
 
 		<ul class="nav navbar-nav" style="font-size: <%= get_navbar_items_size.to_s %>px;">
-			<li><a href="#services-container"><%= t('menu.items.services') %></a></li>
-			<li><a href="#us-container"><%= t('menu.items.us') %></a></li>
-			<li><a href="#partners-container"><%= t('menu.items.partners') %></a></li>
 			<li><a href="#models-container"><%= t('menu.items.models') %></a></li>
 			<li><a href="#photographers-container"><%= t('menu.items.photographers') %></a></li>
 			<li><a href="#cuba-container"><%= t('menu.items.discover') %></a></li>
+			<li><a href="#us-container"><%= t('menu.items.us') %></a></li>
 		</ul>
 		<% if user_signed_in? %>
 			<%= render 'layouts/signed_in_true' %>

@@ -1,7 +1,7 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :edit, :update, :destroy]
-  before_action :check_if_can, only: [:edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :show_resume, :show_for_review, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:show_for_review, :publish, :no_publish, :edit, :update, :destroy]
 
   def index
     @models = ProfileModel.ready
@@ -14,6 +14,33 @@ class ProfileModelsController < ApplicationController
   end
 
   def show_resume
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_for_review
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def publish
+    @profile.publish
+
+    respond_to do |format|
+      if @profile.save
+        Message.create(template: "inbox_message_profile_published", ownerable: @profile, asociateable: @profile)
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
+  def no_publish
+    Message.create(template: "inbox_message_profile_unpublished", ownerable: @profile, asociateable: @profile)
+    
     respond_to do |format|
       format.js
     end
