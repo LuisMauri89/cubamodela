@@ -1,5 +1,5 @@
 <% if @booking.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
-	$('#model-info-container').html("<%= j render 'action_info', text: 'Cofirmation succesfully' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.bookings.messages.confirm' %>");
 <% end %>

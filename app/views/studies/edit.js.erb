@@ -2,7 +2,7 @@ $('.row-study-<%= @study.id %>').hide();
 $('#form-edit-study-<%= @study.id %>').html("<%= j render 'form' %>");
 $('#edit_study_<%= @study.id %>').append("<%= j render 'cancel_form', edit: true %>");
 $('#btn-cancel-edit-study').click(function(){
-	$("#model-info-container").hide();
+	$("#notification-messages-container").hide();
 	$('#form-edit-study-<%= @study.id %>').empty();
 	$('.row-study-<%= @study.id %>').show();
 });

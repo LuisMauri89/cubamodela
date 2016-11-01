@@ -1,5 +1,11 @@
-<h1>New Province</h1>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well well-form well-medium">
+  		<h3 class="text-center"><%= t('views.provinces.new.header_text') %></h3>
+	  	<%= render 'form', province: @province %>
 
-<%= render 'form', province: @province %>
-
-<%= link_to 'Back', provinces_path %>
+		<%= link_to t('forms.buttons.back'), provinces_path, class: "btn btn-primary pull-right" %>
+      <div class="clearfix">...</div>
+  	</div>
+  </div>
+</div>

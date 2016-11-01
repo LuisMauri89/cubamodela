@@ -2,8 +2,8 @@
 <% when "profile" %>
 	$("#navbar-profile-photo").empty();
 	$("#navbar-profile-photo").html("<%= j render 'upload_profile_photo' %>");
-	$("#profile-picture").empty();
-	$("#profile-picture").html("<%= j render 'upload' %>");
+	$("#profile-picture-wrapper").empty();
+	$("#profile-picture-wrapper").html("<%= j render 'upload' %>");
 	$("#modal-container").modal("hide");
 <% when "album" %>
 	<% if @album.photos.count > 1 %>

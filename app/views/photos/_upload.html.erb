@@ -1,5 +1,5 @@
 <% if @photo_type == "profile" %>
-	<%= image_tag @photo.image.url(:profile), alt: @photo.image.url(:profile), class: "img-rounded" %>
+	<%= image_tag @photo.image.url(:profile), alt: @photo.image.url(:profile), class: "img-responsive" %>
 <% elsif @photo_type == "casting" %>
 	<%= link_to(casting_photo_path(@casting, @photo, type: "casting"), remote: true, class: "link-image" ) do %>
 		<div id="casting-photo-<%= @photo.id %>" class="img-thumbnail list-photo-item">

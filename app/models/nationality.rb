@@ -5,4 +5,13 @@ class Nationality < ApplicationRecord
 	
 	# Associations
 	has_many :profile_models
+
+	def name
+		case I18n.locale
+		when "en".to_sym
+			return self.name_en
+		when "es".to_sym
+			return self.name_es
+		end
+	end
 end

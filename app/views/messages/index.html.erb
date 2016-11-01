@@ -5,28 +5,28 @@
       <div id="model-info-container">
       </div>
       <div id="inbox-actions-container">
-        <%= link_to "Read all", read_all_messages_path, remote: true, class: "btn btn-primary btn-sm" %>
-        <%= link_to "Unread all", unread_all_messages_path, remote: true, class: "btn btn-primary btn-sm" %>
+        <%= link_to "Read all", read_all_messages_path, remote: true, class: "btn btn-primary btn-sm" << get_btn_action_state(@messages_count) %>
+        <%= link_to "Unread all", unread_all_messages_path, remote: true, class: "btn btn-primary btn-sm" << get_btn_action_state(@messages_count) %>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div id="messages-list-container">
         <div class="list-group">
           <% @messages.each_with_index do |message, index| %>
               <%= link_to(message_path(message), remote: true, class: "list-group-item " + get_readed_class(message)) do %>
-                <h4 id="message-<%= message.id %>" class="list-group-item-heading"><%= message.title %></h4>
-                <p class="list-group-item-text"><%= message.description %></p>
+                <h4 id="message-<%= message.id %>" class="list-group-item-heading"><%= t(message.title) %><span class="pull-right message-created-at"><%= l(message.created_at, format: :long) %></span></h4>
+                <p class="list-group-item-text"><%= t(message.description) %></p>
               <% end %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-8">
       <div id="current-message-container">
-        <%= render 'no_messages' %>
+        <%= render 'current_message' %>
       </div>
     </div>
   </div>

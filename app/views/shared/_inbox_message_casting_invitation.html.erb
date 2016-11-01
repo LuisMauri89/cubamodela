@@ -1,7 +1,8 @@
 <div class="row bg-primary message-section">
 	<div class="col-md-11">
 		<div class="text-center">
-			<h2>You have been invited to casting <%= @message.asociateable.title %></h2>
+			<h2><%= t('views.messages.index.templates.casting_invitation.header_text') %></h2>
+			<h3>"<%= @message.asociateable.title %>"</h3>
 		</div>
 	</div>
 	<div class="col-md-1">
@@ -16,7 +17,26 @@
 <div class="row message-section">
 	<div class="col-md-12">
 		<div class="text-justify">
-			<p>Aqui un texto explicando y demas <%= @message.asociateable.description %></p>
+			<h4><%= t('activerecord.attributes.casting.description') %></h4>
+			<p><%= @message.asociateable.description %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-justify">
+			<p><%= t('views.messages.index.templates.casting_invitation.after_description_text') %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-left">
+			<p><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@message.asociateable.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+			<p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@message.asociateable.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.casting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+			<p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@message.asociateable.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
 		</div>
 	</div>
 </div>
@@ -24,14 +44,14 @@
 <div class="row message-section">
 	<div class="col-md-12">
 		<div class="text-center">
-			<p><%= @message.asociateable.expiration_date %></p>
+			<p><%= t('views.messages.index.templates.casting_invitation.after_dates_text') %></p>
 		</div>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-md-12">
-		<%= link_to "See casting", casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
-		<%= link_to "Confirm", confirm_casting_path(@message.asociateable, current_user.profileable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to t('views.messages.index.templates.casting_invitation.buttons.see_casting'), casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to t('views.messages.index.templates.casting_invitation.buttons.confirm'), confirm_casting_path(@message.asociateable, current_user.profileable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
 	</div>
 </div>

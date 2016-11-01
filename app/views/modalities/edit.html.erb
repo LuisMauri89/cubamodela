@@ -1,6 +1,12 @@
-<h1>Editing Modality</h1>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well well-form well-medium">
+  		<h3 class="text-center"><%= t('views.modalities.edit.header_text') %></h3>
+	  	<%= render 'form', modality: @modality %>
 
-<%= render 'form', modality: @modality %>
-
-<%= link_to 'Show', @modality %> |
-<%= link_to 'Back', modalities_path %>
+		<%= link_to t('forms.buttons.back'), modalities_path, class: "btn btn-primary pull-right" %>
+		<%= link_to t('forms.buttons.show'), @modality, class: "btn btn-primary pull-right btn-small-right-margin" %>
+      <div class="clearfix">...</div>
+  	</div>
+  </div>
+</div>

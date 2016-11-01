@@ -5,7 +5,7 @@ class ColorsController < ApplicationController
   # GET /colors
   # GET /colors.json
   def index
-    @colors = Color.all
+    @colors = Color.all.order("name_en ASC")
   end
 
   # GET /colors/1
@@ -70,6 +70,6 @@ class ColorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def color_params
-      params.require(:color).permit(:name)
+      params.require(:color).permit(:name_en, :name_es)
     end
 end

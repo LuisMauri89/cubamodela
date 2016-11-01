@@ -2,7 +2,7 @@ module ApplicationHelper
 
   # For Navbar
   def get_navbar_items_size
-    default_size = 15
+    default_size = 20
     if user_signed_in?
       if current_user.admin?
         return default_size
@@ -106,6 +106,10 @@ module ApplicationHelper
     else
       return current_user.profileable.bookings.count.to_s
     end
+  end
+
+  def get_active_castings
+    return Casting.actives.count.to_s
   end
 
   # For users counts

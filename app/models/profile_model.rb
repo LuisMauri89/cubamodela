@@ -26,7 +26,7 @@ class ProfileModel < ApplicationRecord
   	has_many :profile_contractors, through: :bookings
 
 	# Nomenclators
-	belongs_to :ayes_color, class_name: "Color", foreign_key: "ayes_color_id", optional: true
+	belongs_to :eyes_color, class_name: "Color", foreign_key: "eyes_color_id", optional: true
 	belongs_to :current_province, class_name: "Province", foreign_key: "current_province_id", optional: true
 	has_and_belongs_to_many :expertises, dependent: :destroy
 	has_and_belongs_to_many :languages, dependent: :destroy
@@ -43,22 +43,22 @@ class ProfileModel < ApplicationRecord
 	# Inbox
 	has_many :messages, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
 
-	#Check if profile is completed
+	# Profile completeness
 	def profile_complete?
-		parameters_with_values = self.generate_array_of_param_with_value
+		parameters_with_values = generate_array_of_param_with_value
 
 		parameters_with_values.each do |p|
-			return p if p
+			return false if !p
 		end
 
-		return false
+		return true
 	end
 
 	def profile_complete_progress
 		progress = 0
-		parameters_with_values = self.generate_array_of_param_with_value
+		parameters_with_values = generate_array_of_param_with_value
 
-		progress = parameters_with_values.reject{ |p| p }.length
+		progress = parameters_with_values.reject{ |p| !p }.length
 
 		return progress
 	end
@@ -68,21 +68,21 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def profile_complete_progress_percentage
-		progress = (self.profile_complete_progress * 100)/self.profile_complete_progress_total
+		progress = (profile_complete_progress * 100)/profile_complete_progress_total
 	end
 
-	# Get full name
+	# Get attrs
 	def full_name
-		if self.first_name.present? and self.last_name.present?
-			self.first_name + " " + self.last_name
+		if first_name.present? and last_name.present?
+			first_name << " " << last_name
 		else
-			"Missing Name"
+			user.email.split("@")[0]
 		end
 	end
 
 	def get_profile_picture_url(size)
 		begin
-			return self.albums.where(name: "Profile Photo").first.photos.last.image.url(size)
+			return albums.where(name: "Profile Photo").first.photos.last.image.url(size)
 		rescue
 			return "missing_profile_picture.jpg"
 		end
@@ -90,7 +90,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_profesional_book_album_photos
 		begin
-			return self.albums.where(name: "Profesional Book").first.photos
+			return albums.where(name: "Profesional Book").first.photos
 		rescue
 			return []
 		end
@@ -98,7 +98,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_profesional_book_album_photos_count
 		begin
-			return self.albums.where(name: "Profesional Book").first.photos.count
+			return albums.where(name: "Profesional Book").first.photos.count
 		rescue
 			return 0
 		end
@@ -106,7 +106,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_languages_formated
 		lang_formated = ""
-		self.languages.each_with_index do |language, index|
+		languages.each_with_index do |language, index|
 			if index == 0
 				lang_formated += language.name
 			else
@@ -120,7 +120,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_expertises_formated
 		exp_formated = ""
-		self.expertises.each_with_index do |expertise, index|
+		expertises.each_with_index do |expertise, index|
 			if index == 0
 				exp_formated += expertise.name
 			else
@@ -132,56 +132,85 @@ class ProfileModel < ApplicationRecord
 		return exp_formated
 	end
 
-	def generate_array_of_param_with_value #.present?
-		parameters_with_values = [self.first_name.nil? ? true : self.first_name.empty?, self.last_name.nil? ? true : self.last_name.empty?, self.gender.nil?, self.mobile_phone.nil? ? true : self.mobile_phone.empty?, self.land_phone.nil? ? true : self.land_phone.empty?, self.address.nil? ? true : self.address.empty?, self.current_province.nil?, self.nationality.nil?, self.ayes_color.nil?, self.chest.nil?, self.waist.nil?, self.hips.nil?, self.size_shoes.nil?, self.size_cloth.nil?]
-		parameters_with_values << self.add_expertises_to_progress
-		parameters_with_values << self.add_languages_to_progress
-		parameters_with_values << self.add_modalities_to_progress
-		parameters_with_values << self.add_profile_picture_album_to_progress
-		parameters_with_values << self.add_profesional_book_album_to_progress
+	def get_modalities_formated
+		mod_formated = ""
+		modalities.each_with_index do |modality, index|
+			if index == 0
+				mod_formated += modality.name
+			else
+				mod_formated += " / "
+				mod_formated += modality.name
+			end
+		end
+
+		return mod_formated
+	end
+
+	# Profile completeness - Helper methods
+	def generate_array_of_param_with_value
+		parameters_with_values = [first_name.present?, 
+								  last_name.present?, 
+								  gender.present?, 
+								  mobile_phone.present?, 
+								  land_phone.present?, 
+								  address.present?, 
+								  current_province.present?, 
+								  nationality.present?, 
+								  eyes_color.present?, 
+								  chest.present?, 
+								  waist.present?, 
+								  hips.present?, 
+								  size_shoes.present?, 
+								  size_cloth.present?]
+
+		parameters_with_values << add_expertises_to_progress
+		parameters_with_values << add_languages_to_progress
+		parameters_with_values << add_modalities_to_progress
+		parameters_with_values << add_profile_picture_album_to_progress
+		parameters_with_values << add_profesional_book_album_to_progress
 
 		return parameters_with_values
 	end
 
 	def add_expertises_to_progress
 		begin
-			if self.expertises.any?
-				return false
+			if expertises.any?
+				return true
 			end
 
-			return true
+			return false
 		rescue
-			return true
+			return false
 		end
 	end
 
 	def add_languages_to_progress
 		begin
-			if self.languages.any?
-				return false
+			if languages.any?
+				return true
 			end
 
-			return true
+			return false
 		rescue
-			return true
+			return false
 		end
 	end
 
 	def add_modalities_to_progress
 		begin
-			if self.modalities.any?
-				return false
+			if modalities.any?
+				return true
 			end
 
-			return true
+			return false
 		rescue
-			return true
+			return false
 		end
 	end
 
 	def add_profile_picture_album_to_progress
 		begin
-			profile_picture_album = self.albums.where(name: "Profile Photo").first
+			profile_picture_album = albums.where(name: "Profile Photo").first
 			if profile_picture_album.photos.any?
 				return false
 			end
@@ -194,7 +223,7 @@ class ProfileModel < ApplicationRecord
 
 	def add_profesional_book_album_to_progress
 		begin
-			profesional_book_album = self.albums.where(name: "Profesional Book").first
+			profesional_book_album = albums.where(name: "Profesional Book").first
 			if profesional_book_album.photos.any?
 				return false
 			end
@@ -205,11 +234,16 @@ class ProfileModel < ApplicationRecord
 		end
 	end
 
+	# Profile methods
 	def can_apply?(casting)
-		return not(casting_ids.include?(casting.id))
+		return !casting_ids.include?(casting.id)
 	end
 
 	def publish
-		self.reviewed = true
+		reviewed = true
+	end
+
+	def unpublish
+		reviewed = false
 	end
 end

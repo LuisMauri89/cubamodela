@@ -1,6 +1,6 @@
 <%= form_for @album, remote: true, html: { class: "form-inline" } do |f| %>
 	<div class="form-group">
-      <%= f.text_field :name, autofocus: true, placeholder: "Name", class: "form-control input-sm" %>
+      <%= f.text_field :name, autofocus: true, placeholder: t('activerecord.attributes.album.name'), class: "form-control input-sm" %>
     </div>
-    <%= f.submit class: "btn btn-success btn-xs" %>
+    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-xs" %>
 <% end %>

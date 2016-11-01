@@ -1,8 +1,8 @@
 <% if @study.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#form-new-study-container').empty()
 	$('#new-study-link').show();
 	$('#studies-container').append("<%= j render 'created_study' %>")
-	$('#model-info-container').html("<%= j render 'action_info', text: 'created' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', text: 'created' %>");
 <% end %>

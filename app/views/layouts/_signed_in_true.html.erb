@@ -7,10 +7,10 @@
 		</span>
 	<% end %>
 	<div class="btn-group">
-	  <button type="button" class="btn btn-default" aria-label="Left Align">
+	  <button type="button" class="btn btn-primary" aria-label="Left Align">
 	    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 	  </button>
-	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    <span class="caret"></span>
 	    <span class="sr-only">Toggle Dropdown</span>
 	  </button>
@@ -18,6 +18,6 @@
 	    <%= render 'layouts/signed_in_true_options' %>
 	  </ul>
 	</div>
-	<%= link_to t('forms.buttons.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-success navbar-btn", style: "margin-right: 40px;" %>
+	<%= link_to t('forms.buttons.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-primary navbar-btn", style: "margin-right: 20px;" %>
 	<%= render 'layouts/locales_options' %>
 </div>

@@ -1,27 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary panel-table">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center"><%= t('views.provinces.index.header_text') %></h1>
+      </div>
+      <div class="panel-body panel-body-table">
+        <table class="table">
+          <thead class="bg-info">
+            <tr>
+              <th class="text-center"><%= t('activerecord.attributes.province.name_en') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.province.name_es') %></th>
+              <th class="text-center"><%= t('table.actions') %></th>
+            </tr>
+          </thead>
 
-<h1>Provinces</h1>
+          <tbody>
+            <% @provinces.each do |province| %>
+              <tr>
+                <td><h4><%= province.name_en %></h4></td>
+                <td><h4><%= province.name_es %></h4></td>
+                <td>
+                  <%= link_to t('forms.buttons.delete'), province, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to t('forms.buttons.edit'), edit_province_path(province), class: "btn btn-primary pull-right btn-small-right-margin" %>
+                  <%= link_to t('forms.buttons.show'), province, class: "btn btn-primary pull-right btn-small-right-margin" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <br>
 
-  <tbody>
-    <% @provinces.each do |province| %>
-      <tr>
-        <td><%= province.name %></td>
-        <td><%= link_to 'Show', province %></td>
-        <td><%= link_to 'Edit', edit_province_path(province) %></td>
-        <td><%= link_to 'Destroy', province, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Province', new_province_path %>
+        <%= link_to t('forms.buttons.new'), new_province_path, class: "btn btn-primary" %>
+        <%= link_to t('forms.buttons.control_panel'), control_panel_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

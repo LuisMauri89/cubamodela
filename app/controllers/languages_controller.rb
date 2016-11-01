@@ -5,7 +5,7 @@ class LanguagesController < ApplicationController
   # GET /languages
   # GET /languages.json
   def index
-    @languages = Language.all
+    @languages = Language.all.order("name_en ASC")
   end
 
   # GET /languages/1
@@ -70,6 +70,6 @@ class LanguagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def language_params
-      params.require(:language).permit(:name)
+      params.require(:language).permit(:name_en, :name_es)
     end
 end

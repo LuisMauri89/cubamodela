@@ -1,22 +1,29 @@
-<%= form_for(expertise) do |f| %>
-  <% if expertise.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(expertise.errors.count, "error") %> prohibited this expertise from being saved:</h2>
+<div class="form-wrapper-large">
 
-      <ul>
-      <% expertise.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= form_for(expertise, html: { class: "form-horizontal" }) do |f| %>
+
+    <% if expertise.errors.any? %>
+      <div class="alert alert-danger text-center">
+        <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: expertise.errors.count) %>.
+        <ul>
+        <% expertise.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group text-center">
+      <%= f.label :name_en %>
+      <%= f.text_field :name_en, placeholder: t('activerecord.attributes.expertise.name_en'), class: "form-control" %>
     </div>
+
+    <div class="form-group text-center">
+      <%= f.label :name_es %>
+      <%= f.text_field :name_es, placeholder: t('activerecord.attributes.expertise.name_es'), class: "form-control" %>
+    </div>
+
+    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block" %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -2,16 +2,16 @@
   <div class="col-md-12">
     <div class="panel panel-primary panel-nomenclator">
       <div class="panel-heading">
-        <h1 class="panel-title text-center">Models pending review</h1>
+        <h1 class="panel-title text-center"><%= t('views.admin.pending_review.header') %></h1>
       </div>
       <div class="panel-body panel-body-nomenclator">
         <table class="table">
           <thead class="bg-info">
             <tr>
-              <th class="text-center">Model</th>
-              <th class="text-center">Email</th>
-              <th class="text-center">Created at</th>
-              <th class="text-center">Actions</th>
+              <th class="text-center"><%= t('table.model') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.user.email') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.user.created_at') %></th>
+              <th class="text-center"><%= t('table.actions') %></th>
             </tr>
           </thead>
 
@@ -23,9 +23,9 @@
                   <h4 class="pull-left" style="margin-left:10px;"><%= model.full_name  %></h4>
                 </td>
                 <td class="text-center"><h4><%= model.user.email %></h4></td>
-                <td class="text-center"><h4><%= model.created_at %></h4></td>
+                <td class="text-center"><h4><%= l(model.user.created_at, format: :custom) << " [ " << distance_of_time_in_words(model.user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
-                  <%= link_to 'Edit', show_for_review_profile_model_path(model), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  <%= link_to t('form.buttons.edit'), show_for_review_profile_model_path(model), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>
             <% end %>
@@ -33,7 +33,7 @@
         </table>
 
         <br>
-        <%= link_to 'Control Panel', control_panel_path, class: "btn btn-primary" %>
+        <%= link_to t('form.buttons.control_panel'), control_panel_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <% if @album.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
-	$("#profile-modal").html("<%= j render 'delete' %>");
-	$("#profile-modal").modal("show");
+	$("#modal-container").html("<%= j render 'delete' %>");
+	$("#modal-container").modal("show");
 <% end %>

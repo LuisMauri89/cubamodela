@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018192851) do
+ActiveRecord::Schema.define(version: 20161030205058) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -62,15 +62,17 @@ ActiveRecord::Schema.define(version: 20161018192851) do
   end
 
   create_table "colors", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name_es"
   end
 
   create_table "expertises", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name_es"
   end
 
   create_table "expertises_profile_models", id: false, force: :cascade do |t|
@@ -91,9 +93,10 @@ ActiveRecord::Schema.define(version: 20161018192851) do
   end
 
   create_table "languages", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name_es"
   end
 
   create_table "languages_profile_contractors", id: false, force: :cascade do |t|
@@ -126,9 +129,10 @@ ActiveRecord::Schema.define(version: 20161018192851) do
   end
 
   create_table "modalities", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name_es"
   end
 
   create_table "modalities_profile_models", id: false, force: :cascade do |t|
@@ -182,15 +186,15 @@ ActiveRecord::Schema.define(version: 20161018192851) do
     t.decimal  "hips"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "ayes_color_id"
+    t.integer  "eyes_color_id"
     t.integer  "current_province_id"
     t.string   "gender"
     t.integer  "size_shoes"
     t.integer  "size_cloth"
     t.integer  "nationality_id"
     t.boolean  "reviewed",            default: false
-    t.index ["ayes_color_id"], name: "index_profile_models_on_ayes_color_id"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
+    t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"
     t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"
   end
 
@@ -208,9 +212,10 @@ ActiveRecord::Schema.define(version: 20161018192851) do
   end
 
   create_table "provinces", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name_es"
   end
 
   create_table "studies", force: :cascade do |t|

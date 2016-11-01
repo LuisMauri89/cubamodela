@@ -21,6 +21,116 @@
 
 en:
   hello: "Hello world"
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%m-%d-%Y"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :month
+    - :day
+    - :year
+  datetime:
+    distance_in_words:
+      before_text: "in "
+      after_text: " from now"
+      after_text_past: " ago"
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other: "%{count} days"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 month
+        other: "%{count} months"
+      x_years:
+        one: 1 year
+        other: "%{count} years"
+      x_seconds:
+        one: 1 second
+        other: "%{count} seconds"
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %I:%M:%S %p %Z"
+      long: "%B %d, %Y %I:%M %p"
+      short: "%d %b %I:%M %p"
+      custom: "%B %d, %Y"
+    pm: pm
   menu:
     items:
       services: "Services"
@@ -30,7 +140,7 @@ en:
       photographers: "Photographers"
       discover: "Discover"
     messages:
-      admin: "Signed in as Admin: "
+      admin: "Admin: "
     options:
       control_panel: "Control Panel"
       inbox: "Inbox"
@@ -38,27 +148,50 @@ en:
       profile: "Profile"
       castings: "Castings"
       log_out: "Log out"
+      reservations: "Reservations"
+      find_casting: "Find casting"
+      new_casting: "New casting"
     locales:
       en: "English"
       es: "Spanish"
   banners:
     carousel:
       slide_0:
-        header: "Find models that fits your needs"
-        button_follow: "Find out more..."
+        button_follow: "See more"
       slide_1:
-        header: "Find the best photographers width amazing talent"
-        button_follow: "Find out more..."
+        button_follow: "See more"
       slide_2:
-        header: "Discover CUBA like never before"
-        button_follow: "Find out more..."
+        button_follow: "See more"
   forms:
     buttons:
       log_in: "Log in"
       log_up: "Sign up"
       log_out: "Log out"
       recover: "Recover"
+      save: "Save"
+      save_resource: "Save %{resource}"
+      create: "Create"
+      update: "Update"
+      back: "Back"
+      show: "Show"
+      cancel: "Cancel"
+      upload: "Upload"
+      delete: "Delete"
+      edit: "Edit"
+      new: "New"
+      control_panel: "Control Panel"
     remember_me: "Remember me"
+    warnings:
+      delete: "Are you sure you wish to delete %{value}"
+    errors:
+      header_text: "The form contains "
+      count:
+        one: "%{count} error"
+        other: "%{count} errors"
+  table:
+    model: "Model"
+    user: "User"
+    actions: "Actions"
   activerecord:
     attributes:
       user:
@@ -71,36 +204,258 @@ en:
           contractor: "Contractor"
           model: "Model"
           photographer: "Photographer"
+        created_at: "Created at"
+      album:
+        name: "Name"
+      booking:
+        description: "Description"
+        location: "Location"
+        casting_date: "Casting date"
+        shooting_date: "Shooting date"
+      color:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      expertise:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      language:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      modality:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      nationality:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      profile_model:
+        associations:
+          languages: "Languages"
+          expertises: "Expertises"
+          modalities: "Modalities"
+        gender: "Gender"
+        gender_male: "Male"
+        gender_female: "Female"
+        eyes_color_id: "Eyes color"
+        chest: "Chest"
+        weist: "Weist"
+        hips: "Hips"
+        size_shoes: "Size shoes"
+        size_cloth: "Size cloth"
+        current_province_id: "Current province"
+        current_province_id_select_text: "Please select a province"
+        nationality_id: Nationality
+        nationality_id_select_text: "Please select a nationality"
+      province:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      study:
+        title: "Title"
+        place: "Place"
+        description: "Description"
+    errors:
+      format: "%{attribute} %{message}"
+      messages:
+        record_invalid: "Validation failed: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Cannot delete record because a dependent %{record} exists"
+          has_many: "Cannot delete record because dependent %{record} exist"
+        accepted: "must be accepted"
+        blank: "can't be blank"
+        present: "must be blank"
+        confirmation: "doesn't match %{attribute}"
+        empty: "can't be empty"
+        equal_to: "must be equal to %{count}"
+        even: "must be even"
+        exclusion: "is reserved"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        inclusion: "is not included in the list"
+        invalid: "is invalid"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        model_invalid: "Validation failed: %{errors}"
+        not_a_number: "is not a number"
+        not_an_integer: "must be an integer"
+        odd: "must be odd"
+        required: "must exist"
+        taken: "has already been taken"
+        too_long:
+          one: "is too long (maximum is 1 character)"
+          other: "is too long (maximum is %{count} characters)"
+        too_short:
+          one: "is too short (minimum is 1 character)"
+          other: "is too short (minimum is %{count} characters)"
+        wrong_length:
+          one: "is the wrong length (should be 1 character)"
+          other: "is the wrong length (should be %{count} characters)"
+        other_than: "must be other than %{count}"
   views:
     static_pages:
       home:
         sign_up_form:
-          header: "Sign Up for FREE"
+          header_text: "Sign Up for FREE"
           submit_button: "Sign up NOW"
           account_text: "Already have an account?"
           recover_text: "Forgot your password?"
         models_text: "Models"
         photographers_text: "Photographers"
         places_text: "Places"
-        services_text: "Services"
-        other_text: "Other"
         sections:
-          services:
-            header: "Services"
-          us:
-            header: "About us"
-            text_0: "We came into this industry with only one porpuse"
-            text_1: "\"Bring the models at your hand\""
-            text_2: "On scroll animation is a technique which has gained popularity over the past several months. It suits one-page websites as well as websites with many illustrations perfectly, giving them a more dynamic appearance. However, the animations can be applied to any element as we will soon see."
-          partners:
-            header: "Partners"
           models:
-            header: "Models"
-            photo_0_text: "New Faces"
-            photo_1_text: "Men"
-            photo_2_text: "Women"
-            photo_3_text: "Style"
           photographers:
-            header: "Photographers"
-          discover:
-            header: "Discover Cuba"
+    admin:
+      control_panel:
+        sections:
+          users:
+            header_text: "Users"
+            users: "Users"
+            pending_review: "Pending review"
+          nomenclators:
+            header: "Nomenclators"
+            colors: "Colors"
+            expertises: "Expertises"
+            languages: "Languages"
+            modalities: "Modalities"
+            nationalities: "Nationalities"
+            provinces: "Provinces"
+      pending_review:
+        header_text: "Models pending review"
+    albums:
+      global:
+        empty_album: "No pictures in this album. Add some..."
+      messages:
+        create: "The album has been succesfully created."
+        destroy: "The album has been succesfully removed."
+        update: "The album has been succesfully updated."
+      delete:
+        header_text: "Delete Album"
+        yes_text: "Yes, delete this album"
+        no_text: "No, Please Don't"
+      index:
+        buttons:
+          new: "New album"
+    bookings:
+      new:
+        header_text: "New booking"
+      edit:
+        header_text: "Edit booking"
+      index:
+        bookings: "Bookings"
+      messages:
+        create: "Booking has been succesfully created."
+        confirm: "Confirmation succesfully."
+        update: "Booking has been succesfully updated."
+    castings:
+      index_custom_invite:
+        header_text: "Select casting to invite to"
+    colors:
+      index:
+        header_text: "Colors"
+      new:
+        header_text: "New color"
+      edit:
+        header_text: "Edit color"
+      show:
+        header_text: "Show color"
+    expertises:
+      index:
+        header_text: "Expertises"
+      new:
+        header_text: "New expertise"
+      edit:
+        header_text: "Edit expertise"
+      show:
+        header_text: "Show expertise"
+    languages:
+      index:
+        header_text: "Languages"
+      new:
+        header_text: "New language"
+      edit:
+        header_text: "Edit language"
+      show:
+        header_text: "Show language"
+    messages:
+      index:
+        no_messages_text: "Inbox is empty. You have no messages."
+        select_message_text: "Please select one message on the left."
+        templates:
+          casting_invitation:
+            title: "New casting invitation"
+            description: "You have been invited to a new casting."
+            header_text: "You have been invited to a new casting"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to confirm your presence as soon as posible, thank you so much."
+            after_dates_text: "Know that you can confirm only if the casting date have not arrive yet."
+            buttons:
+              see_casting: "See full casting especifications"
+              confirm: "Confirm my presence"
+          casting_changed:
+            title: "Casting's dates changed"
+            description: "The dates of the casting had been changed. Please check it out."
+          booking_invitation:
+            title: "New booking"
+            description: "You have been booked."
+          booking_changed:
+            title: "Booking's dates changed"
+            description: "The dates of the booking had been changed. Please check it out."
+          profile_published:
+            title: "Profile review"
+            description: "Your profile has been acepted. Congratulations."
+            after_dates_text: "Dear user, know that your profile can be put on hold at any time if the team agree that the content is at low level."
+          profile_unpublished:
+            title: "Profile review"
+            description: "Your profile has been denied. Please check it out why."
+    modalities:
+      index:
+        header_text: "Modalities"
+      new:
+        header_text: "New modality"
+      edit:
+        header_text: "Edit modality"
+      show:
+        header_text: "Show modality"
+    nationalities:
+      index:
+        header_text: "Nationalities"
+      new:
+        header_text: "New nationality"
+      edit:
+        header_text: "Edit nationality"
+      show:
+        header_text: "Show nationality"
+    profile_models:
+      index:
+        models: "Models"
+      edit:
+        progress_bar_left_text: "Profile completed [%]"
+        form_sections:
+          name: "Name"
+          contact: "Contact"
+          procedence: "Procedence"
+          body_specs: "Body specs"
+          aptitudes: "Aptitudes"
+      show_resume:
+        professional_book_empty_text: "Professional book is empty"
+        buttons:
+          invite: "Invite to casting"
+          booking: "Book this model"
+          see_profile: "See full profile"
+    provinces:
+      index:
+        header_text: "Provinces"
+      new:
+        header_text: "New province"
+      edit:
+        header_text: "Edit province"
+      show:
+        header_text: "Show province"
+    studies:
+      global:
+        empty_list: "You have cero studies. Add some..."
+      messages:
+        create: "The study has been succesfully created."
+        destroy: "The study has been succesfully removed."
+        update: "The study has been succesfully updated."
+      index:
+        buttons:
+          new: "New study"

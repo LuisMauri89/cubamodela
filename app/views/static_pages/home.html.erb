@@ -19,111 +19,57 @@
     <div class="col-md-12">
         <div id="home-line-users-amounts-container">
             <div class="row text-center">
-                <div class="col-md-3">
-                    <h2><%= t('views.static_pages.home.models_text') %>  <span class="badge"><%= get_models_count %></span></h2>
+                <div class="col-md-4">
+                    <h2><%= t('views.static_pages.home.models_text').upcase %>  <span class="home-line-users-count"><%= get_models_count %></span></h2>
                 </div>
-                <div class="col-md-3">
-                    <h2><%= t('views.static_pages.home.photographers_text') %>  <span class="badge"><%= get_photographers_count %></span></h2>
+                <div class="col-md-4">
+                    <h2><%= t('views.static_pages.home.photographers_text').upcase %>  <span class="home-line-users-count"><%= get_photographers_count %></span></h2>
                 </div>
-                <div class="col-md-3">
-                    <h2><%= t('views.static_pages.home.places_text') %>  <span class="badge">125</span></h2>
-                </div>
-                <div class="col-md-3">
-                    <h2><%= t('views.static_pages.home.services_text') %>  <span class="badge">9</span></h2>
+                <div class="col-md-4">
+                    <h2><%= t('views.static_pages.home.places_text').upcase %>  <span class="home-line-users-count">125</span></h2>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
         <div id="models-container" class="notify">
-            <h1 id="models-header" class="text-center"><%= t('views.static_pages.home.sections.models.header') %></h1>
+            <div id="models-footer" class="text-center">
+              <%= link_to "SEE MORE...", profile_models_path, class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "0.5s" } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="photographers-container" class="notify">
+            <h1 id="photographers-header" class="text-center"><%= t('views.static_pages.home.photographers_text').upcase %></h1>
             <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="1s">
-                  <%= image_tag "m-1.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                </div>
-                <div class="img-over-caption" data-animation="animated rotateIn" data-delay="3s">
-                  <h3><%= t('views.static_pages.home.sections.models.photo_0_text').upcase %></h3>
+                  <%= image_tag "home_page_section_photographers_photo_vertical_1.gif", class: "img-responsive", alt: "Photo" %>
                 </div>
               </div>
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="1.5s">
-                  <%= image_tag "m-2.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption" data-animation="animated rotateIn" data-delay="3.5s">
-                    <h3><%= t('views.static_pages.home.sections.models.photo_1_text').upcase %></h3>
-                  </div>
+                  <%= image_tag "home_page_section_photographers_photo_vertical_2.gif", class: "img-responsive", alt: "Photo" %>
                 </div>
               </div>
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="2s">
-                  <%= image_tag "m-3.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption" data-animation="animated rotateIn" data-delay="4s">
-                    <h3><%= t('views.static_pages.home.sections.models.photo_2_text').upcase %></h3>
-                  </div>
+                  <%= image_tag "home_page_section_photographers_photo_vertical_3.jpg", class: "img-responsive", alt: "Photo" %>
                 </div>
               </div>
               <div class="col-md-3 cell-no-space">
                 <div data-animation="animated bounceInDown" data-delay="2.5s">
-                  <%= image_tag "m-1.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption" data-animation="animated rotateIn" data-delay="4.5s">
-                    <h3><%= t('views.static_pages.home.sections.models.photo_3_text').upcase %></h3>
-                  </div>
+                  <%= image_tag "home_page_section_photographers_photo_vertical_4.gif", class: "img-responsive", alt: "Photo" %>
                 </div>
               </div>
             </div>
-            <div id="models-footer" class="text-center">
-              <%= link_to "DISCOVER MORE...", "#", class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "5s" } %>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div id="photographers-container" class="notify">
-            <h1 id="photographers-header" class="text-center"><%= t('views.static_pages.home.sections.photographers.header') %></h1>
-            <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
-              <div class="col-md-6 cell-no-space">
-                <div data-animation="animated bounceInLeft" data-delay="1s">
-                  <%= image_tag "5.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                </div>
-                <div class="img-over-caption img-over-caption-left-up" data-animation="animated rotateIn" data-delay="3s">
-                  <h3>INDOOR</h3>
-                </div>
-              </div>
-              <div class="col-md-6 cell-no-space">
-                <div data-animation="animated bounceInRight" data-delay="1.5s">
-                  <%= image_tag "10.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption img-over-caption-right-up" data-animation="animated rotateIn" data-delay="3.5s">
-                    <h3>STREET</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
-              <div class="col-md-6 cell-no-space">
-                <div data-animation="animated bounceInLeft" data-delay="2s">
-                  <%= image_tag "10.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption img-over-caption-left-bottom" data-animation="animated rotateIn" data-delay="4s">
-                    <h3>WILD</h3>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 cell-no-space">
-                <div data-animation="animated bounceInRight" data-delay="2.5s">
-                  <%= image_tag "15.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                  <div class="img-over-caption img-over-caption-right-bottom" data-animation="animated rotateIn" data-delay="4.5s">
-                    <h3>NATURE</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="photographers-footer" class="text-center">
-              <%= link_to "DISCOVER MORE...", "#", class: "btn btn-success btn-lg", data:{ animation: "animated fadeInUpBig", delay: "5s" } %>
-            </div>
+            <%= link_to "SEE MORE...", profile_photographers_path, class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "3s" } %>
         </div>
     </div>
 </div>

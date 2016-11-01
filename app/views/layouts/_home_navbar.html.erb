@@ -13,6 +13,9 @@
 			<li><a href="#us-container"><%= t('menu.items.us') %></a></li>
 		</ul>
 		<% if user_signed_in? %>
+			<% if current_user.model? %>
+				<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn" %>
+			<% end %>
 			<%= render 'layouts/signed_in_true' %>
 		<% else %>
 			<%= render 'layouts/signed_in_false' %>

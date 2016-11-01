@@ -4,7 +4,7 @@ class ModalitiesController < ApplicationController
   # GET /modalities
   # GET /modalities.json
   def index
-    @modalities = Modality.all
+    @modalities = Modality.all.order("name_en ASC")
   end
 
   # GET /modalities/1
@@ -69,6 +69,6 @@ class ModalitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def modality_params
-      params.require(:modality).permit(:name)
+      params.require(:modality).permit(:name_en, :name_es)
     end
 end

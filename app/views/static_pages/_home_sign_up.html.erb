@@ -28,7 +28,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation'), class: "form-control" %>
     </div>
 
-    <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-success btn-block" %>
+    <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-primary btn-block" %>
   <% end %>
   </div>
   <div class="panel-footer">
@@ -42,10 +42,10 @@
     </div>
     <div class="row">
       <div class="col-md-offset-2 col-md-4">
-        <%= link_to t('forms.buttons.log_in'), new_session_path(resource_name), class: "btn btn-success" %><br />
+        <%= link_to t('forms.buttons.log_in'), new_session_path(resource_name), class: "btn btn-primary" %><br />
       </div>
       <div class="col-md-offset-2 col-md-4">
-        <%= link_to t('forms.buttons.recover'), new_password_path(resource_name), class: "btn btn-success" %><br />
+        <%= link_to t('forms.buttons.recover'), new_password_path(resource_name), class: "btn btn-primary" %><br />
       </div>
     </div>
   </div>

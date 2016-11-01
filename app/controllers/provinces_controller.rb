@@ -5,7 +5,7 @@ class ProvincesController < ApplicationController
   # GET /provinces
   # GET /provinces.json
   def index
-    @provinces = Province.all
+    @provinces = Province.all.order("name_en ASC")
   end
 
   # GET /provinces/1
@@ -70,6 +70,6 @@ class ProvincesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def province_params
-      params.require(:province).permit(:name)
+      params.require(:province).permit(:name_en, :name_es)
     end
 end

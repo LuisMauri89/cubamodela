@@ -3,7 +3,7 @@ $('#no-studies-message').hide();
 $('#form-new-study-container').html("<%= j render 'form' %>");
 $('#new_study').append("<%= j render 'cancel_form', edit: false %>");
 $('#btn-cancel-new-study').click(function(){
-	$("#model-info-container").hide();
+	$("#notification-messages-container").hide();
 	$('#form-new-study-container').empty();
 	$('#new-study-link').show();
 	$('#no-studies-message').show();

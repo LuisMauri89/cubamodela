@@ -1,9 +1,6 @@
 <div class="row" style="padding-left: 20px;">
-    <div class="col-md-6" style="padding:10px;">
-      <%= image_tag "left.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Left" %>
-    </div>
-    <div class="col-md-6" style="padding:10px;">
-      <div id="new-account-form-container" class="jumbotron" style="margin:30px;">
+    <div class="col-md-12" style="padding:10px;">
+      <div id="new-account-form-container" class="well well-medium">
         <h2 class="text-center"><%= t('views.static_pages.home.sign_up_form.header') %></h2>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
@@ -44,7 +41,7 @@
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation'), class: "form-control" %>
               </div>
 
-              <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-success btn-block" %>
+              <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-primary btn-block" %>
               <%= link_to t('forms.buttons.log_in'), new_session_path(resource_name), class: "btn btn-primary btn-block" %><br />
             </div>
           </div>

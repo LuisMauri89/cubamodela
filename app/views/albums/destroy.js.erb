@@ -1,7 +1,7 @@
 <% if @album.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#panel-<%= @album.id %>').remove();
-	$('#model-info-container').html("<%= j render 'action_info', text: @album.name + ' removed' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.albums.messages.destroy' %>");
 <% end %>
-$("#profile-modal").modal("hide");
+$("#modal-container").modal("hide");

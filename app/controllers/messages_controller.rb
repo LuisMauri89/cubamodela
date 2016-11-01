@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :destroy]
   before_action :set_message, only: [:show, :destroy]
+  before_action :set_messages_count
 
   # GET /messages
   # GET /messages.json
@@ -42,6 +43,7 @@ class MessagesController < ApplicationController
   def destroy
     respond_to do |format|
       if @message.destroy
+        @messages_count -= 1
         format.js
       else
         format.js
@@ -53,6 +55,10 @@ class MessagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
+    end
+
+    def set_messages_count
+      @messages_count = Message.count
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

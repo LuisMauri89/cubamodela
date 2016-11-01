@@ -1,26 +1,28 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="panel panel-primary"  style="margin:30px;">
+    <div class="panel panel-primary panel-table">
       <div class="panel-heading">
-        <h1 class="panel-title text-center">Expertises</h1>
+        <h1 class="panel-title text-center"><%= t('views.expertises.index.header_text') %></h1>
       </div>
-      <div class="panel-body" style="padding-left:100px;padding-right:100px;">
+      <div class="panel-body panel-body-table">
         <table class="table">
           <thead class="bg-info">
             <tr>
-              <th class="text-center">Name</th>
-              <th class="text-center">Actions</th>
+              <th class="text-center"><%= t('activerecord.attributes.expertise.name_en') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.expertise.name_es') %></th>
+              <th class="text-center"><%= t('table.actions') %></th>
             </tr>
           </thead>
 
           <tbody>
             <% @expertises.each do |expertise| %>
               <tr>
-                <td><h4><%= expertise.name %></h4></td>
+                <td><h4><%= expertise.name_en %></h4></td>
+                <td><h4><%= expertise.name_es %></h4></td>
                 <td>
-                  <%= link_to 'Destroy', expertise, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
-                  <%= link_to 'Edit', edit_expertise_path(expertise), class: "btn btn-primary pull-right btn-small-right-margin" %>
-                  <%= link_to 'Show', expertise, class: "btn btn-primary pull-right btn-small-right-margin" %>
+                  <%= link_to t('forms.buttons.delete'), expertise, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to t('forms.buttons.edit'), edit_expertise_path(expertise), class: "btn btn-primary pull-right btn-small-right-margin" %>
+                  <%= link_to t('forms.buttons.show'), expertise, class: "btn btn-primary pull-right btn-small-right-margin" %>
                 </td>
               </tr>
             <% end %>
@@ -29,8 +31,8 @@
 
         <br>
 
-        <%= link_to 'New Expertise', new_expertise_path, class: "btn btn-primary" %>
-        <%= link_to 'Control Panel', control_panel_path, class: "btn btn-primary" %>
+        <%= link_to t('forms.buttons.new'), new_expertise_path, class: "btn btn-primary" %>
+        <%= link_to t('forms.buttons.control_panel'), control_panel_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

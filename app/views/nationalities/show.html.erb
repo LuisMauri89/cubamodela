@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name es:</strong>
-  <%= @nationality.name_es %>
-</p>
-
-<p>
-  <strong>Name en:</strong>
-  <%= @nationality.name_en %>
-</p>
-
-<%= link_to 'Edit', edit_nationality_path(@nationality) %> |
-<%= link_to 'Back', nationalities_path %>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well well-form well-medium">
+  		<h3 class="text-center"><%= t('views.nationalities.show.header_text') %></h3>
+  		<h3><%= t('activerecord.attributes.nationality.name_en') %>: <%= @nationality.name_en %></h3>
+      <h3><%= t('activerecord.attributes.nationality.name_es') %>: <%= @nationality.name_es %></h3>
+	  		
+			<%= link_to t('forms.buttons.back'), nationalities_path, class: "btn btn-primary pull-right btn-small-right-margin" %>
+			<%= link_to t('forms.buttons.edit'), edit_nationality_path(@nationality), class: "btn btn-primary pull-right btn-small-right-margin" %>
+			<div class="clearfix">...</div>
+  	</div>
+  </div>
+</div>

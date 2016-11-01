@@ -6,7 +6,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<%= link_to 'New Album', new_album_path, remote: true, id: "new-album-link", class: "btn btn-success btn-block btn-ms" %><br />
+			<%= link_to t('views.albums.index.buttons.new'), new_album_path, remote: true, id: "new-album-link", class: "btn btn-primary btn-block btn-ms" %><br />
 		</div>
 	</div>
 	<div class="row">
@@ -23,10 +23,10 @@
 								    <h3 id="title-<%= album.id %>" class="panel-title"><%= album.name %></h3>
 								</div>
 								<div class="col-md-4">
-									<%= link_to 'Upload', new_album_photo_path(album, type: "album"), remote: true, class: "btn btn-primary btn-xs pull-right" %>
+									<%= link_to t('forms.buttons.upload'), new_album_photo_path(album, type: "album"), remote: true, class: "btn btn-primary btn-xs pull-right" %>
 									<% if can_update_or_delete?(album) %>
-							    		<%= link_to 'Delete', delete_album_path(album), remote: true, class: "btn btn-danger btn-xs pull-right" %>
-							    		<%= link_to 'Edit', edit_album_path(album), remote: true, class: "btn btn-success btn-xs pull-right" %>
+							    		<%= link_to t('forms.buttons.delete'), delete_album_path(album), remote: true, class: "btn btn-primary btn-xs pull-right" %>
+							    		<%= link_to t('forms.buttons.edit'), edit_album_path(album), remote: true, class: "btn btn-primary btn-xs pull-right" %>
 						    		<% end %>
 								</div>
 							</div>
@@ -44,8 +44,10 @@
 											  <% end %>
 											<% end %>
 										<% else %>
-											<h4 class="pull-left" style="margin-right: 30px;">No pictures in this album. Add some...</h4>
-											<%= link_to 'Upload', new_album_photo_path(album, type: "album"), remote: true, class: "btn btn-success" %>
+											<h4 class="pull-left" style="margin-right: 30px;">
+												<%= t('views.albums.global.empty_album') %>
+											</h4>
+											<%= link_to t('forms.buttons.upload'), new_album_photo_path(album, type: "album"), remote: true, class: "btn btn-primary" %>
 										<% end %>
 									</div>
 								</div>

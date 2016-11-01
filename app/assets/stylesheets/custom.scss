@@ -1,176 +1,447 @@
-/* ScrollSpy Boostrap requires position relative */
+/* Global */
+
 body {
+  /* Boostrap ScrollSpy requires position relative */
   position: relative;
   padding-top: 50px;
-  font-family: 'roboto-thin' !important;
+
+  /*Default font-family*/
+  font-family: 'roboto-light' !important;
 }
 
-/* Expand Boostrap container 100% */
+p{
+	font-family: 'roboto-light' !important;
+}
+
+/* END Global */
+
+/* Boostrap customization */
+
 #main-container{
+	/* Expand Boostrap container 100% */
 	padding-left: 0px;
 	padding-right: 0px;
 }
 
-/* Affix Boostrap top after scroll matches offset-top and expand navbar 100% 
-.affix{
-	top: 0px;
-	width: 100%;
+.btn-primary, .btn-danger, .btn-success, .btn-info, .btn-warning, .navbar-btn, .btn-block{
+	/* Make btn-xxx turn roboto white */
+	color: #fff !important;
+	font-family: 'roboto-light' !important;
 }
-*/
 
-/* Flash messages box margin bottom 0px */
-.alert-messages-box{
+.btn-primary{
+	/* Make btn-primary flat square */
+	background-image: none !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	border-radius: 0px !important;
+}
+
+.panel{
+	/* Make panel-primary flat square */
+	border-radius: 0px !important;
+}
+
+.panel-primary > .panel-heading{
+	/* Make panel-primary flat square */
+	background-image: none !important;
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+}
+
+.nav-pills > li{
+	/* Make pills-primary flat square */
+    color: #337ab7 !important;
+    font-family: 'roboto-light' !important;
+}
+
+.nav-pills > li.active{
+	/* Make pills-primary flat square */
+    color: white !important;
+}
+
+.nav-pills > li > a{
+	/* Make pills-primary flat square */
+    border-radius: 0px !important;
+}
+
+.progress{
+	/* Make progress-bar-primary flat square */
+	border-radius: 0px !important;
+}
+
+.progress-bar{
+	/* Make progress-bar-primary flat square */
+	background-image: none !important;
+}
+
+.alert{
+	/* Make alert flat square */
+	border-radius: 0px !important;
+	margin-bottom: 0px !important;
+	color: white !important;
+}
+
+.alert-success{
+	/* Make alert-success flat square */
+	background-image: none !important;
+	border-color: transparent !important;
+	background-color: #5cb85c !important;
+}
+
+.alert-danger{
+	/* Make alert-danger flat square */
+	background-image: none !important;
+	border-color: transparent !important;
+	background-color: #d9534f !important;
+}
+
+.list-group{
+	/* Make list-primary flat square */
+	margin-bottom: 0px !important;
+	border-radius: 0px !important;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+	/* Make list-primary flat square */
+    background-image: none !important;
+    border-color: transparent !important;
+}
+
+.list-group-item:first-child {
+	/* Make list-primary flat square */
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+.list-group-item:last-child {
+	/* Make list-primary flat square */
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.row-no-space, .cell-no-space{
+	/* Make row and col to use all space available */
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.row-white-border{
+	border-color: white !important;
+	border-width: 5px !important;
+	border-style: solid !important;
+	margin-right: 5px !important;
+}
+
+.row-small-padding-vertical{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.row-medium-padding-vertical{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+/* END Boostrap customization */
+
+/* Footer */
+#footer{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 100px;
+	background-color: #337ab7;
+	color: white;
+}
+
+#footer a{
+	color: white;
+	text-decoration: none;
+}
+
+#footer a:hover{
+	background-color: #337ab7;
+}
+
+/* END Footer */
+
+/* Messages and Notifications */
+
+.flash-messages-container .flash-message{
 	margin-bottom: 0px !important;
 }
 
-.panel-study{
-	margin-bottom: 5px !important;
+#notification-messages-container{
+	position: fixed;
+	left: 0px;
+	top: 51px;
+	width: 100%;
 }
+
+/* END Messages and Notifications */
 
 /* Home banner */
-#home-banner-carousel{
-	font-family: 'amatic-bold' !important;
-}
-
-#home-banner-carousel h1{
-	font-size: 60px !important;
-}
-
-#home-banner-carousel a{
-	font-size: 30px !important;
-}
-
-.banner-thumbnail-image{
-	width: 200px;
-	height: 200px;
-	padding: 5px;
-}
-
-.carousel-caption h1{
-	margin-bottom: 50px;
-}
 
 .carousel-caption a{
 	margin-top: 30px;
 	margin-bottom: 10px;
+	font-size: 30px !important;
 }
 
-/* Home page panel with sign up, add some padding */
+/* END Home banner */
+
+/* Home page */
+
 #sign-up-home-page-panel-body-container{
+	/* Add padding to sign up form */
 	padding-left: 40px;
 	padding-right: 40px;
 }
 
-/* Navbar user signed in container, add some right padding */
-#navbar-signed-in-settings-container{
-	padding-right: 10px;
-}
-
-/* Profile picture edit, add some margin */
-#profile-picture-container{
-	margin-top: 10px;
-	margin-left: 45%;
-	margin-right: 45%;
-	margin-bottom: 20px;
-}
-
-/* Profile main menu edit, add some margin */
-#profile-main-menu-container{
-	padding-bottom: 10px;
-}
-
-/* Profile model, add 100% cell width */
-#profile_model_current_province_id{
-	width: 100% !important;
-}
-
-#profile_model_nationality_id{
-	width: 100% !important;
-}
-
-/* Home sign up select kind, add 50% cell width */
 #user_kind{
+	/* Add 50% width to sign up form kind field */
 	width: 60% !important;
 }
 
-/* Profile albums adding some scroll area */
-.profile-album-photos-container{
-	max-height: 300px;
-	overflow-y: scroll;
+#home-line-users-amounts-container{
+	/* Section count of user line */
+	height: 90px;
+	background-color: #337ab7;
+	color: white;
 }
 
-/* For fields with errors in forms */
+#home-line-users-amounts-container h2{
+	/* Section count of user line */
+	font-size: 35px !important;
+}
+
+#models-container{
+	/* Section models */
+	background: url(/assets/home_page_section_models_bkg_1.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-color: #337ab7;
+	min-height: 951px;
+}
+
+#models-container > #models-footer{
+	/* Section models */
+	padding-top: 60%;
+}
+
+#models-container > #models-footer > a{
+	/* Section models */
+	font-size: 30px;
+}
+
+#photographers-container{
+	/* Section photographers */
+	color: white;
+	position: relative;
+}
+
+#photographers-container > #photographers-header{
+	/* Section photographers */
+	background-color: #337ab7;
+	padding-top: 30px; 
+	padding-bottom: 30px;
+	font-size: 50px;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+#photographers-container > a{
+	/* Section photographers */
+	position: absolute;
+	top: 80%;
+	left: 45%;
+	font-size: 30px;
+}
+
+/* END Home page */
+
+/* Navbar */
+
+#navbar-signed-in-settings-container{
+	/* Navbar user signed in container, add some right Add padding */
+	padding-right: 10px;
+}
+
+.navbar-default{
+	/* Make navbar flat square */
+	background-image: none !important;
+	background-color: #f8f8f8 !important;
+}
+
+/* END Navbar */
+
+/* Forms and Tables */
+
+.well-form{
+	margin-top: 30px;
+}
+
+.well-small{
+	margin-left:40%;
+	margin-right:40%;
+}
+
+.well-medium{
+	margin-left:30%;
+	margin-right:30%;
+}
+
+.well-large{
+	margin-left:20%;
+	margin-right:20%;
+}
+
+.form-wrapper-small{
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.form-wrapper-medium{
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-bottom: 50px;
+	padding-top: 30px;
+}
+
+.form-wrapper-large{
+	padding-left: 70px;
+	padding-right: 70px;
+	padding-bottom: 70px;
+	padding-top: 30px;
+}
+
 .field_with_errors{
+	/* Form fields with errors turn red */
 	padding: 0px !important;
   	background-color: transparent !important;
   	display: block !important;
 }
 
 .field_with_errors label{
+	/* Form fields with errors turn red */
 	color: #a94442;
 }
 
 .field_with_errors .form-control{
+	/* Form fields with errors turn red */
 	border-color: #a94442;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
 
 .field_with_errors .form-control:focus{
+	/* Form fields with errors turn red */
 	border-color: #843534;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
 }
 
 .field_with_errors select{
+	/* Form fields with errors turn red */
 	border-color: #a94442;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
 }
 
 .field_with_errors select{
+	/* Form fields with errors turn red */
 	border-color: #843534;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #ce8483;
 }
 
-/* For dropzone */
+/* END Forms and Tables */
+
+/* Profile */
+
+#profile-picture-container{
+	/* Add margin to profile picture */
+	margin-top: 10px;
+	margin-left: 45%;
+	margin-right: 45%;
+	margin-bottom: 20px;
+}
+
+#profile-main-menu-container{
+	/* Add padding to profile menu */
+	padding-bottom: 10px;
+}
+
+#profile_model_current_province_id{
+	/* Add 100% width to select province */
+	width: 100% !important;
+}
+
+#profile_model_nationality_id{
+	/* Add 100% width to select nationality */
+	width: 100% !important;
+}
+
+.profile-album-photos-container{
+	/* Adding scrollable area to album container */
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
+.panel-study{
+	margin-bottom: 5px !important;
+}
+
+/* END Profile */
+
+/* Dropzone */
+
 .dropzone{
 	border: 2px dashed #0087f7 !important;
 }
 
-/* For bootstrap btn class */
-.btn-primary, .btn-danger, .btn-success, .btn-info, .btn-warning, .navbar-btn, .btn-block{
-	color: #fff !important;
-}
+/* END Dropzone */
 
-/* For modal, show photo wide */
+/* Modal */
+
 #photo-modal-large{
+	/* Show photo wide */
 	width: auto;
 	margin-left: 100px;
 	margin-right: 100px;
 }
 
 #photo-modal-medium{
+	/* Show photo wide */
 	width: auto;
 	margin-left: 150px;
 	margin-right: 150px;
 }
 
-.carousel-show-resume{
+/* END Modal */
+
+/* Index images list */
+
+#img-list-container{
+	/* Add padding to images list */
+	padding: 20px;
 }
 
-/* For list of images no hover */
+.list-photo-item{
+	/* Add margin-right to image in images list */
+	margin-right: 20px;
+}
+
 a.link-image:hover{
+	/* Images no hover */
 	background-color: transparent !important;
 	border-color: transparent !important;
 	color: transparent !important;
 }
 
-/* For list of images in index views */
-#models-list-container{
-	padding: 20px;
-}
+/* END Index images list */
 
-.list-photo-item{
-	margin-right: 20px;
-}
+/* Center content */
 
 .img-center-horizontal{
 	margin: 0 auto !important;
@@ -180,72 +451,23 @@ a.link-image:hover{
 	margin: 0 auto !important;
 }
 
+.content-vertical-align{
+	display: flex !important;
+	align-items: center !important;
+}
+
+.img-vertical-align{
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/* END Center content */
+
 .img-focus:hover{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #337ab7; 
-}
-
-/* For show resume */
-.panel-spec{
-	padding: 5px 20px !important;
-	margin: 3px !important;
-}
-
-.panel-spec:hover{
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #337ab7;
-	color: #337ab7;
-}
-
-/* For home page */
-#home-line-users-amounts-container{
-	height: 80px;
-	background-color: #337ab7;
-	color: white;
-}
-
-#home-line-users-amounts-container .badge{
-	font-family: 'aladin-regular';
-	font-size: 25px;
-	background-color: #3e8f3e;
-	color: white;
-}
-
-#services-container{
-	padding-top: 20px;
-	padding-bottom: 50px;
-}
-
-#services-container > #services-header{
-	margin-top: 30px;
-	margin-bottom: 40px;
-}
-
-#services-container > .row{
-	margin-bottom: 20px;
-}
-
-#services-container .row:first-child h3{
-	margin: 3px 50px !important;
-}
-
-#services-container .row:last-child h3{
-	margin: 3px 100px !important;
-}
-
-#services-container  h4{
-	font-family: 'arizonia-regular';
-	font-size: 40px;
-}
-
-#services-container  h3 small{
-	font-family: 'actor-regular';
-	font-size: 20px;
-}
-
-#services-container  a{
-	padding-left: 15px !important;
-	padding-right: 15px !important;
-	font-family: 'arizonia-regular';
-	font-size: 25px;
 }
 
 #us-container{
@@ -281,125 +503,6 @@ a.link-image:hover{
 	margin: 0 auto;
 }
 
-.row-no-space, .cell-no-space{
-	margin: 0px !important;
-	padding: 0px !important;
-}
-
-.row-white-border{
-	border-color: white !important;
-	border-width: 5px !important;
-	border-style: solid !important;
-	margin-right: 5px !important;
-}
-
-#models-container{
-	background: url(/assets/15.JPG) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-color: #337ab7;
-	color: white;
-	padding-top:10px; 
-	padding-bottom: 40px;
-}
-
-#models-container > #models-header{
-	padding-top: 10px; 
-	padding-bottom: 10px; 
-	color:black;
-}
-
-#models-container .img-over-caption{
-	position: absolute;
-	top: 45%;
-	left: 25%;
-}
-
-#models-container .img-over-caption > h3{
-	font-weight: bold;
-	font-size: 50px !important;
-	font-family: 'aladin-regular';
-}
-
-#models-container > #models-footer{
-	padding: 10px; 
-	margin-top: 20px;
-}
-
-#models-container > #models-footer > a{
-	font-family: 'aladin-regular';
-	font-size: 30px;
-}
-
-#photographers-container{
-	padding-top: 10px; 
-	padding-bottom: 40px;
-	color: black;
-}
-
-#photographers-container > #photographers-header{
-	padding-top: 10px; 
-	padding-bottom: 10px; 
-}
-
-#photographers-container .img-over-caption.img-over-caption-left-up{
-	position: absolute;
-	bottom: 3%;
-	right: 10%;
-}
-
-#photographers-container .img-over-caption.img-over-caption-right-up{
-	position: absolute;
-	bottom: 3%;
-	left: 10%;
-}
-
-#photographers-container .img-over-caption.img-over-caption-left-bottom{
-	position: absolute;
-	top: 3%;
-	right: 10%;
-}
-
-#photographers-container .img-over-caption.img-over-caption-right-bottom{
-	position: absolute;
-	top: 3%;
-	left: 10%;
-}
-
-#photographers-container .img-over-caption > h3{
-	font-weight: bold;
-	font-size: 50px !important;
-	font-family: 'aladin-regular';
-}
-
-#photographers-container > #photographers-footer{
-	padding: 10px; margin-top: 20px;
-}
-
-#photographers-container > #photographers-footer > a{
-	font-family: 'aladin-regular';
-	font-size: 30px;
-}
-
-#partners-container{
-	color:black;
-	padding-right: 50px;
-	padding-left: 50px;
-	padding-bottom: 30px;
-}
-
-#partners-container > #partners-header{
-	padding-top: 30px; 
-	padding-bottom: 10px; 
-}
-
-#partners-container > .row{
-	padding: 30px; 
-	margin-bottom: 30px;
-}
-
 #cuba-container{
 	background: url(/assets/15.JPG) no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -428,7 +531,12 @@ a.link-image:hover{
 	font-size: 30px;
 }
 
-/* For messages */
+/* Inbox */
+
+.message-created-at{
+	font-size: 12px;
+}
+
 #messages-container{
 	margin-bottom: 30px;
 }
@@ -471,7 +579,10 @@ a.link-image:hover{
 	color: #337ab7 !important;
 }
 
-/* For casting */
+/* END Inbox */
+
+/* Casting */
+
 #form-new-casting-wrapper, #form-casting-photos-wrapper{
 	margin-top:5%;
 	margin-left:10%;
@@ -514,16 +625,6 @@ a.link-image:hover{
 	margin-bottom: 20px;
 }
 
-.row-small-padding-vertical{
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-.row-medium-padding-vertical{
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
 .model-bottom-actions{
 	margin-top: 20px !important;
 }
@@ -553,6 +654,8 @@ a.link-image:hover{
 	overflow-y: scroll;
 }
 
+/* END Casting */
+
 /* For Nomenclators */ 
 .panel-nomenclator{
 	margin:30px;
@@ -563,10 +666,22 @@ a.link-image:hover{
 	padding-right:100px;
 }
 
-/* For Admin */
+.panel-table{
+	margin:30px;
+}
+
+.panel-body-table{
+	padding-left:100px;
+	padding-right:100px;
+}
+
+/* Admin */
+
 .admin-margin-medium{
 	margin: 50px !important;
 }
+
+/* END Admin */
 
 
 

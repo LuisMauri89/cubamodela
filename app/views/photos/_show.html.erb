@@ -10,11 +10,11 @@
   <div class="modal-footer">
     <div id="delete-photo-confirm-container">
       <p>Are you sure you wish to delete this photo?</p>
-      <%= link_to 'Delete', @destroy_url, method: :delete, remote: true, class: "btn btn-danger" %>
+      <%= link_to 'Delete', @destroy_url, method: :delete, remote: true, class: "btn btn-primary" %>
       <button id="btn-cancel-delete-photo" type="button" class="btn btn-primary">Cancel</button>
     </div>
-    <button id="btn-delete-photo" type="button" class="btn btn-danger">Delete</button>
-    <%= link_to "Close", "#", class: "btn btn-danger", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
+    <button id="btn-delete-photo" type="button" class="btn btn-primary">Delete</button>
+    <%= link_to "Close", "#", class: "btn btn-primary", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
   </div>
   </div>
 </div>

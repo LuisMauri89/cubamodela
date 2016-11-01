@@ -5,7 +5,7 @@ class ExpertisesController < ApplicationController
   # GET /expertises
   # GET /expertises.json
   def index
-    @expertises = Expertise.all
+    @expertises = Expertise.all.order("name_en ASC")
   end
 
   # GET /expertises/1
@@ -70,6 +70,6 @@ class ExpertisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expertise_params
-      params.require(:expertise).permit(:name)
+      params.require(:expertise).permit(:name_en, :name_es)
     end
 end

@@ -24,7 +24,7 @@ class Casting < ApplicationRecord
   validate :expiration_date_cannot_be_in_the_past
   validate :casting_date_cannot_be_in_the_past
   validate :shooting_date_cannot_be_in_the_past
-  validates :access_type, inclusion: { in: %w(Free Personal) }
+  validates :access_type, inclusion: { in: %w(free personal) }
 
   #Scopes
   scope :actives, lambda { where(status: "active").order("created_at DESC") }

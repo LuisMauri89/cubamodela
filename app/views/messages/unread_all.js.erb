@@ -1,1 +1,4 @@
+$(".list-group-item").removeClass('active');
 $(".list-group-item").addClass('inbox-message-unreaded-bkg');
+$("#current-message-container").empty();
+$("#current-message-container").html("<%= j render 'current_message' %>");

@@ -1,13 +1,13 @@
 <div class="row">
 	<div class="col-md-12">
-	    <% if @profile.profile_complete? %>
+	    <% if !@profile.profile_complete? %>
 			<div class="row" style="padding-top:10px;">
 				<div class="col-md-offset-1 col-md-2">
-					<p class="text-right text-success">Profile completed [%]</p>
+					<p class="text-right text-primary"><%= t('views.profile_models.edit.progress_bar_left_text') %></p>
 				</div>
 				<div id="profile-completed-progress-container" class="col-md-8">
 					<div class="progress">
-					  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= @profile.profile_complete_progress_percentage %>" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= @profile.profile_complete_progress_percentage %>%;">
+					  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="<%= @profile.profile_complete_progress_percentage %>" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: <%= @profile.profile_complete_progress_percentage %>%;">
 					    <%= @profile.profile_complete_progress_percentage %>%
 					  </div>
 					</div>
@@ -18,9 +18,15 @@
 			<div class="col-md-12">
 				<div id="profile-picture-container" class="text-center">
 					<div id="profile-picture" style="margin-bottom: 5px;">
-						<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-rounded" %>
+						<div class="img-thumbnail">
+							<div id="profile-picture-wrapper">
+								<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>
+							</div>
+							<div class="text-center" style="margin-top: 5px;">
+								<%= link_to 'Change', new_album_photo_path(@album_profile_picture, type: "profile"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
+							</div>
+						</div>
 					</div>
-					<%= link_to 'Change', new_album_photo_path(@album_profile_picture, type: "profile"), remote: true, class: "btn btn-success btn-xs" %>
 				</div>
 			</div>
 		</div>
@@ -41,8 +47,6 @@
 		</div>
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
-				<div id="model-info-container">
-				</div>
 				<div id="profile-container">
 					<%= render 'form' %> 
 				</div>

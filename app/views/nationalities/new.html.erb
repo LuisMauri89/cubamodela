@@ -1,5 +1,11 @@
-<h1>New Nationality</h1>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well well-form well-medium">
+  		<h3 class="text-center"><%= t('views.nationalities.new.header_text') %></h3>
+	  	<%= render 'form', nationality: @nationality %>
 
-<%= render 'form', nationality: @nationality %>
-
-<%= link_to 'Back', nationalities_path %>
+		<%= link_to t('forms.buttons.back'), nationalities_path, class: "btn btn-primary pull-right" %>
+      <div class="clearfix">...</div>
+  	</div>
+  </div>
+</div>

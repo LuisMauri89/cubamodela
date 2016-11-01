@@ -1,8 +1,11 @@
 <% if @message.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
-	$('#model-info-container').html("<%= j render 'action_info' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info' %>");
 	$('#message-<%= @message.id %>').parent().remove();
 	$('#current-message-container').empty();
-	$('#current-message-container').html("<%= j render 'no_messages' %>");
+	$('#current-message-container').html("<%= j render 'current_message' %>");
+	<% if @messages_count == 0 %>
+		$("#inbox-actions-container a").addClass("disabled")
+	<% end %>
 <% end %>

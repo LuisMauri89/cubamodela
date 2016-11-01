@@ -3,7 +3,7 @@
 
     <% if @booking.errors.any? %>
       <div class="alert alert-danger text-center">
-        The form contains <%= pluralize(@booking.errors.count, "error") %>.
+        <%= t('forms.errors.header_text') %> <%= pluralize(@booking.errors.count, "error") %>.
         <ul>
         <% @booking.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -38,6 +38,6 @@
     </div>
 
     <%= f.hidden_field :profile_model_id, value: @profile.id %>
-    <%= f.submit "Save Booking", class: "btn btn-primary btn-block" %>
+    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block" %>
   <% end %>
 </div>

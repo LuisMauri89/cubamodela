@@ -2,7 +2,7 @@ $('#title-<%= @album.id %>').hide();
 $('#form-edit-album-<%= @album.id %>-container').html("<%= j render 'form' %>");
 $('#edit_album_<%= @album.id %>').append("<%= j render 'cancel_form', edit: true %>");
 $('#btn-cancel-edit-album').click(function(){
-	$("#model-info-container").hide();
+	$("#notification-messages-container").hide();
 	$('#form-edit-album-<%= @album.id %>-container').empty();
 	$('#title-<%= @album.id %>').show();
 });

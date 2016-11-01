@@ -1,13 +1,13 @@
 <% if devise_controller? %>
 	<div id="navbar-signed-in-settings-container" class="navbar-right">
 		<% if controller_name != "sessions" %>
-			<%= link_to "Log in", new_session_path(resource_name), class: "btn btn-success btn-sm navbar-btn" %>
+			<%= link_to "Log in", new_session_path(resource_name), class: "btn btn-primary btn-sm navbar-btn" %>
 		<% end %>
 		<% if controller_name != "registrations" %>
-			<%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-success btn-sm navbar-btn" %>
+			<%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-primary btn-sm navbar-btn" %>
 		<% end %>
 		<% if controller_name != "passwords" %>
-			<%= link_to "Recover", new_password_path(resource_name), class: "btn btn-success btn-sm navbar-btn" %>
+			<%= link_to "Recover", new_password_path(resource_name), class: "btn btn-primary btn-sm navbar-btn" %>
 		<% end %>
 		<%= render 'layouts/locales_options' %>
 	</div>
@@ -24,7 +24,7 @@
 					    </div>
 					<% end -%>
 			</div>
-			<%= f.submit t('forms.buttons.log_in'), class: "btn btn-success" %>
+			<%= f.submit t('forms.buttons.log_in'), class: "btn btn-primary" %>
 			<%= render 'layouts/locales_options' %>
 		<% end %>
 	</div>

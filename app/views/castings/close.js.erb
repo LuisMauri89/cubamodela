@@ -1,7 +1,7 @@
 <% if @casting.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
-	$('#model-info-container').html("<%= j render 'action_info', text: 'Closed succesfully' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', text: 'Closed succesfully' %>");
 	$('#actions-container').empty();
 	$('#actions-container').html("<%= j render 'actions_container' %>");
 <% end %>

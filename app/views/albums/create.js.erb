@@ -1,8 +1,8 @@
 <% if @album.errors.any? %>
-	$('#model-info-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#form-new-album-container').empty()
 	$('#new-album-link').show();
 	$('#albums-container').append("<%= j render 'created_album' %>")
-	$('#model-info-container').html("<%= j render 'action_info', text: 'created' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.albums.messages.create' %>");
 <% end %>

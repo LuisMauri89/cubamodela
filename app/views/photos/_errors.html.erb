@@ -1,6 +1,6 @@
 <% if @photo.errors.any? %>
   <div class="alert alert-danger alert-messages-box text-center">
-    The form contains <%= pluralize(@photo.errors.count, "error") %>.
+    <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: @photo.errors.count) %>.
     <ul>
     <% @photo.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

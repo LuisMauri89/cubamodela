@@ -1,6 +1,6 @@
 <% if @profile.errors.any? %>
-  <div class="alert alert-danger alert-messages-box text-center">
-    The form contains <%= pluralize(@profile.errors.count, "error") %>.
+  <div class="alert alert-danger alert-messages-box">
+    <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: @profile.errors.count) %>.
     <ul>
     <% @profile.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

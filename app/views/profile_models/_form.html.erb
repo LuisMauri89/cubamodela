@@ -2,12 +2,12 @@
   <%= form_for(@profile, remote: true) do |f| %>
 	<div class="row">
 		<div class="col-md-12">
-			<%= f.submit "Save changes", class: "btn btn-success btn-block btn-ms" %><br />
+			<%= f.submit t('forms.buttons.save_resource', resource: "Profile"), class: "btn btn-primary btn-block btn-ms" %><br />
 		</div>
 	</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Name</h3>
+	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.name') %></h3>
 	  </div>
 	  <div class="panel-body">
 	  	<div class="row">
@@ -17,11 +17,11 @@
 					<div class="row">
 						<div class="col-md-6">
 					    	<%= f.radio_button :gender, "Female" %>
-							<%= f.label :gender, 'Female' %>
+							<%= f.label :gender, t('activerecord.attributes.profile_model.gender_female') %>
 						</div>
 						<div class="col-md-6">
 					    	<%= f.radio_button :gender, "Male" %>
-							<%= f.label :gender, 'Male' %>
+							<%= f.label :gender, t('activerecord.attributes.profile_model.gender_male') %>
 						</div>
 					</div>
 			    </div>
@@ -43,7 +43,7 @@
 	</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Contact</h3>
+	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.contact') %></h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="row">
@@ -70,20 +70,28 @@
 	</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Procedence</h3>
+	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.procedence') %></h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="row">
 			<div class="col-md-3">
 				<div class="form-group text-center">
 			      <%= f.label :current_province_id %><br />
-			      <%= f.select :current_province_id, Province.all.collect {|p| [ p.name, p.id ] }, { include_blank: "Select Province" }, class: "form-control" %>
+			      <% if I18n.locale == "en".to_sym %>
+			      	<%= f.select :current_province_id, Province.all.order("name_en ASC").collect {|p| [ p.name_en, p.id ] }, { include_blank: t('activerecord.attributes.profile_model.current_province_id_select_text') }, class: "form-control" %>
+			      <% else %>
+			      	<%= f.select :current_province_id, Province.all.order("name_en ASC").collect {|p| [ p.name_es, p.id ] }, { include_blank: t('activerecord.attributes.profile_model.current_province_id_select_text') }, class: "form-control" %>
+			      <% end %>
 			    </div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group text-center">
 			      <%= f.label :nationality_id %><br />
-			      <%= f.select :nationality_id, Nationality.all.collect {|n| [ n.name_es, n.id ] }, class: "form-control" %>
+			      <% if I18n.locale == "en".to_sym %>
+				  	<%= f.select :nationality_id, Nationality.all.order("name_en ASC").collect {|n| [ n.name_en, n.id ] }, { include_blank: t('activerecord.attributes.profile_model.nationality_id_select_text') }, class: "form-control" %>
+				  <% else %>
+				    <%= f.select :nationality_id, Nationality.all.order("name_en ASC").collect {|n| [ n.name_es, n.id ] }, { include_blank: t('activerecord.attributes.profile_model.nationality_id_select_text') }, class: "form-control" %>
+				  <% end %>
 			    </div>
 			</div>
 		</div>
@@ -91,18 +99,22 @@
 	</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Body specs</h3>
+	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.body_specs') %></h3>
 	  </div>
 	  <div class="panel-body">
 	  	<div class="row">
 			<div class="col-md-12">
 				<div class="form-group text-center">
-			      <%= f.label :ayes_color_id %><br />
+			      <%= f.label :eyes_color_id %><br />
 			      <div class="row">
-				      <% Color.all.each do |color| %>
+				      <% Color.all.order("name_en ASC").each do |color| %>
 				      	<div class="col-md-2">
-						    <%= f.radio_button :ayes_color_id, color.id %>
-						    <%= f.label :ayes_color_id, color.name %>
+						    <%= f.radio_button :eyes_color_id, color.id %>
+						    <% if I18n.locale == "en".to_sym %>
+						    	<%= f.label :eyes_color_id, color.name_en %>
+						    <% else %>
+						    	<%= f.label :eyes_color_id, color.name_es %>
+						    <% end %>
 					    </div>
 					  <% end %>
 				  </div>
@@ -145,60 +157,71 @@
 	</div>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Aptitudes</h3>
+	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.aptitudes') %></h3>
 	  </div>
 	  <div class="panel-body">
 	  	<div class="row">
-			<div class="col-md-12">
-				<div class="form-group text-center">
-			      <%= f.label "I speak:" %><br />
-			      <div class="row">
-				      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
-				      	<div class="col-md-3">
-						    <div class="checkbox-container">
-						      <%= l.check_box %>
-						      <%= l.label %>
-						    </div>
+	  		<div class="col-md-2 col-md-offset-1">
+	  			<div class="form-group">
+			      <%= f.label t('activerecord.attributes.profile_model.associations.languages') << ":" %><br />
+			      <% if I18n.locale == "en".to_sym %>
+				  	<%= f.collection_check_boxes :language_ids, Language.all.order("name_en ASC"), :id, :name_en do |l| %>
+					    <div class="checkbox-container">
+					      <%= l.check_box %>
+					      <%= l.label %>
 					    </div>
-					  <% end %>
-			       </div>
+					<% end %>	
+				  <% else %>
+				    <%= f.collection_check_boxes :language_ids, Language.all.order("name_en ASC"), :id, :name_es do |l| %>
+					    <div class="checkbox-container">
+					      <%= l.check_box %>
+					      <%= l.label %>
+					    </div>
+					<% end %>
+				  <% end %>
 			    </div>
-			</div>
-		</div>
-	    <div class="row">
-			<div class="col-md-12">
-				<div class="form-group text-center">
-			      <%= f.label "I can:" %><br />
-			      <div class="row">
-				      <%= f.collection_check_boxes :expertise_ids, Expertise.all, :id, :name do |e| %>
-				      	<div class="col-md-3">
-						    <div class="checkbox-container">
-						      <%= e.check_box %>
-						      <%= e.label %>
-						    </div>
-						</div>
-					  <% end %>
-				  </div>
+	  		</div>
+	  		<div class="col-md-2">
+	  			<div class="form-group">
+			      <%= f.label t('activerecord.attributes.profile_model.associations.expertises') << ":" %><br />
+			      <% if I18n.locale == "en".to_sym %>
+			      	<%= f.collection_check_boxes :expertise_ids, Expertise.all.order("name_en ASC"), :id, :name_en do |e| %>
+					    <div class="checkbox-container">
+					      <%= e.check_box %>
+					      <%= e.label %>
+					    </div>
+					<% end %>
+			      <% else %>
+			      	<%= f.collection_check_boxes :expertise_ids, Expertise.all.order("name_en ASC"), :id, :name_es do |e| %>
+					    <div class="checkbox-container">
+					      <%= e.check_box %>
+					      <%= e.label %>
+					    </div>
+					<% end %>
+			      <% end %>
 			    </div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="form-group text-center">
-			      <%= f.label "Modalities:" %><br />
-			      <div class="row">
-				      <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name do |e| %>
-				      	<div class="col-md-3">
-						    <div class="checkbox-container">
-						      <%= e.check_box %>
-						      <%= e.label %>
-						    </div>
-						</div>
-					  <% end %>
-				  </div>
+	  		</div>
+	  		<div class="col-md-2">
+	  			<div class="form-group">
+			      <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
+			      <% if I18n.locale == "en".to_sym %>
+			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |e| %>
+					    <div class="checkbox-container">
+					      <%= e.check_box %>
+					      <%= e.label %>
+					    </div>
+					<% end %>
+			      <% else %>
+			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |e| %>
+					    <div class="checkbox-container">
+					      <%= e.check_box %>
+					      <%= e.label %>
+					    </div>
+					<% end %>
+			      <% end %>
 			    </div>
-			</div>
-		</div>
+	  		</div>
+	  	</div>
 	  </div>
 	</div>
   <% end %>

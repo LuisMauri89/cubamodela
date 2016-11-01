@@ -6,19 +6,19 @@
         <h3><%= @profile.full_name %></h3>
       </div>
       <div class="col-md-2">
-        <%= image_tag @profile.get_profile_picture_url(:list), alt: "Model Photo", class: "img-rounded pull-right" %>
+        <%= image_tag @profile.get_profile_picture_url(:list), alt: "Model Photo", class: "img-responsive pull-right" %>
       </div>
     </div>
   </div>
   <div class="modal-body">
     <div class="row">
       <div class="col-md-7">
-        <% if @profile.get_profesional_book_album_photos.count > 0 %>
+        <% if @profile.get_profesional_book_album_photos_count > 0 %>
           <div id="profile-resume-carousel" class="carousel slide" data-interval="3000" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="profile-resume-carousel" data-slide-to="0" class="active"></li>
-              <% @profile.get_profesional_book_album_photos.count.times do |i| %>
+              <% @profile.get_profesional_book_album_photos_count.times do |i| %>
                 <li data-target="profile-resume-carousel" data-slide-to="<%= i + 1 %>"></li>
               <% end %>
             </ol>
@@ -28,7 +28,7 @@
 
               <% @profile.get_profesional_book_album_photos.each_with_index do |photo, index| %>
                 <div class="item <%= index == 0 ? "active" : "" %>" style="min-height: 550px;">
-                  <%= image_tag photo.image.url, alt: "Photo", class: "image-responsive carousel-show-resume" %>
+                  <%= image_tag photo.image.url, alt: "Photo", class: "image-responsive img-vertical-align" %>
                 </div>
               <% end %>
             </div>
@@ -44,51 +44,33 @@
             </a>
           </div>
         <% else %>
-          <h2 style="color: #337ab7;">No images in Profesional Book</h2>
+          <h2 class="text-center"><%= t('views.profile_models.show_resume.professional_book_empty_text') %></h2>
         <% end %>
       </div>
       <div class="col-md-5">
-        <% if @profile.ayes_color.present? %>
-          <h3 class="lead panel panel-default panel-spec">Ayes: <em><%= @profile.ayes_color.name %></em></h3>
-        <% end %>
-        <% if @profile.chest.present? %>
-          <h3 class="lead panel panel-default panel-spec"">Chest: <em><%= @profile.chest %> / <%= (@profile.chest/2.54).to_i %>''</em></h3>
-        <% end %>
-        <% if @profile.waist.present? %>
-          <h3 class="lead panel panel-default panel-spec">Waist: <em><%= @profile.waist %> / <%= (@profile.waist/2.54).to_i %>''</em></h3>
-        <% end %>
-        <% if @profile.hips.present? %>
-          <h3 class="lead panel panel-default panel-spec">Hips: <em><%= @profile.hips %> / <%= (@profile.hips/2.54).to_i %>''</em></h3>
-        <% end %>
-        <% if @profile.size_shoes.present? %>
-          <h3 class="lead panel panel-default panel-spec">Shoes: <em><%= @profile.size_shoes %> EU</em></h3>
-        <% end %>
-        <% if @profile.size_cloth.present? %>
-          <h3 class="lead panel panel-default panel-spec">Cloth: <em><%= @profile.size_cloth %> EU</em></h3>
-        <% end %>
         <% if @profile.current_province.present? %>
-          <h3 class="lead panel panel-default panel-spec">Province: <em><%= @profile.current_province.name %></em></h3>
+          <h3><b><%= t('activerecord.attributes.profile_model.current_province_id') %>:</b> <%= @profile.current_province.name %></h3>
         <% end %>
         <% if @profile.nationality.present? %>
-          <h3 class="lead panel panel-default panel-spec">Nationality: <em><%= @profile.nationality.name_es %></em></h3>
+          <h3><b><%= t('activerecord.attributes.profile_model.nationality_id') %>:</b> <%= @profile.nationality.name_es %></h3>
+        <% end %>
+        <% if @profile.chest.present? %>
+          <h3><b><%= t('activerecord.attributes.profile_model.chest') %>:</b> <%= @profile.chest %> / <%= (@profile.chest/2.54).to_i %>''</h3>
+        <% end %>
+        <% if @profile.waist.present? %>
+          <h3><b><%= t('activerecord.attributes.profile_model.waist') %>:</b> <%= @profile.waist %> / <%= (@profile.waist/2.54).to_i %>''</h3>
+        <% end %>
+        <% if @profile.hips.present? %>
+          <h3><b><%= t('activerecord.attributes.profile_model.hips') %>:</b> <%= @profile.hips %> / <%= (@profile.hips/2.54).to_i %>''</h3>
         <% end %>
         <% if @profile.languages.any? %>
-          <h3 class="lead panel panel-default panel-spec">Languages: <em><%= @profile.get_languages_formated %></em></h3>
+          <h3><b><%= t('activerecord.attributes.profile_model.associations.languages') %>:</b> <%= @profile.get_languages_formated %></h3>
         <% end %>
-        <% if @profile.expertises.any? %>
-          <h3 class="lead panel panel-default panel-spec">Expertises: <em><%= @profile.get_expertises_formated %></em></h3>
+        <%= link_to t('views.profile_models.show_resume.buttons.see_profile'), profile_model_path(@profile), class: "btn btn-primary btn-block" %>
+        <% if current_user.contractor? %>
+          <%= link_to t('views.profile_models.show_resume.buttons.invite'), custom_index_invite_castings_path(@profile), class: "btn btn-primary btn-block" %>
+          <%= link_to t('views.profile_models.show_resume.buttons.booking'), new_booking_path(profile_id: @profile), class: "btn btn-primary btn-block" %>
         <% end %>
-        <%= link_to 'See more...', profile_model_path(@profile), class: "btn btn-primary btn-block" %>
-        <%= link_to 'Invite', custom_index_invite_castings_path(@profile), class: "btn btn-primary btn-block" %>
-        <%= link_to 'Booking', new_booking_path(profile_id: @profile), class: "btn btn-primary btn-block" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
       </div>
     </div>
   </div>

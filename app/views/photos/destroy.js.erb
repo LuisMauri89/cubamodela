@@ -1,7 +1,7 @@
 <% case @photo_type %>
 <% when "album" %>
 	<% if @photo.errors.any? %>
-		$("#model-info-container").html("<%= j render 'errors' %>");
+		$("#notification-messages-container").html("<%= j render 'errors' %>");
 		$("#modal-container").modal("hide");
 	<% else %>
 		$("#photo-<%= @album.id %><%= @photo.id %>").parent().remove();
@@ -9,7 +9,7 @@
 	<% end %>
 <% when "casting" %>
 	<% if @photo.errors.any? %>
-		$("#model-info-container").html("<%= j render 'errors' %>");
+		$("#notification-messages-container").html("<%= j render 'errors' %>");
 		$("#modal-container").modal("hide");
 	<% else %>
 		$("#casting-photo-<%= @photo.id %>").parent().remove();
