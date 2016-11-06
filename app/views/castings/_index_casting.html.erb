@@ -51,9 +51,9 @@
 		<h5>Published at: <%= casting.created_at %></h5>
 	</div>
 	<div class="col-md-8">
-		<%= link_to "See more...", casting_path(casting), class: "btn btn-success pull-right" %>
+		<%= link_to t('views.castings.buttons.see_full_casting'), casting_path(casting), class: "btn btn-primary pull-right" %>
 		<% if current_user.model? && casting.active? && casting.free? && current_user.profileable.can_apply?(casting) %>
-			<%= link_to "Apply", apply_casting_path(casting, current_user.profileable), class: "btn btn-success pull-right" %>
+			<%= link_to t('views.castings.buttons.apply'), apply_casting_path(casting, current_user.profileable), remote: true, class: "btn btn-primary pull-right", id: "btn-apply-" << casting.id.to_s << current_user.profileable.id.to_s %>
 		<% end %>
 	</div>
 </div>
@@ -61,7 +61,7 @@
 <div class="row text-danger">
 	<div class="col-md-12">
 		<% if casting.personal? %>
-			<p>This casting is private, it can't be applied, just invited.</p>
+			<p><%= t('views.castings.messages.private') %></p>
 		<% end %>
 	</div>
 </div>

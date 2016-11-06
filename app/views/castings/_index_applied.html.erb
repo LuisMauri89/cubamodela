@@ -1,16 +1,25 @@
-<div class="row">
-	<div class="col-md-12">
-		<div id="selected-list-item-container">
-			<% @intents.each do |intent| %>
-				<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item">
-					<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
-							<%= image_tag intent.profile_model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>	
-					<% end %>
-					<br/>
-					<%= link_to "invite", invite_casting_path(@casting, intent.profile_model, list_item: "applied"), remote: true, class: "btn btn-success btn-xs pull-right" %>
-				</div>
-			<% end %>
+<% if @intents.any? %>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="selected-list-item-container">
+				<% @intents.each do |intent| %>
+					<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item">
+						<div>
+							<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
+									<%= image_tag intent.profile_model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>	
+							<% end %>
+						</div>
+						<div class="text-center" style="margin-top: 5px;">
+							<%= link_to t('views.castings.buttons.confirm'), invite_casting_path(@casting, intent.profile_model, list_item: "applied"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<div id="selected-list-item-container-bottom"></div>
 		</div>
-		<div id="selected-list-item-container-bottom"></div>
 	</div>
-</div>
+<% else %>
+	<div id="empty-list-text-container">
+		<h4 class="text-center"><%= t('views.castings.index_applied.empty_text') %></h4>
+	</div>
+<% end %>

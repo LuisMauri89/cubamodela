@@ -55,49 +55,78 @@ class Casting < ApplicationRecord
     end
   end
 
-  # For expiration
-  def expired?
-  	return expiration_date < Date.today
-  end
+  # Action methods on casting
 
-  def close
-  	self.closed!
-  end
-
-  def close!
-  	if self.expired? && not(self.canceled?)
-  		self.closed!
-  	else
-  		errors[:base] << "The casting can't be closed because is eather not expired or already canceled."
-  	end
-  end
-
-  def activate!
-    if not(self.canceled?)
-      self.expiration_date = Date.today + 10
-      self.casting_date = Date.today + 15
-      self.shooting_date = Date.today + 20
-      self.active!
+  def get_first_base_error
+    if errors[:base].any?
+      return errors[:base][0]
     else
-      errors[:base] << "The casting can't be activated because it has been canceled."
+      return ""
     end
   end
 
-  def cancel!
-  	if not(self.closed?)
-  		self.canceled!
-  	else
-  		errors[:base] << "The casting can't be canceled because it has expired"
-  	end
+  def expired?
+    return expiration_date < Date.today
   end
 
-  def force_close!
-  	if not(self.canceled?)
-  		self.expiration_date = Date.today
-  		self.closed!
-  	else
-  		errors[:base] << "The casting can't be closed because it has been canceled."
-  	end
+  def allow_edit?
+    case status
+    when "active"
+      return nil
+    when "closed"
+      if Date.today < casting_date
+        return nil
+      else
+        return I18n.t('views.castings.messages.edit.past')
+      end
+    when "canceled"
+      return I18n.t('views.castings.messages.edit.canceled')
+    end
+  end
+
+  def try_close!
+    case status
+    when "active"
+      expiration_date = Date.today
+      closed!
+    when "closed"
+      errors[:base] << I18n.t('views.castings.messages.edit.closed')
+    when "canceled"
+      errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+    end
+  end
+
+  def try_cancel!
+    case status
+    when "active"
+      canceled!
+    when "closed"
+      if Date.today < casting_date
+        canceled!
+      else
+        errors[:base] << I18n.t('views.castings.messages.edit.past')
+      end
+    when "canceled"
+      errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+    end
+  end
+
+  def try_activate!
+    case status
+    when "active"
+      errors[:base] << I18n.t('views.castings.messages.edit.active')
+    when "closed"
+      if Date.today < casting_date
+        expiration_date = Date.today + 1
+        casting_date = casting_date + 1
+        shooting_date = shooting_date + 1
+        active!
+      else
+        errors[:base] << I18n.t('views.castings.messages.edit.past')
+      end
+    when "canceled"
+      errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+    end
   end
 
   def get_first_references_photo
@@ -108,51 +137,71 @@ class Casting < ApplicationRecord
     return photos.offset(1).limit(4)
   end
 
-  def invite_model(profile)
-    if self.canceled? || self.casting_date <= Date.today
-      return invalid_intent
-    else
-      intent = Intent.new(casting: self, profile_model: profile, status: "invited")
-
-      return intent
-    end
-  end
-
-  def confirm_model(profile)
-    if self.canceled? || self.casting_date <= Date.today
-      return invalid_intent
-    else
-      intent = Intent.where(profile_model_id: profile.id).first
-      intent ||= Intent.new
-      intent.confirmed!
-
-      if intent.new_record?
-        intent.errors[:base] << "can't confirm without invitation."
-      end
-
-      return intent
-    end
-  end
-
-  def apply_model(profile)
-    if self.personal? || self.closed? || self.canceled? || self.casting_date <= Date.today || not(profile.can_apply?(self))
-      return invalid_intent
-    else
-      intent = Intent.where(profile_model_id: profile.id).first
-      intent ||= Intent.new(casting: self, profile_model: profile, status: "applied")
-
-      if not(intent.new_record?)
-        intent.errors[:base] << "can't applied for casting you already in."
-      end
-
-      return intent
-    end
-  end
-
-  def invalid_intent
+  def try_invite!(profile)
     intent = Intent.new
-    intent.errors[:base] << "can't operate on a old casting or canceled or private or already applied."
+
+    case status
+    when "active"
+      intent.update(casting: self, profile_model: profile, status: "invited")
+    when "closed"
+      if Date.today < casting_date
+        intent.update(casting: self, profile_model: profile, status: "invited")
+      else
+        intent.errors[:base] << I18n.t('views.castings.messages.edit.past')
+      end
+    when "canceled"
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+    end
 
     return intent
+  end
+
+  def try_confirm!(profile)
+    intent = Intent.where(profile_model_id: profile.id).first
+    intent ||= Intent.new
+
+    if intent.new_record?
+      intent.errors[:base] << I18n.t('views.castings.messages.associations.confirmed_denied_no_intent')
+    else
+      case status
+      when "active"
+        intent.confirmed!
+      when "closed"
+        if Date.today < casting_date
+          intent.confirmed!
+        else
+          intent.errors[:base] << I18n.t('views.castings.messages.edit.past')
+        end
+      when "canceled"
+        intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+      end
+    end
+
+    return intent
+  end
+
+  def try_apply!(profile)
+    intent = Intent.new
+
+    case status
+    when "active"
+      if free?
+        intent.update(casting: self, profile_model: profile, status: "applied")
+      else
+        intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_personal')
+      end
+    when "closed"
+      intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_closed')
+    when "canceled"
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+    end
+
+    return intent
+  end
+
+  def send_update_notification(old_casting)
+    if old_casting.expiration_date != expiration_date || old_casting.casting_date != casting_date || old_casting.shooting_date != shooting_date
+        # call method to notify
+    end
   end
 end

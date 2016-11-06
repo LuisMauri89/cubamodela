@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030205058) do
+ActiveRecord::Schema.define(version: 20161105182001) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -124,8 +124,11 @@ ActiveRecord::Schema.define(version: 20161030205058) do
     t.integer  "template",          default: 0
     t.string   "title"
     t.string   "description"
+    t.string   "thirdable_type"
+    t.integer  "thirdable_id"
     t.index ["asociateable_type", "asociateable_id"], name: "index_messages_on_asociateable_type_and_asociateable_id"
     t.index ["ownerable_type", "ownerable_id"], name: "index_messages_on_ownerable_type_and_ownerable_id"
+    t.index ["thirdable_type", "thirdable_id"], name: "index_messages_on_thirdable_type_and_thirdable_id"
   end
 
   create_table "modalities", force: :cascade do |t|

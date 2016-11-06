@@ -29,7 +29,7 @@ class ColorsController < ApplicationController
 
     respond_to do |format|
       if @color.save
-        format.html { redirect_to @color, notice: 'Color was successfully created.' }
+        format.html { redirect_to @color, notice: I18n.t('views.application.messages.create', value: "Color") }
         format.json { render :show, status: :created, location: @color }
       else
         format.html { render :new }

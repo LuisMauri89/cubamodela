@@ -1,8 +1,6 @@
 <% if @intent.errors.any? %>
-	$('#notification-messages-container').html("<%= j render 'errors_manage' %>");
+	$('#notification-messages-container').html("<%= j render 'errors_intent' %>");
 <% else %>
-	$('#notification-messages-container').html("<%= j render 'action_info', text: 'Model invited' %>");
-	<% if @list_item == "applied" %>
-		$('#model-<%= @casting.id %>-<%= @profile.id %>').remove();
-	<% end %>
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.castings.messages.associations.invited' %>");
+	$('#model-<%= @casting.id %>-<%= @profile.id %>').remove();
 <% end %>

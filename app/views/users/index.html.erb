@@ -10,6 +10,7 @@
             <tr>
               <th class="text-center"><%= t('table.user') %></th>
               <th class="text-center"><%= t('activerecord.attributes.user.email') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.user.kind') %></th>
               <th class="text-center"><%= t('activerecord.attributes.user.created_at') %></th>
               <th class="text-center"><%= t('table.actions') %></th>
             </tr>
@@ -23,6 +24,7 @@
                   <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.full_name  %></h4>
                 </td>
                 <td class="text-center"><h4><%= user.email %></h4></td>
+                <td class="text-center"><h4><%= user.kind %></h4></td>
                 <td class="text-center"><h4><%= l(user.created_at, format: :custom) << " [ " << distance_of_time_in_words(user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
                   <%= link_to 'Some action', "#", class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>

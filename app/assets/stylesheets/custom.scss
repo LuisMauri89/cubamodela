@@ -464,6 +464,10 @@ a.link-image:hover{
 	transform: translateY(-50%);
 }
 
+.container-min-height{
+	min-height: 450px;
+}
+
 /* END Center content */
 
 .img-focus:hover{
@@ -650,8 +654,17 @@ a.link-image:hover{
 
 #current-list-item-container{
 	padding: 20px 40px;
+	min-height: 450px;
 	max-height: 450px;
 	overflow-y: scroll;
+}
+
+#empty-list-text-container{
+	margin-top: 10%;
+}
+
+#models-invite-load-more{
+	margin-top: 40px;	
 }
 
 /* END Casting */

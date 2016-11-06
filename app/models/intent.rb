@@ -1,7 +1,7 @@
 class Intent < ApplicationRecord
   # Validations
   validates :casting_id, uniqueness: { scope: :profile_model_id,
-    message: "model already invited" }
+    message: :invited }
 
   # Status
   enum status: [:unset, :applied, :invited, :confirmed, :denied, :canceled]
@@ -20,4 +20,14 @@ class Intent < ApplicationRecord
   # Associations
   belongs_to :profile_model
   belongs_to :casting
+
+  # Methods
+
+  def get_first_base_error
+    if errors[:base].any?
+      return errors[:base][0]
+    else
+      return ""
+    end
+  end
 end

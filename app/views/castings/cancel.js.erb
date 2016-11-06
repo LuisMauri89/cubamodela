@@ -1,5 +1,5 @@
 <% if @casting.errors.any? %>
-	$('#notification-messages-container').html("<%= j render 'errors' %>");
+	$('#notification-messages-container').html("<%= j render 'errors_casting' %>");
 <% else %>
-	$('#notification-messages-container').html("<%= j render 'action_info', text: 'Cancel succesfully' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.castings.messages.edit.cancel_successfully' %>");
 <% end %>

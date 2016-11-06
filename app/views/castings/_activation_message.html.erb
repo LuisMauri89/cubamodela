@@ -4,12 +4,12 @@
       &times;
     </span>
   </button>
-  The casting has been activated, some dates has been changed, if you want to correct them go <%= link_to "here", edit_casting_path(@casting) %>.
+  <%= t('views.castings.edit.active_successfully') %> <%= link_to "here", edit_casting_path(@casting) %>.
   <br/>
-  Expiration date: <%= @casting.expiration_date %>
+  <p><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</p>
   <br/>
-  Casting date: <%= @casting.casting_date %>
+  <p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.casting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
   <br/>
-  Shooting date: <%= @casting.shooting_date %>
+  <p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
   <br/>
 </div>

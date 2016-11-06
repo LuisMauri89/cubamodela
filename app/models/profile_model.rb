@@ -74,9 +74,17 @@ class ProfileModel < ApplicationRecord
 	# Get attrs
 	def full_name
 		if first_name.present? and last_name.present?
-			first_name << " " << last_name
+			return first_name << " " << last_name
 		else
-			user.email.split("@")[0]
+			return user.email.split("@")[0]
+		end
+	end
+
+	def get_first_name
+		if first_name.present?
+			return first_name
+		else
+			return user.email.split("@")[0]
 		end
 	end
 
@@ -236,7 +244,11 @@ class ProfileModel < ApplicationRecord
 
 	# Profile methods
 	def can_apply?(casting)
-		return !casting_ids.include?(casting.id)
+		begin
+			return !casting_ids.include?(casting.id)
+		rescue
+			return true
+		end
 	end
 
 	def publish

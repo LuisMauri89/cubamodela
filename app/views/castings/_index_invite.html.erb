@@ -1,26 +1,35 @@
-<div class="row">
-	<div class="col-md-12">
-		<div id="selected-list-item-container">
-			<% @models.each do |model| %>
-				<div id="model-<%= @casting.id %>-<%= model.id %>" class="img-thumbnail list-photo-item">
-					<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
-							<%= image_tag model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>	
-					<% end %>
-					<br/>
-					<%= link_to "invite", invite_casting_path(@casting, model, list_item: "invite"), remote: true, class: "btn btn-success btn-xs pull-right" %>
-				</div>
-			<% end %>
+<% if @models.any? %>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="selected-list-item-container">
+				<% @models.each do |model| %>
+					<div id="model-<%= @casting.id %>-<%= model.id %>" class="img-thumbnail list-photo-item">
+						<div>
+							<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
+								<%= image_tag model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>
+							<% end %>
+						</div>
+						<div class="text-center" style="margin-top: 5px;">
+							<%= link_to t('views.castings.buttons.invite'), invite_casting_path(@casting, model, list_item: "invite"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<div id="selected-list-item-container-bottom"></div>
 		</div>
-		<div id="selected-list-item-container-bottom"></div>
 	</div>
-</div>
 
-<div class="row">
-	<div class="col-md-12 text-center">
-		<div id="models-invite-load-more">
-			<% if @next_page != 0 %>
-				<%= link_to "Load more...", invite_index_casting_path(@casting, next_page: @next_page), remote: true, class: "btn btn-success", id: "btn-castings-load-more" %>
-			<% end %>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<div id="models-invite-load-more">
+				<% if @next_page != 0 %>
+					<%= link_to t('views.castings.buttons.load'), invite_index_casting_path(@casting, next_page: @next_page), remote: true, class: "btn btn-primary btn-lg" %>
+				<% end %>
+			</div>
 		</div>
 	</div>
-</div>
+<% else %>
+	<div id="empty-list-text-container">
+		<h4 class="text-center"><%= t('views.castings.index_invite.empty_text') %></h4>
+	</div>
+<% end %>

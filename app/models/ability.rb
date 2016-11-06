@@ -56,8 +56,8 @@ class Ability
             booking.try(:profile_model) == user.profileable
         end
     elsif user.photographer?
-        can :create, ProfileModel
-        can :update, ProfileModel do |profile|
+        can :create, ProfilePhotographer
+        can :update, ProfilePhotographer do |profile|
             profile.try(:user) == user
         end
     end

@@ -3,8 +3,8 @@ class CastingsController < ApplicationController
   before_action :set_casting, only: [:show, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
   before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
-  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :confirm, :apply, :update, :close, :cancel, :destroy]
-  before_action :check_if_can_profile, only: [:confirm, :apply]
+  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :update, :close, :cancel, :activate, :destroy]
+  # before_action :check_if_can_profile, only: [:confirm]
   before_action :set_pagination_data, only: [:index]
   before_action :set_pagination_data_invite, only: [:manage, :index_invite]
 
@@ -26,7 +26,7 @@ class CastingsController < ApplicationController
   end
 
   def index_invite
-    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit)
+    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit).reject{ |profile| !profile.can_apply?(@casting) }
 
     respond_to do |format|
       format.js
@@ -76,7 +76,7 @@ class CastingsController < ApplicationController
 
   	respond_to do |format|
   		if @casting.save
-  			format.html { redirect_to edit_photos_casting_path(@casting), notice: 'Casting was successfully created.' }
+  			format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
   		else
   			format.html { render :new }
   		end
@@ -84,12 +84,14 @@ class CastingsController < ApplicationController
   end
 
   def manage
-    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit)
+    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit).reject{ |profile| !profile.can_apply?(@casting) }
   end
 
   def edit
-  	if @casting.canceled?
-  		redirect_to castings_path, notice: '!!!SORRY a casting canceled can not be edited.'
+    message = @casting.allow_edit?
+
+  	if !message.nil?
+  		redirect_to castings_path, notice: message
   	end
   end
 
@@ -98,8 +100,10 @@ class CastingsController < ApplicationController
 
   def update
   	respond_to do |format|
+      old_casting = Casting.find(params[:id])
       if @casting.update(casting_params)
-        format.html { redirect_to manage_casting_path(@casting), notice: 'Casting was successfully updated.' }
+        @casting.send_update_notification(old_casting)
+        format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
       else
         format.html { render :edit }
       end
@@ -107,7 +111,7 @@ class CastingsController < ApplicationController
   end
 
   def apply
-    @intent = @casting.apply_model(@profile)
+    @intent = @casting.try_apply!(@profile)
 
     respond_to do |format|
       if @intent.save
@@ -119,31 +123,31 @@ class CastingsController < ApplicationController
   end
 
   def invite
-    if @list_item == "invite"
-      @intent = @casting.invite_model(@profile)
-    elsif @list_item == "applied"
-      @intent = @casting.confirm_model(@profile)
+    case @list_item
+    when "applied"
+      @intent = @casting.try_confirm!(@profile)
     else
-      @intent = @casting.invite_model(@profile)
+      @intent = @casting.try_invite!(@profile) 
     end
 
     respond_to do |format|
       if @intent.save
-        Message.create(template: "inbox_message_casting_invitation", ownerable: @profile, asociateable: @casting)
-        format.html { redirect_to profile_models_path, notice: 'Invitation successfully.' }
+        CastingInvitationJob.perform_later(@profile, @casting)
+        format.html { redirect_to profile_models_path, notice: I18n.t('views.castings.messages.associations.invited') }
         format.js
       else
-        format.html { redirect_to request.referrer, notice: "Invitation failed" }
+        format.html { redirect_to request.referrer, notice: @intent.get_first_base_error }
         format.js
       end
     end
   end
 
   def confirm
-    @intent = @casting.confirm_model(@profile)
+    @intent = @casting.try_confirm!(@profile)
 
     respond_to do |format|
       if @intent.save
+        CastingConfirmationJob.perform_later(@casting.ownerable, @casting, @profile)
         format.js
       else
         format.js
@@ -152,7 +156,7 @@ class CastingsController < ApplicationController
   end
 
   def close
-  	@casting.force_close!
+  	@casting.try_close!
 
     respond_to do |format|
     	if @casting.save
@@ -164,7 +168,7 @@ class CastingsController < ApplicationController
   end
 
   def activate
-    @casting.activate!
+    @casting.try_activate!
 
     respond_to do |format|
       if @casting.save
@@ -176,7 +180,7 @@ class CastingsController < ApplicationController
   end
 
   def cancel
-  	@casting.cancel!
+  	@casting.try_cancel!
 
     respond_to do |format|
       	if @casting.save
@@ -223,7 +227,7 @@ class CastingsController < ApplicationController
     end
 
     def set_pagination_data
-    	@limit = 2
+    	@limit = 20
     	@index = params[:next_page].nil? ? 0 : params[:next_page].to_i
     	@next_page = @index + 1
     	count = Casting.actives.count
@@ -236,10 +240,10 @@ class CastingsController < ApplicationController
     end
 
     def set_pagination_data_invite
-      @limit = 2
+      @limit = 20
       @index = params[:next_page].nil? ? 0 : params[:next_page].to_i
       @next_page = @index + 1
-      count = ProfileModel.ready.count
+      count = ProfileModel.ready.reject{ |profile| !profile.can_apply?(@casting) }.count
       @totalf = count / @limit
       @total = (count % @limit) > 0 ? @totalf.to_i + 1 : @totalf
 

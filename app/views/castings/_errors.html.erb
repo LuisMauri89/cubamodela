@@ -1,6 +1,6 @@
 <% if @casting.errors.any? %>
   <div class="alert alert-danger alert-messages-box text-center">
-    The form contains <%= pluralize(@casting.errors.count, "error") %>.
+    <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: @casting.errors.count) %>.
     <ul>
     <% @casting.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

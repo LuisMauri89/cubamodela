@@ -179,6 +179,7 @@ en:
       delete: "Delete"
       edit: "Edit"
       new: "New"
+      close: "Close"
       control_panel: "Control Panel"
     remember_me: "Remember me"
     warnings:
@@ -289,7 +290,13 @@ en:
           one: "is the wrong length (should be 1 character)"
           other: "is the wrong length (should be %{count} characters)"
         other_than: "must be other than %{count}"
+        invited: "is already asociated with the model."
   views:
+    application:
+      messages:
+        create: "%{value} has been successfully created."
+        destroy: "%{value} has been successfully removed."
+        update: "%{value} has been successfully updated."
     static_pages:
       home:
         sign_up_form:
@@ -324,9 +331,9 @@ en:
       global:
         empty_album: "No pictures in this album. Add some..."
       messages:
-        create: "The album has been succesfully created."
-        destroy: "The album has been succesfully removed."
-        update: "The album has been succesfully updated."
+        create: "The album has been successfully created."
+        destroy: "The album has been successfully removed."
+        update: "The album has been successfully updated."
       delete:
         header_text: "Delete Album"
         yes_text: "Yes, delete this album"
@@ -342,12 +349,52 @@ en:
       index:
         bookings: "Bookings"
       messages:
-        create: "Booking has been succesfully created."
-        confirm: "Confirmation succesfully."
-        update: "Booking has been succesfully updated."
+        create: "Booking has been successfully created."
+        confirm: "Confirmation successfully."
+        update: "Booking has been successfully updated."
     castings:
       index_custom_invite:
         header_text: "Select casting to invite to"
+      index_invite:
+        empty_text: "Well this is odd. Casting is asociated with every model in one way or another."
+      index_invited:
+        empty_text: "Invitation list is empty. Invite some models."
+      index_confirmed:
+        empty_text: "Confirmation list is empty. None has confirmed the invitation."
+      index_favorites:
+        empty_text: "Favorites list is empty."
+      index_applied:
+        empty_text: "Applied list is empty. None has applied the casting."
+      buttons:
+        references_photos: "References photos"
+        open: "Open"
+        invite: "Invite"
+        confirm: "Confirm"
+        load: "Load more"
+        apply: "Apply"
+        see_full_casting: "See full casting"
+      messages:
+        create: "Casting was successfully created. Please add some references photos."
+        update: "Casting was successfully updated."
+        private: "Private casting. The only way to get in is to get an invitation."
+        edit:
+          past: "Actual date of casting is in the past. Editing is not allowed."
+          canceled: "Casting is already canceled."
+          canceled_successfully: "Casting was successfully canceled."
+          closed: "Casting is already closed."
+          closed_successfully: "Casting was successfully closed."
+          active: "Casting is already active."
+          active_successfully: "Casting was successfully activated. Dates has been changed, if you want to correct them go"
+        associations:
+          invited: "Invitation was successfully sent."
+          applied: "Aplication was successfully sent."
+          applied_denied_personal: "Casting is private. You can not apply."
+          applied_denied_closed: "Casting has expire. You can not apply."
+          confirmed: "Confirmation was successfully sent."
+          confirmed_denied_no_intent: "Can not confirm without been applied or invited."
+      warnings:
+        close_casting: "Are you sure you want to close the casting? This action will set expiration date to current date."
+        cancel_casting: "Are you sure you want to cancel the casting? This action will delete the casting and it can not be undone."
     colors:
       index:
         header_text: "Colors"
@@ -389,9 +436,42 @@ en:
             buttons:
               see_casting: "See full casting especifications"
               confirm: "Confirm my presence"
-          casting_changed:
+          casting_dates_changed_invited:
             title: "Casting's dates changed"
-            description: "The dates of the casting had been changed. Please check it out."
+            description: "Dates of the casting had been changed. Please check it out."
+          casting_dates_changed_confirmed:
+            title: "Casting's dates changed"
+            description: "Dates of the casting had been changed. Please check it out."
+          casting_dates_changed_applied:
+            title: "Casting's dates changed"
+            description: "Dates of the casting had been changed. Please check it out."
+          casting_confirmation:
+            title: "New confirmation to casting"
+            description: "A user confirmed his or her precense in the casting. Please check it out."
+            header_text: "%{value} has confirmed her or his presence"
+            subheader_text: "to casting: %{value}"
+            after_description_text: "It is important that you edit the casting if changes with the dates in order to notify everyone involve, thank you so much."
+            after_dates_text: "Some other text."
+            buttons:
+              see_casting: "See full casting especifications"
+              edit_casting: "Edit this casting"
+              manage_casting: "Manage this casting"
+              see_profile: "Show %{value}'s profile"
+          casting_application:
+            title: "New application to casting"
+            description: "A user applied to participate in the casting. Please check it out."
+          casting_application_confirmation:
+            title: "Application confirmed"
+            description: "Your application for the casting had been acepted. Please check it out."
+          new_casting_free:
+            title: "New casting available"
+            description: "There is a new casting and it is available for application. Please check it out."
+          casting_closed:
+            title: "Casting closed"
+            description: "Casting has expired. Please check it out."
+          casting_canceled:
+            title: "Casting canceled"
+            description: "Casting was canceled. Please check it out."
           booking_invitation:
             title: "New booking"
             description: "You have been booked."
@@ -453,9 +533,9 @@ en:
       global:
         empty_list: "You have cero studies. Add some..."
       messages:
-        create: "The study has been succesfully created."
-        destroy: "The study has been succesfully removed."
-        update: "The study has been succesfully updated."
+        create: "The study has been successfully created."
+        destroy: "The study has been successfully removed."
+        update: "The study has been successfully updated."
       index:
         buttons:
           new: "New study"

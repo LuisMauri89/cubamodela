@@ -1,3 +1,3 @@
 <% if @next_page != 0 %>
-	<%= link_to "Load more...", invite_index_castings_path(next_page: @next_page), remote: true, class: "btn btn-success", id: "btn-castings-load-more" %>
+	<%= link_to t('views.castings.buttons.load'), invite_index_casting_path(@casting, next_page: @next_page), remote: true, class: "btn btn-primary btn-lg" %>
 <% end %>

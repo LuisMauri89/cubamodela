@@ -1,10 +1,10 @@
-<div id="img-list-container">
+<div class="container-min-height" id="img-list-container">
 	<% @models.each do |model| %>
 		<div class="img-thumbnail list-photo-item">
 			<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
 					<%= image_tag model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>	
 			<% end %>
-			<div class="text-center"><h6><%= model.full_name %></h6></div>
+			<div class="text-center"><h6><%= model.get_first_name %></h6></div>
 		</div>
 	<% end %>
 </div>

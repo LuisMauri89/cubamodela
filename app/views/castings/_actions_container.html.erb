@@ -1,9 +1,9 @@
-<%= link_to 'Edit', edit_casting_path(@casting), class: "btn btn-primary btn-sm btn-small-right-margin" %>
-<%= link_to 'References photos', edit_photos_casting_path(@casting), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+<%= link_to t('forms.buttons.edit'), edit_casting_path(@casting), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+<%= link_to t('views.castings.buttons.references_photos'), edit_photos_casting_path(@casting), class: "btn btn-primary btn-sm btn-small-right-margin" %>
 <% if @casting.active? %>
-  <%= link_to 'Close', close_casting_path(@casting), data: { confirm: 'Are you sure you want to close the casting, this action will set expiration date to today?' }, remote: true, class: "btn btn-danger btn-sm btn-small-right-margin" %>
-  <%= link_to 'Cancel', cancel_casting_path(@casting), data: { confirm: 'Are you sure you want to cancel the casting, this action will delete the casting?' }, remote: true, class: "btn btn-danger btn-sm btn-small-right-margin" %>
+  <%= link_to t('forms.buttons.close'), close_casting_path(@casting), data: { confirm: t('views.castings.warnings.close_casting') }, remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+  <%= link_to t('forms.buttons.cancel'), cancel_casting_path(@casting), data: { confirm: t('views.castings.warnings.cancel_casting') }, remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
 <% end %>
 <% if @casting.closed? %>
-  <%= link_to 'Open', activate_casting_path(@casting), data: { confirm: 'Are you sure you want to activate the casting, this action will set dates to the future?' }, remote: true, class: "btn btn-danger btn-sm btn-small-right-margin" %>
+  <%= link_to t('views.castings.buttons.open'), activate_casting_path(@casting), data: { confirm: 'Are you sure you want to activate the casting, this action will set dates to the future?' }, remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
 <% end %>

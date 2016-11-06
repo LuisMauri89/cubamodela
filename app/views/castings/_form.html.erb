@@ -49,17 +49,28 @@
     </div>
 
     <div class="form-group text-center">
-      <%= f.label "Modalities:" %><br />
+      <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
       <div class="row">
-        <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name do |e| %>
+      <% if I18n.locale == "en".to_sym %>
+        <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name_en do |e| %>
           <div class="col-md-3">
-          <div class="checkbox-container">
-            <%= e.check_box %>
-            <%= e.label %>
+            <div class="checkbox-container">
+              <%= e.check_box %>
+              <%= e.label %>
+            </div>
           </div>
-      </div>
+        <% end %>
+      <% else %>
+        <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name_es do |e| %>
+          <div class="col-md-3">
+            <div class="checkbox-container">
+              <%= e.check_box %>
+              <%= e.label %>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    </div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -67,6 +78,6 @@
       <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.user.kind_options.' + type), type]}, class: "form-control") %>
     </div>
 
-    <%= f.submit "Save Casting", class: "btn btn-success btn-block" %>
+    <%= f.submit "Save Casting", class: "btn btn-primary btn-block" %>
   <% end %>
 </div>

@@ -17,7 +17,10 @@
         <div class="list-group">
           <% @messages.each_with_index do |message, index| %>
               <%= link_to(message_path(message), remote: true, class: "list-group-item " + get_readed_class(message)) do %>
-                <h4 id="message-<%= message.id %>" class="list-group-item-heading"><%= t(message.title) %><span class="pull-right message-created-at"><%= l(message.created_at, format: :long) %></span></h4>
+                <div id="message-<%= message.id %>" class="list-group-item-heading">
+                  <p class="pull-right message-created-at"><%= l(message.created_at, format: :long) %></p>
+                  <h4><%= t(message.title) %></h4>
+                </div>
                 <p class="list-group-item-text"><%= t(message.description) %></p>
               <% end %>
           <% end %>

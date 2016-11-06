@@ -1,14 +1,21 @@
-<div class="row">
-	<div class="col-md-12">
-		<div id="selected-list-item-container">
-			<% @intents.each do |intent| %>
-				<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item">
-					<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
-							<%= image_tag intent.profile_model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>	
-					<% end %>
-				</div>
-			<% end %>
+<% if @intents.any? %>
+	<div class="row">
+		<div class="col-md-12">
+			<div id="selected-list-item-container">
+				<% @intents.each do |intent| %>
+					<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item">
+						<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
+								<%= image_tag intent.profile_model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>	
+						<% end %>
+						<div class="text-center"><h6><%= intent.profile_model.get_first_name %></h6></div>
+					</div>
+				<% end %>
+			</div>
+			<div id="selected-list-item-container-bottom"></div>
 		</div>
-		<div id="selected-list-item-container-bottom"></div>
 	</div>
-</div>
+<% else %>
+	<div id="empty-list-text-container">
+		<h4 class="text-center"><%= t('views.castings.index_invited.empty_text') %></h4>
+	</div>
+<% end %>
