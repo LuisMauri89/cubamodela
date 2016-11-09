@@ -92,11 +92,11 @@ module ApplicationHelper
     end
   end
 
-  def get_active_castings_count
+  def get_valid_castings_count
     if current_user.profileable.nil?
       return "0"
     else
-      return current_user.profileable.castings.where(status: "active").count.to_s
+      return current_user.profileable.valid_castings.count.to_s
     end
   end
 

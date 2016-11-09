@@ -12,6 +12,7 @@ class ProfileContractor < ApplicationRecord
 
 	# Castings
 	has_many :castings, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
+	has_many :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: Date.today).order("created_at DESC") }, as: :ownerable, dependent: :destroy, class_name: "Casting"
 	has_many :bookings, dependent: :destroy
   	has_many :profile_models, through: :bookings
 
@@ -54,7 +55,16 @@ class ProfileContractor < ApplicationRecord
 		progress = (self.profile_complete_progress * 100)/self.profile_complete_progress_total
 	end
 
-	# Get full name
+	# Get attrs
+	
+	def get_first_name
+		if first_name.present?
+			return first_name
+		else
+			return user.email.split("@")[0]
+		end
+	end
+
 	def full_name
 		if self.first_name.present? and self.last_name.present?
 			self.first_name + " " + self.last_name

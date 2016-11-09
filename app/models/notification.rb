@@ -48,4 +48,16 @@ class Notification
 	def self.notify_profile_unpublished(owner)
 		Message.create(template: "inbox_message_profile_unpublished", ownerable: owner)
 	end
+
+	def self.notify_casting_available_expiration_proximity(owner, asociated)
+		Message.create(template: "inbox_message_casting_available_expiration_proximity", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_casting_invited_expiration_proximity(owner, asociated)
+		Message.create(template: "inbox_message_casting_invited_expiration_proximity", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_casting_invited_date_proximity(owner, asociated)
+		Message.create(template: "inbox_message_casting_invited_date_proximity", ownerable: owner, asociateable: asociated)
+	end
 end

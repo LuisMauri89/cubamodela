@@ -11,7 +11,7 @@
 	<div class="col-md-12 text-center">
 		<div id="list-castings-load-more">
 			<% if @next_page != 0 %>
-				<%= link_to "Load more...", castings_path(next_page: @next_page), remote: true, class: "btn btn-success", id: "btn-castings-load-more" %>
+				<%= link_to "Load more...", castings_path(next_page: @next_page), remote: true, class: "btn btn-primary", id: "btn-castings-load-more" %>
 			<% end %>
 		</div>
 	</div>

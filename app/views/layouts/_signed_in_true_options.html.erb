@@ -14,8 +14,8 @@
 			<% end %>
 		</li>
 		<li>
-			<%= link_to custom_index_castings_path do %>
-				<%= t('menu.options.castings') %> <span class="badge"><%= get_active_castings_count %></span>
+			<%= link_to custom_index_castings_path(contractor_id: current_user.profileable) do %>
+				<%= t('menu.options.castings') %> <span class="badge"><%= get_valid_castings_count %></span>
 			<% end %>
 		</li>
 		<li>

@@ -52,6 +52,6 @@
 <div class="row">
 	<div class="col-md-12">
 		<%= link_to t('views.messages.index.templates.casting_invitation.buttons.see_casting'), casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
-		<%= link_to t('views.messages.index.templates.casting_invitation.buttons.confirm'), confirm_casting_path(@message.asociateable, current_user.profileable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to t('views.messages.index.templates.casting_invitation.buttons.confirm'), confirm_casting_path(@message.asociateable, @message.ownerable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin" %>
 	</div>
 </div>

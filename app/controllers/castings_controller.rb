@@ -2,14 +2,14 @@ class CastingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_casting, only: [:show, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
   before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
+  before_action :set_contractor, only: [:index_custom, :index_custom_invite]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
-  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :update, :close, :cancel, :activate, :destroy]
-  # before_action :check_if_can_profile, only: [:confirm]
+  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :confirm, :apply, :update, :close, :cancel, :activate, :destroy]
   before_action :set_pagination_data, only: [:index]
   before_action :set_pagination_data_invite, only: [:manage, :index_invite]
 
   def index
-  	@castings = Casting.actives.offset(@index * @limit).limit(@limit)
+  	@castings = Casting.valid_castings.offset(@index * @limit).limit(@limit)
 
   	respond_to do |format|
   		format.html
@@ -18,11 +18,11 @@ class CastingsController < ApplicationController
   end
 
   def index_custom
-    @castings = current_user.profileable.castings.order("created_at DESC")
+    @castings = @contractor.valid_castings
   end
 
   def index_custom_invite
-    @castings = current_user.profileable.castings.where(status: "active").order("created_at DESC")
+    @castings = @contractor.valid_castings
   end
 
   def index_invite
@@ -76,6 +76,7 @@ class CastingsController < ApplicationController
 
   	respond_to do |format|
   		if @casting.save
+        NewCastingFreeJob.perform_later(@casting)
   			format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
   		else
   			format.html { render :new }
@@ -115,6 +116,7 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
       if @intent.save
+        CastingApplicationJob.perform_later(@casting.ownerable, @casting, @profile)
         format.js
       else
         format.js
@@ -132,7 +134,14 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
       if @intent.save
-        CastingInvitationJob.perform_later(@profile, @casting)
+
+        case @list_item
+        when "applied"
+          CastingApplicationConfirmationJob.perform_later(@profile, @casting)
+        else
+          CastingInvitationJob.perform_later(@profile, @casting) 
+        end
+
         format.html { redirect_to profile_models_path, notice: I18n.t('views.castings.messages.associations.invited') }
         format.js
       else
@@ -160,6 +169,7 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
     	if @casting.save
+          CastingClosedJob.perform_later(@casting)
       		format.js
       	else
       		format.js
@@ -184,6 +194,7 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
       	if @casting.save
+          CastingCanceledJob.perform_later(@casting)
   	  		format.js
   	  	else
   	  		format.js
@@ -213,6 +224,10 @@ class CastingsController < ApplicationController
       @profile = ProfileModel.find(params[:profile_id])
     end
 
+    def set_contractor
+      @contractor = ProfileContractor.find(params[:contractor_id])
+    end
+
     def set_list_item
       @list_item = params[:list_item].to_s || "none"
     end
@@ -222,15 +237,11 @@ class CastingsController < ApplicationController
       authorize! action_name.to_s.to_sym, @casting
     end
 
-    def check_if_can_profile
-      authorize! action_name.to_s.to_sym, @profile
-    end
-
     def set_pagination_data
     	@limit = 20
     	@index = params[:next_page].nil? ? 0 : params[:next_page].to_i
     	@next_page = @index + 1
-    	count = Casting.actives.count
+    	count = Casting.valid_castings.count
     	@totalf = count / @limit
     	@total = (count % @limit) > 0 ? @totalf.to_i + 1 : @totalf
 

@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   # Status
-  enum template: [:unset, :inbox_message_casting_invitation, :inbox_message_casting_canceled, :inbox_message_casting_closed, :inbox_message_new_casting_free, :inbox_message_casting_application_confirmation, :inbox_message_casting_application, :inbox_message_casting_confirmation, :inbox_message_casting_dates_changed_invited, :inbox_message_casting_dates_changed_confirmed, :inbox_message_casting_dates_changed_applied, :inbox_message_booking_invitation, :inbox_message_booking_changed, :inbox_message_profile_published, :inbox_message_profile_unpublished]
+  enum template: [:unset, :inbox_message_casting_invitation, :inbox_message_casting_invited_date_proximity, :inbox_message_casting_invited_expiration_proximity, :inbox_message_casting_available_expiration_proximity, :inbox_message_casting_canceled, :inbox_message_casting_closed, :inbox_message_new_casting_free, :inbox_message_casting_application_confirmation, :inbox_message_casting_application, :inbox_message_casting_confirmation, :inbox_message_casting_dates_changed_invited, :inbox_message_casting_dates_changed_confirmed, :inbox_message_casting_dates_changed_applied, :inbox_message_booking_invitation, :inbox_message_booking_changed, :inbox_message_profile_published, :inbox_message_profile_unpublished]
 
   after_initialize :set_default_template, if: :new_record?
 
@@ -54,7 +54,16 @@ class Message < ApplicationRecord
     when "inbox_message_profile_unpublished"
       self.title = "views.messages.index.templates.profile_unpublished.title"
       self.description = "views.messages.index.templates.profile_unpublished.description"
-  	end
+    when "inbox_message_casting_available_expiration_proximity"
+      self.title = "views.messages.index.templates.casting_available_expiration_proximity.title"
+      self.description = "views.messages.index.templates.casting_available_expiration_proximity.description"
+    when "inbox_message_casting_invited_expiration_proximity"
+      self.title = "views.messages.index.templates.casting_invited_expiration_proximity.title"
+      self.description = "views.messages.index.templates.casting_invited_expiration_proximity.description"
+    when "inbox_message_casting_invited_date_proximity"
+      self.title = "views.messages.index.templates.casting_invited_date_proximity.title"
+      self.description = "views.messages.index.templates.casting_invited_date_proximity.description"
+    end
   end
 
   # Associations

@@ -1,19 +1,23 @@
 <div class="row casting-title">
 	<div class="col-md-8">
-		<h2><%= casting.title %></h2>
+		<h3><%= casting.title %></h3>
 	</div>
 	<div class="col-md-4">
-		<h4>Expiration date: <%= casting.expiration_date %> [<%= get_days_for_expiration(casting.expiration_date) %>]</h4>
+		<% if casting.active? %>
+			<h6 class="pull-right">Expiration date: <%= l(casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</h6>
+		<% else %>
+			<h6 class="pull-right"><%= t('views.castings.index.expired_text') %></h6>
+		<% end %>
 	</div>
 </div>
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<div class="row">
-			<div class="col-md-4">
-				<%= image_tag casting.ownerable.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-rounded" %>
+			<div class="col-md-2">
+				<%= image_tag casting.ownerable.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive img-center-horizontal" %>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-10 text-left">
 				<p><%= casting.description %></p>
 			</div>
 		</div>
@@ -24,11 +28,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<div class="row">
 			<div class="col-md-12">
 				<% if casting.photos.any? %>
-					<%= image_tag casting.get_first_references_photo.image.url, alt: "Model Photo", class: "img-thumbnail img-responsive" %>
+					<%= image_tag casting.get_first_references_photo.image.url(:large), alt: "Model Photo", class: "img-responsive" %>
 				<% end %>
 			</div>
 		</div>
@@ -36,8 +40,8 @@
 			<div class="col-md-12">
 				<% if casting.photos.any? %>
 					<% casting.get_rest_references_photo.each do |ref_photo| %>
-						<div class="img-thumbnail">
-							<%= image_tag ref_photo.image.url(:list), alt: "Model Photo" %>
+						<div class="img-inline">
+							<%= image_tag ref_photo.image.url(:list), alt: "Model Photo", class: "img-responsive" %>
 						</div>
 					<% end %>
 				<% end %>
@@ -48,7 +52,7 @@
 
 <div class="row row-medium-padding-vertical">
 	<div class="col-md-4">
-		<h5>Published at: <%= casting.created_at %></h5>
+		<h5>Published at: <%= l(casting.created_at, format: :custom) %></h5>
 	</div>
 	<div class="col-md-8">
 		<%= link_to t('views.castings.buttons.see_full_casting'), casting_path(casting), class: "btn btn-primary pull-right" %>
@@ -61,7 +65,7 @@
 <div class="row text-danger">
 	<div class="col-md-12">
 		<% if casting.personal? %>
-			<p><%= t('views.castings.messages.private') %></p>
+			<p><%= t('views.castings.index.private_text') %></p>
 		<% end %>
 	</div>
 </div>

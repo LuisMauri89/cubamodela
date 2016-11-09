@@ -27,7 +27,8 @@ class Casting < ApplicationRecord
   validates :access_type, inclusion: { in: %w(free personal) }
 
   #Scopes
-  scope :actives, lambda { where(status: "active").order("created_at DESC") }
+  scope :actives, -> { where(status: "active").order("created_at DESC") }
+  scope :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: Date.today).order("created_at DESC") }
 
   # Associations	
   belongs_to :ownerable, polymorphic: true
@@ -38,19 +39,19 @@ class Casting < ApplicationRecord
 
   # Custom Validators
   def expiration_date_cannot_be_in_the_past
-    if expiration_date.present? && expiration_date < Date.today
+    if expiration_date.present? && expiration_date < DateTime.now
       errors.add(:expiration_date, "can't be in the past.")
     end
   end
 
   def casting_date_cannot_be_in_the_past
-    if casting_date.present? && (casting_date < Date.today || casting_date <= expiration_date)
+    if casting_date.present? && (casting_date < DateTime.now || casting_date <= expiration_date)
       errors.add(:casting_date, "can't be in the past or before the expliration date.")
     end
   end
 
   def shooting_date_cannot_be_in_the_past
-    if shooting_date.present? && (shooting_date < Date.today || shooting_date <= casting_date)
+    if shooting_date.present? && (shooting_date < DateTime.now || shooting_date <= casting_date)
       errors.add(:shooting_date, "can't be in the past or before the casting date.")
     end
   end
@@ -66,7 +67,7 @@ class Casting < ApplicationRecord
   end
 
   def expired?
-    return expiration_date < Date.today
+    return expiration_date < DateTime.now
   end
 
   def allow_edit?
@@ -74,7 +75,7 @@ class Casting < ApplicationRecord
     when "active"
       return nil
     when "closed"
-      if Date.today < casting_date
+      if DateTime.now < casting_date
         return nil
       else
         return I18n.t('views.castings.messages.edit.past')
@@ -87,7 +88,7 @@ class Casting < ApplicationRecord
   def try_close!
     case status
     when "active"
-      expiration_date = Date.today
+      expiration_date = DateTime.now
       closed!
     when "closed"
       errors[:base] << I18n.t('views.castings.messages.edit.closed')
@@ -101,7 +102,7 @@ class Casting < ApplicationRecord
     when "active"
       canceled!
     when "closed"
-      if Date.today < casting_date
+      if DateTime.now < casting_date
         canceled!
       else
         errors[:base] << I18n.t('views.castings.messages.edit.past')
@@ -116,8 +117,8 @@ class Casting < ApplicationRecord
     when "active"
       errors[:base] << I18n.t('views.castings.messages.edit.active')
     when "closed"
-      if Date.today < casting_date
-        expiration_date = Date.today + 1
+      if DateTime.now < casting_date
+        expiration_date = DateTime.now + 1
         casting_date = casting_date + 1
         shooting_date = shooting_date + 1
         active!
@@ -142,10 +143,10 @@ class Casting < ApplicationRecord
 
     case status
     when "active"
-      intent.update(casting: self, profile_model: profile, status: "invited")
+      intent = Intent.new(casting: self, profile_model: profile, status: "invited")
     when "closed"
-      if Date.today < casting_date
-        intent.update(casting: self, profile_model: profile, status: "invited")
+      if DateTime.now < casting_date
+        intent = Intent.new(casting: self, profile_model: profile, status: "invited")
       else
         intent.errors[:base] << I18n.t('views.castings.messages.edit.past')
       end
@@ -167,7 +168,7 @@ class Casting < ApplicationRecord
       when "active"
         intent.confirmed!
       when "closed"
-        if Date.today < casting_date
+        if DateTime.now < casting_date
           intent.confirmed!
         else
           intent.errors[:base] << I18n.t('views.castings.messages.edit.past')
@@ -186,7 +187,7 @@ class Casting < ApplicationRecord
     case status
     when "active"
       if free?
-        intent.update(casting: self, profile_model: profile, status: "applied")
+        intent = Intent.new(casting: self, profile_model: profile, status: "applied")
       else
         intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_personal')
       end
@@ -201,7 +202,7 @@ class Casting < ApplicationRecord
 
   def send_update_notification(old_casting)
     if old_casting.expiration_date != expiration_date || old_casting.casting_date != casting_date || old_casting.shooting_date != shooting_date
-        # call method to notify
+      CastingDatesChangedJob.perform_later(self)
     end
   end
 end

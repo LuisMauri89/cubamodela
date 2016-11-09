@@ -68,7 +68,7 @@
         <% end %>
         <%= link_to t('views.profile_models.show_resume.buttons.see_profile'), profile_model_path(@profile), class: "btn btn-primary btn-block" %>
         <% if current_user.contractor? %>
-          <%= link_to t('views.profile_models.show_resume.buttons.invite'), custom_index_invite_castings_path(@profile), class: "btn btn-primary btn-block" %>
+          <%= link_to t('views.profile_models.show_resume.buttons.invite'), custom_index_invite_castings_path(current_user.profileable, @profile), class: "btn btn-primary btn-block" %>
           <%= link_to t('views.profile_models.show_resume.buttons.booking'), new_booking_path(profile_id: @profile), class: "btn btn-primary btn-block" %>
         <% end %>
       </div>

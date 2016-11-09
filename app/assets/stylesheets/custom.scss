@@ -451,6 +451,10 @@ a.link-image:hover{
 	margin: 0 auto !important;
 }
 
+.content-center-horizontal{
+	margin: 0 auto !important;
+}
+
 .content-vertical-align{
 	display: flex !important;
 	align-items: center !important;
@@ -539,6 +543,7 @@ a.link-image:hover{
 
 .message-created-at{
 	font-size: 12px;
+	margin-left: 5px;
 }
 
 #messages-container{
@@ -615,10 +620,13 @@ a.link-image:hover{
 
 .single-casting-container{
 	padding: 20px 40px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #337ab7;
 }
 
 .single-casting-container p{
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .single-casting-container a{
@@ -635,6 +643,10 @@ a.link-image:hover{
 
 .btn-small-right-margin{
 	margin-right: 5px !important;
+}
+
+.img-inline{
+	display: inline-block;
 }
 
 #manage-casting-container{

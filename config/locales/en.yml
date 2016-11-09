@@ -213,6 +213,11 @@ en:
         location: "Location"
         casting_date: "Casting date"
         shooting_date: "Shooting date"
+      casting:
+        description: "Description"
+        expiration_date: "Expiration date"
+        casting_date: "Casting date"
+        shooting_date: "Shooting date"
       color:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
@@ -353,6 +358,9 @@ en:
         confirm: "Confirmation successfully."
         update: "Booking has been successfully updated."
     castings:
+      index:
+        expired_text: "Expired"
+        private_text: "Private casting. The only way to get in is to get an invitation."
       index_custom_invite:
         header_text: "Select casting to invite to"
       index_invite:
@@ -376,7 +384,6 @@ en:
       messages:
         create: "Casting was successfully created. Please add some references photos."
         update: "Casting was successfully updated."
-        private: "Private casting. The only way to get in is to get an invitation."
         edit:
           past: "Actual date of casting is in the past. Editing is not allowed."
           canceled: "Casting is already canceled."
@@ -439,12 +446,30 @@ en:
           casting_dates_changed_invited:
             title: "Casting's dates changed"
             description: "Dates of the casting had been changed. Please check it out."
+            header_text: "Casting has been updated"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to confirm your presence as soon as posible, thank you so much."
+            after_dates_text: "Know that you can confirm only if the casting date have not arrive yet."
+            buttons:
+              see_casting: "See full casting especifications"
+              confirm: "Confirm my presence"
           casting_dates_changed_confirmed:
             title: "Casting's dates changed"
             description: "Dates of the casting had been changed. Please check it out."
+            header_text: "Casting has been updated"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to confirm your presence as soon as posible, thank you so much."
+            after_dates_text: "Know that you can confirm only if the casting date have not arrive yet and you must confirm again your presence due to casting's dates changed."
+            buttons:
+              see_casting: "See full casting especifications"
+              confirm: "Confirm my presence"
           casting_dates_changed_applied:
             title: "Casting's dates changed"
             description: "Dates of the casting had been changed. Please check it out."
+            header_text: "Casting has been updated"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to apply again, thank you so much."
+            after_dates_text: "Know that you must apply again due to casting's dates changed."
+            buttons:
+              see_casting: "See full casting especifications"
+              apply: "Apply again for this casting"
           casting_confirmation:
             title: "New confirmation to casting"
             description: "A user confirmed his or her precense in the casting. Please check it out."
@@ -460,18 +485,77 @@ en:
           casting_application:
             title: "New application to casting"
             description: "A user applied to participate in the casting. Please check it out."
+            header_text: "%{value} has applied to participate"
+            subheader_text: "in the casting: %{value}"
+            after_description_text: "It is important that you edit the casting if changes with the dates in order to notify everyone involve, thank you so much."
+            after_dates_text: "Some other text."
+            buttons:
+              see_casting: "See full casting especifications"
+              edit_casting: "Edit this casting"
+              manage_casting: "Manage this casting"
+              see_profile: "Show %{value}'s profile"
           casting_application_confirmation:
             title: "Application confirmed"
             description: "Your application for the casting had been acepted. Please check it out."
+            header_text: "%{value} you has been accepted to participate"
+            subheader_text: "in the casting: %{value}"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to do not miss the actual day of the casting, thank you so much."
+            after_dates_text: "Some other text."
+            buttons:
+              see_casting: "See full casting especifications"
           new_casting_free:
             title: "New casting available"
             description: "There is a new casting and it is available for application. Please check it out."
+            header_text: "New casting available, hurry up!!!"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to see if the casting is of your interest, thank you so much."
+            after_dates_text: "Know that you can apply only if the casting's expiration date have not arrive yet."
+            buttons:
+              see_casting: "See full casting especifications"
+              apply: "Apply for this casting"
           casting_closed:
             title: "Casting closed"
             description: "Casting has expired. Please check it out."
+            header_text: "Casting has expired"
+            after_description_text: "It is important for you to ckeck the dates of the casting, expiration date, casting date and shooting date, in order to confirme if you have not done yet, thank you so much."
+            after_dates_text: "Know that you can confirm only if the casting date have not arrive yet."
+            buttons:
+              see_casting: "See full casting especifications"
+              confirm: "Confirm my presence"
           casting_canceled:
             title: "Casting canceled"
             description: "Casting was canceled. Please check it out."
+            header_text: "Casting was permanently canceled"
+            after_dates_text: "Know that this casting is permanently canceled."
+          casting_available_expiration_proximity:
+            title: "Casting available"
+            description: "Casting is available. Please check it out."
+            header_text: "Casting %{value} is available"
+            subheader_text: "it expires:"
+            after_description_text: "Some other text."
+            after_dates_text: "Some other text."
+            buttons:
+              see_casting: "See full casting especifications"
+              apply: "Apply for this casting"
+          casting_invited_expiration_proximity:
+            title: "Casting pending confirmation"
+            description: "Casting is waiting for your confirmation. Please check it out."
+            header_text: "Casting %{value} is close"
+            subheader_text: "it expires:"
+            after_description_text: "You must confirm bla bla."
+            after_dates_text: "Some other text."
+            buttons:
+              see_casting: "See full casting especifications"
+              confirm: "Confirm my presence"
+          casting_invited_date_proximity:
+            title: "Casting pending confirmation"
+            description: "Casting is waiting for your confirmation. Please check it out."
+            header_text: "Casting %{value} is close to happen"
+            subheader_text: "it is:"
+            after_description_text: "You must confirm bla bla."
+            after_dates_text: "Some other text."
+            buttons:
+              see_casting: "See full casting especifications"
+              confirm: "Confirm my presence"
           booking_invitation:
             title: "New booking"
             description: "You have been booked."
@@ -485,6 +569,41 @@ en:
           profile_unpublished:
             title: "Profile review"
             description: "Your profile has been denied. Please check it out why."
+    mailers:
+      global:
+        user_friendly: "Dear"
+        mail_footer: "Thanks for been our user bla bla."
+      casting:
+        casting_invitation:
+          subject: "New invitation to casting %{value}"
+        casting_confirmation:
+          subject: "New confirmation to casting %{value}"
+        casting_application:
+          subject: "New confirmation to casting %{value}"
+        casting_application_confirmation:
+          subject: "Your application to casting %{value} has been accepted"
+        casting_closed:
+          subject: "Casting %{value} has been closed"
+        casting_canceled:
+          subject: "Casting %{value} has been canceled"
+        casting_dates_changed_invited:
+          subject: "Casting %{value} has been updated"
+        casting_dates_changed_confirmed:
+          subject: "Casting %{value} has been updated"
+        casting_dates_changed_applied:
+          subject: "Casting %{value} has been updated"
+        new_casting_free:
+          subject: "Casting %{value} is available"
+        profile_published:
+          subject: "%{value} your profile has been published"
+        profile_unpublished:
+          subject: "%{value} your profile can not be published"
+        casting_available_expiration_proximity:
+          subject: "Casting %{value} is close to expiration"
+        casting_invited_expiration_proximity:
+          subject: "Casting %{value} is close to expiration, confirmation pending"
+        casting_invited_date_proximity:
+          subject: "Casting %{value} is close to happen, confirmation pending"
     modalities:
       index:
         header_text: "Modalities"
