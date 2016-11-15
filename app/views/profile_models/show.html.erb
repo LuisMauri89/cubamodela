@@ -1,10 +1,143 @@
 <% if @profile.reviewed %>
-	<div class="row">
-		<div class="col-md-12 text-center">
-			<div id="profile-picture-container" class="text-center">
-				<div id="profile-picture", style="margin-bottom: 5px;">
-					<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-circle" %>
+	<div class="row row-profile-container">
+		<div class="col-md-8">
+			<div class="profile-section">
+				<div id="profile-photo-selected-container" class="item" >
+					<%= image_tag @profile.get_profesional_book_album_photos.first.image.url, alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
 				</div>
+			</div>
+			<div class="profile-section">
+				<ul class="nav nav-pills nav-justified nav-profile">
+					<li role="presentation" id="profile-photos-professional" class="profile_menu active">
+					  	<%= link_to 'Professional', show_professional_photos_profile_model_path(@profile), remote: true %>
+					</li>
+					<li role="presentation" id="profile-photos-polaroid" class="profile_menu">
+					  	<%= link_to 'Polaroid', show_polaroid_photos_profile_model_path(@profile), remote: true %>
+					</li>
+				</ul>
+			</div>
+			<div class="profile-section">
+				<div id="profile-photos-selected">
+					<%= render 'photos_professional' %> 
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="profile-section">
+				
+			</div>
+			<div class="profile-section">
+				<div class="text-center">
+					<div class="row">
+						<div class="col-md-6">
+							<div id="profile-picture">
+								<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div>
+								<% if current_user.contractor? %>
+							        <%= link_to t('views.profile_models.show_resume.buttons.invite'), custom_index_invite_castings_path(current_user.profileable, @profile), class: "btn btn-primary btn-block btn-xs" %>
+							        <%= link_to t('views.profile_models.show_resume.buttons.booking'), new_booking_path(profile_id: @profile), class: "btn btn-primary btn-block btn-xs" %>
+						        <% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="profile-section">
+				<h4><%= t('views.profile_models.show.headers.information') %></h4>
+				<% if @profile.current_province.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.current_province_id') %>:
+		            	</b> 
+		            	<%= @profile.current_province.name %>
+		            </p>
+		        <% end %>
+		        <% if @profile.nationality.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.nationality_id') %>:
+		            	</b> 
+		            	<%= @profile.nationality.name %>
+		            </p>
+		        <% end %>
+		        <% if @profile.birth_date.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.age') %>:
+		            	</b> 
+		            	<%= @profile.get_age %>
+		            </p>
+		        <% end %>
+		        <% if @profile.gender.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.gender') %>:
+		            	</b> 
+		            	<%= @profile.gender %>
+		            </p>
+		        <% end %>
+		        <% if @profile.ethnicity.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.ethnicity_id') %>:
+		            	</b> 
+		            	<%= @profile.ethnicity.name %>
+		            </p>
+		        <% end %>
+			</div>
+			<div class="profile-section">
+				<h4><%= t('views.profile_models.show.headers.sizes') %></h4>
+				<% if @profile.eyes_color.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.eyes_color_id') %>:
+		            	</b> 
+		            	<%= @profile.eyes_color.name %>
+		            </p>
+		        <% end %>
+				<% if @profile.height.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.height') %>:
+		            	</b> 
+		            	<%= @profile.height %>cm / <%= (@profile.height/2.54).round(2) %>''
+		            </p>
+		        <% end %>
+				<% if @profile.chest.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.chest') %>:
+		            	</b> 
+		            	<%= @profile.chest.round(2) %> / <%= (@profile.chest/2.54).round(2) %>''
+		            </p>
+		        <% end %>
+		        <% if @profile.waist.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.waist') %>:
+		            	</b> 
+		            	<%= @profile.waist.round(2) %> / <%= (@profile.waist/2.54).round(2) %>''
+		            </p>
+		        <% end %>
+		        <% if @profile.hips.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.hips') %>:
+		            	</b> 
+		            	<%= @profile.hips.round(2) %> / <%= (@profile.hips/2.54).round(2) %>''
+		            </p>
+		        <% end %>
+		        <% if @profile.size_shoes.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.size_shoes') %>:
+		            	</b> 
+		            	<%= @profile.size_shoes.to_s << " EU" %> / <%= ShoeSize.get_eur_size(@profile.gender, @profile.size_shoes) %>
+		            </p>
+		        <% end %>
 			</div>
 		</div>
 	</div>

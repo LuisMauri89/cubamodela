@@ -1,5 +1,5 @@
 <div id="form-casting-container">
-  <%= form_for(@casting, html: { class: "form-horizontal" }) do |f| %>
+  <%= form_for(@casting) do |f| %>
 
     <% if @casting.errors.any? %>
       <div class="alert alert-danger text-center">
@@ -12,70 +12,122 @@
       </div>
     <% end %>
 
-    <div class="form-group text-center">
-      <%= f.label :title %>
-      <%= f.text_field :title, placeholder: "Title", class: "form-control text-center" %>
-    </div>
-
-    <div class="form-group text-center">
-      <%= f.label :description %>
-      <%= f.text_area :description, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
-    </div>
-
-    <div class="form-group text-center">
-      <%= f.label :location %>
-      <%= f.text_area :location, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group text-center">
-          <%= f.label :expiration_date %> <br/>
-          <%= date_select :casting, :expiration_date, class: "form-control" %>
-        </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.name') %></h3>
       </div>
-      <div class="col-md-4">
-        <div class="form-group text-center">
-          <%= f.label :casting_date %> <br/>
-          <%= date_select :casting, :casting_date, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group text-center">
-          <%= f.label :shooting_date %> <br/>
-          <%= date_select :casting, :shooting_date, class: "form-control" %>
-        </div>
-      </div>
-    </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <%= f.label :access_type %><br />
+                  <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.user.kind_options.' + type), type]}, class: "form-control") %>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="form-group text-center">
+                  <%= f.label :title %>
+                  <%= f.text_field :title, placeholder: "Title", class: "form-control text-center" %>
+                </div>
+              </div>
+            </div>
 
-    <div class="form-group text-center">
-      <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
-      <div class="row">
-      <% if I18n.locale == "en".to_sym %>
-        <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name_en do |e| %>
-          <div class="col-md-3">
-            <div class="checkbox-container">
-              <%= e.check_box %>
-              <%= e.label %>
+            <div class="form-group text-center">
+              <%= f.label :description %>
+              <%= f.text_area :description, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+            </div>
+
+            <div class="form-group text-center">
+              <%= f.label :location %>
+              <%= f.text_area :location, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
             </div>
           </div>
-        <% end %>
-      <% else %>
-        <%= f.collection_check_boxes :modality_ids, Modality.all, :id, :name_es do |e| %>
-          <div class="col-md-3">
-            <div class="checkbox-container">
-              <%= e.check_box %>
-              <%= e.label %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+        </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :access_type %><br />
-      <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.user.kind_options.' + type), type]}, class: "form-control") %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.name') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-11 col-md-offset-1">
+            <div class="form-group">
+              <%= f.label :expiration_date %>: 
+              <%= date_select :casting, :expiration_date, prompt: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", order: [:day, :month, :year], class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-11 col-md-offset-1">
+            <div class="form-group">
+              <%= f.label :casting_date %>: 
+              <%= datetime_select :casting, :casting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-11 col-md-offset-1">
+              <div class="form-group">
+                <%= f.label :shooting_date %>: 
+                <%= datetime_select :casting, :shooting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.name') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3 col-md-offset-1">
+              <div class="form-group">
+                <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
+                <% if I18n.locale == "en".to_sym %>
+                  <%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |m| %>
+                    <div class="checkbox-container">
+                      <%= m.check_box %>
+                      <%= m.label %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |m| %>
+                    <div class="checkbox-container">
+                      <%= m.check_box %>
+                      <%= m.label %>
+                    </div>
+              <% end %>
+                <% end %>
+              </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <%= f.label t('activerecord.attributes.profile_model.associations.categories') << ":" %><br />
+              <% if I18n.locale == "en".to_sym %>
+                  <%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_en do |c| %>
+                    <div class="checkbox-container">
+                      <%= c.check_box %>
+                      <%= c.label %>
+                    </div>
+              <% end %>
+              <% else %>
+                <%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_es do |c| %>
+                  <div class="checkbox-container">
+                    <%= c.check_box %>
+                    <%= c.label %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <%= f.submit "Save Casting", class: "btn btn-primary btn-block" %>

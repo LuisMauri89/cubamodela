@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :categories
+  resources :ethnicities
 # For internationalization
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
@@ -19,6 +21,9 @@ Rails.application.routes.draw do
   resources :profile_models do
     get 'show_resume', on: :member
     get 'show_for_review', on: :member
+    get 'show_professional_photos', on: :member
+    get 'show_polaroid_photos', on: :member
+    get 'show_selected_photo/:photo_id', to: 'profile_models#show_selected_photo', as: :selected_photo, on: :member
     get 'publish', on: :member
     get 'no_publish', on: :member
   end

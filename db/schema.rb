@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105182001) do
+ActiveRecord::Schema.define(version: 20161110205737) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 20161105182001) do
     t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id"
   end
 
+  create_table "castings_categories", id: false, force: :cascade do |t|
+    t.integer "casting_id"
+    t.integer "category_id",      null: false
+    t.integer "profile_model_id"
+    t.index ["casting_id"], name: "index_castings_categories_on_casting_id"
+    t.index ["profile_model_id"], name: "index_castings_categories_on_profile_model_id"
+  end
+
   create_table "castings_modalities", id: false, force: :cascade do |t|
     t.integer "casting_id"
     t.integer "modality_id"
@@ -61,11 +69,32 @@ ActiveRecord::Schema.define(version: 20161105182001) do
     t.index ["modality_id"], name: "index_castings_modalities_on_modality_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name_en"
+    t.string   "name_es"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_profile_models", id: false, force: :cascade do |t|
+    t.integer "profile_model_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_categories_profile_models_on_category_id"
+    t.index ["profile_model_id"], name: "index_categories_profile_models_on_profile_model_id"
+  end
+
   create_table "colors", force: :cascade do |t|
     t.string   "name_en"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name_es"
+  end
+
+  create_table "ethnicities", force: :cascade do |t|
+    t.string   "name_en"
+    t.string   "name_es"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "expertises", force: :cascade do |t|
@@ -184,19 +213,23 @@ ActiveRecord::Schema.define(version: 20161105182001) do
     t.string   "mobile_phone"
     t.string   "land_phone"
     t.string   "address"
-    t.decimal  "chest"
-    t.decimal  "waist"
-    t.decimal  "hips"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "chest",               precision: 5, scale: 2
+    t.decimal  "waist",               precision: 5, scale: 2
+    t.decimal  "hips",                precision: 5, scale: 2
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
     t.integer  "eyes_color_id"
     t.integer  "current_province_id"
     t.string   "gender"
-    t.integer  "size_shoes"
-    t.integer  "size_cloth"
+    t.decimal  "size_shoes",          precision: 4, scale: 2
+    t.decimal  "size_cloth",          precision: 4, scale: 2
     t.integer  "nationality_id"
-    t.boolean  "reviewed",            default: false
+    t.boolean  "reviewed",                                    default: false
+    t.date     "birth_date"
+    t.integer  "ethnicity_id"
+    t.integer  "height"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
+    t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id"
     t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"
     t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"
   end
@@ -219,6 +252,15 @@ ActiveRecord::Schema.define(version: 20161105182001) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name_es"
+  end
+
+  create_table "shoe_sizes", force: :cascade do |t|
+    t.string   "gender"
+    t.string   "usa"
+    t.string   "eur"
+    t.string   "uk"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "studies", force: :cascade do |t|

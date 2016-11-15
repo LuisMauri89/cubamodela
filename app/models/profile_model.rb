@@ -5,16 +5,18 @@ class ProfileModel < ApplicationRecord
 	validates :mobile_phone, length: { in: 8..20 }, allow_blank: true
 	validates :land_phone, length: { in: 8..20 }, allow_blank: true
 	validates :address, length: { maximum: 100 }, allow_blank: true
+	validates :height, numericality: { greater_than_or_equal_to: 120, less_than_or_equal_to: 210 }, allow_blank: true
 	validates :chest, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :waist, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :hips, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :gender, inclusion: { in: %w(Female Male) }, allow_blank: true
-	validates :size_shoes, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 50 }, allow_blank: true
-	validates :size_cloth, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
+	validates :size_shoes, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
+	validates :size_cloth, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
 
 	#Scopes
-	scope :ready, lambda { where(reviewed: true).order("created_at ASC") }
-	scope :not_ready, lambda { where(reviewed: false).order("created_at ASC") }
+	scope :ready, -> { where(reviewed: true).order("created_at ASC") }
+	scope :not_ready, -> { where(reviewed: false).order("created_at ASC") }
+	scope :invitable, -> (casting) { ready.reject{ |pm| !pm.can_apply?(casting) } }
 
 	# User
 	has_one :user, as: :profileable
@@ -22,6 +24,7 @@ class ProfileModel < ApplicationRecord
 	# Castings
 	has_many :intents
 	has_many :castings, through: :intents
+	has_many :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: Date.today).order("created_at DESC") }, through: :intents, source: :casting
 	has_many :bookings, dependent: :destroy
   	has_many :profile_contractors, through: :bookings
 
@@ -31,11 +34,15 @@ class ProfileModel < ApplicationRecord
 	has_and_belongs_to_many :expertises, dependent: :destroy
 	has_and_belongs_to_many :languages, dependent: :destroy
 	has_and_belongs_to_many :modalities, dependent: :destroy
+	has_and_belongs_to_many :categories, dependent: :destroy
 	belongs_to :nationality, optional: true
+	belongs_to :ethnicity, optional: true
 
 	# Pictures
 	has_many :albums, as: :profileable, dependent: :destroy
 	has_many :photos, through: :albums
+	# has_many :photos_professional, -> { joins(:attachable).where("attachables.name = 'Profesional Book'") }, through: :albums, source: :photo
+	
 
 	# Studies
 	has_many :studies, as: :ownerable, dependent: :destroy
@@ -64,7 +71,7 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def profile_complete_progress_total
-		total = 19
+		total = 21
 	end
 
 	def profile_complete_progress_percentage
@@ -85,6 +92,14 @@ class ProfileModel < ApplicationRecord
 			return first_name
 		else
 			return user.email.split("@")[0]
+		end
+	end
+
+	def get_age
+		if birth_date.present?
+			return ((Date.today - birth_date) / 365).to_i
+		else
+			return "Not setted"
 		end
 	end
 
@@ -109,6 +124,14 @@ class ProfileModel < ApplicationRecord
 			return albums.where(name: "Profesional Book").first.photos.count
 		rescue
 			return 0
+		end
+	end
+
+	def get_polaroid_album_photos
+		begin
+			return albums.where(name: "Polaroid").first.photos
+		rescue
+			return []
 		end
 	end
 
@@ -164,7 +187,9 @@ class ProfileModel < ApplicationRecord
 								  address.present?, 
 								  current_province.present?, 
 								  nationality.present?, 
+								  ethnicity.present?,
 								  eyes_color.present?, 
+								  height.present?,
 								  chest.present?, 
 								  waist.present?, 
 								  hips.present?, 

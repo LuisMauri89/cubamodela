@@ -238,19 +238,25 @@ en:
           languages: "Languages"
           expertises: "Expertises"
           modalities: "Modalities"
+          categories: "Categories"
         gender: "Gender"
         gender_male: "Male"
         gender_female: "Female"
         eyes_color_id: "Eyes color"
+        height: "Height"
+        height_select_text: "Please select your height"
         chest: "Chest"
         weist: "Weist"
         hips: "Hips"
-        size_shoes: "Size shoes"
-        size_cloth: "Size cloth"
+        size_shoes: "Size shoes (USA)"
+        size_shoes_select_text: "Please select your shoe size in USA normative"
+        size_cloth: "Size cloth (USA)"
         current_province_id: "Current province"
         current_province_id_select_text: "Please select a province"
         nationality_id: Nationality
         nationality_id_select_text: "Please select a nationality"
+        ethnicity_id: Ethnicity
+        ethnicity_id_select_text: "Please select your ethnicity"
       province:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
@@ -295,7 +301,10 @@ en:
           one: "is the wrong length (should be 1 character)"
           other: "is the wrong length (should be %{count} characters)"
         other_than: "must be other than %{count}"
-        invited: "is already asociated with the model."
+        invited: "is already asociated with the model"
+        wrong_expiration_date: "can't be in the past"
+        wrong_casting_date: "can not be in the past / can not happen before expliration date"
+        wrong_shooting_date: "can not be in the past / can not happen before casting date"
   views:
     application:
       messages:

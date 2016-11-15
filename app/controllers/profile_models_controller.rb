@@ -1,6 +1,8 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :show_for_review, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :show_resume, :show_for_review, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :generate_cols_batch, only: [:show, :show_professional_photos]
+  before_action :generate_cols_batch_others, only: [:show_polaroid_photos]
   before_action :check_if_can, only: [:show_for_review, :publish, :no_publish, :edit, :update, :destroy]
 
   def index
@@ -10,6 +12,25 @@ class ProfileModelsController < ApplicationController
   def show
     respond_to do |format|
       format.html
+    end
+  end
+
+  def show_professional_photos
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_polaroid_photos
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def show_selected_photo
+    @photo = @profile.photos.find(params[:photo_id])
+    respond_to do |format|
+      format.js
     end
   end
 
@@ -95,11 +116,11 @@ class ProfileModelsController < ApplicationController
 
     def profile_params
       params.require(:profile_model).permit(:first_name, :last_name, :mobile_phone,
-                                            :land_phone, :address, :chest, :waist, 
+                                            :birth_date, :land_phone, :address, :chest, :waist, 
                                             :hips, :ayes_color_id, :current_province_id, 
                                             :gender, :size_shoes, :size_cloth, :nationality_id,
-                                            :reviewed, expertise_ids:[], language_ids:[], 
-                                            modality_ids:[])
+                                            :height, :reviewed, :ethnicity_id, expertise_ids:[], 
+                                            language_ids:[], modality_ids:[], category_ids:[])
     end
 
     def set_profile
@@ -114,5 +135,53 @@ class ProfileModelsController < ApplicationController
       @profile.albums.create(name: "Profile Photo")
       @profile.albums.create(name: "Profesional Book")
       @profile.albums.create(name: "Polaroid")
+    end
+
+    def generate_cols_batch
+      @cols = []
+      count = @profile.get_profesional_book_album_photos_count
+      rest = count % 3
+      value = (count / 3).to_i
+
+      case rest
+      when 0
+        @cols = [value, value, value]
+      when 1
+        @cols = [value + 1, value, value]
+      when 2
+        @cols = [value + 1, value + 1, value]
+      end
+    end
+
+    def generate_cols_batch_polaroid
+      @cols = []
+      count = @profile.albums.where(name: "Polaroid").first.photos.count
+      rest = count % 3
+      value = (count / 3).to_i
+
+      case rest
+      when 0
+        @cols = [value, value, value]
+      when 1
+        @cols = [value + 1, value, value]
+      when 2
+        @cols = [value + 1, value + 1, value]
+      end
+    end
+
+    def generate_cols_batch_others
+      @cols = []
+      count = @profile.albums.where(name: "Polaroid").first.photos.count
+      rest = count % 3
+      value = (count / 3).to_i
+
+      case rest
+      when 0
+        @cols = [value, value, value]
+      when 1
+        @cols = [value + 1, value, value]
+      when 2
+        @cols = [value + 1, value + 1, value]
+      end
     end
 end

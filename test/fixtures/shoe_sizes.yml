@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gender: MyString
+  usa: 1
+  eur: 1
+  uk: 1
+
+two:
+  gender: MyString
+  usa: 1
+  eur: 1
+  uk: 1

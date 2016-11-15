@@ -1,0 +1,25 @@
+<% if user_signed_in? && current_user.contractor? && @profile.get_polaroid_album_photos.any? %>
+	<div class="row row-profile-imgs">
+
+		<div class="col-md-4 col-profile-imgs">
+			<% @profile.get_polaroid_album_photos.limit(@cols[0]).each do |photo| %>
+				<%= image_tag photo.image.url, alt: "Model Photo", class: "img-responsive profile-photo" %>
+			<% end %>
+		</div>
+
+		<div class="col-md-4 col-profile-imgs">
+			<% @profile.get_polaroid_album_photos.offset(@cols[0]).limit(@cols[1]).each do |photo| %>
+				<%= image_tag photo.image.url, alt: "Model Photo", class: "img-responsive profile-photo" %>
+			<% end %>
+		</div>
+
+		<div class="col-md-4 col-profile-imgs">
+			<% @profile.get_polaroid_album_photos.offset(@cols[0] + @cols[1]).limit(@cols[2]).each do |photo| %>
+				<%= image_tag photo.image.url, alt: "Model Photo", class: "img-responsive profile-photo" %>
+			<% end %>
+		</div>
+
+	</div>
+<% else %>
+	<h4 class="text-center"><%= t('views.profile_models.show.polaroid_book_empty_text') %></h4>
+<% end %>

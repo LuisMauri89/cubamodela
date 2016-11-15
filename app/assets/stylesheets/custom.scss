@@ -9,6 +9,14 @@ body {
   font-family: 'roboto-light' !important;
 }
 
+label.form-option{
+	font-weight: lighter !important;
+}
+
+.checkbox-container label{
+	font-weight: lighter !important;
+}
+
 p{
 	font-family: 'roboto-light' !important;
 }
@@ -37,12 +45,28 @@ p{
 	border-radius: 0px !important;
 }
 
+.btn-default{
+	/* Make btn-default flat square */
+	background-image: none !important;
+	border-color: transparent !important;
+	box-shadow: none !important;
+	border-radius: 0px !important;
+	color: gray !important;
+}
+
 .panel{
 	/* Make panel-primary flat square */
 	border-radius: 0px !important;
 }
 
 .panel-primary > .panel-heading{
+	/* Make panel-primary flat square */
+	background-image: none !important;
+	border-top-left-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+}
+
+.panel-default > .panel-heading{
 	/* Make panel-primary flat square */
 	background-image: none !important;
 	border-top-left-radius: 0px !important;
@@ -152,6 +176,7 @@ p{
 	padding-left: 100px;
 	background-color: #337ab7;
 	color: white;
+	margin-top: 20px;
 }
 
 #footer a{
@@ -361,10 +386,8 @@ p{
 
 #profile-picture-container{
 	/* Add margin to profile picture */
-	margin-top: 10px;
 	margin-left: 45%;
 	margin-right: 45%;
-	margin-bottom: 20px;
 }
 
 #profile-main-menu-container{
@@ -390,6 +413,64 @@ p{
 
 .panel-study{
 	margin-bottom: 5px !important;
+}
+
+.row-profile-container{
+	margin-left: 10% !important;
+	margin-right: 10% !important;
+}
+
+.profile-section{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #e7e7e7;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 10px !important;
+}
+
+.nav-profile{
+	width: inherit !important;
+}
+
+#profile-photo-selected-container{
+}
+
+.profile-photo-selected{
+}
+
+#profile-photos-selected{
+	min-height: 200px;
+}
+
+.profile-section > .item{
+	position: relative;
+    transition: left 0.6s ease-in-out 0s;
+}
+
+.row-profile-imgs{
+	padding: 1px !important;
+}
+
+.col-profile-imgs:nth-child(2){
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.col-profile-imgs:first-child{
+	padding-right: 2px !important;
+}
+
+.col-profile-imgs:last-child{
+	padding-left: 2px !important;
+}
+
+.profile-photo{
+	margin: 3px !important;
+}
+
+.profile-value{
+	font-size: 14px;
 }
 
 /* END Profile */
@@ -605,6 +686,7 @@ a.link-image:hover{
 }
 
 #form-casting-container{
+	margin-top: 40px;
 	margin-left:15%;
 	margin-right:15%;
 }

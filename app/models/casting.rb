@@ -21,14 +21,15 @@ class Casting < ApplicationRecord
   validates :title, presence: true, length: { in: 3..50 }
   validates :description, presence: true, length: { in: 20..500 }
   validates :location, length: { in: 5..500 }, allow_blank: true
-  validate :expiration_date_cannot_be_in_the_past
-  validate :casting_date_cannot_be_in_the_past
-  validate :shooting_date_cannot_be_in_the_past
+  validates :expiration_date, presence: true
+  validates :casting_date, presence: true
+  validates :shooting_date, presence: true
+  validate :expiration_date_cannot_be_in_the_past, :casting_date_cannot_be_in_the_past, :shooting_date_cannot_be_in_the_past
   validates :access_type, inclusion: { in: %w(free personal) }
 
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
-  scope :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: Date.today).order("created_at DESC") }
+  scope :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now).order("created_at DESC") }
 
   # Associations	
   belongs_to :ownerable, polymorphic: true
@@ -36,23 +37,24 @@ class Casting < ApplicationRecord
   has_many :profile_models, through: :intents
   has_many :photos, as: :attachable, dependent: :destroy
   has_and_belongs_to_many :modalities, dependent: :destroy
+  has_and_belongs_to_many :categories, dependent: :destroy
 
   # Custom Validators
   def expiration_date_cannot_be_in_the_past
     if expiration_date.present? && expiration_date < DateTime.now
-      errors.add(:expiration_date, "can't be in the past.")
+      errors.add(:expiration_date, :wrong_expiration_date)
     end
   end
 
   def casting_date_cannot_be_in_the_past
     if casting_date.present? && (casting_date < DateTime.now || casting_date <= expiration_date)
-      errors.add(:casting_date, "can't be in the past or before the expliration date.")
+      errors.add(:casting_date, :wrong_casting_date)
     end
   end
 
   def shooting_date_cannot_be_in_the_past
     if shooting_date.present? && (shooting_date < DateTime.now || shooting_date <= casting_date)
-      errors.add(:shooting_date, "can't be in the past or before the casting date.")
+      errors.add(:shooting_date, :wrong_shooting_date)
     end
   end
 

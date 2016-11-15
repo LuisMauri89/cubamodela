@@ -38,7 +38,7 @@ class Ability
             profile.try(:user) == user
         end
         can :create, Casting
-        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel, :destroy], Casting do |casting|
+        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel], Casting do |casting|
             casting.try(:ownerable) == user.profileable
         end
         can [:index_custom, :index_custom_invite], Casting

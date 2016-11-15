@@ -4,7 +4,9 @@
 			<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
 					<%= image_tag model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>	
 			<% end %>
-			<div class="text-center"><h6><%= model.get_first_name %></h6></div>
+			<div class="text-center" style="margin-top: 5px;">
+				<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
+			</div>
 		</div>
 	<% end %>
 </div>

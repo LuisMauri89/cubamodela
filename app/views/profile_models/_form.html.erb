@@ -1,11 +1,11 @@
-<div id="profile-model-fields-container" class="well">
+<div id="profile-model-fields-container">
   <%= form_for(@profile, remote: true) do |f| %>
 	<div class="row">
 		<div class="col-md-12">
 			<%= f.submit t('forms.buttons.save_resource', resource: "Profile"), class: "btn btn-primary btn-block btn-ms" %><br />
 		</div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.name') %></h3>
 	  </div>
@@ -17,11 +17,11 @@
 					<div class="row">
 						<div class="col-md-6">
 					    	<%= f.radio_button :gender, "Female" %>
-							<%= f.label :gender, t('activerecord.attributes.profile_model.gender_female') %>
+							<%= f.label :gender, t('activerecord.attributes.profile_model.gender_female'), class: "form-option" %>
 						</div>
 						<div class="col-md-6">
 					    	<%= f.radio_button :gender, "Male" %>
-							<%= f.label :gender, t('activerecord.attributes.profile_model.gender_male') %>
+							<%= f.label :gender, t('activerecord.attributes.profile_model.gender_male'), class: "form-option" %>
 						</div>
 					</div>
 			    </div>
@@ -39,9 +39,15 @@
 			    </div>
 	    	</div>
 	    </div>
+	    <div class="row">
+			<div class="col-md-12 text-center">
+				<%= f.label :birth_date %> <br/>
+				<%= date_select :profile_model, :birth_date, prompt: true, start_year: DateTime.now.year - 35, end_year: DateTime.now.year - 17, date_separator: "/", order: [:day, :month, :year], class: "form-control" %>
+			</div>
+		</div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.contact') %></h3>
 	  </div>
@@ -68,13 +74,13 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.procedence') %></h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="row">
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<div class="form-group text-center">
 			      <%= f.label :current_province_id %><br />
 			      <% if I18n.locale == "en".to_sym %>
@@ -84,7 +90,7 @@
 			      <% end %>
 			    </div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-4">
 				<div class="form-group text-center">
 			      <%= f.label :nationality_id %><br />
 			      <% if I18n.locale == "en".to_sym %>
@@ -94,10 +100,20 @@
 				  <% end %>
 			    </div>
 			</div>
+			<div class="col-md-4">
+				<div class="form-group text-center">
+			      <%= f.label :ethnicity_id %><br />
+			      <% if I18n.locale == "en".to_sym %>
+				  	<%= f.select :ethnicity_id, Ethnicity.all.order("name_en ASC").collect {|n| [ n.name_en, n.id ] }, { include_blank: t('activerecord.attributes.profile_model.ethnicity_id_select_text') }, class: "form-control" %>
+				  <% else %>
+				    <%= f.select :ethnicity_id, Ethnicity.all.order("name_en ASC").collect {|n| [ n.name_es, n.id ] }, { include_blank: t('activerecord.attributes.profile_model.ethnicity_id_select_text') }, class: "form-control" %>
+				  <% end %>
+			    </div>
+			</div>
 		</div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.body_specs') %></h3>
 	  </div>
@@ -111,9 +127,9 @@
 				      	<div class="col-md-2">
 						    <%= f.radio_button :eyes_color_id, color.id %>
 						    <% if I18n.locale == "en".to_sym %>
-						    	<%= f.label :eyes_color_id, color.name_en %>
+						    	<%= f.label :eyes_color_id, color.name_en, class: "form-option" %>
 						    <% else %>
-						    	<%= f.label :eyes_color_id, color.name_es %>
+						    	<%= f.label :eyes_color_id, color.name_es, class: "form-option" %>
 						    <% end %>
 					    </div>
 					  <% end %>
@@ -122,6 +138,12 @@
 			</div>
 		</div>
 	    <div class="row">
+	    	<div class="col-md-2">
+			    <div class="form-group text-center">
+			      <%= f.label :height %><br />
+			      <%= f.select :height, (120..210).collect {|h| [ h.to_s << "cm / " << (h/2.54).round(2).to_s << "''", h ] }, { include_blank: t('activerecord.attributes.profile_model.height_select_text') }, class: "form-control" %>
+			    </div>
+	    	</div>
 			<div class="col-md-2">
 			    <div class="form-group text-center">
 			      <%= f.label :chest %><br />
@@ -143,7 +165,7 @@
 	    	<div class="col-md-2">
 				<div class="form-group text-center">
 			      <%= f.label :size_shoes %><br />
-			      <%= f.text_field :size_shoes, placeholder: "Shoes", class: "form-control text-center" %>
+			      <%= f.select :size_shoes, get_range_of_shoe_sizes, { include_blank: t('activerecord.attributes.profile_model.size_shoes_select_text') }, class: "form-control text-center" %>
 			    </div>
 			</div>
 			<div class="col-md-2">
@@ -155,7 +177,7 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><%= t('views.profile_models.edit.form_sections.aptitudes') %></h3>
 	  </div>
@@ -205,17 +227,37 @@
 	  			<div class="form-group">
 			      <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
 			      <% if I18n.locale == "en".to_sym %>
-			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |e| %>
+			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |m| %>
 					    <div class="checkbox-container">
-					      <%= e.check_box %>
-					      <%= e.label %>
+					      <%= m.check_box %>
+					      <%= m.label %>
 					    </div>
 					<% end %>
 			      <% else %>
-			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |e| %>
+			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |m| %>
 					    <div class="checkbox-container">
-					      <%= e.check_box %>
-					      <%= e.label %>
+					      <%= m.check_box %>
+					      <%= m.label %>
+					    </div>
+					<% end %>
+			      <% end %>
+			    </div>
+	  		</div>
+	  		<div class="col-md-2">
+	  			<div class="form-group">
+			      <%= f.label t('activerecord.attributes.profile_model.associations.categories') << ":" %><br />
+			      <% if I18n.locale == "en".to_sym %>
+			      	<%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_en do |c| %>
+					    <div class="checkbox-container">
+					      <%= c.check_box %>
+					      <%= c.label %>
+					    </div>
+					<% end %>
+			      <% else %>
+			      	<%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_es do |c| %>
+					    <div class="checkbox-container">
+					      <%= c.check_box %>
+					      <%= c.label %>
 					    </div>
 					<% end %>
 			      <% end %>

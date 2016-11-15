@@ -1,0 +1,4 @@
+$('.profile_menu').removeClass('active');
+$('#profile-photos-polaroid').addClass('active');
+$('#profile-photos-selected').empty();
+$('#profile-photos-selected').html("<%= j render 'photos_polaroid' %>");

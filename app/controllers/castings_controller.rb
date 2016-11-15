@@ -203,15 +203,6 @@ class CastingsController < ApplicationController
   end
 
   def destroy
-    respond_to do |format|
-    	if @casting.destroy
-    		format.html { redirect_to castings_path, notice: 'Casting was successfully destroyed.' }
-    		format.js
-    	else
-    		format.html { redirect_to request.referer, error: '!!!Ups there was a problem.' }
-    		format.js
-    	end
-    end
   end
 
   private
@@ -254,7 +245,7 @@ class CastingsController < ApplicationController
       @limit = 20
       @index = params[:next_page].nil? ? 0 : params[:next_page].to_i
       @next_page = @index + 1
-      count = ProfileModel.ready.reject{ |profile| !profile.can_apply?(@casting) }.count
+      count = ProfileModel.invitable(@casting).count
       @totalf = count / @limit
       @total = (count % @limit) > 0 ? @totalf.to_i + 1 : @totalf
 
@@ -265,6 +256,6 @@ class CastingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def casting_params
-      params.require(:casting).permit(:title, :description, :location, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[])
+      params.require(:casting).permit(:title, :description, :location, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[], category_ids:[])
     end
 end
