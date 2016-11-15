@@ -244,13 +244,16 @@ en:
         gender_female: "Female"
         eyes_color_id: "Eyes color"
         height: "Height"
-        height_select_text: "Please select your height"
+        height_select_text: "Select your height"
         chest: "Chest"
         weist: "Weist"
         hips: "Hips"
-        size_shoes: "Size shoes (USA)"
-        size_shoes_select_text: "Please select your shoe size in USA normative"
-        size_cloth: "Size cloth (USA)"
+        size_shoes: "Size shoes (EU)"
+        size_shoes_label: "Shoe size"
+        size_shoes_select_text: "Select EU normative shoe size"
+        size_cloth: "Size cloth (EU)"
+        size_cloth_label: "Cloth size"
+        size_cloth_select_text: "Select EU normative cloth size"
         current_province_id: "Current province"
         current_province_id_select_text: "Please select a province"
         nationality_id: Nationality
@@ -260,6 +263,9 @@ en:
       province:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
+      review:
+        review_en: Review
+        review_es: Review
       study:
         title: "Title"
         place: "Place"
@@ -657,6 +663,16 @@ en:
         header_text: "Edit province"
       show:
         header_text: "Show province"
+    reviews:
+      count:
+        one: "%{count} Review"
+        other: "%{count} Reviews"
+      leave_review_text: "Be the first to leave a review"
+      buttons:
+        leave_review: "Leave review"
+        see_reviews: "See reviews"
+      messages:
+        create: "Successfully reviewed"
     studies:
       global:
         empty_list: "You have cero studies. Add some..."

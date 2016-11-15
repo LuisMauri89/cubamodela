@@ -11,7 +11,7 @@ class ProfileModel < ApplicationRecord
 	validates :hips, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :gender, inclusion: { in: %w(Female Male) }, allow_blank: true
 	validates :size_shoes, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
-	validates :size_cloth, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 500 }, allow_blank: true
+	validates :size_cloth, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
 
 	#Scopes
 	scope :ready, -> { where(reviewed: true).order("created_at ASC") }
@@ -41,14 +41,15 @@ class ProfileModel < ApplicationRecord
 	# Pictures
 	has_many :albums, as: :profileable, dependent: :destroy
 	has_many :photos, through: :albums
-	# has_many :photos_professional, -> { joins(:attachable).where("attachables.name = 'Profesional Book'") }, through: :albums, source: :photo
-	
 
 	# Studies
 	has_many :studies, as: :ownerable, dependent: :destroy
 
 	# Inbox
 	has_many :messages, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
+
+	# Reviews
+	has_many :reviews, as: :toable, dependent: :destroy
 
 	# Profile completeness
 	def profile_complete?

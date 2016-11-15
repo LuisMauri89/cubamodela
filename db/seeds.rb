@@ -48,3 +48,7 @@ if !ShoeSize.any?
 	ShoeSize.create(gender: "Female", usa: "6.0", uk: "4", eur: "37")
 end
 
+if !ClothSize.any?
+	ClothSize.create(gender: "Female", usa: "4", uk: "2", eur: "36")
+end
+

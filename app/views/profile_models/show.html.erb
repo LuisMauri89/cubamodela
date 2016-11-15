@@ -21,6 +21,44 @@
 					<%= render 'photos_professional' %> 
 				</div>
 			</div>
+			<div class="profile-section">
+				<div id="reviews-list">
+					<h4><%= t('views.profile_models.show.headers.reviews') %></h4>
+					<% if @profile.reviews.any? %>
+						<% @profile.reviews.order("created_at DESC").each do |review| %>
+							<div class="row">
+								<div class="col-md-2">
+									<%= image_tag review.fromable.get_profile_picture_url(:list), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+								</div>
+								<div class="col-md-10">
+									<% if I18n.locale == "en".to_sym %>
+										<blockquote>
+										  <p><%= review.review_en %></p>
+										  <footer><cite title="Spanish">Spanish: </cite><%= review.review_es %></footer>
+										</blockquote>
+									<% else %>
+										<blockquote>
+										  <p><%= review.review_es %></p>
+										  <footer><cite title="English">English: </cite><%= review.review_en %></footer>
+										</blockquote>
+									<% end %>
+									<p class="small-date pull-right">
+										<%= distance_of_time_in_words(review.created_at, DateTime.now) << t('datetime.distance_in_words.after_text_past') %>
+									</p>
+								</div>
+							</div>
+						<% end %>
+					<% else %>
+						<h4 class="text-center"><%= t('views.profile_models.show.reviews_empty_text') %></h4>
+					<% end %>
+				</div>
+			</div>
+			<div class="profile-section">
+				<div id="review-form">
+					<h4><%= t('views.profile_models.show.leave_review') %></h4>
+					<%= render 'form_review' %>	
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="profile-section">
@@ -133,11 +171,102 @@
 		        <% if @profile.size_shoes.present? %>
 		            <p class="profile-value">
 		            	<b>
-		            		<%= t('activerecord.attributes.profile_model.size_shoes') %>:
+		            		<%= t('activerecord.attributes.profile_model.size_shoes_label') %>:
 		            	</b> 
-		            	<%= @profile.size_shoes.round(1).to_s << " EU" %> / <%= ShoeSize.get_eur_size(@profile.gender, @profile.size_shoes) %> / <%= ShoeSize.get_uk_size(@profile.gender, @profile.size_shoes) %>
+		            	<%= @profile.size_shoes.to_i.to_s << " EU" %> / <%= ShoeSize.get_eur_size(@profile.gender, @profile.size_shoes) %> / <%= ShoeSize.get_uk_size(@profile.gender, @profile.size_shoes) %>
 		            </p>
 		        <% end %>
+		        <% if @profile.size_cloth.present? %>
+		            <p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.profile_model.size_cloth_label') %>:
+		            	</b> 
+		            	<%= @profile.size_cloth.to_i.to_s << " EU" %> / <%= ClothSize.get_eur_size(@profile.gender, @profile.size_cloth) %> / <%= ClothSize.get_uk_size(@profile.gender, @profile.size_cloth) %>
+		            </p>
+		        <% end %>
+			</div>
+			<div class="profile-section">
+				<h4><%= t('views.profile_models.show.headers.languages') %></h4>
+				<% if @profile.languages.any? %>
+					<div class="row">
+						<div class="col-md-6">
+							<% @profile.languages.limit(@language_cols_batch).each do |l| %>
+								<p class="profile-value">
+					            	<%= l.name %>
+					            </p>
+							<% end %>
+						</div>
+						<div class="col-md-6">
+							<% @profile.languages.offset(@language_cols_batch).each do |l| %>
+								<p class="profile-value">
+					            	<%= l.name %>
+					            </p>
+							<% end %>
+						</div>
+					</div>
+		        <% end %>
+			</div>
+			<div class="profile-section">
+				<h4><%= t('views.profile_models.show.headers.modalities') %></h4>
+				<% if @profile.modalities.any? %>
+					<div class="row">
+						<div class="col-md-6">
+							<% @profile.modalities.limit(@modality_cols_batch).each do |m| %>
+								<p class="profile-value">
+					            	<%= m.name %>
+					            </p>
+							<% end %>
+						</div>
+						<div class="col-md-6">
+							<% @profile.modalities.offset(@modality_cols_batch).each do |m| %>
+								<p class="profile-value">
+					            	<%= m.name %>
+					            </p>
+							<% end %>
+						</div>
+					</div>
+		        <% end %>
+			</div>
+			<div class="profile-section">
+				<h4><%= t('views.profile_models.show.headers.categories') %></h4>
+				<% if @profile.categories.any? %>
+					<div class="row">
+						<div class="col-md-6">
+							<% @profile.categories.limit(@category_cols_batch).each do |c| %>
+								<p class="profile-value">
+					            	<%= c.name %>
+					            </p>
+							<% end %>
+						</div>
+						<div class="col-md-6">
+							<% @profile.categories.offset(@category_cols_batch).each do |c| %>
+								<p class="profile-value">
+					            	<%= c.name %>
+					            </p>
+							<% end %>
+						</div>
+					</div>
+		        <% end %>
+			</div>
+			<div class="profile-section">
+				<div class="row">
+					<div class="col-md-4">
+						<p id="reviews-count" class="profile-value">
+							<%= t('views.reviews.count', count: @profile.reviews.count) %>
+						</p>
+						<% if @profile.reviews.count == 0 %>
+							<p class="profile-value">
+								<%= t('views.reviews.leave_review_text') %>
+							</p>
+						<% end %>
+					</div>
+					<div class="col-md-6">
+						<%= link_to t('views.reviews.buttons.see_reviews'), "#reviews-list", class: "btn btn-primary btn-block btn-xs" %>
+						<% if current_user.contractor? %>
+							<%= link_to t('views.reviews.buttons.leave_review'), "#review-form", class: "btn btn-primary btn-block btn-xs" %>
+						<% end %>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

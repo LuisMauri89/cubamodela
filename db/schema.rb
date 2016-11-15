@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110205737) do
+ActiveRecord::Schema.define(version: 20161115164442) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 20161110205737) do
     t.integer "category_id"
     t.index ["category_id"], name: "index_categories_profile_models_on_category_id"
     t.index ["profile_model_id"], name: "index_categories_profile_models_on_profile_model_id"
+  end
+
+  create_table "cloth_sizes", force: :cascade do |t|
+    t.string   "gender"
+    t.string   "usa"
+    t.string   "uk"
+    t.string   "eur"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "colors", force: :cascade do |t|
@@ -252,6 +261,19 @@ ActiveRecord::Schema.define(version: 20161110205737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name_es"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "fromable_type"
+    t.integer  "fromable_id"
+    t.string   "toable_type"
+    t.integer  "toable_id"
+    t.text     "review_en"
+    t.text     "review_es"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["fromable_type", "fromable_id"], name: "index_reviews_on_fromable_type_and_fromable_id"
+    t.index ["toable_type", "toable_id"], name: "index_reviews_on_toable_type_and_toable_id"
   end
 
   create_table "shoe_sizes", force: :cascade do |t|

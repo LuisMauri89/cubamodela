@@ -1,0 +1,9 @@
+<% if @review.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#review_review_en').text(" ");
+	$('#review_review_es').text(" ");
+	$('#reviews-list').prepend("<%= j render 'new_review'  %>");
+	$('#reviews-count').text("<%= t('views.reviews.count', count: @new_count) %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.reviews.messages.create' %>");
+<% end %>

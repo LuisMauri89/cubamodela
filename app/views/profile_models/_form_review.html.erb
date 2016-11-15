@@ -1,0 +1,30 @@
+<%= form_for(@review, remote: true, html: { class: "form-horizontal" }) do |f| %>
+  
+  <% if @review.errors.any? %>
+    <div class="alert alert-danger text-center">
+      <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: @review.errors.count) %>.
+      <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :fromable_id, value: current_user.profileable.id %>
+  <%= f.hidden_field :fromable_type, value: "ProfileContractor" %>
+  <%= f.hidden_field :toable_id, value: @profile.id %>
+  <%= f.hidden_field :toable_type, value: "ProfileModel" %>
+
+  <% if I18n.locale == "en".to_sym %>
+    <div class="form-group text-center">
+      <%= f.text_area :review_en, size: "60x3", class: "form-control" %>
+    </div>
+  <% else %>
+    <div class="form-group text-center">
+      <%= f.text_area :review_es, size: "60x4", class: "form-control text-center" %>
+    </div>
+  <% end %>
+
+  <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block" %>
+<% end %>

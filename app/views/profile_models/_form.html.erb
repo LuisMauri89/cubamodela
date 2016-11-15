@@ -171,7 +171,7 @@
 			<div class="col-md-2">
 				<div class="form-group text-center">
 			      <%= f.label :size_cloth %><br />
-			      <%= f.text_field :size_cloth, placeholder: "Dress/Suit", class: "form-control text-center" %>
+			      <%= f.select :size_cloth, get_range_of_cloth_sizes, { include_blank: t('activerecord.attributes.profile_model.size_cloth_select_text') }, class: "form-control text-center" %>
 			    </div>
 			</div>
 	    </div>

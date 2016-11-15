@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :categories
-  resources :ethnicities
 # For internationalization
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
@@ -53,6 +51,15 @@ Rails.application.routes.draw do
 
 # Nationalities routes
   resources :nationalities
+
+# Reviews routes
+  resources :reviews
+
+# Categories routes
+  resources :categories
+
+# Ethnicities routes
+  resources :ethnicities
 
 # Photos concern
   concern :attachable do

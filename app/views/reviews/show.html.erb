@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fromable:</strong>
+  <%= @review.fromable %>
+</p>
+
+<p>
+  <strong>Toable:</strong>
+  <%= @review.toable %>
+</p>
+
+<p>
+  <strong>Review en:</strong>
+  <%= @review.review_en %>
+</p>
+
+<p>
+  <strong>Review es:</strong>
+  <%= @review.review_es %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>

@@ -384,14 +384,10 @@ p{
 
 /* Profile */
 
-#profile-picture-container{
-	/* Add margin to profile picture */
-	margin-left: 45%;
-	margin-right: 45%;
-}
-
 #profile-main-menu-container{
 	/* Add padding to profile menu */
+	padding-left: 15%;
+	padding-right: 15%;
 	padding-bottom: 10px;
 }
 
@@ -473,7 +469,20 @@ p{
 	font-size: 14px;
 }
 
+#review-form{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
 /* END Profile */
+
+/* Dates */
+
+.small-date{
+	font-size: 10px;
+}
+
+/* END Dates */
 
 /* Dropzone */
 

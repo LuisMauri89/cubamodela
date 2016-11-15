@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fromable: one
+  fromable_type: Fromable
+  toable: one
+  toable_type: Toable
+  review_en: MyText
+  review_es: MyText
+
+two:
+  fromable: two
+  fromable_type: Fromable
+  toable: two
+  toable_type: Toable
+  review_en: MyText
+  review_es: MyText

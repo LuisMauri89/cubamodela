@@ -2,7 +2,7 @@ class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
   before_action :set_profile, only: [:show, :show_resume, :show_for_review, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :publish, :no_publish, :edit, :update, :destroy]
   before_action :generate_cols_batch, only: [:show, :show_professional_photos]
-  before_action :generate_cols_batch_others, only: [:show_polaroid_photos]
+  before_action :generate_cols_batch_polaroid, only: [:show_polaroid_photos]
   before_action :check_if_can, only: [:show_for_review, :publish, :no_publish, :edit, :update, :destroy]
 
   def index
@@ -10,6 +10,7 @@ class ProfileModelsController < ApplicationController
   end
 
   def show
+    generate_needed_info
     respond_to do |format|
       format.html
     end
@@ -169,19 +170,10 @@ class ProfileModelsController < ApplicationController
       end
     end
 
-    def generate_cols_batch_others
-      @cols = []
-      count = @profile.albums.where(name: "Polaroid").first.photos.count
-      rest = count % 3
-      value = (count / 3).to_i
-
-      case rest
-      when 0
-        @cols = [value, value, value]
-      when 1
-        @cols = [value + 1, value, value]
-      when 2
-        @cols = [value + 1, value + 1, value]
-      end
+    def generate_needed_info
+      @review = Review.new
+      @language_cols_batch = @profile.languages.any? ? (@profile.languages.count.to_f / 2).ceil : 0
+      @modality_cols_batch = @profile.modalities.any? ? (@profile.modalities.count.to_f / 2).ceil : 0
+      @category_cols_batch = @profile.categories.any? ? (@profile.categories.count.to_f / 2).ceil : 0
     end
 end
