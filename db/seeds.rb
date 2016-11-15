@@ -45,6 +45,6 @@ if !Category.any?
 end
 
 if !ShoeSize.any?
-	ShoeSize.create(gender: "Female", usa: 6, uk: 4, eur: 37)
+	ShoeSize.create(gender: "Female", usa: "6.0", uk: "4", eur: "37")
 end
 

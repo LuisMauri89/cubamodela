@@ -135,7 +135,7 @@
 		            	<b>
 		            		<%= t('activerecord.attributes.profile_model.size_shoes') %>:
 		            	</b> 
-		            	<%= @profile.size_shoes.to_s << " EU" %> / <%= ShoeSize.get_eur_size(@profile.gender, @profile.size_shoes) %>
+		            	<%= @profile.size_shoes.round(1).to_s << " EU" %> / <%= ShoeSize.get_eur_size(@profile.gender, @profile.size_shoes) %> / <%= ShoeSize.get_uk_size(@profile.gender, @profile.size_shoes) %>
 		            </p>
 		        <% end %>
 			</div>
