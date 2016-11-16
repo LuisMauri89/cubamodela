@@ -654,6 +654,12 @@ en:
           invite: "Invite to casting"
           booking: "Book this model"
           see_profile: "See full profile"
+      show:
+        bla: "find"
+      votes:
+        count:
+          one: "%{count} Vote"
+          other: "%{count} Votes"
     provinces:
       index:
         header_text: "Provinces"

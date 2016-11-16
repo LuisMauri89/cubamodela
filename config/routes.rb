@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'show_professional_photos', on: :member
     get 'show_polaroid_photos', on: :member
     get 'show_selected_photo/:photo_id', to: 'profile_models#show_selected_photo', as: :selected_photo, on: :member
+    get 'vote/:votant_id/:votant_type', to: 'profile_models#vote', as: :vote, on: :member
     get 'publish', on: :member
     get 'no_publish', on: :member
   end

@@ -51,6 +51,9 @@ class ProfileModel < ApplicationRecord
 	# Reviews
 	has_many :reviews, as: :toable, dependent: :destroy
 
+	# Votes
+	has_many :votes, as: :ownerable, dependent: :destroy
+
 	# Profile completeness
 	def profile_complete?
 		parameters_with_values = generate_array_of_param_with_value
@@ -278,10 +281,44 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def publish
-		reviewed = true
+		self.reviewed = true
 	end
 
 	def unpublish
-		reviewed = false
+		self.reviewed = false
+	end
+
+	def get_votes_count
+		begin
+			return votes.sum(:votes_number).to_i
+		rescue
+			return 0
+		end
+	end
+
+	def try_vote!(votant)
+		if votes.exists?(votable_id: votant.id, votable_type: votant.class.name)
+			vote = votes.where(votable_id: votant.id, votable_type: votant.class.name).first
+
+			if (Date.today - vote.last_vote_date) >= 180 
+				vote.update(votes_number: vote.votes_number + 1, last_vote_date: Date.today)
+				return vote.save
+			else
+				return false
+			end
+		else
+			votes.create(votable: votant, votes_number: 1, last_vote_date: Date.today)
+			return true
+		end
+	end
+
+	def can_vote?(votant)
+		vote = votes.where(votable_id: votant.id, votable_type: votant.class.name).first
+
+		if vote != nil
+			return (Date.today - vote.last_vote_date) >= 180 
+		else
+			return true
+		end		
 	end
 end

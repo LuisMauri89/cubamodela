@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ownerable: one
+  ownerable_type: Ownerable
+  votes_number: 1
+
+two:
+  ownerable: two
+  ownerable_type: Ownerable
+  votes_number: 1

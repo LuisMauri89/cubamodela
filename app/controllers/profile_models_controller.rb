@@ -1,6 +1,6 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :show_for_review, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :show_resume, :show_for_review, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :vote, :publish, :no_publish, :edit, :update, :destroy]
   before_action :generate_cols_batch, only: [:show, :show_professional_photos]
   before_action :generate_cols_batch_polaroid, only: [:show_polaroid_photos]
   before_action :check_if_can, only: [:show_for_review, :publish, :no_publish, :edit, :update, :destroy]
@@ -31,6 +31,16 @@ class ProfileModelsController < ApplicationController
   def show_selected_photo
     @photo = @profile.photos.find(params[:photo_id])
     respond_to do |format|
+      format.js
+    end
+  end
+
+  def vote
+    set_votant
+
+    respond_to do |format|
+      @voted = @profile.try_vote!(@votant)
+      @new_count = @profile.get_votes_count
       format.js
     end
   end
@@ -126,6 +136,19 @@ class ProfileModelsController < ApplicationController
 
     def set_profile
       @profile = ProfileModel.find(params[:id])
+    end
+
+    def set_votant
+      class_name = params[:votant_type]
+
+      case class_name
+      when "ProfileContractor"
+        @votant = ProfileContractor.find(params[:votant_id])
+      when "ProfileModel"
+        @votant = ProfileModel.find(params[:votant_id])
+      when "ProfilePhotographer"
+        @votant = ProfilePhotographer.find(params[:votant_id])
+      end
     end
 
     def check_if_can

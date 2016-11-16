@@ -74,6 +74,10 @@
 						</div>
 						<div class="col-md-6">
 							<div>
+								<h2 id="profile-first-name"><%= @profile.get_first_name %></h2>
+								<p id="votes-count-up" class="profile-value">
+									( <%= t('views.profile_models.votes.count', count: @profile.get_votes_count) %> )
+								</p>
 								<% if current_user.contractor? %>
 							        <%= link_to t('views.profile_models.show_resume.buttons.invite'), custom_index_invite_castings_path(current_user.profileable, @profile), class: "btn btn-primary btn-block btn-xs" %>
 							        <%= link_to t('views.profile_models.show_resume.buttons.booking'), new_booking_path(profile_id: @profile), class: "btn btn-primary btn-block btn-xs" %>
@@ -250,10 +254,10 @@
 			</div>
 			<div class="profile-section">
 				<div class="row">
-					<div class="col-md-4">
-						<p id="reviews-count" class="profile-value">
+					<div class="col-md-6">
+						<h4 id="reviews-count">
 							<%= t('views.reviews.count', count: @profile.reviews.count) %>
-						</p>
+						</h4>
 						<% if @profile.reviews.count == 0 %>
 							<p class="profile-value">
 								<%= t('views.reviews.leave_review_text') %>
@@ -264,6 +268,22 @@
 						<%= link_to t('views.reviews.buttons.see_reviews'), "#reviews-list", class: "btn btn-primary btn-block btn-xs" %>
 						<% if current_user.contractor? %>
 							<%= link_to t('views.reviews.buttons.leave_review'), "#review-form", class: "btn btn-primary btn-block btn-xs" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="profile-section">
+				<div class="row">
+					<div class="col-md-6">
+						<h4 id="votes-count">
+							<%= t('views.profile_models.votes.count', count: @profile.get_votes_count) %>
+						</h4>
+					</div>
+					<div class="col-md-6">
+						<% if @profile.can_vote?(current_user.profileable) %>
+							<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block", id: "btn-vote" %>
+						<% else %>
+							<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block btn-disabled", id: "btn-vote" %>
 						<% end %>
 					</div>
 				</div>
