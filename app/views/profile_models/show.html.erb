@@ -53,12 +53,14 @@
 					<% end %>
 				</div>
 			</div>
-			<div class="profile-section">
-				<div id="review-form">
-					<h4><%= t('views.profile_models.show.leave_review') %></h4>
-					<%= render 'form_review' %>	
+			<% if current_user.contractor? %>
+				<div class="profile-section">
+					<div id="review-form">
+						<h4><%= t('views.profile_models.show.leave_review') %></h4>
+						<%= render 'form_review' %>	
+					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
 		<div class="col-md-4">
 			<div class="profile-section">
@@ -255,7 +257,7 @@
 			<div class="profile-section">
 				<div class="row">
 					<div class="col-md-6">
-						<h4 id="reviews-count">
+						<h4 id="reviews-count" class="text-center">
 							<%= t('views.reviews.count', count: @profile.reviews.count) %>
 						</h4>
 						<% if @profile.reviews.count == 0 %>
@@ -274,12 +276,12 @@
 			</div>
 			<div class="profile-section">
 				<div class="row">
-					<div class="col-md-6">
-						<h4 id="votes-count">
+					<div class="col-md-5">
+						<h4 id="votes-count" class="text-center">
 							<%= t('views.profile_models.votes.count', count: @profile.get_votes_count) %>
 						</h4>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-7">
 						<% if @profile.can_vote?(current_user.profileable) %>
 							<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block", id: "btn-vote" %>
 						<% else %>
