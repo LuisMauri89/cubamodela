@@ -1,2 +1,65 @@
-<h1>Castings#show</h1>
-<p>Find me in app/views/castings/show.html.erb</p>
+<div class="row row-profile-container">
+	<div class="col-md-12">
+		<div class="profile-section">
+			<div class="translated-text text-center">
+				<% if I18n.locale == "en".to_sym %>
+					<p class="title"><%= @casting.title_en.upcase %></p>
+					<footer>
+						<%= @casting.title_es %>
+					</footer>
+				<% else %>
+					<p class="title"><%= @casting.title_es.upcase %></p>
+					<footer>
+						<%= @casting.title_en %>
+					</footer>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row row-profile-container">
+	<div class="col-md-12">
+		<div class="profile-section">
+			<h3><%= t('views.castings.show.headers.referenced_photos') %></h3>
+			<% @casting.photos.each do |photo| %>
+				<%= image_tag photo.image.url(:profile), alt: "Model Photo", class: "img-inline" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="row row-profile-container">
+	<div class="col-md-12">
+		<div class="profile-section">
+			<div class="row">
+				<div class="col-md-12">
+					<h3><%= t('views.castings.show.headers.description') %></h3>
+					<h4><%= @casting.description %></h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row row-profile-container">
+	<div class="col-md-12">
+		<div class="profile-section">
+		</div>
+	</div>
+</div>
+
+<div class="row row-profile-container">
+	<div class="col-md-8">
+		<div class="profile-section">
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="profile-section">
+		</div>
+	</div>
+</div>
+
+<% if I18n.locale == "en".to_sym %>
+<% else %>
+<% end %>

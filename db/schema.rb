@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116064707) do
+ActiveRecord::Schema.define(version: 20161116213156) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20161116064707) do
   end
 
   create_table "castings", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "location"
-    t.datetime "expiration_date"
+    t.string   "title_en"
+    t.text     "description_en"
+    t.text     "location_en"
+    t.date     "expiration_date"
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
     t.datetime "created_at",                  null: false
@@ -51,6 +51,9 @@ ActiveRecord::Schema.define(version: 20161116064707) do
     t.integer  "access_type",     default: 0
     t.datetime "casting_date"
     t.datetime "shooting_date"
+    t.string   "title_es"
+    t.text     "description_es"
+    t.text     "location_es"
     t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id"
   end
 

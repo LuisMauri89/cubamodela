@@ -41,8 +41,7 @@
 	    </div>
 	    <div class="row">
 			<div class="col-md-12 text-center">
-				<%= f.label :birth_date %> <br/>
-				<%= date_select :profile_model, :birth_date, prompt: true, start_year: DateTime.now.year - 35, end_year: DateTime.now.year - 17, date_separator: "/", order: [:day, :month, :year], class: "form-control" %>
+				<%= date_select :profile_model, :birth_date, prompt: true, start_year: DateTime.now.year - 35, end_year: DateTime.now.year - 17, date_separator: "/", order: [:day, :month, :year], selected: @profile.birth_date, class: "form-control" %>
 			</div>
 		</div>
 	  </div>

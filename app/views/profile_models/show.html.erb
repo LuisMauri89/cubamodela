@@ -3,7 +3,11 @@
 		<div class="col-md-8">
 			<div class="profile-section">
 				<div id="profile-photo-selected-container" class="item" >
-					<%= image_tag @profile.get_profesional_book_album_photos.first.image.url, alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+					<% if @profile.get_profesional_book_album_photos_count > 0 %>
+						<%= image_tag @profile.get_profesional_book_album_photos.first.image.url, alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+					<% else %>
+						<h4 class="text-center"><%= t('views.profile_models.show.selected_photo_empty_text') %></h4>
+					<% end %>
 				</div>
 			</div>
 			<div class="profile-section">
@@ -63,9 +67,6 @@
 			<% end %>
 		</div>
 		<div class="col-md-4">
-			<div class="profile-section">
-				
-			</div>
 			<div class="profile-section">
 				<div class="text-center">
 					<div class="row">

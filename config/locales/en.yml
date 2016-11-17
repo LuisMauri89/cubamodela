@@ -123,6 +123,9 @@ en:
       month: Month
       second: Seconds
       year: Year
+  date:
+    formats:
+      custom: "%B %d, %Y"
   time:
     am: am
     formats:
@@ -190,6 +193,8 @@ en:
         one: "%{count} error"
         other: "%{count} errors"
   table:
+    title: "Title"
+    name: "Name"
     model: "Model"
     user: "User"
     actions: "Actions"
@@ -214,7 +219,16 @@ en:
         casting_date: "Casting date"
         shooting_date: "Shooting date"
       casting:
-        description: "Description"
+        access_type: "Access type"
+        access_types:
+          free: "Free"
+          personal: "Private"
+        title_en: "Title"
+        title_es: "Title"
+        description_en: "Description"
+        description_es: "Description"
+        location_en: "Location"
+        location_es: "Location"
         expiration_date: "Expiration date"
         casting_date: "Casting date"
         shooting_date: "Shooting date"

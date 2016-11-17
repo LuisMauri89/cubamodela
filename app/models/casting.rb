@@ -17,10 +17,42 @@ class Casting < ApplicationRecord
     self.access_type ||= :free
   end
 
+  # Locale
+  before_save :set_title_locale, if: :new_record?
+  before_save :set_description_locale, if: :new_record?
+  before_save :set_location_locale, if: :new_record?
+
+  def set_title_locale
+    if I18n.locale == "en".to_sym
+      self.title_es ||= "traduccion pendiente"
+    else
+      self.title_en ||= "pending translation"
+    end
+  end
+
+  def set_description_locale
+    if I18n.locale == "en".to_sym
+      self.description_es ||= "traduccion pendiente"
+    else
+      self.description_en ||= "pending translation"
+    end
+  end
+
+  def set_location_locale
+    if I18n.locale == "en".to_sym
+      self.location_es ||= "traduccion pendiente"
+    else
+      self.location_es ||= "pending translation"
+    end
+  end
+
   # Validations
-  validates :title, presence: true, length: { in: 3..50 }
-  validates :description, presence: true, length: { in: 20..500 }
-  validates :location, length: { in: 5..500 }, allow_blank: true
+  validates :title_en, presence: true, length: { in: 3..50 }, if: :locale_en?
+  validates :title_es, presence: true, length: { in: 3..50 }, if: :locale_es?
+  validates :description_en, presence: true, length: { in: 20..500 }, if: :locale_en?
+  validates :description_es, presence: true, length: { in: 20..500 }, if: :locale_es?
+  validates :location_en, length: { in: 5..500 }, allow_blank: true, if: :locale_en?
+  validates :location_es, length: { in: 5..500 }, allow_blank: true, if: :locale_es?
   validates :expiration_date, presence: true
   validates :casting_date, presence: true
   validates :shooting_date, presence: true
@@ -55,6 +87,42 @@ class Casting < ApplicationRecord
   def shooting_date_cannot_be_in_the_past
     if shooting_date.present? && (shooting_date < DateTime.now || shooting_date <= casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
+    end
+  end
+
+  def locale_en?
+    return I18n.locale == "en".to_sym
+  end
+
+  def locale_es?
+    return I18n.locale == "es".to_sym
+  end
+
+  # Get attrs
+  def title
+    case I18n.locale
+    when "en".to_sym
+      return self.title_en
+    when "es".to_sym
+      return self.title_es
+    end
+  end
+
+  def description
+    case I18n.locale
+    when "en".to_sym
+      return self.description_en
+    when "es".to_sym
+      return self.description_es
+    end
+  end
+
+  def location
+    case I18n.locale
+    when "en".to_sym
+      return self.location_en
+    when "es".to_sym
+      return self.location_es
     end
   end
 

@@ -23,25 +23,40 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <%= f.label :access_type %><br />
-                  <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.user.kind_options.' + type), type]}, class: "form-control") %>
+                  <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.casting.access_types.' + type), type]}, class: "form-control") %>
                 </div>
               </div>
               <div class="col-md-10">
                 <div class="form-group text-center">
-                  <%= f.label :title %>
-                  <%= f.text_field :title, placeholder: "Title", class: "form-control text-center" %>
+                  <% if I18n.locale == "en".to_sym %>
+                    <%= f.label :title_en %>
+                    <%= f.text_field :title_en, placeholder: "Title", class: "form-control text-center" %>
+                  <% else %>
+                    <%= f.label :title_es %>
+                    <%= f.text_field :title_es, placeholder: "Title", class: "form-control text-center" %>
+                  <% end %>
                 </div>
               </div>
             </div>
 
             <div class="form-group text-center">
-              <%= f.label :description %>
-              <%= f.text_area :description, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+              <% if I18n.locale == "en".to_sym %>
+                <%= f.label :description_en %>
+                <%= f.text_area :description_en, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+              <% else %>
+                <%= f.label :description_es %>
+                <%= f.text_area :description_es, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+              <% end %>
             </div>
 
             <div class="form-group text-center">
-              <%= f.label :location %>
-              <%= f.text_area :location, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+              <% if I18n.locale == "en".to_sym %>
+                <%= f.label :location_en %>
+                <%= f.text_area :location_en, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+              <% else %>
+                <%= f.label :location_es %>
+                <%= f.text_area :location_es, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+              <% end %>
             </div>
           </div>
         </div>
