@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 # Castings routes
   resources :castings do
     get 'edit_photos', on: :member
+    get '/show_photo/:photo_id', to: 'castings#show_photo', as: :show_photo, on: :member
     concerns :attachable
     get 'manage', on: :member
     get 'close', on: :member

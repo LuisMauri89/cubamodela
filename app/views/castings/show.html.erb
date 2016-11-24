@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<div class="profile-section">
 			<div class="translated-text text-center">
-				<% if I18n.locale == "en".to_sym %>
+				<% if @casting.title_en.present? %>
 					<p class="title"><%= @casting.title_en.upcase %></p>
 					<footer>
 						<%= @casting.title_es %>
@@ -23,7 +23,9 @@
 		<div class="profile-section">
 			<h3><%= t('views.castings.show.headers.referenced_photos') %></h3>
 			<% @casting.photos.each do |photo| %>
-				<%= image_tag photo.image.url(:profile), alt: "Model Photo", class: "img-inline" %>
+				<%= link_to(show_photo_casting_path(@casting, photo), remote: true, class: "link-image") do %>
+					<%= image_tag photo.image.url(:profile), alt: "Model Photo", class: "img-inline" %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
@@ -32,12 +34,23 @@
 <div class="row row-profile-container">
 	<div class="col-md-12">
 		<div class="profile-section">
-			<div class="row">
-				<div class="col-md-12">
-					<h3><%= t('views.castings.show.headers.description') %></h3>
-					<h4><%= @casting.description %></h4>
-				</div>
+			<h3><%= t('views.castings.show.headers.description') %></h3>
+			<div class="translated-text">
+				<% if @casting.description_en.present? %>
+					<p><%= @casting.description_en %></p>
+					<footer>
+						<%= @casting.description_es %>
+					</footer>
+				<% else %>
+					<p class="title"><%= @casting.description_es %></p>
+					<footer>
+						<%= @casting.description_en %>
+					</footer>
+				<% end %>
 			</div>
+			<% if current_user.model? && @casting.active? && @casting.free? && current_user.profileable.can_apply?(@casting) %>
+				<%= link_to t('views.castings.buttons.apply'), apply_casting_path(@casting, current_user.profileable), remote: true, class: "btn btn-primary btn-lg pull-right", id: "btn-apply-" << @casting.id.to_s << current_user.profileable.id.to_s %>
+			<% end %>
 		</div>
 	</div>
 </div>
@@ -45,6 +58,20 @@
 <div class="row row-profile-container">
 	<div class="col-md-12">
 		<div class="profile-section">
+			<h3><%= t('views.castings.show.headers.location') %></h3>
+			<div class="translated-text">
+				<% if @casting.location_en.present? %>
+					<p><%= @casting.location_en %></p>
+					<footer>
+						<%= @casting.location_es %>
+					</footer>
+				<% else %>
+					<p class="title"><%= @casting.location_es %></p>
+					<footer>
+						<%= @casting.location_en %>
+					</footer>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
@@ -52,14 +79,93 @@
 <div class="row row-profile-container">
 	<div class="col-md-8">
 		<div class="profile-section">
+			<h4><%= t('views.castings.show.headers.dates') %></h4>
+			<% if @casting.active? %>
+				<h5><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</h5>
+			<% else %>
+				<h5><%= t('activerecord.attributes.casting.expiration_date') %>: <%= t('views.castings.index.expired_text') %></h5>
+			<% end %>
+			<h5><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(DateTime.now, @casting.casting_date) << t('datetime.distance_in_words.after_text') %> ]</h5>
+			<h5><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(DateTime.now, @casting.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</h5>
+		</div>
+		<div class="profile-section">
+			<h4><%= t('views.castings.show.headers.audience') %></h4>
+			<div class="row text-center">
+				<div class="col-md-3">
+					<p class="profile-value">
+		            	<b>
+		            		<%= t('views.castings.show.labels.invited') %>:
+		            	</b> 
+		            	<%= @casting.confirmed_intents.count %>
+		            </p>
+				</div>
+				<div class="col-md-3">
+					<p class="profile-value">
+		            	<b>
+		            		<%= t('views.castings.show.labels.confirmed') %>:
+		            	</b> 
+		            	<%= @casting.confirmed_intents.count %>
+		            </p>
+				</div>
+				<div class="col-md-3">
+					<p class="profile-value">
+		            	<b>
+		            		<%= t('views.castings.show.labels.applied') %>:
+		            	</b> 
+		            	<%= @casting.applied_intents.count %>
+		            </p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-4">
 		<div class="profile-section">
+			<h4><%= t('views.castings.show.headers.modalities') %></h4>
+			<% if @casting.modalities.any? %>
+				<div class="row">
+					<div class="col-md-6">
+						<% @casting.modalities.limit(@modality_cols_batch).each do |m| %>
+							<p class="profile-value">
+				            	<%= m.name %>
+				            </p>
+						<% end %>
+					</div>
+					<div class="col-md-6">
+						<% @casting.modalities.offset(@modality_cols_batch).each do |m| %>
+							<p class="profile-value">
+				            	<%= m.name %>
+				            </p>
+						<% end %>
+					</div>
+				</div>
+	        <% else %>
+	        	<h5><%= t('views.castings.show.modalities_empty_text') %></h5>
+	        <% end %>
+		</div>
+		<div class="profile-section">
+			<h4><%= t('views.castings.show.headers.categories') %></h4>
+			<% if @casting.categories.any? %>
+				<div class="row">
+					<div class="col-md-6">
+						<% @casting.categories.limit(@category_cols_batch).each do |c| %>
+							<p class="profile-value">
+				            	<%= c.name %>
+				            </p>
+						<% end %>
+					</div>
+					<div class="col-md-6">
+						<% @casting.categories.offset(@category_cols_batch).each do |c| %>
+							<p class="profile-value">
+				            	<%= c.name %>
+				            </p>
+						<% end %>
+					</div>
+				</div>
+	        <% else %>
+	        	<h5><%= t('views.castings.show.categories_empty_text') %></h5>
+	        <% end %>
 		</div>
 	</div>
 </div>
 
-<% if I18n.locale == "en".to_sym %>
-<% else %>
-<% end %>
+<div id="modal-container" class="modal fade"></div>

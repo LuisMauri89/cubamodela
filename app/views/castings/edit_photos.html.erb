@@ -9,7 +9,7 @@
             <% @casting.photos.each do |photo| %>
               <%= link_to(casting_photo_path(@casting, photo, type: "casting"), remote: true, class: "link-image") do %>
                 <div id="casting-photo-<%= photo.id %>" class="img-thumbnail list-photo-item">
-                  <%= image_tag photo.image.url(:profile), alt: "Model Photo", class: "img-rounded" %>
+                  <%= image_tag photo.image.url(:profile), alt: "Model Photo" %>
                 </div>
               <% end %>
             <% end %>

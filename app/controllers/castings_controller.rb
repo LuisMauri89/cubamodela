@@ -1,6 +1,6 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:show, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
+  before_action :set_casting, only: [:show, :show_photo, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
   before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
   before_action :set_contractor, only: [:index_custom, :index_custom_invite]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
@@ -61,6 +61,18 @@ class CastingsController < ApplicationController
   end
 
   def show
+    generate_needed_info
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def show_photo
+    @photo = Photo.find(params[:photo_id])
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new
@@ -252,6 +264,11 @@ class CastingsController < ApplicationController
       if @next_page >= @total
         @next_page = 0
       end
+    end
+
+    def generate_needed_info
+      @modality_cols_batch = @casting.modalities.any? ? (@casting.modalities.count.to_f / 2).ceil : 0
+      @category_cols_batch = @casting.categories.any? ? (@casting.categories.count.to_f / 2).ceil : 0
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

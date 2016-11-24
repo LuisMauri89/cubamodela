@@ -35,7 +35,7 @@
 									<%= image_tag review.fromable.get_profile_picture_url(:list), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
 								</div>
 								<div class="col-md-10">
-									<% if I18n.locale == "en".to_sym %>
+									<% if review.review_en.present? %>
 										<blockquote>
 										  <p><%= review.review_en %></p>
 										  <footer><cite title="Spanish">Spanish: </cite><%= review.review_es %></footer>
@@ -211,6 +211,8 @@
 							<% end %>
 						</div>
 					</div>
+		        <% else %>
+		        	<h5><%= t('views.profile_models.show.languages_empty_text') %></h5>
 		        <% end %>
 			</div>
 			<div class="profile-section">
@@ -232,6 +234,8 @@
 							<% end %>
 						</div>
 					</div>
+		        <% else %>
+		        	<h5><%= t('views.profile_models.show.modalities_empty_text') %></h5>
 		        <% end %>
 			</div>
 			<div class="profile-section">
@@ -253,6 +257,8 @@
 							<% end %>
 						</div>
 					</div>
+		        <% else %>
+		        	<h5><%= t('views.profile_models.show.categories_empty_text') %></h5>
 		        <% end %>
 			</div>
 			<div class="profile-section">

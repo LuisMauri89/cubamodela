@@ -66,6 +66,9 @@ class Casting < ApplicationRecord
   # Associations	
   belongs_to :ownerable, polymorphic: true
   has_many :intents, dependent: :destroy
+  has_many :invited_intents, -> { where(status: "invited") }, class_name: "Intent"
+  has_many :confirmed_intents, -> { where(status: "confirmed") }, class_name: "Intent"
+  has_many :applied_intents, -> { where(status: "applied") }, class_name: "Intent"
   has_many :profile_models, through: :intents
   has_many :photos, as: :attachable, dependent: :destroy
   has_and_belongs_to_many :modalities, dependent: :destroy
