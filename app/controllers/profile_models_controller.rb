@@ -9,6 +9,20 @@ class ProfileModelsController < ApplicationController
     @models = ProfileModel.ready
   end
 
+  def index_search
+    @search = Search.new
+    @models = ProfileModel.ready
+  end
+
+  def perform_search
+    @search = Search.new(search_params)
+    @models = @search.perform("models")
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def show
     generate_needed_info
     respond_to do |format|
@@ -132,6 +146,12 @@ class ProfileModelsController < ApplicationController
                                             :gender, :size_shoes, :size_cloth, :nationality_id,
                                             :height, :reviewed, :ethnicity_id, expertise_ids:[], 
                                             language_ids:[], modality_ids:[], category_ids:[])
+    end
+
+    def search_params
+      params.require(:search).permit(:province_id, :nationality_id, :age_from, :age_to, 
+                                     :gender, :height_from, :heigth_to, :new_face, 
+                                     :professional_model, modality_ids:[], category_ids:[])
     end
 
     def set_profile

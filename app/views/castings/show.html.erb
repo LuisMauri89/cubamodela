@@ -18,6 +18,8 @@
 	</div>
 </div>
 
+<% if @casting.photos.any? %>
+
 <div class="row row-profile-container">
 	<div class="col-md-12">
 		<div class="profile-section">
@@ -30,6 +32,8 @@
 		</div>
 	</div>
 </div>
+
+<% end %>
 
 <div class="row row-profile-container">
 	<div class="col-md-12">
@@ -81,12 +85,32 @@
 		<div class="profile-section">
 			<h4><%= t('views.castings.show.headers.dates') %></h4>
 			<% if @casting.active? %>
-				<h5><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</h5>
+				<p class="profile-value">
+	            	<b>
+	            		<%= t('activerecord.attributes.casting.expiration_date') %>:
+	            	</b> 
+	            	<%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]
+	            </p>
 			<% else %>
-				<h5><%= t('activerecord.attributes.casting.expiration_date') %>: <%= t('views.castings.index.expired_text') %></h5>
+				<p class="profile-value">
+	            	<b>
+	            		t('activerecord.attributes.casting.expiration_date') %>:
+	            	</b> 
+	            	<%= t('views.castings.index.expired_text') %>
+	            </p>
 			<% end %>
-			<h5><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(DateTime.now, @casting.casting_date) << t('datetime.distance_in_words.after_text') %> ]</h5>
-			<h5><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(DateTime.now, @casting.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</h5>
+			<p class="profile-value">
+            	<b>
+            		<%= t('activerecord.attributes.casting.casting_date') %>:
+            	</b> 
+            	<%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(DateTime.now, @casting.casting_date) << t('datetime.distance_in_words.after_text') %> ]
+            </p>
+			<p class="profile-value">
+            	<b>
+            		<%= t('activerecord.attributes.casting.shooting_date') %>:
+            	</b> 
+            	<%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(DateTime.now, @casting.shooting_date) << t('datetime.distance_in_words.after_text') %> ]
+            </p>
 		</div>
 		<div class="profile-section">
 			<h4><%= t('views.castings.show.headers.audience') %></h4>

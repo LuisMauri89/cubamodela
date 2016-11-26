@@ -19,7 +19,18 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every :day, at: '12:05 am' do
+every 5.minutes do
+	rake "casting_tasks:working_test"
+	Rails.logger.info("Task test running at #{Time.now}")
+end
+
+every 5.minutes do
 	rake "casting_tasks:alert_casting_proximity"
+	Rails.logger.info("Task proximity running at #{Time.now}")
+end
+
+every 5.minutes do
+	rake "casting_tasks:change_casting_expired_status"
+	Rails.logger.info("Task status running at #{Time.now}")
 end
 

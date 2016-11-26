@@ -61,6 +61,7 @@ class Casting < ApplicationRecord
 
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
+  scope :closed, -> { where(status: "closed").order("created_at DESC") }
   scope :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now).order("created_at DESC") }
 
   # Associations	

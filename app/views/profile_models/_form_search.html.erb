@@ -1,0 +1,124 @@
+<%= form_for @search, url: {controller: "profile_models", action: "perform_search"}, remote: true do |f| %>
+	<%= f.submit t('forms.buttons.search'), class: "btn btn-primary btn-lg pull-right" %>
+	<div class="row">
+		<div class="col-md-2">
+
+			<%= f.label :gender %>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6">
+				    	<%= f.radio_button :gender, "Female" %>
+						<%= f.label :gender, t('activerecord.attributes.profile_model.gender_female'), class: "form-option" %>
+					</div>
+					<div class="col-md-6">
+				    	<%= f.radio_button :gender, "Male" %>
+						<%= f.label :gender, t('activerecord.attributes.profile_model.gender_male'), class: "form-option" %>
+					</div>
+				</div>
+		    </div>
+
+		    <%= f.check_box :new_face %>
+		    <%= f.label :new_face, t('activerecord.attributes.search.new_face'), class: "form-option" %>
+
+		    <br/>
+
+		    <%= f.check_box :professional_model %>
+		    <%= f.label :professional_model, t('activerecord.attributes.search.professional_model'), class: "form-option" %>
+
+		</div>
+		<div class="col-md-2">
+
+			<div class="form-group text-center">
+		      <%= f.label :province_id %><br />
+		      <% if I18n.locale == "en".to_sym %>
+		      	<%= f.select :province_id, Province.all.order("name_en ASC").collect {|p| [ p.name_en, p.id ] }, { include_blank: t('activerecord.attributes.search.province_id_select_text') }, class: "form-control" %>
+		      <% else %>
+		      	<%= f.select :province_id, Province.all.order("name_en ASC").collect {|p| [ p.name_es, p.id ] }, { include_blank: t('activerecord.attributes.search.province_id_select_text') }, class: "form-control" %>
+		      <% end %>
+		    </div>
+
+		    <div class="form-group text-center">
+		      <%= f.label :nationality_id %><br />
+		      <% if I18n.locale == "en".to_sym %>
+			  	<%= f.select :nationality_id, Nationality.all.order("name_en ASC").collect {|n| [ n.name_en, n.id ] }, { include_blank: t('activerecord.attributes.search.nationality_id_select_text') }, class: "form-control" %>
+			  <% else %>
+			    <%= f.select :nationality_id, Nationality.all.order("name_en ASC").collect {|n| [ n.name_es, n.id ] }, { include_blank: t('activerecord.attributes.search.nationality_id_select_text') }, class: "form-control" %>
+			  <% end %>
+		    </div>
+
+		</div>
+		<div class="col-md-2">
+			<div class="form-group text-center">
+		      <%= f.label "Age" %><br />
+		      <%= f.select :age_from, (18..35).collect {|a| [ a.to_s << " years old", a ] }, { include_blank: t('activerecord.attributes.search.age_from_select_text') }, class: "form-control" %>
+		      to
+		      <%= f.select :age_to, (18..35).collect {|a| [ a.to_s << " years old", a ] }, { include_blank: t('activerecord.attributes.search.age_to_select_text') }, class: "form-control" %>
+		    </div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group text-center">
+		      <%= f.label "Height" %><br />
+		      <%= f.select :height_from, (120..210).collect {|h| [ h.to_s << "cm / " << (h/2.54).round(2).to_s << "''", h ] }, { include_blank: t('activerecord.attributes.search.height_from_select_text') }, class: "form-control" %>
+		      to
+		      <%= f.select :height_to, (120..210).collect {|h| [ h.to_s << "cm / " << (h/2.54).round(2).to_s << "''", h ] }, { include_blank: t('activerecord.attributes.search.height_to_select_text') }, class: "form-control" %>
+		    </div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+		      <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
+		      <div class="row">
+		      	<% if I18n.locale == "en".to_sym %>
+			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |m| %>
+			      		<div class="col-md-2">
+						    <div class="checkbox-container">
+						      <%= m.check_box %>
+						      <%= m.label %>
+						    </div>
+					    </div>
+					<% end %>
+			      <% else %>
+			      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |m| %>
+			      		<div class="col-md-2">
+						    <div class="checkbox-container">
+						      <%= m.check_box %>
+						      <%= m.label %>
+						    </div>
+					    </div>
+					<% end %>
+			      <% end %>
+		      </div>
+		    </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+		      <%= f.label t('activerecord.attributes.profile_model.associations.categories') << ":" %><br />
+		      <div class="row">
+		      	<% if I18n.locale == "en".to_sym %>
+			      	<%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_en do |m| %>
+			      		<div class="col-md-2">
+						    <div class="checkbox-container">
+						      <%= m.check_box %>
+						      <%= m.label %>
+						    </div>
+					    </div>
+					<% end %>
+			      <% else %>
+			      	<%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_es do |m| %>
+			      		<div class="col-md-2">
+						    <div class="checkbox-container">
+						      <%= m.check_box %>
+						      <%= m.label %>
+						    </div>
+					    </div>
+					<% end %>
+			      <% end %>
+		      </div>
+		    </div>
+		</div>
+	</div>
+<% end %>

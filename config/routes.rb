@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get 'vote/:votant_id/:votant_type', to: 'profile_models#vote', as: :vote, on: :member
     get 'publish', on: :member
     get 'no_publish', on: :member
+    get 'search', to: 'profile_models#index_search', on: :collection
+    post 'search', to: 'profile_models#perform_search', on: :collection
   end
 
 # Photographers Profile routes

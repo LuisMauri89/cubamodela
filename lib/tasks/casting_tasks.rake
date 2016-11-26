@@ -7,4 +7,8 @@ namespace :casting_tasks do
 	task alert_casting_proximity: :environment do
 		CastingProximityJob.perform_later
 	end
+
+	task change_casting_expired_status: :environment do
+		CastingsExpiredJob.perform_later
+	end
 end

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  province: one
+  nationality: one
+  age_from: 1
+  age_to: 1
+  gender: MyString
+  height_from: 1
+  height_to: 1
+  new_face: false
+  professional_model: false
+
+two:
+  province: two
+  nationality: two
+  age_from: 1
+  age_to: 1
+  gender: MyString
+  height_from: 1
+  height_to: 1
+  new_face: false
+  professional_model: false

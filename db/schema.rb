@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116213156) do
+ActiveRecord::Schema.define(version: 20161125223707) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +84,13 @@ ActiveRecord::Schema.define(version: 20161116213156) do
     t.integer "category_id"
     t.index ["category_id"], name: "index_categories_profile_models_on_category_id"
     t.index ["profile_model_id"], name: "index_categories_profile_models_on_profile_model_id"
+  end
+
+  create_table "categories_searches", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "search_id"
+    t.index ["category_id"], name: "index_categories_searches_on_category_id"
+    t.index ["search_id"], name: "index_categories_searches_on_search_id"
   end
 
   create_table "cloth_sizes", force: :cascade do |t|
@@ -186,6 +193,13 @@ ActiveRecord::Schema.define(version: 20161116213156) do
     t.index ["profile_model_id"], name: "index_modalities_profile_models_on_profile_model_id"
   end
 
+  create_table "modalities_searches", id: false, force: :cascade do |t|
+    t.integer "modality_id"
+    t.integer "search_id"
+    t.index ["modality_id"], name: "index_modalities_searches_on_modality_id"
+    t.index ["search_id"], name: "index_modalities_searches_on_search_id"
+  end
+
   create_table "nationalities", force: :cascade do |t|
     t.string   "name_es"
     t.string   "name_en"
@@ -277,6 +291,22 @@ ActiveRecord::Schema.define(version: 20161116213156) do
     t.datetime "updated_at",    null: false
     t.index ["fromable_type", "fromable_id"], name: "index_reviews_on_fromable_type_and_fromable_id"
     t.index ["toable_type", "toable_id"], name: "index_reviews_on_toable_type_and_toable_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.integer  "province_id"
+    t.integer  "nationality_id"
+    t.integer  "age_from"
+    t.integer  "age_to"
+    t.string   "gender"
+    t.integer  "height_from"
+    t.integer  "height_to"
+    t.boolean  "new_face"
+    t.boolean  "professional_model"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["nationality_id"], name: "index_searches_on_nationality_id"
+    t.index ["province_id"], name: "index_searches_on_province_id"
   end
 
   create_table "shoe_sizes", force: :cascade do |t|
