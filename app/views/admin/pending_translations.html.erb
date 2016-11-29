@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-nomenclator">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center"><%= t('views.admin.pending_translations.headers.castings') %></h1>
+      </div>
+      <div class="panel-body panel-body-nomenclator">
+        <table class="table">
+          <thead class="bg-info">
+            <tr>
+              <th class="text-center"><%= t('table.casting') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.user.created_at') %></th>
+              <th class="text-center"><%= t('table.actions') %></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @castings.each do |casting| %>
+              <tr>
+                <td>
+                  <h4><%= casting.title_present  %></h4>
+                </td>
+                <td class="text-center"><h4><%= l(casting.created_at, format: :custom) << " [ " << distance_of_time_in_words(casting.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
+                <td>
+                  <%= link_to t('form.buttons.translate'), translate_casting_path(casting), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+        <%= link_to t('form.buttons.control_panel'), control_panel_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

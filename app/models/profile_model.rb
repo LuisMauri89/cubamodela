@@ -103,7 +103,15 @@ class ProfileModel < ApplicationRecord
 		if birth_date.present?
 			return ((Date.today - birth_date) / 365).to_i
 		else
-			return "Not setted"
+			return I18n.t('activerecord.attributes.profile_model.birth_date_not_present')
+		end
+	end
+
+	def get_integer_age
+		if birth_date.present?
+			return ((Date.today - birth_date) / 365).to_i
+		else
+			return 0
 		end
 	end
 

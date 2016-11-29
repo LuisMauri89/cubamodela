@@ -105,6 +105,7 @@ Rails.application.routes.draw do
     get '/apply/:profile_id', to: 'castings#apply', as: :apply, on: :member
     get '/invite/:profile_id', to: 'castings#invite', as: :invite, on: :member
     get '/confirm/:profile_id', to: 'castings#confirm', as: :confirm, on: :member
+    get 'translate', on: :member
   end
 
 # Bookings routes
@@ -117,6 +118,7 @@ Rails.application.routes.draw do
   scope '/admin' do
     get '/control_panel/', to: 'admin#control_panel', as: :control_panel
     get '/model_pending_review/', to: 'admin#model_pending_review', as: :model_pending_review
+    get '/pending_translations/', to: 'admin#pending_translations', as: :pending_translations
   end
 
 # Root

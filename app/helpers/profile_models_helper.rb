@@ -17,4 +17,10 @@ module ProfileModelsHelper
 			return size.to_i.to_s
 		end
 	end
+
+	def get_genders_for_search
+		genders = [[t('activerecord.attributes.profile_model.gender_female'), "Female"], [t('activerecord.attributes.profile_model.gender_male'), "Male"]]
+
+		return genders
+	end
 end

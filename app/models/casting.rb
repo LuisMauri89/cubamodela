@@ -62,7 +62,12 @@ class Casting < ApplicationRecord
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
   scope :closed, -> { where(status: "closed").order("created_at DESC") }
-  scope :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now).order("created_at DESC") }
+  scope :valids, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now) }
+  scope :valid_castings, -> { valids.order("created_at DESC") }
+  scope :title_needs_translation, -> { valids.where(title_en: "pending translation").or(self.valids.where(title_es: "traduccion pendiente")) }
+  scope :description_needs_translation, -> { valids.where(description_en: "pending translation").or(self.valids.where(description_es: "traduccion pendiente")) }
+  scope :location_needs_translation, -> { valids.where(location_en: "pending translation").or(self.valids.where(location_es: "traduccion pendiente")) }
+  scope :needs_translation, -> { title_needs_translation.or(self.description_needs_translation).or(self.location_needs_translation).order("created_at ASC") }
 
   # Associations	
   belongs_to :ownerable, polymorphic: true
@@ -108,6 +113,14 @@ class Casting < ApplicationRecord
     when "en".to_sym
       return self.title_en
     when "es".to_sym
+      return self.title_es
+    end
+  end
+
+  def title_present
+    if self.title_en.present?
+      return self.title_en
+    else
       return self.title_es
     end
   end

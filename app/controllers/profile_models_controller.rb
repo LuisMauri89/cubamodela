@@ -150,7 +150,7 @@ class ProfileModelsController < ApplicationController
 
     def search_params
       params.require(:search).permit(:province_id, :nationality_id, :age_from, :age_to, 
-                                     :gender, :height_from, :heigth_to, :new_face, 
+                                     :gender, :height_from, :height_to, :new_face, 
                                      :professional_model, modality_ids:[], category_ids:[])
     end
 

@@ -193,6 +193,7 @@ en:
       close: "Close"
       search: "Search"
       control_panel: "Control Panel"
+      translate: "Translate"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you wish to delete %{value}"
@@ -283,12 +284,36 @@ en:
         nationality_id_select_text: "Please select a nationality"
         ethnicity_id: Ethnicity
         ethnicity_id_select_text: "Please select your ethnicity"
+        birth_date: "Birth date"
+        birth_date_not_present: "Unavailable birth date"
+        first_name: "First name"
+        first_name_not_present: "Unavailable first name"
       province:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
       review:
         review_en: Review
         review_es: Review
+      search:
+        gender_select_text: "Any gender"
+        new_face: "New face"
+        professional_model: "Professional model"
+        province_id: "Provincia"
+        province_id_select_text: "All provinces"
+        nationality_id: "Nationality"
+        nationality_id_select_text: "All nationalities"
+        age: "Age"
+        age_from: "from"
+        age_from_select_text: "age"
+        age_to: "to"
+        age_to_select_text: "age"
+        height: "Height"
+        height_from: "from"
+        height_from_select_text: "height"
+        height_to: "to"
+        height_to_select_text: "height"
+        buttons:
+          more_options: "More options"
       study:
         title: "Title"
         place: "Place"
@@ -360,6 +385,7 @@ en:
             header_text: "Users"
             users: "Users"
             pending_review: "Pending review"
+            pending_translations: "Pending translations"
           nomenclators:
             header: "Nomenclators"
             colors: "Colors"
