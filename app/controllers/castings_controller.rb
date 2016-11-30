@@ -1,6 +1,6 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:show, :show_photo, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
+  before_action :set_casting, only: [:show, :show_photo, :translate, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
   before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
   before_action :set_contractor, only: [:index_custom, :index_custom_invite]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
@@ -75,6 +75,12 @@ class CastingsController < ApplicationController
     end
   end
 
+  def translate
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def new
   	@casting = Casting.new
   	authorize! :new, @casting
@@ -115,7 +121,10 @@ class CastingsController < ApplicationController
   	respond_to do |format|
       old_casting = Casting.find(params[:id])
       if @casting.update(casting_params)
+        
         @casting.send_update_notification(old_casting)
+        @casting.send_translation_notification(old_casting)
+        
         format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
       else
         format.html { render :edit }
@@ -273,6 +282,6 @@ class CastingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def casting_params
-      params.require(:casting).permit(:title, :description, :location, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[], category_ids:[])
+      params.require(:casting).permit(:title_en, :title_es, :description_en, :description_es, :location_en, :location_es, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[], category_ids:[])
     end
 end

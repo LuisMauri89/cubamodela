@@ -1,4 +1,5 @@
 class Casting < ApplicationRecord
+
   # Status
   enum status: [:active, :closed, :canceled]
 
@@ -24,25 +25,25 @@ class Casting < ApplicationRecord
 
   def set_title_locale
     if I18n.locale == "en".to_sym
-      self.title_es ||= "traduccion pendiente"
+      self.title_es ||= Constant::ES_TRANSLATION_PENDING
     else
-      self.title_en ||= "pending translation"
+      self.title_en ||= Constant::EN_TRANSLATION_PENDING
     end
   end
 
   def set_description_locale
     if I18n.locale == "en".to_sym
-      self.description_es ||= "traduccion pendiente"
+      self.description_es ||= Constant::ES_TRANSLATION_PENDING
     else
-      self.description_en ||= "pending translation"
+      self.description_en ||= Constant::EN_TRANSLATION_PENDING
     end
   end
 
   def set_location_locale
     if I18n.locale == "en".to_sym
-      self.location_es ||= "traduccion pendiente"
+      self.location_es ||= Constant::ES_TRANSLATION_PENDING
     else
-      self.location_es ||= "pending translation"
+      self.location_es ||= Constant::EN_TRANSLATION_PENDING
     end
   end
 
@@ -58,15 +59,16 @@ class Casting < ApplicationRecord
   validates :shooting_date, presence: true
   validate :expiration_date_cannot_be_in_the_past, :casting_date_cannot_be_in_the_past, :shooting_date_cannot_be_in_the_past
   validates :access_type, inclusion: { in: %w(free personal) }
+  validate :both_fields_blank_en_es
 
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
   scope :closed, -> { where(status: "closed").order("created_at DESC") }
   scope :valids, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now) }
   scope :valid_castings, -> { valids.order("created_at DESC") }
-  scope :title_needs_translation, -> { valids.where(title_en: "pending translation").or(self.valids.where(title_es: "traduccion pendiente")) }
-  scope :description_needs_translation, -> { valids.where(description_en: "pending translation").or(self.valids.where(description_es: "traduccion pendiente")) }
-  scope :location_needs_translation, -> { valids.where(location_en: "pending translation").or(self.valids.where(location_es: "traduccion pendiente")) }
+  scope :title_needs_translation, -> { valids.where(title_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(title_es: Constant::ES_TRANSLATION_PENDING)) }
+  scope :description_needs_translation, -> { valids.where(description_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(description_es: Constant::ES_TRANSLATION_PENDING)) }
+  scope :location_needs_translation, -> { valids.where(location_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(location_es: Constant::ES_TRANSLATION_PENDING)) }
   scope :needs_translation, -> { title_needs_translation.or(self.description_needs_translation).or(self.location_needs_translation).order("created_at ASC") }
 
   # Associations	
@@ -96,6 +98,23 @@ class Casting < ApplicationRecord
   def shooting_date_cannot_be_in_the_past
     if shooting_date.present? && (shooting_date < DateTime.now || shooting_date <= casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
+    end
+  end
+
+  def both_fields_blank_en_es
+    if !self.title_en.present? && !self.title_es.present?
+      errors.add(:title_en, :blank)
+      errors.add(:title_es, :blank)
+    end
+
+    if !self.description_en.present? && !self.description_es.present?
+      errors.add(:description_en, :blank)
+      errors.add(:description_es, :blank)
+    end
+
+    if !self.location_en.present? && !self.location_es.present?
+      errors.add(:location_en, :blank)
+      errors.add(:location_es, :blank)
     end
   end
 
@@ -291,5 +310,56 @@ class Casting < ApplicationRecord
     if old_casting.expiration_date != expiration_date || old_casting.casting_date != casting_date || old_casting.shooting_date != shooting_date
       CastingDatesChangedJob.perform_later(self)
     end
+
+    check_translated_fields_changes(old_casting)
+  end
+
+  def send_translation_notification(old_casting)
+    if !old_casting.translated? && translated? 
+      NewCastingFreeJob.perform_later(self)
+    end
+  end
+
+  def translated?
+    return self.title_en != Constant::EN_TRANSLATION_PENDING && 
+           self.description_en != Constant::EN_TRANSLATION_PENDING && 
+           self.location_en != Constant::EN_TRANSLATION_PENDING &&
+           self.title_es != Constant::ES_TRANSLATION_PENDING &&
+           self.description_es != Constant::ES_TRANSLATION_PENDING &&
+           self.location_es != Constant::ES_TRANSLATION_PENDING
+  end
+
+  def check_translated_fields_changes(old_casting)
+    if old_casting.title_en.present?
+      if old_casting.title_en != self.title_en
+        self.title_es = Constant::ES_TRANSLATION_PENDING
+      end
+    else
+      if old_casting.title_es != self.title_es
+        self.title_en = Constant::EN_TRANSLATION_PENDING
+      end
+    end
+
+    if old_casting.description_en.present?
+      if old_casting.description_en != self.description_en
+        self.description_es = Constant::ES_TRANSLATION_PENDING
+      end
+    else
+      if old_casting.description_es != self.description_es
+        self.description_en = Constant::EN_TRANSLATION_PENDING
+      end
+    end
+
+    if old_casting.location_en.present?
+      if old_casting.location_en != self.location_en
+        self.location_es = Constant::ES_TRANSLATION_PENDING
+      end
+    else
+      if old_casting.location_es != self.location_es
+        self.location_en = Constant::EN_TRANSLATION_PENDING
+      end
+    end
+
+    save
   end
 end
