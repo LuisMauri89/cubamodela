@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125223707) do
+ActiveRecord::Schema.define(version: 20161201163927) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -25,14 +25,16 @@ ActiveRecord::Schema.define(version: 20161125223707) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "status",                default: 0
-    t.text     "description"
-    t.text     "location"
+    t.text     "description_en"
+    t.text     "location_en"
     t.datetime "casting_date"
     t.datetime "shooting_date"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "profile_contractor_id"
     t.integer  "profile_model_id"
+    t.text     "description_es"
+    t.text     "location_es"
     t.index ["profile_contractor_id", "profile_model_id"], name: "index_bookings_on_profile_contractor_id_and_profile_model_id"
     t.index ["profile_contractor_id"], name: "index_bookings_on_profile_contractor_id"
     t.index ["profile_model_id"], name: "index_bookings_on_profile_model_id"

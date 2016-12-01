@@ -112,6 +112,7 @@ Rails.application.routes.draw do
   resources :bookings do
     get '/custom/index/', to: 'bookings#index_custom', as: :custom_index, on: :collection
     get '/confirm/:profile_id', to: 'bookings#confirm', as: :confirm, on: :member
+    get 'translate', on: :member
   end
 
 # Admin routes

@@ -13,26 +13,36 @@
     <% end %>
 
     <div class="form-group text-center">
-      <%= f.label :description %>
-      <%= f.text_area :description, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+      <% if I18n.locale == "en".to_sym %>
+        <%= f.label :description_en %>
+        <%= f.text_area :description_en, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+      <% else %>
+        <%= f.label :description_es %>
+        <%= f.text_area :description_es, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+      <% end %>
     </div>
 
     <div class="form-group text-center">
-      <%= f.label :location %>
-      <%= f.text_area :location, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+      <% if I18n.locale == "en".to_sym %>
+        <%= f.label :location_en %>
+        <%= f.text_area :location_en, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+      <% else %>
+        <%= f.label :location_es %>
+        <%= f.text_area :location_es, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+      <% end %>
     </div>
 
     <div class="row">
       <div class="col-md-6">
         <div class="form-group text-center">
           <%= f.label :casting_date %> <br/>
-          <%= date_select :booking, :casting_date, class: "form-control" %>
+          <%= datetime_select :booking, :casting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group text-center">
           <%= f.label :shooting_date %> <br/>
-          <%= date_select :booking, :shooting_date, class: "form-control" %>
+          <%= datetime_select :booking, :shooting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
         </div>
       </div>
     </div>

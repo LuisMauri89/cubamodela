@@ -1,0 +1,51 @@
+<div id="form-booking-container">
+  <%= form_for(@booking) do |f| %>
+
+    <% if @booking.errors.any? %>
+      <div class="alert alert-danger text-center">
+        The form contains <%= pluralize(@booking.errors.count, "error") %>.
+        <ul>
+        <% @booking.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.bookings.edit.form_sections.description') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.label :description_en %>
+            <%= f.text_area :description_en, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+            <br/>
+            <%= f.label :description_es %>
+            <%= f.text_area :description_es, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.bookings.edit.form_sections.location') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.label :location_en %>
+            <%= f.text_area :location_en, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+            <br/>
+            <%= f.label :location_es %>
+            <%= f.text_area :location_es, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>

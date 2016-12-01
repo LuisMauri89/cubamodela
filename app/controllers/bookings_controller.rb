@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_booking, only: [:show, :edit, :update, :confirm, :destroy]
+	before_action :set_booking, only: [:show, :edit, :translate, :update, :confirm, :destroy]
 	before_action :set_profile, only: [:new, :create, :edit, :update, :confirm]
 	before_action :check_if_can, only: [:edit, :update, :destroy]
 
@@ -35,9 +35,20 @@ class BookingsController < ApplicationController
 	  	end
 	end
 
+	def translate
+	    respond_to do |format|
+	      format.html
+	    end
+	end
+
 	def update
 	  	respond_to do |format|
+	  	  old_booking = Booking.find(params[:id])
 	      if @booking.update(booking_params)
+
+	      	@booking.send_update_notification(old_booking)
+        	@booking.send_translation_notification(old_booking)
+
 	        format.html { redirect_to custom_index_bookings_path, notice: 'Booking was successfully updated.' }
 	      else
 	        format.html { render :edit }
