@@ -23,6 +23,13 @@ class Booking < ApplicationRecord
   before_save :set_description_locale, if: :new_record?
   before_save :set_location_locale, if: :new_record?
 
+  # Scopes
+  scope :valids, -> { where(status: ["booked", "confirmed"]).where("casting_date > :today", today: DateTime.now) }
+  scope :valid_bookings, -> { valids.order("created_at DESC") }
+  scope :description_needs_translation, -> { valids.where(description_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(description_es: Constant::ES_TRANSLATION_PENDING)) }
+  scope :location_needs_translation, -> { valids.where(location_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(location_es: Constant::ES_TRANSLATION_PENDING)) }
+  scope :needs_translation, -> { description_needs_translation.or(self.location_needs_translation).order("created_at ASC") }
+
   def set_description_locale
     if I18n.locale == "en".to_sym
       self.description_es ||= Constant::ES_TRANSLATION_PENDING
@@ -70,6 +77,14 @@ class Booking < ApplicationRecord
 
   def locale_es?
     return I18n.locale == "es".to_sym
+  end
+
+  def description_present
+    if self.description_en.present?
+      return self.description_en[20]
+    else
+      return self.description_es[20]
+    end
   end
 
   # For expiration

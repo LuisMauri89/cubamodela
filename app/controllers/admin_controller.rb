@@ -10,5 +10,6 @@ class AdminController < ApplicationController
 
 	def pending_translations
 		@castings = Casting.needs_translation
+		@bookings = Booking.needs_translation
 	end
 end

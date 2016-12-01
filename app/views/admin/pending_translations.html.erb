@@ -9,7 +9,7 @@
           <thead class="bg-info">
             <tr>
               <th class="text-center"><%= t('table.casting') %></th>
-              <th class="text-center"><%= t('activerecord.attributes.user.created_at') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.casting.created_at') %></th>
               <th class="text-center"><%= t('table.actions') %></th>
             </tr>
           </thead>
@@ -23,6 +23,32 @@
                 <td class="text-center"><h4><%= l(casting.created_at, format: :custom) << " [ " << distance_of_time_in_words(casting.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
                   <%= link_to t('form.buttons.translate'), translate_casting_path(casting), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+
+        <table class="table">
+          <thead class="bg-info">
+            <tr>
+              <th class="text-center"><%= t('table.booking') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.booking.created_at') %></th>
+              <th class="text-center"><%= t('table.actions') %></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @bookings.each do |booking| %>
+              <tr>
+                <td>
+                  <h4><%= booking.description_present  %></h4>
+                </td>
+                <td class="text-center"><h4><%= l(booking.created_at, format: :custom) << " [ " << distance_of_time_in_words(booking.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
+                <td>
+                  <%= link_to t('form.buttons.translate'), translate_booking_path(booking), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>
             <% end %>
