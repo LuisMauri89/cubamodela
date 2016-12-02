@@ -110,9 +110,11 @@ Rails.application.routes.draw do
 
 # Bookings routes
   resources :bookings do
-    get '/custom/index/', to: 'bookings#index_custom', as: :custom_index, on: :collection
+    get '/custom/index/contractor/:contractor_id', to: 'bookings#index_custom_contractor', as: :custom_index_contractor, on: :collection
+    get '/custom/index/contractor/:model_id', to: 'bookings#index_custom_model', as: :custom_index_model, on: :collection
     get '/confirm/:profile_id', to: 'bookings#confirm', as: :confirm, on: :member
     get 'translate', on: :member
+    get 'cancel', on: :member
   end
 
 # Admin routes

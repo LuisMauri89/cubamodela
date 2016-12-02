@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201163927) do
+ActiveRecord::Schema.define(version: 20161202040527) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20161201163927) do
     t.integer  "profile_model_id"
     t.text     "description_es"
     t.text     "location_es"
+    t.boolean  "is_direct"
     t.index ["profile_contractor_id", "profile_model_id"], name: "index_bookings_on_profile_contractor_id_and_profile_model_id"
     t.index ["profile_contractor_id"], name: "index_bookings_on_profile_contractor_id"
     t.index ["profile_model_id"], name: "index_bookings_on_profile_model_id"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161201163927) do
     t.string   "title_es"
     t.text     "description_es"
     t.text     "location_es"
+    t.boolean  "is_direct"
     t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id"
   end
 

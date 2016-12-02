@@ -12,12 +12,17 @@ class Booking < ApplicationRecord
   validates :description_es, presence: true, length: { in: 20..500 }, if: :locale_es?
   validates :location_en, length: { in: 5..500 }, allow_blank: true, if: :locale_en?
   validates :location_es, length: { in: 5..500 }, allow_blank: true, if: :locale_es?
-  validate :casting_date_cannot_be_in_the_past, :shooting_date_cannot_be_in_the_past
+  validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting
+  validate :shooting_date_cannot_be_in_the_past
   validate :both_fields_blank_en_es
 
   # Associations
   belongs_to :profile_contractor
   belongs_to :profile_model
+
+
+  # Direct booking
+  before_validation :check_if_direct
 
   # Locale
   before_save :set_description_locale, if: :new_record?
@@ -49,13 +54,13 @@ class Booking < ApplicationRecord
   # Custom Validators
   def casting_date_cannot_be_in_the_past
     if casting_date.present? && casting_date < Date.today
-      errors.add(:casting_date, "can't be in the past or before the expliration date.")
+      errors.add(:casting_date, :wrong_casting_date)
     end
   end
 
   def shooting_date_cannot_be_in_the_past
     if shooting_date.present? && (shooting_date < Date.today || shooting_date <= casting_date)
-      errors.add(:shooting_date, "can't be in the past or before the casting date.")
+      errors.add(:shooting_date, :wrong_shooting_date)
     end
   end
 
@@ -71,12 +76,22 @@ class Booking < ApplicationRecord
     end
   end
 
+  def check_if_direct
+    if self.is_direct
+      self.casting_date = self.shooting_date
+    end
+  end
+
   def locale_en?
     return I18n.locale == "en".to_sym
   end
 
   def locale_es?
     return I18n.locale == "es".to_sym
+  end
+
+  def no_direct_casting
+    return !self.is_direct
   end
 
   def description_present
@@ -89,22 +104,48 @@ class Booking < ApplicationRecord
 
   # For expiration
   def expired?
-  	return casting_date < Date.today
+  	return self.casting_date < DateTime.now
   end
 
-  def confirm_model
-    if self.canceled? || self.casting_date <= Date.today
-      errors[:base] << "can't operate on a old booking or canceled."
-    else
-      self.confirmed!
+  def try_confirm!
+    case self.status
+    when "canceled"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.canceled')
+    when "confirmed"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.confirmed')
+    when "booked"
+      if self.casting_date <= DateTime.now
+        errors[:base]  << I18n.t('views.bookings.messages.edit.past')
+      else
+        self.confirmed!
+      end
     end
   end
 
-  def cancel!
+  def try_cancel!
   	if self.canceled? || self.casting_date <= Date.today
       errors[:base] << "can't operate on a old booking or canceled."
     else
       self.canceled!
+    end
+
+    case self.status
+    when "canceled"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.canceled')
+    else
+      if self.casting_date <= DateTime.now
+        errors[:base]  << I18n.t('views.bookings.messages.edit.past')
+      else
+        self.canceled!
+      end
+    end
+  end
+
+  def get_first_base_error
+    if errors[:base].any?
+      return errors[:base][0]
+    else
+      return ""
     end
   end
 

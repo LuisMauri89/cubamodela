@@ -19,7 +19,7 @@
 			<% end %>
 		</li>
 		<li>
-			<%= link_to custom_index_bookings_path do %>
+			<%= link_to custom_index_contractor_bookings_path(current_user.profileable) do %>
 				<%= t('menu.options.bookings') %> <span class="badge"><%= get_active_bookings_count %></span>
 			<% end %>
 		</li>

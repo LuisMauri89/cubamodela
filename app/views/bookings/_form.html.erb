@@ -13,6 +13,11 @@
     <% end %>
 
     <div class="form-group text-center">
+      <%= f.check_box :is_direct %>
+        <%= f.label :is_direct, t('activerecord.attributes.booking.is_direct'), class: "form-option" %>
+    </div>
+
+    <div class="form-group text-center">
       <% if I18n.locale == "en".to_sym %>
         <%= f.label :description_en %>
         <%= f.text_area :description_en, size: "60x5", placeholder: "Description", class: "form-control text-center" %>

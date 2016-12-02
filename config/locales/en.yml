@@ -421,6 +421,11 @@ en:
         create: "Booking has been successfully created."
         confirm: "Confirmation successfully."
         update: "Booking has been successfully updated."
+        cancel: "Booking has been successfully canceled."
+        edit:
+          past: "Booking has expired. You are to late to confirm."
+          canceled: "Booking is already canceled."
+          confirmed: "Booking is already confirmed"
     castings:
       index:
         expired_text: "Expired"
@@ -460,7 +465,7 @@ en:
           invited: "Invitation was successfully sent."
           applied: "Aplication was successfully sent."
           applied_denied_personal: "Casting is private. You can not apply."
-          applied_denied_closed: "Casting has expire. You can not apply."
+          applied_denied_closed: "Casting has expired. You can not apply."
           confirmed: "Confirmation was successfully sent."
           confirmed_denied_no_intent: "Can not confirm without been applied or invited."
       warnings:

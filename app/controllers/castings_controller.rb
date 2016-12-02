@@ -282,6 +282,6 @@ class CastingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def casting_params
-      params.require(:casting).permit(:title_en, :title_es, :description_en, :description_es, :location_en, :location_es, :expiration_date, :casting_date, :shooting_date, :access_type, modality_ids:[], category_ids:[])
+      params.require(:casting).permit(:title_en, :title_es, :description_en, :description_es, :location_en, :location_es, :expiration_date, :casting_date, :shooting_date, :is_direct, :access_type, modality_ids:[], category_ids:[])
     end
 end

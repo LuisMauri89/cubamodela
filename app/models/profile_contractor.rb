@@ -14,6 +14,7 @@ class ProfileContractor < ApplicationRecord
 	has_many :castings, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
 	has_many :valid_castings, -> { where(status: ["active", "closed"]).where("casting_date >= :today", today: DateTime.now).order("created_at DESC") }, as: :ownerable, dependent: :destroy, class_name: "Casting"
 	has_many :bookings, dependent: :destroy
+	has_many :valid_bookings, -> { where(status: ["booked", "confirmed"]).where("casting_date >= :today", today: DateTime.now).order("created_at DESC") }, dependent: :destroy, class_name: "Booking"
   	has_many :profile_models, through: :bookings
 
 	# Nomenclators

@@ -18,6 +18,9 @@ class Casting < ApplicationRecord
     self.access_type ||= :free
   end
 
+  # Direct casting
+  before_validation :check_if_direct
+
   # Locale
   before_save :set_title_locale, if: :new_record?
   before_save :set_description_locale, if: :new_record?
@@ -57,7 +60,8 @@ class Casting < ApplicationRecord
   validates :expiration_date, presence: true
   validates :casting_date, presence: true
   validates :shooting_date, presence: true
-  validate :expiration_date_cannot_be_in_the_past, :casting_date_cannot_be_in_the_past, :shooting_date_cannot_be_in_the_past
+  validate :expiration_date_cannot_be_in_the_past, :shooting_date_cannot_be_in_the_past
+  validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting?
   validates :access_type, inclusion: { in: %w(free personal) }
   validate :both_fields_blank_en_es
 
@@ -101,6 +105,12 @@ class Casting < ApplicationRecord
     end
   end
 
+  def check_if_direct
+    if self.is_direct
+      self.casting_date = self.shooting_date
+    end
+  end
+
   def both_fields_blank_en_es
     if !self.title_en.present? && !self.title_es.present?
       errors.add(:title_en, :blank)
@@ -124,6 +134,10 @@ class Casting < ApplicationRecord
 
   def locale_es?
     return I18n.locale == "es".to_sym
+  end
+
+  def no_direct_casting
+    return !self.is_direct
   end
 
   # Get attrs
