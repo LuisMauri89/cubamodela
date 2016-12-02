@@ -1,6 +1,9 @@
 module CastingsHelper
-	def get_days_for_expiration(expiration_date)
-		# return "In " << pluralize((Date.today - expiration_date).days, "day")
-		return "In " << pluralize(4, "day")
+	def get_show_hide_style(is_direct)
+		if is_direct
+			return "style=display:none;"
+		else
+			return ""
+		end
 	end
 end

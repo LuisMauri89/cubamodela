@@ -1,5 +1,5 @@
-<div id="form-casting-container">
-  <%= form_for(@booking, html: { class: "form-horizontal" }) do |f| %>
+<div id="form-booking-container">
+  <%= form_for(@booking) do |f| %>
 
     <% if @booking.errors.any? %>
       <div class="alert alert-danger text-center">
@@ -12,42 +12,62 @@
       </div>
     <% end %>
 
-    <div class="form-group text-center">
-      <%= f.check_box :is_direct %>
-        <%= f.label :is_direct, t('activerecord.attributes.booking.is_direct'), class: "form-option" %>
-    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.bookings.edit.form_sections.information') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" id="chbox-direct-container">
+              <%= f.check_box :is_direct, id: "chbox-direct" %>
+              <%= f.label :is_direct, t('activerecord.attributes.booking.is_direct'), class: "form-option" %>
+            </div>
 
-    <div class="form-group text-center">
-      <% if I18n.locale == "en".to_sym %>
-        <%= f.label :description_en %>
-        <%= f.text_area :description_en, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
-      <% else %>
-        <%= f.label :description_es %>
-        <%= f.text_area :description_es, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
-      <% end %>
-    </div>
+            <div class="form-group text-center">
+              <% if I18n.locale == "en".to_sym %>
+                <%= f.label :description_en %>
+                <%= f.text_area :description_en, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+              <% else %>
+                <%= f.label :description_es %>
+                <%= f.text_area :description_es, size: "60x5", placeholder: "Description", class: "form-control text-center" %>
+              <% end %>
+            </div>
 
-    <div class="form-group text-center">
-      <% if I18n.locale == "en".to_sym %>
-        <%= f.label :location_en %>
-        <%= f.text_area :location_en, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
-      <% else %>
-        <%= f.label :location_es %>
-        <%= f.text_area :location_es, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
-      <% end %>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group text-center">
-          <%= f.label :casting_date %> <br/>
-          <%= datetime_select :booking, :casting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
+            <div class="form-group text-center">
+              <% if I18n.locale == "en".to_sym %>
+                <%= f.label :location_en %>
+                <%= f.text_area :location_en, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+              <% else %>
+                <%= f.label :location_es %>
+                <%= f.text_area :location_es, size: "60x4", placeholder: "Location", class: "form-control text-center" %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group text-center">
-          <%= f.label :shooting_date %> <br/>
-          <%= datetime_select :booking, :shooting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.bookings.edit.form_sections.dates') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row" id="casting-date-field" <%= get_show_hide_style(@booking.is_direct) %>>
+          <div class="col-md-11 col-md-offset-1">
+            <div class="form-group">
+              <%= f.label :casting_date %>: 
+              <%= datetime_select :booking, :casting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-11 col-md-offset-1">
+            <div class="form-group">
+              <%= f.label :shooting_date %>: 
+              <%= datetime_select :booking, :shooting_date, prompt: true, ampm: true, start_year: DateTime.now.year, end_year: DateTime.now.year + 2, date_separator: "/", time_separator: ":", order: [:day, :month, :year], class: "form-control" %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

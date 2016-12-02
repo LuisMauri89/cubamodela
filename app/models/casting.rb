@@ -100,7 +100,7 @@ class Casting < ApplicationRecord
   end
 
   def shooting_date_cannot_be_in_the_past
-    if shooting_date.present? && (shooting_date < DateTime.now || shooting_date <= casting_date)
+    if shooting_date.present? && (shooting_date < DateTime.now || shooting_date < casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
     end
   end
@@ -136,7 +136,7 @@ class Casting < ApplicationRecord
     return I18n.locale == "es".to_sym
   end
 
-  def no_direct_casting
+  def no_direct_casting?
     return !self.is_direct
   end
 

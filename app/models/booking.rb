@@ -12,7 +12,7 @@ class Booking < ApplicationRecord
   validates :description_es, presence: true, length: { in: 20..500 }, if: :locale_es?
   validates :location_en, length: { in: 5..500 }, allow_blank: true, if: :locale_en?
   validates :location_es, length: { in: 5..500 }, allow_blank: true, if: :locale_es?
-  validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting
+  validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting?
   validate :shooting_date_cannot_be_in_the_past
   validate :both_fields_blank_en_es
 
@@ -59,7 +59,7 @@ class Booking < ApplicationRecord
   end
 
   def shooting_date_cannot_be_in_the_past
-    if shooting_date.present? && (shooting_date < Date.today || shooting_date <= casting_date)
+    if shooting_date.present? && (shooting_date < Date.today || shooting_date < casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
     end
   end
@@ -90,7 +90,7 @@ class Booking < ApplicationRecord
     return I18n.locale == "es".to_sym
   end
 
-  def no_direct_casting
+  def no_direct_casting?
     return !self.is_direct
   end
 

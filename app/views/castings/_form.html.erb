@@ -14,7 +14,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= t('views.castings.edit.form_sections.name') %></h3>
+        <h3 class="panel-title"><%= t('views.castings.edit.form_sections.information') %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -24,9 +24,6 @@
                 <div class="form-group">
                   <%= f.label :access_type %><br />
                   <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.casting.access_types.' + type), type]}, class: "form-control") %>
-                  <br />
-                  <%= f.check_box :is_direct %>
-                  <%= f.label :is_direct, t('activerecord.attributes.casting.is_direct'), class: "form-option" %>
                 </div>
               </div>
               <div class="col-md-10">
@@ -40,6 +37,11 @@
                   <% end %>
                 </div>
               </div>
+            </div>
+
+            <div class="form-group" id="chbox-direct-container">
+              <%= f.check_box :is_direct, id: "chbox-direct" %>
+              <%= f.label :is_direct, t('activerecord.attributes.casting.is_direct'), class: "form-option" %>
             </div>
 
             <div class="form-group text-center">
@@ -68,7 +70,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= t('views.castings.edit.form_sections.name') %></h3>
+        <h3 class="panel-title"><%= t('views.castings.edit.form_sections.dates') %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -79,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="casting-date-field" <%= get_show_hide_style(@casting.is_direct) %>>
           <div class="col-md-11 col-md-offset-1">
             <div class="form-group">
               <%= f.label :casting_date %>: 
@@ -100,7 +102,7 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= t('views.castings.edit.form_sections.name') %></h3>
+        <h3 class="panel-title"><%= t('views.castings.edit.form_sections.extra') %></h3>
       </div>
       <div class="panel-body">
         <div class="row">

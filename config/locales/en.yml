@@ -224,11 +224,15 @@ en:
       album:
         name: "Name"
       booking:
-        description: "Description"
-        location: "Location"
+        is_direct: "Ckeck this if the booking is intentional just for direct shooting."
+        description_en: "Description"
+        description_es: "Description"
+        location_en: "Location"
+        location_es: "Location"
         casting_date: "Casting date"
         shooting_date: "Shooting date"
       casting:
+        is_direct: "Ckeck this if the casting is intentional just for direct shooting."
         access_type: "Access type"
         access_types:
           free: "Free"
@@ -415,6 +419,9 @@ en:
         header_text: "New booking"
       edit:
         header_text: "Edit booking"
+        form_sections:
+          information: "Information"
+          dates: "Dates"
       index:
         bookings: "Bookings"
       messages:
@@ -442,6 +449,14 @@ en:
         empty_text: "Favorites list is empty."
       index_applied:
         empty_text: "Applied list is empty. None has applied the casting."
+      new:
+        header_text: "New casting"
+      edit:
+        header_text: "Edit casting"
+        form_sections:
+          information: "Information"
+          dates: "Dates"
+          extra: "Extra"
       buttons:
         references_photos: "References photos"
         open: "Open"
