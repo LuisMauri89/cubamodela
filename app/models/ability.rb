@@ -50,6 +50,7 @@ class Ability
             profile.try(:user) == user
         end
         can :create, Review
+        can :show, Study
     elsif user.model?
         can :read, Album
         can :confirm , Booking do |booking|
@@ -64,7 +65,7 @@ class Ability
         can :update, ProfileModel do |profile|
             profile.try(:user) == user
         end
-        can [:read, :create], Study
+        can [:read, :show, :create], Study
         can [:update, :destroy], Study do |study|
             study.try(:ownerable) == user.profileable
         end
@@ -78,6 +79,7 @@ class Ability
         can :update, ProfilePhotographer do |profile|
             profile.try(:user) == user
         end
+        can :show, Study
     end
   end
 end

@@ -322,12 +322,16 @@ class ProfileModel < ApplicationRecord
 	end
 
 	def can_vote?(votant)
-		vote = votes.where(votable_id: votant.id, votable_type: votant.class.name).first
+		begin
+			vote = votes.where(votable_id: votant.id, votable_type: votant.class.name).first
 
-		if vote != nil
-			return (Date.today - vote.last_vote_date) >= 180 
-		else
-			return true
-		end		
+			if vote != nil
+				return (Date.today - vote.last_vote_date) >= 180 
+			else
+				return true
+			end		
+		rescue
+			return false
+		end
 	end
 end

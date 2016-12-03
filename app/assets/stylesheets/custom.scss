@@ -21,6 +21,12 @@ p{
 	font-family: 'roboto-light' !important;
 }
 
+.container-center-horizontal-medium{
+	margin-top: 10%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
 /* END Global */
 
 /* Boostrap customization */
@@ -491,6 +497,13 @@ p{
 	border-style: solid;
 	border-width: 1px;
 	border-color: #e7e7e7;
+}
+
+.profile-study-short{
+	margin-bottom: 10px;
+	padding: 3px;
+	padding-left: 10px;
+	border-left: 5px solid #eeeeee; 
 }
 
 /* END Profile */

@@ -6,4 +6,9 @@ class Study < ApplicationRecord
 
 	# Associations
 	belongs_to :ownerable, polymorphic: true
+
+	# Get attrs
+	def description_short
+		return self.description[0..80] << "..."
+	end
 end

@@ -297,6 +297,17 @@
 					</div>
 				</div>
 			</div>
+			<div class="profile-section">
+				<h4><%= t('views.profile_models.show.headers.studies') %></h4>
+				<% @profile.studies.each do |study| %>
+					<div class="profile-study-short">
+						<h4><%= study.title %></h4>
+						<p><%= study.description_short %></p>
+						<%= link_to t('views.profile_models.show.buttons.details'), study_path(study), class: "btn btn-primary btn-xs pull-right" %>
+						<span class="clearfix"></span>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -310,5 +321,5 @@
 		</div>
 	</div>
 <% else %>
-	<h1>Sorry this profile is pending review</h1>
+	<h1><%= t('views.profile_models.show.pending_review_text') %></h1>
 <% end %>

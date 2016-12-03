@@ -726,13 +726,22 @@ en:
           body_specs: "Body specs"
           aptitudes: "Aptitudes"
       show_resume:
+        pending_review_text: "This profile is pending review"
         professional_book_empty_text: "Professional book is empty"
         buttons:
           invite: "Invite to casting"
           booking: "Book this model"
           see_profile: "See full profile"
       show:
-        bla: "find"
+        headers:
+          information: "Information"
+          size: "Sizes"
+          languages: "Languages"
+          modalities: "Modalities"
+          categories: "Categories"
+          studies: "Studies"
+        buttons:
+          details: "Details"
       votes:
         count:
           one: "%{count} Vote"
@@ -766,3 +775,6 @@ en:
       index:
         buttons:
           new: "New study"
+      show:
+        header_text: "Study"
+
