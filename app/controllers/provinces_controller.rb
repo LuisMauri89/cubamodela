@@ -1,6 +1,7 @@
 class ProvincesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_province, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /provinces
   # GET /provinces.json
@@ -16,6 +17,8 @@ class ProvincesController < ApplicationController
   # GET /provinces/new
   def new
     @province = Province.new
+
+    authorize! :new, @province
   end
 
   # GET /provinces/1/edit
@@ -26,6 +29,8 @@ class ProvincesController < ApplicationController
   # POST /provinces.json
   def create
     @province = Province.new(province_params)
+
+    authorize! :create, @province
 
     respond_to do |format|
       if @province.save
@@ -71,5 +76,10 @@ class ProvincesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def province_params
       params.require(:province).permit(:name_en, :name_es)
+    end
+
+    def check_if_can
+      @province ||= Province.new
+      authorize! action_name.to_s.to_sym, @province
     end
 end

@@ -1,6 +1,7 @@
 class StudiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_study, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /studies
   # GET /studies.json
@@ -25,6 +26,8 @@ class StudiesController < ApplicationController
   def new
     @study = Study.new
 
+    authorize! :new, @study
+
     respond_to do |format|
       format.js
     end
@@ -42,6 +45,8 @@ class StudiesController < ApplicationController
   def create
     @study = Study.new(study_params)
     @study.ownerable = current_user.profileable
+
+    authorize! :create, @study
 
     respond_to do |format|
       if @study.save
@@ -85,5 +90,10 @@ class StudiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def study_params
       params.require(:study).permit(:title, :place, :description)
+    end
+
+    def check_if_can
+      @study ||= Study.new
+      authorize! action_name.to_s.to_sym, @study
     end
 end

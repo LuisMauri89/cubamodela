@@ -1,6 +1,7 @@
 class ExpertisesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_expertise, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /expertises
   # GET /expertises.json
@@ -16,6 +17,8 @@ class ExpertisesController < ApplicationController
   # GET /expertises/new
   def new
     @expertise = Expertise.new
+
+    authorize! :new, @expertise
   end
 
   # GET /expertises/1/edit
@@ -26,6 +29,8 @@ class ExpertisesController < ApplicationController
   # POST /expertises.json
   def create
     @expertise = Expertise.new(expertise_params)
+
+    authorize! :create, @expertise
 
     respond_to do |format|
       if @expertise.save
@@ -71,5 +76,10 @@ class ExpertisesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def expertise_params
       params.require(:expertise).permit(:name_en, :name_es)
+    end
+
+    def check_if_can
+      @expertise ||= Expertise.new
+      authorize! action_name.to_s.to_sym, @expertise
     end
 end

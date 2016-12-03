@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :destroy]
+  before_action :authenticate_user!
   before_action :set_message, only: [:show, :destroy]
+  before_action :check_if_can, only: [:index, :show, :destroy, :read_all, :unread_all]
   before_action :set_messages_count
 
   # GET /messages
@@ -23,7 +24,7 @@ class MessagesController < ApplicationController
   end
 
   def read_all
-    Message.update(readed: true)
+    current_user.profileable.messages.update(readed: true)
 
     respond_to do |format|
       format.js
@@ -31,7 +32,7 @@ class MessagesController < ApplicationController
   end
 
   def unread_all
-    Message.update(readed: false)
+    current_user.profileable.messages.update(readed: false)
 
     respond_to do |format|
       format.js
@@ -64,5 +65,10 @@ class MessagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
       params.require(:message).permit(:title, :body, :footer, :ownerable_id, :ownerable_type, :asociateable_id, :asociateable_type)
+    end
+
+    def check_if_can
+      @message ||= Message.new
+      authorize! action_name.to_s.to_sym, @message
     end
 end

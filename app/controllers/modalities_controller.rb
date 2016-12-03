@@ -1,5 +1,7 @@
 class ModalitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_modality, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /modalities
   # GET /modalities.json
@@ -15,6 +17,8 @@ class ModalitiesController < ApplicationController
   # GET /modalities/new
   def new
     @modality = Modality.new
+
+    authorize! :new, @modality
   end
 
   # GET /modalities/1/edit
@@ -25,6 +29,8 @@ class ModalitiesController < ApplicationController
   # POST /modalities.json
   def create
     @modality = Modality.new(modality_params)
+
+    authorize! :create, @modality
 
     respond_to do |format|
       if @modality.save
@@ -70,5 +76,10 @@ class ModalitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def modality_params
       params.require(:modality).permit(:name_en, :name_es)
+    end
+
+    def check_if_can
+      @modality ||= Modality.new
+      authorize! action_name.to_s.to_sym, @modality
     end
 end

@@ -1,0 +1,34 @@
+<div id="form-booking-container">
+  <%= form_for(@review) do |f| %>
+
+    <% if @review.errors.any? %>
+      <div class="alert alert-danger text-center">
+        The form contains <%= pluralize(@review.errors.count, "error") %>.
+        <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('views.reviews.edit.form_sections.review') %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.label :review_en %>
+            <%= f.text_area :review_en, size: "60x5", placeholder: "review", class: "form-control text-center" %>
+            <br/>
+            <%= f.label :review_es %>
+            <%= f.text_area :review_es, size: "60x5", placeholder: "review", class: "form-control text-center" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block" %>
+  <% end %>
+</div>

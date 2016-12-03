@@ -33,29 +33,47 @@ class Ability
     if user.admin?
         can :manage, :all
     elsif user.contractor?
-        can :create, ProfileContractor
-        can :update, ProfileContractor do |profile|
-            profile.try(:user) == user
-        end
-        can :create, Casting
-        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel], Casting do |casting|
-            casting.try(:ownerable) == user.profileable
-        end
-        can [:index_custom, :index_custom_invite], Casting
         can :create, Booking
         can [:update, :destroy], Booking do |booking|
             booking.try(:profile_contractor) == user.profileable
         end
+        can [:create, :index_custom, :index_custom_invite], Casting
+        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel], Casting do |casting|
+            casting.try(:ownerable) == user.profileable
+        end
+        can [:read, :read_all, :unread_all], Message
+        can [:show, :destroy], Message do |message|
+            message.try(:ownerable) == user.profileable
+        end
+        can :create, ProfileContractor
+        can :update, ProfileContractor do |profile|
+            profile.try(:user) == user
+        end
+        can :create, Review
     elsif user.model?
+        can :read, Album
+        can :confirm , Booking do |booking|
+            booking.try(:profile_model) == user.profileable
+        end
+        can [:confirm, :apply], Casting
+        can [:read, :read_all, :unread_all], Message
+        can [:show, :destroy], Message do |message|
+            message.try(:ownerable) == user.profileable
+        end
         can :create, ProfileModel
         can :update, ProfileModel do |profile|
             profile.try(:user) == user
         end
-        can [:confirm, :apply], Casting
-        can :confirm , Booking do |booking|
-            booking.try(:profile_model) == user.profileable
+        can [:read, :create], Study
+        can [:update, :destroy], Study do |study|
+            study.try(:ownerable) == user.profileable
         end
     elsif user.photographer?
+        can :read, Album
+        can [:read, :read_all, :unread_all], Message
+        can [:show, :destroy], Message do |message|
+            message.try(:ownerable) == user.profileable
+        end
         can :create, ProfilePhotographer
         can :update, ProfilePhotographer do |profile|
             profile.try(:user) == user

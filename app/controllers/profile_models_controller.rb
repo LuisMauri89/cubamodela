@@ -114,7 +114,7 @@ class ProfileModelsController < ApplicationController
 
   def edit
     @album_profile_picture = @profile.albums.where(name: "Profile Photo").first
-
+    
     respond_to do |format|
       format.html
       format.js

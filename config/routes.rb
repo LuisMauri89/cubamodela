@@ -56,7 +56,9 @@ Rails.application.routes.draw do
   resources :nationalities
 
 # Reviews routes
-  resources :reviews
+  resources :reviews do
+    get 'translate', on: :member
+  end
 
 # Categories routes
   resources :categories

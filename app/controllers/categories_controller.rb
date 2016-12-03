@@ -1,10 +1,12 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.order("name_en ASC")
   end
 
   # GET /categories/1
@@ -15,6 +17,8 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
+
+    authorize! :new, @category
   end
 
   # GET /categories/1/edit
@@ -25,6 +29,8 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+
+    authorize! :create, @category
 
     respond_to do |format|
       if @category.save
@@ -70,5 +76,10 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name_en, :name_es)
+    end
+
+    def check_if_can
+      @category ||= Category.new
+      authorize! action_name.to_s.to_sym, @category
     end
 end

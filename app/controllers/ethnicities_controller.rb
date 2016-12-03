@@ -1,10 +1,12 @@
 class EthnicitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ethnicity, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /ethnicities
   # GET /ethnicities.json
   def index
-    @ethnicities = Ethnicity.all
+    @ethnicities = Ethnicity.all.order("name_en ASC")
   end
 
   # GET /ethnicities/1
@@ -15,6 +17,8 @@ class EthnicitiesController < ApplicationController
   # GET /ethnicities/new
   def new
     @ethnicity = Ethnicity.new
+
+    authorize! :new, @ethnicity
   end
 
   # GET /ethnicities/1/edit
@@ -25,6 +29,8 @@ class EthnicitiesController < ApplicationController
   # POST /ethnicities.json
   def create
     @ethnicity = Ethnicity.new(ethnicity_params)
+
+    authorize! :create, @ethnicity
 
     respond_to do |format|
       if @ethnicity.save
@@ -70,5 +76,10 @@ class EthnicitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def ethnicity_params
       params.require(:ethnicity).permit(:name_en, :name_es)
+    end
+
+    def check_if_can
+      @ethnicity ||= Ethnicity.new
+      authorize! action_name.to_s.to_sym, @ethnicity
     end
 end

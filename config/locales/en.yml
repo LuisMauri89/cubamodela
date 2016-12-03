@@ -207,6 +207,10 @@ en:
     name: "Name"
     model: "Model"
     user: "User"
+    castings: "Castings"
+    bookings: "Bookings"
+    reviews: "Reviews"
+    total: "Total"
     actions: "Actions"
   activerecord:
     attributes:
@@ -400,6 +404,9 @@ en:
             provinces: "Provinces"
       pending_review:
         header_text: "Models pending review"
+      pending_translations:
+        headers:
+          needs_translation: "Needs Translation"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."
@@ -407,6 +414,7 @@ en:
         create: "The album has been successfully created."
         destroy: "The album has been successfully removed."
         update: "The album has been successfully updated."
+        edit_or_remove: "This album can not be updated or removed."
       delete:
         header_text: "Delete Album"
         yes_text: "Yes, delete this album"

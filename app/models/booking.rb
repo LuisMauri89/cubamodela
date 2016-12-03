@@ -94,11 +94,31 @@ class Booking < ApplicationRecord
     return !self.is_direct
   end
 
+  # Get attrs
+
   def description_present
     if self.description_en.present?
-      return self.description_en[20]
+      return self.description_en[0..20]
     else
-      return self.description_es[20]
+      return self.description_es[0..20]
+    end
+  end
+
+  def description
+    case I18n.locale
+    when "en".to_sym
+      return self.description_en
+    when "es".to_sym
+      return self.description_es
+    end
+  end
+
+  def location
+    case I18n.locale
+    when "en".to_sym
+      return self.location_en
+    when "es".to_sym
+      return self.location_es
     end
   end
 

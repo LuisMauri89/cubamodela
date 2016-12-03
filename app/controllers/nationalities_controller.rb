@@ -1,6 +1,7 @@
 class NationalitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_nationality, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /nationalities
   # GET /nationalities.json
@@ -16,6 +17,8 @@ class NationalitiesController < ApplicationController
   # GET /nationalities/new
   def new
     @nationality = Nationality.new
+
+    authorize! :new, @nationality
   end
 
   # GET /nationalities/1/edit
@@ -26,6 +29,8 @@ class NationalitiesController < ApplicationController
   # POST /nationalities.json
   def create
     @nationality = Nationality.new(nationality_params)
+
+    authorize! :create, @nationality
 
     respond_to do |format|
       if @nationality.save
@@ -71,5 +76,10 @@ class NationalitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def nationality_params
       params.require(:nationality).permit(:name_es, :name_en)
+    end
+
+    def check_if_can
+      @nationality ||= Nationality.new
+      authorize! action_name.to_s.to_sym, @nationality
     end
 end

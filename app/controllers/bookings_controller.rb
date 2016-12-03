@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
 		respond_to do |format|
 	  		if @booking.save
 	  			Message.create(template: "inbox_message_booking_invitation", ownerable: @booking.profile_model, asociateable: @booking)
-        		format.html { redirect_to custom_index_bookings_path, notice: 'Booking successfully.' }
+        		format.html { redirect_to custom_index_contractor_bookings_path(current_user.profileable), notice: 'Booking successfully.' }
 	  		else
 	  			format.html { render :new }
 	  		end
@@ -104,6 +104,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:description, :location, :casting_date, :shooting_date, :is_direct, :status, :profile_model_id)
+      params.require(:booking).permit(:description_en, :description_es, :location_en, :location_es, :casting_date, :shooting_date, :is_direct, :status, :profile_model_id)
     end
 end

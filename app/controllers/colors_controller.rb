@@ -1,6 +1,7 @@
 class ColorsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_color, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:index, :show, :edit, :update, :delete, :destroy]
 
   # GET /colors
   # GET /colors.json
@@ -16,6 +17,8 @@ class ColorsController < ApplicationController
   # GET /colors/new
   def new
     @color = Color.new
+
+    authorize! :new, @color
   end
 
   # GET /colors/1/edit
@@ -26,6 +29,8 @@ class ColorsController < ApplicationController
   # POST /colors.json
   def create
     @color = Color.new(color_params)
+
+    authorize! :create, @color
 
     respond_to do |format|
       if @color.save
@@ -71,5 +76,10 @@ class ColorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def color_params
       params.require(:color).permit(:name_en, :name_es)
+    end
+
+    def check_if_can
+      @color ||= Color.new
+      authorize! action_name.to_s.to_sym, @color
     end
 end

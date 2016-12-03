@@ -1,9 +1,14 @@
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_album, only: [:edit, :update, :delete, :destroy]
+  before_action :check_if_can, only: [:index, :edit, :update, :delete, :destroy]
 
   def index
-    @albums = current_user.profileable.albums
+    begin
+      @albums = current_user.profileable.albums
+    rescue
+      @albums = []
+    end
 
     respond_to do |format|
       format.js
@@ -13,6 +18,8 @@ class AlbumsController < ApplicationController
   def new
   	@album = Album.new
 
+    authorize! :new, @album
+
   	respond_to do |format|
   		format.js
   	end
@@ -21,6 +28,8 @@ class AlbumsController < ApplicationController
   def create
   	@album = Album.new(album_params)
   	@album.profileable = current_user.profileable
+
+    authorize! :create, @album
 
   	respond_to do |format|
   		if @album.save
@@ -84,12 +93,17 @@ class AlbumsController < ApplicationController
     end
 
     def can_update_or_delete?
-      default_values = ["Profile Photo", "Profesional Book", "Polaroid"]
+      default_values = Constant::ALBUMS_DEFAULT_VALUES
       if default_values.include?(@album.name)
-        @album.errors[:base] << "SORRY, this album can't be updated or removed."
+        @album.errors[:base] << I18n.t('views.albums.messages.edit.edit_or_remove')
         return false
       else
         return true
       end
+    end
+
+    def check_if_can
+      @album ||= Album.new
+      authorize! action_name.to_s.to_sym, @album
     end
 end
