@@ -207,6 +207,24 @@ class ProfileModel < ApplicationRecord
 		return self.level_request.present?
 	end
 
+	def set_profile_warning
+		self.warnings_state = true
+		self.warnings_count += 1
+		self.warnings_last_made = Date.today
+
+		save
+	end
+
+	def reset_warnings(on_save)
+		self.warnings_state = false
+		self.warnings_count = 0
+		self.warnings_last_made = nil
+		
+		if on_save
+			save
+		end
+	end
+
 	# Profile completeness - Helper methods
 	def generate_array_of_param_with_value
 		parameters_with_values = [first_name.present?, 

@@ -1,0 +1,5 @@
+<% if @profile.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#notification-messages-container').html("<%= j render 'action_info', message: t('views.profile_models.messages.profile_reject') %>");
+<% end %>

@@ -1,6 +1,6 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :plans, :albums, :studies, :request_level, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :vote, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :show_resume, :plans, :albums, :studies, :request_level, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :vote, :publish, :no_publish, :warning_publish, :reject_publish, :reset_warnings, :edit, :update, :destroy]
   before_action :generate_cols_batch, only: [:show, :show_professional_photos]
   before_action :generate_cols_batch_polaroid, only: [:show_polaroid_photos]
   before_action :check_if_can, only: [:publish, :no_publish, :edit, :update, :destroy]
@@ -91,17 +91,42 @@ class ProfileModelsController < ApplicationController
   end
 
   def no_publish
-    Message.create(template: "inbox_message_profile_unpublished", ownerable: @profile, asociateable: @profile)
+    @profile.reset_warnings(false)
+    @profile.unpublish
+
+    respond_to do |format|
+      if @profile.save
+        Message.create(template: "inbox_message_profile_unpublished", ownerable: @profile, asociateable: @profile)
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
+  def reject_publish
+    Message.create(template: "inbox_message_profile_reject_publish", ownerable: @profile, asociateable: @profile)
     
     respond_to do |format|
       format.js
     end
   end
 
-  def reject_publish
+  def warning_publish
+    @profile.set_profile_warning
+    Message.create(template: "inbox_message_profile_warning_publish", ownerable: @profile, asociateable: @profile)
+    
+    respond_to do |format|
+      format.js
+    end
   end
 
-  def warning_publish
+  def reset_warnings
+    @profile.reset_warnings(true)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def new

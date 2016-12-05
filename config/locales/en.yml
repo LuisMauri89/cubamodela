@@ -721,6 +721,13 @@ en:
       show:
         header_text: "Show nationality"
     profile_models:
+      messages:
+        profile_published: "Profile has been successfully published"
+        profile_unpublished: "Profile unpublished notification sent"
+        profile_warning: "Profile warning notification sent"
+        profile_reject: "Profile rejection notification sent"
+        profile_reset_warnings: "Profile warnings has been successfully reseted"
+        profile_update: "Profile has been successfully updated"
       index:
         models: "Models"
       edit:

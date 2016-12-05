@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get 'no_publish', on: :member
     get 'reject_publish', on: :member
     get 'warning_publish', on: :member
+    get 'reset_warnings', on: :member
     get 'request_level', on: :member
     get 'search', to: 'profile_models#index_search', on: :collection
     post 'search', to: 'profile_models#perform_search', on: :collection
