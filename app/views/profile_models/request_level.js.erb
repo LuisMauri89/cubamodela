@@ -1,0 +1,7 @@
+<% if @level_request.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'shared/errors', entity: @level_request %>");
+<% else %>
+	$('#request-container').empty();
+	$('#request-container').html("<%= j render 'request_sent' %>");
+	$('#notification-messages-container').html("<%= j render 'shared/action_info', message: 'views.profile_models.edit.messages.level_request_send' %>");
+<% end %>

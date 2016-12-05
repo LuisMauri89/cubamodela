@@ -1,0 +1,10 @@
+<% if entity.errors.any? %>
+  <div class="alert alert-danger alert-messages-box">
+    <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: entity.errors.count) %>.
+    <ul>
+    <% entity.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

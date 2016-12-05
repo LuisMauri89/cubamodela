@@ -394,6 +394,7 @@ en:
             users: "Users"
             pending_review: "Pending review"
             pending_translations: "Pending translations"
+            model_pending_upgrade_level_review: "Pending level\nrequests (models)"
           nomenclators:
             header: "Nomenclators"
             colors: "Colors"
@@ -405,8 +406,9 @@ en:
       pending_review:
         header_text: "Models pending review"
       pending_translations:
-        headers:
-          needs_translation: "Needs Translation"
+        header_text: "Needs Translation"
+      model_pending_upgrade_level_review:
+        header_text: "Models level requests"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."
@@ -719,12 +721,27 @@ en:
         models: "Models"
       edit:
         progress_bar_left_text: "Profile completed [%]"
+        current_level_text: "You are currently a New Face"
+        request_upgrade_level_text: "If you consider you aquired experience and already have the talent, take a chance and request level upgrade to Professional Model."
+        professional_level_text: "You are currently a Professional Model"
+        request_sent_text: "Your request for upgrade has been sent and is pending review."
+        menu_options:
+          profile: "Profile"
+          albums: "Albums"
+          curriculum: "Curriculum"
+          plans: "Plans"
         form_sections:
           name: "Name"
           contact: "Contact"
           procedence: "Procedence"
           body_specs: "Body specs"
           aptitudes: "Aptitudes"
+          level: "Level"
+          plan: "Plan"
+        buttons:
+          upgrade: "Upgrade to Professional Model"
+        messages:
+          level_request_send: "Your upgrade level request was successfully sent"
       show_resume:
         pending_review_text: "This profile is pending review"
         professional_book_empty_text: "Professional book is empty"

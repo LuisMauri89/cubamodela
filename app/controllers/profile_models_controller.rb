@@ -1,9 +1,9 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :show_for_review, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :vote, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :show_resume, :plans, :albums, :studies, :request_level, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :vote, :publish, :no_publish, :edit, :update, :destroy]
   before_action :generate_cols_batch, only: [:show, :show_professional_photos]
   before_action :generate_cols_batch_polaroid, only: [:show_polaroid_photos]
-  before_action :check_if_can, only: [:show_for_review, :publish, :no_publish, :edit, :update, :destroy]
+  before_action :check_if_can, only: [:publish, :no_publish, :edit, :update, :destroy]
 
   def index
     @models = ProfileModel.ready
@@ -59,15 +59,21 @@ class ProfileModelsController < ApplicationController
     end
   end
 
-  def show_resume
+  def request_level
+    @level_request = LevelRequest.new(requester: @profile, level: "professional_model")
+
     respond_to do |format|
-      format.js
+      if @level_request.save
+        format.js
+      else
+        format.js
+      end
     end
   end
 
-  def show_for_review
+  def show_resume
     respond_to do |format|
-      format.html
+      format.js
     end
   end
 
@@ -117,6 +123,36 @@ class ProfileModelsController < ApplicationController
     
     respond_to do |format|
       format.html
+      format.js
+    end
+  end
+
+  def albums
+    begin
+      @albums = @profile.albums
+    rescue
+      @albums = []
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def studies
+    begin
+      @studies = @profile.studies
+    rescue
+      @studies = []
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def plans
+    respond_to do |format|
       format.js
     end
   end

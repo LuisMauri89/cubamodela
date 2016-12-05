@@ -23,4 +23,8 @@ module ProfileModelsHelper
 
 		return genders
 	end
+
+	def get_people_can_vote
+		return Constant::PEOPLE_CAN_VOTE
+	end
 end

@@ -1,4 +1,14 @@
 class ProfileModel < ApplicationRecord
+
+	# Level
+	enum level: [:new_face, :professional_model]
+
+	after_initialize :set_default_level, if: :new_record?
+
+	def set_default_level
+		self.level ||= :new_face
+	end
+
 	# Validations
 	validates :first_name, length: { in: 3..20 }, allow_blank: true
 	validates :last_name, length: { in: 3..20 }, allow_blank: true
@@ -54,6 +64,9 @@ class ProfileModel < ApplicationRecord
 
 	# Votes
 	has_many :votes, as: :ownerable, dependent: :destroy
+
+	# Request
+	has_one :level_request, as: :requester, dependent: :destroy
 
 	# Profile completeness
 	def profile_complete?
@@ -188,6 +201,10 @@ class ProfileModel < ApplicationRecord
 		end
 
 		return mod_formated
+	end
+
+	def request_sent?
+		return self.level_request.present?
 	end
 
 	# Profile completeness - Helper methods
@@ -333,5 +350,13 @@ class ProfileModel < ApplicationRecord
 		rescue
 			return false
 		end
+	end
+
+	def can_upgrade_level?
+		return self.new_face?
+	end
+
+	def upgrade_level
+		self.professional_model!
 	end
 end

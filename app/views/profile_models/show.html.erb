@@ -1,4 +1,13 @@
-<% if @profile.reviewed %>
+<% if !current_user.admin? && @profile.reviewed %>
+	<% if current_user.admin? %>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="actions-container">
+				    <%= render 'admin_actions_container' %>
+				</div>
+			</div>
+		</div>
+	<% end %>
 	<div class="row row-profile-container">
 		<div class="col-md-8">
 			<div class="profile-section">
@@ -289,10 +298,12 @@
 						</h4>
 					</div>
 					<div class="col-md-7">
-						<% if @profile.can_vote?(current_user.profileable) %>
-							<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block", id: "btn-vote" %>
-						<% else %>
-							<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block btn-disabled", id: "btn-vote" %>
+						<% if get_people_can_vote.include?(current_user.kind) %>
+							<% if @profile.can_vote?(current_user.profileable) %>
+								<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block", id: "btn-vote" %>
+							<% else %>
+								<%= link_to t('views.profile_models.show.buttons.vote'), vote_profile_model_path(@profile, current_user.profileable, current_user.profileable.class.name), remote: true, class: "btn btn-primary btn-block btn-disabled", id: "btn-vote" %>
+							<% end %>
 						<% end %>
 					</div>
 				</div>
@@ -308,11 +319,6 @@
 					</div>
 				<% end %>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			
 		</div>
 	</div>
 	<div class="row">

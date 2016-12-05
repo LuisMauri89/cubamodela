@@ -17,14 +17,17 @@ Rails.application.routes.draw do
 
 # Models Profile routes
   resources :profile_models do
+    get 'albums', on: :member
+    get 'studies', on: :member
+    get 'plans', on: :member
     get 'show_resume', on: :member
-    get 'show_for_review', on: :member
     get 'show_professional_photos', on: :member
     get 'show_polaroid_photos', on: :member
     get 'show_selected_photo/:photo_id', to: 'profile_models#show_selected_photo', as: :selected_photo, on: :member
     get 'vote/:votant_id/:votant_type', to: 'profile_models#vote', as: :vote, on: :member
     get 'publish', on: :member
     get 'no_publish', on: :member
+    get 'request_level', on: :member
     get 'search', to: 'profile_models#index_search', on: :collection
     post 'search', to: 'profile_models#perform_search', on: :collection
   end
@@ -124,6 +127,9 @@ Rails.application.routes.draw do
     get '/control_panel/', to: 'admin#control_panel', as: :control_panel
     get '/model_pending_review/', to: 'admin#model_pending_review', as: :model_pending_review
     get '/pending_translations/', to: 'admin#pending_translations', as: :pending_translations
+    get '/model_pending_upgrade_level_review/', to: 'admin#model_pending_upgrade_level_review', as: :model_pending_upgrade_level_review
+    get '/accept_model_request_to_upgrade/:level_request_id', to: 'admin#accept_model_request_to_upgrade', as: :accept_model_request_to_upgrade
+    get '/reject_model_request_to_upgrade/:level_request_id', to: 'admin#reject_model_request_to_upgrade', as: :reject_model_request_to_upgrade
   end
 
 # Root

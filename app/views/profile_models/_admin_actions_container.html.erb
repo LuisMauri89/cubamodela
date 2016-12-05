@@ -1,0 +1,6 @@
+<% if @profile.reviewed %>
+	<%= link_to t('forms.buttons.unpublish'), no_publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+<% else %>
+	<%= link_to t('forms.buttons.publish'), publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	<%= link_to t('forms.buttons.unpublish'), no_publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+<% end %>

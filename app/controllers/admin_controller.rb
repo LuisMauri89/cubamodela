@@ -15,6 +15,40 @@ class AdminController < ApplicationController
 		@reviews = Review.needs_translation
 	end
 
+	def model_pending_upgrade_level_review
+		@requests = LevelRequest.model_requests
+	end
+
+	def accept_model_request_to_upgrade
+		@request = LevelRequest.find(params[:level_request_id])
+
+		respond_to do |format|
+			if @request.accept
+
+				@accept = true
+				@request.destroy
+
+				format.js
+			else
+				@accept = false
+
+				format.js
+			end
+		end
+	end
+
+	def reject_model_request_to_upgrade
+		@request = LevelRequest.find(params[:level_request_id])
+
+		respond_to do |format|
+			if @request.destroy
+				format.js
+			else
+				format.js
+			end
+		end
+	end
+
 	def check_if_can
       authorize! action_name.to_s.to_sym, "Admin".to_sym
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161202040527) do
+ActiveRecord::Schema.define(version: 20161203230814) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -165,6 +165,15 @@ ActiveRecord::Schema.define(version: 20161202040527) do
     t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id"
   end
 
+  create_table "level_requests", force: :cascade do |t|
+    t.string   "requester_type"
+    t.integer  "requester_id"
+    t.integer  "level"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["requester_type", "requester_id"], name: "index_level_requests_on_requester_type_and_requester_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
@@ -258,6 +267,7 @@ ActiveRecord::Schema.define(version: 20161202040527) do
     t.date     "birth_date"
     t.integer  "ethnicity_id"
     t.integer  "height"
+    t.integer  "level",                                       default: 0
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
     t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id"
     t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"

@@ -506,6 +506,14 @@ p{
 	border-left: 5px solid #eeeeee; 
 }
 
+.text-before::before{
+    content: "— ";
+}
+
+#btn-upgrade-level{
+	margin-left: 30%;
+}
+
 /* END Profile */
 
 /* Dates */
