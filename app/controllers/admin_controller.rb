@@ -1,6 +1,8 @@
 class AdminController < ApplicationController
 	before_action :authenticate_user!
 	before_action :check_if_can, only: [:control_panel, :model_pending_review, :pending_translations]
+	before_action :set_request, only: [:accept_model_request_to_upgrade, :reject_model_request_to_upgrade]
+	before_action :set_model_level_request_action_from, only: [:accept_model_request_to_upgrade, :reject_model_request_to_upgrade]
 
 	def control_panel
 	end
@@ -20,8 +22,6 @@ class AdminController < ApplicationController
 	end
 
 	def accept_model_request_to_upgrade
-		@request = LevelRequest.find(params[:level_request_id])
-
 		respond_to do |format|
 			if @request.accept
 
@@ -38,8 +38,6 @@ class AdminController < ApplicationController
 	end
 
 	def reject_model_request_to_upgrade
-		@request = LevelRequest.find(params[:level_request_id])
-
 		respond_to do |format|
 			if @request.destroy
 				format.js
@@ -49,7 +47,17 @@ class AdminController < ApplicationController
 		end
 	end
 
-	def check_if_can
-      authorize! action_name.to_s.to_sym, "Admin".to_sym
-    end
+	private
+
+		def set_request
+			@request = LevelRequest.find(params[:level_request_id])
+		end
+
+		def set_model_level_request_action_from
+			@from = params[:from]
+		end
+
+		def check_if_can
+	      authorize! action_name.to_s.to_sym, "Admin".to_sym
+	    end
 end

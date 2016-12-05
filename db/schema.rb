@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203230814) do
+ActiveRecord::Schema.define(version: 20161205170825) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -268,6 +268,9 @@ ActiveRecord::Schema.define(version: 20161203230814) do
     t.integer  "ethnicity_id"
     t.integer  "height"
     t.integer  "level",                                       default: 0
+    t.boolean  "warnings_state",                              default: false
+    t.integer  "warnings_count",                              default: 0
+    t.date     "warnings_last_made"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
     t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id"
     t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"

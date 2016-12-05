@@ -27,4 +27,16 @@ module ProfileModelsHelper
 	def get_people_can_vote
 		return Constant::PEOPLE_CAN_VOTE
 	end
+
+	def get_btn_warning_text(profile)
+		warning_text = I18n.t('forms.buttons.warning') << " (" << profile.warnings_count.to_s << ")"
+
+		if profile.warnings_last_made.present? && profile.warnings_count > 0
+			warning_text << " [" << @profile.warnings_last_made << "]"
+		else
+			warning_text << " [" << I18n.t('views.profile_models.show.admin.no_warning_made_text') << "]"
+		end
+
+		return warning_text
+	end
 end

@@ -26,8 +26,8 @@
                 <td class="text-center"><h4><%= l(request.created_at, format: :custom) << " [ " << distance_of_time_in_words(request.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
                   <%= link_to t('form.buttons.show'), profile_model_path(request.requester), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
-                  <%= link_to t('form.buttons.reject'), reject_model_request_to_upgrade_path(request), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
-                  <%= link_to t('form.buttons.accept'), accept_model_request_to_upgrade_path(request), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  <%= link_to t('form.buttons.reject'), reject_model_request_to_upgrade_path(request, from: "admin_models_requests"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  <%= link_to t('form.buttons.accept'), accept_model_request_to_upgrade_path(request, from: "admin_models_requests"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>
             <% end %>

@@ -98,6 +98,12 @@ class ProfileModelsController < ApplicationController
     end
   end
 
+  def reject_publish
+  end
+
+  def warning_publish
+  end
+
   def new
     if current_user.profileable.nil?
       @profile = ProfileModel.create

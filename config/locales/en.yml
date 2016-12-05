@@ -194,6 +194,10 @@ en:
       search: "Search"
       control_panel: "Control Panel"
       translate: "Translate"
+      publish: "Publish"
+      unpublish: "Unpublish"
+      reject: "Reject"
+      warning: "Warning"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you wish to delete %{value}"
@@ -759,6 +763,9 @@ en:
           studies: "Studies"
         buttons:
           details: "Details"
+        admin:
+          no_warning_made_text: "No warning has been made"
+          request_text: "Request made:"
       votes:
         count:
           one: "%{count} Vote"

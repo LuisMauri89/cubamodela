@@ -1,6 +1,15 @@
 <% if @profile.reviewed %>
 	<%= link_to t('forms.buttons.unpublish'), no_publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	<%= link_to get_btn_warning_text(@profile), warning_publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
 <% else %>
 	<%= link_to t('forms.buttons.publish'), publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
-	<%= link_to t('forms.buttons.unpublish'), no_publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	<%= link_to t('forms.buttons.reject'), reject_publish_profile_model_path(@profile), class: "btn btn-primary btn-sm btn-small-right-margin" %>
+<% end %>
+
+<% if @profile.request_sent? %>
+	<div class="content-inline" id="request-container">
+		<p class="content-inline" style="margin-left: 20px;"><%= t('views.profile_models.show.admin.request_text') %></p>
+		<%= link_to t('form.buttons.accept'), accept_model_request_to_upgrade_path(@profile.level_request, from: "profile_model_show"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	    <%= link_to t('form.buttons.reject'), reject_model_request_to_upgrade_path(@profile.level_request, from: "profile_model_show"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	</div>
 <% end %>
