@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_booking, only: [:show, :edit, :translate, :cancel, :update, :confirm, :destroy]
+	before_action :set_booking, only: [:show, :edit, :translate, :cancel, :update, :confirm, :cancel, :destroy]
 	before_action :set_profile, only: [:new, :create, :edit, :update, :confirm]
-	before_action :check_if_can, only: [:edit, :update, :destroy]
+	before_action :check_if_can, only: [:edit, :update, :destroy, :index_custom_contractor, :index_custom_model, :confirm, :cancel]
 
 	def index_custom_contractor
 		@contractor = ProfileContractor.find(params[:contractor_id])
@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
 
 	def new
 	  @booking = Booking.new
+
 	  authorize! :new, @booking
 	end
 
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
 		respond_to do |format|
 	  		if @booking.save
 	  			Message.create(template: "inbox_message_booking_invitation", ownerable: @booking.profile_model, asociateable: @booking)
-        		format.html { redirect_to custom_index_contractor_bookings_path(current_user.profileable), notice: 'Booking successfully.' }
+        		format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.create') }
 	  		else
 	  			format.html { render :new }
 	  		end
@@ -39,7 +40,7 @@ class BookingsController < ApplicationController
 
 	def edit
 	  	if @booking.expired?
-	  		redirect_to custom_index_bookings_path, notice: '!!!SORRY this booking has expired.'
+	  		redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.edit.past_to_edit')
 	  	end
 	end
 
@@ -57,7 +58,7 @@ class BookingsController < ApplicationController
 	      	@booking.send_update_notification(old_booking)
         	@booking.send_translation_notification(old_booking)
 
-	        format.html { redirect_to custom_index_bookings_path, notice: 'Booking was successfully updated.' }
+	        format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.update') }
 	      else
 	        format.html { render :edit }
 	      end
@@ -99,6 +100,7 @@ class BookingsController < ApplicationController
     end
 
     def check_if_can
+      @booking ||= Booking.new
       authorize! action_name.to_s.to_sym, @booking
     end
 

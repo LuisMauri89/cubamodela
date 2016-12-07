@@ -16,6 +16,6 @@
 	</div>
 <% else %>
 	<div id="empty-list-text-container">
-		<h4 class="text-center"><%= t('views.castings.index_invited.empty_text') %></h4>
+		<h4 class="text-center"><%= t('views.castings.index_invited.empty_text') %><%= link_to t('views.castings.index_invited.here_text'), invite_index_casting_path(@casting, list_item: 'invite'), remote: true %>.</h4>
 	</div>
 <% end %>

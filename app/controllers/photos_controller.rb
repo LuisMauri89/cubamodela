@@ -1,8 +1,9 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :uploaded, :destroy]
+  before_action :authenticate_user!, only: [:show, :new, :create, :uploaded, :destroy]
   before_action :set_photo, only: [:show, :uploaded, :destroy]
   before_action :set_photo_belongs_to, only: [:show, :new, :uploaded, :destroy]
   before_action :set_photo_type, only: [:show, :new, :uploaded, :destroy]
+  before_action :check_if_can
 
   def show
     @destroy_url = generate_destroy_url
@@ -133,5 +134,10 @@ class PhotosController < ApplicationController
       end
 
       return uploaded_url
+    end
+
+    def check_if_can
+      @photo ||= Photo.new
+      authorize! action_name.to_s.to_sym, @photo
     end
 end

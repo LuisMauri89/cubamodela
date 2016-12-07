@@ -245,7 +245,7 @@ class CastingsController < ApplicationController
     end
 
     def check_if_can
-      @casting ||= "Casting".to_sym
+      @casting ||= Casting.new
       authorize! action_name.to_s.to_sym, @casting
     end
 

@@ -2,15 +2,16 @@ $("#modal-container").html("<%= j render 'show' %>");
 $("#delete-photo-confirm-container").hide();
 $("#modal-container").modal("show");
 
+<% if current_user.contractor? || current_user.model? %>
+	$("#btn-delete-photo").click(function(){
+		$("#btn-delete-photo").hide();
+		$("#btn-dismiss-show-photo").hide();
+		$("#delete-photo-confirm-container").show();
+	});
 
-$("#btn-delete-photo").click(function(){
-	$("#btn-delete-photo").hide();
-	$("#btn-dismiss-show-photo").hide();
-	$("#delete-photo-confirm-container").show();
-});
-
-$("#btn-cancel-delete-photo").click(function(){
-	$("#delete-photo-confirm-container").hide();
-	$("#btn-delete-photo").show();
-	$("#btn-dismiss-show-photo").show();
-});
+	$("#btn-cancel-delete-photo").click(function(){
+		$("#delete-photo-confirm-container").hide();
+		$("#btn-delete-photo").show();
+		$("#btn-dismiss-show-photo").show();
+	});
+<% end %>

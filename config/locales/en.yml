@@ -444,7 +444,8 @@ en:
         update: "Booking has been successfully updated."
         cancel: "Booking has been successfully canceled."
         edit:
-          past: "Booking has expired. You are to late to confirm."
+          past_to_edit: "Booking has expired."
+          past_to_confirm: "Booking has expired. You are to late to confirm."
           canceled: "Booking is already canceled."
           confirmed: "Booking is already confirmed"
     castings:
@@ -463,7 +464,8 @@ en:
       index_invite:
         empty_text: "Well this is odd. Casting is asociated with every model in one way or another."
       index_invited:
-        empty_text: "Invitation list is empty. Invite some models."
+        empty_text: "Invitation list is empty. Invite some models "
+        here_text: "here"
       index_confirmed:
         empty_text: "Confirmation list is empty. None has confirmed the invitation."
       index_favorites:

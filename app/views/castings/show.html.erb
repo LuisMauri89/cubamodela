@@ -54,6 +54,7 @@
 			</div>
 			<% if current_user.model? && @casting.active? && @casting.free? && current_user.profileable.can_apply?(@casting) %>
 				<%= link_to t('views.castings.buttons.apply'), apply_casting_path(@casting, current_user.profileable), remote: true, class: "btn btn-primary btn-lg pull-right", id: "btn-apply-" << @casting.id.to_s << current_user.profileable.id.to_s %>
+				<span class="clearfix"></span>
 			<% end %>
 		</div>
 	</div>
