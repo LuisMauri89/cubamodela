@@ -449,8 +449,15 @@ en:
           confirmed: "Booking is already confirmed"
     castings:
       index:
+        expires_in_text: "Expires in %{value}"
         expired_text: "Expired"
         private_text: "Private casting. The only way to get in is to get an invitation."
+        publiched_at_text: "Published at: %{value}"
+        tooltips:
+          expired_text: "Casting expired"
+          free_text: "Casting free to apply"
+          private_text: "Casting private, can not apply"
+          direct_text: "Casting have direct shooting"
       index_custom_invite:
         header_text: "Select casting to invite to"
       index_invite:

@@ -1,5 +1,5 @@
 <div class="row casting-title">
-	<div class="col-md-6">
+	<div class="col-md-7">
 		<div class="translated-text">
 			<% if casting.title_en.present? %>
 				<p class="title"><%= casting.title_en.upcase %></p>
@@ -14,19 +14,33 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="col-md-6">
-		<% if casting.active? %>
-			<h5 class="pull-right">
-				Expiration date: <%= l(casting.expiration_date, format: :custom) %>
-			</h5>
-			<br />
-			<h5 class="pull-right">
-				[ <%= distance_of_time_in_words(Date.today, casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]
-			</h5>
-		<% else %>
-			<%= image_tag "expired.png", class: "img-responsive", alt: "Expired" %>
-			<h5 class="pull-right"><%= t('views.castings.index.expired_text') %></h5>
-		<% end %>
+	<div class="col-md-5">
+		<div class="content-center-horizontal">
+			<% if casting.is_direct %>
+				<div class="div-inline pull-right">
+					<%= image_tag "direct.png", height: 50, width: 50, class: "img-inline", alt: "Direct", title: t('views.castings.index.tooltips.direct_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				</div>
+			<% end %>
+			<% if casting.free? %>
+				<div class="div-inline pull-right">
+					<%= image_tag "free.png", height: 50, width: 50, class: "img-inline", alt: "Free", title: t('views.castings.index.tooltips.free_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				</div>
+			<% else %>
+				<div class="div-inline pull-right">
+					<%= image_tag "private.png", height: 50, width: 50, class: "img-inline", alt: "Private", title: t('views.castings.index.tooltips.private_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				</div>
+			<% end %>
+			<% if casting.active? %>
+				<div>
+					<p class="small-gray-text"><u><%= t('views.castings.index.expires_in_text', value: distance_of_time_in_words(Date.today, casting.expiration_date) << t('datetime.distance_in_words.after_text')) %></u></p>
+				</div>
+			<% else %>
+				<div class="div-inline pull-right">
+					<%= image_tag "expired.png", height: 50, width: 50, class: "img-inline", alt: "Expired", title: t('views.castings.index.tooltips.expired_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				</div>
+			<% end %>
+			<span class="clearfix"></span>
+		</div>
 	</div>
 </div>
 
@@ -66,16 +80,27 @@
 
 <div class="row row-medium-padding-vertical">
 	<div class="col-md-8">
-		<p style="display: inline;">Published at: <%= l(casting.created_at, format: :custom) %></p>
-		<% if casting.personal? %>
-			<span class="tag" data-toggle="tooltip" data-placement="bottom" title="<%= t('views.castings.index.private_text') %>">
-				<%= t('views.castings.index.private') %>
-			</span>
+		<div class="div-inline">
+			<p class="small-gray-text"><%= t('views.castings.index.publiched_at_text', value: l(casting.created_at, format: :custom)) %></p>
+		</div>
+		<% if casting.expired? %>
+			<div class="div-inline">
+				<%= image_tag "expired_circle.png", height: 32, width: 32, class: "img-inline", alt: "Expired", title: t('views.castings.index.tooltips.expired_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+			</div>
 		<% end %>
-		<% if casting.closed? %>
-			<span class="tag">
-				<%= t('views.castings.index.expired') %>
-			</span>
+		<% if casting.free? %>
+			<div class="div-inline">
+				<%= image_tag "free_circle.png", height: 32, width: 32, class: "img-inline", alt: "Free", title: t('views.castings.index.tooltips.free_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+			</div>
+		<% else %>
+			<div class="div-inline">
+				<%= image_tag "private_circle.png", height: 32, width: 32, class: "img-inline", alt: "Private", title: t('views.castings.index.tooltips.private_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+			</div>
+		<% end %>
+		<% if casting.is_direct %>
+			<div class="div-inline">
+				<%= image_tag "direct_circle.png", height: 32, width: 32, class: "img-inline", alt: "Direct", title: t('views.castings.index.tooltips.direct_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+			</div>
 		<% end %>
 	</div>
 	<div class="col-md-4">
