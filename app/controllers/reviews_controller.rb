@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_review, only: [:show, :edit, :translate, :update, :destroy]
-  before_action :check_if_can, only: [:index, :show, :edit, :translate, :update, :delete, :destroy]
+  before_action :check_if_can, only: [:index, :edit, :translate, :update, :destroy]
 
   # GET /reviews
   # GET /reviews.json

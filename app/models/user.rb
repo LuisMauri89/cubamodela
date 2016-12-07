@@ -32,4 +32,7 @@ class User < ApplicationRecord
 
   # Profile
   belongs_to :profileable, polymorphic: true, optional: true, dependent: :destroy
+
+  # Scopes
+  scope :role_user, -> { where(role: "user") }
 end
