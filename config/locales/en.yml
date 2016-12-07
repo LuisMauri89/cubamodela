@@ -478,7 +478,7 @@ en:
         confirm: "Confirm"
         load: "Load more"
         apply: "Apply"
-        see_full_casting: "See full casting"
+        details: "Details"
       messages:
         create: "Casting was successfully created. Please add some references photos."
         update: "Casting was successfully updated."

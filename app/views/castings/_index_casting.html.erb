@@ -1,6 +1,18 @@
 <div class="row casting-title">
 	<div class="col-md-6">
-		<h3><%= casting.title.upcase %></h3>
+		<div class="translated-text">
+			<% if casting.title_en.present? %>
+				<p class="title"><%= casting.title_en.upcase %></p>
+				<footer>
+					<%= casting.title_es %>
+				</footer>
+			<% else %>
+				<p class="title"><%= casting.title_es.upcase %></p>
+				<footer>
+					<%= casting.title_en %>
+				</footer>
+			<% end %>
+		</div>
 	</div>
 	<div class="col-md-6">
 		<% if casting.active? %>
@@ -12,6 +24,7 @@
 				[ <%= distance_of_time_in_words(Date.today, casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]
 			</h5>
 		<% else %>
+			<%= image_tag "expired.png", class: "img-responsive", alt: "Expired" %>
 			<h5 class="pull-right"><%= t('views.castings.index.expired_text') %></h5>
 		<% end %>
 	</div>
@@ -24,7 +37,19 @@
 				<%= image_tag casting.ownerable.get_profile_picture_url(:list), alt: "Model Photo", class: "img-center-horizontal" %>
 			</div>
 			<div class="col-md-10 text-left">
-				<p><%= casting.location[0..100] %></p>
+				<div class="translated-text">
+					<% if casting.location_en.present? %>
+						<p><%= casting.location_en_slice  %></p>
+						<footer>
+							<%= casting.location_es_slice  %>
+						</footer>
+					<% else %>
+						<p class="title"><%= casting.location_es_slice  %></p>
+						<footer>
+							<%= casting.location_en_slice  %>
+						</footer>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -54,7 +79,7 @@
 		<% end %>
 	</div>
 	<div class="col-md-4">
-		<%= link_to t('views.castings.buttons.see_full_casting'), casting_path(casting), class: "btn btn-primary pull-right" %>
+		<%= link_to t('views.castings.buttons.details'), casting_path(casting), class: "btn btn-primary pull-right" %>
 		<% if current_user.model? && casting.active? && casting.free? && current_user.profileable.can_apply?(casting) %>
 			<%= link_to t('views.castings.buttons.apply'), apply_casting_path(casting, current_user.profileable), remote: true, class: "btn btn-primary pull-right", id: "btn-apply-" << casting.id.to_s << current_user.profileable.id.to_s %>
 		<% end %>

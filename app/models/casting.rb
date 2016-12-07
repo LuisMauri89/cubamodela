@@ -176,6 +176,14 @@ class Casting < ApplicationRecord
     end
   end
 
+  def location_en_slice
+    return self.location_en[0..100] << "..."
+  end
+
+  def location_es_slice
+    return self.location_es[0..100] << "..."
+  end
+
   # Action methods on casting
 
   def get_first_base_error
