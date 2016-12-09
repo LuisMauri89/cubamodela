@@ -480,6 +480,8 @@ en:
           information: "Information"
           dates: "Dates"
           extra: "Extra"
+        warnings:
+          change_dates: "Any change on dates after 24 hours past the creation date will represent a $5 cost for the inconvinience"
       buttons:
         references_photos: "References photos"
         open: "Open"
@@ -499,6 +501,7 @@ en:
           closed_successfully: "Casting was successfully closed."
           active: "Casting is already active."
           active_successfully: "Casting was successfully activated. Dates has been changed, if you want to correct them go"
+          profile_pending_review: "Action denied, profile is pending review"
         associations:
           invited: "Invitation was successfully sent."
           applied: "Aplication was successfully sent."
@@ -817,4 +820,6 @@ en:
           new: "New study"
       show:
         header_text: "Study"
+    wallets:
+      invalid_coupon: "Coupon is invalid"
 

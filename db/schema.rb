@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205170825) do
+ActiveRecord::Schema.define(version: 20161209011409) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -111,6 +111,23 @@ ActiveRecord::Schema.define(version: 20161205170825) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name_es"
+  end
+
+  create_table "coupon_charges", force: :cascade do |t|
+    t.integer  "coupon_id"
+    t.integer  "wallet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coupon_id"], name: "index_coupon_charges_on_coupon_id"
+    t.index ["wallet_id"], name: "index_coupon_charges_on_wallet_id"
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.decimal  "amount",     precision: 5, scale: 2
+    t.string   "code"
+    t.integer  "status",                             default: 0
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "ethnicities", force: :cascade do |t|
@@ -379,6 +396,16 @@ ActiveRecord::Schema.define(version: 20161205170825) do
     t.date     "last_vote_date"
     t.index ["ownerable_type", "ownerable_id"], name: "index_votes_on_ownerable_type_and_ownerable_id"
     t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+  end
+
+  create_table "wallets", force: :cascade do |t|
+    t.decimal  "amount",         precision: 5, scale: 2
+    t.string   "ownerable_type"
+    t.integer  "ownerable_id"
+    t.integer  "status",                                 default: 0
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.index ["ownerable_type", "ownerable_id"], name: "index_wallets_on_ownerable_type_and_ownerable_id"
   end
 
 end

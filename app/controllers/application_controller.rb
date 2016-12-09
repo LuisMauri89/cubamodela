@@ -55,4 +55,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Charge
+  def charge(amount)
+    # current_user.profileable.charge....
+  end
+
 end

@@ -269,33 +269,41 @@ class Casting < ApplicationRecord
   def try_invite!(profile)
     intent = Intent.new
 
-    case status
-    when "active"
-      intent = Intent.new(casting: self, profile_model: profile, status: "invited")
-    when "closed"
-      intent.errors[:base] << I18n.t('views.castings.messages.edit.closed')
-    when "canceled"
-      intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
-    end
-
-    return intent
-  end
-
-  def try_confirm!(profile)
-    intent = Intent.where(profile_model_id: profile.id).first
-    intent ||= Intent.new
-
-    if intent.new_record?
-      intent.errors[:base] << I18n.t('views.castings.messages.associations.confirmed_denied_no_intent')
-    else
+    if profile.reviewed
       case status
       when "active"
-        intent.confirmed!
+        intent = Intent.new(casting: self, profile_model: profile, status: "invited")
       when "closed"
         intent.errors[:base] << I18n.t('views.castings.messages.edit.closed')
       when "canceled"
         intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
       end
+
+      return intent
+    else
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.profile_pending_review')
+    end
+  end
+
+  def try_confirm!(profile)
+    intent = self.intents.where(profile_model_id: profile.id).first
+    intent ||= Intent.new
+
+    if profile.reviewed
+      if intent.new_record?
+        intent.errors[:base] << I18n.t('views.castings.messages.associations.confirmed_denied_no_intent')
+      else
+        case status
+        when "active"
+          intent.confirmed!
+        when "closed"
+          intent.errors[:base] << I18n.t('views.castings.messages.edit.closed')
+        when "canceled"
+          intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+        end
+      end
+    else
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.profile_pending_review')
     end
 
     return intent
@@ -304,34 +312,98 @@ class Casting < ApplicationRecord
   def try_apply!(profile)
     intent = Intent.new
 
-    case status
-    when "active"
-      if free?
-        intent = Intent.new(casting: self, profile_model: profile, status: "applied")
-      else
-        intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_personal')
+    if profile.reviewed
+      case status
+      when "active"
+        if free?
+          intent = Intent.new(casting: self, profile_model: profile, status: "applied")
+        else
+          intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_personal')
+        end
+      when "closed"
+        intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_closed')
+      when "canceled"
+        intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
       end
-    when "closed"
-      intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_closed')
-    when "canceled"
-      intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+    else
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.profile_pending_review')
     end
 
     return intent
   end
 
-  def send_update_notification(old_casting)
-    if old_casting.expiration_date != expiration_date || old_casting.casting_date != casting_date || old_casting.shooting_date != shooting_date
-      CastingDatesChangedJob.perform_later(self)
-    end
+  def send_update_notification?(old_casting)
+    fields_changes(old_casting)
 
-    check_translated_fields_changes(old_casting)
+    return dates_changes?(old_casting)
   end
 
-  def send_translation_notification(old_casting)
+  def fields_changes(old_casting)
+    if fields_on_translation_changes?
+      NewCastingFreeJob.perform_later(self) # Aqui job de notificacion para decir que cambio un campo
+    end
+
     if !old_casting.translated? && translated? 
       NewCastingFreeJob.perform_later(self)
     end
+  end
+
+  def fields_on_translation_changes?(old_casting)
+    fields_changes = false
+
+    if old_casting.title_en.present?
+      if old_casting.title_en != self.title_en
+        self.title_es = Constant::ES_TRANSLATION_PENDING
+        fields_changes = true
+      end
+    else
+      if old_casting.title_es != self.title_es
+        self.title_en = Constant::EN_TRANSLATION_PENDING
+        fields_changes = true
+      end
+    end
+
+    if old_casting.description_en.present?
+      if old_casting.description_en != self.description_en
+        self.description_es = Constant::ES_TRANSLATION_PENDING
+        fields_changes = true
+      end
+    else
+      if old_casting.description_es != self.description_es
+        self.description_en = Constant::EN_TRANSLATION_PENDING
+        fields_changes = true
+      end
+    end
+
+    if old_casting.location_en.present?
+      if old_casting.location_en != self.location_en
+        self.location_es = Constant::ES_TRANSLATION_PENDING
+        fields_changes = true
+      end
+    else
+      if old_casting.location_es != self.location_es
+        self.location_en = Constant::EN_TRANSLATION_PENDING
+        fields_changes = true
+      end
+    end
+
+    save
+
+    return fields_changes
+  end
+
+  def dates_changes?(old_casting)
+    charge_on_dates_changed = false
+
+    if old_casting.expiration_date != expiration_date || old_casting.casting_date != casting_date || old_casting.shooting_date != shooting_date
+      CastingDatesChangedJob.perform_later(self)
+
+      if ((self.updated_at.to_date - self.created_at.to_date) * 24) > 24
+        charge_on_dates_changed = true
+      end
+    end
+
+    return charge_on_dates_changed
   end
 
   def translated?
@@ -341,39 +413,5 @@ class Casting < ApplicationRecord
            self.title_es != Constant::ES_TRANSLATION_PENDING &&
            self.description_es != Constant::ES_TRANSLATION_PENDING &&
            self.location_es != Constant::ES_TRANSLATION_PENDING
-  end
-
-  def check_translated_fields_changes(old_casting)
-    if old_casting.title_en.present?
-      if old_casting.title_en != self.title_en
-        self.title_es = Constant::ES_TRANSLATION_PENDING
-      end
-    else
-      if old_casting.title_es != self.title_es
-        self.title_en = Constant::EN_TRANSLATION_PENDING
-      end
-    end
-
-    if old_casting.description_en.present?
-      if old_casting.description_en != self.description_en
-        self.description_es = Constant::ES_TRANSLATION_PENDING
-      end
-    else
-      if old_casting.description_es != self.description_es
-        self.description_en = Constant::EN_TRANSLATION_PENDING
-      end
-    end
-
-    if old_casting.location_en.present?
-      if old_casting.location_en != self.location_en
-        self.location_es = Constant::ES_TRANSLATION_PENDING
-      end
-    else
-      if old_casting.location_es != self.location_es
-        self.location_en = Constant::EN_TRANSLATION_PENDING
-      end
-    end
-
-    save
   end
 end

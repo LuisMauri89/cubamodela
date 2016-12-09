@@ -94,6 +94,10 @@ class CastingsController < ApplicationController
 
   	respond_to do |format|
   		if @casting.save
+
+        # Creation of casting cost $5.
+        charge(5)
+
         NewCastingFreeJob.perform_later(@casting)
   			format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
   		else
@@ -122,8 +126,12 @@ class CastingsController < ApplicationController
       old_casting = Casting.find(params[:id])
       if @casting.update(casting_params)
         
-        @casting.send_update_notification(old_casting)
-        @casting.send_translation_notification(old_casting)
+        if @casting.send_update_notification?(old_casting)
+
+          # Changes of casting dates cost $5.
+          charge(5)
+
+        end
         
         format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
       else
