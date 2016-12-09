@@ -1,6 +1,6 @@
 <div id="navbar-signed-in-settings-container" class="navbar-right">
 	<% if current_user.admin? %>
-		<%= t('menu.messages.admin') %> <%= current_user.email %>
+		<span id="navbar-admin-email"><%= t('menu.messages.admin') %> <%= current_user.email %></span>
 	<% else %>
 		<span id="navbar-profile-photo">
 			<%= image_tag current_user.profileable.nil? ? "missing_profile_picture.jpg" : current_user.profileable.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded" %>

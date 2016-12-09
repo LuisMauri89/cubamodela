@@ -1,0 +1,6 @@
+<% if @accept %>
+	$('#notification-messages-container').html("<%= j render 'shared/action_info', message: 'views.admin.model_pending_upgrade_level_review.messages.accept_request_success' %>");
+	$('#request-<%= @request_id %>').remove();
+<% else %>
+	$('#notification-messages-container').html("<%= j render 'shared/error_info', message: 'views.admin.model_pending_upgrade_level_review.messages.accept_request_failed' %>");
+<% end %>

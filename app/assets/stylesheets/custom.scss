@@ -31,6 +31,10 @@ p{
 	display: inline !important;
 }
 
+.span-margin-left{
+	margin-left: 20px;
+}
+
 /* END Global */
 
 /* Boostrap customization */
@@ -314,6 +318,10 @@ p{
 	/* Make navbar flat square */
 	background-image: none !important;
 	background-color: #f8f8f8 !important;
+}
+
+#navbar-admin-email{
+	margin-right: 20px;
 }
 
 /* END Navbar */
@@ -902,6 +910,14 @@ a.link-image:hover{
 
 .admin-margin-medium{
 	margin: 50px !important;
+}
+
+#values_how_many{
+	width: 100px !important;
+}
+
+#values_amount{
+	width: 100px !important;
 }
 
 /* END Admin */

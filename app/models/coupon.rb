@@ -16,9 +16,9 @@ class Coupon < ApplicationRecord
   def generate_code
     raw_string =  SecureRandom.random_number(2**80).to_s(20).reverse
     long_code = raw_string.tr('0123456789abcdefghij', '234679QWERTYUPADFGHX')
-    short_code = long_code[0..3] << '-' << long_code[4..7] << '-' << long_code[8..11]
+    code = long_code[0..11]
 
-    self.code = short_code
+    self.code = code
   end
 
   # Scopes
@@ -27,5 +27,9 @@ class Coupon < ApplicationRecord
   def use!
   	used!
   	save
+  end
+
+  def formated_code
+    return code[0..3] << '-' << code[4..7] << '-' << code[8..11]
   end
 end

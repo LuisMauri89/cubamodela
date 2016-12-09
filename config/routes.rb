@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     get 'request_level', on: :member
     get 'search', to: 'profile_models#index_search', on: :collection
     post 'search', to: 'profile_models#perform_search', on: :collection
+    get 'index_new_faces', on: :collection
+    get 'index_professional_models', on: :collection
   end
 
 # Photographers Profile routes
@@ -133,6 +135,8 @@ Rails.application.routes.draw do
     get '/model_pending_upgrade_level_review/', to: 'admin#model_pending_upgrade_level_review', as: :model_pending_upgrade_level_review
     get '/accept_model_request_to_upgrade/:level_request_id', to: 'admin#accept_model_request_to_upgrade', as: :accept_model_request_to_upgrade
     get '/reject_model_request_to_upgrade/:level_request_id', to: 'admin#reject_model_request_to_upgrade', as: :reject_model_request_to_upgrade
+    get '/coupons/', to: 'admin#coupons', as: :coupons
+    post '/create_coupons/', to: 'admin#create_coupons', as: :create_coupons
   end
 
 # Root

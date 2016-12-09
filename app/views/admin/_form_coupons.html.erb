@@ -1,0 +1,19 @@
+<%= form_tag({ controller: "admin", action: "create_coupons" }, remote: true, class: "form-inline") %>
+	<span class="span-margin-left"></span>
+	<span class="span-margin-left"></span>
+	<div class="form-group">
+		<%= label_tag(:how_many, t('views.admin.coupons.form.how_many')) %>
+		<%= number_field(:values, :how_many, in: 1..500, step: 1, class: "form-control") %>
+	</div>
+	<span class="span-margin-left"></span>
+	<span class="span-margin-left"></span>
+	<div class="form-group">
+		<%= label_tag(:amount, t('views.admin.coupons.form.amount')) %>
+		<div class="input-group">
+			<div class="input-group-addon">$</div>
+			<%= number_field(:values, :amount, in: 1..999, step: 1, class: "form-control") %>
+		</div>
+	</div>
+	<span class="span-margin-left"></span>
+	<span class="span-margin-left"></span>
+	<%= submit_tag(t('views.admin.coupons.form.generate'), class: "btn btn-primary btn-lg") %>

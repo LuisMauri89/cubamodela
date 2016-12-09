@@ -26,6 +26,8 @@ class AdminController < ApplicationController
 			if @request.accept
 
 				@accept = true
+				@request_id = @request.id
+
 				@request.destroy
 
 				format.js
@@ -39,11 +41,30 @@ class AdminController < ApplicationController
 
 	def reject_model_request_to_upgrade
 		respond_to do |format|
-			if @request.destroy
+		if @request.destroy
 				format.js
 			else
 				format.js
 			end
+		end
+	end
+
+	def coupons
+		@coupons = Coupon.actives
+	end
+
+	def create_coupons
+		count = coupons_params[:how_many].to_i
+		amount = coupons_params[:amount].to_f
+		coupon_count = Coupon.actives.count
+
+		1.upto(count) do
+			Coupon.create(amount: amount)
+		end
+
+		respond_to do |format|
+			@success = (coupon_count + count) == Coupon.actives.count
+			format.js
 		end
 	end
 
@@ -59,5 +80,9 @@ class AdminController < ApplicationController
 
 		def check_if_can
 	      authorize! action_name.to_s.to_sym, "Admin".to_sym
+	    end
+
+	    def coupons_params
+	      params.require(:values).permit(:how_many, :amount)
 	    end
 end

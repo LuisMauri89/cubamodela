@@ -398,9 +398,10 @@ en:
             users: "Users"
             pending_review: "Pending review"
             pending_translations: "Pending translations"
-            model_pending_upgrade_level_review: "Pending level\nrequests (models)"
+            model_pending_upgrade_level_review: "Level requests"
+            coupons: "Coupons"
           nomenclators:
-            header: "Nomenclators"
+            header_text: "Nomenclators"
             colors: "Colors"
             expertises: "Expertises"
             languages: "Languages"
@@ -413,6 +414,18 @@ en:
         header_text: "Needs Translation"
       model_pending_upgrade_level_review:
         header_text: "Models level requests"
+        messages:
+          accept_request_success: "Profile upgrade in place"
+          accept_request_failed: "Profile upgrade failed"
+          reject_request_success: "Profile upgrade rejected"
+          reject_request_failed: "Profile upgrade reject failed"
+      coupons:
+        form_text: "Generate coupons"
+        list_text: "Coupons"
+        form:
+          how_many: "How many?"
+          amount: "Amount"
+          generate: "Generate"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."

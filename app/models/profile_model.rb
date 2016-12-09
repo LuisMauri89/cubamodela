@@ -24,9 +24,12 @@ class ProfileModel < ApplicationRecord
 	validates :size_cloth, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
 
 	#Scopes
-	scope :ready, -> { where(reviewed: true).order("created_at ASC") }
+	scope :base_ready, -> { where(reviewed: true) }
+	scope :ready, -> { base_ready.order("created_at ASC") }
 	scope :not_ready, -> { where(reviewed: false).order("created_at ASC") }
 	scope :invitable, -> (casting) { ready.reject{ |pm| !pm.can_apply?(casting) } }
+	scope :new_faces, -> { base_ready.where(level: "new_face").order("created_at ASC") }
+	scope :professional_models, -> { base_ready.where(level: "professional_model").order("created_at ASC") }
 
 	# User
 	has_one :user, as: :profileable

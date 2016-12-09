@@ -9,6 +9,14 @@ class ProfileModelsController < ApplicationController
     @models = ProfileModel.ready
   end
 
+  def index_new_faces
+    @models = ProfileModel.new_faces
+  end
+
+  def index_professional_models
+    @models = ProfileModel.professional_models
+  end
+
   def index_search
     @search = Search.new
     @models = ProfileModel.ready

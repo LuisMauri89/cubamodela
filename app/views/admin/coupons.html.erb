@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default panel-nomenclator">
+	      <div class="panel-heading">
+	        <h1 class="panel-title text-center"><%= t('views.admin.coupons.form_text') %></h1>
+	      </div>
+	      <div class="panel-body panel-body-nomenclator">
+	      	<div>
+	      		<%= render 'form_coupons' %>
+	      	</div>
+	      </div>
+	    </div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default panel-nomenclator">
+	      <div class="panel-heading">
+	        <h1 class="panel-title text-center"><%= t('views.admin.coupons.list_text') %></h1>
+	      </div>
+	      <div class="panel-body panel-body-nomenclator">
+	        <table class="table">
+	          <thead class="bg-info">
+	            <tr>
+	              <th class="text-center"><%= t('table.coupon') %></th>
+	              <th class="text-center"><%= t('activerecord.attributes.coupon.amount') %></th>
+	              <th class="text-center"><%= t('activerecord.attributes.coupon.created_at') %></th>
+	              <th class="text-center"><%= t('table.actions') %></th>
+	            </tr>
+	          </thead>
+
+	          <tbody>
+	            <% @coupons.each do |coupon| %>
+	              <tr>
+	                <td>
+	                  <%= coupon.formated_code %>
+	                </td>
+	                <td class="text-center"><h4><%= coupon.amount %></h4></td>
+	                <td class="text-center"><h4><%= l(coupon.created_at, format: :custom) << " [ " << distance_of_time_in_words(coupon.created_at.to_date, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
+	                <td>
+	                  Action
+	                </td>
+	              </tr>
+	            <% end %>
+	          </tbody>
+	        </table>
+
+	        <br>
+	        <%= link_to t('form.buttons.control_panel'), control_panel_path, class: "btn btn-primary" %>
+	      </div>
+	    </div>
+	</div>
+</div>
