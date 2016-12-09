@@ -139,6 +139,12 @@ Rails.application.routes.draw do
     post '/create_coupons/', to: 'admin#create_coupons', as: :create_coupons
   end
 
+# Coupons routes
+  scope '/coupons' do
+    post 'charge_coupon', to: 'coupons#charge_coupon', as: :charge_coupon
+    get 'index', to: 'coupons#index'
+  end
+
 # Root
   root to: 'static_pages#home'
 

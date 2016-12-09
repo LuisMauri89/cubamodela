@@ -534,6 +534,13 @@ en:
         header_text: "Edit color"
       show:
         header_text: "Show color"
+    coupons:
+      form:
+        coupon: "Insert coupon:"
+        use: "Use"
+        messages:
+          cupon_success_charge: "Coupon has been successfully charged to your wallet"
+          cupon_failed_charge: "Coupon charge failed"
     expertises:
       index:
         header_text: "Expertises"
@@ -774,10 +781,13 @@ en:
           aptitudes: "Aptitudes"
           level: "Level"
           plan: "Plan"
+          coupons: "Coupons"
         buttons:
           upgrade: "Upgrade to Professional Model"
         messages:
           level_request_send: "Your upgrade level request was successfully sent"
+        wallet:
+          before_text: "Current wallet:"
       show_resume:
         pending_review_text: "This profile is pending review"
         professional_book_empty_text: "Professional book is empty"

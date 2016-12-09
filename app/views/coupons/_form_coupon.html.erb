@@ -1,0 +1,17 @@
+<%= form_tag({ controller: "coupons", action: "charge_coupon" }, remote: true, class: "form-inline") %>
+	<%= label_tag(t('views.coupons.form.coupon')) %>
+	<span class="span-margin-left"></span>
+	<div class="form-group">
+		<%= text_field(:values, :first, class: "form-control coupon-section text-center") %>
+	</div>
+	<span>-</span>
+	<div class="form-group">
+		<%= text_field(:values, :second, class: "form-control coupon-section text-center") %>
+	</div>
+	<span>-</span>
+	<div class="form-group">
+		<%= text_field(:values, :third, class: "form-control coupon-section text-center") %>
+	</div>
+	<span class="span-margin-left"></span>
+	<span class="span-margin-left"></span>
+	<%= submit_tag(t('views.coupons.form.use'), class: "btn btn-primary btn-lg") %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209011409) do
+ActiveRecord::Schema.define(version: 20161209210535) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -123,11 +123,11 @@ ActiveRecord::Schema.define(version: 20161209011409) do
   end
 
   create_table "coupons", force: :cascade do |t|
-    t.decimal  "amount",     precision: 5, scale: 2
+    t.decimal  "amount",     precision: 5, scale: 2, default: "0.0"
     t.string   "code"
     t.integer  "status",                             default: 0
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   create_table "ethnicities", force: :cascade do |t|
@@ -399,12 +399,12 @@ ActiveRecord::Schema.define(version: 20161209011409) do
   end
 
   create_table "wallets", force: :cascade do |t|
-    t.decimal  "amount",         precision: 5, scale: 2
+    t.decimal  "amount",         precision: 5, scale: 2, default: "0.0"
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
     t.integer  "status",                                 default: 0
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.index ["ownerable_type", "ownerable_id"], name: "index_wallets_on_ownerable_type_and_ownerable_id"
   end
 

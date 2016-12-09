@@ -71,6 +71,10 @@ class ProfileModel < ApplicationRecord
 	# Request
 	has_one :level_request, as: :requester, dependent: :destroy
 
+	# Wallet
+	has_one :wallet, as: :ownerable
+	has_many :coupon_charges, through: :wallet
+
 	# Profile completeness
 	def profile_complete?
 		parameters_with_values = generate_array_of_param_with_value

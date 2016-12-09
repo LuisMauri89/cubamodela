@@ -20,9 +20,8 @@ class Wallet < ApplicationRecord
 	  	coupon.use!
 	  	CouponCharge.create(coupon: coupon, wallet: self)
 	  	return save
-	else
-		return false
-		# self.errors[:base] << I18n.t('views.wallets.invalid_coupon')
-	end
+  	else
+  		return false
+  	end
   end
 end

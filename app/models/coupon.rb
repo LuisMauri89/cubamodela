@@ -11,7 +11,7 @@ class Coupon < ApplicationRecord
   # Validations
   validates :amount, numericality: { greater_than: 0, less_than_or_equal_to: 999 }
 
-  before_save :generate_code
+  before_save :generate_code, if: :new_record?
 
   def generate_code
     raw_string =  SecureRandom.random_number(2**80).to_s(20).reverse

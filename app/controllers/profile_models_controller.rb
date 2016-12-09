@@ -227,7 +227,7 @@ class ProfileModelsController < ApplicationController
       params.require(:search).permit(:province_id, :nationality_id, :age_from, :age_to, 
                                      :gender, :height_from, :height_to, :new_face, 
                                      :professional_model, modality_ids:[], category_ids:[])
-    end
+    end 
 
     def set_profile
       @profile = ProfileModel.find(params[:id])
@@ -254,6 +254,7 @@ class ProfileModelsController < ApplicationController
       @profile.albums.create(name: "Profile Photo")
       @profile.albums.create(name: "Profesional Book")
       @profile.albums.create(name: "Polaroid")
+      @profile.create_wallet
     end
 
     def generate_cols_batch
