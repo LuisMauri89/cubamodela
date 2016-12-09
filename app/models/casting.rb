@@ -273,11 +273,7 @@ class Casting < ApplicationRecord
     when "active"
       intent = Intent.new(casting: self, profile_model: profile, status: "invited")
     when "closed"
-      if DateTime.now < casting_date
-        intent = Intent.new(casting: self, profile_model: profile, status: "invited")
-      else
-        intent.errors[:base] << I18n.t('views.castings.messages.edit.past')
-      end
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.closed')
     when "canceled"
       intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
     end
@@ -296,11 +292,7 @@ class Casting < ApplicationRecord
       when "active"
         intent.confirmed!
       when "closed"
-        if DateTime.now < casting_date
-          intent.confirmed!
-        else
-          intent.errors[:base] << I18n.t('views.castings.messages.edit.past')
-        end
+        intent.errors[:base] << I18n.t('views.castings.messages.edit.closed')
       when "canceled"
         intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
       end
