@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-nomenclator">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center">Users</h1>
+      </div>
+      <div class="panel-body panel-body-nomenclator">
+        <div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= form_tag(send_coupon_to_path(@coupon), method: "get", id: "search-by-email-form", class: "form-inline") do %>
+                <div class="form-group">
+                  <%= text_field_tag(:filter, params[:filter], class: "form-control") %>
+                  <%= submit_tag(t('views.admin.coupons.form.search_by_email'), class: "btn btn-primary") %>
+                  <%= link_to t('views.admin.coupons.form.clear_filter'), send_coupon_to_path(@coupon), class: "btn btn-primary" %>
+                  
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-6 text-center">
+              <h3><%= t('views.admin.coupons.messages.coupon_to_send_text') %> <%= @coupon.formated_code %></h3>
+            </div>
+          </div>
+        </div>
+
+        <% if @users.any? %>
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th class="text-center"><%= t('table.user') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.user.email') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.user.kind') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.user.created_at') %></th>
+                <th class="text-center"><%= t('table.actions') %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td>
+                    <%= image_tag user.profileable.nil? ? "missing_profile_picture.jpg" : user.profileable.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
+                    <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.full_name  %></h4>
+                  </td>
+                  <td class="text-center"><h4><%= user.email %></h4></td>
+                  <td class="text-center"><h4><%= user.kind %></h4></td>
+                  <td class="text-center"><h4><%= l(user.created_at, format: :custom) << " [ " << distance_of_time_in_words(user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
+                  <td>
+                    <%= link_to t('forms.buttons.send'), send_coupon_path(@coupon, user), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h3 class="text-center"><%= t('views.admin.coupons.users_filter_empty') %></h3>
+        <% end %>
+
+        <br>
+        <%= link_to 'Control Panel', control_panel_path, class: "btn btn-primary" %>
+        <%= link_to t('views.admin.control_panel.sections.users.coupons'), coupons_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -35,4 +35,8 @@ class User < ApplicationRecord
 
   # Scopes
   scope :role_user, -> { where(role: "user") }
+
+  def self.search_by_email(filter)
+    role_user.where("email LIKE ?", "%#{filter}%")
+  end
 end

@@ -1,0 +1,25 @@
+<table class="table">
+  <thead class="bg-info">
+    <tr>
+      <th class="text-center"><%= t('table.coupon') %></th>
+      <th class="text-center"><%= t('activerecord.attributes.coupon.amount') %></th>
+      <th class="text-center"><%= t('activerecord.attributes.coupon.created_at') %></th>
+      <th class="text-center"><%= t('table.actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupons.each do |coupon| %>
+      <tr>
+        <td>
+          <%= coupon.formated_code %>
+        </td>
+        <td class="text-center"><h4><%= coupon.amount %></h4></td>
+        <td class="text-center"><h4><%= l(coupon.created_at, format: :custom) << " [ " << distance_of_time_in_words(coupon.created_at.to_date, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
+        <td>
+          <%= link_to t('forms.buttons.send_to'), send_coupon_to_path(coupon), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

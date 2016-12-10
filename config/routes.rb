@@ -137,6 +137,8 @@ Rails.application.routes.draw do
     get '/reject_model_request_to_upgrade/:level_request_id', to: 'admin#reject_model_request_to_upgrade', as: :reject_model_request_to_upgrade
     get '/coupons/', to: 'admin#coupons', as: :coupons
     post '/create_coupons/', to: 'admin#create_coupons', as: :create_coupons
+    get '/send_coupon_to/:coupon_id', to: 'admin#send_coupon_to', as: :send_coupon_to
+    get '/send_coupon/:coupon_id/:user_id', to: 'admin#send_coupon', as: :send_coupon
   end
 
 # Coupons routes

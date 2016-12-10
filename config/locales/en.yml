@@ -198,6 +198,8 @@ en:
       unpublish: "Unpublish"
       reject: "Reject"
       warning: "Warning"
+      send_to: "Send to"
+      send: "Send"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you wish to delete %{value}"
@@ -422,10 +424,18 @@ en:
       coupons:
         form_text: "Generate coupons"
         list_text: "Coupons"
+        users_filter_empty: "No user email match the criteria"
         form:
           how_many: "How many?"
           amount: "Amount"
           generate: "Generate"
+          search_by_email: "Search by email"
+          clear_filter: "Clear filter"
+        messages:
+          coupons_generation_success: "Coupons generated successfully"
+          coupons_generation_failed: "Coupons generation failed"
+          coupon_to_send_text: "Coupon to send:"
+          coupon_sent: "Coupon was successfully sent"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."

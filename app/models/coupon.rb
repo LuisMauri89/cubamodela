@@ -1,6 +1,6 @@
 class Coupon < ApplicationRecord
   # Status
-  enum status: [:active, :used]
+  enum status: [:active, :given, :used]
 
   after_initialize :set_default_status, if: :new_record?
 
@@ -23,10 +23,17 @@ class Coupon < ApplicationRecord
 
   # Scopes
   scope :actives, -> { where(status: "active") }
+  scope :givens, -> { where(status: "given") }
+  scope :useds, -> { where(status: "used") }
 
   def use!
   	used!
   	save
+  end
+
+  def give!
+    given!
+    save
   end
 
   def formated_code

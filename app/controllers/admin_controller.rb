@@ -64,7 +64,37 @@ class AdminController < ApplicationController
 
 		respond_to do |format|
 			@success = (coupon_count + count) == Coupon.actives.count
-			format.js
+
+			if @success
+				@coupons = Coupon.actives
+				format.js
+			else
+				format.js
+			end
+		end
+	end
+
+	def send_coupon_to
+		set_filter
+		set_coupon
+
+		if @filter
+			@users = User.search_by_email(@filter)
+		else
+			@users = User.role_user
+		end
+	end
+
+	def send_coupon
+		set_coupon
+		@coupon.give!
+
+		set_user
+
+		# send notify de coupon
+
+		respond_to do |format|
+			format.html{ redirect_to coupons_path, notice: t('views.admin.coupons.messages.coupon_sent') }
 		end
 	end
 
@@ -76,6 +106,18 @@ class AdminController < ApplicationController
 
 		def set_model_level_request_action_from
 			@from = params[:from]
+		end
+
+		def set_coupon
+			@coupon = Coupon.actives.find(params[:coupon_id])
+		end
+
+		def set_user
+			@user = User.find(params[:user_id])
+		end
+
+		def set_filter
+			@filter = params[:filter]
 		end
 
 		def check_if_can

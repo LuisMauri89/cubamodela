@@ -13,7 +13,7 @@ class Wallet < ApplicationRecord
 
   def use_coupon(value)
   	# value = value.trim //ver como remover espacios al inicio y final
-  	coupon = Coupon.actives.where(code: value).first
+  	coupon = Coupon.givens.where(code: value).first
 
   	if coupon != nil
 	  	self.amount += coupon.amount

@@ -25,7 +25,7 @@
                 <td class="text-center"><h4><%= model.user.email %></h4></td>
                 <td class="text-center"><h4><%= l(model.user.created_at, format: :custom) << " [ " << distance_of_time_in_words(model.user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
-                  <%= link_to t('form.buttons.show'), profile_model_path(model), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  <%= link_to t('forms.buttons.show'), profile_model_path(model), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>
             <% end %>
