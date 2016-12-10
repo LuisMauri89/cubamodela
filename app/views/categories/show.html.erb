@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well-form well-medium">
+  		<h3 class="text-center"><%= t('views.categories.show.header_text') %></h3>
 
-<p>
-  <strong>Name en:</strong>
-  <%= @category.name_en %>
-</p>
-
-<p>
-  <strong>Name es:</strong>
-  <%= @category.name_es %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+  		<div class="well-border">
+  			<h3><%= t('activerecord.attributes.category.name_en') %>: <%= @category.name_en %></h3>
+      		<h3><%= t('activerecord.attributes.category.name_es') %>: <%= @category.name_es %></h3>
+  		</div>
+	  		
+		<%= link_to t('forms.buttons.back'), categories_path, class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to t('forms.buttons.edit'), edit_category_path(@category), class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<div class="clearfix"></div>
+  	</div>
+  </div>
+</div>

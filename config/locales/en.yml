@@ -256,7 +256,13 @@ en:
         expiration_date: "Expiration date"
         casting_date: "Casting date"
         shooting_date: "Shooting date"
+      category:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
       color:
+        name_en: "Name (EN)"
+        name_es: "Name (ES)"
+      ethnicity:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
       expertise:
@@ -410,6 +416,8 @@ en:
             modalities: "Modalities"
             nationalities: "Nationalities"
             provinces: "Provinces"
+            ethnicities: "Ethnicities"
+            categories: "Categories"
       pending_review:
         header_text: "Models pending review"
       pending_translations:
@@ -535,6 +543,15 @@ en:
       warnings:
         close_casting: "Are you sure you want to close the casting? This action will set expiration date to current date."
         cancel_casting: "Are you sure you want to cancel the casting? This action will delete the casting and it can not be undone."
+    categories:
+      index:
+        header_text: "Categories"
+      new:
+        header_text: "New category"
+      edit:
+        header_text: "Edit category"
+      show:
+        header_text: "Show category"    
     colors:
       index:
         header_text: "Colors"
@@ -551,6 +568,15 @@ en:
         messages:
           cupon_success_charge: "Coupon has been successfully charged to your wallet"
           cupon_failed_charge: "Coupon charge failed"
+    ethnicities:
+      index:
+        header_text: "Ethnicities"
+      new:
+        header_text: "New ethnicity"
+      edit:
+        header_text: "Edit ethnicity"
+      show:
+        header_text: "Show ethnicity"
     expertises:
       index:
         header_text: "Expertises"
@@ -559,7 +585,7 @@ en:
       edit:
         header_text: "Edit expertise"
       show:
-        header_text: "Show expertise"
+        header_text: "Show expertise"  
     languages:
       index:
         header_text: "Languages"

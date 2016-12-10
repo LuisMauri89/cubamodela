@@ -1,6 +1,12 @@
-<h1>Editing Category</h1>
-
-<%= render 'form', category: @category %>
-
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div class="row">
+  <div class="col-md-12">
+  	<div class="well-form well-medium">
+  		<h3 class="text-center"><%= t('views.categories.edit.header_text') %></h3>
+	  	<%= render 'form', category: @category %>
+	  		
+			<%= link_to t('forms.buttons.back'), categories_path, class: "btn btn-primary pull-right btn-small-right-margin" %>
+			<%= link_to t('forms.buttons.show'), @category, class: "btn btn-primary pull-right btn-small-right-margin" %>
+      <div class="clearfix">...</div>
+  	</div>
+  </div>
+</div>

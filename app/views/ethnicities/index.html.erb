@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-table">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center"><%= t('views.ethnicities.index.header_text') %></h1>
+      </div>
+      <div class="panel-body panel-body-table">
+        <table class="table">
+          <thead class="bg-info">
+            <tr>
+              <th><%= t('activerecord.attributes.ethnicity.name_en') %></th>
+              <th><%= t('activerecord.attributes.ethnicity.name_es') %></th>
+              <th class="text-center"><%= t('table.actions') %></th>
+            </tr>
+          </thead>
 
-<h1>Ethnicities</h1>
+          <tbody>
+            <% @ethnicities.each do |ethnicity| %>
+              <tr>
+                <td><h4><%= ethnicity.name_en %></h4></td>
+                <td><h4><%= ethnicity.name_es %></h4></td>
+                <td>
+                  <%= link_to t('forms.buttons.delete'), ethnicity, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
+                  <%= link_to t('forms.buttons.edit'), edit_ethnicity_path(ethnicity), class: "btn btn-primary pull-right btn-small-right-margin" %>
+                  <%= link_to t('forms.buttons.show'), ethnicity, class: "btn btn-primary pull-right btn-small-right-margin" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name en</th>
-      <th>Name es</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <br>
 
-  <tbody>
-    <% @ethnicities.each do |ethnicity| %>
-      <tr>
-        <td><%= ethnicity.name_en %></td>
-        <td><%= ethnicity.name_es %></td>
-        <td><%= link_to 'Show', ethnicity %></td>
-        <td><%= link_to 'Edit', edit_ethnicity_path(ethnicity) %></td>
-        <td><%= link_to 'Destroy', ethnicity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ethnicity', new_ethnicity_path %>
+        <%= link_to t('forms.buttons.new'), new_ethnicity_path, class: "btn btn-primary" %>
+        <%= link_to t('forms.buttons.control_panel'), control_panel_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

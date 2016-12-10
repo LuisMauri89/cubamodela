@@ -1,7 +1,7 @@
 class CouponsController < ApplicationController
 
 	def index
-		@coupons = Coupon.actives
+		@coupons = Coupon.all
 	end
 
 	def charge_coupon
@@ -14,9 +14,11 @@ class CouponsController < ApplicationController
 
 		respond_to do |format|
 			if current_user.profileable.wallet.use_coupon(coupon)
+
 				used_coupon = Coupon.useds.where(code: coupon).first
 				@coupon_amount = CouponCharge.where(coupon_id: used_coupon.id).last.wallet.amount
 				@coupon_charged = true
+
 				format.js
 			else
 				format.js

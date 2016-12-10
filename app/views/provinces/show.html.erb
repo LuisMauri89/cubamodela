@@ -1,13 +1,16 @@
 <div class="row">
   <div class="col-md-12">
-  	<div class="well well-form well-medium">
+  	<div class="well-form well-medium">
   		<h3 class="text-center"><%= t('views.provinces.show.header_text') %></h3>
-  		<h3><%= t('activerecord.attributes.province.name_en') %>: <%= @province.name_en %></h3>
-      <h3><%= t('activerecord.attributes.province.name_es') %>: <%= @province.name_es %></h3>
+
+      <div class="well-border">
+    		<h3><%= t('activerecord.attributes.province.name_en') %>: <%= @province.name_en %></h3>
+        <h3><%= t('activerecord.attributes.province.name_es') %>: <%= @province.name_es %></h3>
+      </div>
 	  		
 			<%= link_to t('forms.buttons.back'), provinces_path, class: "btn btn-primary pull-right btn-small-right-margin" %>
 			<%= link_to t('forms.buttons.edit'), edit_province_path(@province), class: "btn btn-primary pull-right btn-small-right-margin" %>
-			<div class="clearfix">...</div>
+			<div class="clearfix"></div>
   	</div>
   </div>
 </div>

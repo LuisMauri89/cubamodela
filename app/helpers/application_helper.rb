@@ -109,7 +109,7 @@ module ApplicationHelper
   end
 
   def get_active_castings
-    return Casting.actives.count.to_s
+    return Casting.valid_castings.count.to_s
   end
 
   # For users counts

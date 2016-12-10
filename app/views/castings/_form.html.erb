@@ -73,7 +73,7 @@
         <h3 class="panel-title"><%= t('views.castings.edit.form_sections.dates') %></h3>
       </div>
       <div class="panel-body">
-        <% if ((@casting.updated_at.to_date - @casting.created_at.to_date) * 24) > 24 %>
+        <% if (!@casting.new_record? && ((@casting.updated_at.to_date - @casting.created_at.to_date) * 24) > 24) %>
           <div class="row">
             <div class="col-md-12">
               <div id="dates-warning-text" class="alert alert-danger" role="alert"><%= t('views.castings.edit.warnings.change_dates') %>.</div>
