@@ -2,3 +2,8 @@
 	<h1><%= c.formated_code %>---------------[<%= c.status %>]</h1>
 	<br/>
 <% end %>
+
+<% @combinations.each do |c| %>
+	<h1>word: <%= c %></h1>
+	<br/>
+<% end %>

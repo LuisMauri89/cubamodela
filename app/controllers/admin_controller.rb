@@ -98,6 +98,23 @@ class AdminController < ApplicationController
 		end
 	end
 
+	def exec_casting_expiration
+		CastingsExpiredJob.perform_later
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def exec_all
+		CastingsExpiredJob.perform_later
+		CastingProximityJob.perform_later
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def set_request

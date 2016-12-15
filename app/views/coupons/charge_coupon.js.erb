@@ -2,6 +2,9 @@
 	$('#notification-messages-container').html("<%= j render 'shared/action_info', message: 'views.coupons.form.messages.cupon_success_charge' %>");
 	$('#wallet-amount').empty();
 	$('#wallet-amount').html("<%= @coupon_amount %>");
+	$('#values_first').val("");
+	$('#values_second').val("");
+	$('#values_third').val("");
 <% else %>
 	$('#notification-messages-container').html("<%= j render 'shared/error_info', message: 'views.coupons.form.messages.cupon_failed_charge' %>");
 <% end %>

@@ -17,7 +17,7 @@ class Search < ApplicationRecord
 
   private
     def perform_models
-      search = ProfileModel.all
+      search = ProfileModel.ready
 
       if province.present?
         search = search.where(province_id: self.province_id)
@@ -31,7 +31,11 @@ class Search < ApplicationRecord
         search = search.where(gender: self.gender)
       end
 
-      console
+      if professional_model == true
+        search = search.where(level: "professional_model")
+      elsif new_face == true
+         search = search.where(level: "new_face")
+      end
 
       if age_from.present? && age_to.present?
         temp = []

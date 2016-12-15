@@ -60,14 +60,16 @@ class Casting < ApplicationRecord
   validates :expiration_date, presence: true
   validates :casting_date, presence: true
   validates :shooting_date, presence: true
-  validate :expiration_date_cannot_be_in_the_past, :shooting_date_cannot_be_in_the_past
+  validate :expiration_date_cannot_be_in_the_past, if: :like_new_record
+  validate :shooting_date_cannot_be_in_the_past
   validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting?
+  validate :expiration_date_in_the_future, if: :change_dates_on_expiration
   validates :access_type, inclusion: { in: %w(free personal) }
   validate :both_fields_blank_en_es
 
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
-  scope :closed, -> { where(status: "closed").order("created_at DESC") }
+  scope :closeds, -> { where(status: "closed").order("created_at DESC") }
   scope :valids, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now) }
   scope :valid_castings, -> { valids.order("created_at DESC") }
   scope :title_needs_translation, -> { valids.where(title_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(title_es: Constant::ES_TRANSLATION_PENDING)) }
@@ -88,9 +90,23 @@ class Casting < ApplicationRecord
 
   # Custom Validators
   def expiration_date_cannot_be_in_the_past
-    if expiration_date.present? && expiration_date < DateTime.now
+    if expiration_date.present? && expiration_date < Date.today
       errors.add(:expiration_date, :wrong_expiration_date)
     end
+  end
+
+  def expiration_date_in_the_future
+    if closed? && expiration_date.present? && expiration_date <= Date.today
+      errors.add(:expiration_date, :wrong_expiration_date_future)
+    end
+  end
+
+  def change_dates_on_expiration
+    return dates_changes_without_action?
+  end
+
+  def like_new_record
+    return new_record? || active?
   end
 
   def casting_date_cannot_be_in_the_past
@@ -339,7 +355,7 @@ class Casting < ApplicationRecord
   end
 
   def fields_changes(old_casting)
-    if fields_on_translation_changes?
+    if fields_on_translation_changes?(old_casting)
       NewCastingFreeJob.perform_later(self) # Aqui job de notificacion para decir que cambio un campo
     end
 
@@ -395,15 +411,24 @@ class Casting < ApplicationRecord
   def dates_changes?(old_casting)
     charge_on_dates_changed = false
 
-    if old_casting.expiration_date != expiration_date || old_casting.casting_date != casting_date || old_casting.shooting_date != shooting_date
+    if old_casting.expiration_date != self.expiration_date || old_casting.casting_date != self.casting_date || old_casting.shooting_date != self.shooting_date
       CastingDatesChangedJob.perform_later(self)
 
-      if ((self.updated_at.to_date - self.created_at.to_date) * 24) > 24
+      if ((Date.today - self.created_at.to_date) * 24) > 24
         charge_on_dates_changed = true
       end
     end
 
     return charge_on_dates_changed
+  end
+
+  def dates_changes_without_action?
+    begin
+      old_casting = Casting.find(self.id)
+      return !new_record? && (old_casting.expiration_date != self.expiration_date || old_casting.casting_date != self.casting_date || old_casting.shooting_date != self.shooting_date)
+    rescue
+      return false
+    end
   end
 
   def translated?

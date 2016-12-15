@@ -144,6 +144,13 @@ p{
 	background-color: #d9534f !important;
 }
 
+.alert-warning{
+	/* Make alert-danger flat square */
+	background-image: none !important;
+	border-color: transparent !important;
+	background-color: #fcf8e3 !important;
+}
+
 .list-group{
 	/* Make list-primary flat square */
 	margin-bottom: 0px !important;
@@ -541,6 +548,20 @@ p{
 	margin-left: 30%;
 }
 
+.img-wrapper{
+	position: relative !important;
+}
+
+.profile-status{
+	position: absolute;
+	top: 7px;
+	right: 7px;
+}
+
+.premium-border{
+	border: solid 2px yellow;
+}
+
 /* END Profile */
 
 /* Dates */
@@ -824,6 +845,11 @@ a.link-image:hover{
 }
 
 .div-inline{
+	display: inline-block;
+	margin-right: 3px;
+}
+
+.link-inline{
 	display: inline-block;
 	margin-right: 3px;
 }

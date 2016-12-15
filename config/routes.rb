@@ -139,6 +139,8 @@ Rails.application.routes.draw do
     post '/create_coupons/', to: 'admin#create_coupons', as: :create_coupons
     get '/send_coupon_to/:coupon_id', to: 'admin#send_coupon_to', as: :send_coupon_to
     get '/send_coupon/:coupon_id/:user_id', to: 'admin#send_coupon', as: :send_coupon
+    get '/exec_casting_expiration', to: 'admin#exec_casting_expiration', as: :exec_casting_expiration
+    get '/exec_all', to: 'admin#exec_all', as: :exec_all
   end
 
 # Coupons routes

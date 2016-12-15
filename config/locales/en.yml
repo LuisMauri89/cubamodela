@@ -377,6 +377,7 @@ en:
         other_than: "must be other than %{count}"
         invited: "is already asociated with the model"
         wrong_expiration_date: "can't be in the past"
+        wrong_expiration_date_future: "can't be in the past, move it to future in order for people involve to reconfirm their presence"
         wrong_casting_date: "can not be in the past / can not happen before expliration date"
         wrong_shooting_date: "can not be in the past / can not happen before casting date"
   views:
@@ -418,6 +419,10 @@ en:
             provinces: "Provinces"
             ethnicities: "Ethnicities"
             categories: "Categories"
+          tasks:
+            header_text: "Tasks"
+            task_all: "All tasks"
+            task_casting_expired: "Casting expiration"
       pending_review:
         header_text: "Models pending review"
       pending_translations:
@@ -444,6 +449,10 @@ en:
           coupons_generation_failed: "Coupons generation failed"
           coupon_to_send_text: "Coupon to send:"
           coupon_sent: "Coupon was successfully sent"
+      tasks:
+        messages:
+          task_casting_expired: "Task was successfully sent to run in background"
+          task_all: "Tasks where successfully sent to run in background"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."
@@ -512,7 +521,9 @@ en:
           dates: "Dates"
           extra: "Extra"
         warnings:
-          change_dates: "Any change on dates after 24 hours past the creation date will represent a $5 cost for the inconvinience"
+          change_dates: "Any change on dates after 24 hours past the creation date will represent a $5 cost for the inconvinience."
+          change_direct: "This can not be edited later."
+          change_dates_expired: "How the casting has expired is mandatory that any change on dates includes expiration date in the future, so models can reconfirm their presence, please give time for that until next expiration."
       buttons:
         references_photos: "References photos"
         open: "Open"
@@ -798,6 +809,9 @@ en:
         profile_update: "Profile has been successfully updated"
       index:
         models: "Models"
+        tooltips:
+          new_face: "New Face"
+          professional_model: "Professional Model"
       edit:
         progress_bar_left_text: "Profile completed [%]"
         current_level_text: "You are currently a New Face"

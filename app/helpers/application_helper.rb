@@ -125,4 +125,9 @@ module ApplicationHelper
     ProfileContractor.count
   end
 
+  # For premium
+  def get_premium_border(profile)
+    return "premium-border"
+  end
+
 end
