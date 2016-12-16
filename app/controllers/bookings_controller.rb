@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_booking, only: [:show, :edit, :translate, :cancel, :update, :confirm, :cancel, :destroy]
+	before_action :set_booking, only: [:show, :edit, :translate, :cancel, :update, :confirm, :destroy]
 	before_action :set_profile, only: [:new, :create, :edit, :update, :confirm]
 	before_action :check_if_can, only: [:edit, :update, :destroy, :index_custom_contractor, :index_custom_model, :confirm, :cancel]
 

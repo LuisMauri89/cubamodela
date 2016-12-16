@@ -143,13 +143,7 @@ class Booking < ApplicationRecord
   end
 
   def try_cancel!
-  	if self.canceled? || self.casting_date <= Date.today
-      errors[:base] << "can't operate on a old booking or canceled."
-    else
-      self.canceled!
-    end
-
-    case self.status
+  	case self.status
     when "canceled"
       errors[:base]  << I18n.t('views.bookings.messages.edit.canceled')
     else

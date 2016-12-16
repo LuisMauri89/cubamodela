@@ -19,10 +19,19 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
-            <div class="form-group" id="chbox-direct-container">
-              <%= f.check_box :is_direct, id: "chbox-direct" %>
-              <%= f.label :is_direct, t('activerecord.attributes.booking.is_direct'), class: "form-option" %>
-            </div>
+
+            <% if @booking.new_record? %>
+              <div class="form-group" id="chbox-direct-container">
+                <%= f.check_box :is_direct, id: "chbox-direct" %>
+                <%= f.label :is_direct, t('activerecord.attributes.booking.is_direct'), class: "form-option" %>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div id="dates-warning-text" class="alert alert-danger" role="alert"><%= t('views.bookings.edit.warnings.change_direct') %>.</div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
 
             <div class="form-group text-center">
               <% if I18n.locale == "en".to_sym %>

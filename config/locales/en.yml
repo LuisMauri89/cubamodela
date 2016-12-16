@@ -162,6 +162,11 @@ en:
       reservations: "Reservations"
       find_casting: "Find casting"
       new_casting: "New casting"
+      wallet:
+        header_text: "Wallet: "
+        count:
+          one: "%{count} coin"
+          other: "%{count} coins"
     locales:
       en: "English"
       es: "Spanish"
@@ -468,6 +473,10 @@ en:
       index:
         buttons:
           new: "New album"
+    bank:
+      messages:
+        wallet_charge_failed: "Wallet charge failed"
+        wallet_amount_insuficient: "Wallet insuficient coins"
     bookings:
       new:
         header_text: "New booking"
@@ -476,6 +485,8 @@ en:
         form_sections:
           information: "Information"
           dates: "Dates"
+        warnings:
+          change_direct: "This can not be edited later."
       index:
         bookings: "Bookings"
       messages:
@@ -799,6 +810,18 @@ en:
         header_text: "Edit nationality"
       show:
         header_text: "Show nationality"
+    profile_contractors:
+      edit:
+        menu_options:
+          profile: "Profile"
+          payment: "Payment"
+        form_sections:
+          name: "Name"
+          contact: "Contact"
+          procedence: "Procedence"
+          aptitudes: "Aptitudes"
+          plan: "Plan"
+          coupons: "Coupons"
     profile_models:
       messages:
         profile_published: "Profile has been successfully published"
@@ -823,6 +846,7 @@ en:
           albums: "Albums"
           curriculum: "Curriculum"
           plans: "Plans"
+          payment: "Payment"
         form_sections:
           name: "Name"
           contact: "Contact"

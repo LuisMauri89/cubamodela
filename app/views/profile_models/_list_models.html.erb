@@ -9,7 +9,7 @@
 			<div class="text-center" style="margin-top: 5px;">
 				<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
 			</div>
-			<div id="status" class="profile-status">
+			<div class="profile-status">
 				<% if model.new_face? %>
 					<%= image_tag "new_face.png", height: 25, width: 25, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
 				<% else %>

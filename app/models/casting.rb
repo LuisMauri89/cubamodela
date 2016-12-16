@@ -55,8 +55,8 @@ class Casting < ApplicationRecord
   validates :title_es, presence: true, length: { in: 3..50 }, if: :locale_es?
   validates :description_en, presence: true, length: { in: 20..500 }, if: :locale_en?
   validates :description_es, presence: true, length: { in: 20..500 }, if: :locale_es?
-  validates :location_en, length: { in: 5..500 }, allow_blank: true, if: :locale_en?
-  validates :location_es, length: { in: 5..500 }, allow_blank: true, if: :locale_es?
+  validates :location_en, presence: true, length: { in: 5..500 }, if: :locale_en?
+  validates :location_es, presence: true, length: { in: 5..500 }, if: :locale_es?
   validates :expiration_date, presence: true
   validates :casting_date, presence: true
   validates :shooting_date, presence: true
@@ -65,7 +65,7 @@ class Casting < ApplicationRecord
   validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting?
   validate :expiration_date_in_the_future, if: :change_dates_on_expiration
   validates :access_type, inclusion: { in: %w(free personal) }
-  validate :both_fields_blank_en_es
+  # validate :both_fields_blank_en_es
 
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
@@ -348,78 +348,110 @@ class Casting < ApplicationRecord
     return intent
   end
 
-  def send_update_notification?(old_casting)
-    fields_changes(old_casting)
+  def send_update_notification(old_casting)
+    fields = fields_change?(old_casting)
+    dates = dates_change?(old_casting)
+    translations = translations_change?(old_casting)
 
-    return dates_changes?(old_casting)
+    if fields && dates
+      #Job casting inbox y mail para cambios multiples
+    elsif fields
+      #Job casting inbox y mail para cambios fields only
+    elsif dates
+      CastingDatesChangedJob.perform_later(self) #Job casting inbox y mail para cambios dates only
+    elsif translations
+      #Job casting inbox y mail para cambios fields tranlated
+    end
   end
 
-  def fields_changes(old_casting)
-    if fields_on_translation_changes?(old_casting)
-      NewCastingFreeJob.perform_later(self) # Aqui job de notificacion para decir que cambio un campo
-    end
-
-    if !old_casting.translated? && translated? 
-      NewCastingFreeJob.perform_later(self)
-    end
-  end
-
-  def fields_on_translation_changes?(old_casting)
-    fields_changes = false
-
-    if old_casting.title_en.present?
-      if old_casting.title_en != self.title_en
-        self.title_es = Constant::ES_TRANSLATION_PENDING
-        fields_changes = true
-      end
-    else
-      if old_casting.title_es != self.title_es
-        self.title_en = Constant::EN_TRANSLATION_PENDING
-        fields_changes = true
-      end
-    end
+  def fields_change?(old_casting)
+    changes = false
 
     if old_casting.description_en.present?
       if old_casting.description_en != self.description_en
         self.description_es = Constant::ES_TRANSLATION_PENDING
-        fields_changes = true
+        changes = true
       end
     else
       if old_casting.description_es != self.description_es
         self.description_en = Constant::EN_TRANSLATION_PENDING
-        fields_changes = true
+        changes = true
       end
     end
 
     if old_casting.location_en.present?
       if old_casting.location_en != self.location_en
         self.location_es = Constant::ES_TRANSLATION_PENDING
-        fields_changes = true
+        changes = true
       end
     else
       if old_casting.location_es != self.location_es
         self.location_en = Constant::EN_TRANSLATION_PENDING
-        fields_changes = true
+        changes = true
       end
     end
 
     save
 
-    return fields_changes
+    return changes
   end
 
-  def dates_changes?(old_casting)
-    charge_on_dates_changed = false
+  def dates_change?(old_casting)
+    changes = false
 
     if old_casting.expiration_date != self.expiration_date || old_casting.casting_date != self.casting_date || old_casting.shooting_date != self.shooting_date
-      CastingDatesChangedJob.perform_later(self)
+      changes = true
+    end
 
-      if ((Date.today - self.created_at.to_date) * 24) > 24
-        charge_on_dates_changed = true
+    return changes
+  end
+
+  def translations_change?(old_casting)
+    changes = false
+
+    if old_casting.title_en.present?
+      if old_casting.title_en == self.title_en && self.title_es != Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_casting.title_es == self.title_es && self.title_en != Constant::EN_TRANSLATION_PENDING
+        changes = true
       end
     end
 
-    return charge_on_dates_changed
+    if old_casting.description_en.present?
+      if old_casting.description_en == self.description_en && self.description_es != Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_casting.description_es == self.description_es && self.description_en != Constant::EN_TRANSLATION_PENDING
+        changes = true
+      end
+    end
+
+    if old_casting.location_en.present?
+      if old_casting.location_en == self.location_en && self.location_es != Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_casting.location_es == self.location_es && self.location_en != Constant::EN_TRANSLATION_PENDING
+        changes = true
+      end
+    end
+
+    return changes
+  end
+
+  def update_requires_charge(old_casting)
+    charge_on_dates_change = false
+
+    if old_casting.expiration_date != self.expiration_date || old_casting.casting_date != self.casting_date || old_casting.shooting_date != self.shooting_date
+      if ((Date.today - self.created_at.to_date) * 24) > 24
+        charge_on_dates_change = true
+      end
+    end
+
+    return charge_on_dates_change
   end
 
   def dates_changes_without_action?

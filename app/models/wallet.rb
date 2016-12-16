@@ -24,4 +24,13 @@ class Wallet < ApplicationRecord
   		return false
   	end
   end
+
+  def charge(amount)
+    if self.active?
+      self.amount -= amount
+      return save 
+    end
+
+    return false
+  end
 end

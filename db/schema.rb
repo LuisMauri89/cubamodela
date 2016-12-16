@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209210535) do
+ActiveRecord::Schema.define(version: 20161215211849) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -95,6 +95,17 @@ ActiveRecord::Schema.define(version: 20161209210535) do
     t.integer "search_id"
     t.index ["category_id"], name: "index_categories_searches_on_category_id"
     t.index ["search_id"], name: "index_categories_searches_on_search_id"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.string   "profileable_type"
+    t.integer  "profileable_id"
+    t.decimal  "wallet_charge_amount", default: "0.0"
+    t.decimal  "card_charge_amount",   default: "0.0"
+    t.integer  "on_action",            default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["profileable_type", "profileable_id"], name: "index_charges_on_profileable_type_and_profileable_id"
   end
 
   create_table "cloth_sizes", force: :cascade do |t|

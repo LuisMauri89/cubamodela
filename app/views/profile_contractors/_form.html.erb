@@ -1,13 +1,13 @@
-<div id="profile-model-fields-container" class="well">
+<div id="profile-model-fields-container">
   <%= form_for(@profile, remote: true) do |f| %>
 	<div class="row">
 		<div class="col-md-12">
-			<%= f.submit "Save changes", class: "btn btn-success btn-block btn-ms" %><br />
+			<%= f.submit t('forms.buttons.save_resource', resource: "Profile"), class: "btn btn-primary btn-block btn-ms" %><br />
 		</div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Name</h3>
+	    <h3 class="panel-title"><%= t('views.profile_contractors.edit.form_sections.name') %></h3>
 	  </div>
 	  <div class="panel-body">
 	  	<div class="row">
@@ -26,9 +26,9 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Contact</h3>
+	    <h3 class="panel-title"><%= t('views.profile_contractors.edit.form_sections.contact') %></h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="row">
@@ -59,9 +59,9 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Procedence</h3>
+	    <h3 class="panel-title"><%= t('views.profile_contractors.edit.form_sections.procedence') %></h3>
 	  </div>
 	  <div class="panel-body">
 	    <div class="row">
@@ -74,27 +74,32 @@
 		</div>
 	  </div>
 	</div>
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">Aptitudes</h3>
+	    <h3 class="panel-title"><%= t('views.profile_contractors.edit.form_sections.aptitudes') %></h3>
 	  </div>
 	  <div class="panel-body">
 	  	<div class="row">
-			<div class="col-md-12">
-				<div class="form-group text-center">
-			      <%= f.label "I speak:" %><br />
-			      <div class="row">
-				      <%= f.collection_check_boxes :language_ids, Language.all, :id, :name do |l| %>
-				      	<div class="col-md-3">
-						    <div class="checkbox-container">
-						      <%= l.check_box %>
-						      <%= l.label %>
-						    </div>
+			<div class="col-md-2 col-md-offset-1">
+	  			<div class="form-group">
+			      <%= f.label t('activerecord.attributes.profile_model.associations.languages') << ":" %><br />
+			      <% if I18n.locale == "en".to_sym %>
+				  	<%= f.collection_check_boxes :language_ids, Language.all.order("name_en ASC"), :id, :name_en do |l| %>
+					    <div class="checkbox-container">
+					      <%= l.check_box %>
+					      <%= l.label %>
 					    </div>
-					  <% end %>
-			       </div>
+					<% end %>	
+				  <% else %>
+				    <%= f.collection_check_boxes :language_ids, Language.all.order("name_en ASC"), :id, :name_es do |l| %>
+					    <div class="checkbox-container">
+					      <%= l.check_box %>
+					      <%= l.label %>
+					    </div>
+					<% end %>
+				  <% end %>
 			    </div>
-			</div>
+	  		</div>
 		</div>
 	  </div>
 	</div>

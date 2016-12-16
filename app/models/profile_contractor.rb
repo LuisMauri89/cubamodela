@@ -34,20 +34,20 @@ class ProfileContractor < ApplicationRecord
 
 	#Check if profile is completed
 	def profile_complete?
-		parameters_with_values = self.generate_array_of_param_with_value
+		parameters_with_values = generate_array_of_param_with_value
 
 		parameters_with_values.each do |p|
-			return p if p
+			return false if !p
 		end
 
-		return false
+		return true
 	end
 
 	def profile_complete_progress
 		progress = 0
 		parameters_with_values = self.generate_array_of_param_with_value
 
-		progress = parameters_with_values.reject{ |p| p }.length
+		progress = parameters_with_values.reject{ |p| !p }.length
 
 		return progress
 	end
@@ -100,8 +100,15 @@ class ProfileContractor < ApplicationRecord
 		return lang_formated
 	end
 
-	def generate_array_of_param_with_value #.present?
-		parameters_with_values = [self.first_name.nil? ? true : self.first_name.empty?, self.last_name.nil? ? true : self.last_name.empty?, self.mobile_phone.nil? ? true : self.mobile_phone.empty?, self.land_phone.nil? ? true : self.land_phone.empty?, self.address.nil? ? true : self.address.empty?, self.represent.nil? ? true : self.represent.empty?, self.nationality.nil?]
+	def generate_array_of_param_with_value
+		parameters_with_values = [first_name.present?, 
+							      last_name.present?, 
+							      mobile_phone.present?, 
+							      land_phone.present?, 
+							      address.present?, 
+							      represent.present?, 
+							      nationality.present?]
+
 		parameters_with_values << self.add_languages_to_progress
 		parameters_with_values << self.add_profile_picture_album_to_progress
 
@@ -110,13 +117,13 @@ class ProfileContractor < ApplicationRecord
 
 	def add_languages_to_progress
 		begin
-			if self.languages.any?
-				return false
+			if languages.any?
+				return true
 			end
 
-			return true
+			return false
 		rescue
-			return true
+			return false
 		end
 	end
 

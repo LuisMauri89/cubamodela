@@ -93,13 +93,16 @@ class CastingsController < ApplicationController
   	authorize! :create, @casting
 
   	respond_to do |format|
-  		if @casting.save
+  		if @casting.valid?
 
-        # Creation of casting cost $5.
-        charge(5)
-
-        NewCastingFreeJob.perform_later(@casting)
-  			format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
+        @charge_success, @message = Bank.charge(current_user.profileable, Constant::CASTING_CREATION_COST.to_f, "casting_creation", false)
+        if @charge_success
+          @casting.save
+          NewCastingFreeJob.perform_later(@casting)
+          format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
+        else
+          format.html { render :new }
+        end
   		else
   			format.html { render :new }
   		end
@@ -124,16 +127,25 @@ class CastingsController < ApplicationController
   def update
   	respond_to do |format|
       old_casting = Casting.find(params[:id])
-      if @casting.update(casting_params)
+      if @casting.valid?
         
-        if @casting.send_update_notification?(old_casting)
+        if @casting.update_requires_charge(old_casting)
+          @charge_success, @message = Bank.charge(current_user.profileable, Constant::CASTING_UPDATE_DATES_CHANGE_COST.to_f, "casting_dates_change", false)
+          if @charge_success
 
-          # Changes of casting dates cost $5.
-          charge(5)
+            @casting.update(casting_params)
+            @casting.send_update_notification(old_casting)
 
+            format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
+          else
+            format.html { render :edit }
+          end
+        else
+          @casting.update(casting_params)
+          @casting.send_update_notification(old_casting)
+
+          format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
         end
-        
-        format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
       else
         format.html { render :edit }
       end
