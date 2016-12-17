@@ -27,11 +27,16 @@ class PhotosController < ApplicationController
   	save_photo_belongs_to
 
   	respond_to do |format|
-  		if @photo.save
-  			format.json { render json: { message: "success", photo_id: @photo.id, photo_type: @photo.func }, status: 200 }
-  		else
-	    	format.json { render json: { error: @photo.errors.full_messages.join(',') }, status: 400 }
-  		end
+      allow, message = allow_upload?
+      if allow
+    		if @photo.save
+    			format.json { render json: { message: "success", photo_id: @photo.id, photo_type: @photo.func }, status: 200 }
+    		else
+  	    	format.json { render json: { error: @photo.errors.full_messages.join(',') }, status: 400 }
+    		end
+      else
+        format.json { render json: { error: message }, status: 400 }
+      end
   	end
   end
 
@@ -139,5 +144,9 @@ class PhotosController < ApplicationController
     def check_if_can
       @photo ||= Photo.new
       authorize! action_name.to_s.to_sym, @photo
+    end
+
+    def allow_upload?
+      return true
     end
 end

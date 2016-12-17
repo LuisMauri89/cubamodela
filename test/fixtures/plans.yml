@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target: 1
+  album_professional_max: 1
+  album_polaroid_max: 1
+  priority: 1
+  video_max: 1
+
+two:
+  target: 1
+  album_professional_max: 1
+  album_polaroid_max: 1
+  priority: 1
+  video_max: 1

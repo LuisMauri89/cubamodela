@@ -3,8 +3,8 @@ class CouponsController < ApplicationController
 	def index
 		@coupons = Coupon.all
 
-		values = ["to", "za", "pa"]
-		values_taken = [false, false, false]
+		values = ["es", "go", "po", "as", "ri", "lu", "nc", "cl", "oj", "8n", "lh", "ci", "mi", "le", "si", "io"]
+		values_taken = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 		@combinations = go_ahead("", values, values_taken)
 	end
 
