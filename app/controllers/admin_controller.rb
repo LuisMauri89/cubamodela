@@ -115,6 +115,14 @@ class AdminController < ApplicationController
 		end
 	end
 
+	def reprocess_images
+		ReprocessImagesJob.perform_later
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def set_request

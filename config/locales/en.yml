@@ -428,6 +428,7 @@ en:
             header_text: "Tasks"
             task_all: "All tasks"
             task_casting_expired: "Casting expiration"
+            task_reprocess_images: "Reprocess images"
       pending_review:
         header_text: "Models pending review"
       pending_translations:
@@ -458,6 +459,7 @@ en:
         messages:
           task_casting_expired: "Task was successfully sent to run in background"
           task_all: "Tasks where successfully sent to run in background"
+          task_reprocess_images: "Task was successfully sent to run in background"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."
