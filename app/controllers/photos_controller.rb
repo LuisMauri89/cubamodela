@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
   	save_photo_belongs_to
 
   	respond_to do |format|
-      allow, message = allow_upload?
+      allow, message = allow_upload?(@photo.func)
       if allow
     		if @photo.save
     			format.json { render json: { message: "success", photo_id: @photo.id, photo_type: @photo.func }, status: 200 }
@@ -88,11 +88,15 @@ class PhotosController < ApplicationController
 
   	def save_photo_belongs_to
   		if params[:album_id]
-  			album = Album.find(params[:album_id])
-  			@photo.attachable = album
+  			@album = Album.find(params[:album_id])
+  			@photo.attachable = @album
+
+        @owner = @album.profileable
       elsif params[:casting_id]
-        casting = Casting.find(params[:casting_id])
-        @photo.attachable = casting
+        @casting = Casting.find(params[:casting_id])
+        @photo.attachable = @casting
+
+        @owner = @casting.ownerable
   		end
   	end
 
@@ -146,7 +150,25 @@ class PhotosController < ApplicationController
       authorize! action_name.to_s.to_sym, @photo
     end
 
-    def allow_upload?
-      return true
+    def allow_upload?(photo_type)
+      case photo_type
+      when "profile"
+        return @owner.can_upload_photo?(get_photo_type_from_album_name(@album.name))
+      when "album"
+        return @owner.can_upload_photo?(get_photo_type_from_album_name(@album.name))
+      when "casting"
+        return @owner.can_upload_photo?("casting", @casting)
+      end
+    end
+
+    def get_photo_type_from_album_name(album_name)
+      case album_name
+      when Constant::ALBUM_PROFILE_NAME
+        return "profile"
+      when Constant::ALBUM_PROFESSIONAL_NAME
+        return "professional"
+      when Constant::ALBUM_POLAROID_NAME
+        return "polaroid"
+      end
     end
 end

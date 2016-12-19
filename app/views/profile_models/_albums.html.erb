@@ -13,14 +13,24 @@
 		<div class="col-md-12">
 			<div id="albums-container">
 				<% @albums.each do |album| %>
-					<% if not(album.name == "Profile Photo") %>
+					<% if !(album.name == "Profile Photo") %>
 						<div id="panel-<%= album.id %>" class="panel panel-default">
 						  <div class="panel-heading">
 						  	<div class="row">
 								<div class="col-md-8">
 									<div id="form-edit-album-<%= album.id %>-container">
 								  	</div>
-								    <h3 id="title-<%= album.id %>" class="panel-title"><%= album.name %></h3>
+								    <h3 id="title-<%= album.id %>" class="panel-title">
+								    	<%= album.name %>
+								    	<br/>
+								    	<span class="small-info">
+									    	<% if album.name == "Professional Book" %>
+									    		[ <%= t('views.profile_models.edit.albums.warnings.professional_max_text', value: @profile.plan.album_professional_max) %> ]
+									    	<% else %>
+									    		[ <%= t('views.profile_models.edit.albums.warnings.professional_max_text', value: @profile.plan.album_polaroid_max) %> ]
+									    	<% end %>
+								    	</span>
+								    </h3>
 								</div>
 								<div class="col-md-4">
 									<%= link_to t('forms.buttons.upload'), new_album_photo_path(album, type: "album"), remote: true, class: "btn btn-primary btn-xs pull-right btn-small-right-margin" %>

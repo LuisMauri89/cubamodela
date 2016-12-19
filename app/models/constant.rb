@@ -10,5 +10,9 @@ class Constant
 
   CASTING_CREATION_COST = 5
   CASTING_UPDATE_DATES_CHANGE_COST = 5
+
+  ALBUM_PROFILE_NAME = "Profile Photo"
+  ALBUM_PROFESSIONAL_NAME = "Profesional Book"
+  ALBUM_POLAROID_NAME = "Polaroid"
   
 end

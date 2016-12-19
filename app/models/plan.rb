@@ -2,6 +2,9 @@ class Plan < ApplicationRecord
   	# Target
   	enum target: [:model, :photographer, :contractor]
 
+  	# Level
+  	enum level: [:free, :premium]
+
   	# Associations
   	has_many :profile_models
   	has_many :profile_photographers
@@ -19,7 +22,10 @@ class Plan < ApplicationRecord
 		when "photographer"
 			return true
 		when "contractor"
-			return true
+			case photo_type
+			when "casting"
+				return current_amount < self.casting_photos_references_max
+			end
 		end	
 	end
 
@@ -42,5 +48,17 @@ class Plan < ApplicationRecord
 		when "contractor"
 			return 100
 		end
+	end
+
+	def self.get_model_free_plan
+		return where(target: "model", level: "free").first
+	end
+
+	def self.get_model_premium_plan
+		return where(target: "model", level: "premium").first
+	end
+
+	def self.get_contractor_free_plan
+		return where(target: "contractor", level: "free").first
 	end
 end

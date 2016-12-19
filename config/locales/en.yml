@@ -466,6 +466,9 @@ en:
         destroy: "The album has been successfully removed."
         update: "The album has been successfully updated."
         edit_or_remove: "This album can not be updated or removed."
+        profile_max: ""
+        professional_max: "Max amount of photos acording to your plan reached"
+        polaroid_max: "Max amount of photos acording to your plan reached"
       delete:
         header_text: "Delete Album"
         yes_text: "Yes, delete this album"
@@ -546,6 +549,7 @@ en:
       messages:
         create: "Casting was successfully created. Please add some references photos."
         update: "Casting was successfully updated."
+        references_photos_max: "Max amount of photos acording to your plan reached"
         edit:
           past: "Actual date of casting is in the past. Editing is not allowed."
           canceled: "Casting is already canceled."
@@ -862,6 +866,10 @@ en:
           level_request_send: "Your upgrade level request was successfully sent"
         wallet:
           before_text: "Current wallet:"
+        albums:
+          warnings:
+            professional_max_text: "According to your plan, max amount of photos is %{value}"
+            polaroid_max_text: "According to your plan, max amount of photos is %{value}"
       show_resume:
         pending_review_text: "This profile is pending review"
         professional_book_empty_text: "Professional book is empty"

@@ -32,6 +32,9 @@ class ProfileContractor < ApplicationRecord
 	has_one :wallet, as: :ownerable
 	has_many :coupon_charges, through: :wallet
 
+	# Plan
+	belongs_to :plan
+
 	#Check if profile is completed
 	def profile_complete?
 		parameters_with_values = generate_array_of_param_with_value
@@ -137,6 +140,21 @@ class ProfileContractor < ApplicationRecord
 			return true
 		rescue
 			return true
+		end
+	end
+
+	def can_upload_photo?(photo_type, casting=nil)
+		current_amount = 0
+		allow = true
+
+		case photo_type
+		when "profile"
+			return [allow, nil]
+		when "casting"
+			current_amount = casting.photos.count
+
+			allow = self.plan.can_upload_photo?(photo_type, current_amount)
+			return allow ? [allow, nil] : [allow, I18n.t('views.castings.messages.references_photos_max')]
 		end
 	end
 end

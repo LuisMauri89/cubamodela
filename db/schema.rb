@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216033531) do
+ActiveRecord::Schema.define(version: 20161219013713) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -263,13 +263,15 @@ ActiveRecord::Schema.define(version: 20161216033531) do
   end
 
   create_table "plans", force: :cascade do |t|
-    t.integer  "target",                 default: 0
-    t.integer  "album_professional_max", default: 0
-    t.integer  "album_polaroid_max",     default: 0
-    t.integer  "priority",               default: 0
-    t.integer  "video_max",              default: 0
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "target",                        default: 0
+    t.integer  "album_professional_max",        default: 0
+    t.integer  "album_polaroid_max",            default: 0
+    t.integer  "priority",                      default: 0
+    t.integer  "video_max",                     default: 0
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "level",                         default: 0
+    t.integer  "casting_photos_references_max", default: 0
   end
 
   create_table "profile_contractors", force: :cascade do |t|
@@ -282,6 +284,8 @@ ActiveRecord::Schema.define(version: 20161216033531) do
     t.integer  "nationality_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "plan_id"
+    t.index ["plan_id"], name: "index_profile_contractors_on_plan_id"
   end
 
   create_table "profile_models", force: :cascade do |t|
@@ -309,10 +313,12 @@ ActiveRecord::Schema.define(version: 20161216033531) do
     t.boolean  "warnings_state",                              default: false
     t.integer  "warnings_count",                              default: 0
     t.date     "warnings_last_made"
+    t.integer  "plan_id"
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
     t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id"
     t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"
     t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"
+    t.index ["plan_id"], name: "index_profile_models_on_plan_id"
   end
 
   create_table "profile_photographers", force: :cascade do |t|
@@ -325,7 +331,9 @@ ActiveRecord::Schema.define(version: 20161216033531) do
     t.integer  "nationality_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "plan_id"
     t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id"
+    t.index ["plan_id"], name: "index_profile_photographers_on_plan_id"
   end
 
   create_table "provinces", force: :cascade do |t|

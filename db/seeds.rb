@@ -8,11 +8,36 @@
 
 # Seed Colors Table
 
-# Site admins
-# User.create(email: "lmaurimtfbwy@gmail.com", password: "Smotciss2307", password_confirmation: "Smotciss2307", role: "admin", kind: "other")
+# Admins
+
+if !User.where(role: "admin").any?
+	User.create(email: "lmaurimtfbwy@gmail.com", password: ENV["admin_mauri_pwd"], password_confirmation: ENV["admin_mauri_pwd"], role: "admin", kind: "other")
+end
 
 
 # Nomenclators
+
+if !Color.any?
+	Color.create(name_en: "Blue", name_es: "Azul")
+	Color.create(name_en: "Brown", name_es: "Carmelita")
+	Color.create(name_en: "Coffe", name_es: "Cafe")
+	Color.create(name_en: "Green", name_es: "Verde")
+	Color.create(name_en: "Grey", name_es: "Gris")
+end
+
+if !Expertise.any?
+	Expertise.create(name_en: "Acting", name_es: "Actuacion")
+	Expertise.create(name_en: "Dance", name_es: "Baile")
+	Expertise.create(name_en: "Singing", name_es: "Canto")
+end
+
+if !Language.any?
+	Language.create(name_en: "English", name_es: "Ingles")
+	Language.create(name_en: "French", name_es: "Frances")
+	Language.create(name_en: "German", name_es: "Aleman")
+	Language.create(name_en: "Spanish", name_es: "Espanol")
+	Language.create(name_en: "Italian", name_es: "Italiano")
+end
 
 if !Ethnicity.any?
 	Ethnicity.create(name_en: "Black/African roots", name_es: "Negro/Raices africanas")
@@ -37,6 +62,23 @@ if !Modality.any?
 	Modality.create(name_en: "Beauty", name_es: "Belleza")
 	Modality.create(name_en: "Clothing", name_es: "Ropa")
 	Modality.create(name_en: "Cover", name_es: "Portada")
+end
+
+if !Nationality.any?
+	Nationality.create(name_en: "Cuban", name_es: "Cubana")
+end
+
+if !Plan.any?
+	Plan.create(target: "model", level: "free", priority: 10, album_professional_max: 5, album_polaroid_max: 5, video_max: 0)
+	Plan.create(target: "model", level: "premium", priority: 5, album_professional_max: 15, album_polaroid_max: 5, video_max: 1)
+	Plan.create(target: "contractor", level: "free", priority: 10, casting_photos_references_max: 5)
+end
+
+if !Province.any?
+	Province.create(name_en: "Havana", name_es: "La Habana")
+	Province.create(name_en: "Pinar del Rio", name_es: "Pinar del Rio")
+	Province.create(name_en: "Matanzas", name_es: "Matanzas")
+	Province.create(name_en: "Mayabeque", name_es: "Mayabeque")
 end
 
 if !Category.any?

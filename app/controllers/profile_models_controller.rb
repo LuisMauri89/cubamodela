@@ -251,10 +251,15 @@ class ProfileModelsController < ApplicationController
     end
 
     def build_profile_meta
-      @profile.albums.create(name: "Profile Photo")
-      @profile.albums.create(name: "Profesional Book")
-      @profile.albums.create(name: "Polaroid")
+      @profile.albums.create(name: Constant::ALBUM_PROFILE_NAME)
+      @profile.albums.create(name: Constant::ALBUM_PROFESSIONAL_NAME)
+      @profile.albums.create(name: Constant::ALBUM_POLAROID_NAME)
+
       @profile.create_wallet
+
+      @profile.plan = Plan.get_model_free_plan
+
+      @profile.save
     end
 
     def generate_cols_batch
