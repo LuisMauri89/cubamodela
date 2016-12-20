@@ -104,7 +104,7 @@ module ApplicationHelper
     if current_user.profileable.nil?
       return "0"
     else
-      return current_user.profileable.bookings.count.to_s
+      return current_user.profileable.valid_bookings.count.to_s
     end
   end
 

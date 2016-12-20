@@ -1,14 +1,14 @@
 <div id="photo-modal-large" class="modal-dialog">
   <div class="modal-content">
   <div class="modal-header">
-    <h3>Photo</h3>
+    <h3><%= t('views.castings.show.show_photo.header_text') %></h3>
   </div>
   <div class="modal-body">
     <div id="model-modal-info-container"></div>
-    <%= image_tag @photo.image.url(:big), alt: @photo.image.url, class: "img-responsive img-center-horizontal" %>
+    <%= image_tag @photo.image.url(:big), alt: @photo.image.url(:big), class: "img-responsive img-center-horizontal" %>
   </div>
   <div class="modal-footer">
-    <%= link_to "Close", "#", class: "btn btn-primary", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
+    <%= link_to t('forms.buttons.close'), "#", class: "btn btn-primary", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
   </div>
   </div>
 </div>

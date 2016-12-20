@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-md-12">
-  	<div id="form-casting-photos-wrapper" class="well well-lg">
-  		<h3 class="text-center">Casting reference photos</h3>
+  	<div id="form-casting-photos-wrapper" class="">
+  		<h3 class="text-center"><%= t('views.castings.edit_photos.header_text') %></h3>
+      <br/>
+      <br/>
       <div id="model-info-container"></div>
   		<div class="row text-center">
   			<div class="col-md-12">
@@ -17,8 +19,10 @@
 	  		</div>
 		</div>
 
-		<div class="row row-small-padding-vertical">
+		<div class="row">
   			<div class="col-md-12">
+        <br/>
+        <br/>
         <%= link_to 'Castings', castings_path, class: "btn btn-primary pull-right" %>
         <%= link_to 'Manage', manage_casting_path(@casting), class: "btn btn-primary pull-right btn-small-right-margin" %>
         <%= link_to 'Edit', edit_casting_path(@casting), class: "btn btn-primary pull-right btn-small-right-margin" %>

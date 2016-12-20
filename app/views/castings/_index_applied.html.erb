@@ -5,7 +5,7 @@
 				<% @intents.each do |intent| %>
 					<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item img-wrapper">
 						<div class="<%= get_premium_border(intent.profile_model) %>">
-							<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
+							<%= link_to(show_resume_profile_model_path(intent.profile_model, from: "manage-casting"), remote: true, class: "link-image") do %>
 									<%= image_tag intent.profile_model.get_profile_picture_url(:medium), alt: "Model Photo", class: "img-responsive" %>	
 							<% end %>
 						</div>

@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-nomenclator">
+      <div class="panel-heading">
+        <h1 class="panel-title text-center"><%= t('views.bookings.index.bookings') %></h1>
+      </div>
+      <div class="panel-body panel-body-nomenclator">
+        <% if @bookings.any? %>
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th class="text-center"><%= t('table.models') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.booking.description') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.booking.casting_date') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.booking.shooting_date') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.booking.status') %></th>
+                <th class="text-center"><%= t('table.actions') %></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @bookings.each do |booking| %>
+                <tr id="row-<%= booking.id %>" class="<%= get_confirmed_class(booking) %>">
+                  <td>
+                    <%= image_tag booking.profile_contractor.nil? ? "missing_profile_picture.jpg" : booking.profile_contractor.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-responsive pull-left" %>
+                  </td>
+                  <td><h4><%= booking.description[0..50] %></h4></td>
+                  <td><h4><%= l(booking.casting_date, format: :custom) %></h4></td>
+                  <td><h4><%= l(booking.shooting_date, format: :custom) %></h4></td>
+                  <td><h4 id="status-<%= booking.id %>"><%= booking.status.humanize %></h4></td>
+                  <td id="actions-<%= booking.id %>">
+                    <% if ["booked", "confirmed"].include?(booking.status) %>
+                      <%= link_to t('forms.buttons.reject'), reject_booking_path(booking, booking.profile_model), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                      <% if booking.status == "booked" %>
+                        <%= link_to t('forms.buttons.confirm'), confirm_booking_path(booking, booking.profile_model), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h2 class="text-center"><%= t('views.bookings.contractor.empty_list_text') %></h2>
+        <% end %>
+
+        <br>
+        <%= link_to t('views.profile_models.index.models'), profile_models_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

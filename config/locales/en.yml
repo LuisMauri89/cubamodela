@@ -158,6 +158,7 @@ en:
       account: "Account"
       profile: "Profile"
       castings: "Castings"
+      bookings: "Bookings"
       log_out: "Log out"
       reservations: "Reservations"
       find_casting: "Find casting"
@@ -206,9 +207,10 @@ en:
       warning: "Warning"
       send_to: "Send to"
       send: "Send"
+      confirm: "Confirm"
     remember_me: "Remember me"
     warnings:
-      delete: "Are you sure you wish to delete %{value}"
+      delete: "Are you sure you wish to delete %{value}?"
     errors:
       header_text: "The form contains "
       count:
@@ -493,6 +495,8 @@ en:
           dates: "Dates"
         warnings:
           change_direct: "This can not be edited later."
+      contractor:
+        empty_list_text: "No bookings shcedule"
       index:
         bookings: "Bookings"
       messages:
@@ -500,11 +504,13 @@ en:
         confirm: "Confirmation successfully."
         update: "Booking has been successfully updated."
         cancel: "Booking has been successfully canceled."
+        reject: "Booking has been successfully rejected."
         edit:
           past_to_edit: "Booking has expired."
           past_to_confirm: "Booking has expired. You are to late to confirm."
           canceled: "Booking is already canceled."
           confirmed: "Booking is already confirmed"
+          rejected: "Booking is already rejected"
     castings:
       index:
         expires_in_text: "Expires in %{value}"
@@ -541,6 +547,8 @@ en:
           change_dates: "Any change on dates after 24 hours past the creation date will represent a $5 cost for the inconvinience."
           change_direct: "This can not be edited later."
           change_dates_expired: "How the casting has expired is mandatory that any change on dates includes expiration date in the future, so models can reconfirm their presence, please give time for that until next expiration."
+      edit_photos:
+        header_text: "Edit reference photos"
       buttons:
         references_photos: "References photos"
         open: "Open"
@@ -897,6 +905,9 @@ en:
         count:
           one: "%{count} Vote"
           other: "%{count} Votes"
+    photos:
+      delete:
+        header_text: "Remove photo"
     provinces:
       index:
         header_text: "Provinces"

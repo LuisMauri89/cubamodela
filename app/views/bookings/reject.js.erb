@@ -1,8 +1,8 @@
 <% if @booking.errors.any? %>
 	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
-	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.bookings.messages.confirm' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.bookings.messages.reject' %>");
 	$('#status-<%= @booking.id %>').html("<%= @booking.status.humanize %>");
 	$('#actions-<%= @booking.id %>').html("<%= j render 'index_custom_model_actions', booking: @booking %>");
-	$('#row-<%= @booking.id %>').addClass("confirmed-bkg");
+	$('#row-<%= @booking.id %>').removeClass("confirmed-bkg");
 <% end %>

@@ -1,19 +1,19 @@
 class BookingsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_booking, only: [:show, :edit, :translate, :cancel, :update, :confirm, :destroy]
-	before_action :set_profile, only: [:new, :create, :edit, :update, :confirm]
+	before_action :set_booking, only: [:show, :edit, :translate, :cancel, :update, :confirm, :reject, :destroy]
+	before_action :set_profile, only: [:new, :create, :edit, :update, :confirm, :reject]
 	before_action :check_if_can, only: [:edit, :update, :destroy, :index_custom_contractor, :index_custom_model, :confirm, :cancel]
 
 	def index_custom_contractor
 		@contractor = ProfileContractor.find(params[:contractor_id])
 
-		@bookings = @contractor.valid_bookings.order("created_at DESC")
+		@bookings = @contractor.valid_bookings
 	end
 
 	def index_custom_model
 		@model = ProfileModel.find(params[:model_id])
 
-		@bookings = @model.valid_bookings.order("created_at DESC")
+		@bookings = @model.index_bookings
 	end
 
 	def new
@@ -77,12 +77,24 @@ class BookingsController < ApplicationController
 	    end
 	end
 
+	def reject
+	    @booking.try_reject!
+
+	    respond_to do |format|
+	      if @booking.save
+	        format.js
+	      else
+	        format.js
+	      end
+	    end
+	end
+
 	def cancel
 	    @booking.try_cancel!
 
 	    respond_to do |format|
 	      if @booking.save
-	        format.html{ redirect_to custom_index_contractor_bookings(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.cancel')  }
+	        format.html{ redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.cancel')  }
 	      else
 	        format.html{ redirect_to request.referrer, notice: @booking.get_first_base_error }
 	      end

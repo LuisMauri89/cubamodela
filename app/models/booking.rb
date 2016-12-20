@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  enum status: [:booked, :confirmed, :canceled]
+  enum status: [:booked, :confirmed, :canceled, :rejected]
 
   after_initialize :set_default_status, if: :new_record?
 
@@ -139,6 +139,29 @@ class Booking < ApplicationRecord
       else
         self.confirmed!
       end
+    when "rejected"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.rejected')
+    end
+  end
+
+  def try_reject!
+    case self.status
+    when "canceled"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.canceled')
+    when "confirmed"
+      if self.casting_date <= DateTime.now
+        errors[:base]  << I18n.t('views.bookings.messages.edit.past')
+      else
+        self.rejected!
+      end
+    when "booked"
+      if self.casting_date <= DateTime.now
+        errors[:base]  << I18n.t('views.bookings.messages.edit.past')
+      else
+        self.rejected!
+      end
+    when "rejected"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.rejected')
     end
   end
 
@@ -146,6 +169,8 @@ class Booking < ApplicationRecord
   	case self.status
     when "canceled"
       errors[:base]  << I18n.t('views.bookings.messages.edit.canceled')
+    when "rejected"
+      errors[:base]  << I18n.t('views.bookings.messages.edit.rejected')
     else
       if self.casting_date <= DateTime.now
         errors[:base]  << I18n.t('views.bookings.messages.edit.past')

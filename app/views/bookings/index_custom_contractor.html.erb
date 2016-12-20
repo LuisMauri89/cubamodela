@@ -5,30 +5,38 @@
         <h1 class="panel-title text-center"><%= t('views.bookings.index.bookings') %></h1>
       </div>
       <div class="panel-body panel-body-nomenclator">
-        <table class="table">
-          <thead class="bg-info">
-            <tr>
-              <th class="text-center"><%= t('table.models') %></th>
-              <th class="text-center"><%= t('activerecord.attributes.booking.description') %></th>
-              <th class="text-center"><%= t('table.actions') %></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @bookings.each do |booking| %>
-              <tr class="<%= get_confirmed_class(booking) %>">
-                <td>
-                  <%= image_tag booking.profile_model.nil? ? "missing_profile_picture.jpg" : booking.profile_model.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
-                  <h4 class="pull-left" style="margin-left:10px;"><%= booking.profile_model.full_name  %></h4>
-                </td>
-                <td><h4><%= booking.description[0..100] %></h4></td>
-                <td>
-                  <%= link_to t('form.buttons.edit'), edit_booking_path(booking, profile_id: booking.profile_model.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
-                </td>
+        <% if @bookings.any? %>
+          <table class="table">
+            <thead class="bg-info">
+              <tr>
+                <th class="text-center"><%= t('table.models') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.booking.description') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.booking.status') %></th>
+                <th class="text-center"><%= t('table.actions') %></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              <% @bookings.each do |booking| %>
+                <tr class="<%= get_confirmed_class(booking) %>">
+                  <td>
+                    <%= image_tag booking.profile_model.nil? ? "missing_profile_picture.jpg" : booking.profile_model.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-responsive pull-left" %>
+                    <br/>
+                    <h4 class="pull-left"><%= booking.profile_model.get_first_name  %></h4>
+                  </td>
+                  <td><h4><%= booking.description[0..80] %></h4></td>
+                  <td><h4><%= booking.status.humanize %></h4></td>
+                  <td>
+                    <%= link_to t('forms.buttons.cancel'), cancel_booking_path(booking), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                    <%= link_to t('forms.buttons.edit'), edit_booking_path(booking, profile_id: booking.profile_model.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h2 class="text-center"><%= t('views.bookings.contractor.empty_list_text') %></h2>
+        <% end %>
 
         <br>
         <%= link_to t('views.profile_models.index.models'), profile_models_path, class: "btn btn-primary" %>

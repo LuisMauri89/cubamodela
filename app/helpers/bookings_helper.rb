@@ -1,6 +1,6 @@
 module BookingsHelper
 	def get_confirmed_class(booking)
-		return booking.confirmed? ? "bg-success" : ""
+		return booking.confirmed? ? "confirmed-bkg" : ""
 	end
 
 	def get_show_hide_style(is_direct)

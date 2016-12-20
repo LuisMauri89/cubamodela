@@ -1,7 +1,7 @@
 <div id="photo-modal-large" class="modal-dialog">
   <div class="modal-content">
   <div class="modal-header">
-    <h3>Remove photo</h3>
+    <h3><%= t('views.photos.delete.header_text') %></h3>
   </div>
   <div class="modal-body">
     <div id="model-modal-info-container"></div>
@@ -9,12 +9,12 @@
   </div>
   <div class="modal-footer">
     <div id="delete-photo-confirm-container">
-      <p>Are you sure you wish to delete this photo?</p>
-      <%= link_to 'Delete', @destroy_url, method: :delete, remote: true, class: "btn btn-primary" %>
-      <button id="btn-cancel-delete-photo" type="button" class="btn btn-primary">Cancel</button>
+      <p><%= t('forms.warnings.delete', value: "photo") %></p>
+      <%= link_to t('forms.buttons.delete'), @destroy_url, method: :delete, remote: true, class: "btn btn-primary" %>
+      <button id="btn-cancel-delete-photo" type="button" class="btn btn-primary"><%= t('forms.buttons.cancel') %></button>
     </div>
-    <button id="btn-delete-photo" type="button" class="btn btn-primary">Delete</button>
-    <%= link_to "Close", "#", class: "btn btn-primary", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
+    <button id="btn-delete-photo" type="button" class="btn btn-primary"><%= t('forms.buttons.delete') %></button>
+    <%= link_to t('forms.buttons.close'), "#", class: "btn btn-primary", id: "btn-dismiss-show-photo", data: { dismiss: "modal" } %>
   </div>
   </div>
 </div>

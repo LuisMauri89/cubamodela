@@ -58,7 +58,7 @@ class Ability
     elsif user.model?
         can :read, Album
         can :index_custom_model, Booking
-        can :confirm , Booking do |booking|
+        can [:confirm, :reject] , Booking do |booking|
             booking.try(:profile_model) == user.profileable
         end
         can [:confirm, :apply], Casting

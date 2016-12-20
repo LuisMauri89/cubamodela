@@ -84,6 +84,14 @@ class ProfileModelsController < ApplicationController
   end
 
   def show_resume
+    from = params[:from]
+    case from
+    when "manage-casting"
+        @show_contractor_links = false
+    else
+        @show_contractor_links = true
+    end
+
     respond_to do |format|
       format.js
     end
