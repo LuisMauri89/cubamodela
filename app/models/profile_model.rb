@@ -24,12 +24,14 @@ class ProfileModel < ApplicationRecord
 	validates :size_cloth, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
 
 	#Scopes
-	scope :base_ready, -> { where(reviewed: true) }
+	scope :base, -> { joins(:plan).order('plans.priority ASC') }
+	scope :base_ready, -> { base.where(reviewed: true) }
 	scope :ready, -> { base_ready.order("created_at ASC") }
 	scope :not_ready, -> { where(reviewed: false).order("created_at ASC") }
 	scope :invitable, -> (casting) { ready.reject{ |pm| !pm.can_apply?(casting) } }
 	scope :new_faces, -> { base_ready.where(level: "new_face").order("created_at ASC") }
 	scope :professional_models, -> { base_ready.where(level: "professional_model").order("created_at ASC") }
+	scope :premium_models, -> { ready.select{ |pm| pm.premium? } }
 
 	# User
 	has_one :user, as: :profileable
@@ -415,5 +417,9 @@ class ProfileModel < ApplicationRecord
 			allow = self.plan.can_upload_photo?(photo_type, current_amount)
 			return allow ? [allow, nil] : [allow, I18n.t('views.albums.messages.polaroid_max')]
 		end
+	end
+
+	def premium?
+		return self.plan.premium?
 	end
 end

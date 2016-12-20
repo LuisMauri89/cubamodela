@@ -167,6 +167,7 @@ en:
         count:
           one: "%{count} coin"
           other: "%{count} coins"
+      profile_view: "View profile"
     locales:
       en: "English"
       es: "Spanish"

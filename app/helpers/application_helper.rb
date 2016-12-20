@@ -127,7 +127,7 @@ module ApplicationHelper
 
   # For premium
   def get_premium_border(profile)
-    return "premium-border"
+    return profile.premium? ? "premium-border" : ""
   end
 
 end

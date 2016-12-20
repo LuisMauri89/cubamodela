@@ -17,6 +17,10 @@ class ProfileModelsController < ApplicationController
     @models = ProfileModel.professional_models
   end
 
+  def index_premium_models
+    @models = ProfileModel.premium_models
+  end
+
   def index_search
     @search = Search.new
     @models = ProfileModel.ready

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     post 'search', to: 'profile_models#perform_search', on: :collection
     get 'index_new_faces', on: :collection
     get 'index_professional_models', on: :collection
+    get 'index_premium_models', on: :collection
   end
 
 # Photographers Profile routes
