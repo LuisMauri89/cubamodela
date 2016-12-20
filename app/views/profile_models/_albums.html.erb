@@ -49,7 +49,7 @@
 											<% album.photos.each do |photo| %>
 											  <%= link_to(album_photo_path(album, photo, type: "album"), remote: true, class: "link-image") do %>
 												  <div class="img-thumbnail" id="photo-<%=album.id%><%=photo.id%>">
-												    <%= image_tag photo.image.url(:profile), alt: photo.image.url(:profile) %>
+												    <%= image_tag photo.image.url(:medium), alt: photo.image.url(:medium) %>
 												  </div>
 											  <% end %>
 											<% end %>

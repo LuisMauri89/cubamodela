@@ -1,0 +1,27 @@
+<% if @profile.reviews.any? %>
+	<% @profile.reviews.order("created_at DESC").each do |review| %>
+		<div class="row">
+			<div class="col-md-2">
+				<%= image_tag review.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+			</div>
+			<div class="col-md-10">
+				<% if review.review_en.present? %>
+					<blockquote>
+					  <p><%= review.review_en %></p>
+					  <footer><cite title="Spanish">Spanish: </cite><%= review.review_es %></footer>
+					</blockquote>
+				<% else %>
+					<blockquote>
+					  <p><%= review.review_es %></p>
+					  <footer><cite title="English">English: </cite><%= review.review_en %></footer>
+					</blockquote>
+				<% end %>
+				<p class="small-date pull-right">
+					<%= distance_of_time_in_words(review.created_at, DateTime.now) << t('datetime.distance_in_words.after_text_past') %>
+				</p>
+			</div>
+		</div>
+	<% end %>
+<% else %>
+	<h4 class="text-center"><%= t('views.profile_models.show.reviews_empty_text') %></h4>
+<% end %>

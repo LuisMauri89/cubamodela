@@ -6,7 +6,7 @@
 					<div id="model-<%= @casting.id %>-<%= intent.profile_model.id %>" class="img-thumbnail list-photo-item img-wrapper">
 						<div class="<%= get_premium_border(intent.profile_model) %>">
 							<%= link_to(show_resume_profile_model_path(intent.profile_model), remote: true, class: "link-image") do %>
-									<%= image_tag intent.profile_model.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>	
+									<%= image_tag intent.profile_model.get_profile_picture_url(:medium), alt: "Model Photo", class: "img-responsive" %>	
 							<% end %>
 						</div>
 						<div class="text-center"><h6><%= intent.profile_model.get_first_name %></h6></div>

@@ -20,7 +20,7 @@
 					<div id="profile-picture" style="margin-bottom: 5px;">
 						<div class="img-thumbnail">
 							<div id="profile-picture-wrapper">
-								<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>
+								<%= image_tag @profile.get_profile_picture_url(:medium), alt: "Model Photo", class: "img-responsive" %>
 							</div>
 							<div class="text-center" style="margin-top: 5px;">
 								<%= link_to 'Change', new_album_photo_path(@album_profile_picture, type: "profile"), remote: true, class: "btn btn-primary btn-xs btn-block" %>

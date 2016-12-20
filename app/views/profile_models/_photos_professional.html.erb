@@ -4,7 +4,7 @@
 		<div class="col-md-4 col-profile-imgs">
 			<% @profile.get_profesional_book_album_photos.limit(@cols[0]).each do |photo| %>
 				<%= link_to(selected_photo_profile_model_path(@profile, photo), remote: true, class: "link-image") do %>
-					<%= image_tag photo.image.url, alt: "Model Photo", class: "img-responsive profile-photo" %>
+					<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
 				<% end %>
 			<% end %>
 		</div>
@@ -12,7 +12,7 @@
 		<div class="col-md-4 col-profile-imgs">
 			<% @profile.get_profesional_book_album_photos.offset(@cols[0]).limit(@cols[1]).each do |photo| %>
 				<%= link_to(selected_photo_profile_model_path(@profile, photo), remote: true, class: "link-image") do %>
-					<%= image_tag photo.image.url, alt: "Model Photo", class: "img-responsive profile-photo" %>
+					<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
 				<% end %>
 			<% end %>
 		</div>
@@ -20,7 +20,7 @@
 		<div class="col-md-4 col-profile-imgs">
 			<% @profile.get_profesional_book_album_photos.offset(@cols[0] + @cols[1]).limit(@cols[2]).each do |photo| %>
 				<%= link_to(selected_photo_profile_model_path(@profile, photo), remote: true, class: "link-image") do %>
-					<%= image_tag photo.image.url, alt: "Model Photo", class: "img-responsive profile-photo" %>
+					<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
 				<% end %>
 			<% end %>
 		</div>

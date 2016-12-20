@@ -13,7 +13,7 @@
 			<div class="profile-section">
 				<div id="profile-photo-selected-container" class="item" >
 					<% if @profile.get_profesional_book_album_photos_count > 0 %>
-						<%= image_tag @profile.get_profesional_book_album_photos.first.image.url, alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+						<%= image_tag @profile.get_profesional_book_album_photos.first.image.url(:big), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
 					<% else %>
 						<h4 class="text-center"><%= t('views.profile_models.show.selected_photo_empty_text') %></h4>
 					<% end %>
@@ -37,33 +37,7 @@
 			<div class="profile-section">
 				<div id="reviews-list">
 					<h4><%= t('views.profile_models.show.headers.reviews') %></h4>
-					<% if @profile.reviews.any? %>
-						<% @profile.reviews.order("created_at DESC").each do |review| %>
-							<div class="row">
-								<div class="col-md-2">
-									<%= image_tag review.fromable.get_profile_picture_url(:list), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
-								</div>
-								<div class="col-md-10">
-									<% if review.review_en.present? %>
-										<blockquote>
-										  <p><%= review.review_en %></p>
-										  <footer><cite title="Spanish">Spanish: </cite><%= review.review_es %></footer>
-										</blockquote>
-									<% else %>
-										<blockquote>
-										  <p><%= review.review_es %></p>
-										  <footer><cite title="English">English: </cite><%= review.review_en %></footer>
-										</blockquote>
-									<% end %>
-									<p class="small-date pull-right">
-										<%= distance_of_time_in_words(review.created_at, DateTime.now) << t('datetime.distance_in_words.after_text_past') %>
-									</p>
-								</div>
-							</div>
-						<% end %>
-					<% else %>
-						<h4 class="text-center"><%= t('views.profile_models.show.reviews_empty_text') %></h4>
-					<% end %>
+					<%= render 'list_reviews' %>
 				</div>
 			</div>
 			<% if current_user.contractor? %>
@@ -81,7 +55,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div id="profile-picture">
-								<%= image_tag @profile.get_profile_picture_url(:profile), alt: "Model Photo", class: "img-responsive" %>
+								<%= image_tag @profile.get_profile_picture_url(:medium), alt: "Model Photo", class: "img-responsive" %>
 							</div>
 						</div>
 						<div class="col-md-6">

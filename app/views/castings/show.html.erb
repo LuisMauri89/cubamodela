@@ -26,7 +26,7 @@
 			<h3><%= t('views.castings.show.headers.referenced_photos') %></h3>
 			<% @casting.photos.each do |photo| %>
 				<%= link_to(show_photo_casting_path(@casting, photo), remote: true, class: "link-image") do %>
-					<%= image_tag photo.image.url(:profile), alt: "Model Photo", class: "img-inline" %>
+					<%= image_tag photo.image.url(:medium), alt: "Model Photo", class: "img-inline" %>
 				<% end %>
 			<% end %>
 		</div>
