@@ -50,8 +50,8 @@
 			<% end %>	
 		</li>
 		<li>
-			<%= link_to "#" do %>
-				<%= t('menu.options.reservations') %> <span class="badge">5</span>
+			<%= link_to index_castings_custom_profile_model_path(current_user.profileable) do %>
+				<%= t('menu.options.castings') %> <span class="badge"><%= get_valid_castings_count %></span>
 			<% end %>	
 		</li>
 		<li>

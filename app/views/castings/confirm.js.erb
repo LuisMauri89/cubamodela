@@ -2,4 +2,8 @@
 	$('#notification-messages-container').html("<%= j render 'errors_intent' %>");
 <% else %>
 	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.castings.messages.associations.confirmed' %>");
+	<% if @from == "model_index_castings" %>
+		$('#status-<%= @casting.id %>').html("<%= @intent.status.humanize %>");
+		$('#actions-<%= @casting.id %>').empty();
+	<% end %>
 <% end %>

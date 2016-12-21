@@ -274,6 +274,12 @@ class Casting < ApplicationRecord
     end
   end
 
+  def get_model_intent(profile)
+    intent = intents.where(profile_model_id: profile.id).first
+
+    return intent
+  end
+
   def get_first_references_photo
     return photos.first
   end

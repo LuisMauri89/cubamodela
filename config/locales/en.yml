@@ -535,6 +535,9 @@ en:
         empty_text: "Favorites list is empty."
       index_applied:
         empty_text: "Applied list is empty. None has applied the casting."
+      index_custom:
+        header_text: "Castings"
+        direct_text: "Casting is direct shooting"
       new:
         header_text: "New casting"
       edit:

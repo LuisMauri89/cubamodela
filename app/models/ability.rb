@@ -67,7 +67,7 @@ class Ability
             message.try(:ownerable) == user.profileable
         end
         can :create, ProfileModel
-        can :update, ProfileModel do |profile|
+        can [:update, :index_castings_custom], ProfileModel do |profile|
             profile.try(:user) == user
         end
         can [:show, :create, :uploaded], Photo

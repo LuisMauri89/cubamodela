@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     get 'index_new_faces', on: :collection
     get 'index_professional_models', on: :collection
     get 'index_premium_models', on: :collection
+    get 'index_castings_custom', on: :member
   end
 
 # Photographers Profile routes

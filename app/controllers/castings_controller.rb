@@ -194,6 +194,7 @@ class CastingsController < ApplicationController
 
   def confirm
     @intent = @casting.try_confirm!(@profile)
+    @from = params[:from]
 
     respond_to do |format|
       if @intent.save
