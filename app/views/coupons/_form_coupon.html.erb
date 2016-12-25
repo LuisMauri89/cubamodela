@@ -2,15 +2,15 @@
 	<%= label_tag(t('views.coupons.form.coupon')) %>
 	<span class="span-margin-left"></span>
 	<div class="form-group">
-		<%= text_field(:values, :first, class: "form-control coupon-section text-center") %>
+		<%= text_field(:values, :first, maxlength: 4, class: "form-control coupon-section text-center") %>
 	</div>
 	<span>-</span>
 	<div class="form-group">
-		<%= text_field(:values, :second, class: "form-control coupon-section text-center") %>
+		<%= text_field(:values, :second, maxlength: 4, class: "form-control coupon-section text-center") %>
 	</div>
 	<span>-</span>
 	<div class="form-group">
-		<%= text_field(:values, :third, class: "form-control coupon-section text-center") %>
+		<%= text_field(:values, :third, maxlength: 4, class: "form-control coupon-section text-center") %>
 	</div>
 	<span class="span-margin-left"></span>
 	<span class="span-margin-left"></span>

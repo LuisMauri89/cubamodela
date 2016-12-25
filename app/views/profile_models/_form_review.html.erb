@@ -15,6 +15,7 @@
   <%= f.hidden_field :fromable_type, value: "ProfileContractor" %>
   <%= f.hidden_field :toable_id, value: @profile.id %>
   <%= f.hidden_field :toable_type, value: "ProfileModel" %>
+  <%= hidden_field_tag "from", "profile_model_view" %>
 
   <% if I18n.locale == "en".to_sym %>
     <div class="form-group text-center">

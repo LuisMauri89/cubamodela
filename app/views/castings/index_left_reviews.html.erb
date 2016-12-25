@@ -1,0 +1,38 @@
+<div id="casting-models-reviews-container">
+	<h2 class="text-center"><%= @casting_review.casting.title %></h2>
+	<br/>
+	<br/>
+	<% @models.each do |model| %>
+		<div id="model-review-<%= model.id %>" class="row" style="margin-bottom: 10px;">
+			<div class="col-md-1" style="padding-top: 1%;">
+				<%= image_tag model.nil? ? "missing_profile_picture.jpg" : model.get_profile_picture_url(:small), alt: "Model Photo" %>
+			</div>
+			<div class="col-md-11">
+				<%= form_for(Review.new, remote: true, html: { class: "form-inline" }) do |f| %>
+
+				  <%= f.hidden_field :fromable_id, value: current_user.profileable.id %>
+				  <%= f.hidden_field :fromable_type, value: "ProfileContractor" %>
+				  <%= f.hidden_field :toable_id, value: model.id %>
+				  <%= f.hidden_field :toable_type, value: "ProfileModel" %>
+				  <%= hidden_field_tag "from", "contractor_casting_models_reviews" %>
+
+				  <% if I18n.locale == "en".to_sym %>
+				    <div class="form-group text-center">
+				      <%= f.text_area :review_en, size: "60x3", class: "form-control" %>
+				    </div>
+				  <% else %>
+				    <div class="form-group text-center">
+				      <%= f.text_area :review_es, size: "60x4", class: "form-control text-center" %>
+				    </div>
+				  <% end %>
+
+				  <%= f.submit t('forms.buttons.review'), class: "btn btn-primary btn-lg" %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<br/>
+	<br/>
+	<br/>
+	<%= link_to t('forms.buttons.dont_show_again'), dont_show_again_casting_reviews_castings_path(@casting_review), class: "btn btn-primary pull-right" %>
+</div>

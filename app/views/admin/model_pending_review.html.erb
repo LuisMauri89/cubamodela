@@ -19,7 +19,7 @@
             <% @models.each do |model| %>
               <tr>
                 <td>
-                  <%= image_tag model.nil? ? "missing_profile_picture.jpg" : model.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
+                  <%= image_tag model.nil? ? "missing_profile_picture.jpg" : model.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
                   <h4 class="pull-left" style="margin-left:10px;"><%= model.full_name  %></h4>
                 </td>
                 <td class="text-center"><h4><%= model.user.email %></h4></td>

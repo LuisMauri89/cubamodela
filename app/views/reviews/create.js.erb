@@ -1,9 +1,15 @@
 <% if @review.errors.any? %>
 	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
-	$('#review_review_en').val("");
-	$('#review_review_es').val("");
-	$('#reviews-list').prepend("<%= j render 'new_review'  %>");
-	$('#reviews-count').text("<%= t('views.reviews.count', count: @new_count) %>");
-	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.reviews.messages.create' %>");
+	<% case @from %>
+	<% when "profile_model_view" %>
+		$('#review_review_en').val("");
+		$('#review_review_es').val("");
+		$('#reviews-list').prepend("<%= j render 'new_review'  %>");
+		$('#reviews-count').text("<%= t('views.reviews.count', count: @new_count) %>");
+		$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.reviews.messages.create' %>");
+	<% when "contractor_casting_models_reviews" %>
+		$('#model-review-<%= @review.toable_id %>').remove();
+		$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.reviews.messages.create' %>");
+	<% end %>
 <% end %>

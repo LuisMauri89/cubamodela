@@ -118,6 +118,9 @@ Rails.application.routes.draw do
     get '/invite/:profile_id', to: 'castings#invite', as: :invite, on: :member
     get '/confirm/:profile_id', to: 'castings#confirm', as: :confirm, on: :member
     get 'translate', on: :member
+    get '/index_left_reviews/:casting_review_id', to: 'castings#index_left_reviews', as: :index_left_reviews, on: :collection
+    get '/dont_show_again_casting_reviews/:casting_review_id', to: 'castings#dont_show_again_casting_reviews', as: :dont_show_again_casting_reviews, on: :collection
+    get '/casting_reviews/:contractor_id', to: 'castings#casting_reviews', as: :casting_reviews, on: :collection
   end
 
 # Bookings routes

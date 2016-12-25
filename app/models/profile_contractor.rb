@@ -35,6 +35,10 @@ class ProfileContractor < ApplicationRecord
 	# Plan
 	belongs_to :plan
 
+	# Casting reviews
+	has_many :casting_reviews, dependent: :destroy
+  	has_many :casting_reviews_show_again, -> { where(show_again: true) }, class_name: "CastingReview"
+
 	#Check if profile is completed
 	def profile_complete?
 		parameters_with_values = generate_array_of_param_with_value

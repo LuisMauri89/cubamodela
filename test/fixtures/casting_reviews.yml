@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  casting: one
+  profile_contractor: one
+  show_again: false
+
+two:
+  casting: two
+  profile_contractor: two
+  show_again: false

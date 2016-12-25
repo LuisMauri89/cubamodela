@@ -1,0 +1,5 @@
+<% if @casting_review.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'shared/errors', entity: @casting_review %>");
+<% else %>
+	$('#casting-review-<%= @casting_review.id %>').remove();
+<% end %>

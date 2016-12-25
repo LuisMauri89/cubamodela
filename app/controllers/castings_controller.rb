@@ -2,7 +2,7 @@ class CastingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_casting, only: [:show, :show_photo, :translate, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
   before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
-  before_action :set_contractor, only: [:index_custom, :index_custom_invite]
+  before_action :set_contractor, only: [:index_custom, :index_custom_invite, :casting_reviews]
   before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
   before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :confirm, :apply, :update, :close, :cancel, :activate, :destroy]
   before_action :set_pagination_data, only: [:index]
@@ -60,6 +60,33 @@ class CastingsController < ApplicationController
     end
   end
 
+  def casting_reviews
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def index_left_reviews
+    @casting_review = CastingReview.find(params[:casting_review_id])
+    @models = @casting_review.casting.confirmed_intents.map{ |i| i.profile_model }
+  end
+
+  def dont_show_again_casting_reviews
+    @casting_review = CastingReview.find(params[:casting_review_id])
+    @casting_review.show_again = false
+
+    respond_to do |format|
+      if @casting_review.save
+        format.html{ redirect_to custom_index_castings_path(contractor_id: @casting_review.profile_contractor_id) }
+        format.js
+      else
+        @models = @casting_review.casting.confirmed_intents.map{ |i| i.profile_model }
+        format.html{ render :index_left_reviews, error: t('views.castings.messages.dont_show_again_failed') }
+        format.js
+      end
+    end
+  end
+
   def show
     generate_needed_info
     respond_to do |format|
@@ -98,6 +125,7 @@ class CastingsController < ApplicationController
         @charge_success, @message = Bank.charge(current_user.profileable, Constant::CASTING_CREATION_COST.to_f, "casting_creation", false)
         if @charge_success
           @casting.save
+          CastingReview.create(casting: @casting, profile_contractor: @casting.ownerable, show_again: true)
           NewCastingFreeJob.perform_later(@casting)
           format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
         else
@@ -299,6 +327,9 @@ class CastingsController < ApplicationController
     def generate_needed_info
       @modality_cols_batch = @casting.modalities.any? ? (@casting.modalities.count.to_f / 2).ceil : 0
       @category_cols_batch = @casting.categories.any? ? (@casting.categories.count.to_f / 2).ceil : 0
+    end
+
+    def generate_casting_reviews_url
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

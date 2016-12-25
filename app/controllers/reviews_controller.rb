@@ -29,6 +29,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @from = params[:from]
 
     authorize! :create, @review
 
@@ -84,7 +85,7 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:fromable_id, :fromable_type, :toable_id, :toable_type, :review_en, :review_es)
+      params.require(:review).permit(:fromable_id, :fromable_type, :toable_id, :toable_type, :review_en, :review_es, :from)
     end
 
     def check_if_can

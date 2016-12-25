@@ -12,7 +12,7 @@ class Wallet < ApplicationRecord
   belongs_to :ownerable, polymorphic: true
 
   def use_coupon(value)
-  	# value = value.trim //ver como remover espacios al inicio y final
+  	value = value.strip
   	coupon = Coupon.givens.where(code: value).first
 
   	if coupon != nil

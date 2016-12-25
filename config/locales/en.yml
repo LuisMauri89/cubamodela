@@ -208,6 +208,8 @@ en:
       send_to: "Send to"
       send: "Send"
       confirm: "Confirm"
+      review: "Review"
+      dont_show_again: "Don't show again"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you wish to delete %{value}?"
@@ -538,6 +540,9 @@ en:
       index_custom:
         header_text: "Castings"
         direct_text: "Casting is direct shooting"
+      casting_reviews:
+        description_text: "Perhaps you want to left some reviews about the models you worked with, go"
+        here_text: "HERE"
       new:
         header_text: "New casting"
       edit:
@@ -564,6 +569,7 @@ en:
         create: "Casting was successfully created. Please add some references photos."
         update: "Casting was successfully updated."
         references_photos_max: "Max amount of photos acording to your plan reached"
+        dont_show_again_failed: "Sorry something went wrong."
         edit:
           past: "Actual date of casting is in the past. Editing is not allowed."
           canceled: "Casting is already canceled."

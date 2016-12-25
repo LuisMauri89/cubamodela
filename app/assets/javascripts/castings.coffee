@@ -4,6 +4,9 @@
 
 $(document).on "turbolinks:load", ->
 	
+	contractor_id = $('#contractor-id').text();
+	$.getScript("/castings/casting_reviews/" + contractor_id);
+	
 	chboxContainer = $('#chbox-direct-container');
 	chbox = chboxContainer.find(':checkbox');
 
