@@ -76,6 +76,7 @@ class Casting < ApplicationRecord
   scope :description_needs_translation, -> { valids.where(description_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(description_es: Constant::ES_TRANSLATION_PENDING)) }
   scope :location_needs_translation, -> { valids.where(location_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(location_es: Constant::ES_TRANSLATION_PENDING)) }
   scope :needs_translation, -> { title_needs_translation.or(self.description_needs_translation).or(self.location_needs_translation).order("created_at ASC") }
+  scope :after_reviews_time_elapsed, -> { where("shooting_date < :date", date: (Date.today - 30).to_datetime).joins(:casting_review).where('casting_reviews.show_again = true') }
 
   # Associations	
   belongs_to :ownerable, polymorphic: true
@@ -87,6 +88,9 @@ class Casting < ApplicationRecord
   has_many :photos, as: :attachable, dependent: :destroy
   has_and_belongs_to_many :modalities, dependent: :destroy
   has_and_belongs_to_many :categories, dependent: :destroy
+
+  # Casting reviews
+  has_one :casting_review, dependent: :destroy
 
   # Custom Validators
   def expiration_date_cannot_be_in_the_past

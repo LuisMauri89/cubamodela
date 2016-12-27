@@ -148,6 +148,7 @@ Rails.application.routes.draw do
     get '/exec_casting_expiration', to: 'admin#exec_casting_expiration', as: :exec_casting_expiration
     get '/exec_all', to: 'admin#exec_all', as: :exec_all
     get '/reprocess_images', to: 'admin#reprocess_images', as: :reprocess_images
+    get '/give_coupon/:coupon_id', to: 'admin#give_coupon', as: :give_coupon
   end
 
 # Coupons routes

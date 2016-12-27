@@ -22,9 +22,10 @@ class Coupon < ApplicationRecord
   end
 
   # Scopes
-  scope :actives, -> { where(status: "active") }
-  scope :givens, -> { where(status: "given") }
-  scope :useds, -> { where(status: "used") }
+  scope :base, -> { order('created_at DESC') }
+  scope :actives, -> { base.where(status: "active") }
+  scope :givens, -> { base.where(status: "given") }
+  scope :useds, -> { base.where(status: "used") }
 
   def use!
   	used!

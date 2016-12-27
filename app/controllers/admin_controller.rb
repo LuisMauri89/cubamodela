@@ -98,6 +98,15 @@ class AdminController < ApplicationController
 		end
 	end
 
+	def give_coupon
+		set_coupon
+		@coupon.give!
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def exec_casting_expiration
 		CastingsExpiredJob.perform_later
 

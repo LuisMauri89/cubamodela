@@ -1,0 +1,5 @@
+<% if @coupon.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'shared/errors', entity: @coupon %>");
+<% else %>
+	$('#coupon-<%= @coupon.id %>').remove();
+<% end %>

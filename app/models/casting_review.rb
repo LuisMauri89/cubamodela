@@ -7,4 +7,9 @@ class CastingReview < ApplicationRecord
   def is_valid?
   	return (casting.casting_date.to_date + 3) <= Date.today
   end
+
+  def do_not_show_again
+  	self.show_again = false
+  	save
+  end
 end
