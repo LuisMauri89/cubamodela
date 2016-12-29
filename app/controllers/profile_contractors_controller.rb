@@ -1,7 +1,7 @@
 class ProfileContractorsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_can, only: [:show, :create, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :plans, :destroy]
+  before_action :check_if_can, only: [:show, :create, :update, :plans, :destroy]
 
   def index
   end
@@ -30,10 +30,16 @@ class ProfileContractorsController < ApplicationController
   end
 
   def edit
-    @album_profile_picture = @profile.albums.where(name: "Profile Photo").first
+    @album_profile_picture = @profile.albums.where(name: Constant::ALBUM_PROFILE_NAME).first
 
     respond_to do |format|
       format.html
+      format.js
+    end
+  end
+
+  def plans
+    respond_to do |format|
       format.js
     end
   end
@@ -71,6 +77,8 @@ class ProfileContractorsController < ApplicationController
     end
 
     def build_profile_meta
-      @profile.albums.create(name: "Profile Photo")
+      @profile.albums.create(name: Constant::ALBUM_PROFILE_NAME)
+
+      @profile.create_wallet
     end
 end

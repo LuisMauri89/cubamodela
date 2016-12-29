@@ -39,6 +39,9 @@
 				  <li role="presentation" id="profile_menu_payment" class="profile_menu">
 				  	<%= link_to t('views.profile_contractors.edit.menu_options.payment'), "#", remote: true %>
 				  </li>
+				  <li role="presentation" id="profile_menu_plan" class="profile_menu">
+				  	<%= link_to t('views.profile_models.edit.menu_options.plans'), plans_profile_contractor_path(@profile), remote: true %>
+				  </li>
 				</ul>
 			</div>
 		</div>

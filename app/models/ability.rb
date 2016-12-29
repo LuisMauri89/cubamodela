@@ -50,7 +50,7 @@ class Ability
             photo.attachable.try(:ownerable) == user.profileable
         end
         can :create, ProfileContractor
-        can :update, ProfileContractor do |profile|
+        can [:update, :plans], ProfileContractor do |profile|
             profile.try(:user) == user
         end
         can :create, Review
@@ -67,7 +67,7 @@ class Ability
             message.try(:ownerable) == user.profileable
         end
         can :create, ProfileModel
-        can [:update, :index_castings_custom], ProfileModel do |profile|
+        can [:update, :index_castings_custom, :albums, :studies, :plans], ProfileModel do |profile|
             profile.try(:user) == user
         end
         can [:show, :create, :uploaded], Photo

@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   end
 
 # Models Profile routes
-  resources :profile_contractors
+  resources :profile_contractors do
+    get 'plans', on: :member
+  end
 
 # Colors routes
   resources :colors

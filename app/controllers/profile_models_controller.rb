@@ -1,9 +1,33 @@
 class ProfileModelsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :plans, :albums, :studies, :request_level, :show_professional_photos, :show_polaroid_photos, :show_selected_photo, :vote, :publish, :no_publish, :warning_publish, :reject_publish, :reset_warnings, :edit, :update, :index_castings_custom, :destroy]
+  before_action :set_profile, only: [:show, 
+                                     :show_resume, 
+                                     :plans, 
+                                     :albums, 
+                                     :studies, 
+                                     :request_level, 
+                                     :show_professional_photos, 
+                                     :show_polaroid_photos, 
+                                     :show_selected_photo, 
+                                     :vote, :publish, 
+                                     :no_publish, 
+                                     :warning_publish, 
+                                     :reject_publish, 
+                                     :reset_warnings, 
+                                     :edit, :update, 
+                                     :index_castings_custom, 
+                                     :destroy]
   before_action :generate_cols_batch, only: [:show, :show_professional_photos]
   before_action :generate_cols_batch_polaroid, only: [:show_polaroid_photos]
-  before_action :check_if_can, only: [:publish, :no_publish, :edit, :update, :index_castings_custom, :destroy]
+  before_action :check_if_can, only: [:publish, 
+                                      :no_publish, 
+                                      :edit, 
+                                      :update, 
+                                      :albums, 
+                                      :studies, 
+                                      :plans, 
+                                      :index_castings_custom, 
+                                      :destroy]
 
   def index
     @models = ProfileModel.ready
@@ -174,7 +198,7 @@ class ProfileModelsController < ApplicationController
   end
 
   def edit
-    @album_profile_picture = @profile.albums.where(name: "Profile Photo").first
+    @album_profile_picture = @profile.albums.where(name: Constant::ALBUM_PROFILE_NAME).first
     
     respond_to do |format|
       format.html
@@ -296,7 +320,7 @@ class ProfileModelsController < ApplicationController
 
     def generate_cols_batch_polaroid
       @cols = []
-      count = @profile.albums.where(name: "Polaroid").first.photos.count
+      count = @profile.albums.where(name: Constant::ALBUM_POLAROID_NAME).first.photos.count
       rest = count % 3
       value = (count / 3).to_i
 
