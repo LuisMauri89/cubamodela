@@ -25,12 +25,12 @@ every 5.minutes do
 end
 
 every 5.minutes do
-	rake "casting_tasks:alert_casting_proximity"
-	Rails.logger.info("Task proximity running at #{Time.now}")
+	rake "casting_tasks:casting_expiration_proximity_task"
+	Rails.logger.info("Task casting proximity running at #{Time.now}")
 end
 
 every 5.minutes do
-	rake "casting_tasks:change_casting_expired_status"
-	Rails.logger.info("Task status running at #{Time.now}")
+	rake "casting_tasks:casting_expired_task"
+	Rails.logger.info("Task casting status running at #{Time.now}")
 end
 

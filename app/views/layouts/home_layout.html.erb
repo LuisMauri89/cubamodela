@@ -24,6 +24,14 @@
         </div>
       </div>
 
+      <% if user_signed_in? && current_user.profileable.profile_complete_progress < 50 %>
+        <div class="row">
+          <div id="flash-messages-container" class="col-md-12">
+            <%= render 'layouts/provide_profile' %>
+          </div>
+        </div>
+      <% end %>
+
       <div class="row">
         <div id="banner-container" class="col-md-12">
           <%= render 'layouts/home_banner' %>

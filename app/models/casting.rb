@@ -364,13 +364,13 @@ class Casting < ApplicationRecord
     translations = translations_change?(old_casting)
 
     if fields && dates
-      #Job casting inbox y mail para cambios multiples
+      CastingChangeFieldsAndDatesJob.perform_later(self)
     elsif fields
-      #Job casting inbox y mail para cambios fields only
+      CastingChangeFieldsOnlyJob.perform_later(self)
     elsif dates
-      CastingDatesChangedJob.perform_later(self) #Job casting inbox y mail para cambios dates only
+      CastingChangeDatesOnlyJob.perform_later(self)
     elsif translations
-      #Job casting inbox y mail para cambios fields tranlated
+      CastingTranslationJob.perform_later(self)
     end
   end
 

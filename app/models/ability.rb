@@ -37,8 +37,8 @@ class Ability
         can [:update, :destroy, :cancel], Booking do |booking|
             booking.try(:profile_contractor) == user.profileable
         end
-        can [:create, :index_custom, :index_custom_invite], Casting
-        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel], Casting do |casting|
+        can [:create, :index_custom, :index_custom_invite, :casting_reviews], Casting
+        can [:edit_photos, :index_invite, :index_invited, :index_applied, :index_confirmed, :manage, :invite, :update, :activate, :close, :cancel, :index_left_reviews, :dont_show_again_casting_reviews], Casting do |casting|
             casting.try(:ownerable) == user.profileable
         end
         can [:read, :read_all, :unread_all], Message

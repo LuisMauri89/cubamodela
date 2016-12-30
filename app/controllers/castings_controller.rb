@@ -1,10 +1,48 @@
 class CastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_casting, only: [:show, :show_photo, :translate, :manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :apply, :invite, :confirm, :update, :close, :activate, :cancel, :destroy]
+  before_action :set_casting, only: [:show, 
+                                     :show_photo, 
+                                     :translate, 
+                                     :manage, 
+                                     :edit, :edit_photos, 
+                                     :index_invite, 
+                                     :index_invited, 
+                                     :index_confirmed, 
+                                     :index_applied, 
+                                     :apply, 
+                                     :invite, 
+                                     :confirm, 
+                                     :update, 
+                                     :close, 
+                                     :activate, 
+                                     :cancel, 
+                                     :destroy]
   before_action :set_profile, only: [:invite, :confirm, :apply, :index_custom_invite]
   before_action :set_contractor, only: [:index_custom, :index_custom_invite, :casting_reviews]
-  before_action :set_list_item, only: [:index_invite, :index_invited, :index_confirmed, :index_favorites, :index_applied, :invite]
-  before_action :check_if_can, only: [:manage, :edit, :edit_photos, :index_invite, :index_invited, :index_confirmed, :index_applied, :index_custom, :index_custom_invite, :invite, :confirm, :apply, :update, :close, :cancel, :activate, :destroy]
+  before_action :set_list_item, only: [:index_invite, 
+                                       :index_invited, 
+                                       :index_confirmed, 
+                                       :index_favorites, 
+                                       :index_applied, 
+                                       :invite]
+  before_action :check_if_can, only: [:manage, 
+                                      :edit, 
+                                      :edit_photos, 
+                                      :casting_reviews, 
+                                      :index_invite, 
+                                      :index_invited, 
+                                      :index_confirmed, 
+                                      :index_applied, 
+                                      :index_custom, 
+                                      :index_custom_invite, 
+                                      :invite, 
+                                      :confirm, 
+                                      :apply, 
+                                      :update, 
+                                      :close, 
+                                      :cancel, 
+                                      :activate, 
+                                      :destroy]
   before_action :set_pagination_data, only: [:index]
   before_action :set_pagination_data_invite, only: [:manage, :index_invite]
 
@@ -68,11 +106,17 @@ class CastingsController < ApplicationController
 
   def index_left_reviews
     @casting_review = CastingReview.find(params[:casting_review_id])
+
+    authorize! :index_left_reviews, @casting_review.casting
+
     @models = @casting_review.casting.confirmed_intents.map{ |i| i.profile_model }
   end
 
   def dont_show_again_casting_reviews
     @casting_review = CastingReview.find(params[:casting_review_id])
+
+    authorize! :dont_show_again_casting_reviews, @casting_review.casting
+
     @casting_review.show_again = false
 
     respond_to do |format|
@@ -126,7 +170,7 @@ class CastingsController < ApplicationController
         if @charge_success
           @casting.save
           CastingReview.create(casting: @casting, profile_contractor: @casting.ownerable, show_again: true)
-          NewCastingFreeJob.perform_later(@casting)
+          CastingNewFreeJob.perform_later(@casting)
           format.html { redirect_to edit_photos_casting_path(@casting), notice: t('views.castings.messages.create') }
         else
           format.html { render :new }
@@ -206,7 +250,7 @@ class CastingsController < ApplicationController
 
         case @list_item
         when "applied"
-          CastingApplicationConfirmationJob.perform_later(@profile, @casting)
+          CastingApplicationConfirmedJob.perform_later(@profile, @casting)
         else
           CastingInvitationJob.perform_later(@profile, @casting) 
         end
@@ -226,7 +270,7 @@ class CastingsController < ApplicationController
 
     respond_to do |format|
       if @intent.save
-        CastingConfirmationJob.perform_later(@casting.ownerable, @casting, @profile)
+        CastingInvitationConfirmedJob.perform_later(@casting.ownerable, @casting, @profile)
         format.js
       else
         format.js

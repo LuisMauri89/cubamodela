@@ -62,6 +62,20 @@
         <h3 class="panel-title"><%= t('views.bookings.edit.form_sections.dates') %></h3>
       </div>
       <div class="panel-body">
+        <% if (!@booking.new_record? && ((Date.today - @booking.created_at.to_date) * 24) > 24) %>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="dates-warning-text" class="alert alert-danger" role="alert"><%= t('views.castings.edit.warnings.change_dates') %>.</div>
+            </div>
+          </div>
+        <% end %>
+        <% if (!@booking.new_record? && ((Date.today - @booking.created_at.to_date) * 24) > 24) %>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="dates-warning-text" class="alert alert-danger" role="alert"><%= t('views.castings.edit.warnings.change_dates_expired') %>.</div>
+            </div>
+          </div>
+        <% end %>
         <div class="row" id="casting-date-field" <%= get_show_hide_style(@booking.is_direct) %>>
           <div class="col-md-11 col-md-offset-1">
             <div class="form-group">

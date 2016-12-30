@@ -29,9 +29,17 @@ class BookingsController < ApplicationController
 		authorize! :create, @booking
 
 		respond_to do |format|
-	  		if @booking.save
-	  			Message.create(template: "inbox_message_booking_invitation", ownerable: @booking.profile_model, asociateable: @booking)
-        		format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.create') }
+	  		if @booking.valid?
+
+		        @charge_success, @message = Bank.charge(current_user.profileable, Constant::BOOKING_CREATION_COST.to_f, "booking_creation", false)
+		        if @charge_success
+		          @booking.save
+		          # CastingReview.create(casting: @casting, profile_contractor: @casting.ownerable, show_again: true)
+		          # CastingNewFreeJob.perform_later(@casting)
+		          format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.create') }
+		        else
+		          format.html { render :new }
+		        end
 	  		else
 	  			format.html { render :new }
 	  		end
@@ -53,12 +61,25 @@ class BookingsController < ApplicationController
 	def update
 	  	respond_to do |format|
 	  	  old_booking = Booking.find(params[:id])
-	      if @booking.update(booking_params)
+		  if @booking.valid?
+        
+	        if @booking.update_requires_charge(old_booking)
+	          @charge_success, @message = Bank.charge(current_user.profileable, Constant::BOOKING_UPDATE_DATES_CHANGE_COST.to_f, "booking_dates_change", false)
+	          if @charge_success
 
-	      	@booking.send_update_notification(old_booking)
-        	@booking.send_translation_notification(old_booking)
+	            @booking.update(booking_params)
+	            @booking.send_update_notification(old_booking)
 
-	        format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.update') }
+	            format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.update') }
+	          else
+	            format.html { render :edit }
+	          end
+	        else
+	          @booking.update(booking_params)
+	          @booking.send_update_notification(old_booking)
+
+	          format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.update') }
+	        end
 	      else
 	        format.html { render :edit }
 	      end

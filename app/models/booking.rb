@@ -189,16 +189,107 @@ class Booking < ApplicationRecord
   end
 
   def send_update_notification(old_booking)
-    if old_booking.casting_date != casting_date || old_booking.shooting_date != shooting_date
-      BookingDatesChangedJob.perform_later(self)
-    end
+    fields = fields_change?(old_booking)
+    dates = dates_change?(old_booking)
+    translations = translations_change?(old_booking)
 
-    check_translated_fields_changes(old_booking)
+    if fields && dates
+      BookingChangeFieldsAndDatesJob.perform_later(self)
+    elsif fields
+      BookingChangeFieldsOnlyJob.perform_later(self)
+    elsif dates
+      BookingChangeDatesOnlyJob.perform_later(self)
+    elsif translations
+      BookingTranslationJob.perform_later(self)
+    end
   end
 
-  def send_translation_notification(old_booking)
-    if !old_booking.translated? && translated? 
-      NewBookingJob.perform_later(self)
+  def fields_change?(old_booking)
+    changes = false
+
+    if old_booking.description_en.present?
+      if old_booking.description_en != self.description_en
+        self.description_es = Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_booking.description_es != self.description_es
+        self.description_en = Constant::EN_TRANSLATION_PENDING
+        changes = true
+      end
+    end
+
+    if old_booking.location_en.present?
+      if old_booking.location_en != self.location_en
+        self.location_es = Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_booking.location_es != self.location_es
+        self.location_en = Constant::EN_TRANSLATION_PENDING
+        changes = true
+      end
+    end
+
+    save
+
+    return changes
+  end
+
+  def dates_change?(old_booking)
+    changes = false
+
+    if old_booking.expiration_date != self.expiration_date || old_booking.casting_date != self.casting_date || old_booking.shooting_date != self.shooting_date
+      changes = true
+    end
+
+    return changes
+  end
+
+  def translations_change?(old_booking)
+    changes = false
+
+    if old_booking.description_en.present?
+      if old_booking.description_en == self.description_en && self.description_es != Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_booking.description_es == self.description_es && self.description_en != Constant::EN_TRANSLATION_PENDING
+        changes = true
+      end
+    end
+
+    if old_booking.location_en.present?
+      if old_booking.location_en == self.location_en && self.location_es != Constant::ES_TRANSLATION_PENDING
+        changes = true
+      end
+    else
+      if old_booking.location_es == self.location_es && self.location_en != Constant::EN_TRANSLATION_PENDING
+        changes = true
+      end
+    end
+
+    return changes
+  end
+
+  def update_requires_charge(old_booking)
+    charge_on_dates_change = false
+
+    if old_booking.expiration_date != self.expiration_date || old_booking.casting_date != self.casting_date || old_booking.shooting_date != self.shooting_date
+      if ((Date.today - self.created_at.to_date) * 24) > 24
+        charge_on_dates_change = true
+      end
+    end
+
+    return charge_on_dates_change
+  end
+
+  def dates_changes_without_action?
+    begin
+      old_booking = Casting.find(self.id)
+      return !new_record? && (old_booking.expiration_date != self.expiration_date || old_booking.casting_date != self.casting_date || old_booking.shooting_date != self.shooting_date)
+    rescue
+      return false
     end
   end
 
@@ -207,30 +298,5 @@ class Booking < ApplicationRecord
            self.location_en != Constant::EN_TRANSLATION_PENDING &&
            self.description_es != Constant::ES_TRANSLATION_PENDING &&
            self.location_es != Constant::ES_TRANSLATION_PENDING
-  end
-
-  def check_translated_fields_changes(old_booking)
-
-    if old_booking.description_en.present?
-      if old_booking.description_en != self.description_en
-        self.description_es = Constant::ES_TRANSLATION_PENDING
-      end
-    else
-      if old_booking.description_es != self.description_es
-        self.description_en = Constant::EN_TRANSLATION_PENDING
-      end
-    end
-
-    if old_booking.location_en.present?
-      if old_booking.location_en != self.location_en
-        self.location_es = Constant::ES_TRANSLATION_PENDING
-      end
-    else
-      if old_booking.location_es != self.location_es
-        self.location_en = Constant::EN_TRANSLATION_PENDING
-      end
-    end
-
-    save
   end
 end
