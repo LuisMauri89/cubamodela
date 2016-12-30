@@ -1,7 +1,7 @@
 <div class="row bg-primary message-section">
 	<div class="col-md-11">
 		<div class="text-center">
-			<h2><%= t('views.messages.index.templates.casting_canceled.header_text') %></h2>
+			<h2><%= t('views.messages.index.templates.casting_invitation_confirmed.header_text') %></h2>
 			<div class="translated-text">
 				<% if @message.asociateable.title_en.present? %>
 					<p class="title"><%= @message.asociateable.title_en.upcase %></p>
@@ -15,6 +15,8 @@
 					</footer>
 				<% end %>
 			</div>
+			<h3><%= t('views.messages.index.templates.casting_invitation_confirmed.subheader_text', value: @message.thirdable.get_first_name) %>
+			</h3>
 		</div>
 	</div>
 	<div class="col-md-1">
@@ -50,7 +52,7 @@
 <div class="row message-section">
 	<div class="col-md-12">
 		<div class="text-justify">
-			<p><%= t('views.messages.index.templates.casting_canceled.after_description_text') %></p>
+			<p><%= t('views.messages.index.templates.casting_invitation_confirmed.after_description_text') %></p>
 		</div>
 	</div>
 </div>
@@ -77,7 +79,18 @@
 <div class="row message-section">
 	<div class="col-md-12">
 		<div class="text-center">
-			<p><%= t('views.messages.index.templates.casting_canceled.after_dates_text') %></p>
+			<p><%= t('views.messages.index.templates.casting_invitation_confirmed.after_dates_text') %></p>
 		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<% if @message.asociateable.casting_date.to_date > Date.today %>
+			<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.see_casting'), casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+			<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.edit_casting'), edit_casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+			<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.manage_casting'), manage_casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+			<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.see_profile', value: @message.thirdable.get_first_name), profile_model_path(@message.thirdable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<% end %>
 	</div>
 </div>

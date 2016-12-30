@@ -30,4 +30,12 @@ class Intent < ApplicationRecord
       return ""
     end
   end
+
+  def self.get_status_by_model_and_casting(model, casting)
+    begin
+      return where(profile_model_id: model.id, casting_id: casting.id).first.status
+    rescue
+      return "unset"
+    end
+  end
 end

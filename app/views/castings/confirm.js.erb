@@ -5,5 +5,7 @@
 	<% if @from == "model_index_castings" %>
 		$('#status-<%= @casting.id %>').html("<%= @intent.status.humanize %>");
 		$('#actions-<%= @casting.id %>').empty();
+	<% elsif @from == "model_inbox" %>
+		$('#btn-confirm-<%= @casting.id %><%= @intent.profile_model.id %>').remove();
 	<% end %>
 <% end %>
