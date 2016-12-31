@@ -2,7 +2,13 @@
 	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.bookings.messages.confirm' %>");
-	$('#status-<%= @booking.id %>').html("<%= @booking.status.humanize %>");
-	$('#actions-<%= @booking.id %>').html("<%= j render 'index_custom_model_actions', booking: @booking %>");
-	$('#row-<%= @booking.id %>').addClass("confirmed-bkg");
+
+	<% case @from %>
+	<% when "model-index-bookings" %>
+		$('#status-<%= @booking.id %>').html("<%= @booking.status.humanize %>");
+		$('#actions-<%= @booking.id %>').html("<%= j render 'index_custom_model_actions', booking: @booking %>");
+		$('#row-<%= @booking.id %>').addClass("confirmed-bkg");
+	<% when "inbox-message-booking" %>
+		$('#btn-confirm-<%= @booking.id %><%= @booking.profile_model.id %>').remove();
+	<% end %>
 <% end %>

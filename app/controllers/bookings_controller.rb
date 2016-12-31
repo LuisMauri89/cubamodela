@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
 		        if @charge_success
 		          @booking.save
 		          # CastingReview.create(casting: @casting, profile_contractor: @casting.ownerable, show_again: true)
-		          # CastingNewFreeJob.perform_later(@casting)
+		          BookingInvitationJob.perform_later(@booking.profile_model, @booking)
 		          format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.create') }
 		        else
 		          format.html { render :new }
@@ -87,10 +87,12 @@ class BookingsController < ApplicationController
 	end
 
 	def confirm
+		@from = params[:from]
 	    @booking.try_confirm!
 
 	    respond_to do |format|
 	      if @booking.save
+	      	BookingConfirmedJob.perform_later(@booking.profile_contractor, @booking, @booking.profile_model)
 	        format.js
 	      else
 	        format.js
@@ -99,10 +101,12 @@ class BookingsController < ApplicationController
 	end
 
 	def reject
+		@from = params[:from]
 	    @booking.try_reject!
 
 	    respond_to do |format|
 	      if @booking.save
+	      	BookingRejectedJob.perform_later(@booking.profile_contractor, @booking, @booking.profile_model)
 	        format.js
 	      else
 	        format.js
@@ -115,6 +119,7 @@ class BookingsController < ApplicationController
 
 	    respond_to do |format|
 	      if @booking.save
+	      	BookingCanceledJob.perform_later(@booking.profile_model, @booking)
 	        format.html{ redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.cancel')  }
 	      else
 	        format.html{ redirect_to request.referrer, notice: @booking.get_first_base_error }

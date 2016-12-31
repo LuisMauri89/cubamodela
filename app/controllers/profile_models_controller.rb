@@ -130,7 +130,7 @@ class ProfileModelsController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        Message.create(template: "inbox_message_profile_published", ownerable: @profile, asociateable: @profile)
+        ProfilePublishedJob.perform_later(@profile)
         format.js
       else
         format.js
@@ -144,7 +144,7 @@ class ProfileModelsController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        Message.create(template: "inbox_message_profile_unpublished", ownerable: @profile, asociateable: @profile)
+        ProfileUnpublishedJob.perform_later(@profile)
         format.js
       else
         format.js
@@ -153,7 +153,7 @@ class ProfileModelsController < ApplicationController
   end
 
   def reject_publish
-    Message.create(template: "inbox_message_profile_reject_publish", ownerable: @profile, asociateable: @profile)
+    ProfileRejectJob.perform_later(@profile)
     
     respond_to do |format|
       format.js
@@ -162,7 +162,7 @@ class ProfileModelsController < ApplicationController
 
   def warning_publish
     @profile.set_profile_warning
-    Message.create(template: "inbox_message_profile_warning_publish", ownerable: @profile, asociateable: @profile)
+    ProfileWarningJob.perform_later(@profile)
     
     respond_to do |format|
       format.js

@@ -30,7 +30,7 @@
                   <td><h4 id="status-<%= booking.id %>"><%= booking.status.humanize %></h4></td>
                   <td id="actions-<%= booking.id %>">
                     <% if ["booked", "confirmed"].include?(booking.status) %>
-                      <%= link_to t('forms.buttons.reject'), reject_booking_path(booking, booking.profile_model), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                      <%= link_to t('forms.buttons.reject'), reject_booking_path(booking, booking.profile_model, from: "model-index-bookings"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                       <% if booking.status == "booked" %>
                         <%= link_to t('forms.buttons.confirm'), confirm_booking_path(booking, booking.profile_model), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                       <% end %>

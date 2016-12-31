@@ -11,4 +11,8 @@ namespace :casting_tasks do
 	task casting_expired_task: :environment do
 		CastingExpiredJob.perform_later
 	end
+
+	task casting_reviews_dont_show_again_task: :environment do
+		CastingReviewsDontShowAgainJob.perform_later
+	end
 end

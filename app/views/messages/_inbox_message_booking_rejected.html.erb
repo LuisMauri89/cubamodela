@@ -1,0 +1,77 @@
+<div class="row bg-primary message-section">
+	<div class="col-md-11">
+		<div class="text-center">
+			<h2><%= t('views.messages.index.templates.booking_rejected.header_text') %></h2>
+		</div>
+	</div>
+	<div class="col-md-1">
+		<div class="text-center">
+			<%= button_to(message_path(@message), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "pull-right") do %>
+			  <span class="glyphicon glyphicon-trash glyphicon-trash-blue" aria-hidden="true"></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-justify">
+			<h4><%= t('activerecord.attributes.casting.description') %></h4>
+			<div class="translated-text">
+				<% if @message.asociateable.description_en.present? %>
+					<p><%= @message.asociateable.description_en %></p>
+					<footer>
+						<%= @message.asociateable.description_es %>
+					</footer>
+				<% else %>
+					<p class="title"><%= @message.asociateable.description_es %></p>
+					<footer>
+						<%= @message.asociateable.description_en %>
+					</footer>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-justify">
+			<p><%= t('views.messages.index.templates.booking_rejected.after_description_text') %></p>
+		</div>
+	</div>
+</div>
+
+<% if @message.asociateable.shooting_date.to_date > Date.today %>
+	<div class="row message-section">
+		<div class="col-md-12">
+			<div class="text-left">
+
+				<% if @message.asociateable.expiration_date > Date.today %>
+					<p><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@message.asociateable.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+				<% end %>
+
+				<% if @message.asociateable.casting_date > Date.today %>
+					<p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@message.asociateable.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.casting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+				<% end %>
+
+				<p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@message.asociateable.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-center">
+			<p><%= t('views.messages.index.templates.booking_rejected.after_dates_text') %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<%= link_to t('views.messages.index.templates.booking_rejected.buttons.see_casting'), booking_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to t('views.messages.index.templates.booking_rejected.buttons.see_profile', value: @message.thirdable.get_first_name), profile_model_path(@message.thirdable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+	</div>
+</div>

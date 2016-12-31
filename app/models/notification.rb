@@ -53,6 +53,41 @@ class Notification
 	end
 
 	# Booking
+	def self.notify_booking_invitation(owner, asociated)
+		Message.create(template: "inbox_message_booking_invitation", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_booking_confirmed(owner, asociated, third)
+		Message.create(template: "inbox_message_booking_confirmed", ownerable: owner, asociateable: asociated, thirdable: third)
+	end
+
+	def self.notify_booking_rejected(owner, asociated, third)
+		Message.create(template: "inbox_message_booking_rejected", ownerable: owner, asociateable: asociated, thirdable: third)
+	end
+
+	def self.notify_booking_canceled(owner, asociated)
+		Message.create(template: "inbox_message_booking_canceled", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_booking_translation(owner, asociated)
+		Message.create(template: "inbox_message_booking_translation", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_booking_change_fields_only(owner, asociated)
+		Message.create(template: "inbox_message_booking_change_fields_only", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_booking_change_dates_only(owner, asociated)
+		Message.create(template: "inbox_message_booking_change_dates_only", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_booking_change_fields_and_dates(owner, asociated)
+		Message.create(template: "inbox_message_booking_change_fields_and_dates", ownerable: owner, asociateable: asociated)
+	end
+
+	def self.notify_booking_left_review(owner, asociated, third)
+		Message.create(template: "inbox_message_booking_left_review", ownerable: owner, asociateable: asociated, thirdable: third)
+	end
 
 	# Profile
 	def self.notify_profile_published(owner)
@@ -63,5 +98,16 @@ class Notification
 		Message.create(template: "inbox_message_profile_unpublished", ownerable: owner)
 	end
 
+	def self.notify_profile_reject(owner)
+		Message.create(template: "inbox_message_profile_reject", ownerable: owner)
+	end
+
+	def self.notify_profile_warning(owner)
+		Message.create(template: "inbox_message_profile_warning", ownerable: owner)
+	end
+
 	# Review
+	def self.notify_review_new(owner, asociated, third)
+		Message.create(template: "inbox_message_review_new", ownerable: owner, asociateable: asociated, thirdable: third)
+	end
 end

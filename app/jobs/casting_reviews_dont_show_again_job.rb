@@ -1,4 +1,4 @@
-class DontShowAgainCastingReviewsJob < ApplicationJob
+class CastingReviewsDontShowAgainJob < ApplicationJob
   queue_as :default
 
   def perform()

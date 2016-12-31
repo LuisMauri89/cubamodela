@@ -16,8 +16,8 @@ class CastingMailerPreview < ActionMailer::Preview
 		CastingMailer.email_casting_application_confirmation(ProfileModel.first, Casting.first)
 	end
 
-	def email_new_casting_free
-		CastingMailer.email_new_casting_free(ProfileModel.first, Casting.first)
+	def email_casting_new_free
+		CastingMailer.email_casting_new_free(ProfileModel.find(45), Casting.last)
 	end
 	
 	def email_casting_dates_changed_invited

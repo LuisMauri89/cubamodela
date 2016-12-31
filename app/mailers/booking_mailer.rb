@@ -47,4 +47,10 @@ class BookingMailer < ApplicationMailer
 		@booking = booking
 		mail(to: @profile.user.email, subject: I18n.t('views.mailers.booking.booking_change_fields_and_dates.subject', value: @booking.description[0..50]))
 	end
+
+	def email_booking_left_review(profile, booking)
+		@profile = profile
+		@booking = booking
+		mail(to: @profile.user.email, subject: I18n.t('views.mailers.booking.booking_left_review.subject', value: @booking.description[0..50]))
+	end
 end

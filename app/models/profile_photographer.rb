@@ -21,6 +21,10 @@ class ProfilePhotographer < ApplicationRecord
 	# Studies
 	has_many :studies, as: :ownerable, dependent: :destroy
 
+	# Wallet
+	has_one :wallet, as: :ownerable
+	has_many :coupon_charges, through: :wallet
+
 	#Check if profile is completed
 	def profile_complete?
 		parameters_with_values = self.generate_array_of_param_with_value

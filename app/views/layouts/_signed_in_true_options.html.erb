@@ -13,28 +13,30 @@
 				<%= t('menu.options.profile') %> <span class="badge"><%= get_profile_percent %></span>
 			<% end %>
 		</li>
-		<li>
-			<%= link_to custom_index_castings_path(contractor_id: current_user.profileable) do %>
-				<%= t('menu.options.castings') %> <span class="badge"><%= get_valid_castings_count %></span>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to custom_index_contractor_bookings_path(current_user.profileable) do %>
-				<%= t('menu.options.bookings') %> <span class="badge"><%= get_active_bookings_count %></span>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to messages_path do %>
-				<%= t('menu.options.inbox') %> <span class="badge"><%= get_profile_inbox_count %></span>
-			<% end %>
-		</li>
-		<li><%= link_to t('menu.options.new_casting'), new_casting_path %></li>
-		<li role="separator" class="divider"></li>
-		<li>
-			<div class="text-center">
-				<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
-			</div>
-		</li>
+		<% if current_user.profileable != nil %>
+			<li>
+				<%= link_to custom_index_castings_path(contractor_id: current_user.profileable) do %>
+					<%= t('menu.options.castings') %> <span class="badge"><%= get_valid_castings_count %></span>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to custom_index_contractor_bookings_path(current_user.profileable) do %>
+					<%= t('menu.options.bookings') %> <span class="badge"><%= get_active_bookings_count %></span>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to messages_path do %>
+					<%= t('menu.options.inbox') %> <span class="badge"><%= get_profile_inbox_count %></span>
+				<% end %>
+			</li>
+			<li><%= link_to t('menu.options.new_casting'), new_casting_path %></li>
+			<li role="separator" class="divider"></li>
+			<li>
+				<div class="text-center">
+					<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+				</div>
+			</li>
+		<% end %>
 		<li role="separator" class="divider"></li>
 		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% when "model" %>
@@ -44,48 +46,52 @@
 				<%= t('menu.options.profile') %> <span class="badge"><%= get_profile_percent %></span>
 			<% end %>		
 		</li>
-		<li>
-			<%= link_to messages_path do %>
-				<%= t('menu.options.inbox') %> <span class="badge"><%= get_profile_inbox_count %></span>
-			<% end %>	
-		</li>
-		<li>
-			<%= link_to index_castings_custom_profile_model_path(current_user.profileable) do %>
-				<%= t('menu.options.castings') %> <span class="badge"><%= get_valid_castings_count %></span>
-			<% end %>	
-		</li>
-		<li>
-			<%= link_to custom_index_model_bookings_path(current_user.profileable) do %>
-				<%= t('menu.options.bookings') %> <span class="badge"><%= get_active_bookings_count %></span>
-			<% end %>
-		</li>
-		<li>
-			<%= link_to castings_path do %>
-				<%= t('menu.options.find_casting') %> <span class="badge"><%= get_active_castings %></span>
-			<% end %>	
-		</li>
-		<li role="separator" class="divider"></li>
-		<li>
-			<%= link_to t('menu.options.profile_view'), profile_model_path(current_user.profileable) %>	
-		</li>
-		<li role="separator" class="divider"></li>
-		<li>
-			<div class="text-center">
-				<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
-			</div>
-		</li>
+		<% if current_user.profileable != nil %>
+			<li>
+				<%= link_to messages_path do %>
+					<%= t('menu.options.inbox') %> <span class="badge"><%= get_profile_inbox_count %></span>
+				<% end %>	
+			</li>
+			<li>
+				<%= link_to index_castings_custom_profile_model_path(current_user.profileable) do %>
+					<%= t('menu.options.castings') %> <span class="badge"><%= get_valid_castings_count %></span>
+				<% end %>	
+			</li>
+			<li>
+				<%= link_to custom_index_model_bookings_path(current_user.profileable) do %>
+					<%= t('menu.options.bookings') %> <span class="badge"><%= get_active_bookings_count %></span>
+				<% end %>
+			</li>
+			<li>
+				<%= link_to castings_path do %>
+					<%= t('menu.options.find_casting') %> <span class="badge"><%= get_active_castings %></span>
+				<% end %>	
+			</li>
+			<li role="separator" class="divider"></li>
+			<li>
+				<%= link_to t('menu.options.profile_view'), profile_model_path(current_user.profileable) %>	
+			</li>
+			<li role="separator" class="divider"></li>
+			<li>
+				<div class="text-center">
+					<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+				</div>
+			</li>
+		<% end %>
 		<li role="separator" class="divider"></li>
 		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% when "photographer" %>
 		<li><%= link_to t('menu.options.account'), edit_user_registration_path %></li>
 		<li><%= link_to t('menu.options.profile'), get_profile_path %></li>
-		<li><a href="#">Inbox</a></li>
-		<li role="separator" class="divider"></li>
-		<li>
-			<div class="text-center">
-				<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
-			</div>
-		</li>
+		<% if current_user.profileable != nil %>
+			<li><a href="#">Inbox</a></li>
+			<li role="separator" class="divider"></li>
+			<li>
+				<div class="text-center">
+					<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+				</div>
+			</li>
+		<% end %>
 		<li role="separator" class="divider"></li>
 		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% end %>
