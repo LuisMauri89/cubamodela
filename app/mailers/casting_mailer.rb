@@ -59,14 +59,14 @@ class CastingMailer < ApplicationMailer
 		@contractor = contractor
 		@casting = casting
 		@profile = profile
-		mail(to: @profile.user.email, subject: I18n.t('views.mailers.casting.casting_invitation_confirmed.subject', value: @casting.title))
+		mail(to: @contractor.user.email, subject: I18n.t('views.mailers.casting.casting_invitation_confirmed.subject', value: @casting.title))
 	end
 
 	def email_casting_application(contractor, casting, profile)
 		@contractor = contractor
 		@casting = casting
 		@profile = profile
-		mail(to: @profile.user.email, subject: I18n.t('views.mailers.casting.casting_application.subject', value: @casting.title))
+		mail(to: @contractor.user.email, subject: I18n.t('views.mailers.casting.casting_application.subject', value: @casting.title))
 	end
 
 	def email_casting_application_confirmed(profile, casting)

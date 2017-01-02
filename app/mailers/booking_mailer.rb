@@ -6,16 +6,18 @@ class BookingMailer < ApplicationMailer
 		mail(to: @profile.user.email, subject: I18n.t('views.mailers.booking.booking_invitation.subject', value: @booking.description[0..50]))
 	end
 
-	def email_booking_confirmed(profile, booking)
-		@profile = profile
+	def email_booking_confirmed(contractor, booking, profile)
+		@contractor = contractor
 		@booking = booking
-		mail(to: @profile.user.email, subject: I18n.t('views.mailers.booking.booking_confirmed.subject', value: @booking.description[0..50]))
+		@profile = profile
+		mail(to: @contractor.user.email, subject: I18n.t('views.mailers.booking.booking_confirmed.subject', value: @booking.description[0..50]))
 	end
 
-	def email_booking_rejected(profile, booking)
-		@profile = profile
+	def email_booking_rejected(contractor, booking, profile)
+		@contractor = contractor
 		@booking = booking
-		mail(to: @profile.user.email, subject: I18n.t('views.mailers.booking.booking_rejected.subject', value: @booking.description[0..50]))
+		@profile = profile
+		mail(to: @contractor.user.email, subject: I18n.t('views.mailers.booking.booking_rejected.subject', value: @booking.description[0..50]))
 	end
 
 	def email_booking_canceled(profile, booking)

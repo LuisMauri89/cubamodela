@@ -1,0 +1,30 @@
+<h1 class="header text-center text-white"><%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %></h1>
+<h2><%= t('views.messages.index.templates.booking_change_fields_only.header_text') %></h2>
+
+<h4><%= t('activerecord.attributes.booking.description') %></h4>
+<div class="translated-text">
+	<% if @booking.description_en.present? %>
+		<p><%= @booking.description_en %></p>
+		<footer>
+			<%= @booking.description_es %>
+		</footer>
+	<% else %>
+		<p class="title"><%= @booking.description_es %></p>
+		<footer>
+			<%= @booking.description_en %>
+		</footer>
+	<% end %>
+</div>
+
+<p><%= t('views.messages.index.templates.booking_change_fields_only.after_description_text') %></p>
+
+<p><%= t('activerecord.attributes.booking.casting_date') %>: <%= l(@booking.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+<p><%= t('activerecord.attributes.booking.shooting_date') %>: <%= l(@booking.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+
+<p><%= t('views.messages.index.templates.booking_change_fields_only.after_dates_text') %></p>
+
+<%= link_to t('views.messages.index.templates.booking_change_fields_only.buttons.see_casting'), booking_url(@booking), class: "btn" %>
+
+<div class="clear"></div>
+
+<p><%= t('views.mailers.global.mail_footer') %></p>

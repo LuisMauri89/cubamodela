@@ -16,6 +16,12 @@ class BookingsController < ApplicationController
 		@bookings = @model.index_bookings
 	end
 
+	def show
+	    respond_to do |format|
+	    	format.html
+	    end
+	end
+
 	def new
 	  @booking = Booking.new
 

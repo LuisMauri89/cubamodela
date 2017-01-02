@@ -501,6 +501,13 @@ en:
         empty_list_text: "No bookings shcedule"
       index:
         bookings: "Bookings"
+      show:
+        status_text: "Status: %{value}"
+        headers:
+          header_text: "BOOKING"
+          description: "Description"
+          location: "Location"
+          dates: "Dates"
       messages:
         create: "Booking has been successfully created."
         confirm: "Confirmation successfully."
@@ -777,27 +784,23 @@ en:
           booking_confirmed:
             title: ""
             description: ""
-            header_text: ""
-            subheader_text: ""
+            header_text: "%{value} has confirmed his/her presence to your booking"
             after_description_text: ""
             after_dates_text: ""
             buttons:
               see_booking: "Booking details"
-              edit_casting: ""
-              manage_casting: ""
-              see_profile: ""
+              edit_booking: "Edit booking"
+              see_profile: "%{value} profile"
           booking_rejected:
             title: ""
             description: ""
-            header_text: ""
-            subheader_text: ""
+            header_text: "%{value} has rejected his/her presence to your booking"
             after_description_text: ""
             after_dates_text: ""
             buttons:
-              see_casting: ""
-              edit_casting: ""
-              manage_casting: ""
-              see_profile: ""
+              see_booking: "Booking details"
+              edit_booking: "Edit booking"
+              see_profile: "%{value} profile"
           booking_canceled:
             title: ""
             description: ""
