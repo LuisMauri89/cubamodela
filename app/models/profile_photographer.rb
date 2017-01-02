@@ -12,6 +12,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	# Nomenclators
 	has_and_belongs_to_many :languages, dependent: :destroy
+	belongs_to :current_province, class_name: "Province", foreign_key: "current_province_id", optional: true
 	belongs_to :nationality, optional: true
 
 	# Pictures
@@ -24,6 +25,9 @@ class ProfilePhotographer < ApplicationRecord
 	# Wallet
 	has_one :wallet, as: :ownerable
 	has_many :coupon_charges, through: :wallet
+
+	# Plan
+	belongs_to :plan
 
 	#Check if profile is completed
 	def profile_complete?
@@ -64,7 +68,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	def get_profile_picture_url(size)
 		begin
-			return self.albums.where(name: "Profile Photo").first.photos.last.image.url(size)
+			return self.albums.where(name: Constant::ALBUM_PROFILE_NAME).first.photos.last.image.url(size)
 		rescue
 			return "missing_profile_picture.jpg"
 		end
@@ -72,7 +76,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	def get_profesional_book_album_photos
 		begin
-			return self.albums.where(name: "Profesional Book").first.photos
+			return self.albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos
 		rescue
 			return []
 		end
@@ -80,7 +84,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	def get_profesional_book_album_photos_count
 		begin
-			return self.albums.where(name: "Profesional Book").first.photos.count
+			return self.albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos.count
 		rescue
 			return 0
 		end
@@ -96,7 +100,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	def add_profile_picture_album_to_progress
 		begin
-			profile_picture_album = self.albums.where(name: "Profile Photo").first
+			profile_picture_album = self.albums.where(name: Constant::ALBUM_PROFILE_NAME).first
 			if profile_picture_album.photos.any?
 				return false
 			end
@@ -109,7 +113,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	def add_profesional_book_album_to_progress
 		begin
-			profesional_book_album = self.albums.where(name: "Profesional Book").first
+			profesional_book_album = self.albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first
 			if profesional_book_album.photos.any?
 				return false
 			end
@@ -117,6 +121,21 @@ class ProfilePhotographer < ApplicationRecord
 			return true
 		rescue
 			return true
+		end
+	end
+
+	def can_upload_photo?(photo_type)
+		current_amount = 0
+		allow = true
+
+		case photo_type
+		when "profile"
+			return [allow, nil]
+		when "professional"
+			current_amount = albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos.count
+
+			allow = self.plan.can_upload_photo?(photo_type, current_amount)
+			return allow ? [allow, nil] : [allow, I18n.t('views.albums.messages.professional_max')]
 		end
 	end
 end

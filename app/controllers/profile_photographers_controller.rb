@@ -1,7 +1,19 @@
 class ProfilePhotographersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
-  before_action :set_profile, only: [:show, :show_resume, :edit, :update, :destroy]
-  before_action :check_if_can, only: [:edit, :update, :destroy]
+  before_action :set_profile, only: [:show, 
+                :show_resume, 
+                :plans, 
+                :albums, 
+                :studies, 
+                :edit, 
+                :update, 
+                :destroy]
+  before_action :check_if_can, only: [:edit, 
+                                      :update, 
+                                      :plans, 
+                                      :albums, 
+                                      :studies, 
+                                      :destroy]
 
   def index
     @photographers = ProfilePhotographer.all
@@ -61,6 +73,36 @@ class ProfilePhotographersController < ApplicationController
     end
   end
 
+  def albums
+    begin
+      @albums = @profile.albums
+    rescue
+      @albums = []
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def studies
+    begin
+      @studies = @profile.studies
+    rescue
+      @studies = []
+    end
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def plans
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
   end
 
@@ -80,7 +122,13 @@ class ProfilePhotographersController < ApplicationController
     end
 
     def build_profile_meta
-      @profile.albums.create(name: "Profile Photo")
-      @profile.albums.create(name: "Profesional Book")
+      @profile.albums.create(name: Constant::ALBUM_PROFILE_NAME)
+      @profile.albums.create(name: Constant::ALBUM_PROFESSIONAL_NAME)
+
+      @profile.create_wallet
+
+      @profile.plan = Plan.get_photographer_basic_plan
+
+      @profile.save
     end
 end

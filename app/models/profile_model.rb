@@ -144,7 +144,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_profile_picture_url(size)
 		begin
-			return albums.where(name: "Profile Photo").first.photos.last.image.url(size)
+			return albums.where(name: Constant::ALBUM_PROFILE_NAME).first.photos.last.image.url(size)
 		rescue
 			return "missing_profile_picture.jpg"
 		end
@@ -152,7 +152,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_profesional_book_album_photos
 		begin
-			return albums.where(name: "Profesional Book").first.photos.limit(self.plan.album_professional_max)
+			return albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos.limit(self.plan.album_professional_max)
 		rescue
 			return []
 		end
@@ -160,7 +160,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_profesional_book_album_photos_count
 		begin
-			return albums.where(name: "Profesional Book").first.photos.limit(self.plan.album_professional_max).count
+			return albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos.limit(self.plan.album_professional_max).count
 		rescue
 			return 0
 		end
@@ -168,7 +168,7 @@ class ProfileModel < ApplicationRecord
 
 	def get_polaroid_album_photos
 		begin
-			return albums.where(name: "Polaroid").first.photos.limit(self.plan.album_polaroid_max)
+			return albums.where(name: Constant::ALBUM_POLAROID_NAME).first.photos.limit(self.plan.album_polaroid_max)
 		rescue
 			return []
 		end
@@ -304,7 +304,7 @@ class ProfileModel < ApplicationRecord
 
 	def add_profile_picture_album_to_progress
 		begin
-			profile_picture_album = albums.where(name: "Profile Photo").first
+			profile_picture_album = albums.where(name: Constant::ALBUM_PROFILE_NAME).first
 			if profile_picture_album.photos.any?
 				return false
 			end
@@ -317,7 +317,7 @@ class ProfileModel < ApplicationRecord
 
 	def add_profesional_book_album_to_progress
 		begin
-			profesional_book_album = albums.where(name: "Profesional Book").first
+			profesional_book_album = albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first
 			if profesional_book_album.photos.any?
 				return false
 			end
@@ -408,12 +408,12 @@ class ProfileModel < ApplicationRecord
 		when "profile"
 			return [allow, nil]
 		when "professional"
-			current_amount = albums.where(name: "Profesional Book").first.photos.count
+			current_amount = albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos.count
 
 			allow = self.plan.can_upload_photo?(photo_type, current_amount)
 			return allow ? [allow, nil] : [allow, I18n.t('views.albums.messages.professional_max')]
 		when "polaroid"
-			current_amount = albums.where(name: "Polaroid").first.photos.count
+			current_amount = albums.where(name: Constant::ALBUM_POLAROID_NAME).first.photos.count
 
 			allow = self.plan.can_upload_photo?(photo_type, current_amount)
 			return allow ? [allow, nil] : [allow, I18n.t('views.albums.messages.polaroid_max')]

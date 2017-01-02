@@ -3,7 +3,7 @@ class Plan < ApplicationRecord
   	enum target: [:model, :photographer, :contractor]
 
   	# Level
-  	enum level: [:free, :premium]
+  	enum level: [:free, :premium, :basic]
 
   	# Associations
   	has_many :profile_models
@@ -60,5 +60,9 @@ class Plan < ApplicationRecord
 
 	def self.get_contractor_free_plan
 		return where(target: "contractor", level: "free").first
+	end
+
+	def self.get_photographer_basic_plan
+		return where(target: "photographer", level: "basic").first
 	end
 end

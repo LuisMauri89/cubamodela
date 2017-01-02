@@ -85,10 +85,17 @@ class Ability
             message.try(:ownerable) == user.profileable
         end
         can :create, ProfilePhotographer
-        can :update, ProfilePhotographer do |profile|
+        can [:update, :albums, :studies, :plans], ProfilePhotographer do |profile|
             profile.try(:user) == user
         end
-        can :show, Study
+        can [:show, :create, :uploaded], Photo
+        can :destroy, Photo do |photo|
+            photo.attachable.try(:profileable) == user.profileable
+        end
+        can [:read, :show, :create], Study
+        can [:update, :destroy], Study do |study|
+            study.try(:ownerable) == user.profileable
+        end
     end
   end
 end

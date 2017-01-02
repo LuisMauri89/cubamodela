@@ -29,6 +29,7 @@
                   <td><h4><%= l(booking.shooting_date, format: :custom) %></h4></td>
                   <td><h4 id="status-<%= booking.id %>"><%= booking.status.humanize %></h4></td>
                   <td id="actions-<%= booking.id %>">
+                    <%= link_to t('forms.buttons.details'), booking_path(booking), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                     <% if ["booked", "confirmed"].include?(booking.status) %>
                       <%= link_to t('forms.buttons.reject'), reject_booking_path(booking, booking.profile_model, from: "model-index-bookings"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                       <% if booking.status == "booked" %>

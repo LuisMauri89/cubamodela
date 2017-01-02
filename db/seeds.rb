@@ -71,8 +71,12 @@ end
 if !Plan.any?
 	Plan.create(target: "model", level: "free", priority: 10, album_professional_max: 5, album_polaroid_max: 5, video_max: 0)
 	Plan.create(target: "model", level: "premium", priority: 5, album_professional_max: 15, album_polaroid_max: 5, video_max: 1)
+	Plan.create(target: "photographer", level: "basic", priority: 10, album_professional_max: 5, video_max: 0)
+	Plan.create(target: "photographer", level: "premium", priority: 5, album_professional_max: 15, video_max: 1)
 	Plan.create(target: "contractor", level: "free", priority: 10, casting_photos_references_max: 5)
 end
+
+
 
 if !Province.any?
 	Province.create(name_en: "Havana", name_es: "La Habana")

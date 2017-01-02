@@ -41,6 +41,9 @@ Rails.application.routes.draw do
 
 # Photographers Profile routes
   resources :profile_photographers do
+    get 'albums', on: :member
+    get 'studies', on: :member
+    get 'plans', on: :member
     get 'show_resume', on: :member
   end
 
