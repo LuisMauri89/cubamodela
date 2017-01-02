@@ -16,7 +16,7 @@
 <div class="row message-section">
 	<div class="col-md-12">
 		<div class="text-justify">
-			<h4><%= t('activerecord.attributes.casting.description') %></h4>
+			<h4><%= t('activerecord.attributes.booking.description') %></h4>
 			<div class="translated-text">
 				<% if @message.asociateable.description_en.present? %>
 					<p><%= @message.asociateable.description_en %></p>
@@ -47,15 +47,11 @@
 		<div class="col-md-12">
 			<div class="text-left">
 
-				<% if @message.asociateable.expiration_date > Date.today %>
-					<p><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@message.asociateable.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+				<% if @message.asociateable.casting_date.to_date > Date.today %>
+					<p><%= t('activerecord.attributes.booking.casting_date') %>: <%= l(@message.asociateable.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
 				<% end %>
 
-				<% if @message.asociateable.casting_date > Date.today %>
-					<p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@message.asociateable.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.casting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
-				<% end %>
-
-				<p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@message.asociateable.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+				<p><%= t('activerecord.attributes.booking.shooting_date') %>: <%= l(@message.asociateable.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @message.asociateable.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
 			</div>
 		</div>
 	</div>
@@ -71,16 +67,16 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<% if @message.asociateable.expiration_date.to_date > Date.today %>
+		<% if @message.asociateable.casting_date.to_date > Date.today %>
 			<% @status = @message.asociateable.status %>
 			<% if @status == "booked" %>
-				<%= link_to t('forms.buttons.reject'), reject_booking_path(@message.asociateable, @message.asociateable.profile_model, from: "inbox-message-booking"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right", id: "btn-reject-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
+				<%= link_to t('views.messages.index.templates.booking_invitation.buttons.reject'), reject_booking_path(@message.asociateable, @message.asociateable.profile_model, from: "inbox-message-booking"), remote: true, class: "btn btn-primary btn-small-right-margin pull-right", id: "btn-reject-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
 
-				<%= link_to t('forms.buttons.confirm'), confirm_booking_path(@message.asociateable, @message.asociateable.profile_model, from: "inbox-message-booking"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right", id: "btn-confirm-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
-			<% elsif @status == "confirmed") %>
-				<%= link_to t('forms.buttons.reject'), reject_booking_path(@message.asociateable, @message.asociateable.profile_model, from: "inbox-message-booking"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right", id: "btn-reject-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
+				<%= link_to t('views.messages.index.templates.booking_invitation.buttons.confirm'), confirm_booking_path(@message.asociateable, @message.asociateable.profile_model, from: "inbox-message-booking"), remote: true, class: "btn btn-primary btn-small-right-margin pull-right", id: "btn-confirm-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
+			<% elsif @status == "confirmed" %>
+				<%= link_to t('views.messages.index.templates.booking_invitation.buttons.reject'), reject_booking_path(@message.asociateable, @message.asociateable.profile_model, from: "inbox-message-booking"), remote: true, class: "btn btn-primary btn-small-right-margin pull-right", id: "btn-reject-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
 			<% end %>
 		<% end %>
-		<%= link_to t('views.messages.index.templates.booking_invitation.buttons.see_casting'), booking_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+		<%= link_to t('views.messages.index.templates.booking_invitation.buttons.see_booking'), booking_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
 	</div>
 </div>

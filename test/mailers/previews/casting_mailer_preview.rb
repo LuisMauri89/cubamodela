@@ -1,62 +1,50 @@
 # Preview all emails at http://localhost:3000/rails/mailers/casting_mailer
 class CastingMailerPreview < ActionMailer::Preview
 	def email_casting_invitation
-		CastingMailer.email_casting_invitation(ProfileModel.first, Casting.first)
+		CastingMailer.email_casting_invitation(ProfileModel.find(45), Casting.first)
 	end
 
-	def email_casting_confirmation
-		CastingMailer.email_casting_confirmation(ProfileContractor.first, Casting.first, ProfileModel.first)
+	def email_casting_invitation_confirmed
+		CastingMailer.email_casting_invitation_confirmed(ProfileContractor.first, Casting.first, ProfileModel.find(45))
 	end
 
 	def email_casting_application
-		CastingMailer.email_casting_application(ProfileContractor.first, Casting.first, ProfileModel.first)
+		CastingMailer.email_casting_application(ProfileContractor.first, Casting.first, ProfileModel.find(45))
 	end
 
-	def email_casting_application_confirmation
-		CastingMailer.email_casting_application_confirmation(ProfileModel.first, Casting.first)
+	def email_casting_application_confirmed
+		CastingMailer.email_casting_application_confirmed(ProfileModel.find(45), Casting.first)
 	end
 
 	def email_casting_new_free
 		CastingMailer.email_casting_new_free(ProfileModel.find(45), Casting.last)
 	end
 	
-	def email_casting_dates_changed_invited
-		CastingMailer.email_casting_dates_changed_invited(ProfileModel.first, Casting.first)
+	def email_casting_change_fields_only
+		CastingMailer.email_casting_change_fields_only(ProfileModel.find(45), Casting.first)
 	end
 	
-	def email_casting_dates_changed_confirmed
-		CastingMailer.email_casting_dates_changed_confirmed(ProfileModel.first, Casting.first)
+	def email_casting_change_dates_only
+		CastingMailer.email_casting_change_dates_only(ProfileModel.find(45), Casting.first)
 	end
 	
-	def email_casting_dates_changed_applied
-		CastingMailer.email_casting_dates_changed_applied(ProfileModel.first, Casting.first)
+	def email_casting_change_fields_and_dates
+		CastingMailer.email_casting_change_fields_and_dates(ProfileModel.find(45), Casting.first)
 	end
 	
-	def email_casting_closed
-		CastingMailer.email_casting_closed(ProfileModel.first, Casting.first)
+	def email_casting_expired
+		CastingMailer.email_casting_expired(ProfileModel.find(45), Casting.first)
 	end
 	
 	def email_casting_canceled
-		CastingMailer.email_casting_canceled(ProfileModel.first, Casting.first)
+		CastingMailer.email_casting_canceled(ProfileModel.find(45), Casting.first)
 	end
 	
-	def email_profile_published
-		CastingMailer.email_profile_published(ProfileModel.first)
+	def email_casting_translation
+		CastingMailer.email_casting_translation(ProfileModel.find(45), Casting.first)
 	end
 	
-	def email_profile_unpublished
-		CastingMailer.email_profile_unpublished(ProfileModel.first)
-	end
-	
-	def email_casting_available_expiration_proximity
-		CastingMailer.email_casting_available_expiration_proximity(ProfileModel.first, Casting.first)
-	end
-	
-	def email_casting_invited_expiration_proximity
-		CastingMailer.email_casting_invited_expiration_proximity(ProfileModel.first, Casting.first)
-	end
-	
-	def email_casting_invited_date_proximity
-		CastingMailer.email_casting_invited_date_proximity(ProfileModel.first, Casting.first)
+	def email_casting_expiration_proximity
+		CastingMailer.email_casting_expiration_proximity(ProfileModel.find(45), Casting.first)
 	end
 end

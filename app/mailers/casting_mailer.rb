@@ -37,7 +37,7 @@ class CastingMailer < ApplicationMailer
 		mail(to: @profile.user.email, subject: I18n.t('views.mailers.casting.casting_expiration_proximity.subject', value: @casting.title))
 	end
 
-	def email_inbox_message_casting_expired(profile, casting)
+	def email_casting_expired(profile, casting)
 		@profile = profile
 		@casting = casting
 		mail(to: @profile.user.email, subject: I18n.t('views.mailers.casting.casting_expired.subject', value: @casting.title))

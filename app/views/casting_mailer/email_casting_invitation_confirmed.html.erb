@@ -1,0 +1,23 @@
+<h1 class="header text-center text-white"><%= t('views.mailers.global.user_friendly') %> <%= @contractor.get_first_name %></h1>
+<h2><%= t('views.messages.index.templates.casting_invitation_confirmed.header_text', value: @profile.get_first_name) %></h2>
+<h3><%= t('views.messages.index.templates.casting_invitation_confirmed.subheader_text', value: @casting.title) %></h3>
+
+<h4><%= t('activerecord.attributes.casting.description') %></h4>
+<p><%= @casting.description %></p>
+
+<p><%= t('views.messages.index.templates.casting_invitation_confirmed.after_description_text') %></p>
+
+<p><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+<p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+<p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+
+<p><%= t('views.messages.index.templates.casting_invitation_confirmed.after_dates_text') %></p>
+
+<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.see_casting'), casting_url(@casting), class: "btn" %>
+<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.edit_casting'), edit_casting_url(@casting), class: "btn" %>
+<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.manage_casting'), manage_casting_url(@casting), class: "btn" %>
+<%= link_to t('views.messages.index.templates.casting_invitation_confirmed.buttons.see_profile', value: @profile.get_first_name), profile_model_url(@profile), class: "btn" %>
+
+<div class="clear"></div>
+
+<p><%= t('views.mailers.global.mail_footer') %></p>

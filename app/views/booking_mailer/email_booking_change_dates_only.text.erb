@@ -1,0 +1,17 @@
+<%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %>
+===============================================
+ <%= t('views.messages.index.templates.booking_change_dates_only.header_text') %>
+
+ <%= t('activerecord.attributes.booking.description') %>
+ <%= @booking.description %>
+
+ <%= t('views.messages.index.templates.booking_change_dates_only.after_description_text') %>
+
+ <%= t('activerecord.attributes.booking.casting_date') %>: <%= l(@booking.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
+ <%= t('activerecord.attributes.booking.shooting_date') %>: <%= l(@booking.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
+
+ <%= t('views.messages.index.templates.booking_change_dates_only.after_dates_text') %>
+
+ <%= t('views.messages.index.templates.bookingchange_dates_only.buttons.see_casting') %> : <%=  booking_url(@booking) %>
+    
+ <%= t('views.mailers.global.mail_footer') %>

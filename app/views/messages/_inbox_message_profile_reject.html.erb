@@ -1,0 +1,43 @@
+<div class="row bg-primary message-section">
+	<div class="col-md-11">
+		<div class="text-center">
+			<h2><%= t('views.messages.index.templates.profile_reject.header_text') %></h2>
+		</div>
+	</div>
+	<div class="col-md-1">
+		<div class="text-center">
+			<%= button_to(message_path(@message), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "pull-right") do %>
+			  <span class="glyphicon glyphicon-trash glyphicon-trash-blue" aria-hidden="true"></span>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-justify">
+			<p><%= t('views.messages.index.templates.profile_reject.list_header_text') %></p>
+			<ul>
+				<li><%= t('views.messages.index.templates.profile_reject.list_item_1_text') %></li>
+				<li><%= t('views.messages.index.templates.profile_reject.list_item_2_text') %></li>
+				<li><%= t('views.messages.index.templates.profile_reject.list_item_3_text') %></li>
+				<li><%= t('views.messages.index.templates.profile_reject.list_item_4_text') %></li>
+				<li><%= t('views.messages.index.templates.profile_reject.list_item_5_text') %></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row message-section">
+	<div class="col-md-12">
+		<div class="text-center">
+			<p><%= t('views.messages.index.templates.profile_reject.argument_text') %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<%= link_to t('views.messages.index.templates.profile_published.buttons.edit_profile'), edit_profile_model_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>
+	</div>
+</div>

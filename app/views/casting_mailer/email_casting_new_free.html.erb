@@ -1,4 +1,4 @@
-<h1 style="background-color: #337ab7; padding: 10px;"><%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %></h1>
+<h1 class="header text-center text-white"><%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %></h1>
 <h2><%= t('views.messages.index.templates.casting_new_free.header_text') %></h2>
 <h3>"<%= @casting.title %>"</h3>
 
@@ -13,6 +13,8 @@
 
 <p><%= t('views.messages.index.templates.casting_new_free.after_dates_text') %></p>
 
-<%= link_to t('views.messages.index.templates.casting_new_free.buttons.see_casting'), casting_url(@casting) %>
+<%= link_to t('views.messages.index.templates.casting_new_free.buttons.see_casting'), casting_url(@casting), class: "btn" %>
+
+<div class="clear"></div>
 
 <p><%= t('views.mailers.global.mail_footer') %></p>

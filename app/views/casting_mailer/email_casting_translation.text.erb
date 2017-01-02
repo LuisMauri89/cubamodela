@@ -1,0 +1,19 @@
+<%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %>
+===============================================
+ <%= t('views.messages.index.templates.casting_translation.header_text') %>
+ "<%= @casting.title %>"
+
+ <%= t('activerecord.attributes.casting.description') %>
+ <%= @casting.description %>
+
+ <%= t('views.messages.index.templates.casting_translation.after_description_text') %>
+
+ <%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]
+ <%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
+ <%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
+
+ <%= t('views.messages.index.templates.casting_translation.after_dates_text') %>
+
+ <%= t('views.messages.index.templates.casting_translation.buttons.see_casting') %> : <%=  casting_url(@casting) %>
+    
+ <%= t('views.mailers.global.mail_footer') %>

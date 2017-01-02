@@ -1,19 +1,19 @@
 <h1 class="header text-center text-white"><%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %></h1>
-<h2 class="text-center"><%= t('views.messages.index.templates.casting_closed.header_text') %></h2>
-<h3 class="text-center">"<%= @casting.title %>"</h3>
+<h2><%= t('views.messages.index.templates.casting_expired.header_text') %></h2>
+<h3>"<%= @casting.title %>"</h3>
 
 <h4><%= t('activerecord.attributes.casting.description') %></h4>
 <p><%= @casting.description %></p>
 
-<p class="text-center"><%= t('views.messages.index.templates.casting_closed.after_description_text') %></p>
+<p><%= t('views.messages.index.templates.casting_expired.after_description_text') %></p>
 
 <p><%= t('activerecord.attributes.casting.expiration_date') %>: <%= l(@casting.expiration_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.expiration_date) << t('datetime.distance_in_words.after_text') %> ]</p>
-<p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.casting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
-<p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.shooting_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+<p><%= t('activerecord.attributes.casting.casting_date') %>: <%= l(@casting.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
+<p><%= t('activerecord.attributes.casting.shooting_date') %>: <%= l(@casting.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @casting.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]</p>
 
-<p class="text-center"><%= t('views.messages.index.templates.casting_closed.after_dates_text') %></p>
+<p><%= t('views.messages.index.templates.casting_expired.after_dates_text') %></p>
 
-<%= link_to t('views.messages.index.templates.casting_closed.buttons.see_casting'), casting_url(@casting), class: "btn" %>
+<%= link_to t('views.messages.index.templates.casting_expired.buttons.see_casting'), casting_url(@casting), class: "btn" %>
 
 <div class="clear"></div>
 
