@@ -110,4 +110,9 @@ class Notification
 	def self.notify_review_new(owner, asociated, third)
 		Message.create(template: "inbox_message_review_new", ownerable: owner, asociateable: asociated, thirdable: third)
 	end
+
+	# Coupon
+	def self.notify_coupon_sent(owner, asociated)
+		Message.create(template: "inbox_message_coupon_sent", ownerable: owner, asociateable: asociated)
+	end
 end

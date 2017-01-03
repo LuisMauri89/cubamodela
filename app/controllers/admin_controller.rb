@@ -1,8 +1,14 @@
 class AdminController < ApplicationController
 	before_action :authenticate_user!
-	before_action :check_if_can, only: [:control_panel, :model_pending_review, :pending_translations]
-	before_action :set_request, only: [:accept_model_request_to_upgrade, :reject_model_request_to_upgrade]
-	before_action :set_model_level_request_action_from, only: [:accept_model_request_to_upgrade, :reject_model_request_to_upgrade]
+	before_action :check_if_can, only: [:control_panel, 
+									    :model_pending_review, 
+									    :pending_translations,
+									    :message_for,
+									    :send_message]
+	before_action :set_request, only: [:accept_model_request_to_upgrade, 
+									   :reject_model_request_to_upgrade]
+	before_action :set_model_level_request_action_from, only: [:accept_model_request_to_upgrade, 
+															   :reject_model_request_to_upgrade]
 
 	def control_panel
 	end
@@ -91,7 +97,7 @@ class AdminController < ApplicationController
 
 		set_user
 
-		# send notify de coupon
+		CouponSentJob.perform_later(@user.profileable, @coupon)
 
 		respond_to do |format|
 			format.html{ redirect_to coupons_path, notice: t('views.admin.coupons.messages.coupon_sent') }
@@ -130,6 +136,19 @@ class AdminController < ApplicationController
 		respond_to do |format|
 			format.js
 		end
+	end
+
+	def message_for
+		set_user
+	end
+
+	def send_message
+		set_user
+		@body = params[:message][:body]
+
+		MessageSendJob.perform_later(@user.profileable, @body)
+
+		redirect_to request.referrer, notice: t('views.admin.message.message_sent')
 	end
 
 	private

@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="panel panel-default panel-nomenclator">
       <div class="panel-heading">
-        <h1 class="panel-title text-center">Users</h1>
+        <h1 class="panel-title text-center"><%= t('views.admin.users.header_text') %></h1>
       </div>
       <div class="panel-body panel-body-nomenclator">
         <table class="table">
@@ -20,14 +20,14 @@
             <% @users.each do |user| %>
               <tr>
                 <td>
-                  <%= image_tag user.profileable.nil? ? "missing_profile_picture.jpg" : user.profileable.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
+                  <%= image_tag user.profileable.nil? ? "missing_profile_picture.jpg" : user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
                   <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.full_name  %></h4>
                 </td>
                 <td class="text-center"><h4><%= user.email %></h4></td>
                 <td class="text-center"><h4><%= user.kind %></h4></td>
                 <td class="text-center"><h4><%= l(user.created_at, format: :custom) << " [ " << distance_of_time_in_words(user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
-                  <%= link_to 'Some action', "#", class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  <%= link_to t('views.admin.users.buttons.send_message'), message_for_path(user_id: user.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>
             <% end %>

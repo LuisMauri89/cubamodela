@@ -19,6 +19,9 @@ class ProfilePhotographer < ApplicationRecord
 	has_many :albums, as: :profileable, dependent: :destroy
 	has_many :photos, through: :albums
 
+	# Inbox
+	has_many :messages, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
+
 	# Studies
 	has_many :studies, as: :ownerable, dependent: :destroy
 
@@ -31,30 +34,30 @@ class ProfilePhotographer < ApplicationRecord
 
 	#Check if profile is completed
 	def profile_complete?
-		parameters_with_values = self.generate_array_of_param_with_value
+		parameters_with_values = generate_array_of_param_with_value
 
 		parameters_with_values.each do |p|
-			return p if p
+			return false if !p
 		end
 
-		return false
+		return true
 	end
 
 	def profile_complete_progress
 		progress = 0
-		parameters_with_values = self.generate_array_of_param_with_value
+		parameters_with_values = generate_array_of_param_with_value
 
-		progress = parameters_with_values.reject{ |p| p }.length
+		progress = parameters_with_values.reject{ |p| !p }.length
 
 		return progress
 	end
 
 	def profile_complete_progress_total
-		total = 18
+		total = 10
 	end
 
 	def profile_complete_progress_percentage
-		progress = (self.profile_complete_progress * 100)/self.profile_complete_progress_total
+		progress = (profile_complete_progress * 100)/profile_complete_progress_total
 	end
 
 	# Get full name
@@ -63,6 +66,14 @@ class ProfilePhotographer < ApplicationRecord
 			self.first_name + " " + self.last_name
 		else
 			"Unknown"
+		end
+	end
+
+	def get_first_name
+		if first_name.present?
+			return first_name
+		else
+			return user.email.split("@")[0]
 		end
 	end
 
@@ -91,16 +102,24 @@ class ProfilePhotographer < ApplicationRecord
 	end
 
 	def generate_array_of_param_with_value
-		parameters_with_values = [self.first_name.nil? ? true : self.first_name.empty?, self.last_name.nil? ? true : self.last_name.empty?, self.gender.nil?, self.mobile_phone.nil? ? true : self.mobile_phone.empty?, self.land_phone.nil? ? true : self.land_phone.empty?, self.address.nil? ? true : self.address.empty?, self.nationality.nil?]
-		parameters_with_values << self.add_profile_picture_album_to_progress
-		parameters_with_values << self.add_profesional_book_album_to_progress
+		parameters_with_values = [first_name.present?, 
+								  last_name.present?, 
+								  gender.present?, 
+								  mobile_phone.present?, 
+								  land_phone.present?, 
+								  address.present?, 
+								  current_province.present?, 
+								  nationality.present?]
+
+		parameters_with_values << add_profile_picture_album_to_progress
+		parameters_with_values << add_profesional_book_album_to_progress
 
 		return parameters_with_values
 	end
 
 	def add_profile_picture_album_to_progress
 		begin
-			profile_picture_album = self.albums.where(name: Constant::ALBUM_PROFILE_NAME).first
+			profile_picture_album = albums.where(name: Constant::ALBUM_PROFILE_NAME).first
 			if profile_picture_album.photos.any?
 				return false
 			end
@@ -113,7 +132,7 @@ class ProfilePhotographer < ApplicationRecord
 
 	def add_profesional_book_album_to_progress
 		begin
-			profesional_book_album = self.albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first
+			profesional_book_album = albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first
 			if profesional_book_album.photos.any?
 				return false
 			end

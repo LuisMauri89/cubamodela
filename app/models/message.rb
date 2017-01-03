@@ -26,7 +26,8 @@ class Message < ApplicationRecord
                   :inbox_message_profile_unpublished, 
                   :inbox_message_profile_reject, 
                   :inbox_message_profile_warning, 
-                  :inbox_message_review_new]
+                  :inbox_message_review_new,
+                  :inbox_message_coupon_sent]
 
   after_initialize :set_default_template, if: :new_record?
 
@@ -116,6 +117,9 @@ class Message < ApplicationRecord
     when "inbox_message_review_new"
       self.title = "views.messages.index.templates.review_new.title"
       self.description = "views.messages.index.templates.review_new.description"
+    when "inbox_message_coupon_sent"
+      self.title = "views.messages.index.templates.coupon_sent.title"
+      self.description = "views.messages.index.templates.coupon_sent.description"
     end
   end
 

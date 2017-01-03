@@ -1,0 +1,7 @@
+<h1 class="header text-center text-white"><%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %></h1>
+<h2><%= t('views.messages.index.templates.coupon_sent.header_text') %></h2>
+<h3><%= @coupon.formated_code %></h3>
+
+<p><%= t('views.messages.index.templates.coupon_sent.argument_text') %></p>
+
+<p><%= t('views.mailers.global.mail_footer') %></p>

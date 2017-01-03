@@ -409,7 +409,14 @@ en:
         sections:
           models:
           photographers:
+        provide_profile_text: "Please provide more info to reach your profile"
+        provide_profile_link_text: "Edit your profile"
     admin:
+      message:
+        header_text: "Write your message"
+        message_sent: "Message was successfully sent"
+        buttons:
+          send_message: "Send message"
       control_panel:
         sections:
           users:
@@ -465,6 +472,10 @@ en:
           task_casting_expired: "Task was successfully sent to run in background"
           task_all: "Tasks where successfully sent to run in background"
           task_reprocess_images: "Task was successfully sent to run in background"
+      users:
+        header_text: "Users"
+        buttons:
+          send_message: "Send message"
     albums:
       global:
         empty_album: "No pictures in this album. Add some..."
@@ -913,6 +924,11 @@ en:
             buttons:
               see_casting: ""
               confirm: ""
+          coupon_sent:
+            title: "New coupon"
+            description: "New coupon delivery, check it out"
+            header_text: "Coupon"
+            argument_text: "Some extra text"
     mailers:
       global:
         user_friendly: "Dear"
@@ -972,6 +988,9 @@ en:
           subject: ""
       review:
         review_new:
+          subject: ""
+      coupon:
+        coupon_sent:
           subject: ""
     modalities:
       index:

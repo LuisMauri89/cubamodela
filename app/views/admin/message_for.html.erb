@@ -1,0 +1,11 @@
+<div class="container-center-horizontal-medium">
+	<%= form_tag({ controller: "admin", action: "send_message" }, class: "") %>
+		<%= hidden_field_tag "user_id", @user.id %>
+		<h2 class="text-center"><%= t('views.admin.message.header_text') %></h2>
+		<div class="form-group">
+			<%= text_area(:message, :body, size: "24x15", class: "form-control", style: "padding: 20px;") %>
+		</div>
+		<span class="span-margin-left"></span>
+		<span class="span-margin-left"></span>
+		<%= submit_tag(t('views.admin.message.buttons.send_message'), class: "btn btn-primary btn-lg pull-right") %>
+</div>

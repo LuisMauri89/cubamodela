@@ -2,7 +2,7 @@ $("#modal-container").html("<%= j render 'show' %>");
 $("#delete-photo-confirm-container").hide();
 $("#modal-container").modal("show");
 
-<% if current_user.contractor? || current_user.model? %>
+<% if current_user.contractor? || current_user.model? || current_user.photographer? %>
 	$("#btn-delete-photo").click(function(){
 		$("#btn-delete-photo").hide();
 		$("#btn-dismiss-show-photo").hide();

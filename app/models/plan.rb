@@ -20,7 +20,10 @@ class Plan < ApplicationRecord
 				return current_amount < self.album_polaroid_max
 			end
 		when "photographer"
-			return true
+			case photo_type
+			when "professional"
+				return current_amount < self.album_professional_max
+			end
 		when "contractor"
 			case photo_type
 			when "casting"

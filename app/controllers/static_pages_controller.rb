@@ -12,4 +12,13 @@ class StaticPagesController < ApplicationController
 
   def aboutus
   end
+
+  def xuan
+  end
+
+  def camila
+  end
+
+  def patricio
+  end
 end

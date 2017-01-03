@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'static_pages/help'
   get 'static_pages/contact'
   get 'static_pages/aboutus'
+  get 'static_pages/xuan'
+  get 'static_pages/camila'
+  get 'static_pages/patricio'
 
 # Models Profile routes
   resources :profile_models do
@@ -154,6 +157,8 @@ Rails.application.routes.draw do
     get '/exec_all', to: 'admin#exec_all', as: :exec_all
     get '/reprocess_images', to: 'admin#reprocess_images', as: :reprocess_images
     get '/give_coupon/:coupon_id', to: 'admin#give_coupon', as: :give_coupon
+    get '/message_for/:user_id', to: 'admin#message_for', as: :message_for
+    post '/send_message/', to: 'admin#send_message', as: :send_message
   end
 
 # Coupons routes

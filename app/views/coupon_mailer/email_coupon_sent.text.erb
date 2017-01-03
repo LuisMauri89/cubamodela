@@ -1,0 +1,8 @@
+<%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %>
+===============================================
+ <%= t('views.messages.index.templates.coupon_sent.header_text') %>
+ "<%= @coupon.formated_code %>"
+
+ <%= t('views.messages.index.templates.coupon_sent.argument_text') %>
+    
+ <%= t('views.mailers.global.mail_footer') %>
