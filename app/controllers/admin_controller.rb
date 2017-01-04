@@ -1,5 +1,20 @@
 class AdminController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:control_panel, 
+									    :model_pending_review, 
+									    :pending_translations,
+									    :model_pending_upgrade_level_review,
+									    :accept_model_request_to_upgrade,
+									    :reject_model_request_to_upgrade,
+									    :coupons,
+									    :create_coupons,
+									    :send_coupon_to,
+									    :send_coupon,
+									    :give_coupon,
+									    :exec_all,
+									    :exec_casting_expiration,
+									    :reprocess_images,
+									    :message_for,
+									    :send_message]
 	before_action :check_if_can, only: [:control_panel, 
 									    :model_pending_review, 
 									    :pending_translations,
@@ -15,8 +30,7 @@ class AdminController < ApplicationController
 									    :exec_casting_expiration,
 									    :reprocess_images,
 									    :message_for,
-									    :send_message,
-										:send_message_admin]
+									    :send_message]
 	before_action :set_request, only: [:accept_model_request_to_upgrade, 
 									   :reject_model_request_to_upgrade]
 	before_action :set_model_level_request_action_from, only: [:accept_model_request_to_upgrade, 
@@ -167,7 +181,7 @@ class AdminController < ApplicationController
 
 	def send_message_admin
 		@body = params[:message][:body]
-		AdminSendOpinionJob.perform_later(@body, Datetime.now)
+		AdminSendOpinionJob.perform_later(@body)
 
 		redirect_to root_url, notice: t('views.admin.message.message_sent')
 	end
