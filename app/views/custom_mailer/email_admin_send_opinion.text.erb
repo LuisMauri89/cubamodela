@@ -1,0 +1,6 @@
+<%= t('views.mailers.global.user_friendly') %> <%= @admin.email.split("@")[0] %>
+===============================================
+
+ <%= @body %>
+
+ Created at: <%= l(@created_at, format: :custom) %>

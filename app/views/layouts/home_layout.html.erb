@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <% if user_signed_in? && ((current_user.profileable != nil && current_user.profileable.profile_complete_progress_percentage < 50) || current_user.profileable == nil) %>
+      <% if user_signed_in? && current_user.user? && ((current_user.profileable != nil && current_user.profileable.profile_complete_progress_percentage < 50) || current_user.profileable == nil) %>
         <div class="row">
           <div id="flash-messages-container" class="col-md-12">
             <%= render 'layouts/provide_profile' %>

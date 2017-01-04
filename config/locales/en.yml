@@ -1000,6 +1000,8 @@ en:
       custom:
         message_send:
           subject: ""
+        admin_send_opinion:
+          subject: ""
     modalities:
       index:
         header_text: "Modalities"
