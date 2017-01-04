@@ -115,4 +115,9 @@ class Notification
 	def self.notify_coupon_sent(owner, asociated)
 		Message.create(template: "inbox_message_coupon_sent", ownerable: owner, asociateable: asociated)
 	end
+
+	# Custom
+	def self.notify_message_send(owner, body)
+		Message.create(template: "inbox_message_custom_send", ownerable: owner, extra_text_field: body)
+	end
 end

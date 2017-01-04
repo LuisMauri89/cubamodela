@@ -1,7 +1,16 @@
-<div class="container-center-horizontal-medium">
+<div class="container-center-horizontal-medium-small-top">
 	<%= form_tag({ controller: "admin", action: "send_message" }, class: "") %>
 		<%= hidden_field_tag "user_id", @user.id %>
-		<h2 class="text-center"><%= t('views.admin.message.header_text') %></h2>
+		<%= hidden_field_tag "from_url", @from_url %>
+		<div class="row" style="margin-bottom: 10px;">
+			<div class="col-md-2">
+				<%= image_tag @user.profileable.get_profile_picture_url(:small), alt: "User Photo", class: "img-thumbnail img-responsive img-center-horizontal" %>
+			</div>
+			<div class="col-md-5">
+				<h2 class="text-center"><%= t('views.admin.message.header_text') %></h2>
+			</div>
+		</div>
+		
 		<div class="form-group">
 			<%= text_area(:message, :body, size: "24x15", class: "form-control", style: "padding: 20px;") %>
 		</div>

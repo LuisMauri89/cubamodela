@@ -140,15 +140,22 @@ class AdminController < ApplicationController
 
 	def message_for
 		set_user
+		@from_url = request.referrer
 	end
 
 	def send_message
 		set_user
+		@from_url = params[:from_url]
 		@body = params[:message][:body]
 
 		MessageSendJob.perform_later(@user.profileable, @body)
 
-		redirect_to request.referrer, notice: t('views.admin.message.message_sent')
+		redirect_to @from_url, notice: t('views.admin.message.message_sent')
+	end
+
+	def send_message_admin
+
+		redirect_to root_url, notice: t('views.admin.message.message_sent')
 	end
 
 	private

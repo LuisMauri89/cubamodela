@@ -159,6 +159,7 @@ Rails.application.routes.draw do
     get '/give_coupon/:coupon_id', to: 'admin#give_coupon', as: :give_coupon
     get '/message_for/:user_id', to: 'admin#message_for', as: :message_for
     post '/send_message/', to: 'admin#send_message', as: :send_message
+    post '/send_message_admin/', to: 'admin#send_message_admin', as: :send_message_admin
   end
 
 # Coupons routes

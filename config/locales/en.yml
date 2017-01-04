@@ -929,6 +929,11 @@ en:
             description: "New coupon delivery, check it out"
             header_text: "Coupon"
             argument_text: "Some extra text"
+          message_custom_send:
+            title: ""
+            description: ""
+            header_text: "header text, custom message"
+            footer_text: "cubamodela team"
     mailers:
       global:
         user_friendly: "Dear"
@@ -991,6 +996,9 @@ en:
           subject: ""
       coupon:
         coupon_sent:
+          subject: ""
+      custom:
+        message_send:
           subject: ""
     modalities:
       index:

@@ -27,6 +27,12 @@ p{
 	margin-right: 20%;
 }
 
+.container-center-horizontal-medium-small-top{
+	margin-top: 5%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
 .content-inline{
 	display: inline !important;
 }
@@ -41,6 +47,10 @@ p{
 
 h3 .small-info{
 	font-size: 10px;
+}
+
+.relative-position{
+	position: relative;
 }
 
 /* END Global */
@@ -321,6 +331,40 @@ h3 .small-info{
 }
 
 /* END Home page */
+
+#contact-left-text{
+	display: inline-block;
+	position: absolute;
+	top: 20%;
+	left: 7%;
+}
+
+#contact-left-text p{
+	color: white;
+	font-size: 35px;
+}
+
+#contact-left-text a{
+	color: white;
+	font-size: 35px;
+}
+
+#contact-right-text{
+	display: inline-block;
+	position: absolute;
+	top: 10%;
+	right: 7%;
+}
+
+#contact-right-text p{
+	color: white;
+	font-size: 35px;
+}
+
+/* Contact page */
+
+
+/* END Contact page */
 
 /* Navbar */
 
