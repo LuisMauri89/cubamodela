@@ -33,6 +33,12 @@ p{
 	margin-right: 20%;
 }
 
+.container-center-horizontal-large-small-top{
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
 .content-inline{
 	display: inline !important;
 }
@@ -332,6 +338,8 @@ h3 .small-info{
 
 /* END Home page */
 
+/* Contact page */
+
 #contact-left-text{
 	display: inline-block;
 	position: absolute;
@@ -361,10 +369,31 @@ h3 .small-info{
 	font-size: 35px;
 }
 
-/* Contact page */
-
-
 /* END Contact page */
+
+/* Help page */
+
+#help-center-container p, #help-center-container footer, #help-center-container li{
+	font-size: 18px;
+}
+
+/* END Help page */
+
+/* Profile example page */
+
+#profile-example-container p, #profile-example-container footer{
+	font-size: 18px;
+}
+
+#profile-example-container blockquote{
+	border-left: 0px solid transparent !important;
+}
+
+.profile-example-album-photo-container{
+	width: 800px;
+}
+
+/* END Profile example page */
 
 /* Navbar */
 

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'static_pages/xuan'
   get 'static_pages/camila'
   get 'static_pages/patricio'
+  get 'static_pages/profile_example'
 
 # Models Profile routes
   resources :profile_models do

@@ -1,16 +1,16 @@
 <div class="relative-position">
 	<%= image_tag "home_banner_carousel_slide_2.jpg", alt: "Banner Home Page", class: "img-responsive" %>
 	<div id="contact-left-text" class="text-center">
-		<p>Para preguntas y respuestas</p>
+		<p>For answers and questions</p>
 		<br/>
-		<p>contactenos a traves de</p>
+		<p>contact us throw</p>
 		<br/>
 		<p>cubamodela@gmail.com</p>
-		<p>o visite nuestra <%= link_to "FAQ", "#", class: "btn btn-link" %></p>
+		<p>or visit our <%= link_to "FAQ", "#", class: "btn btn-link" %></p>
 	</div>
 
 	<div id="contact-right-text" class="text-center">
-		<p>Opiniones y sugerencias</p>
+		<p>Opinions and sugestions</p>
 		<br/>
 		<%= form_tag({ controller: "admin", action: "send_message_admin" }, class: "") %>
 			<div class="form-group">

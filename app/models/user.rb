@@ -24,6 +24,10 @@ class User < ApplicationRecord
     end
   end
 
+  # Scopes
+  scope :admins, -> { where(role: "admin") }
+  scope :users_all, -> { where(role: "user") }
+
   # Devise
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -21,4 +21,7 @@ class StaticPagesController < ApplicationController
 
   def patricio
   end
+
+  def profile_example
+  end
 end
