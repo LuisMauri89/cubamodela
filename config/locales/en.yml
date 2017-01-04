@@ -142,6 +142,7 @@ en:
       models: "Models"
       photographers: "Photographers"
       discover: "Discover"
+      articles: "Articles"
     items_options:
       models:
         all: "See all"
@@ -632,6 +633,18 @@ en:
         messages:
           cupon_success_charge: "Coupon has been successfully charged to your wallet"
           cupon_failed_charge: "Coupon charge failed"
+    devise:
+      registrations:
+        new:
+          header_text: "Sign up NOW for FREE"
+        edit:
+          header_text: "Account"
+      sessions:
+        header_text: "Sign In"
+      passwords:
+        header_text: "Forgot your password?"
+        buttons:
+          send_inst: "Send me reset password instructions"
     ethnicities:
       index:
         header_text: "Ethnicities"

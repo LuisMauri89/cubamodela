@@ -168,7 +168,8 @@ h3 .small-info{
 	/* Make alert-danger flat square */
 	background-image: none !important;
 	border-color: transparent !important;
-	background-color: #fcf8e3 !important;
+	/* background-color: #fcf8e3 !important; */
+	background-color: yellow !important;
 }
 
 .list-group{
@@ -268,6 +269,29 @@ h3 .small-info{
 
 /* Home page */
 
+.btn-home{
+	color: #fff !important;
+	background-color: transparent;
+	cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 15px 30px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 5px solid #337ab7;
+}
+
+.btn-home:hover{
+	background-color: transparent;
+	border-color: yellow;
+}
+
 #sign-up-home-page-panel-body-container{
 	/* Add padding to sign up form */
 	padding-left: 40px;
@@ -293,47 +317,40 @@ h3 .small-info{
 
 #models-container{
 	/* Section models */
-	background: url(/assets/home_page_section_models_bkg_1.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 	background-color: #337ab7;
-	min-height: 951px;
 }
 
 #models-container > #models-footer{
-	/* Section models */
-	padding-top: 60%;
-}
-
-#models-container > #models-footer > a{
-	/* Section models */
-	font-size: 30px;
+	position: absolute;
+	top: 75%;
+	left: 48%;
 }
 
 #photographers-container{
 	/* Section photographers */
-	color: white;
-	position: relative;
+	background-color: green;
+	min-height: 951px;
 }
 
-#photographers-container > #photographers-header{
-	/* Section photographers */
-	background-color: #337ab7;
-	padding-top: 30px; 
-	padding-bottom: 30px;
-	font-size: 50px;
-	margin-top: 0px !important;
-	margin-bottom: 0px !important;
-}
-
-#photographers-container > a{
-	/* Section photographers */
+#photographers-container > #photographers-footer{
 	position: absolute;
-	top: 80%;
-	left: 45%;
-	font-size: 30px;
+	top: 48%;
+	left: 48%;
+}
+
+#us-container{
+	background-color: yellow;
+	min-height: 951px;
+}
+
+#partners-container{
+	background-color: pink;
+	min-height: 951px;
+}
+
+#articles-container{
+	background-color: grey;
+	min-height: 951px;
 }
 
 /* END Home page */
@@ -373,7 +390,7 @@ h3 .small-info{
 
 /* Help page */
 
-#help-center-container p, #help-center-container footer, #help-center-container li{
+#help-center-container p, #help-center-container a, #help-center-container footer, #help-center-container li{
 	font-size: 18px;
 }
 
@@ -731,67 +748,6 @@ a.link-image:hover{
 
 .img-focus:hover{
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #337ab7; 
-}
-
-#us-container{
-	background: url(/assets/10.JPG) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-color: #337ab7;
-	padding-bottom: 20px;
-	color: white;
-}
-
-#us-container > #us-header{
-	padding-top: 30px; 
-	padding-bottom: 10px;
-}
-
-#us-container #us-text-0{
-	font-family: 'adventpro-bold' !important;
-	font-size: 45px;
-}
-
-#us-container #us-text-1{
-	font-family: 'adventpro-bold' !important;
-	font-size: 40px;
-}
-
-#us-container #us-text-2{
-	font-family: 'adventpro-semibold' !important;
-	font-size: 30px;
-	width: 60%; 
-	margin: 0 auto;
-}
-
-#cuba-container{
-	background: url(/assets/15.JPG) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	background-color: #337ab7;
-	color: grey;
-	padding-top:10px; 
-	padding-bottom: 40px;
-}
-
-#cuba-container > #cuba-header{
-	padding-top: 30px; 
-	padding-bottom: 10px;
-}
-
-/*#cuba-container img{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-}
-*/
-
-#cuba-container > #cuba-footer{
-	font-size: 30px;
 }
 
 /* Inbox */

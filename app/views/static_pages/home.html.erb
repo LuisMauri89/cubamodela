@@ -35,64 +35,21 @@
 
 <div class="row row-no-space">
     <div class="col-md-12 cell-no-space">
-        <div id="models-container" class="notify">
-            <div id="models-footer" class="text-center">
-              <%= link_to "SEE MORE...", profile_models_path, class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "0.5s" } %>
-            </div>
+        <div id="models-container" class="notify relative-position">
+          <%= image_tag "home_page_section_models_bkg_1.jpg", alt: "Photo", class: "img-responsive" %>
+          <div id="models-footer" class="text-center">
+            <%= link_to "SEE MORE...", profile_models_path, class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "0.5s" } %>
+          </div>
         </div>
     </div>
 </div>
 
 <div class="row row-no-space">
     <div class="col-md-12 cell-no-space">
-        <div id="photographers-container" class="notify">
-            <h1 id="photographers-header" class="text-center"><%= t('views.static_pages.home.photographers_text').upcase %></h1>
-            <div class="row row-no-space text-center" data-animation="animated fadeIn" data-delay="0.5s">
-              <div class="col-md-3 cell-no-space">
-                <div data-animation="animated bounceInDown" data-delay="1s">
-                  <%= image_tag "home_page_section_photographers_photo_vertical_1.gif", class: "img-responsive", alt: "Photo" %>
-                </div>
-              </div>
-              <div class="col-md-3 cell-no-space">
-                <div data-animation="animated bounceInDown" data-delay="1.5s">
-                  <%= image_tag "home_page_section_photographers_photo_vertical_2.gif", class: "img-responsive", alt: "Photo" %>
-                </div>
-              </div>
-              <div class="col-md-3 cell-no-space">
-                <div data-animation="animated bounceInDown" data-delay="2s">
-                  <%= image_tag "home_page_section_photographers_photo_vertical_3.jpg", class: "img-responsive", alt: "Photo" %>
-                </div>
-              </div>
-              <div class="col-md-3 cell-no-space">
-                <div data-animation="animated bounceInDown" data-delay="2.5s">
-                  <%= image_tag "home_page_section_photographers_photo_vertical_4.gif", class: "img-responsive", alt: "Photo" %>
-                </div>
-              </div>
-            </div>
-            <%= link_to "SEE MORE...", profile_photographers_path, class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "3s" } %>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div id="cuba-container" class="notify">
-            <h1 id="cuba-header" class="text-center"><%= t('views.static_pages.home.sections.discover.header') %></h1>
-            <div class="row row-no-space">
-              <div class="col-md-6 cell-no-space">
-                <div>
-                  <%= image_tag "5.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services", data:{ animation: "animated bounceInLeft", delay: "1s" } %>   
-                </div>
-              </div>
-              <div class="col-md-6 cell-no-space">
-                <div>
-                  <%= image_tag "5.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services", data:{ animation: "animated bounceInRight", delay: "1s" } %>
-                </div>
-              </div>
-            </div>
-            <div id="cuba-footer" class="text-center">
-              <%= link_to "DISCOVER MORE...", "#", class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "1.5s" } %>
-            </div>
+        <div id="photographers-container" class="notify relative-position">
+          <div id="photographers-footer" class="text-center">
+            <%= link_to "SEE MORE...", profile_photographers_path, class: "btn-home" %>
+          </div>
         </div>
     </div>
 </div>
@@ -100,46 +57,23 @@
 <div class="row">
     <div class="col-md-12">
         <div id="us-container" class="notify">
-            <h1 id="us-header" class="text-center"><%= t('views.static_pages.home.sections.us.header') %></h1>
-            <div class="row" style="margin-bottom: 20px;">
-              <div class="col-md-5">
-                <div class="text-center">
-                  Video
-                </div>
-              </div>
-              <div class="col-md-7">
-                <div class="text-center">
-                  <h2 id="us-text-0" data-animation="animated zoomIn" data-delay="0.5s"><%= t('views.static_pages.home.sections.us.text_0') %></h2>
-                  <h3 id="us-text-1" data-animation="animated zoomIn" data-delay="1s"><%= t('views.static_pages.home.sections.us.text_1').upcase %></h3>
-                </div>
-                <div class="row row-no-space row-white-border" data-animation="animated fadeIn" data-delay="1.5s">
-                  <div class="col-md-4 cell-no-space">
-                    <div data-animation="animated bounceInDown" data-delay="2s">
-                      <%= image_tag "m-1.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                    </div>
-                  </div>
-                  <div class="col-md-4 cell-no-space">
-                    <div data-animation="animated bounceInDown" data-delay="2.5s">
-                      <%= image_tag "m-2.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                    </div>
-                  </div>
-                  <div class="col-md-4 cell-no-space">
-                    <div data-animation="animated bounceInDown" data-delay="3s">
-                      <%= image_tag "m-3.JPG", class: "img-responsive img-thumbnail img-center-horizontal", alt: "Services" %>
-                    </div>
-                  </div>
-                </div>
-              </div>               
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="text-center">
-                <h3 id="us-text-2" style="width: 60%; margin: 0 auto; color: white;">
-                  <%= t('views.static_pages.home.sections.us.text_2') %>
-                </h3>
-              </div>
-              </div>  
-            </div>
+            US
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="partners-container" class="notify">
+          Partners
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="articles-container" class="notify">
+          Articles
         </div>
     </div>
 </div>

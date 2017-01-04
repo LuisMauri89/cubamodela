@@ -2,12 +2,12 @@ module ApplicationHelper
 
   # For Navbar
   def get_navbar_items_size
-    default_size = 20
+    default_size = 18
     if user_signed_in?
       if current_user.admin?
         return default_size
       else
-        default_size = 20
+        default_size = 18
         return default_size
       end
     else

@@ -1,7 +1,7 @@
 <div class="row" style="padding-left: 20px;">
     <div class="col-md-12" style="padding:60px 10px;">
-      <div id="new-account-form-container" class="well well-medium">
-        <h2 class="text-center">Sign In</h2>
+      <div id="new-account-form-container" class="container-center-horizontal-medium-small-top">
+        <h2 class="text-center"><%= t('views.devise.sessions.header_text') %></h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-horizontal" }) do |f| %>
 
