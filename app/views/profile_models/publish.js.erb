@@ -2,4 +2,6 @@
 	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.profile_models.messages.profile_published' %>");
+	$('#actions-container').empty();
+	$('#actions-container').html("<%= j render 'admin_actions_container' %>");
 <% end %>
