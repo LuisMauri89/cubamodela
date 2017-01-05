@@ -1,9 +1,9 @@
 <div class="relative-position">
-	<%= image_tag "home_banner_carousel_slide_2.jpg", alt: "Banner Home Page", class: "img-responsive" %>
+	<%= image_tag "cubamodela_contact_cuba_models_es.jpg", alt: "Banner Home Page", class: "img-responsive" %>
 	<div id="contact-left-text" class="text-center">
 		<p>For answers and questions</p>
 		<br/>
-		<p>contact us throw</p>
+		<p>contact us through</p>
 		<br/>
 		<p>cubamodela@gmail.com</p>
 		<p>or visit our <%= link_to "FAQ", static_pages_help_path, class: "btn btn-link" %></p>
@@ -14,7 +14,7 @@
 		<br/>
 		<%= form_tag({ controller: "admin", action: "send_message_admin" }, class: "") %>
 			<div class="form-group">
-				<%= text_area(:message, :body, size: "50x10", class: "", style: "padding: 20px;") %>
+				<%= text_area(:message, :body, size: "30x10", class: "", style: "padding: 20px;") %>
 			</div>
 			<span class="span-margin-left"></span>
 			<span class="span-margin-left"></span>

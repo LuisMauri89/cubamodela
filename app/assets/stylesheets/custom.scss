@@ -228,7 +228,7 @@ h3 .small-info{
 	padding-left: 100px;
 	background-color: #337ab7;
 	color: white;
-	margin-top: 20px;
+	margin-top: 0px;
 }
 
 #footer a{
@@ -238,6 +238,11 @@ h3 .small-info{
 
 #footer a:hover{
 	background-color: #337ab7;
+}
+
+.footer-social-icon{
+	width: 48px;
+	height: 48px;
 }
 
 /* END Footer */
@@ -460,7 +465,7 @@ h3 .small-info{
 #contact-left-text{
 	display: inline-block;
 	position: absolute;
-	top: 20%;
+	top: 47%;
 	left: 7%;
 }
 
@@ -477,8 +482,8 @@ h3 .small-info{
 #contact-right-text{
 	display: inline-block;
 	position: absolute;
-	top: 10%;
-	right: 7%;
+	top: 5%;
+	right: 3%;
 }
 
 #contact-right-text p{

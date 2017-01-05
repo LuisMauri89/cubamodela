@@ -2,37 +2,75 @@
 	<div class="row">
 		<div class="col-md-3">
 			<address>
-			  <strong>Twitter, Inc.</strong><br>
-			  1355 Market Street, Suite 900<br>
-			  San Francisco, CA 94103<br>
-			  <abbr title="Phone">P:</abbr> (123) 456-7890
+			  <strong>CubaModela</strong><br>
+			  En colaboracion con<br>
+			  Camila Studio<br>
+			  <abbr title="Phone">P:</abbr> (+53) 111-11-11
 			</address>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<ul class="list-unstyled">
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="#">Help</a></li>
-				<li><a href="#">Models</a></li>
-				<li><a href="#">Photographers</a></li>
-				<li><a href="#">Payment</a></li>
+				<li><%= link_to "Models", profile_models_path %></li>
+				<li><%= link_to "Photographers", profile_photographers_path %></li>
+				<li><%= link_to "Castings", castings_path %></li>
+				<li><%= link_to "Registration", new_registration_path(resource_name) %></li>
+				<li><%= link_to "Build profile example", static_pages_profile_example_path %></li>
 			</ul>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<ul class="list-unstyled">
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="#">Help</a></li>
-				<li><a href="#">Models</a></li>
-				<li><a href="#">Photographers</a></li>
-				<li><a href="#">Payment</a></li>
+				<li><%= link_to "Contact us", static_pages_contact_path %></li>
+				<li><%= link_to "Help Center", static_pages_help_path %></li>
+				<li><%= link_to "Privacy politic", "#" %></li>
+				<li><%= link_to "Conditions of use", "#" %></li>
+				<li><%= link_to "Prices", "#" %></li>
 			</ul>
 		</div>
-		<div class="col-md-3">
-			<ul class="list-unstyled">
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="#">Help</a></li>
-				<li><a href="#">Models</a></li>
-				<li><a href="#">Photographers</a></li>
-				<li><a href="#">Payment</a></li>
+		<div class="col-md-5">
+			<h4>FOLLOW US</h4>
+			<ul class="list-inline">
+				<li>
+					<div class="footer-social-icon">					
+						<%= link_to("#", class: "link-image") do %>
+								<%= image_tag "cubamodela_icon_facebook_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>	
+						<% end %>
+					</div>
+				</li>
+				<li>
+					<div class="footer-social-icon">					
+						<%= link_to("#", class: "link-image") do %>
+								<%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>	
+						<% end %>
+					</div>
+				</li>
+				<li>
+					<div class="footer-social-icon">					
+						<%= link_to("#", class: "link-image") do %>
+								<%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>	
+						<% end %>
+					</div>
+				</li>
+				<li>
+					<div class="footer-social-icon">					
+						<%= link_to("#", class: "link-image") do %>
+								<%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>	
+						<% end %>
+					</div>
+				</li>
+				<li>
+					<div class="footer-social-icon">					
+						<%= link_to("#", class: "link-image") do %>
+								<%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>	
+						<% end %>
+					</div>
+				</li>
+				<li>
+					<div class="footer-social-icon">					
+						<%= link_to("#", class: "link-image") do %>
+								<%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>	
+						<% end %>
+					</div>
+				</li>
 			</ul>
 		</div>
 	</div>
