@@ -32,7 +32,7 @@ module ProfileModelsHelper
 		warning_text = I18n.t('forms.buttons.warning') << " (" << profile.warnings_count.to_s << ")"
 
 		if profile.warnings_last_made.present? && profile.warnings_count > 0
-			warning_text << " [" << @profile.warnings_last_made << "]"
+			warning_text << " [" << I18n.l(@profile.warnings_last_made, format: :custom) << "]"
 		else
 			warning_text << " [" << I18n.t('views.profile_models.show.admin.no_warning_made_text') << "]"
 		end
