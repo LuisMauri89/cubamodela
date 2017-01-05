@@ -397,6 +397,19 @@ en:
         create: "%{value} has been successfully created."
         destroy: "%{value} has been successfully removed."
         update: "%{value} has been successfully updated."
+    footer:
+      left_text: "In colaboration of Camila Studio"
+      link_models_text: "Models"
+      link_photographers_text: "Photographers"
+      link_castings_text: "Castings"
+      link_registration_text: "Registration"
+      link_build_profile_text: "Build profile example"
+      link_contact_text: "Contact us"
+      link_help_text: "Help Center"
+      link_privacy_text: "Privacy politic"
+      link_conditions_text: "Conditions of use"
+      link_prices_text: "Prices"
+      follow_us_text: "FOLLOW US"
     static_pages:
       home:
         sign_up_form:

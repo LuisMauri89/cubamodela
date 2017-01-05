@@ -1,0 +1,264 @@
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="home-line-users-amounts-container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h2><%= t('views.static_pages.home.models_text').upcase %>  <span class="home-line-users-count"><%= get_models_count %></span></h2>
+                </div>
+                <div class="col-md-4">
+                    <h2><%= t('views.static_pages.home.photographers_text').upcase %>  <span class="home-line-users-count"><%= get_photographers_count %></span></h2>
+                </div>
+                <div class="col-md-4">
+                    <h2><%= t('views.static_pages.home.places_text').upcase %>  <span class="home-line-users-count">125</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% if !user_signed_in? %>
+    <div class="row row-no-space">
+        <div class="col-md-12 cell-no-space">
+            <div id="subscribe-container" class="notify relative-position">
+              <%= image_tag "cubamodela_home_subscribe_cuba_models_es.jpg", alt: "CubaModela Cuba Models Fashion Photography", class: "img-responsive" %>
+              <div id="home-subscribe-form-container">
+                <%= render "home_sign_up" %>
+              </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="models-container" class="notify relative-position">
+          <div id="models-header">
+              <p class="text-center">DESCUBRE LAS MEJORES MODELOS</p>
+          </div>
+          <div class="relative-position">
+              <%= image_tag "cubamodela_home_section_models_cuba_models_up.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive" %>
+              <div id="models-btn-new-face" class="text-center">
+                <%= link_to "NUEVA CARA", index_new_faces_profile_models_path, class: "btn-home" %>
+              </div>
+              <div id="models-btn-professional" class="text-center">
+                <%= link_to "PROFESIONAL", index_professional_models_profile_models_path, class: "btn-home" %>
+              </div>
+              <div id="models-btn-premium" class="text-center">
+                <%= link_to "PREMIUM", index_premium_models_profile_models_path, class: "btn-home" %>
+              </div>
+              <div id="models-btn-search" class="text-center">
+                <%= link_to "BUSQUEDA", search_profile_models_path, class: "btn-home" %>
+              </div>
+          </div>
+          <div class="relative-position">
+              <%= image_tag "cubamodela_home_section_models_cuba_models_down.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive" %>
+              <div id="models-btn-see-all" class="text-center">
+                <%= link_to "VER LISTA", profile_models_path, class: "btn-home" %>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="learn-profile-container" class="notify relative-position">
+          <%= image_tag "cubamodela_home_section_lern_profile_cuba_models_es.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive" %>
+          <div id="learn-profile-btn-learn" class="text-center">
+            <%= link_to "APRENDER", static_pages_profile_example_path, class: "btn-home" %>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="partners-container" class="notify relative-position">
+            <div id="partners-header">
+              <p class="text-center">ASOCIADOS</p>
+          </div>
+          <div class="row partner-row">
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Disenador</p>
+                        <p class="text-center partner-name">Patricio Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VER MAS", static_pages_patricio_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_camila.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Fotografo</p>
+                        <p class="text-center partner-name">Camila Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VER MAS", static_pages_camila_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_xuan.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Fotografo</p>
+                        <p class="text-center partner-name">Xuan Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VER MAS", static_pages_xuan_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Peluqueria</p>
+                        <p class="text-center partner-name">Patricio Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VER MAS", static_pages_patricio_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="photographers-container" class="notify relative-position">
+            <%= image_tag "cubamodela_home_section_photographers_cuba_models_es.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive" %>
+            <div id="photographers-footer" class="text-center">
+                <%= link_to "PRONTO", "#", class: "btn-home" %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="follow-container" class="notify relative-position">
+          <div id="follow-header">
+              <p class="text-center">SIGUENOS</p>
+          </div>
+          <div id="section-social-icons-container" class="text-center center-block">
+            <ul class="list-inline">
+              <li>
+                <div class="section-social-icon">          
+                  <%= link_to("#", class: "link-image") do %>
+                      <%= image_tag "cubamodela_icon_facebook_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %> 
+                  <% end %>
+                </div>
+              </li>
+              <li>
+                <div class="section-social-icon">          
+                  <%= link_to("#", class: "link-image") do %>
+                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>  
+                  <% end %>
+                </div>
+              </li>
+              <li>
+                <div class="section-social-icon">          
+                  <%= link_to("#", class: "link-image") do %>
+                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>  
+                  <% end %>
+                </div>
+              </li>
+              <li>
+                <div class="section-social-icon">          
+                  <%= link_to("#", class: "link-image") do %>
+                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %> 
+                  <% end %>
+                </div>
+              </li>
+              <li>
+                <div class="section-social-icon">          
+                  <%= link_to("#", class: "link-image") do %>
+                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>  
+                  <% end %>
+                </div>
+              </li>
+              <li>
+                <div class="section-social-icon">          
+                  <%= link_to("#", class: "link-image") do %>
+                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive" %>  
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="us-container" class="notify relative-position">
+            <%= image_tag "cubamodela_home_section_us_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive" %>
+            <div id="us-body" class="text-left">
+                <h1>NOSOTROS</h1>
+                <h4>Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings.</h4>
+                <h4>Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings.</h4>
+            </div>
+            <div id="us-footer" class="text-center">
+                <%= link_to "CONTACTANOS", static_pages_contact_path, class: "btn-article" %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="articles-container" class="notify relative-position">
+            <div id="articles-header">
+              <p class="text-center">ARTICULOS</p>
+          </div>
+          <div class="row article-row">
+              <div class="col-md-4 article-cell">
+                    <div class="well article-container">
+                        <p class="text-center text-uppercase article-title"><strong>Cuba 2016 moda trending en jovenes y adolescentes</strong></p>
+                        <div class="article-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Article", class: "img-responsive" %>
+                        </div>
+                        <p class="text-justify article-extraction"><em>"por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos"</em></p>
+                        <div class="text-center">
+                            <%= link_to "LEER MAS", "#", class: "btn-article" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-4 article-cell">
+                    <div class="well article-container">
+                        <p class="text-center text-uppercase article-title"><strong>Cuba 2016 moda en jovenes y adolescentes</strong></p>
+                        <div class="article-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Article", class: "img-responsive" %>
+                        </div>
+                        <p class="text-justify article-extraction"><em>"por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos"</em></p>
+                        <div class="text-center">
+                            <%= link_to "LEER MAS", "#", class: "btn-article" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-4 article-cell">
+                    <div class="well article-container">
+                        <p class="text-center text-uppercase article-title"><strong>Cuba 2016 moda trending en adolescentes</strong></p>
+                        <div class="article-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "CubaModela Cuba Havana Models Fashion Photography Article", class: "img-responsive" %>
+                        </div>
+                        <p class="text-justify article-extraction"><em>"por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos"</em></p>
+                        <div class="text-center">
+                            <%= link_to "LEER MAS", "#", class: "btn-article" %>
+                        </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
