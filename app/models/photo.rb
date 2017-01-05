@@ -38,7 +38,7 @@ class Photo < ApplicationRecord
 							:auto_orient => false 
 	  					} 
   					}, 
-  					:default_url => "/images/paperclip_missing_photo.JPG"
+  					:default_url => "/images/paperclip_missing_photo.png"
 
   # Validations
   validates_attachment :image, :presence => true,

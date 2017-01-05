@@ -81,7 +81,7 @@ class ProfilePhotographer < ApplicationRecord
 		begin
 			return self.albums.where(name: Constant::ALBUM_PROFILE_NAME).first.photos.last.image.url(size)
 		rescue
-			return "missing_profile_picture.jpg"
+			return get_missing_profile_picture(size)
 		end
 	end
 

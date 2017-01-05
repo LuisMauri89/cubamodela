@@ -1,22 +1,5 @@
-<% if user_signed_in? %>
-<% else %>
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center" style="margin-top:30px;margin-bottom:50px;font-family: 'actor-regular';">Plataforma de modelaje y fotografía en Cuba</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-7 text-center">
-            Aqui una imagen con excelente calidad, diagrama del flujo de la web, el modelo entra, el contractor crea casting, lo invita, etc.
-        </div>
-        <div class="col-md-4">
-            <%= render "home_sign_up" %>
-        </div>
-    </div>
-<% end %>
-
-<div class="row">
-    <div class="col-md-12">
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
         <div id="home-line-users-amounts-container">
             <div class="row text-center">
                 <div class="col-md-4">
@@ -33,12 +16,116 @@
     </div>
 </div>
 
+<% if !user_signed_in? %>
+    <div class="row row-no-space">
+        <div class="col-md-12 cell-no-space">
+            <div id="subscribe-container" class="notify relative-position">
+              <%= image_tag "cubamodela_home_subscribe_cuba_models_en.jpg", alt: "Photo", class: "img-responsive" %>
+              <div id="home-subscribe-form-container">
+                <%= render "home_sign_up" %>
+              </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
 <div class="row row-no-space">
     <div class="col-md-12 cell-no-space">
         <div id="models-container" class="notify relative-position">
-          <%= image_tag "home_page_section_models_bkg_1.jpg", alt: "Photo", class: "img-responsive" %>
-          <div id="models-footer" class="text-center">
-            <%= link_to "SEE MORE...", profile_models_path, class: "btn btn-primary btn-lg", data:{ animation: "animated fadeInUpBig", delay: "0.5s" } %>
+          <div id="models-header">
+              <p class="text-center">DISCOVER THE BEST MODELS</p>
+          </div>
+          <div class="relative-position">
+              <%= image_tag "cubamodela_home_section_models_cuba_models_up.jpg", alt: "Photo", class: "img-responsive" %>
+              <div id="models-btn-new-face" class="text-center">
+                <%= link_to "NEW FACE", index_new_faces_profile_models_path, class: "btn-home" %>
+              </div>
+              <div id="models-btn-professional" class="text-center">
+                <%= link_to "PROFESSIONAL", index_professional_models_profile_models_path, class: "btn-home" %>
+              </div>
+              <div id="models-btn-premium" class="text-center">
+                <%= link_to "PREMIUM", index_premium_models_profile_models_path, class: "btn-home" %>
+              </div>
+              <div id="models-btn-search" class="text-center">
+                <%= link_to "SEARCH", search_profile_models_path, class: "btn-home" %>
+              </div>
+          </div>
+          <div class="relative-position">
+              <%= image_tag "cubamodela_home_section_models_cuba_models_down.jpg", alt: "Photo", class: "img-responsive" %>
+              <div id="models-btn-see-all" class="text-center">
+                <%= link_to "VIEW ALL", profile_models_path, class: "btn-home" %>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="learn-profile-container" class="notify relative-position">
+          <%= image_tag "cubamodela_home_section_lern_profile_cuba_models_en.jpg", alt: "Photo", class: "img-responsive" %>
+          <div id="learn-profile-btn-learn" class="text-center">
+            <%= link_to "LEARN", static_pages_profile_example_path, class: "btn-home" %>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="partners-container" class="notify relative-position">
+            <div id="partners-header">
+              <p class="text-center">OUR PARTNERS</p>
+          </div>
+          <div class="row partner-row">
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "Photo", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Designer</p>
+                        <p class="text-center partner-name">Patricio Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VIEW MORE", static_pages_patricio_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_camila.JPG", alt: "Photo", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Photographer</p>
+                        <p class="text-center partner-name">Camila Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VIEW MORE", static_pages_camila_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_xuan.JPG", alt: "Photo", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Photographer</p>
+                        <p class="text-center partner-name">Xuan Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VIEW MORE", static_pages_xuan_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
+              <div class="col-md-3 partner-cell">
+                    <div class="well partner-container">
+                        <div class="partner-logo">
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_patricio.JPG", alt: "Photo", class: "img-circle img-responsive" %>
+                        </div>
+                        <p class="text-center partner-ocupation">Barber Shop</p>
+                        <p class="text-center partner-name">Patricio Herrera Vega</p>
+                        <div class="text-center">
+                            <%= link_to "VIEW MORE", static_pages_patricio_path, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+              </div>
           </div>
         </div>
     </div>
@@ -47,25 +134,26 @@
 <div class="row row-no-space">
     <div class="col-md-12 cell-no-space">
         <div id="photographers-container" class="notify relative-position">
-          <div id="photographers-footer" class="text-center">
-            <%= link_to "SEE MORE...", profile_photographers_path, class: "btn-home" %>
-          </div>
+            <%= image_tag "cubamodela_home_section_photographers_cuba_models_en.jpg", alt: "Photo", class: "img-responsive" %>
+            <div id="photographers-footer" class="text-center">
+                <%= link_to "COMING SOON", "#", class: "btn-home" %>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div id="us-container" class="notify">
-            US
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div id="partners-container" class="notify">
-          Partners
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="us-container" class="notify relative-position">
+            <%= image_tag "cubamodela_home_section_us_cuba_models.jpg", alt: "Photo", class: "img-responsive" %>
+            <div id="us-body" class="text-left">
+                <h1>ABOUT US</h1>
+                <h4>Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings. Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings.</h4>
+                <h4>Es el perfil que utilizan los modelos para darse publicidad y ser encontrado por Contratistas. Como modelo tendrá el derecho a aplicar a Casting Públicos, así como aceptar invitaciones a Reservas Directas y Castings.</h4>
+            </div>
+            <div id="us-footer" class="text-center">
+                <%= link_to "CONTACT US", static_pages_contact_path, class: "btn-home" %>
+            </div>
         </div>
     </div>
 </div>

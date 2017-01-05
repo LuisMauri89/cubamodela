@@ -169,7 +169,7 @@ h3 .small-info{
 	background-image: none !important;
 	border-color: transparent !important;
 	/* background-color: #fcf8e3 !important; */
-	background-color: yellow !important;
+	background-color: #cec700 !important;
 }
 
 .list-group{
@@ -283,13 +283,13 @@ h3 .small-info{
     vertical-align: middle;
     white-space: nowrap;
     text-decoration: none;
-    border-radius: 4px;
-    border: 5px solid #337ab7;
+    border: 3px solid white;
 }
 
 .btn-home:hover{
 	background-color: transparent;
-	border-color: yellow;
+	border-color: #337ab7;
+	text-decoration: none;
 }
 
 #sign-up-home-page-panel-body-container{
@@ -303,11 +303,17 @@ h3 .small-info{
 	width: 60% !important;
 }
 
+#subscribe-container #home-subscribe-form-container{
+	position: absolute;
+	top: 33%;
+	right: 3%;
+}
+
 #home-line-users-amounts-container{
 	/* Section count of user line */
-	height: 90px;
-	background-color: #337ab7;
-	color: white;
+	height: 80px;
+	background-color: white;
+	color: #0071bc;
 }
 
 #home-line-users-amounts-container h2{
@@ -317,35 +323,129 @@ h3 .small-info{
 
 #models-container{
 	/* Section models */
-	background-color: #337ab7;
+	background-color: white;
 }
 
-#models-container > #models-footer{
+#models-container > #models-header{
+	height: 110px;
+}
+
+#models-container > #models-header > p{
+	color: #0071bc;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	line-height: 100px !important;
+	font-size: 60px;
+}
+
+#models-btn-see-all{
+	position: absolute;
+	top: 87%;
+	left: 45%;
+}
+
+#models-btn-new-face{
+	position: absolute;
+	top: 85%;
+	left: 7%;
+}
+
+#models-btn-professional{
+	position: absolute;
+	top: 85%;
+	left: 29%;
+}
+
+#models-btn-premium{
+	position: absolute;
+	top: 85%;
+	left: 56%;
+}
+
+#models-btn-search{
+	position: absolute;
+	top: 85%;
+	left: 82%;
+}
+
+#learn-profile-btn-learn{
 	position: absolute;
 	top: 75%;
-	left: 48%;
+	left: 45%;
 }
 
 #photographers-container{
 	/* Section photographers */
-	background-color: green;
-	min-height: 951px;
+	background-color: white;
 }
 
 #photographers-container > #photographers-footer{
 	position: absolute;
-	top: 48%;
-	left: 48%;
+	top: 70%;
+	left: 45%;
 }
 
 #us-container{
-	background-color: yellow;
-	min-height: 951px;
+	background-color: white;
+}
+
+#us-container > #us-body{
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	color: #0071bc;
+	padding-right: 5%; 
+}
+
+#us-container > #us-footer{
+	position: absolute;
+	top: 85%;
+	left: 45%;
 }
 
 #partners-container{
-	background-color: pink;
-	min-height: 951px;
+	background-color: white;
+	padding-bottom: 30px;
+}
+
+#partners-container > #partners-header > p{
+	color: #0071bc;
+	padding-top: 30px !important;
+	padding-bottom: 0px !important;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	line-height: 100px !important;
+	font-size: 50px;
+}
+
+.partner-row{
+	padding: 10px 30px !important;
+}
+
+.partner-cell{
+	padding: 10px 30px !important;
+}
+
+.partner-container{
+	padding: 10px 20px !important;
+}
+
+.partner-logo{
+	padding: 20px !important;
+	margin-bottom: 15px;
+}
+
+.partner-ocupation{
+	color: #0071bc;
+	font-size: 20px;
+}
+
+.partner-name{
+	color: grey;
+	font-size: 18px;
+	margin-bottom: 30px;
 }
 
 #articles-container{
@@ -648,12 +748,12 @@ h3 .small-info{
 
 .profile-status{
 	position: absolute;
-	top: 7px;
-	right: 7px;
+	top: 0px;
+	right: 0px;
 }
 
 .premium-border{
-	border: solid 2px yellow;
+	border: solid 2px #d6d02e;
 }
 
 /* END Profile */

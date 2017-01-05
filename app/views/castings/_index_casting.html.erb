@@ -18,16 +18,16 @@
 		<div class="content-center-horizontal">
 			<% if casting.is_direct %>
 				<div class="div-inline pull-right">
-					<%= image_tag "direct.png", height: 50, width: 50, class: "img-inline", alt: "Direct", title: t('views.castings.index.tooltips.direct_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<%= image_tag "cubamodela_label_casting_direct_cuba_models_flag.png", width: 50, class: "img-inline", alt: "Direct", title: t('views.castings.index.tooltips.direct_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 				</div>
 			<% end %>
 			<% if casting.free? %>
 				<div class="div-inline pull-right">
-					<%= image_tag "free.png", height: 50, width: 50, class: "img-inline", alt: "Free", title: t('views.castings.index.tooltips.free_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<%= image_tag "cubamodela_label_casting_free_cuba_models_flag.png", width: 50, class: "img-inline", alt: "Free", title: t('views.castings.index.tooltips.free_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 				</div>
 			<% else %>
 				<div class="div-inline pull-right">
-					<%= image_tag "private.png", height: 50, width: 50, class: "img-inline", alt: "Private", title: t('views.castings.index.tooltips.private_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<%= image_tag "cubamodela_label_casting_private_cuba_models_flag.png", width: 50, class: "img-inline", alt: "Private", title: t('views.castings.index.tooltips.private_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 				</div>
 			<% end %>
 			<% if casting.active? %>
@@ -36,7 +36,7 @@
 				</div>
 			<% else %>
 				<div class="div-inline pull-right">
-					<%= image_tag "expired.png", height: 50, width: 50, class: "img-inline", alt: "Expired", title: t('views.castings.index.tooltips.expired_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<%= image_tag "cubamodela_label_casting_expired_cuba_models_flag.png", width: 50, class: "img-inline", alt: "Expired", title: t('views.castings.index.tooltips.expired_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 				</div>
 			<% end %>
 			<span class="clearfix"></span>
@@ -83,23 +83,23 @@
 		<div class="div-inline">
 			<p class="small-gray-text"><%= t('views.castings.index.publiched_at_text', value: l(casting.created_at, format: :custom)) %></p>
 		</div>
-		<% if casting.expired? %>
+		<% if casting.closed? %>
 			<div class="div-inline">
-				<%= image_tag "expired_circle.png", height: 32, width: 32, class: "img-inline", alt: "Expired", title: t('views.castings.index.tooltips.expired_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				<%= image_tag "cubamodela_label_casting_expired_cuba_models_circle.png", height: 32, width: 32, class: "img-inline", alt: "Expired", title: t('views.castings.index.tooltips.expired_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 			</div>
 		<% end %>
 		<% if casting.free? %>
 			<div class="div-inline">
-				<%= image_tag "free_circle.png", height: 32, width: 32, class: "img-inline", alt: "Free", title: t('views.castings.index.tooltips.free_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				<%= image_tag "cubamodela_label_casting_free_cuba_models_circle.png", height: 32, width: 32, class: "img-inline", alt: "Free", title: t('views.castings.index.tooltips.free_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 			</div>
 		<% else %>
 			<div class="div-inline">
-				<%= image_tag "private_circle.png", height: 32, width: 32, class: "img-inline", alt: "Private", title: t('views.castings.index.tooltips.private_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				<%= image_tag "cubamodela_label_casting_private_cuba_models_circle.png", height: 32, width: 32, class: "img-inline", alt: "Private", title: t('views.castings.index.tooltips.private_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 			</div>
 		<% end %>
 		<% if casting.is_direct %>
 			<div class="div-inline">
-				<%= image_tag "direct_circle.png", height: 32, width: 32, class: "img-inline", alt: "Direct", title: t('views.castings.index.tooltips.direct_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				<%= image_tag "cubamodela_label_casting_direct_cuba_models_circle.png", height: 32, width: 32, class: "img-inline", alt: "Direct", title: t('views.castings.index.tooltips.direct_text'), data:{ toggle: "tooltip", placement: "bottom" } %>
 			</div>
 		<% end %>
 	</div>
