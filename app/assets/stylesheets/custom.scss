@@ -9,6 +9,22 @@ body {
   font-family: 'roboto-light' !important;
 }
 
+/* Desktops and Laptops */
+@media only screen and (min-width : 1224px) {
+    body{
+    	margin-left: 0.5% !important;
+    	margin-right: 0.5% !important;
+    }
+}
+
+/* Large screens */
+@media only screen and (min-width : 1824px) {
+    body{
+    	margin-left: 10% !important;
+    	margin-right: 10% !important;
+    }
+}
+
 label.form-option{
 	font-weight: lighter !important;
 }
@@ -283,7 +299,7 @@ h3 .small-info{
     font-weight: normal;
     line-height: 1.42857;
     margin-bottom: 0;
-    padding: 15px 30px;
+    padding: 10px 20px;
     text-align: center;
     vertical-align: middle;
     white-space: nowrap;
@@ -314,14 +330,26 @@ h3 .small-info{
 	right: 3%;
 }
 
-#home-line-users-amounts-container{
+#home-line-users-amounts-container-auth-true{
+	/* Section count of user line */
+	height: 80px;
+	background-color: #0071bc;
+	color: white;
+}
+
+#home-line-users-amounts-container-auth-true h2{
+	/* Section count of user line */
+	font-size: 35px !important;
+}
+
+#home-line-users-amounts-container-auth-false{
 	/* Section count of user line */
 	height: 80px;
 	background-color: white;
 	color: #0071bc;
 }
 
-#home-line-users-amounts-container h2{
+#home-line-users-amounts-container-auth-false h2{
 	/* Section count of user line */
 	font-size: 35px !important;
 }

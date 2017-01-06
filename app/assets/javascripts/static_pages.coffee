@@ -28,7 +28,7 @@ $(document).on "turbolinks:load", ->
 
 	funcWaypoint = (direction) ->
 		if direction == 'down'
-			container = $(this);
+			container = $(this).parent();
 			items = container.find("[data-animation ^= 'animated']");
 			triggerAnimations(items);
 

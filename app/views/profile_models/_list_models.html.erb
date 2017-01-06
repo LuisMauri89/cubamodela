@@ -1,7 +1,7 @@
 <div class="container-min-height" id="img-list-container">
 	<% models.each do |model| %>
 		<div class="img-thumbnail list-photo-item img-wrapper">
-			<div class="<%= get_premium_border(model) %>">
+			<div>
 				<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
 						<%= image_tag model.get_profile_picture_url(:medium), alt: "Model Photo", class: "img-responsive" %>	
 				<% end %>
@@ -11,9 +11,17 @@
 			</div>
 			<div class="profile-status">
 				<% if model.new_face? %>
-					<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<% if model.premium? %>
+						<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<% else %>
+						<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<% end %>
 				<% else %>
-					<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<% if model.premium? %>
+						<%= image_tag "cubamodela_label_professional_model_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<% else %>
+						<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+					<% end %>
 				<% end %>
 			</div>
 		</div>

@@ -19,18 +19,25 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 5.minutes do
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+
+every 20.minutes do
 	rake "casting_tasks:working_test"
 	Rails.logger.info("Task test running at #{Time.now}")
 end
 
-every 5.minutes do
+every :day, at: '12:40 am' do
 	rake "casting_tasks:casting_expiration_proximity_task"
 	Rails.logger.info("Task casting proximity running at #{Time.now}")
 end
 
-every 5.minutes do
+every :day, at: '12:05 am' do
 	rake "casting_tasks:casting_expired_task"
+	Rails.logger.info("Task casting status running at #{Time.now}")
+end
+
+every :day, at: '12:20 am' do
+	rake "casting_tasks:casting_reviews_dont_show_again_task"
 	Rails.logger.info("Task casting status running at #{Time.now}")
 end
 

@@ -1,7 +1,7 @@
 namespace :casting_tasks do
 
 	task working_test: :environment do
-		Message.create(template: "inbox_message_new_casting_free", ownerable: ProfileModel.find(45), asociateable: Casting.first)
+		Message.create(template: "inbox_message_casting_new_free", ownerable: ProfileModel.find(45), asociateable: Casting.last)
 	end
 
 	task casting_expiration_proximity_task: :environment do
