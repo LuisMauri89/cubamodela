@@ -5,49 +5,53 @@
         <h1 class="panel-title text-center"><%= t('views.castings.index_custom.header_text') %></h1>
       </div>
       <div class="panel-body panel-body-nomenclator">
-        <table class="table">
-          <thead class="bg-info">
-            <tr>
-              <th class="text-center"><%= t('table.title') %></th>
-              <th class="text-center"><%= t('activerecord.attributes.casting.expiration_date') %></th>
-              <th class="text-center"><%= t('activerecord.attributes.casting.casting_date') %></th>
-              <th class="text-center"><%= t('activerecord.attributes.casting.shooting_date') %></th>
-              <th class="text-center"><%= t('activerecord.attributes.intent.status') %></th>
-              <th class="text-center"><%= t('table.actions') %></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @castings.each do |casting| %>
+        <% if @castings.any? %>
+          <table class="table">
+            <thead class="bg-info">
               <tr>
-                <td><h4><%= casting.title %></h4></td>
-                <% if casting.active? %>
-                  <td><h4><%= l(casting.expiration_date, format: :custom) %></h4></td>
-                <% else %>
-                  <td><h4><%= t('views.castings.index.expired_text') %></h4></td>
-                <% end %>
-                <% if !casting.is_direct %>
-                  <td><h4><%= l(casting.casting_date, format: :custom) %></h4></td>
-                <% else %>
-                  <td><h4><%= t('views.castings.index_custom.direct_text') %></h4></td>
-                <% end %>
-                <td><h4><%= l(casting.shooting_date, format: :custom) %></h4></td>
-                <% intent = casting.get_model_intent(@profile) %>
-                <td><h4 id="status-<%= casting.id %>"><%= intent.status.humanize %></h4></td>
-                <td id="actions-<%= casting.id %>">
-                  <% if casting.active? && intent.invited? %>
-                    <%= link_to t('forms.buttons.confirm'), confirm_casting_path(casting, @profile, from: "model_index_castings"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
-                  <% end %>
-                </td>
+                <th class="text-center"><%= t('table.title') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.casting.expiration_date') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.casting.casting_date') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.casting.shooting_date') %></th>
+                <th class="text-center"><%= t('activerecord.attributes.intent.status') %></th>
+                <th class="text-center"><%= t('table.actions') %></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
 
-        <br>
+            <tbody>
+              <% @castings.each do |casting| %>
+                <tr>
+                  <td><h4><%= casting.title %></h4></td>
+                  <% if casting.active? %>
+                    <td><h4><%= l(casting.expiration_date, format: :custom) %></h4></td>
+                  <% else %>
+                    <td><h4><%= t('views.castings.index.expired_text') %></h4></td>
+                  <% end %>
+                  <% if !casting.is_direct %>
+                    <td><h4><%= l(casting.casting_date, format: :custom) %></h4></td>
+                  <% else %>
+                    <td><h4><%= t('views.castings.index_custom.direct_text') %></h4></td>
+                  <% end %>
+                  <td><h4><%= l(casting.shooting_date, format: :custom) %></h4></td>
+                  <% intent = casting.get_model_intent(@profile) %>
+                  <td><h4 id="status-<%= casting.id %>"><%= intent.status.humanize %></h4></td>
+                  <td id="actions-<%= casting.id %>">
+                    <% if casting.active? && intent.invited? %>
+                      <%= link_to t('forms.buttons.confirm'), confirm_casting_path(casting, @profile, from: "model_index_castings"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-        <%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn" %>
-      </div>
+          <br>
+
+          <%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn" %>
+        </div>
+      <% else %>
+        <h3 class="text-center"><%= t('views.profile_models.index_castings.castings_empty_text') %></h3>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,6 +1,8 @@
 <% if @intent.errors.any? %>
 	$('#notification-messages-container').html("<%= j render 'errors_intent' %>");
 <% else %>
-	$('#btn-apply-<%= @casting.id %><%= @profile.id %>').remove();
 	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.castings.messages.associations.applied' %>");
+	$('#btn-apply-<%= @casting.id %><%= @profile.id %>').remove();
+	$('#audience-applications-count').empty();
+	$('#audience-applications-count').html("<%= j render 'casting_audience_applications_count' %>");
 <% end %>

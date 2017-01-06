@@ -145,12 +145,14 @@ en:
       articles: "Articles"
     items_options:
       models:
-        all: "See all"
+        all: "View all"
         castings: "Find casting"
         search: "Search"
         premium: "Premium models"
         professional: "Professional models"
         new_faces: "New faces"
+      photographers:
+        coming_soon: "Coming soon"
     messages:
       admin: "Admin: "
     options:
@@ -176,11 +178,13 @@ en:
   banners:
     carousel:
       slide_0:
-        button_follow: "See more"
+        button_follow: "View gallery"
       slide_1:
-        button_follow: "See more"
+        button_follow: "Find them now"
       slide_2:
-        button_follow: "See more"
+        button_follow: "Coming soon"
+      slide_3:
+        button_follow: "Read more"
   forms:
     buttons:
       log_in: "Log in"
@@ -242,8 +246,11 @@ en:
           model: "Model"
           photographer: "Photographer"
         created_at: "Created at"
+        updated_at: "Updated at"
       album:
         name: "Name"
+        created_at: "Created at"
+        updated_at: "Updated at"
       booking:
         is_direct: "Ckeck this if the booking is intentional just for direct shooting."
         description_en: "Description"
@@ -256,8 +263,8 @@ en:
         is_direct: "Ckeck this if the casting is intentional just for direct shooting."
         access_type: "Access type"
         access_types:
-          free: "Free"
-          personal: "Private"
+          free: "Free to apply"
+          personal: "Private, only invitations"
         title_en: "Title"
         title_es: "Title"
         description_en: "Description"
@@ -1071,6 +1078,8 @@ en:
         tooltips:
           new_face: "New Face"
           professional_model: "Professional Model"
+      index_catings:
+        castings_empty_text: "You have cero catings skeduled"
       edit:
         progress_bar_left_text: "Profile completed [%]"
         current_level_text: "You are currently a New Face"
