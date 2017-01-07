@@ -21,5 +21,9 @@
 
 	</div>
 <% else %>
-	<h4 class="text-center"><%= t('views.profile_models.show.polaroid_book_empty_text') %></h4>
+	<% if !current_user.contractor? %>
+		<h4 class="text-center"><%= t('views.profile_models.show.only_contractors_text') %></h4>
+	<% else %>
+		<h4 class="text-center"><%= t('views.profile_models.show.polaroid_book_empty_text') %></h4>
+	<% end %>
 <% end %>

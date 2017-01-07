@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'static_pages/camila'
   get 'static_pages/patricio'
   get 'static_pages/profile_example'
+  get 'static_pages/gallery'
+  get 'static_pages/show_gallery_photo'
 
 # Models Profile routes
   resources :profile_models do

@@ -1,0 +1,16 @@
+<div id="gallery-container">
+	<h1 class="text-center"><%= t('views.static_pages.gallery.header_text') %></h1>
+
+	<div id="gallery-img-list">
+		<% [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21].each do |i| %>
+			<div class="img-gallery-wrapper">
+				<%= link_to(static_pages_show_gallery_photo_path(i: i), remote: true, class: "link-image") do %>
+					<div class="img-thumbnail img-gallery-preview">
+						<%= image_tag "cubamodela_gallery_cuba_models_photo_" << i.to_s << ".jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-gallery" %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div id="modal-container" class="modal fade"></div>

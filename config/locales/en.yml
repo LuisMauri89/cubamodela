@@ -413,6 +413,7 @@ en:
       link_build_profile_text: "Build profile example"
       link_contact_text: "Contact us"
       link_help_text: "Help Center"
+      link_gallery_text: "Visit our Gallery"
       link_privacy_text: "Privacy politic"
       link_conditions_text: "Conditions of use"
       link_prices_text: "Prices"
@@ -432,6 +433,10 @@ en:
           photographers:
         provide_profile_text: "Please provide more info to reach your profile"
         provide_profile_link_text: "Edit your profile"
+      gallery:
+        header_text: Gallery
+        show:
+          header_text: Gallery photo
     admin:
       message:
         header_text: "Write your message"
@@ -1078,7 +1083,7 @@ en:
         tooltips:
           new_face: "New Face"
           professional_model: "Professional Model"
-      index_catings:
+      index_castings:
         castings_empty_text: "You have cero catings skeduled"
       edit:
         progress_bar_left_text: "Profile completed [%]"
@@ -1126,6 +1131,11 @@ en:
           modalities: "Modalities"
           categories: "Categories"
           studies: "Studies"
+        languages_empty_text: "No languages selected"
+        modalities_empty_text: "No modalities selected"
+        categories_empty_text: "No categories selected"
+        polaroid_book_empty_text: "Cero polaroid pictures added"
+        only_contractors_text: "Sorry, this information is only for contractors"
         buttons:
           details: "Details"
         admin:

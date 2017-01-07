@@ -24,4 +24,11 @@ class StaticPagesController < ApplicationController
 
   def profile_example
   end
+
+  def gallery
+  end
+
+  def show_gallery_photo
+    @i = params[:i]
+  end
 end

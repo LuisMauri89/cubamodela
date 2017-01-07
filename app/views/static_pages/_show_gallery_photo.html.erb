@@ -1,0 +1,14 @@
+<div id="photo-modal-large" class="modal-dialog">
+  <div class="modal-content">
+  <div class="modal-header">
+    <h3><%= t('views.static_pages.gallery.show.header_text') %></h3>
+  </div>
+  <div class="modal-body">
+    <div id="model-modal-info-container"></div>
+    <%= image_tag "cubamodela_gallery_cuba_models_photo_" << i << ".jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-show-gallery" %>
+  </div>
+  <div class="modal-footer">
+    <%= link_to t('forms.buttons.close'), "#", class: "btn btn-primary", data: { dismiss: "modal" } %>
+  </div>
+  </div>
+</div>

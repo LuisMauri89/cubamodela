@@ -385,8 +385,8 @@ h3 .small-info{
 
 #models-btn-see-all{
 	position: absolute;
-	top: 87%;
-	left: 45%;
+	top: 85%;
+	left: 84%;
 }
 
 #models-btn-new-face{
@@ -398,19 +398,19 @@ h3 .small-info{
 #models-btn-professional{
 	position: absolute;
 	top: 85%;
-	left: 29%;
+	left: 31%;
 }
 
 #models-btn-premium{
 	position: absolute;
 	top: 85%;
-	left: 56%;
+	left: 57%;
 }
 
 #models-btn-search{
 	position: absolute;
-	top: 85%;
-	left: 82%;
+	top: 87%;
+	left: 48%;
 }
 
 #learn-profile-btn-learn{
@@ -583,6 +583,40 @@ h3 .small-info{
 }
 
 /* END Home page */
+
+/* Gallery */
+
+#gallery-container{
+	margin-left: 5% !important;
+	margin-right: 5% !important;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+#gallery-img-list{
+	margin-top: 30px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-top: 2px solid #e7e7e7;
+	border-bottom: 2px solid #e7e7e7;
+}
+
+.img-gallery-preview{
+	margin: 5px;
+}
+
+.img-gallery{
+	height: 200px !important;
+}
+
+.img-show-gallery{
+}
+
+.img-gallery-wrapper{
+	display: inline-block;
+}
+
+/* END Gallery */
 
 /* Contact page */
 
