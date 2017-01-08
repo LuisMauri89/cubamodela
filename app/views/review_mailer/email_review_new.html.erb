@@ -1,0 +1,7 @@
+<h2><%= t('views.messages.index.templates.review_new.header_text') %></h2>
+
+<p><%= t('views.messages.index.templates.review_new.subheader_text') %></p>
+
+<p><%= t('views.messages.index.templates.review_new.argument_text') %></p>
+
+<%= link_to t('views.messages.index.templates.review_new.buttons.see_profile'), profile_model_url(@message.ownerable), class: "btn btn-primary pull-right btn-small-right-margin" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103173607) do
+ActiveRecord::Schema.define(version: 20170108204903) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -294,9 +294,10 @@ ActiveRecord::Schema.define(version: 20170103173607) do
     t.string   "land_phone"
     t.string   "address"
     t.integer  "nationality_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "plan_id"
+    t.boolean  "is_partner",     default: false
     t.index ["plan_id"], name: "index_profile_contractors_on_plan_id"
   end
 
@@ -326,6 +327,7 @@ ActiveRecord::Schema.define(version: 20170103173607) do
     t.integer  "warnings_count",                              default: 0
     t.date     "warnings_last_made"
     t.integer  "plan_id"
+    t.boolean  "is_partner",                                  default: false
     t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
     t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id"
     t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"
@@ -341,10 +343,11 @@ ActiveRecord::Schema.define(version: 20170103173607) do
     t.string   "address"
     t.string   "gender"
     t.integer  "nationality_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "plan_id"
     t.integer  "current_province_id"
+    t.boolean  "is_partner",          default: false
     t.index ["current_province_id"], name: "index_profile_photographers_on_current_province_id"
     t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id"
     t.index ["plan_id"], name: "index_profile_photographers_on_plan_id"

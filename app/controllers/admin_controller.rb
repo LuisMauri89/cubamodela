@@ -186,6 +186,26 @@ class AdminController < ApplicationController
 		redirect_to root_url, notice: t('views.admin.message.message_sent')
 	end
 
+	def set_as_partner
+		set_user
+
+		@user.profileable.set_as_partner
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def unset_as_partner
+		set_user
+
+		@user.profileable.unset_as_partner
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 
 		def set_request

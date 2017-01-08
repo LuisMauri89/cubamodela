@@ -163,6 +163,8 @@ Rails.application.routes.draw do
     get '/message_for/:user_id', to: 'admin#message_for', as: :message_for
     post '/send_message/', to: 'admin#send_message', as: :send_message
     post '/send_message_admin/', to: 'admin#send_message_admin', as: :send_message_admin
+    get '/set_as_partner/:user_id', to: 'admin#set_as_partner', as: :set_as_partner
+    get '/unset_as_partner/:user_id', to: 'admin#unset_as_partner', as: :unset_as_partner
   end
 
 # Coupons routes

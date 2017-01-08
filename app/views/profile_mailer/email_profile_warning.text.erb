@@ -1,16 +1,14 @@
 <%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %>
 ================================================================================
-<%= t('views.messages.index.templates.profile_warning.header_text') %></h2>
-
-<%= t('views.messages.index.templates.profile_warning.list_header_text') %></p>
-
-<%= t('views.messages.index.templates.profile_warning.list_item_1_text') %>
-<%= t('views.messages.index.templates.profile_warning.list_item_2_text') %>
-<%= t('views.messages.index.templates.profile_warning.list_item_3_text') %>
-<%= t('views.messages.index.templates.profile_warning.list_item_4_text') %>
-><%= t('views.messages.index.templates.profile_warning.list_item_5_text') %>
-
+<%= t('views.messages.index.templates.profile_warning.header_text') %>
 <%= t('views.messages.index.templates.profile_warning.argument_text') %>
+
+<%= t('views.messages.index.templates.profile_warning.list_header_text') %>
+*<%= t('views.messages.index.templates.profile_warning.list_item_1_text') %>
+*<%= t('views.messages.index.templates.profile_warning.list_item_2_text') %>
+*<%= t('views.messages.index.templates.profile_warning.list_item_3_text') %>
+*<%= t('views.messages.index.templates.profile_warning.list_item_4_text') %>
+*<%= t('views.messages.index.templates.profile_warning.list_item_5_text') %>
 
 <%= link_to t('views.messages.index.templates.profile_published.buttons.edit_profile'), edit_profile_model_url(@profile), class: "btn btn-primary pull-right btn-small-right-margin" %>
 <%= link_to t('views.messages.index.templates.profile_published.buttons.profile_example'), static_pages_profile_example_url, class: "btn btn-primary pull-right btn-small-right-margin" %>

@@ -31,13 +31,35 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Authentication
 gem 'devise'
+
+# User access
 gem 'cancancan'
+
+# Media proccess upload
 gem 'paperclip'
+
+# Css animate
 gem "animate-rails"
+
+# Notify javacript DOM
 gem 'jquery-waypoints-rails'
+
+# Client media multiple upload
 gem 'dropzonejs-rails'
+
+# Control cron tasks
 gem 'whenever', require: false
+
+# With nginx server
+#gem 'unicorn'
+
+# demonize deleyed_job
+# gem daemons
+
+# Background jobs
+# gem delayed_job_active_record
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +73,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #Capistrano
+  #gem 'capistrano-rails'
+  #gem 'capistrano-rvm'
+  #gem 'capistrano3-unicorn'
+end
+
+group :production do
+  # gem pg postgresql
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

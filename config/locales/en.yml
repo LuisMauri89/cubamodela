@@ -552,8 +552,15 @@ en:
           task_reprocess_images: "Task was successfully sent to run in background"
       users:
         header_text: "Users"
+        messages:
+          set_as_partner_success: "Set as partner success."
+          set_as_partner_failed: "Set as partner failed."
+          unset_as_partner_success: "Unset as partner success."
+          unset_as_partner_failed: "Unset as partner failed."
         buttons:
           send_message: "Send message"
+          set_as_partner: "Make partner"
+          unset_as_partner: "Unpartner"
     albums:
       global:
         empty_album: "Upload your photos NOW"
@@ -874,80 +881,83 @@ en:
             buttons:
               see_casting: "Casting details"
           booking_invitation:
-            title: "New booking"
-            description: "You have been booked, check it out"
-            header_text: "Booking"
-            after_description_text: "Make sure that you are available for the booking dates."
-            after_dates_text: "Make sure you can not confirm your presence after casting date."
+            title: "Booking invitation"
+            description: "A contractor is interested to book you"
+            header_text: "Booking invitation"
+            after_description_text: "A contractor is interested to book you."
+            after_dates_text: "Please check the CubaModela site for more information. Don't miss the opportunity to access to this new work."
             buttons:
               see_booking: "Booking details"
               confirm: "Confirm presence"
               reject: "Reject booking"
           booking_confirmed:
-            title: ""
-            description: ""
+            title: "Booking confirmed"
+            description: "Our model confirmed your invitation"
             header_text: "%{value} has confirmed his/her presence to your booking"
-            after_description_text: ""
-            after_dates_text: ""
+            after_description_text: "Congratulations, our model is interested in working with you."
+            after_dates_text: "Please, visit the CubaModela site for more information."
             buttons:
               see_booking: "Booking details"
               edit_booking: "Edit booking"
               see_profile: "%{value} profile"
           booking_rejected:
-            title: ""
-            description: ""
-            header_text: "%{value} has rejected his/her presence to your booking"
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Booking rejected"
+            description: "Your booking invitation has been rejected"
+            header_text: "%{value} has rejected your booking"
+            after_description_text: "We are sorry our model did not accept your booking invitation."
+            after_dates_text: "Feel free to explore for new options in CubaModela site."
             buttons:
               see_booking: "Booking details"
               edit_booking: "Edit booking"
               see_profile: "%{value} profile"
           booking_canceled:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Booking canceled"
+            description: "The booking has been canceled"
+            header_text: "Booking canceled"
+            after_description_text: "We are sorry, the booking has been canceled by the contractor."
+            after_dates_text: "Check CubaModela site to find new job offers."
             buttons:
-              see_casting: ""
-              confirm: ""
+              see_booking: "Booking details"
           booking_translation:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Booking translation"
+            description: "Translation of the booking invitation made by CubaModela team"
+            header_text: "Booking translation"
+            after_description_text: "Translation of the booking translation made by CubaModela team."
+            after_dates_text: "Check CubaModela site for more information."
             buttons:
-              see_casting: ""
-              confirm: ""
+              see_booking: "Booking details"
+              confirm: "Confirm presence"
+              reject: "Reject booking"
           booking_change_fields_only:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Filds of booking has changed"
+            description: "The content of the booking has changed, check for more information"
+            header_text: "The content of the booking has changed"
+            after_description_text: "The content of the booking has changed, check for more information."
+            after_dates_text: "Please, make sure you are still interested in the job after the changes in the conditions. Do not miss this opportunity."
             buttons:
-              see_casting: ""
-              confirm: ""
+              see_booking: "Booking details"
+              confirm: "Confirm presence"
+              reject: "Reject booking"
           booking_change_dates_only:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "The dates of the booking invitation have changed"
+            description: "There have been changes in the date of the booking"
+            header_text: "The dates of the booking invitation have changed"
+            after_description_text: "There have been changes in the date of the booking, check if you are available in the new dates."
+            after_dates_text: "If you are still interested then you have to confirm again the booking invitation."
             buttons:
-              see_casting: ""
-              confirm: ""
+              see_booking: "Booking details"
+              confirm: "Confirm presence"
+              reject: "Reject booking"
           booking_change_fields_and_dates:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Changes in the booking invitation fields and date"
+            description: "There have been changes in the booking invitation, check for more information"
+            header_text: " Changes in the booking invitation fields and date "
+            after_description_text: " There have been changes in the date of the booking and the fields, check if you are available in the new dates and if you agree the new conditions."
+            after_dates_text: "If you are still interested then you have to confirm again the booking invitation."
             buttons:
-              see_casting: ""
-              confirm: ""
+              see_booking: "Booking details"
+              confirm: "Confirm presence"
+              reject: "Reject booking"
           booking_left_review:
             title: ""
             description: ""
@@ -962,140 +972,139 @@ en:
               see_profile: ""
           profile_published:
             title: "Profile published"
-            description: "Congratulations"
-            header_text: "Your profile have been reviewed and successfully published."
-            argument_text: ""
+            description: "Your profile is now public"
+            header_text: "Profile published"
+            argument_text: "Your profile is now public. You can be found by right people and receive good job offers. Please check your profile often for notifications and new jobs."
             buttons:
               see_profile: "Watch profile"
           profile_unpublished:
-            title: ""
-            description: ""
-            header_text: ""
-            list_header_text: ""
-            list_item_1_text: ""
-            list_item_2_text: ""
-            list_item_3_text: ""
-            list_item_4_text: ""
-            list_item_5_text: ""
-            argument_text: ""
+            title: "Profile unpublished"
+            description: "Your profile have been unpublished, check the CubaModela site for more information"
+            header_text: "Profile unpublished"
+            list_header_text: "Probable causes:"
+            list_item_1_text: "Important profile fields are empty."
+            list_item_2_text: "You did not respect our politic about photos."
+            list_item_3_text: "You did not respect our politic about photos."
+            list_item_4_text: "You did not respect our politic about photos."
+            list_item_5_text: "You did not respect our politic about photos."
+            argument_text: "Your profile have been unpublished because you did not respect the terms and conditions of CubaModela."
             buttons:
               edit_profile: "Edit profile"
               profile_example: "Learn how to build your profile"
           profile_reject:
-            title: ""
-            description: ""
-            header_text: ""
-            list_header_text: ""
-            list_item_1_text: ""
-            list_item_2_text: ""
-            list_item_3_text: ""
-            list_item_4_text: ""
-            list_item_5_text: ""
-            argument_text: ""
+            title: "Profile rejected"
+            description: "Your profile have not been accepted"
+            header_text: "Profile rejected"
+            list_header_text: "Probable causes:"
+            list_item_1_text: "Important profile fields are empty."
+            list_item_2_text: "You did not respect our politic about photos."
+            list_item_3_text: "You did not respect our politic about photos."
+            list_item_4_text: "You did not respect our politic about photos."
+            list_item_5_text: "You did not respect our politic about photos."
+            argument_text: "Your profile have not been accepted. It does not have the necessary conditions to be part of CubaModela. Please check the link below to find information about how to complete a profile successfully."
             buttons:
               edit_profile: "Edit profile"
               profile_example: "Learn how to build your profile"
           profile_warning:
-            title: ""
-            description: ""
-            header_text: ""
-            list_header_text: ""
-            list_item_1_text: ""
-            list_item_2_text: ""
-            list_item_3_text: ""
-            list_item_4_text: ""
-            list_item_5_text: ""
-            argument_text: ""
+            title: "Profile warning"
+            description: "There is a profile warning"
+            header_text: "Profile waring"
+            list_header_text: "Probable causes:"
+            list_item_1_text: "Important profile fields are empty."
+            list_item_2_text: "You did not respect our politic about photos."
+            list_item_3_text: "You did not respect our politic about photos."
+            list_item_4_text: "You did not respect our politic about photos."
+            list_item_5_text: "You did not respect our politic about photos."
+            argument_text: "You are having some not accepted behaviors in your profile. If this problems persist then your profile might be unpublished. Check the link below for more information."
             buttons:
               edit_profile: "Edit profile"
               profile_example: "Learn how to build your profile"
           review_new:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "New review in your profile"
+            description: "A contractor left a review in your profile"
+            header_text: "New review in your profile"
+            subheader_text: "A contractor left a review in your profile, check what he thinks about you in CubaModela."
+            argument_text: "Good reviews will help you find better opportunities."
             buttons:
-              see_casting: ""
-              confirm: ""
+              see_profile: "Watch profile"
           coupon_sent:
             title: "New coupon"
             description: "New coupon delivery, check it out"
             header_text: "Coupon"
             argument_text: "Some extra text"
           message_custom_send:
-            title: ""
-            description: ""
-            header_text: "header text, custom message"
-            footer_text: "cubamodela team"
+            title: "New message from CubaModela team"
+            description: "We have something to tell you. Please check it out."
+            header_text: "Message from CubaModela team"
+            footer_text: "Thanks for been part of us."
     mailers:
       global:
         user_friendly: "Dear"
-        mail_footer: "Thanks for been our user bla bla."
+        mail_footer: "Thanks for been part of us."
       casting:
         casting_new_free:
-          subject: ""
+          subject: "CubaModela Team - New casting available"
         casting_translation:
-          subject: ""
+          subject: "CubaModela Team - Casting fields translated"
         casting_change_fields_only:
-          subject: ""
+          subject: "CubaModela Team - Casting content changed"
         casting_change_dates_only:
-          subject: ""
+          subject: "CubaModela Team - Casting dates changed"
         casting_change_fields_and_dates:
-          subject: ""
+          subject: "CubaModela Team - Casting dates and content changed"
         casting_expiration_proximity:
-          subject: ""
+          subject: "CubaModela Team - Casting expiration is close"
         casting_expired:
-          subject: ""
+          subject: "CubaModela Team - Casting expired"
         casting_canceled:
-          subject: ""
+          subject: "CubaModela Team - Casting canceled"
         casting_invitation:
-          subject: ""
+          subject: "CubaModela Team - New casting invitation"
         casting_invitation_confirmed:
-          subject: ""
+          subject: "CubaModela Team - New confirmation to casting"
         casting_application:
-          subject: ""
+          subject: "CubaModela Team - New application to casting"
         casting_application_confirmed:
-          subject: ""
+          subject: "CubaModela Team - Casting application success"
       booking:
         booking_invitation:
-          subject: ""
+          subject: "CubaModela Team - New booking invitation"
         booking_confirmed:
-          subject: ""
+          subject: "CubaModela Team - Booking invitation confirmed"
         booking_rejected:
-          subject: ""
+          subject: "CubaModela Team - Booking invitation rejected"
         booking_canceled:
-          subject: ""
+          subject: "CubaModela Team - Booking canceled"
         booking_translation:
-          subject: ""
+          subject: "CubaModela Team - Booking fields translated"
         booking_change_fields_only:
-          subject: ""
+          subject: "CubaModela Team - Booking content changed"
         booking_change_dates_only:
-          subject: ""
+          subject: "CubaModela Team - Booking dates changed"
         booking_change_fields_and_dates:
-          subject: ""
+          subject: "CubaModela Team - Booking dates and content changed"
         booking_left_review:
           subject: ""
       profile:
         profile_published:
-          subject: ""
+          subject: "CubaModela Team - Profile published"
         profile_unpublished:
-          subject: ""
+          subject: "CubaModela Team - Profile unpublished"
         profile_reject:
-          subject: ""
+          subject: "CubaModela Team - Profile rejected"
         profile_warning:
-          subject: ""
+          subject: "CubaModela Team - Profile warning"
       review:
         review_new:
-          subject: ""
+          subject: "CubaModela Team - New review from contractor"
       coupon:
         coupon_sent:
-          subject: ""
+          subject: "CubaModela Team - New coupon"
       custom:
         message_send:
-          subject: ""
+          subject: "CubaModela Team - New message"
         admin_send_opinion:
-          subject: ""
+          subject: "CubaModela - Opinion message"
     modalities:
       index:
         header_text: "Modalities"

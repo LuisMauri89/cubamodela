@@ -27,6 +27,9 @@
                 <td class="text-center"><h4><%= user.kind %></h4></td>
                 <td class="text-center"><h4><%= l(user.created_at, format: :custom) << " [ " << distance_of_time_in_words(user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
                 <td>
+                  <div id="btns-for-partners-container-<%= user.id %>" style="display: inline-block;">
+                    <%= render 'btns_for_partners', user: user %>
+                  </div>
                   <%= link_to t('views.admin.users.buttons.send_message'), message_for_path(user_id: user.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                 </td>
               </tr>

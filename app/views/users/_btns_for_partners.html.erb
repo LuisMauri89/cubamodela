@@ -1,0 +1,5 @@
+<% if !user.admin? && user.profileable.is_partner %>
+	<%= link_to t('views.admin.users.buttons.unset_as_partner'), unset_as_partner_path(user_id: user.id), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+<% else %>
+	<%= link_to t('views.admin.users.buttons.set_as_partner'), set_as_partner_path(user_id: user.id), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+<% end %>

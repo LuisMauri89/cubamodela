@@ -157,4 +157,14 @@ class ProfilePhotographer < ApplicationRecord
 			return allow ? [allow, nil] : [allow, I18n.t('views.albums.messages.professional_max')]
 		end
 	end
+
+	def set_as_partner
+		self.is_partner = true
+		save
+	end
+
+	def unset_as_partner
+		self.is_partner = false
+		save
+	end
 end

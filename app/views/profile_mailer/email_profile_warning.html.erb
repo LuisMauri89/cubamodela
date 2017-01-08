@@ -1,6 +1,8 @@
 <h1 class="header text-center text-white"><%= t('views.mailers.global.user_friendly') %> <%= @profile.get_first_name %></h1>
 <h2><%= t('views.messages.index.templates.profile_warning.header_text') %></h2>
 
+<p><%= t('views.messages.index.templates.profile_warning.argument_text') %></p>
+
 <p><%= t('views.messages.index.templates.profile_warning.list_header_text') %></p>
 <ul>
 	<li><%= t('views.messages.index.templates.profile_warning.list_item_1_text') %></li>
@@ -9,8 +11,6 @@
 	<li><%= t('views.messages.index.templates.profile_warning.list_item_4_text') %></li>
 	<li><%= t('views.messages.index.templates.profile_warning.list_item_5_text') %></li>
 </ul>
-
-<p><%= t('views.messages.index.templates.profile_warning.argument_text') %></p>
 
 <%= link_to t('views.messages.index.templates.profile_published.buttons.edit_profile'), edit_profile_model_url(@profile), class: "btn btn-primary pull-right btn-small-right-margin" %>
 <%= link_to t('views.messages.index.templates.profile_published.buttons.profile_example'), static_pages_profile_example_url, class: "btn btn-primary pull-right btn-small-right-margin" %>

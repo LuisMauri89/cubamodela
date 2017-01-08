@@ -423,4 +423,14 @@ class ProfileModel < ApplicationRecord
 	def premium?
 		return self.plan.premium?
 	end
+
+	def set_as_partner
+		self.is_partner = true
+		save
+	end
+
+	def unset_as_partner
+		self.is_partner = false
+		save
+	end
 end

@@ -1,0 +1,7 @@
+<% if @user.profileable.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'shared/error_info', message: 'views.admin.users.messages.unset_as_partner_failed' %>");
+<% else %>
+	$('#notification-messages-container').html("<%= j render 'shared/action_info', message: 'views.admin.users.messages.unset_as_partner_success' %>");
+	$('#btns-for-partners-container-<%= @user.id %>').empty();
+	$('#btns-for-partners-container-<%= @user.id %>').html("<%= j render 'users/btns_for_partners', user: @user %>");
+<% end %>
