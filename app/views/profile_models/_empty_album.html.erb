@@ -1,0 +1,4 @@
+<h4 class="pull-left" style="margin-right: 30px;">
+	<%= t('views.albums.global.empty_album') %>
+</h4>
+<%= link_to t('forms.buttons.upload'), new_album_photo_path(album, type: "album"), remote: true, class: "btn btn-primary" %>

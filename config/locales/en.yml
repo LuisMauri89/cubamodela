@@ -143,9 +143,10 @@ en:
       photographers: "Photographers"
       discover: "Discover"
       articles: "Articles"
+      gallery: "Gallery"
     items_options:
       models:
-        all: "View all"
+        all: "See all"
         castings: "Find casting"
         search: "Search"
         premium: "Premium models"
@@ -214,6 +215,7 @@ en:
       send: "Send"
       confirm: "Confirm"
       review: "Review"
+      manage: "Manage"
       dont_show_again: "Don't show again"
     remember_me: "Remember me"
     warnings:
@@ -239,7 +241,7 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirm Password"
-        kind: "What profile are you?"
+        kind: "What type of profile are you?"
         kind_options:
           select: "Select profile"
           contractor: "Contractor"
@@ -259,6 +261,8 @@ en:
         location_es: "Location"
         casting_date: "Casting date"
         shooting_date: "Shooting date"
+        created_at: "Created at"
+        updated_at: "Updated at"
       casting:
         is_direct: "Ckeck this if the casting is intentional just for direct shooting."
         access_type: "Access type"
@@ -274,6 +278,8 @@ en:
         expiration_date: "Expiration date"
         casting_date: "Casting date"
         shooting_date: "Shooting date"
+        created_at: "Created at"
+        updated_at: "Updated at"
       category:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
@@ -295,6 +301,23 @@ en:
       nationality:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
+      profile_contractor:
+        associations:
+          languages: "Languages"
+          expertises: "Expertises"
+          modalities: "Modalities"
+          categories: "Categories"
+        nationality_id: Nationality
+        nationality_id_select_text: "Please select a nationality"
+        first_name: "First name"
+        first_name_not_present: "Unavailable first name"
+        last_name: "Last name"
+        mobile_phone: "Mobile phone"
+        land_phone: "Land phone"
+        address: "Address"
+        represent: "Represents"
+        created_at: "Created at"
+        updated_at: "Updated at"
       profile_model:
         associations:
           languages: "Languages"
@@ -326,6 +349,33 @@ en:
         birth_date_not_present: "Unavailable birth date"
         first_name: "First name"
         first_name_not_present: "Unavailable first name"
+        last_name: "Last name"
+        mobile_phone: "Mobile phone"
+        land_phone: "Land phone"
+        address: "Address"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      profile_photographer:
+        associations:
+          languages: "Languages"
+          expertises: "Expertises"
+          modalities: "Modalities"
+          categories: "Categories"
+        gender: "Gender"
+        gender_male: "Male"
+        gender_female: "Female"
+        current_province_id: "Current province"
+        current_province_id_select_text: "Please select a province"
+        nationality_id: Nationality
+        nationality_id_select_text: "Please select a nationality"
+        first_name: "First name"
+        first_name_not_present: "Unavailable first name"
+        last_name: "Last name"
+        mobile_phone: "Mobile phone"
+        land_phone: "Land phone"
+        address: "Address"
+        created_at: "Created at"
+        updated_at: "Updated at"
       province:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
@@ -356,6 +406,8 @@ en:
         title: "Title"
         place: "Place"
         description: "Description"
+        created_at: "Created at"
+        updated_at: "Updated at"
     errors:
       format: "%{attribute} %{message}"
       messages:
@@ -504,7 +556,7 @@ en:
           send_message: "Send message"
     albums:
       global:
-        empty_album: "No pictures in this album. Add some..."
+        empty_album: "Upload your photos NOW"
       messages:
         create: "The album has been successfully created."
         destroy: "The album has been successfully removed."
@@ -723,10 +775,10 @@ en:
               confirm: "Confirm"
               apply: "Apply"
           casting_change_fields_only:
-            title: "Casting changed"
-            description: "There are changes in the casting, check it out"
-            header_text: "Changes"
-            after_description_text: "Make sure that you are available for the casting dates."
+            title: "Casting content changed"
+            description: "There are changes in the casting content, check it out"
+            header_text: "Changes in the casting content"
+            after_description_text: "Make sure you agree with the changes in the casting"
             after_dates_text: "Make sure you can not apply or confirm your participation in the casting after expiration date."
             buttons:
               see_casting: "Casting details"
@@ -743,68 +795,69 @@ en:
               confirm: "Confirm"
               apply: "Apply"
           casting_change_fields_and_dates:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Casting dates and content changed"
+            description: "There are changes in the casting dates and content, check it to apply or confirm again"
+            header_text: "Dates and content changes"
+            after_description_text: "Make sure that you are available for the new casting dates."
+            after_dates_text: "Your confirmation status or application have been changed, you must confirm or apply again."
             buttons:
               see_casting: "Casting details"
-              confirm: ""
+              confirm: "Confirm"
+              apply: "Apply"
           casting_expiration_proximity:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Casting expiration date is close"
+            description: "The casting is about to expire"
+            header_text: "Casting expiration date is close"
+            after_description_text: "Make sure you are available for the casting"
+            after_dates_text: "Please, apply or confirm to the casting before the expiration date, or you will miss this chance."
             buttons:
               see_casting: "Casting details"
-              confirm: ""
+              confirm: "Confirm"
+              apply: "Apply"
           casting_expired:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "The casting expired"
+            description: "The casting has expired"
+            header_text: "The casting expired"
+            after_description_text: "The casting has expired"
+            after_dates_text: "It is no longer possible to apply or confirm the casting call. Please make sure you apply on time for the next one."
             buttons:
               see_casting: "Casting details"
-              confirm: ""
           casting_canceled:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "The casting has been canceled"
+            description: "The casting was canceled"
+            header_text: "The casting has been canceled"
+            after_description_text: "We are sorry, this casting was canceled by the contractor."
+            after_dates_text: "Don't be disappointed, check new castings in CubaModela."
             buttons:
               see_casting: "Casting details"
-              confirm: ""
           casting_invitation:
-            title: ""
-            description: ""
-            header_text: ""
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Casting invitation"
+            description: "You have been invited to a casting"
+            header_text: "Casting invitation"
+            after_description_text: "You have been invited to a casting, please visit the casting session of CubaModela for more information."
+            after_dates_text: "Don't miss the opportunity to confirm the casting, you might be what they are looking for."
             buttons:
               see_casting: "Casting details"
-              confirm: ""
+              confirm: "Confirm"
+              apply: "Apply"
           casting_invitation_confirmed:
-            title: ""
-            description: ""
+            title: "Confirmation of the casting invitation"
+            description: "Model have confirmed the casting invitation"
             header_text: "%{value} has confirmed his/her presence"
             subheader_text: "to casting: %{value}"
-            after_description_text: ""
-            after_dates_text: ""
+            after_description_text: "Congratulations, our model is interested in working with you"
+            after_dates_text: " xxx payment xxxxx"
             buttons:
               see_casting: "Casting details"
               edit_casting: "Edit Casting"
               manage_casting: "Manage casting"
               see_profile: "%{value} profile"
           casting_application:
-            title: ""
-            description: ""
+            title: "New casting application "
+            description: "A model applied to the casting, check it out"
             header_text: "New application from %{value}"
             subheader_text: "to casting: %{value}"
-            after_description_text: ""
+            after_description_text: "Congratulations, our model is interested in working with you, check the CubaModela casting page for more information and confirm the model."
             after_dates_text: ""
             buttons:
               see_casting: "Casting details"
@@ -812,12 +865,12 @@ en:
               manage_casting: "Manage casting"
               see_profile: "%{value} profile"
           casting_application_confirmed:
-            title: ""
-            description: ""
-            header_text: "Application successfully"
-            subheader_text: "to casting: %{value}"
-            after_description_text: ""
-            after_dates_text: ""
+            title: "Casting application confirmed"
+            description: "You have been selected for casting"
+            header_text: " Casting application confirmed"
+            subheader_text: "You have been selected for the casting %{value}"
+            after_description_text: "Congratulations, you have been accepted for the casting"
+            after_dates_text: "Check again the dates of the casting and the shooting, so you don't miss the opportunity by mistake"
             buttons:
               see_casting: "Casting details"
           booking_invitation:
@@ -927,6 +980,7 @@ en:
             argument_text: ""
             buttons:
               edit_profile: "Edit profile"
+              profile_example: "Learn how to build your profile"
           profile_reject:
             title: ""
             description: ""
@@ -940,6 +994,7 @@ en:
             argument_text: ""
             buttons:
               edit_profile: "Edit profile"
+              profile_example: "Learn how to build your profile"
           profile_warning:
             title: ""
             description: ""
@@ -953,6 +1008,7 @@ en:
             argument_text: ""
             buttons:
               edit_profile: "Edit profile"
+              profile_example: "Learn how to build your profile"
           review_new:
             title: ""
             description: ""

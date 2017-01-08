@@ -6,6 +6,10 @@
 	<% else %>
 		$("#photo-<%= @album.id %><%= @photo.id %>").parent().remove();
 		$("#modal-container").modal("hide");
+		<% if @album.photos.count == 0 %>
+			$("#body-album-<%= @album.id %>").empty();
+			$("#body-album-<%= @album.id %>").html("<%= j render 'profile_models/empty_album', album: @album %>");
+		<% end %>
 	<% end %>
 <% when "casting" %>
 	<% if @photo.errors.any? %>

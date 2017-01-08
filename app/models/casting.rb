@@ -215,7 +215,7 @@ class Casting < ApplicationRecord
   end
 
   def expired?
-    return expiration_date < Date.today
+    return expiration_date <= Date.today
   end
 
   def allow_edit?

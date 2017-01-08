@@ -14,18 +14,13 @@ class Photo < ApplicationRecord
 	  						:geometry => '64x64'
 	  					}, 
 	  					medium:{
-	  						:processors => [:watermark],
-	  						:geometry => '128x128',
-							:watermark_path => "#{Rails.root}/app/assets/images/watermark_medium.png",
-							:position => 'SouthEast',
-							:watermark_dissolve => 90,
-							:auto_orient => false 
+	  						:geometry => '128x128'
 	  					}, 
 	  					large:{
 	  						:processors => [:watermark],
 	  						:geometry => '256x256',
 							:watermark_path => "#{Rails.root}/app/assets/images/watermark_large.png",
-							:position => 'SouthEast',
+							:position => 'NorthEast',
 							:watermark_dissolve => 90,
 							:auto_orient => false 
 	  					},

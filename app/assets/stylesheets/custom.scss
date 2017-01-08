@@ -317,9 +317,10 @@ h3 .small-info{
     border: 3px solid white;
 }
 
-.btn-home:hover{
+.btn-gallery:hover{
 	background-color: transparent;
-	border-color: #337ab7;
+	border-color: black;
+	color: black !important;
 	text-decoration: none;
 }
 
@@ -415,7 +416,7 @@ h3 .small-info{
 
 #learn-profile-btn-learn{
 	position: absolute;
-	top: 75%;
+	top: 70%;
 	left: 45%;
 }
 
@@ -468,7 +469,7 @@ h3 .small-info{
 }
 
 .partner-cell{
-	padding: 10px 30px !important;
+	padding: 20px 80px !important;
 }
 
 .partner-container{
@@ -555,7 +556,8 @@ h3 .small-info{
 
 .btn-article:hover{
 	background-color: transparent;
-	border-color: white;
+	border-color: black;
+	color: black !important;
 	text-decoration: none;
 }
 
@@ -580,6 +582,40 @@ h3 .small-info{
 
 #section-social-icons-container{
 	padding-bottom: 20px;
+}
+
+#gallery-home-container{
+	background-color: white;
+}
+
+#gallery-home-container > #gallery-home-footer{
+	position: absolute;
+	top: 47%;
+	left: 28%;
+}
+
+.btn-home:hover{
+	background-color: transparent;
+	border-color: black;
+	color: black !important;
+	text-decoration: none;
+}
+
+.btn-gallery{
+	color: #fff !important;
+	background-color: transparent;
+	cursor: pointer;
+    display: inline-block;
+    font-size: 60px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-decoration: none;
+    border: 3px solid white;
 }
 
 /* END Home page */
