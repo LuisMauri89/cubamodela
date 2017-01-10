@@ -53,7 +53,7 @@ gem 'dropzonejs-rails'
 gem 'whenever', require: false
 
 # With nginx server
-#gem 'unicorn'
+gem 'unicorn'
 
 # demonize deleyed_job
 # gem daemons
@@ -74,15 +74,20 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  #Capistrano
-  #gem 'capistrano-rails'
-  #gem 'capistrano-rvm'
-  #gem 'capistrano3-unicorn'
-  #gem 'capistrano-sidekiq'
+  # Capistrano
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
 end
 
 group :production do
-  # gem pg postgresql
+  #postgresql
+  gem 'pg'
+
+  # Action Job
+  gem 'redis'
+  gem 'sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
