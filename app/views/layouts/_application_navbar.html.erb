@@ -8,7 +8,7 @@
 		        <span class="icon-bar"></span>
 		    </button>
 			<%= link_to root_path, class: "navbar-brand" do %>
-				<%= image_tag "logo_navbar.gif", size:"64x30", alt: "Logo" %>
+				<%= image_tag "cubamodela_logo_blue.png", width:"90", alt: "Logo" %>
 			<% end %>
 		</div>
 
@@ -31,37 +31,27 @@
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('menu.items.photographers') %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><%= link_to "See all", profile_photographers_path %></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <li><%= link_to "Coming Soon", "#" %></li>
 		          </ul>
 		        </li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('menu.items.services') %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <li><a href="#">Coming Soon</a></li>
 		          </ul>
 		        </li>
 		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('menu.items.discover') %><span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('menu.items.more') %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
+		          	<li><%= link_to t('menu.items_options.more.profile_example'), static_pages_profile_example_path %></li>
+		            <li><%= link_to t('menu.items_options.more.gallery'), static_pages_gallery_path %></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
+		            <li><%= link_to t('menu.items_options.more.castings'), castings_path %></li>
+					<li><%= link_to t('menu.items_options.more.registration'), new_registration_path(resource_name) %></li>
 		            <li role="separator" class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <li><%= link_to t('menu.items_options.more.partner_xuan'), static_pages_xuan_path %></li>
+		            <li><%= link_to t('menu.items_options.more.partner_patricio'), static_pages_patricio_path %></li>
+		            <li><%= link_to t('menu.items_options.more.partner_camila'), static_pages_camila_path %></li>
 		          </ul>
 		        </li>
 			</ul>

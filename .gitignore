@@ -22,3 +22,6 @@
 
 # Ignore all images uploaded.
 /public/system/photos/images/*
+
+# Database
+/config/database.yml

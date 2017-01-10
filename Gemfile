@@ -59,7 +59,7 @@ gem 'whenever', require: false
 # gem daemons
 
 # Background jobs
-# gem delayed_job_active_record
+# gem sidekiq
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -78,6 +78,7 @@ group :development do
   #gem 'capistrano-rails'
   #gem 'capistrano-rvm'
   #gem 'capistrano3-unicorn'
+  #gem 'capistrano-sidekiq'
 end
 
 group :production do

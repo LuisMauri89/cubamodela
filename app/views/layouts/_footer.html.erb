@@ -1,11 +1,9 @@
 <div id="footer">
 	<div class="row">
-		<div class="col-md-3">
-			<address>
-			  <strong>CubaModela</strong><br>
-			  <%= t('views.footer.left_text') %><br>
-			  <abbr title="Phone">P:</abbr> (+53) 111-11-11
-			</address>
+		<div class="col-md-3" style="padding-top: 1.8%;">
+			<%= link_to root_path do %>
+				<%= image_tag "cubamodela_logo_white.png", width:"250", alt: "Logo" %>
+			<% end %>
 		</div>
 		<div class="col-md-2">
 			<ul class="list-unstyled">
