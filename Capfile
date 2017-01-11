@@ -10,7 +10,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano3/unicorn'
 require 'capistrano/sidekiq'
-require 'capistrano/sidekiq/monit'
+# require 'capistrano/sidekiq/monit'
 require "whenever/capistrano"
 
 # Load the SCM plugin appropriate to your project:
