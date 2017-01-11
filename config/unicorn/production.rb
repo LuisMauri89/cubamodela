@@ -10,7 +10,7 @@ worker_processes 3
 timeout 30
 preload_app true
 
-listen '/tmp/unicorn.cubamodela.sock', backlog: 64
+listen "/home/deployer/apps/cubamodela/shared/socket/unicorn.cubamodela.sock", backlog: 64
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
