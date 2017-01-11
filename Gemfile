@@ -82,10 +82,10 @@ group :development do
 end
 
 group :production do
-  #postgresql
+  # postgresql
   gem 'pg'
 
-  # Action Job
+  # Active Job
   gem 'redis'
   gem 'sidekiq'
 end
