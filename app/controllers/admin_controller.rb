@@ -149,7 +149,7 @@ class AdminController < ApplicationController
 
 	def exec_all
 		CastingsExpiredJob.perform_later
-		CastingProximityJob.perform_later
+		CastingExpirationProximityJob.perform_later
 
 		respond_to do |format|
 			format.js
