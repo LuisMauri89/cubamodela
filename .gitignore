@@ -25,3 +25,4 @@
 
 # Database
 /config/database.yml
+/config/secrets.yml
