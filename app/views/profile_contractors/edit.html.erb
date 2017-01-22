@@ -23,7 +23,7 @@
 								<%= image_tag @profile.get_profile_picture_url(:medium), alt: "Model Photo", class: "img-responsive" %>
 							</div>
 							<div class="text-center" style="margin-top: 5px;">
-								<%= link_to 'Change', new_album_photo_path(@album_profile_picture, type: "profile"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
+								<%= link_to t('forms.buttons.change'), new_album_photo_path(@album_profile_picture, type: "profile"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
 							</div>
 						</div>
 					</div>

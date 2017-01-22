@@ -225,6 +225,7 @@ en:
       confirm: "Confirm"
       review: "Review"
       manage: "Manage"
+      change: "Change"
       dont_show_again: "Don't show again"
     remember_me: "Remember me"
     warnings:

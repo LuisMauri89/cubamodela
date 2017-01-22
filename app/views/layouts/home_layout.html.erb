@@ -12,36 +12,36 @@
 
     <div id="main-container" class="container-fluid">
 
-      <div class="row">
-        <div id="navbar-container" class="col-md-12">
+      <div class="row row-no-space">
+        <div id="navbar-container" class="col-md-12 cell-no-space">
           <%= render 'layouts/home_navbar' %>
         </div>
       </div>
 
-      <div class="row">
-        <div id="flash-messages-container" class="col-md-12">
+      <div class="row row-no-space">
+        <div id="flash-messages-container" class="col-md-12 cell-no-space">
           <%= render 'layouts/flash_messages' %>
         </div>
       </div>
 
       <% if user_signed_in? && current_user.user? && ((current_user.profileable != nil && current_user.profileable.profile_complete_progress_percentage < 50) || current_user.profileable == nil) %>
-        <div class="row">
-          <div id="flash-messages-container" class="col-md-12">
+        <div class="row row-no-space">
+          <div class="col-md-12 cell-no-space">
             <%= render 'layouts/provide_profile' %>
           </div>
         </div>
       <% end %>
 
-      <div class="row">
-        <div id="banner-container" class="col-md-12">
+      <div class="row row-no-space">
+        <div id="banner-container" class="col-md-12 cell-no-space">
           <%= render 'layouts/home_banner' %>
         </div>
       </div>
 
       <%= yield %>
 
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row row-no-space">
+        <div class="col-md-12 cell-no-space">
           <%= render 'layouts/footer' %>
         </div>
       </div>

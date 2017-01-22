@@ -78,10 +78,10 @@ class ProfileContractor < ApplicationRecord
 	end
 
 	def full_name
-		if self.first_name.present? and self.last_name.present?
-			self.first_name + " " + self.last_name
+		if first_name.present? and last_name.present?
+			return first_name << " " << last_name
 		else
-			"Missing Name"
+			return user.email.split("@")[0]
 		end
 	end
 
