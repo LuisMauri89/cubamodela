@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div id="panel-home-sign-up" class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title"><%= t('views.devise.registrations.new.header_text') %></h3>
   </div>
@@ -28,23 +28,23 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation'), class: "form-control" %>
     </div>
 
-    <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-primary btn-block" %>
+    <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-primary btn-block", style: "margin-bottom: 5px;" %>
   <% end %>
   </div>
   <div class="panel-footer">
     <div class="row">
-      <div class="col-md-offset-1 col-md-5">
+      <div class="col-md-offset-1 col-md-5 col-xs-offset-1 col-xs-5">
         <h4><%= t('views.static_pages.home.sign_up_form.account_text') %></h4>
       </div>
-      <div class="col-md-offset-1 col-md-5">
+      <div class="col-md-offset-1 col-md-5 col-xs-offset-1 col-xs-5">
         <h4><%= t('views.static_pages.home.sign_up_form.recover_text') %></h4>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-offset-2 col-md-4">
+      <div class="col-md-offset-2 col-md-4 col-xs-offset-1 col-xs-4">
         <%= link_to t('forms.buttons.log_in'), new_session_path(resource_name), class: "btn btn-primary" %><br />
       </div>
-      <div class="col-md-offset-2 col-md-4">
+      <div class="col-md-offset-2 col-md-4 col-xs-offset-2 col-xs-4">
         <%= link_to t('forms.buttons.recover'), new_password_path(resource_name), class: "btn btn-primary" %><br />
       </div>
     </div>

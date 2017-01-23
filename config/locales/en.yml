@@ -227,6 +227,7 @@ en:
       manage: "Manage"
       change: "Change"
       dont_show_again: "Don't show again"
+      read_more: "Read more"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you wish to delete %{value}?"

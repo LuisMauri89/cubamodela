@@ -1,14 +1,14 @@
 <div class="row row-no-space">
-    <div class="col-md-12 cell-no-space">
+    <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="home-line-users-amounts-container-auth-<%= user_signed_in?.to_s %>">
             <div class="row text-center">
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-4">
                     <h2><%= t('views.static_pages.home.models_text').upcase %>  <span class="home-line-users-count"><%= get_models_count %></span></h2>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-4">
                     <h2><%= t('views.static_pages.home.photographers_text').upcase %>  <span class="home-line-users-count"><%= get_photographers_count %></span></h2>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-4">
                     <h2><%= t('views.static_pages.home.places_text').upcase %>  <span class="home-line-users-count">125</span></h2>
                 </div>
             </div>
@@ -18,7 +18,7 @@
 
 <% if !user_signed_in? %>
     <div class="row row-no-space">
-        <div class="col-md-12 cell-no-space">
+        <div class="col-md-12 col-xs-12 cell-no-space">
             <div id="subscribe-container" class="relative-position">
               <%= image_tag "cubamodela_home_subscribe_cuba_models_en.jpg", alt: "CubaModela Cuba Models Fashion Photography", class: "img-responsive img-full" %>
               <div id="home-subscribe-form-container">
@@ -30,7 +30,7 @@
 <% end %>
 
 <div class="row row-no-space">
-    <div class="col-md-12 cell-no-space">
+    <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="models-container" class="relative-position">
           <div id="models-header">
               <p class="text-center">DISCOVER THE BEST MODELS</p>
@@ -87,7 +87,7 @@
 </div>
 
 <div class="row row-no-space">
-    <div class="col-md-12 cell-no-space">
+    <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="follow-container" class="relative-position">
           <div id="follow-header">
               <p class="text-center">FOLLOW US</p>
@@ -162,45 +162,45 @@
 </div>
 
 <div class="row row-no-space">
-    <div class="col-md-12 cell-no-space">
+    <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="partners-container" class="notify relative-position">
           <div id="partners-header">
               <p class="text-center">OUR PARTNERS</p>
           </div>
           <div class="row partner-row">
-              <div class="col-md-4 partner-cell">
+              <div class="col-md-4 col-xs-4 partner-cell">
                     <div class="well partner-container">
                         <div class="partner-logo">
-                            <%= image_tag "cubamodela_home_section_partners_cuba_models_designer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_designer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
                         </div>
                         <p class="text-center partner-ocupation">Designer</p>
                         <p class="text-center partner-name">Patricio Herrera Vega</p>
-                        <div class="text-center">
-                            <%= link_to "VIEW MORE", static_pages_patricio_path, class: "btn btn-primary" %>
+                        <div class="text-center partner-link">
+                            <%= link_to t('forms.buttons.read_more'), static_pages_patricio_path, class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
-              <div class="col-md-4 partner-cell">
+              <div class="col-md-4 col-xs-4 partner-cell">
                     <div class="well partner-container">
                         <div class="partner-logo">
-                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
                         </div>
                         <p class="text-center partner-ocupation">Photographer</p>
-                        <p class="text-center partner-name">Camila Herrera Vega</p>
-                        <div class="text-center">
-                            <%= link_to "VIEW MORE", static_pages_camila_path, class: "btn btn-primary" %>
+                        <p class="text-center partner-name">Camila Serrano</p>
+                        <div class="text-center partner-link">
+                            <%= link_to t('forms.buttons.read_more'), static_pages_camila_path, class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
-              <div class="col-md-4 partner-cell">
+              <div class="col-md-4 col-xs-4 partner-cell">
                     <div class="well partner-container">
                         <div class="partner-logo">
-                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive" %>
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
                         </div>
                         <p class="text-center partner-ocupation">Photographer</p>
                         <p class="text-center partner-name">Xuan Linh Hoang Rey</p>
-                        <div class="text-center">
-                            <%= link_to "VIEW MORE", static_pages_xuan_path, class: "btn btn-primary" %>
+                        <div class="text-center partner-link">
+                            <%= link_to t('forms.buttons.read_more'), static_pages_xuan_path, class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
