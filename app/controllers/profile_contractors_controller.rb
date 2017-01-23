@@ -21,7 +21,7 @@ class ProfileContractorsController < ApplicationController
 
       redirect_to edit_profile_contractor_path(@profile)
     else
-      redirect_to edit_profile_contractor_path(current_user.profileable)
+      redirect_to edit_profile_contractor_path(@profile)
     end
   end
 

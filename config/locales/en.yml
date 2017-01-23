@@ -569,7 +569,7 @@ en:
           unset_as_partner_failed: "Unset as partner failed."
         buttons:
           send_message: "Send message"
-          set_as_partner: "Make partner"
+          set_as_partner: "Partner"
           unset_as_partner: "Unpartner"
     albums:
       global:

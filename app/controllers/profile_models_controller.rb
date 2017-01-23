@@ -196,7 +196,7 @@ class ProfileModelsController < ApplicationController
 
       redirect_to edit_profile_model_path(@profile)
     else
-      redirect_to edit_profile_model_path(current_user.profileable)
+      redirect_to edit_profile_model_path(@profile)
     end
   end
 
