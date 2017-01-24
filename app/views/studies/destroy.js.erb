@@ -2,5 +2,5 @@
 	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
 	$('#panel-<%= @study.id %>').remove();
-	$('#notification-messages-container').html("<%= j render 'action_info', text: @study.title + ' removed' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.studies.messages.destroy' %>");
 <% end %>

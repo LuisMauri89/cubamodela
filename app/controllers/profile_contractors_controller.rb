@@ -12,6 +12,7 @@ class ProfileContractorsController < ApplicationController
   def new
     if current_user.profileable.nil?
       @profile = ProfileContractor.create
+      Rails.logger.info "ProfileContractor create - id: #{@profile.id}"
       build_profile_meta
 
       authorize! :new, @profile
@@ -48,7 +49,7 @@ class ProfileContractorsController < ApplicationController
     respond_to do |format|
       if @profile.update(profile_params)
         @update_progress = @profile.profile_complete_progress_percentage
-        format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.full_name + '.' }
+        format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.get_first_name + '.' }
         format.js
       else
         format.html { render action: 'edit' }
@@ -77,8 +78,15 @@ class ProfileContractorsController < ApplicationController
     end
 
     def build_profile_meta
+      Rails.logger.info "ProfileContractor build profile meta"
       @profile.albums.create(name: Constant::ALBUM_PROFILE_NAME)
+      Rails.logger.info "ProfileContractor profile meta album profile photo - album id: #{@profile.albums.where(name: Constant::ALBUM_PROFILE_NAME).first.id}"
+      Rails.logger.info "ProfileContractor profile meta album profile photo - album name: #{@profile.albums.where(name: Constant::ALBUM_PROFILE_NAME).first.name}"
 
       @profile.create_wallet
+
+      @profile.plan = Plan.get_contractor_free_plan
+
+      @profile.save
     end
 end

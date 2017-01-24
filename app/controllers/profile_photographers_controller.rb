@@ -64,7 +64,7 @@ class ProfilePhotographersController < ApplicationController
     respond_to do |format|
       if @profile.update(profile_params)
         @update_progress = @profile.profile_complete_progress_percentage
-        format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.full_name + '.' }
+        format.html { redirect_to '/', success: 'Your profile has been updated ' + @profile.get_first_name + '.' }
         format.js
       else
         format.html { render action: 'edit' }

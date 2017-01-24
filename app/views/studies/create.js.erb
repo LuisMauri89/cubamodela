@@ -4,5 +4,5 @@
 	$('#form-new-study-container').empty()
 	$('#new-study-link').show();
 	$('#studies-container').append("<%= j render 'created_study' %>")
-	$('#notification-messages-container').html("<%= j render 'action_info', text: 'created' %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.studies.messages.create' %>");
 <% end %>
