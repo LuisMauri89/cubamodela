@@ -56,11 +56,8 @@ gem 'whenever', require: false
 # With nginx server
 gem 'unicorn'
 
-# demonize deleyed_job
-# gem daemons
-
-# Background jobs
-# gem sidekiq
+# I'm not a robot
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

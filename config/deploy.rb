@@ -22,10 +22,16 @@ end
 
 # cap production deploy:invoke task=db:seed
 namespace :deploy do
-  desc "Invoke rake task"
-  task :invoke do
+  desc "Invoke rake db:seed"
+  task :db_seed do
     run "cd #{deploy_to}/current"
-    run "bundle exec rake #{ENV['task']} RAILS_ENV=#{rails_env}"
+    run "bundle exec rake db:seed"
+  end
+
+  desc "Invoke rake memcached:flush"
+  task :memcached_flush do
+    run "cd #{deploy_to}/current"
+    run "bundle exec rake memcached:flush"
   end
 end
 

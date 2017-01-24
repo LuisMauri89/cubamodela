@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
 # Devise routes
-  devise_for :users, :path => 'account'
+  devise_for :users, :path => 'account', :controllers => {:registrations => "registrations"}
 
 # Users routes
   resources :users, only: [:index]
