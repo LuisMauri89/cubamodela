@@ -18,21 +18,23 @@
 
           <tbody>
             <% @users.each do |user| %>
-              <tr>
-                <td>
-                  <%= image_tag user.profileable.nil? ? "missing_profile_picture_32.jpg" : user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
-                  <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.full_name  %></h4>
-                </td>
-                <td class="text-center"><h4><%= user.email %></h4></td>
-                <td class="text-center"><h4><%= user.kind %></h4></td>
-                <td class="text-center"><h4><%= l(user.created_at, format: :custom) << " [ " << distance_of_time_in_words(user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
-                <td>
-                  <div id="btns-for-partners-container-<%= user.id %>" style="display: inline-block;">
-                    <%= render 'btns_for_partners', user: user %>
-                  </div>
-                  <%= link_to t('views.admin.users.buttons.send_message'), message_for_path(user_id: user.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
-                </td>
-              </tr>
+              <% if !user.profileable.nil? %>
+                <tr>
+                  <td>
+                    <%= image_tag user.profileable.nil? ? "missing_profile_picture_32.jpg" : user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
+                    <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.get_first_name  %></h4>
+                  </td>
+                  <td class="text-center"><h4><%= user.email %></h4></td>
+                  <td class="text-center"><h4><%= user.kind %></h4></td>
+                  <td class="text-center"><h4><%= l(user.created_at, format: :custom) << " [ " << distance_of_time_in_words(user.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
+                  <td>
+                    <div id="btns-for-partners-container-<%= user.id %>" style="display: inline-block;">
+                      <%= render 'btns_for_partners', user: user %>
+                    </div>
+                    <%= link_to t('views.admin.users.buttons.send_message'), message_for_path(user_id: user.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
           </tbody>
         </table>

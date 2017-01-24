@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :check_if_can
 
   def index
-  	@users = User.role_user.order("created_at DESC")
+  	@users = User.users_all.order("created_at DESC")
   end
 
   private
