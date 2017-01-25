@@ -496,6 +496,7 @@ en:
           photographers:
         provide_profile_text: "Please provide more info to reach your profile"
         provide_profile_link_text: "Edit your profile"
+        beta_version_coming_soon_text: "Beta version, we will make the launch very soon, feel free to look around"
       gallery:
         header_text: Gallery
         show:
