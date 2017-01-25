@@ -130,4 +130,29 @@ module ApplicationHelper
     return profile.premium? ? "premium-border" : ""
   end
 
+  # Social networks links
+  def get_facebook_link
+    return "https://www.facebook.com/cubamodela/"
+  end
+
+  def get_instagram_link
+    return "https://www.instagram.com/cubamodela/"
+  end
+
+  def get_twitter_link
+    return "https://twitter.com/CubaModela"
+  end
+
+  def get_pinterest_link
+    return "https://www.pinterest.com/cubamodela/"
+  end
+
+  def get_google_plus_link
+    return "#"
+  end
+
+  def get_youtube_link
+    return "#"
+  end
+
 end
