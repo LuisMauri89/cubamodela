@@ -24,30 +24,38 @@ end
 namespace :deploy do
   desc "Invoke rake db:seed"
   task :db_seed do
-    execute :cd, "#{deploy_to}/current"
-    execute :rake, "db:seed"
+    on roles(:app) do
+      execute :cd, "#{deploy_to}/current"
+      execute :rake, "db:seed"
+    end
   end
 
   # rake db:reset drops the database, then loads the schema with rake db:schema:load and then seeds the data with rake db:seed
   desc "Invoke rake db:reset"
   task :db_reset do
-    execute :cd, "#{deploy_to}/current"
-    execute :rake, "db:reset"
+    on roles(:app) do
+      execute :cd, "#{deploy_to}/current"
+      execute :rake, "db:reset"
+    end
   end
 
   desc "Invoke Drop, Create, Migrate Seed"
   task :db_reseed do
-    execute :cd, "#{deploy_to}/current"
-    execute :rake, "db:drop"
-    execute :rake, "db:create"
-    execute :rake, "db:migrate"
-    execute :rake, "db:seed"
+    on roles(:app) do
+      execute :cd, "#{deploy_to}/current"
+      execute :rake, "db:drop"
+      execute :rake, "db:create"
+      execute :rake, "db:migrate"
+      execute :rake, "db:seed"
+    end
   end
 
   desc "Invoke rake memcached:flush"
   task :memcached_flush do
-    execute :cd, "#{deploy_to}/current"
-    execute :rake, "memcached:flush"
+    on roles(:app) do
+      execute :cd, "#{deploy_to}/current"
+      execute :rake, "memcached:flush"
+    end
   end
 end
 
