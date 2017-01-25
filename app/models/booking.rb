@@ -29,7 +29,7 @@ class Booking < ApplicationRecord
   before_save :set_location_locale, if: :new_record?
 
   # Scopes
-  scope :valids, -> { where(status: ["booked", "confirmed"]).where("casting_date > :today", today: DateTime.now) }
+  scope :valids, -> { where(status: ["booked", "confirmed"]).where("casting_date > :today", today: Time.current) }
   scope :valid_bookings, -> { valids.order("created_at DESC") }
   scope :description_needs_translation, -> { valids.where(description_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(description_es: Constant::ES_TRANSLATION_PENDING)) }
   scope :location_needs_translation, -> { valids.where(location_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(location_es: Constant::ES_TRANSLATION_PENDING)) }
@@ -53,13 +53,13 @@ class Booking < ApplicationRecord
 
   # Custom Validators
   def casting_date_cannot_be_in_the_past
-    if casting_date.present? && casting_date < Date.today
+    if casting_date.present? && casting_date < Time.current
       errors.add(:casting_date, :wrong_casting_date)
     end
   end
 
   def shooting_date_cannot_be_in_the_past
-    if shooting_date.present? && (shooting_date < Date.today || shooting_date < casting_date)
+    if shooting_date.present? && (shooting_date < Time.current || shooting_date < casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
     end
   end
@@ -124,7 +124,7 @@ class Booking < ApplicationRecord
 
   # For expiration
   def expired?
-  	return self.casting_date < DateTime.now
+  	return self.casting_date < Time.current
   end
 
   def try_confirm!
@@ -134,7 +134,7 @@ class Booking < ApplicationRecord
     when "confirmed"
       errors[:base]  << I18n.t('views.bookings.messages.edit.confirmed')
     when "booked"
-      if self.casting_date <= DateTime.now
+      if self.casting_date <= Time.current
         errors[:base]  << I18n.t('views.bookings.messages.edit.past')
       else
         self.confirmed!
@@ -149,13 +149,13 @@ class Booking < ApplicationRecord
     when "canceled"
       errors[:base]  << I18n.t('views.bookings.messages.edit.canceled')
     when "confirmed"
-      if self.casting_date <= DateTime.now
+      if self.casting_date <= Time.current
         errors[:base]  << I18n.t('views.bookings.messages.edit.past')
       else
         self.rejected!
       end
     when "booked"
-      if self.casting_date <= DateTime.now
+      if self.casting_date <= Time.current
         errors[:base]  << I18n.t('views.bookings.messages.edit.past')
       else
         self.rejected!
@@ -172,7 +172,7 @@ class Booking < ApplicationRecord
     when "rejected"
       errors[:base]  << I18n.t('views.bookings.messages.edit.rejected')
     else
-      if self.casting_date <= DateTime.now
+      if self.casting_date <= Time.current
         errors[:base]  << I18n.t('views.bookings.messages.edit.past')
       else
         self.canceled!
@@ -276,7 +276,7 @@ class Booking < ApplicationRecord
     charge_on_dates_change = false
 
     if old_booking.expiration_date != self.expiration_date || old_booking.casting_date != self.casting_date || old_booking.shooting_date != self.shooting_date
-      if ((Date.today - self.created_at.to_date) * 24) > 24
+      if ((Time.current - self.created_at.to_date) * 24) > 24
         charge_on_dates_change = true
       end
     end

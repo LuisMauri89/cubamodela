@@ -32,7 +32,7 @@
 			<% end %>
 			<% if casting.active? %>
 				<div>
-					<p class="small-gray-text"><u><%= t('views.castings.index.expires_in_text', value: distance_of_time_in_words(Date.today, casting.expiration_date) << t('datetime.distance_in_words.after_text')) %></u></p>
+					<p class="small-gray-text"><u><%= t('views.castings.index.expires_in_text', value: distance_of_time_in_words(Time.current, casting.expiration_date) << t('datetime.distance_in_words.after_text')) %></u></p>
 				</div>
 			<% else %>
 				<div class="div-inline pull-right">

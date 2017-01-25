@@ -70,7 +70,7 @@ class Casting < ApplicationRecord
   #Scopes
   scope :actives, -> { where(status: "active").order("created_at DESC") }
   scope :closeds, -> { where(status: "closed").order("created_at DESC") }
-  scope :valids, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: DateTime.now) }
+  scope :valids, -> { where(status: ["active", "closed"]).where("casting_date > :today", today: Time.current) }
   scope :valid_castings, -> { valids.order("created_at DESC") }
   scope :title_needs_translation, -> { valids.where(title_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(title_es: Constant::ES_TRANSLATION_PENDING)) }
   scope :description_needs_translation, -> { valids.where(description_en: Constant::EN_TRANSLATION_PENDING).or(self.valids.where(description_es: Constant::ES_TRANSLATION_PENDING)) }
@@ -114,13 +114,13 @@ class Casting < ApplicationRecord
   end
 
   def casting_date_cannot_be_in_the_past
-    if casting_date.present? && (casting_date < DateTime.now || casting_date <= expiration_date)
+    if casting_date.present? && (casting_date < Time.current || casting_date <= expiration_date)
       errors.add(:casting_date, :wrong_casting_date)
     end
   end
 
   def shooting_date_cannot_be_in_the_past
-    if shooting_date.present? && (shooting_date < DateTime.now || shooting_date < casting_date)
+    if shooting_date.present? && (shooting_date < Time.current || shooting_date < casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
     end
   end
@@ -223,7 +223,7 @@ class Casting < ApplicationRecord
     when "active"
       return nil
     when "closed"
-      if DateTime.now < casting_date
+      if Time.current < casting_date
         return nil
       else
         return I18n.t('views.castings.messages.edit.past')
@@ -236,7 +236,7 @@ class Casting < ApplicationRecord
   def try_close!
     case status
     when "active"
-      expiration_date = DateTime.now
+      expiration_date = Time.current
       closed!
     when "closed"
       errors[:base] << I18n.t('views.castings.messages.edit.closed')
@@ -250,7 +250,7 @@ class Casting < ApplicationRecord
     when "active"
       canceled!
     when "closed"
-      if DateTime.now < casting_date
+      if Time.current < casting_date
         canceled!
       else
         errors[:base] << I18n.t('views.castings.messages.edit.past')
@@ -265,8 +265,8 @@ class Casting < ApplicationRecord
     when "active"
       errors[:base] << I18n.t('views.castings.messages.edit.active')
     when "closed"
-      if DateTime.now < casting_date
-        expiration_date = DateTime.now + 1
+      if Time.current < casting_date
+        expiration_date = Date.today + 1
         casting_date = casting_date + 1
         shooting_date = shooting_date + 1
         active!

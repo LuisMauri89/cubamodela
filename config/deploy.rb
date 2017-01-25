@@ -25,8 +25,9 @@ namespace :deploy do
   desc "Invoke rake db:seed"
   task :db_seed do
     on roles(:app) do
-      execute "cd #{deploy_to}/current"
-      execute :rake, "db:seed"
+      within release_path do
+        execute :rake, "db:seed"
+      end
     end
   end
 
@@ -34,27 +35,30 @@ namespace :deploy do
   desc "Invoke rake db:reset"
   task :db_reset do
     on roles(:app) do
-      execute "cd #{deploy_to}/current"
-      execute :rake, "db:reset"
+      within release_path do
+        execute :rake, "db:reset"
+      end
     end
   end
 
   desc "Invoke Drop, Create, Migrate Seed"
   task :db_reseed do
     on roles(:app) do
-      execute "cd #{deploy_to}/current"
-      execute :rake, "db:drop"
-      execute :rake, "db:create"
-      execute :rake, "db:migrate"
-      execute :rake, "db:seed"
+      within release_path do
+        execute :rake, "db:drop"
+        execute :rake, "db:create"
+        execute :rake, "db:migrate"
+        execute :rake, "db:seed"
+      end
     end
   end
 
   desc "Invoke rake memcached:flush"
   task :memcached_flush do
     on roles(:app) do
-      execute "cd #{deploy_to}/current"
-      execute :rake, "memcached:flush"
+      within release_path do
+        execute :rake, "memcached:flush"
+      end
     end
   end
 end

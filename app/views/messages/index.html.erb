@@ -18,7 +18,7 @@
           <% @messages.each_with_index do |message, index| %>
               <%= link_to(message_path(message), remote: true, class: "list-group-item " + get_readed_class(message)) do %>
                 <div id="message-<%= message.id %>" class="list-group-item-heading">
-                  <p class="pull-right message-created-at"><%= l(message.created_at, format: :long) %></p>
+                  <p class="pull-right message-created-at"><%= l(message.created_at.in_time_zone("Eastern Time (US & Canada)"), format: :long) %></p>
                   <h4><%= t(message.title) %></h4>
                 </div>
                 <p class="list-group-item-text"><%= t(message.description) %></p>
