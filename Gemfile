@@ -56,6 +56,8 @@ gem 'whenever', require: false
 # With nginx server
 gem 'unicorn'
 
+# gem 'letter_opener'
+
 # I'm not a robot
 #gem "recaptcha", require: "recaptcha/rails"
 
