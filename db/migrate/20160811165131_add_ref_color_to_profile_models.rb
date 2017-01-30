@@ -1,5 +1,5 @@
 class AddRefColorToProfileModels < ActiveRecord::Migration[5.0]
   def change
-    add_reference :profile_models, :ayes_color, foreign_key: true, index: true
+    add_column :profile_models, :eyes_color_id, :integer, index: true
   end
 end
