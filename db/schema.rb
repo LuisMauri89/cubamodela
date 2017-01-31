@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170124163432) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "albums", force: :cascade do |t|
     t.string   "name"
     t.string   "profileable_type"
@@ -19,26 +22,23 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "identifier"
-    t.index ["identifier"], name: "index_albums_on_identifier"
-    t.index ["profileable_type", "profileable_id"], name: "index_albums_on_profileable_type_and_profileable_id"
+    t.index ["identifier"], name: "index_albums_on_identifier", using: :btree
+    t.index ["profileable_type", "profileable_id"], name: "index_albums_on_profileable_type_and_profileable_id", using: :btree
   end
 
   create_table "bookings", force: :cascade do |t|
     t.integer  "status",                default: 0
+    t.integer  "profile_contractor_id"
+    t.integer  "profile_model_id"
     t.text     "description_en"
     t.text     "location_en"
     t.datetime "casting_date"
     t.datetime "shooting_date"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.integer  "profile_contractor_id"
-    t.integer  "profile_model_id"
     t.text     "description_es"
     t.text     "location_es"
     t.boolean  "is_direct"
-    t.index ["profile_contractor_id", "profile_model_id"], name: "index_bookings_on_profile_contractor_id_and_profile_model_id"
-    t.index ["profile_contractor_id"], name: "index_bookings_on_profile_contractor_id"
-    t.index ["profile_model_id"], name: "index_bookings_on_profile_model_id"
   end
 
   create_table "casting_reviews", force: :cascade do |t|
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.boolean  "show_again",            default: true
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.index ["casting_id"], name: "index_casting_reviews_on_casting_id"
-    t.index ["profile_contractor_id"], name: "index_casting_reviews_on_profile_contractor_id"
+    t.index ["casting_id"], name: "index_casting_reviews_on_casting_id", using: :btree
+    t.index ["profile_contractor_id"], name: "index_casting_reviews_on_profile_contractor_id", using: :btree
   end
 
   create_table "castings", force: :cascade do |t|
@@ -68,22 +68,22 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.text     "description_es"
     t.text     "location_es"
     t.boolean  "is_direct"
-    t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id", using: :btree
   end
 
   create_table "castings_categories", id: false, force: :cascade do |t|
     t.integer "casting_id"
     t.integer "category_id",      null: false
     t.integer "profile_model_id"
-    t.index ["casting_id"], name: "index_castings_categories_on_casting_id"
-    t.index ["profile_model_id"], name: "index_castings_categories_on_profile_model_id"
+    t.index ["casting_id"], name: "index_castings_categories_on_casting_id", using: :btree
+    t.index ["profile_model_id"], name: "index_castings_categories_on_profile_model_id", using: :btree
   end
 
   create_table "castings_modalities", id: false, force: :cascade do |t|
     t.integer "casting_id"
     t.integer "modality_id"
-    t.index ["casting_id"], name: "index_castings_modalities_on_casting_id"
-    t.index ["modality_id"], name: "index_castings_modalities_on_modality_id"
+    t.index ["casting_id"], name: "index_castings_modalities_on_casting_id", using: :btree
+    t.index ["modality_id"], name: "index_castings_modalities_on_modality_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -96,15 +96,15 @@ ActiveRecord::Schema.define(version: 20170124163432) do
   create_table "categories_profile_models", id: false, force: :cascade do |t|
     t.integer "profile_model_id"
     t.integer "category_id"
-    t.index ["category_id"], name: "index_categories_profile_models_on_category_id"
-    t.index ["profile_model_id"], name: "index_categories_profile_models_on_profile_model_id"
+    t.index ["category_id"], name: "index_categories_profile_models_on_category_id", using: :btree
+    t.index ["profile_model_id"], name: "index_categories_profile_models_on_profile_model_id", using: :btree
   end
 
   create_table "categories_searches", id: false, force: :cascade do |t|
     t.integer "category_id"
     t.integer "search_id"
-    t.index ["category_id"], name: "index_categories_searches_on_category_id"
-    t.index ["search_id"], name: "index_categories_searches_on_search_id"
+    t.index ["category_id"], name: "index_categories_searches_on_category_id", using: :btree
+    t.index ["search_id"], name: "index_categories_searches_on_search_id", using: :btree
   end
 
   create_table "charges", force: :cascade do |t|
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "on_action",            default: 0
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.index ["profileable_type", "profileable_id"], name: "index_charges_on_profileable_type_and_profileable_id"
+    t.index ["profileable_type", "profileable_id"], name: "index_charges_on_profileable_type_and_profileable_id", using: :btree
   end
 
   create_table "cloth_sizes", force: :cascade do |t|
@@ -139,8 +139,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "wallet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["coupon_id"], name: "index_coupon_charges_on_coupon_id"
-    t.index ["wallet_id"], name: "index_coupon_charges_on_wallet_id"
+    t.index ["coupon_id"], name: "index_coupon_charges_on_coupon_id", using: :btree
+    t.index ["wallet_id"], name: "index_coupon_charges_on_wallet_id", using: :btree
   end
 
   create_table "coupons", force: :cascade do |t|
@@ -168,8 +168,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
   create_table "expertises_profile_models", id: false, force: :cascade do |t|
     t.integer "profile_model_id"
     t.integer "expertise_id"
-    t.index ["expertise_id"], name: "index_expertises_profile_models_on_expertise_id"
-    t.index ["profile_model_id"], name: "index_expertises_profile_models_on_profile_model_id"
+    t.index ["expertise_id"], name: "index_expertises_profile_models_on_expertise_id", using: :btree
+    t.index ["profile_model_id"], name: "index_expertises_profile_models_on_profile_model_id", using: :btree
   end
 
   create_table "intents", force: :cascade do |t|
@@ -178,8 +178,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.integer  "profile_model_id"
-    t.index ["casting_id"], name: "index_intents_on_casting_id"
-    t.index ["profile_model_id"], name: "index_intents_on_profile_model_id"
+    t.index ["casting_id"], name: "index_intents_on_casting_id", using: :btree
+    t.index ["profile_model_id"], name: "index_intents_on_profile_model_id", using: :btree
   end
 
   create_table "languages", force: :cascade do |t|
@@ -192,15 +192,15 @@ ActiveRecord::Schema.define(version: 20170124163432) do
   create_table "languages_profile_contractors", id: false, force: :cascade do |t|
     t.integer "language_id"
     t.integer "profile_contractor_id"
-    t.index ["language_id"], name: "index_languages_profile_contractors_on_language_id"
-    t.index ["profile_contractor_id"], name: "index_languages_profile_contractors_on_profile_contractor_id"
+    t.index ["language_id"], name: "index_languages_profile_contractors_on_language_id", using: :btree
+    t.index ["profile_contractor_id"], name: "index_languages_profile_contractors_on_profile_contractor_id", using: :btree
   end
 
   create_table "languages_profile_models", id: false, force: :cascade do |t|
     t.integer "profile_model_id"
     t.integer "language_id"
-    t.index ["language_id"], name: "index_languages_profile_models_on_language_id"
-    t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id"
+    t.index ["language_id"], name: "index_languages_profile_models_on_language_id", using: :btree
+    t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id", using: :btree
   end
 
   create_table "level_requests", force: :cascade do |t|
@@ -209,7 +209,7 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "level"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["requester_type", "requester_id"], name: "index_level_requests_on_requester_type_and_requester_id"
+    t.index ["requester_type", "requester_id"], name: "index_level_requests_on_requester_type_and_requester_id", using: :btree
   end
 
   create_table "messages", force: :cascade do |t|
@@ -226,9 +226,9 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.string   "thirdable_type"
     t.integer  "thirdable_id"
     t.string   "extra_text_field"
-    t.index ["asociateable_type", "asociateable_id"], name: "index_messages_on_asociateable_type_and_asociateable_id"
-    t.index ["ownerable_type", "ownerable_id"], name: "index_messages_on_ownerable_type_and_ownerable_id"
-    t.index ["thirdable_type", "thirdable_id"], name: "index_messages_on_thirdable_type_and_thirdable_id"
+    t.index ["asociateable_type", "asociateable_id"], name: "index_messages_on_asociateable_type_and_asociateable_id", using: :btree
+    t.index ["ownerable_type", "ownerable_id"], name: "index_messages_on_ownerable_type_and_ownerable_id", using: :btree
+    t.index ["thirdable_type", "thirdable_id"], name: "index_messages_on_thirdable_type_and_thirdable_id", using: :btree
   end
 
   create_table "modalities", force: :cascade do |t|
@@ -241,15 +241,15 @@ ActiveRecord::Schema.define(version: 20170124163432) do
   create_table "modalities_profile_models", id: false, force: :cascade do |t|
     t.integer "profile_model_id"
     t.integer "modality_id"
-    t.index ["modality_id"], name: "index_modalities_profile_models_on_modality_id"
-    t.index ["profile_model_id"], name: "index_modalities_profile_models_on_profile_model_id"
+    t.index ["modality_id"], name: "index_modalities_profile_models_on_modality_id", using: :btree
+    t.index ["profile_model_id"], name: "index_modalities_profile_models_on_profile_model_id", using: :btree
   end
 
   create_table "modalities_searches", id: false, force: :cascade do |t|
     t.integer "modality_id"
     t.integer "search_id"
-    t.index ["modality_id"], name: "index_modalities_searches_on_modality_id"
-    t.index ["search_id"], name: "index_modalities_searches_on_search_id"
+    t.index ["modality_id"], name: "index_modalities_searches_on_modality_id", using: :btree
+    t.index ["search_id"], name: "index_modalities_searches_on_search_id", using: :btree
   end
 
   create_table "nationalities", force: :cascade do |t|
@@ -270,7 +270,7 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "attachable_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["attachable_type", "attachable_id"], name: "index_photos_on_attachable_type_and_attachable_id"
+    t.index ["attachable_type", "attachable_id"], name: "index_photos_on_attachable_type_and_attachable_id", using: :btree
   end
 
   create_table "plans", force: :cascade do |t|
@@ -298,7 +298,7 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.datetime "updated_at",                     null: false
     t.integer  "plan_id"
     t.boolean  "is_partner",     default: false
-    t.index ["plan_id"], name: "index_profile_contractors_on_plan_id"
+    t.index ["plan_id"], name: "index_profile_contractors_on_plan_id", using: :btree
   end
 
   create_table "profile_models", force: :cascade do |t|
@@ -328,11 +328,9 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.date     "warnings_last_made"
     t.integer  "plan_id"
     t.boolean  "is_partner",                                  default: false
-    t.index ["current_province_id"], name: "index_profile_models_on_current_province_id"
-    t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id"
-    t.index ["eyes_color_id"], name: "index_profile_models_on_eyes_color_id"
-    t.index ["nationality_id"], name: "index_profile_models_on_nationality_id"
-    t.index ["plan_id"], name: "index_profile_models_on_plan_id"
+    t.index ["ethnicity_id"], name: "index_profile_models_on_ethnicity_id", using: :btree
+    t.index ["nationality_id"], name: "index_profile_models_on_nationality_id", using: :btree
+    t.index ["plan_id"], name: "index_profile_models_on_plan_id", using: :btree
   end
 
   create_table "profile_photographers", force: :cascade do |t|
@@ -348,9 +346,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "plan_id"
     t.integer  "current_province_id"
     t.boolean  "is_partner",          default: false
-    t.index ["current_province_id"], name: "index_profile_photographers_on_current_province_id"
-    t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id"
-    t.index ["plan_id"], name: "index_profile_photographers_on_plan_id"
+    t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id", using: :btree
+    t.index ["plan_id"], name: "index_profile_photographers_on_plan_id", using: :btree
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -369,8 +366,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.text     "review_es"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["fromable_type", "fromable_id"], name: "index_reviews_on_fromable_type_and_fromable_id"
-    t.index ["toable_type", "toable_id"], name: "index_reviews_on_toable_type_and_toable_id"
+    t.index ["fromable_type", "fromable_id"], name: "index_reviews_on_fromable_type_and_fromable_id", using: :btree
+    t.index ["toable_type", "toable_id"], name: "index_reviews_on_toable_type_and_toable_id", using: :btree
   end
 
   create_table "searches", force: :cascade do |t|
@@ -385,8 +382,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.boolean  "professional_model"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["nationality_id"], name: "index_searches_on_nationality_id"
-    t.index ["province_id"], name: "index_searches_on_province_id"
+    t.index ["nationality_id"], name: "index_searches_on_nationality_id", using: :btree
+    t.index ["province_id"], name: "index_searches_on_province_id", using: :btree
   end
 
   create_table "shoe_sizes", force: :cascade do |t|
@@ -406,7 +403,7 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.datetime "updated_at",     null: false
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
-    t.index ["ownerable_type", "ownerable_id"], name: "index_studies_on_ownerable_type_and_ownerable_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_studies_on_ownerable_type_and_ownerable_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -432,11 +429,11 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["profileable_type", "profileable_id"], name: "index_users_on_profileable_type_and_profileable_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["profileable_type", "profileable_id"], name: "index_users_on_profileable_type_and_profileable_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
   create_table "votes", force: :cascade do |t|
@@ -448,8 +445,8 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.string   "votable_type"
     t.integer  "votable_id"
     t.date     "last_vote_date"
-    t.index ["ownerable_type", "ownerable_id"], name: "index_votes_on_ownerable_type_and_ownerable_id"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_votes_on_ownerable_type_and_ownerable_id", using: :btree
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
   end
 
   create_table "wallets", force: :cascade do |t|
@@ -459,7 +456,39 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.integer  "status",                                 default: 0
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
-    t.index ["ownerable_type", "ownerable_id"], name: "index_wallets_on_ownerable_type_and_ownerable_id"
+    t.index ["ownerable_type", "ownerable_id"], name: "index_wallets_on_ownerable_type_and_ownerable_id", using: :btree
   end
 
+  add_foreign_key "casting_reviews", "castings"
+  add_foreign_key "casting_reviews", "profile_contractors"
+  add_foreign_key "castings_categories", "castings"
+  add_foreign_key "castings_categories", "profile_models"
+  add_foreign_key "castings_modalities", "castings"
+  add_foreign_key "castings_modalities", "modalities"
+  add_foreign_key "categories_profile_models", "categories"
+  add_foreign_key "categories_profile_models", "profile_models"
+  add_foreign_key "categories_searches", "categories"
+  add_foreign_key "categories_searches", "searches"
+  add_foreign_key "coupon_charges", "coupons"
+  add_foreign_key "coupon_charges", "wallets"
+  add_foreign_key "expertises_profile_models", "expertises"
+  add_foreign_key "expertises_profile_models", "profile_models"
+  add_foreign_key "intents", "castings"
+  add_foreign_key "intents", "profile_models"
+  add_foreign_key "languages_profile_contractors", "languages"
+  add_foreign_key "languages_profile_contractors", "profile_contractors"
+  add_foreign_key "languages_profile_models", "languages"
+  add_foreign_key "languages_profile_models", "profile_models"
+  add_foreign_key "modalities_profile_models", "modalities"
+  add_foreign_key "modalities_profile_models", "profile_models"
+  add_foreign_key "modalities_searches", "modalities"
+  add_foreign_key "modalities_searches", "searches"
+  add_foreign_key "profile_contractors", "plans"
+  add_foreign_key "profile_models", "ethnicities"
+  add_foreign_key "profile_models", "nationalities"
+  add_foreign_key "profile_models", "plans"
+  add_foreign_key "profile_photographers", "nationalities"
+  add_foreign_key "profile_photographers", "plans"
+  add_foreign_key "searches", "nationalities"
+  add_foreign_key "searches", "provinces"
 end
