@@ -200,6 +200,8 @@ en:
       log_in: "Log in"
       log_up: "Sign up"
       log_out: "Log out"
+      confirmation_instruction: "Didn't receive confirmation instructions?"
+      lockable_instruction: "Didn't receive unlock instructions?"
       recover: "Recover"
       save: "Save"
       save_resource: "Save %{resource}"

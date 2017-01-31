@@ -34,6 +34,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
+  def confirmation_required?
+    !self.admin?
+  end
+
   # Profile
   belongs_to :profileable, polymorphic: true, optional: true, dependent: :destroy
 
