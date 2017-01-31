@@ -13,7 +13,7 @@
 if !User.where(role: "admin").any?
 	User.create(email: "lmaurimtfbwy@gmail.com", password: ENV["admin_mauri_pwd"], password_confirmation: ENV["admin_mauri_pwd"], role: "admin", kind: "other")
 	User.create(email: "alejandropmauri@gmail.com", password: ENV["admin_ale_pwd"], password_confirmation: ENV["admin_ale_pwd"], role: "admin", kind: "other")
-	User.create(email: "@gmail.com", password: ENV["admin_oscar_pwd"], password_confirmation: ENV["admin_oscar_pwd"], role: "admin", kind: "other")
+	User.create(email: "geniusruso91@gmail.com", password: ENV["admin_oscar_pwd"], password_confirmation: ENV["admin_oscar_pwd"], role: "admin", kind: "other")
 end
 
 
