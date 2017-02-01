@@ -59,9 +59,9 @@ class ApplicationController < ActionController::Base
   # For meta tags
   def prepare_meta_tags(options={})
     site_name   = "CubaModela"
-    title       = "Fashion Network"
-    separator   = " = "
-    description = "We are a plataform that wants to bind models in cuba with contractors of the world."
+    title       = "Find cuban models and photographers"
+    separator   = " - "
+    description = "We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos."
     image       = options[:image] || "http://cubamodela.com/assets/cubamodela_logo_blue.png"
     current_url = request.url
 
@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
       separator:   separator,
       image:       image,
       description: description,
-      keywords:    %w[models photographers castings bookings],
+      keywords:    %w[models photographers Cuba Havana fashion],
       twitter: {
         site_name: site_name,
         site: '@cubamodela',
