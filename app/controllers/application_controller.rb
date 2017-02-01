@@ -70,6 +70,7 @@ class ApplicationController < ActionController::Base
       site:        site_name,
       title:       title,
       separator:   separator,
+      language:    I18n.locale,
       image:       image,
       description: description,
       keywords:    %w[models photographers Cuba Havana fashion],
@@ -87,7 +88,11 @@ class ApplicationController < ActionController::Base
         image: image,
         description: description,
         type: 'website'
-      }
+      },
+      p: {
+        domain_verify: 'd952f3fb98d0ee095db6f5b4e38979c5'
+      },
+      "google-site-verification": 'YxMd7hSKe8mdjw7f7vxAtgoDGQ0MvePFwJaDXDHyILQ'
     }
 
     options.reverse_merge!(defaults)
