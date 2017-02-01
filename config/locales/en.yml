@@ -743,6 +743,10 @@ en:
         header_text: "Forgot your password?"
         buttons:
           send_inst: "Send me reset password instructions"
+      confirmations:
+        header_text: "Resend confirmation instructions"
+        buttons:
+          send_inst: "Resend confirmation instructions"
     ethnicities:
       index:
         header_text: "Ethnicities"

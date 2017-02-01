@@ -736,7 +736,7 @@ h3 .small-info{
 #footer{
 	padding-top: 20px;
 	padding-bottom: 20px;
-	padding-left: 100px;
+	padding-left: 50px;
 	background-color: #337ab7;
 	color: white;
 	margin-top: 0px;
@@ -1620,6 +1620,7 @@ a.link-image:hover{
 
 .model-bottom-actions{
 	margin-top: 20px !important;
+	margin-bottom: 10px;
 }
 
 .btn-small-right-margin{
@@ -1709,6 +1710,8 @@ a.link-image:hover{
 }
 
 #dates-warning-text{
+	padding-top: 5px;
+	padding-bottom: 5px;
 	margin-bottom: 20px !important; 
 }
 

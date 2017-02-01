@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters_for_devise, if: :devise_controller?
+  before_action :prepare_meta_tags, if: "request.get?"
   protect_from_forgery with: :exception
 
   protected
@@ -53,6 +54,45 @@ class ApplicationController < ActionController::Base
         return edit_profile_photographer_path(current_user.profileable)
       end
     end
+  end
+
+  # For meta tags
+  def prepare_meta_tags(options={})
+    site_name   = "CubaModela"
+    title       = "Fashion Network"
+    separator   = " = "
+    description = "We are a plataform that wants to bind models in cuba with contractors of the world."
+    image       = options[:image] || "http://cubamodela.com/assets/cubamodela_logo_blue.png"
+    current_url = request.url
+
+    # Let's prepare a nice set of defaults
+    defaults = {
+      site:        site_name,
+      title:       title,
+      separator:   separator,
+      image:       image,
+      description: description,
+      keywords:    %w[models photographers castings bookings],
+      twitter: {
+        site_name: site_name,
+        site: '@cubamodela',
+        card: 'summary',
+        description: description,
+        image: image
+      },
+      og: {
+        url: current_url,
+        site_name: site_name,
+        title: title,
+        image: image,
+        description: description,
+        type: 'website'
+      }
+    }
+
+    options.reverse_merge!(defaults)
+
+    set_meta_tags options
   end
 
 end

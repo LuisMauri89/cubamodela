@@ -43,15 +43,11 @@
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('menu.items.more') %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		          	<li><%= link_to t('menu.items_options.more.profile_example'), static_pages_profile_example_path %></li>
+		          	<li><%= link_to t('menu.items_options.more.profile_example'), "#" %></li>
 		            <li><%= link_to t('menu.items_options.more.gallery'), static_pages_gallery_path %></li>
 		            <li role="separator" class="divider"></li>
 		            <li><%= link_to t('menu.items_options.more.castings'), castings_path %></li>
 					<li><%= link_to t('menu.items_options.more.registration'), new_registration_path(resource_name) %></li>
-		            <li role="separator" class="divider"></li>
-		            <li><%= link_to t('menu.items_options.more.partner_xuan'), static_pages_xuan_path %></li>
-		            <li><%= link_to t('menu.items_options.more.partner_patricio'), static_pages_patricio_path %></li>
-		            <li><%= link_to t('menu.items_options.more.partner_camila'), static_pages_camila_path %></li>
 		          </ul>
 		        </li>
 			</ul>

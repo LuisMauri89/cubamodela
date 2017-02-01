@@ -9,11 +9,11 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-  username: <%= ENV['user_postgresql'] %>
-  password: <%= ENV['pwd_postgresql'] %>
 
 development:
   <<: *default
+  username: 'mauri'
+  password: 'Smotciss2307'
   database: cubamodela_development
 
 # Warning: The database defined as "test" will be erased and
@@ -25,5 +25,6 @@ test:
 
 production:
   <<: *default
+  username: <%= ENV['user_postgresql'] %>
+  password: <%= ENV['pwd_postgresql'] %>
   database: cubamodela_production
-  #username: deployer

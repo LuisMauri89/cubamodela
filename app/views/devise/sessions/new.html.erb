@@ -37,12 +37,10 @@
 
               <%= f.submit t('forms.buttons.log_in'), class: "btn btn-primary btn-block" %>
               <%= link_to t('forms.buttons.log_up'), new_registration_path(resource_name), class: "btn btn-primary btn-block" %><br />
-              <br />
-              <br />
-              <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-                <%= link_to t('forms.buttons.confirmation_instruction'), new_confirmation_path(resource_name), class: "btn btn-primary btn-block" %><br />
-              <% end -%>
 
+              <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+                <%= link_to t('forms.buttons.confirmation_instruction'), new_confirmation_path(resource_name), class: "btn btn-primary btn-block" %>
+              <% end -%>
               <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
                 <%= link_to t('forms.buttons.lockable_instruction'), new_unlock_path(resource_name), class: "btn btn-primary btn-block" %><br />
               <% end -%>
