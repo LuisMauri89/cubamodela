@@ -1,9 +1,5 @@
 namespace :casting_tasks do
 
-	task working_test: :environment do
-		Message.create(template: "inbox_message_casting_new_free", ownerable: ProfileModel.find(45), asociateable: Casting.last)
-	end
-
 	task casting_expiration_proximity_task: :environment do
 		puts "#{Time.now} - START"
 		Casting.actives.each do |casting|
@@ -24,7 +20,7 @@ namespace :casting_tasks do
 		puts "#{Time.now} - START"
 	    Casting.actives.each do |casting|
 	      	puts "#{Time.now} - Casting-#{casting.title}-#{casting.id}-#{casting.expiration_date}"
-	    	if casting.expiration_date <= Date.today
+	    	if casting.expiration_date <= Time.current
 	        	puts "#{Time.now} - Condition True"
 	    		casting.closed!
 	        	puts "#{Time.now} - Closed!"

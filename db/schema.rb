@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124163432) do
+ActiveRecord::Schema.define(version: 20170202211356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20170124163432) do
     t.string   "title_en"
     t.text     "description_en"
     t.text     "location_en"
-    t.date     "expiration_date"
+    t.datetime "expiration_date"
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
     t.datetime "created_at",                  null: false
