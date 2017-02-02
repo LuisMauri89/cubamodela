@@ -100,7 +100,7 @@ gem 'passenger'
 gem 'meta-tags'
 
 # Custom errors page
-# gem 'exception_handler'
+gem 'exception_handler'
 
 # Site Map Xml
 gem 'sitemap_generator'
