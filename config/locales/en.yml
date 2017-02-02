@@ -166,6 +166,7 @@ en:
     messages:
       admin: "Admin: "
     options:
+      header_text: "Panel"
       control_panel: "Control Panel"
       inbox: "Inbox"
       account: "Account"
@@ -775,6 +776,8 @@ en:
       show:
         header_text: "Show language"
     messages:
+      show:
+        missing_data_text: "Sorry this message can not be displayed correctly."
       index:
         no_messages_text: "Inbox is empty. You have no messages."
         select_message_text: "Please select one message on the left."

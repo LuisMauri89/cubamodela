@@ -1,4 +1,9 @@
-$("#current-message-container").html("<%= j render 'show' %>");
-$(".list-group-item").removeClass('active');
-$("#message-<%= @message.id %>").parent().removeClass('inbox-message-unreaded-bkg');
-$("#message-<%= @message.id %>").parent().addClass('active');
+<% if @message.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#notification-messages-container').empty();
+	$("#current-message-container").html("<%= j render 'show' %>");
+	$(".list-group-item").removeClass('active');
+	$("#message-<%= @message.id %>").parent().removeClass('inbox-message-unreaded-bkg');
+	$("#message-<%= @message.id %>").parent().addClass('active');
+<% end %>

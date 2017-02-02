@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
     @message.readed = true
     respond_to do |format|
       if @message.save
+        @message.check_if_valid?
         format.js
       else
         format.js

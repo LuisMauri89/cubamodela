@@ -103,35 +103,35 @@
               </li>
               <li>
                 <div class="section-social-icon">          
-                  <%= link_to(get_instagram_link, class: "link-image") do %>
+                  <%= link_to(get_instagram_link, class: "link-image", :target => "_blank") do %>
                       <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
-                  <%= link_to(get_pinterest_link, class: "link-image") do %>
+                  <%= link_to(get_pinterest_link, class: "link-image", :target => "_blank") do %>
                       <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
-                  <%= link_to(get_google_plus_link, class: "link-image") do %>
+                  <%= link_to(get_google_plus_link, class: "link-image", :target => "_blank") do %>
                       <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
-                  <%= link_to(get_twitter_link, class: "link-image") do %>
+                  <%= link_to(get_twitter_link, class: "link-image", :target => "_blank") do %>
                       <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
-                  <%= link_to(get_youtube_link, class: "link-image") do %>
+                  <%= link_to(get_youtube_link, class: "link-image", :target => "_blank") do %>
                       <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
                   <% end %>
                 </div>
@@ -162,18 +162,6 @@
 </div>
 
 <div class="row row-no-space">
-    <div class="col-md-12 cell-no-space">
-        <div id="gallery-home-container" class="relative-position">
-            <%= image_tag "cubamodela_home_section_gallery_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
-            <div id="gallery-home-footer" class="text-center">
-                <%= link_to "VISIT OUR GALLERY", static_pages_gallery_path, class: "btn-gallery", data: { animation: "animated pulse", delay: "2.0s" } %>
-            </div>
-            <div class="notify"></div>
-        </div>
-    </div>
-</div>
-
-<div class="row row-no-space">
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="partners-container" class="notify relative-position">
           <div id="partners-header">
@@ -188,7 +176,7 @@
                         <p class="text-center partner-ocupation">Designer</p>
                         <p class="text-center partner-name">Patricio Herrera Vega</p>
                         <div class="text-center partner-link">
-                            <%= link_to t('forms.buttons.read_more'), static_pages_patricio_path, class: "btn btn-primary" %>
+                            <%= link_to t('forms.buttons.read_more'), "#", class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
@@ -200,7 +188,7 @@
                         <p class="text-center partner-ocupation">Photographer</p>
                         <p class="text-center partner-name">Camila Serrano Perez</p>
                         <div class="text-center partner-link">
-                            <%= link_to t('forms.buttons.read_more'), static_pages_camila_path, class: "btn btn-primary" %>
+                            <%= link_to t('forms.buttons.read_more'), "#", class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
@@ -212,11 +200,23 @@
                         <p class="text-center partner-ocupation">Photographer</p>
                         <p class="text-center partner-name">Xuan Linh Hoang Rey</p>
                         <div class="text-center partner-link">
-                            <%= link_to t('forms.buttons.read_more'), static_pages_xuan_path, class: "btn btn-primary" %>
+                            <%= link_to t('forms.buttons.read_more'), "#", class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
           </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-no-space">
+    <div class="col-md-12 cell-no-space">
+        <div id="gallery-home-container" class="relative-position">
+            <%= image_tag "cubamodela_home_section_gallery_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
+            <div id="gallery-home-footer" class="text-center">
+                <%= link_to "VISIT OUR GALLERY", static_pages_gallery_path, class: "btn-gallery", data: { animation: "animated pulse", delay: "2.0s" } %>
+            </div>
+            <div class="notify"></div>
         </div>
     </div>
 </div>

@@ -7,8 +7,8 @@
 	</div>
 	<div class="col-md-1">
 		<div class="text-center">
-			<%= button_to(message_path(@message), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "pull-right") do %>
-			  <span class="glyphicon glyphicon-trash glyphicon-trash-blue" aria-hidden="true"></span>
+			<%= button_to(message_path(@message), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-danger pull-right") do %>
+			  <span><%= t('forms.buttons.delete') %></span>
 			<% end %>
 		</div>
 	</div>

@@ -1,5 +1,5 @@
 class ProfileModelsController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :set_profile, only: [:show, 
                                      :show_resume, 
                                      :plans, 

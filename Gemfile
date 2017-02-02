@@ -90,6 +90,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Env variables
 gem 'figaro'
+
+# With nginx server
 gem 'passenger'
+
+# Meta-tags
 gem 'meta-tags'
+
+# Custom errors page
+# gem 'exception_handler'
+
+# Site Map Xml
+gem 'sitemap_generator'

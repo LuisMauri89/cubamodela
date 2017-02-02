@@ -127,6 +127,58 @@ class Message < ApplicationRecord
     end
   end
 
+  def check_if_valid?
+    valid = true
+
+    if self.template == "unset"
+      valid = false
+    elsif get_templates_for_only_ownerable_field.include?(self.template)
+      valid = false if self.ownerable.nil?
+    elsif get_templates_for_only_ownerable_and_asociateable_fields.include?(self.template)
+      valid = false if (self.ownerable.nil? || self.asociateable.nil?)
+    elsif get_templates_for_all_fields.include?(self.template)
+      valid = false if (self.ownerable.nil? || self.asociateable.nil? || self.thirdable.nil?)
+    end
+  
+    errors[:base] << I18n.t('views.messages.show.missing_data_text') if !valid
+  end
+
+  def get_templates_for_only_ownerable_field
+    return ["inbox_message_profile_published", 
+            "inbox_message_profile_unpublished", 
+            "inbox_message_profile_reject", 
+            "inbox_message_profile_warning"]
+  end
+
+  def get_templates_for_only_ownerable_and_asociateable_fields
+    return ["inbox_message_casting_new_free", 
+            "inbox_message_casting_translation", 
+            "inbox_message_casting_change_fields_only", 
+            "inbox_message_casting_change_dates_only", 
+            "inbox_message_casting_change_fields_and_dates", 
+            "inbox_message_casting_expiration_proximity", 
+            "inbox_message_casting_expired", 
+            "inbox_message_casting_canceled", 
+            "inbox_message_casting_invitation",
+            "inbox_message_casting_application_confirmed",
+            "inbox_message_booking_invitation",
+            "inbox_message_booking_canceled", 
+            "inbox_message_booking_translation", 
+            "inbox_message_booking_change_fields_only", 
+            "inbox_message_booking_change_dates_only", 
+            "inbox_message_booking_change_fields_and_dates",
+            "inbox_message_coupon_sent",
+            "inbox_message_custom_send"]
+  end
+
+  def get_templates_for_all_fields
+    return ["inbox_message_casting_invitation_confirmed", 
+            "inbox_message_casting_application", 
+            "inbox_message_casting_application_confirmed",
+            "inbox_message_booking_left_review",
+            "inbox_message_review_new"]
+  end
+
   # Associations
   belongs_to :ownerable, polymorphic: true
   belongs_to :asociateable, polymorphic: true, optional: true
