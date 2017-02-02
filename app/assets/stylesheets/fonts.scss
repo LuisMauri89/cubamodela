@@ -15,7 +15,7 @@
 	src: asset-url('Roboto-Light.eot?#iefix') format('embedded-opentype'),
 		 asset-url('Roboto-Light.woff') format('woff'),
 		 asset-url('Roboto-Light.ttf') format('truetype'),
-		 asset-url('Roboto-Regular.svg#roboto-light') format('svg');
+		 asset-url('Roboto-Light.svg#roboto-light') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -27,83 +27,6 @@
 		 asset-url('Roboto-Thin.woff') format('woff'),
 		 asset-url('Roboto-Thin.ttf') format('truetype'),
 		 asset-url('Roboto-Thin.svg#roboto-thin') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'amarante-regular';
-	src: asset-url('Amarante-Regular.eot');
-	src: asset-url('Amarante-Regular.eot?#iefix') format('embedded-opentype'),
-		 asset-url('Amarante-Regular.woff') format('woff'),
-		 asset-url('Amarante-Regular.ttf') format('truetype'),
-		 asset-url('Amarante-Regular.svg#amarante-regular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'actor-regular';
-	src: asset-url('Actor-Regular.eot');
-	src: asset-url('Actor-Regular.eot?#iefix') format('embedded-opentype'),
-		 asset-url('Actor-Regular.woff') format('woff'),
-		 asset-url('Actor-Regular.ttf') format('truetype'),
-		 asset-url('Actor-Regular.svg#actor-regular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'amatic-bold';
-	src: asset-url('AmaticSC-Bold.eot');
-	src: asset-url('AmaticSC-Bold.eot?#iefix') format('embedded-opentype'),
-		 asset-url('AmaticSC-Bold.woff') format('woff'),
-		 asset-url('AmaticSC-Bold.ttf') format('truetype'),
-		 asset-url('AmaticSC-Bold.svg#amatic-bold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'adventpro-bold';
-	src: asset-url('AdventPro-Bold.eot');
-	src: asset-url('AdventPro-Bold.eot?#iefix') format('embedded-opentype'),
-		 asset-url('AdventPro-Bold.woff') format('woff'),
-		 asset-url('AdventPro-Bold.ttf') format('truetype'),
-		 asset-url('AdventPro-Bold.svg#adventpro-bold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'adventpro-semibold';
-	src: asset-url('AdventPro-SemiBold.eot');
-	src: asset-url('AdventPro-SemiBold.eot?#iefix') format('embedded-opentype'),
-		 asset-url('AdventPro-SemiBold.woff') format('woff'),
-		 asset-url('AdventPro-SemiBold.ttf') format('truetype'),
-		 asset-url('AdventPro-SemiBold.svg#adventpro-bold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'aladin-regular';
-	src: asset-url('Aladin-Regular.eot');
-	src: asset-url('Aladin-Regular.eot?#iefix') format('embedded-opentype'),
-		 asset-url('Aladin-Regular.woff') format('woff'),
-		 asset-url('Aladin-Regular.ttf') format('truetype'),
-		 asset-url('Aladin-Regular.svg#aladin-regular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face{
-	font-family: 'arizonia-regular';
-	src: asset-url('Arizonia-Regular.eot');
-	src: asset-url('Arizonia-Regular.eot?#iefix') format('embedded-opentype'),
-		 asset-url('Arizonia-Regular.woff') format('woff'),
-		 asset-url('Arizonia-Regular.ttf') format('truetype'),
-		 asset-url('Arizonia-Regular.svg#arizonia-regular') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

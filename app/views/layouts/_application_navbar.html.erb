@@ -53,10 +53,10 @@
 			</ul>
 			<% if user_signed_in? %>
 				<% if current_user.model? %>
-					<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn" %>
+					<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn", style: "margin-left 5px;" %>
 				<% end %>
 				<% if current_user.admin? %>
-					<%= link_to t('menu.options.control_panel'), control_panel_path, class: "btn btn-primary navbar-btn" %>
+					<%= link_to t('menu.options.control_panel'), control_panel_path, class: "btn btn-primary navbar-btn", style: "margin-left 5px;" %>
 				<% end %>
 				<%= render 'layouts/signed_in_true' %>
 			<% else %>

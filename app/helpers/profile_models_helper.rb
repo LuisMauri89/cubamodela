@@ -7,14 +7,22 @@ module ProfileModelsHelper
 
 	def get_range_of_cloth_sizes
 		sizes = [0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0, 14.0, 34.0, 36.0, 38.0, 40.0, 42.0, 44.0, 46.0]
-		sizes = sizes.collect{ |size| [get_printable_size(size), size] }
+		sizes = sizes.collect{ |size| [get_printable_size(size, "cloth"), size] }
 	end
 
-	def get_printable_size(size)
+	def get_printable_size(size, type="shoes")
 		if (size - size.to_i) > 0
 			return size.to_i.to_s << " (1/2)"
 		else
-			return size.to_i.to_s
+			if type == "cloth"
+				if size.to_i <= 14
+					return size.to_i.to_s << " (Female)"
+				else
+					return size.to_i.to_s << " (Male)"
+				end
+			else
+				return size.to_i.to_s
+			end
 		end
 	end
 

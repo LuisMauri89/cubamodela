@@ -498,7 +498,7 @@ en:
           photographers:
         provide_profile_text: "Please provide more info to reach your profile"
         provide_profile_link_text: "Edit your profile"
-        beta_version_coming_soon_text: "Beta version, we will make the launch very soon, feel free to look around"
+        beta_version_coming_soon_text: "Beta version, we will make the launch very soon, feel free to look around. /  CubaModela se encuentra actualmente en version de prueba, las bases de datos seran limpiadas y restauradas para el lanzamiento."
       gallery:
         header_text: Gallery
         show:
