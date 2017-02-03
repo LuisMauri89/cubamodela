@@ -94,13 +94,13 @@ class Casting < ApplicationRecord
 
   # Custom Validators
   def expiration_date_cannot_be_in_the_past
-    if expiration_date.present? && expiration_date < Date.today
+    if expiration_date.present? && expiration_date <= Time.current
       errors.add(:expiration_date, :wrong_expiration_date)
     end
   end
 
   def expiration_date_in_the_future
-    if closed? && expiration_date.present? && expiration_date <= Date.today
+    if closed? && expiration_date.present? && expiration_date <= Time.current
       errors.add(:expiration_date, :wrong_expiration_date_future)
     end
   end
