@@ -140,7 +140,7 @@ class AdminController < ApplicationController
 	end
 
 	def exec_casting_expiration
-		CastingsExpiredJob.perform_later
+		CastingExpiredJob.perform_later
 
 		respond_to do |format|
 			format.js
@@ -148,7 +148,7 @@ class AdminController < ApplicationController
 	end
 
 	def exec_all
-		CastingsExpiredJob.perform_later
+		CastingExpiredJob.perform_later
 		CastingExpirationProximityJob.perform_later
 
 		respond_to do |format|
