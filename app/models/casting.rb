@@ -21,6 +21,13 @@ class Casting < ApplicationRecord
   # Direct casting
   before_validation :check_if_direct
 
+  # Expiration date to time 00:00:00
+  before_validation :set_expiration_date_to_midnight
+
+  def set_expiration_date_to_midnight
+    self.expiration_date = self.expiration_date.change(hour: 0)
+  end
+
   # Locale
   before_save :set_title_locale, if: :new_record?
   before_save :set_description_locale, if: :new_record?
