@@ -73,10 +73,6 @@ GEM
     dropzonejs-rails (0.7.3)
       rails (> 3.1)
     erubis (2.7.0)
-    exception_handler (0.7.5)
-      bundler (~> 1.6)
-      rails (>= 4.2.0)
-      responders
     execjs (2.7.0)
     ffi (1.9.17)
     figaro (1.1.1)
@@ -220,7 +216,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dropzonejs-rails
-  exception_handler
   figaro
   jbuilder (~> 2.5)
   jquery-rails
