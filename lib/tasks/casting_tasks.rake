@@ -6,7 +6,7 @@ namespace :casting_tasks do
 		Casting.actives.each do |casting|
 			puts "#{Time.now} - Casting-#{casting.title}-#{casting.id}-#{casting.expiration_date}"
 			Rails.logger.info "#{Time.current} - RUNNING_TASK: casting_expiration_proximity_task - Casting-#{casting.title}-#{casting.id}-#{casting.expiration_date}"
-	    	if (casting.expiration_date - Date.today) <= 5
+	    	if (casting.expiration_date.to_date - Date.today) <= 5
 	    		puts "#{Time.now} - Condition True"
 	    		Rails.logger.info "#{Time.current} - RUNNING_TASK: casting_expiration_proximity_task - Condition True"
 	    		casting.intents.each do |intent|

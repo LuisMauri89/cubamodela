@@ -25,7 +25,7 @@ class Casting < ApplicationRecord
   before_validation :set_expiration_date_to_midnight
 
   def set_expiration_date_to_midnight
-    self.expiration_date = self.expiration_date.change(hour: 0)
+    self.expiration_date = self.expiration_date.change(hour: 23, min: 59)
   end
 
   # Locale
@@ -101,13 +101,13 @@ class Casting < ApplicationRecord
 
   # Custom Validators
   def expiration_date_cannot_be_in_the_past
-    if expiration_date.present? && expiration_date <= Time.current
+    if expiration_date.present? && expiration_date.to_date <= Time.current.to_date
       errors.add(:expiration_date, :wrong_expiration_date)
     end
   end
 
   def expiration_date_in_the_future
-    if closed? && expiration_date.present? && expiration_date <= Time.current
+    if closed? && expiration_date.present? && expiration_date.to_date <= Time.current.to_date
       errors.add(:expiration_date, :wrong_expiration_date_future)
     end
   end
@@ -121,13 +121,13 @@ class Casting < ApplicationRecord
   end
 
   def casting_date_cannot_be_in_the_past
-    if casting_date.present? && (casting_date < Time.current || casting_date <= expiration_date)
+    if casting_date.present? && (casting_date.to_date < Time.current.to_date || casting_date.to_date <= expiration_date.to_date)
       errors.add(:casting_date, :wrong_casting_date)
     end
   end
 
   def shooting_date_cannot_be_in_the_past
-    if shooting_date.present? && (shooting_date < Time.current || shooting_date < casting_date)
+    if shooting_date.present? && (shooting_date.to_date < Time.current.to_date || shooting_date < casting_date)
       errors.add(:shooting_date, :wrong_shooting_date)
     end
   end

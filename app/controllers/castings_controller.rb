@@ -199,9 +199,14 @@ class CastingsController < ApplicationController
   def update
   	respond_to do |format|
       old_casting = Casting.find(params[:id])
-      if @casting.valid?
-        
-        if @casting.update_requires_charge(old_casting)
+
+      # Casting updates to check valid, charge
+      @casting_updates = Casting.new(casting_params)
+      if @casting_updates.valid?
+
+        # Casting updates requires to have the original created_at date from @casting for method 'update_requires_charge'
+        @casting_updates.created_at = @casting.created_at
+        if @casting_updates.update_requires_charge(old_casting)
           @charge_success, @message = Bank.charge(current_user.profileable, Constant::CASTING_UPDATE_DATES_CHANGE_COST.to_f, "casting_dates_change", false)
           if @charge_success
 
@@ -219,6 +224,9 @@ class CastingsController < ApplicationController
           format.html { redirect_to manage_casting_path(@casting), notice: t('views.castings.messages.update') }
         end
       else
+
+        # Fill in errors for @casting to show in edit view
+        @casting.update(casting_params)
         format.html { render :edit }
       end
     end

@@ -26,12 +26,12 @@ every :day, at: '12:40 am' do
 	rake "casting_tasks:casting_expiration_proximity_task"
 end
 
-every 2.hours do
+every :day, at: '12:10 am' do
 	Rails.logger.info "#{Time.current} - PERFORMING_TASK: casting_expired_task"
 	rake "casting_tasks:casting_expired_task"
 end
 
-every :day, at: '12:20 am' do
+every :day, at: '1:30 am' do
 	Rails.logger.info "#{Time.current} - PERFORMING_TASK: casting_reviews_dont_show_again_task"
 	rake "casting_tasks:casting_reviews_dont_show_again_task"
 end
