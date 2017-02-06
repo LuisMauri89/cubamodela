@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.contractor? && @profile.get_polaroid_album_photos.any? %>
+<% if user_signed_in? && !current_user.nil? &&  current_user.contractor? && @profile.get_polaroid_album_photos.any? %>
 	<div class="row row-profile-imgs">
 
 		<div class="col-md-4 col-profile-imgs">
@@ -21,7 +21,7 @@
 
 	</div>
 <% else %>
-	<% if !current_user.contractor? %>
+	<% if !current_user.nil? && !current_user.contractor? %>
 		<h4 class="text-center"><%= t('views.profile_models.show.only_contractors_text') %></h4>
 	<% else %>
 		<h4 class="text-center"><%= t('views.profile_models.show.polaroid_book_empty_text') %></h4>
