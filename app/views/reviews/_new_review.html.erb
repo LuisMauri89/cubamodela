@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-2">
-		<%= image_tag @review.fromable.get_profile_picture_url(:list), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+		<%= image_tag @review.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
 	</div>
 	<div class="col-md-10">
 		<% if I18n.locale == "en".to_sym %>
@@ -15,7 +15,7 @@
 			</blockquote>
 		<% end %>
 		<p class="small-date pull-right">
-			<%= distance_of_time_in_words(@review.created_at, DateTime.now) << t('datetime.distance_in_words.after_text_past') %>
+			<%= distance_of_time_in_words(@review.created_at, Time.current) << t('datetime.distance_in_words.after_text_past') %>
 		</p>
 	</div>
 </div>

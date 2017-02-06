@@ -32,3 +32,6 @@
 
 # Ignore sitemaps
 /public/sitemap*.xml
+
+# Ignore precompiled assets
+/public/assets/*

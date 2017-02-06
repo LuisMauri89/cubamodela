@@ -651,10 +651,10 @@ en:
       index_invited:
         empty_text: "Invitation list is empty. Invite some models "
         here_text: "here"
+      index_favorites:
+        empty_text: "We are working on a favorites list. This feature is under development."
       index_confirmed:
         empty_text: "Confirmation list is empty. None has confirmed the invitation."
-      index_favorites:
-        empty_text: "Favorites list is empty."
       index_applied:
         empty_text: "Applied list is empty. None has applied the casting."
       index_custom:

@@ -1,8 +1,14 @@
 <% if @study.errors.any? %>
 	$('#notification-messages-container').html("<%= j render 'errors' %>");
 <% else %>
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.studies.messages.create' %>");
 	$('#form-new-study-container').empty()
 	$('#new-study-link').show();
-	$('#studies-container').append("<%= j render 'created_study' %>")
-	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.studies.messages.create' %>");
+
+	<% if @study.ownerable.studies.count > 1 %>
+		$('#studies-container').append("<%= j render 'created_study' %>")
+	<% else %>
+		$('#studies-container').empty();
+		$('#studies-container').html("<%= j render 'created_study' %>");
+	<% end %>
 <% end %>

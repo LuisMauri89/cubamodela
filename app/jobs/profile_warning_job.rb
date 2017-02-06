@@ -3,6 +3,6 @@ class ProfileWarningJob < ApplicationJob
 
   def perform(profile)
     Notification.notify_profile_warning(profile)
-    CastingMailer.email_profile_warning(profile).deliver_now
+    ProfileMailer.email_profile_warning(profile).deliver_now
   end
 end

@@ -3,6 +3,6 @@ class BookingCanceledJob < ApplicationJob
 
   def perform(profile, booking)
     Notification.notify_booking_canceled(profile, booking)
-    CastingMailer.email_booking_canceled(profile, booking).deliver_now
+    BookingMailer.email_booking_canceled(profile, booking).deliver_now
   end
 end

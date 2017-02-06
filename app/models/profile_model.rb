@@ -20,8 +20,8 @@ class ProfileModel < ApplicationRecord
 	validates :waist, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :hips, numericality: { greater_than_or_equal_to: 20, less_than_or_equal_to: 200 }, allow_blank: true
 	validates :gender, inclusion: { in: %w(Female Male) }, allow_blank: true
-	validates :size_shoes, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
-	validates :size_cloth, numericality: { greater_than_or_equal_to: 2, less_than_or_equal_to: 16 }, allow_blank: true
+	validates :size_shoes, numericality: { greater_than_or_equal_to: 5, less_than_or_equal_to: 16 }, allow_blank: true
+	validates :size_cloth, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 46 }, allow_blank: true
 
 	#Scopes
 	scope :base, -> { joins(:plan).order('plans.priority ASC') }

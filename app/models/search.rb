@@ -20,7 +20,7 @@ class Search < ApplicationRecord
       search = ProfileModel.ready
 
       if province.present?
-        search = search.where(province_id: self.province_id)
+        search = search.where(current_province_id: self.province_id)
       end
 
       if nationality.present?

@@ -3,6 +3,6 @@ class BookingInvitationJob < ApplicationJob
 
   def perform(profile, booking)
     Notification.notify_booking_invitation(profile, booking)
-    CastingMailer.email_booking_invitation(profile, booking).deliver_now
+    BookingMailer.email_booking_invitation(profile, booking).deliver_now
   end
 end

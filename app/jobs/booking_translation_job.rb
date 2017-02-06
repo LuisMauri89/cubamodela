@@ -3,6 +3,6 @@ class BookingTranslationJob < ApplicationJob
 
   def perform(profile, booking)
     Notification.notify_booking_translation(profile, booking)
-    CastingMailer.email_booking_translation(profile, booking).deliver_now
+    BookingMailer.email_booking_translation(profile, booking).deliver_now
   end
 end
