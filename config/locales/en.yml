@@ -249,6 +249,10 @@ en:
     reviews: "Reviews"
     total: "Total"
     actions: "Actions"
+  exception:
+    show:
+      header_text: "Ups!!!! Something went wrong. We are sorry for the inconvinience. We are working on it."
+      actions_text: "Here are some links that may be of your interest"
   activerecord:
     attributes:
       user:

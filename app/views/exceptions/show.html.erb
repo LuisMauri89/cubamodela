@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<%= image_tag "cubamodela_custom_errors_banner.png", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-full" %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div class="relative-position">
+			<%= link_to root_path, id: "error-logo-link" do %>
+				<%= image_tag "cubamodela_logo_blue.png", width:"25%", alt: "Logo", class: "img-center-horizontal img-responsive" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div id="error-header-text" class="error-center-content">
+			<h2 class="text-center"><%= t('exception.show.header_text') %></h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div id="error-details-text" class="error-center-content">
+			<p class="text-center">
+				Details: <%= details[:name] %> - <%= details[:message] %>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 col-xs-12">
+		<div id="error-action" class="error-center-content">
+			<h4 class="text-center"><%= t('exception.show.actions_text') %></h4>
+			<%= link_to "CubaModela", root_path, class: "btn btn-primary" %>
+			<%= link_to t('views.footer.link_models_text'), profile_models_path, class: "btn btn-primary" %>
+			<%= link_to t('views.footer.link_photographers_text'), profile_photographers_path, class: "btn btn-primary" %>
+			<%= link_to t('views.footer.link_castings_text'), castings_path, class: "btn btn-primary" %>
+			<%= link_to t('views.footer.link_registration_text'), new_registration_path(resource_name), class: "btn btn-primary" %>
+			<%= link_to t('views.footer.link_gallery_text'), static_pages_gallery_path, class: "btn btn-primary" %>
+			<%= link_to t('forms.buttons.back'), request.referrer, class: "btn btn-primary" %>
+		</div>
+	</div>
+</div>

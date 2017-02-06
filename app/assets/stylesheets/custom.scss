@@ -572,6 +572,34 @@ h3 .small-info{
 
 /* END Global */
 
+/* Custom errors */
+
+#error-logo-link{
+	position: relative !important;
+	display: inline !important;
+	margin: 0 auto !important;
+}
+
+#error-header-text{
+	margin-top: 50px;
+}
+
+#error-action{
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+#error-action > h4{
+	margin-bottom: 20px;
+}
+
+.error-center-content{
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+/* END Custom errors */
+
 /* Boostrap customization */
 
 #main-container{

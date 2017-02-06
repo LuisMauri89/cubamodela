@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= action_name.titleize %> :: "CubaModela"</title>
+
+        <%= csrf_meta_tags %>
+
+        <style>
+            body {
+                background: #fff;
+                font-family: 'roboto-light' !important;
+                font-size: 14px;
+            }
+
+            .img-full{
+                width: 100% !important;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
+            .relative-position {
+                position: relative;
+            }
+
+            .img-responsive {
+                display: block;
+                height: auto;
+                max-width: 100%;
+            }
+
+            .img-center-horizontal {
+                margin: 0 auto !important;
+            }
+
+            .btn {
+                -moz-user-select: none;
+                background-image: none;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: normal;
+                line-height: 1.42857;
+                margin-bottom: 0;
+                padding: 6px 12px;
+                text-align: center;
+                vertical-align: middle;
+                white-space: nowrap;
+                text-decoration: none;
+            }
+            .btn-primary {
+                background-color: #337ab7;
+                border-color: #2e6da4;
+                color: #fff;
+                background-image: none !important;
+                border-color: transparent !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+            }
+
+            /* Custom errors */
+
+            #error-logo-link{
+                position: relative !important;
+                display: inline !important;
+                margin: 0 auto !important;
+            }
+
+            #error-header-text{
+                margin-top: 50px;
+            }
+
+            #error-action{
+                margin-top: 30px;
+                margin-bottom: 50px;
+            }
+
+            #error-action > h4{
+                margin-bottom: 20px;
+            }
+
+            .error-center-content{
+                margin-left: 20%;
+                margin-right: 20%;
+            }
+
+            /* END Custom errors */
+
+        </style>
+    </head>
+    <body>
+
+        <div class="error_container">
+            <%= yield %>
+        </div>
+
+    </body>
+</html>
