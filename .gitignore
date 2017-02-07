@@ -35,3 +35,6 @@
 
 # Ignore precompiled assets
 /public/assets/*
+/public/assets/.sprockets-manifest-*
+
+
