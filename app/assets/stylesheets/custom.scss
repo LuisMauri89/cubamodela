@@ -792,6 +792,10 @@ h3 .small-info{
 	height: 48px;
 }
 
+#footer-logo-container{
+	padding-top: 1.8% !important;
+}
+
 /* END Footer */
 
 /* Messages and Notifications */
@@ -857,6 +861,10 @@ h3 .small-info{
 	/* Add padding to sign up form */
 	padding-left: 40px;
 	padding-right: 40px;
+}
+
+#home-signup-form-btn-suscribe{
+	margin-bottom: 5px;
 }
 
 #user_kind{
@@ -1212,6 +1220,22 @@ h3 .small-info{
 
 #navbar-admin-email{
 	margin-right: 20px;
+}
+
+#navbar-ul{
+	font-size: 18px;
+}
+
+.navbar-btn-custom-extra{
+	margin-left: 5px;
+}
+
+#navbar-form-email{
+	width: 180px;
+}
+
+#navbar-form-pwd{
+	width: 170px;
 }
 
 /* END Navbar */

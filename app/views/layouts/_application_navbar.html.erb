@@ -13,7 +13,7 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse">
-			<ul class="nav navbar-nav" style="font-size: <%= get_navbar_items_size.to_s %>px;">
+			<ul id="navbar-ul" class="nav navbar-nav">
 				<li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t('menu.items.models') %><span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -53,10 +53,10 @@
 			</ul>
 			<% if user_signed_in? %>
 				<% if current_user.model? %>
-					<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn", style: "margin-left 5px;" %>
+					<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn navbar-btn-custom-extra" %>
 				<% end %>
 				<% if current_user.admin? %>
-					<%= link_to t('menu.options.control_panel'), control_panel_path, class: "btn btn-primary navbar-btn", style: "margin-left 5px;" %>
+					<%= link_to t('menu.options.control_panel'), control_panel_path, class: "btn btn-primary navbar-btn navbar-btn-custom-extra"" %>
 				<% end %>
 				<%= render 'layouts/signed_in_true' %>
 			<% else %>

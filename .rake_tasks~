@@ -24,7 +24,6 @@ db:structure:dump
 db:structure:load
 db:version
 dev:cache
-exception_handler:install:migrations
 initializers
 log:clear
 memcached:flush

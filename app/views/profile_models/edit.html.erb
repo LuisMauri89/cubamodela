@@ -34,7 +34,7 @@
 			<div id="profile-main-menu-container" class="col-md-12">
 				<ul class="nav nav-pills nav-justified nav-profile">
 				  <li role="presentation" id="profile_menu_info" class="profile_menu active">
-				  	<%= link_to t('views.profile_models.edit.menu_options.profile'), edit_profile_model_path(@profile), remote: true %>
+				  	<%= link_to t('views.profile_models.edit.menu_options.profile'), edit_profile_model_path(@profile) %>
 				  </li>
 				  <li role="presentation" id="profile_menu_albums" class="profile_menu">
 				  	<%= link_to t('views.profile_models.edit.menu_options.albums'), albums_profile_model_path(@profile), remote: true %>

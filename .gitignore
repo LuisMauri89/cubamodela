@@ -31,7 +31,7 @@
 /config/application.yml
 
 # Ignore sitemaps
-/public/sitemap*.xml
+/public/sitemap*.xml*
 
 # Ignore precompiled assets
 /public/assets/*

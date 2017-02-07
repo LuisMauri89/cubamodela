@@ -17,7 +17,11 @@
 <div class="row">
 	<div class="col-md-12 col-xs-12">
 		<div id="error-header-text" class="error-center-content">
-			<h2 class="text-center"><%= t('exception.show.header_text') %></h2>
+			<% if @status.to_s == "404" %>
+				<h2 class="text-center"><%= t('exception.show.header_text_404') %></h2>
+			<% else %>
+				<h2 class="text-center"><%= t('exception.show.header_text_500') %></h2>
+			<% end %>
 		</div>
 	</div>
 </div>

@@ -251,7 +251,8 @@ en:
     actions: "Actions"
   exception:
     show:
-      header_text: "Ups!!!! Something went wrong. We are sorry for the inconvinience. We are working on it."
+      header_text_404: "404 NOT FOUND. We are sorry for the inconvinience."
+      header_text_500: "Ups!!!! Something went wrong. We are sorry for the inconvinience. We are working on it."
       actions_text: "Here are some links that may be of your interest"
   activerecord:
     attributes:

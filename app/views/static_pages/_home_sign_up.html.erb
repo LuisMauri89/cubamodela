@@ -28,7 +28,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: t('activerecord.attributes.user.password_confirmation'), class: "form-control" %>
     </div>
 
-    <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), class: "btn btn-primary btn-block", style: "margin-bottom: 5px;" %>
+    <%= f.submit t('views.static_pages.home.sign_up_form.submit_button'), id: "home-signup-form-btn-suscribe", class: "btn btn-primary btn-block" %>
   <% end %>
   </div>
   <div class="panel-footer">
