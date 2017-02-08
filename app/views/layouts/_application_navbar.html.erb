@@ -56,7 +56,7 @@
 					<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn navbar-btn-custom-extra" %>
 				<% end %>
 				<% if current_user.admin? %>
-					<%= link_to t('menu.options.control_panel'), control_panel_path, class: "btn btn-primary navbar-btn navbar-btn-custom-extra"" %>
+					<%= link_to t('menu.options.control_panel'), control_panel_path, class: "btn btn-primary navbar-btn navbar-btn-custom-extra" %>
 				<% end %>
 				<%= render 'layouts/signed_in_true' %>
 			<% else %>
