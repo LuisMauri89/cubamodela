@@ -25,14 +25,20 @@ namespace :casting_tasks do
 	task casting_expired_task: :environment do
 		puts "#{Time.now} - START"
 		Rails.logger.info "#{Time.current} - START_TASK: casting_expired_task"
+
+		puts "#{Time.now} - Count: #{Casting.actives.count}"
 	    Casting.actives.each do |casting|
 	      	puts "#{Time.now} - Casting-#{casting.title}-#{casting.id}-#{casting.expiration_date}"
 	      	Rails.logger.info "#{Time.current} - RUNNING_TASK: casting_expired_task - Casting-#{casting.title}-#{casting.id}-#{casting.expiration_date}"
 	    	if casting.expiration_date <= Time.current
+	    		
 	        	puts "#{Time.now} - Condition True"
+	        	puts "#{Time.now} - Pre Status-#{casting.status}"
 	        	Rails.logger.info "#{Time.current} - RUNNING_TASK: casting_expired_task - Condition True"
 	        	Rails.logger.info "#{Time.current} - RUNNING_TASK: casting_expired_task - Current_Status-#{casting.status}"
-	    		casting.closed!
+
+	    		casting.status_to_closed_without_validate
+
 	        	puts "#{Time.now} - Closed!"
 	        	Rails.logger.info "#{Time.current} - RUNNING_TASK: casting_expired_task - Closed!"
 	        	puts "#{Time.now} - Status-#{casting.status}"

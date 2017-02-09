@@ -230,7 +230,7 @@ class Casting < ApplicationRecord
     when "active"
       return nil
     when "closed"
-      if Time.current < casting_date
+      if Time.current.to_date < casting_date.to_date
         return nil
       else
         return I18n.t('views.castings.messages.edit.past')
@@ -487,5 +487,10 @@ class Casting < ApplicationRecord
            self.title_es != Constant::ES_TRANSLATION_PENDING &&
            self.description_es != Constant::ES_TRANSLATION_PENDING &&
            self.location_es != Constant::ES_TRANSLATION_PENDING
+  end
+
+  def status_to_closed_without_validate
+    self.status = "closed"
+    save(validate: false)
   end
 end

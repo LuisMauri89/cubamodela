@@ -64,6 +64,7 @@ class ApplicationController < ActionController::Base
     description = "We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos."
     image       = options[:image] || "http://cubamodela.com/assets/cubamodela_logo_blue.png"
     current_url = request.url
+    viewport    = "width=device-width,initial-scale=1"
 
     # Let's prepare a nice set of defaults
     defaults = {
@@ -71,6 +72,7 @@ class ApplicationController < ActionController::Base
       title:       title,
       separator:   separator,
       reverse:     true,
+      viewport: viewport,
       language:    I18n.locale,
       image:       image,
       description: description,
