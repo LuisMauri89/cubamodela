@@ -25,7 +25,7 @@ class Casting < ApplicationRecord
   before_validation :set_expiration_date_to_midnight
 
   def set_expiration_date_to_midnight
-    self.expiration_date = self.expiration_date.change(hour: 23, min: 59)
+    self.expiration_date = self.expiration_date.change(hour: 23, min: 59) if self.expiration_date != nil
   end
 
   # Locale
@@ -58,6 +58,8 @@ class Casting < ApplicationRecord
   end
 
   # Validations
+  validates :payment_per_model, presence: true
+  validate :payment_per_model_valid
   validates :title_en, presence: true, length: { in: 3..50 }, if: :locale_en?
   validates :title_es, presence: true, length: { in: 3..50 }, if: :locale_es?
   validates :description_en, presence: true, length: { in: 20..500 }, if: :locale_en?
@@ -100,6 +102,14 @@ class Casting < ApplicationRecord
   has_one :casting_review, dependent: :destroy
 
   # Custom Validators
+  def payment_per_model_valid
+    if is_string_integer?(payment_per_model)
+      errors.add(:payment_per_model, :min_payment_per_model) if payment_per_model.to_i <= Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE
+    else
+      errors.add(:payment_per_model, :wrong_payment_per_model) if payment_per_model != Constant::CASTING_NO_PAYMENT_PER_MODEL_TEXT
+    end
+  end
+
   def expiration_date_cannot_be_in_the_past
     if expiration_date.present? && expiration_date.to_date <= Time.current.to_date
       errors.add(:expiration_date, :wrong_expiration_date)
@@ -365,6 +375,30 @@ class Casting < ApplicationRecord
     return intent
   end
 
+  def try_confirm_to_apply!(profile)
+    intent = self.intents.where(profile_model_id: profile.id).first
+    intent ||= Intent.new
+
+    if profile.reviewed
+      if intent.new_record?
+        intent.errors[:base] << I18n.t('views.castings.messages.associations.confirmed_denied_no_intent')
+      else
+        case status
+        when "active"
+          intent.applied!
+        when "closed"
+          intent.errors[:base] << I18n.t('views.castings.messages.associations.applied_denied_closed')
+        when "canceled"
+          intent.errors[:base] << I18n.t('views.castings.messages.edit.canceled')
+        end
+      end
+    else
+      intent.errors[:base] << I18n.t('views.castings.messages.edit.profile_pending_review')
+    end
+
+    return intent
+  end
+
   def send_update_notification(old_casting)
     fields = fields_change?(old_casting)
     dates = dates_change?(old_casting)
@@ -492,5 +526,9 @@ class Casting < ApplicationRecord
   def status_to_closed_without_validate
     self.status = "closed"
     save(validate: false)
+  end
+
+  def is_string_integer?(str)
+    true if Integer(str) rescue false
   end
 end

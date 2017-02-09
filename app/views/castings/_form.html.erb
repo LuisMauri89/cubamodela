@@ -31,21 +31,17 @@
         <div class="row">
           <div class="col-md-12">
             <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
+              <div class="col-md-5">
+                <div class="form-group text-center">
                   <%= f.label :access_type %><br />
                   <%= f.select(:access_type, Casting.access_types.keys.map {|type| [t('activerecord.attributes.casting.access_types.' + type), type]}, class: "form-control") %>
                 </div>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-7">
                 <div class="form-group text-center">
-                  <% if I18n.locale == "en".to_sym %>
-                    <%= f.label :title_en %>
-                    <%= f.text_field :title_en, placeholder: "Title", class: "form-control text-center" %>
-                  <% else %>
-                    <%= f.label :title_es %>
-                    <%= f.text_field :title_es, placeholder: "Title", class: "form-control text-center" %>
-                  <% end %>
+                  <%= f.label :payment_per_model %><br />
+                  <%= f.select(:payment_per_model, get_payment_collection, class: "form-control") %>
+                  <p id="payment-per-model-sugestion-text"><%= t('views.castings.new.payment_per_model_sugestion_text', min: Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE, recommended: Constant::CASTING_RECOMMENDED_PAYMENT_PER_MODEL_VALUE) %></p>
                 </div>
               </div>
             </div>
@@ -64,6 +60,16 @@
 
               </div>
             <% end %>
+
+            <div class="form-group text-center">
+              <% if I18n.locale == "en".to_sym %>
+                <%= f.label :title_en %>
+                <%= f.text_field :title_en, placeholder: "Title", class: "form-control text-center" %>
+              <% else %>
+                <%= f.label :title_es %>
+                <%= f.text_field :title_es, placeholder: "Title", class: "form-control text-center" %>
+              <% end %>
+            </div>
 
             <div class="form-group text-center">
               <% if I18n.locale == "en".to_sym %>
@@ -185,6 +191,6 @@
       </div>
     </div>
 
-    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block show-spinner" %>
+    <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-block" %>
   <% end %>
 </div>

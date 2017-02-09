@@ -13,6 +13,7 @@
 						<%= @casting.title_en %>
 					</footer>
 				<% end %>
+				<span class="pull-right">$<%= @casting.payment_per_model %></span>
 			</div>
 		</div>
 	</div>
@@ -186,6 +187,12 @@
 	        <% else %>
 	        	<h5><%= t('views.castings.show.categories_empty_text') %></h5>
 	        <% end %>
+		</div>
+		<div class="profile-section">
+			<h4><%= t('views.castings.show.headers.payment') %></h4>
+			<p class="profile-value">
+	        	$<%= @casting.payment_per_model %>
+	        </p>
 		</div>
 	</div>
 </div>

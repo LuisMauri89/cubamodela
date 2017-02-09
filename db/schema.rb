@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202211356) do
+ActiveRecord::Schema.define(version: 20170209203657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,16 +58,17 @@ ActiveRecord::Schema.define(version: 20170202211356) do
     t.datetime "expiration_date"
     t.string   "ownerable_type"
     t.integer  "ownerable_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "status",          default: 0
-    t.integer  "access_type",     default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "status",            default: 0
+    t.integer  "access_type",       default: 0
     t.datetime "casting_date"
     t.datetime "shooting_date"
     t.string   "title_es"
     t.text     "description_es"
     t.text     "location_es"
     t.boolean  "is_direct"
+    t.string   "payment_per_model"
     t.index ["ownerable_type", "ownerable_id"], name: "index_castings_on_ownerable_type_and_ownerable_id", using: :btree
   end
 

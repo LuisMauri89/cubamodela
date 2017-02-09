@@ -283,6 +283,10 @@ en:
         created_at: "Created at"
         updated_at: "Updated at"
       casting:
+        payment_per_model: "Payment per model"
+        payment_per_model_options:
+          select: "Select payment amount"
+          tfp: "TFP"
         is_direct: "Ckeck this if the casting is intentional just for direct shooting."
         access_type: "Access type"
         access_types:
@@ -471,6 +475,8 @@ en:
         wrong_expiration_date_future: "can't be in the past, move it to future in order for people involve to reconfirm their presence"
         wrong_casting_date: "can not be in the past / can not happen before expliration date"
         wrong_shooting_date: "can not be in the past / can not happen before casting date"
+        min_payment_per_model: "is under the minimum required"
+        wrong_payment_per_model: "is not valid"
   views:
     application:
       messages:
@@ -639,6 +645,21 @@ en:
           confirmed: "Booking is already confirmed"
           rejected: "Booking is already rejected"
     castings:
+      show:
+        headers:
+          payment: "Payment"
+          referenced_photos: "References photos"
+          description: "Description"
+          location: "Location"
+          dates: "Dates"
+          modalities: "Modalities"
+          categories: "Categories"
+        labels:
+          invited: "Invited"
+          confirmed: "Confirmed"
+          applied: "Applied"
+        modalities_empty_text: "None modalities added"
+        categories_empty_text: "None categories added"
       index:
         expires_in_text: "Expires in %{value}"
         expired_text: "Expired"
@@ -670,6 +691,7 @@ en:
         here_text: "HERE"
       new:
         header_text: "New casting"
+        payment_per_model_sugestion_text: "Minimun required $%{min} | Recommended payment $%{recommended}"
       edit:
         header_text: "Edit casting"
         form_sections:
