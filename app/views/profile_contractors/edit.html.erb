@@ -36,10 +36,10 @@
 				  <li role="presentation" id="profile_menu_info" class="profile_menu active">
 				  	<%= link_to t('views.profile_contractors.edit.menu_options.profile'), edit_profile_contractor_path(@profile) %>
 				  </li>
-				  <li role="presentation" id="profile_menu_payment" class="profile_menu">
+				  <li role="presentation" id="profile_menu_payment" class="profile_menu show-spinner">
 				  	<%= link_to t('views.profile_contractors.edit.menu_options.payment'), "#", remote: true %>
 				  </li>
-				  <li role="presentation" id="profile_menu_plan" class="profile_menu">
+				  <li role="presentation" id="profile_menu_plan" class="profile_menu show-spinner">
 				  	<%= link_to t('views.profile_models.edit.menu_options.plans'), plans_profile_contractor_path(@profile), remote: true %>
 				  </li>
 				</ul>

@@ -87,9 +87,9 @@
 		<% if @message.asociateable.expiration_date.to_date > Date.today %>
 			<% @status = Intent.get_status_by_model_and_casting(@message.ownerable, @message.asociateable) %>
 			<% if @status == "invited" %>
-				<%= link_to t('views.messages.index.templates.casting_expiration_proximity.buttons.confirm'),confirm_casting_path(@message.asociateable, @message.ownerable, from: "model_inbox"), remote: true, class: "btn btn-primary pull-right btn-small-right-margin", id: "btn-confirm-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
+				<%= link_to t('views.messages.index.templates.casting_expiration_proximity.buttons.confirm'), confirm_casting_path(@message.asociateable, @message.ownerable, from: "model_inbox"), remote: true, class: "btn btn-primary pull-right btn-small-right-margin show-spinner", id: "btn-confirm-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
 			<% elsif !(@status == "confirmed") %>
-				<%= link_to t('views.messages.index.templates.casting_expiration_proximity.buttons.apply'),apply_casting_path(@message.asociateable, @message.ownerable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin", id: "btn-apply-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
+				<%= link_to t('views.messages.index.templates.casting_expiration_proximity.buttons.apply'),apply_casting_path(@message.asociateable, @message.ownerable), remote: true, class: "btn btn-primary pull-right btn-small-right-margin show-spinner", id: "btn-apply-" << @message.asociateable.id.to_s << @message.ownerable.id.to_s %>
 			<% end %>
 		<% end %>
 		<%= link_to t('views.messages.index.templates.casting_expiration_proximity.buttons.see_casting'), casting_path(@message.asociateable), class: "btn btn-primary pull-right btn-small-right-margin" %>

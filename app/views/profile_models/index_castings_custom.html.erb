@@ -37,7 +37,7 @@
                   <td><h4 id="status-<%= casting.id %>"><%= intent.status.humanize %></h4></td>
                   <td id="actions-<%= casting.id %>">
                     <% if casting.active? && intent.invited? %>
-                      <%= link_to t('forms.buttons.confirm'), confirm_casting_path(casting, @profile, from: "model_index_castings"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
+                      <%= link_to t('forms.buttons.confirm'), confirm_casting_path(casting, @profile, from: "model_index_castings"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin pull-right show-spinner" %>
                     <% end %>
                   </td>
                 </tr>

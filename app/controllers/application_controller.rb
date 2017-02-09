@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
   def prepare_meta_tags(options={})
     site_name   = "CubaModela"
     title       = "Cuban Models, Photographers, Locations"
-    separator   = " - "
+    separator   = " | "
     description = "We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos."
     image       = options[:image] || "http://cubamodela.com/assets/cubamodela_logo_blue.png"
     current_url = request.url
@@ -70,6 +70,7 @@ class ApplicationController < ActionController::Base
       site:        site_name,
       title:       title,
       separator:   separator,
+      reverse:     true,
       language:    I18n.locale,
       image:       image,
       description: description,

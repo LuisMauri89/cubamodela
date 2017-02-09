@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def get_kind_collection
     collection = [[t('activerecord.attributes.user.kind_options.select'), 'white']]
-    User.kinds.keys.reject{ |k| k == "other" || k == "white" }.map {|kind| collection << [t('activerecord.attributes.user.kind_options.' + kind),kind]}
+    User.kinds.keys.reject{ |k| k == "other" || k == "photographer" || k == "white" }.map {|kind| collection << [t('activerecord.attributes.user.kind_options.' + kind),kind]}
 
     return collection
   end

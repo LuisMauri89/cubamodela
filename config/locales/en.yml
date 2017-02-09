@@ -263,7 +263,7 @@ en:
         kind: "What type of profile are you?"
         kind_options:
           select: "Select profile"
-          contractor: "Contractor"
+          contractor: "Employer"
           model: "Model"
           photographer: "Photographer"
         created_at: "Created at"

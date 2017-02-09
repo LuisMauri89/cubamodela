@@ -22,23 +22,23 @@
     <div class="col-md-2">
       <div id="list-container">
         <div class="list-group">
-          <%= link_to(invite_index_casting_path(@casting, list_item: 'invite'), remote: true, class: "list-group-item active") do %>
+          <%= link_to(invite_index_casting_path(@casting, list_item: 'invite'), remote: true, class: "list-group-item active show-spinner") do %>
             <h4 id="list-item-invite" class="list-group-item-heading">Invite</h4>
             <p class="list-group-item-text">Find new models and invite them.</p>
           <% end %>
-          <%= link_to(invited_index_casting_path(@casting, list_item: 'invited'), remote: true, class: "list-group-item") do %>
+          <%= link_to(invited_index_casting_path(@casting, list_item: 'invited'), remote: true, class: "list-group-item show-spinner") do %>
             <h4 id="list-item-invited" class="list-group-item-heading">Invited</h4>
             <p class="list-group-item-text">Models you invite.</p>
           <% end %>
-          <%= link_to(confirmed_index_casting_path(@casting, list_item: 'confirmed'), remote: true, class: "list-group-item") do %>
+          <%= link_to(confirmed_index_casting_path(@casting, list_item: 'confirmed'), remote: true, class: "list-group-item show-spinner") do %>
             <h4 id="list-item-confirmed" class="list-group-item-heading">Confirmed</h4>
             <p class="list-group-item-text">Models who confirm.</p>
           <% end %>
-          <%= link_to(favorites_index_casting_path(@casting, list_item: 'favorites'), remote: true, class: "list-group-item") do %>
+          <%= link_to(favorites_index_casting_path(@casting, list_item: 'favorites'), remote: true, class: "list-group-item show-spinner") do %>
             <h4 id="list-item-favorites" class="list-group-item-heading">Favorites</h4>
             <p class="list-group-item-text">Your favorites.</p>
           <% end %>
-          <%= link_to(applied_index_casting_path(@casting, list_item: 'applied'), remote: true, class: "list-group-item") do %>
+          <%= link_to(applied_index_casting_path(@casting, list_item: 'applied'), remote: true, class: "list-group-item show-spinner") do %>
             <h4 id="list-item-applied" class="list-group-item-heading">Applied</h4>
             <p class="list-group-item-text">Models who are interested.</p>
           <% end %>

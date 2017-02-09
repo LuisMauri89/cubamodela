@@ -10,7 +10,7 @@
 							<% end %>
 						</div>
 						<div class="text-center" style="margin-top: 5px;">
-							<%= link_to t('views.castings.buttons.invite'), invite_casting_path(@casting, model, list_item: "invite"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
+							<%= link_to t('views.castings.buttons.invite'), invite_casting_path(@casting, model, list_item: "invite"), remote: true, class: "btn btn-primary btn-xs btn-block show-spinner" %>
 						</div>
 						<div class="profile-status">
 							<% if model.new_face? %>

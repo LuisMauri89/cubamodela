@@ -36,13 +36,13 @@
 				  <li role="presentation" id="profile_menu_info" class="profile_menu active">
 				  	<%= link_to t('views.profile_photographers.edit.menu_options.profile'), edit_profile_photographer_path(@profile) %>
 				  </li>
-				  <li role="presentation" id="profile_menu_albums" class="profile_menu">
+				  <li role="presentation" id="profile_menu_albums" class="profile_menu show-spinner">
 				  	<%= link_to t('views.profile_photographers.edit.menu_options.albums'), albums_profile_photographer_path(@profile), remote: true %>
 				  </li>
-				  <li role="presentation" id="profile_menu_cv" class="profile_menu">
+				  <li role="presentation" id="profile_menu_cv" class="profile_menu show-spinner">
 				  	<%= link_to t('views.profile_photographers.edit.menu_options.curriculum'), studies_profile_photographer_path(@profile), remote: true %>
 				  </li>
-				  <li role="presentation" id="profile_menu_plan" class="profile_menu">
+				  <li role="presentation" id="profile_menu_plan" class="profile_menu show-spinner">
 				  	<%= link_to t('views.profile_photographers.edit.menu_options.plans'), plans_profile_photographer_path(@profile), remote: true %>
 				  </li>
 				</ul>

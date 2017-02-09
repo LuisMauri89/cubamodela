@@ -1,3 +1,4 @@
+$('#spinner-container').hide();
 <% if @intent.errors.any? %>
 	$('#notification-messages-container').html("<%= j render 'errors_intent' %>");
 <% else %>

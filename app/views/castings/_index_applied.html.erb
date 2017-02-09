@@ -10,7 +10,7 @@
 							<% end %>
 						</div>
 						<div class="text-center" style="margin-top: 5px;">
-							<%= link_to t('views.castings.buttons.confirm'), invite_casting_path(@casting, intent.profile_model, list_item: "applied"), remote: true, class: "btn btn-primary btn-xs btn-block" %>
+							<%= link_to t('views.castings.buttons.confirm'), invite_casting_path(@casting, intent.profile_model, list_item: "applied"), remote: true, class: "btn btn-primary btn-xs btn-block show-spinner" %>
 						</div>
 						<div class="profile-status">
 							<% if intent.profile_model.new_face? %>
