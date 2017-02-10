@@ -8,10 +8,14 @@ class Booking < ApplicationRecord
   end
 
   # Validations
+  validates :payment, presence: true
+  validate :payment_valid
   validates :description_en, presence: true, length: { in: 20..500 }, if: :locale_en?
   validates :description_es, presence: true, length: { in: 20..500 }, if: :locale_es?
   validates :location_en, length: { in: 5..500 }, allow_blank: true, if: :locale_en?
   validates :location_es, length: { in: 5..500 }, allow_blank: true, if: :locale_es?
+  validates :casting_date, presence: true
+  validates :shooting_date, presence: true
   validate :casting_date_cannot_be_in_the_past, if: :no_direct_casting?
   validate :shooting_date_cannot_be_in_the_past
   validate :both_fields_blank_en_es
@@ -52,6 +56,14 @@ class Booking < ApplicationRecord
   end
 
   # Custom Validators
+  def payment_valid
+    if is_string_integer?(payment)
+      errors.add(:payment, :min_payment_per_model) if payment.to_i <= Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE
+    else
+      errors.add(:payment, :wrong_payment_per_model) if payment != Constant::CASTING_NO_PAYMENT_PER_MODEL_TEXT
+    end
+  end
+
   def casting_date_cannot_be_in_the_past
     if casting_date.present? && casting_date < Time.current
       errors.add(:casting_date, :wrong_casting_date)
@@ -298,5 +310,9 @@ class Booking < ApplicationRecord
            self.location_en != Constant::EN_TRANSLATION_PENDING &&
            self.description_es != Constant::ES_TRANSLATION_PENDING &&
            self.location_es != Constant::ES_TRANSLATION_PENDING
+  end
+
+  def is_string_integer?(str)
+    true if Integer(str) rescue false
   end
 end

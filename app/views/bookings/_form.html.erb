@@ -20,6 +20,12 @@
         <div class="row">
           <div class="col-md-12">
 
+            <div class="form-group text-center">
+              <%= f.label :payment %>
+              <%= f.select(:payment, get_payment_collection, class: "form-control") %>
+              <p id="payment-per-model-sugestion-text"><%= t('views.castings.new.payment_per_model_sugestion_text', min: Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE, recommended: Constant::CASTING_RECOMMENDED_PAYMENT_PER_MODEL_VALUE) %></p>
+            </div>
+
             <% if @booking.new_record? %>
               <div class="form-group" id="chbox-direct-container">
                 <%= f.check_box :is_direct, id: "chbox-direct" %>

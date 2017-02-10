@@ -16,7 +16,7 @@
     <div id="main-container" class="container-fluid">
 
       <div class="row">
-        <div id="navbar-container" class="col-md-12">
+        <div id="navbar-container" class="col-md-12 col-xs-12">
           <%= render 'layouts/application_navbar' %>
         </div>
       </div>
@@ -32,15 +32,19 @@
       </div>
 
       <div class="row">
-        <div id="flash-messages-container" class="col-md-12">
+        <div id="flash-messages-container" class="col-md-12 col-xs-12">
           <%= render 'layouts/flash_messages' %>
         </div>
       </div>
 
-      <%= yield %>
+      <div class="row">
+        <div id="yield-container" class="col-md-12 col-xs-12">
+          <%= yield %>
+        </div>
+      </div>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-xs-12">
           <%= render 'layouts/footer' %>
         </div>
       </div>

@@ -4,7 +4,7 @@ class Intent < ApplicationRecord
     message: :invited }
 
   # Status
-  enum status: [:unset, :applied, :invited, :confirmed, :denied, :canceled]
+  enum status: [:unset, :applied, :invited, :confirmed, :denied, :canceled, :refused]
 
   after_initialize :set_default_status, if: :new_record?
 

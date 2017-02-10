@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209203657) do
+ActiveRecord::Schema.define(version: 20170210133921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170209203657) do
     t.text     "description_es"
     t.text     "location_es"
     t.boolean  "is_direct"
+    t.string   "payment"
   end
 
   create_table "casting_reviews", force: :cascade do |t|

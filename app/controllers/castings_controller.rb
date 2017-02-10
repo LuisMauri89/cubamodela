@@ -60,7 +60,7 @@ class CastingsController < ApplicationController
   end
 
   def index_custom_invite
-    @castings = @contractor.valid_castings
+    @castings = @contractor.actives_castings
   end
 
   def index_invite

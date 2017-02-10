@@ -1,4 +1,4 @@
-<%= form_for @search, url: {controller: "profile_models", action: "perform_search"}, remote: true do |f| %>
+<%= form_for @search, url: {controller: "profile_models", action: "perform_search"}, remote: true, html: { class: "form-remote-spinner" } do |f| %>
 	
 	<div class="row">
 		<div class="col-md-2">
@@ -61,7 +61,7 @@
 		<div class="col-md-4">
 			<div class="row">
 				<div class="col-md-12">
-					<%= f.submit t('forms.buttons.search'), class: "btn btn-primary btn-lg pull-right" %>
+					<%= f.submit t('forms.buttons.search'), class: "btn btn-primary btn-lg pull-right show-spinner" %>
 				</div>
 			</div>
 			<div class="row">

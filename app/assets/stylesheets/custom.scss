@@ -570,6 +570,10 @@ h3 .small-info{
 	position: relative;
 }
 
+#yield-container{
+	min-height: 450px;
+}
+
 /* END Global */
 
 /* Spinner */
@@ -1364,7 +1368,7 @@ h3 .small-info{
 	/* Form fields with errors turn red */
 	padding: 0px !important;
   	background-color: transparent !important;
-  	display: block !important;
+  	display: inline !important;
 }
 
 .field_with_errors label{
