@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   get 'static_pages/profile_example'
   get 'static_pages/gallery'
   get 'static_pages/show_gallery_photo'
+  get 'static_pages/casting_flow'
+  get 'static_pages/booking_flow'
+  get 'static_pages/profiles_flow'
+  get 'static_pages/coupons_flow'
 
 # Models Profile routes
   resources :profile_models do

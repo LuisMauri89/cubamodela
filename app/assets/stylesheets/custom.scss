@@ -9,22 +9,39 @@ body {
   font-family: 'roboto-light' !important;
 }
 
-/*  */
+/* Mobile */
 @media only screen and (min-width : 300px) and (max-width : 767px) {
-	#panel-home-sign-up{
-		max-height: 178px;
-		overflow-y: scroll;
+
+	#subscribe-container{
+		background-color: mix(#265a88, black, 50%); /*rgba(38, 90, 136, 1);*/
+		min-height: 1000px;
 	}
 
-    #sign-up-home-page-panel-body-container{
+	#subscribe-container #home-subscribe-form-container{
+		position: absolute;
+		top: 48%;
+		right: 3%;
+	}
+
+	#subscribe-form-header{
+		position: absolute;
+		top: 42%;
+		right: 10%;
+		color: white;
+	}
+
+	#sign-up-home-page-panel-body-container{
 		/* Add padding to sign up form */
-		padding-left: 10px;
-		padding-right: 10px;
-		max-height: 100px;
-		overflow-y: scroll;
+		padding-left: 40px;
+		padding-right: 40px;
 	}
 
-	#home-subscribe-form-container h4{
+	#user_kind{
+		/* Add 50% width to sign up form kind field */
+		width: 60% !important;
+	}
+
+	#home-subscribe-form-container p{
 		font-size: 12px !important;
 	}
 
@@ -34,6 +51,40 @@ body {
 
 	#home-subscribe-form-container .panel-footer{
 		padding-top: 2px !important;
+	}
+
+	#subscribe-header{
+		position: absolute;
+		top: 3%;
+		left: 1%;
+		color: white;
+		width: 90%;
+	}
+
+	#subscribe-subheader{
+		position: absolute;
+		top: 16%;
+		left: 1%;
+		color: white;
+		width: 90%;
+	}
+
+	#subscribe-subheader-2{
+		position: absolute;
+		top: 27%;
+		left: 1%;
+		color: white;
+		width: 90%;
+	}
+
+	#subscribe-subheader-3{
+		position: absolute;
+		top: 37%;
+		left: 1%;
+		color: white;
+		width: 90%;
+		font-size: 16px;
+		padding-left: 2%;
 	}
 
 	.btn-home{
@@ -95,24 +146,19 @@ body {
 	}
 
 	#models-container > #models-header{
-		height: 35px !important;
+		height: 45px !important;
 	}
 
-	#models-container > #models-header > p{
+	#models-container > #models-header > h2{
 		color: #0071bc;
 		padding-top: 0px !important;
 		padding-bottom: 0px !important;
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
 		line-height: 40px !important;
-		font-size: 20px !important;
 	}
 
-	#us-container > #us-body h1{
-		font-size: 12px !important;
-	}
-
-	#us-container > #us-body h4{
+	#us-container > #us-body p{
 		font-size: 8px !important;
 	}
 
@@ -127,14 +173,13 @@ body {
 		padding-bottom: 15px;
 	}
 
-	#partners-container > #partners-header > p{
+	#partners-container > #partners-header > h2{
 		color: #0071bc;
 		padding-top: 20px !important;
 		padding-bottom: 0px !important;
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
 		line-height: 50px !important;
-		font-size: 18px !important;
 	}
 
 	.partner-row{
@@ -156,12 +201,12 @@ body {
 
 	.partner-ocupation{
 		color: #0071bc;
-		font-size: 14px !important;
+		font-size: 12px !important;
 	}
 
 	.partner-name{
 		color: grey;
-		font-size: 16px !important;
+		font-size: 14px !important;
 		margin-bottom: 15px;
 	}
 
@@ -203,33 +248,99 @@ body {
 		background-color: #337ab7;
 		color: white;
 		margin-top: 0px;
+		font-size: 12px;
 	}
 
 	#footer-logo-container img{
-		width: 80px !important;
+		width: 100px !important;
+		margin-bottom: 10px;
+	}
+
+	#footer .img-footer{
+		width: 32px;
+	}
+
+	#footer .col-xs-2, #footer .col-xs-4{
+		float: none !important;
+		width: 100% !important;
+		text-align: center;
 	}
 }
 
-/*  */
+/* Tablets */
 @media only screen and (min-width : 768px) and (max-width : 1223px) {
-    #sign-up-home-page-panel-body-container{
-		/* Add padding to sign up form */
-		padding-left: 10px;
-		padding-right: 10px;
-		max-height: 150px;
-		overflow-y: scroll;
+    #subscribe-container{
+		background-color: mix(#265a88, black, 50%); /*rgba(38, 90, 136, 1);*/
+		min-height: 620px;
 	}
 
-	#home-subscribe-form-container h4{
-		font-size: 14px !important;
+	#subscribe-form-header{
+		position: absolute;
+		top: 5%;
+		right: 10%;
+		color: white;
+	}
+
+    #subscribe-container #home-subscribe-form-container{
+		position: absolute;
+		top: 15%;
+		right: 3%;
+	}
+
+	#sign-up-home-page-panel-body-container{
+		/* Add padding to sign up form */
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+	#user_kind{
+		/* Add 50% width to sign up form kind field */
+		width: 60% !important;
+	}
+
+	#home-subscribe-form-container p{
+		font-size: 12px !important;
 	}
 
 	#home-subscribe-form-container a{
-		font-size: 14px !important;
+		font-size: 12px !important;
 	}
 
 	#home-subscribe-form-container .panel-footer{
-		padding-top: 3px !important;
+		padding-top: 2px !important;
+	}
+
+	#subscribe-header{
+		position: absolute;
+		top: 15%;
+		left: 5%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader{
+		position: absolute;
+		top: 37%;
+		left: 5%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader-2{
+		position: absolute;
+		top: 55%;
+		left: 5%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader-3{
+		position: absolute;
+		top: 77%;
+		left: 5%;
+		color: white;
+		width: 40%;
+		font-size: 18px;
 	}
 
 	.btn-home{
@@ -294,21 +405,16 @@ body {
 		height: 50px !important;
 	}
 
-	#models-container > #models-header > p{
+	#models-container > #models-header > h2{
 		color: #0071bc;
 		padding-top: 0px !important;
 		padding-bottom: 0px !important;
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
 		line-height: 50px !important;
-		font-size: 30px !important;
 	}
 
-	#us-container > #us-body h1{
-		font-size: 17px !important;
-	}
-
-	#us-container > #us-body h4{
+	#us-container > #us-body p{
 		font-size: 12px !important;
 	}
 
@@ -317,14 +423,13 @@ body {
 		padding-bottom: 15px;
 	}
 
-	#partners-container > #partners-header > p{
+	#partners-container > #partners-header > h2{
 		color: #0071bc;
 		padding-top: 20px !important;
 		padding-bottom: 0px !important;
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
 		line-height: 50px !important;
-		font-size: 20px !important;
 	}
 
 	.partner-row{
@@ -396,7 +501,7 @@ body {
 	}
 
 	#footer-logo-container img{
-		width: 128px !important;
+		width: 100px !important;
 	}
 }
 
@@ -412,19 +517,96 @@ body {
     	margin-right: 0.5% !important;
     }
 
+    #subscribe-container{
+		background-color: mix(#265a88, black, 50%); /*rgba(38, 90, 136, 1);*/
+		min-height: 620px;
+	}
+
+	#subscribe-form-header{
+		position: absolute;
+		top: 5%;
+		right: 10%;
+		color: white;
+	}
+
+    #subscribe-container #home-subscribe-form-container{
+		position: absolute;
+		top: 15%;
+		right: 3%;
+	}
+
+	#sign-up-home-page-panel-body-container{
+		/* Add padding to sign up form */
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+	#user_kind{
+		/* Add 50% width to sign up form kind field */
+		width: 60% !important;
+	}
+
+	#home-subscribe-form-container p{
+		font-size: 12px !important;
+	}
+
+	#home-subscribe-form-container a{
+		font-size: 12px !important;
+	}
+
+	#home-subscribe-form-container .panel-footer{
+		padding-top: 2px !important;
+	}
+
+	#subscribe-header{
+		position: absolute;
+		top: 15%;
+		left: 10%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader{
+		position: absolute;
+		top: 35%;
+		left: 10%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader-2{
+		position: absolute;
+		top: 45%;
+		left: 10%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader-3{
+		position: absolute;
+		top: 60%;
+		left: 10%;
+		color: white;
+		width: 40%;
+		font-size: 18px;
+	}
+
+    #us-container > #us-body p{
+		font-size: 18px !important;
+	}
+
     #partners-container{
 		background-color: white;
 		padding-bottom: 30px;
 	}
 
-	#partners-container > #partners-header > p{
+	#partners-container > #partners-header > h2{
 		color: #0071bc;
 		padding-top: 30px !important;
 		padding-bottom: 0px !important;
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
 		line-height: 100px;
-		font-size: 50px;
 	}
 
 	.partner-row{
@@ -472,19 +654,96 @@ body {
     	margin-right: 15% !important;
     }
 
+    #subscribe-container{
+		background-color: mix(#265a88, black, 50%); /*rgba(38, 90, 136, 1);*/
+		min-height: 620px;
+	}
+
+	#subscribe-form-header{
+		position: absolute;
+		top: 5%;
+		right: 10%;
+		color: white;
+	}
+
+    #subscribe-container #home-subscribe-form-container{
+		position: absolute;
+		top: 15%;
+		right: 3%;
+	}
+
+	#sign-up-home-page-panel-body-container{
+		/* Add padding to sign up form */
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+
+	#user_kind{
+		/* Add 50% width to sign up form kind field */
+		width: 60% !important;
+	}
+
+	#home-subscribe-form-container p{
+		font-size: 12px !important;
+	}
+
+	#home-subscribe-form-container a{
+		font-size: 12px !important;
+	}
+
+	#home-subscribe-form-container .panel-footer{
+		padding-top: 2px !important;
+	}
+
+	#subscribe-header{
+		position: absolute;
+		top: 15%;
+		left: 10%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader{
+		position: absolute;
+		top: 35%;
+		left: 10%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader-2{
+		position: absolute;
+		top: 45%;
+		left: 10%;
+		color: white;
+		width: 40%;
+	}
+
+	#subscribe-subheader-3{
+		position: absolute;
+		top: 60%;
+		left: 10%;
+		color: white;
+		width: 40%;
+		font-size: 18px;
+	}
+
+    #us-container > #us-body p{
+		font-size: 18px !important;
+	}
+
     #partners-container{
 		background-color: white;
 		padding-bottom: 30px;
 	}
 
-	#partners-container > #partners-header > p{
+	#partners-container > #partners-header > h2{
 		color: #0071bc;
 		padding-top: 30px !important;
 		padding-bottom: 0px !important;
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
 		line-height: 100px;
-		font-size: 50px;
 	}
 
 	.partner-row{
@@ -572,6 +831,17 @@ h3 .small-info{
 
 #yield-container{
 	min-height: 450px;
+}
+
+.active-scroll{
+	max-height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.text-padding-space{
+	padding-left: 10px;
+	padding-right: 20px;
 }
 
 /* END Global */
@@ -928,27 +1198,6 @@ h3 .small-info{
 	width: 100% !important;
 }
 
-#sign-up-home-page-panel-body-container{
-	/* Add padding to sign up form */
-	padding-left: 40px;
-	padding-right: 40px;
-}
-
-#home-signup-form-btn-suscribe{
-	margin-bottom: 5px;
-}
-
-#user_kind{
-	/* Add 50% width to sign up form kind field */
-	width: 60% !important;
-}
-
-#subscribe-container #home-subscribe-form-container{
-	position: absolute;
-	top: 19%;
-	right: 3%;
-}
-
 #home-line-users-amounts-container-auth-true{
 	/* Section count of user line */
 	height: 80px;
@@ -979,17 +1228,16 @@ h3 .small-info{
 }
 
 #models-container > #models-header{
-	height: 110px;
+	height: 70px;
 }
 
-#models-container > #models-header > p{
+#models-container > #models-header > h2{
 	color: #0071bc;
 	padding-top: 0px !important;
 	padding-bottom: 0px !important;
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
-	line-height: 100px;
-	font-size: 60px;
+	line-height: 70px;
 }
 
 #models-btn-see-all{
@@ -1130,14 +1378,13 @@ h3 .small-info{
 	background-color: #337ab7;
 }
 
-#follow-container > #follow-header > p{
+#follow-container > #follow-header > h2{
 	color: white;
 	padding-top: 10px !important;
 	padding-bottom: 5px !important;
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
 	line-height: 100px !important;
-	font-size: 40px;
 }
 
 .section-social-icon{
@@ -1568,6 +1815,13 @@ h3 .small-info{
 	width: auto;
 	margin-left: 150px;
 	margin-right: 150px;
+}
+
+#photo-modal-small{
+	/* Show photo wide */
+	width: auto;
+	margin-left: 200px;
+	margin-right: 200px;
 }
 
 /* END Modal */

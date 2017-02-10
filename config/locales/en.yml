@@ -1282,6 +1282,11 @@ en:
         see_reviews: "See reviews"
       messages:
         create: "Successfully reviewed"
+    shareds:
+      read_texts:
+        read_here_text: "Read here"
+        casting_flow_read_text: "How casting flow works? Read this if you have not."
+        booking_flow_read_text: "How booking flow works? Read this if you have not."
     studies:
       global:
         empty_list: "You have cero studies. Add some..."

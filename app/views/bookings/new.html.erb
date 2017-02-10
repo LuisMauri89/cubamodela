@@ -1,18 +1,23 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 col-xs-12">
   	<div id="form-new-booking-wrapper">
   		<h3 class="text-center"><%= t('views.bookings.new.header_text') %></h3>
   		<div class="row">
-  			<div class="col-md-12">
+  			<div class="col-md-12 col-xs-12">
+          <p class="text-center">
+            <%= t('views.shareds.read_texts.booking_flow_read_text') %>
+            <%= link_to t('views.shareds.read_texts.read_here_text'), static_pages_booking_flow_path, remote: true, class: "btn btn-link" %>
+          </p>
 	  			<%= render 'form' %>
 	  		</div>
 		</div>
 
 		<div class="row model-bottom-actions">
-  			<div class="col-md-12">
+  			<div class="col-md-12 col-xs-12">
 				<%= link_to t('views.bookings.index.bookings'), custom_index_contractor_bookings_path(current_user.profileable), class: "btn btn-primary pull-right btn-small-right-margin" %>
 			</div>
   		</div>
   	</div>
   </div>
 </div>
+<div id="modal-container" class="modal fade"></div>

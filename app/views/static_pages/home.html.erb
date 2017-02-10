@@ -1,3 +1,4 @@
+<h1 class="hide">We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos.</h1>
 <div class="row row-no-space">
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="home-line-users-amounts-container-auth-<%= user_signed_in?.to_s %>">
@@ -20,20 +21,42 @@
     <div class="row row-no-space">
         <div class="col-md-12 col-xs-12 cell-no-space">
             <div id="subscribe-container" class="relative-position">
-              <%= image_tag "cubamodela_home_subscribe_cuba_models_en.jpg", alt: "CubaModela Cuba Models Fashion Photography", class: "img-responsive img-full" %>
+              <h2 id="subscribe-form-header">SUBSCRIBE HERE</h2>
+              <div id="subscribe-header" class="text-center">
+                <h2>
+                  Go ahead and become part of us
+                </h2>
+                <%= image_tag "cubamodela_logo_white.png", width:"150", alt: "Logo" %>
+              </div>
+              <div id="subscribe-subheader" class="text-center">
+                <h3>
+                  If you are interested in hire our models or any of our services, please subscribe as an EMPLOYER.
+                </h3>
+              </div>
+              <div id="subscribe-subheader-2" class="text-center">
+                <h3>
+                  If you are interested in upgrade your career as a model, please subscribe as a MODEL.
+                </h3>
+              </div>
+              <div id="subscribe-subheader-3" class="text-center">
+                <p>
+                  We strongly recommend to read how profiles works.
+                  <%= link_to t('views.shareds.read_texts.read_here_text'), static_pages_profiles_flow_path, remote: true, class: "btn btn-link" %>
+                </p>
+              </div>
               <div id="home-subscribe-form-container">
                 <%= render "home_sign_up" %>
               </div>
             </div>
         </div>
-    </div>
+    </div>  
 <% end %>
 
 <div class="row row-no-space">
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="models-container" class="relative-position">
           <div id="models-header">
-              <p class="text-center">DISCOVER UNIQUE MODELS</p>
+              <h2 class="text-center">DISCOVER UNIQUE MODELS</h2>
           </div>
           <div class="relative-position">
               <%= image_tag "cubamodela_home_section_models_cuba_models_up.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
@@ -90,7 +113,7 @@
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="follow-container" class="relative-position">
           <div id="follow-header">
-              <p class="text-center">FOLLOW US</p>
+              <h2 class="text-center">FOLLOW US</h2>
           </div>
           <div id="section-social-icons-container" class="text-center center-block">
             <ul class="list-inline">
@@ -104,35 +127,35 @@
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_instagram_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
+                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Instagram Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_pinterest_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
+                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Pinterest Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_google_plus_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
+                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Google+ Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_twitter_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
+                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Twitter Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_youtube_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
+                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela YouTube Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
                   <% end %>
                 </div>
               </li>
@@ -149,9 +172,9 @@
         <div id="us-container" class="relative-position">
             <%= image_tag "cubamodela_home_section_us_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
             <div id="us-body" class="text-left">
-                <h1>ABOUT US</h1>
-                <h4>CubaModela is the Online Network of Professionals of the fashion and photography industry in Cuba. Our mission is to connect models and photographers from Cuba with national and international clients. We provide a space for personalized advertising through the profiles that will constitute the fundamental criterion of selection to find jobs.</h4>
-                <h4>In addition, CubaModela provides specialized services in support of photographic, audiovisual and event productions on the Island. We also accompany the stay of foreign professionals offering unique experiences that will help them to understand the Cuban reality.</h4>
+                <h2>ABOUT US</h2>
+                <p>CubaModela is the Online Network of Professionals of the fashion and photography industry in Cuba. Our mission is to connect models and photographers from Cuba with national and international clients. We provide a space for personalized advertising through the profiles that will constitute the fundamental criterion of selection to find jobs.</p>
+                <p>In addition, CubaModela provides specialized services in support of photographic, audiovisual and event productions on the Island. We also accompany the stay of foreign professionals offering unique experiences that will help them to understand the Cuban reality.</p>
             </div>
             <div id="us-footer" class="text-center">
                 <%= link_to "CONTACT US", static_pages_contact_path, class: "btn-article", data: { animation: "animated pulse", delay: "2.0s" } %>
@@ -165,7 +188,7 @@
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="partners-container" class="notify relative-position">
           <div id="partners-header">
-              <p class="text-center">OUR PARTNERS</p>
+              <h2 class="text-center">OUR PARTNERS</h2>
           </div>
           <div class="row partner-row">
               <div class="col-md-4 col-xs-4 partner-cell">
@@ -220,3 +243,4 @@
         </div>
     </div>
 </div>
+<div id="modal-container" class="modal fade"></div>

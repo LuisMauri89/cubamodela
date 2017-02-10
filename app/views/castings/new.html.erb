@@ -1,18 +1,23 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 col-xs-12">
   	<div id="form-new-casting-wrapper">
   		<h3 class="text-center"><%= t('views.castings.new.header_text') %></h3>
   		<div class="row">
-  			<div class="col-md-12">
+  			<div class="col-md-12 col-xs-12">
+          <p class="text-center">
+            <%= t('views.shareds.read_texts.casting_flow_read_text') %>
+            <%= link_to t('views.shareds.read_texts.read_here_text'), static_pages_casting_flow_path, remote: true, class: "btn btn-link" %>
+          </p>
 	  			<%= render 'form' %>
 	  		</div>
 		  </div>
 
 		  <div class="row model-bottom-actions">
-  			<div class="col-md-12">
+  			<div class="col-md-12 col-xs-12">
 				  <%= link_to 'Castings', castings_path, class: "btn btn-primary pull-right btn-small-right-margin" %>
 			  </div>
   	  </div>
   	</div>
   </div>
 </div>
+<div id="modal-container" class="modal fade"></div>
