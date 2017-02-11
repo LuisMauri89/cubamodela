@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
     title       = "Cuban Models, Photographers, Locations"
     separator   = " | "
     description = "We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos."
-    image       = options[:image] || "http://cubamodela.com/assets/cubamodela_logo_blue.png"
+    image       = options[:image] || "https://www.cubamodela.com/assets/cubamodela_logo_blue.png"
     current_url = request.url
     viewport    = "width=device-width,initial-scale=1"
 
