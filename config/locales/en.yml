@@ -273,7 +273,7 @@ en:
         created_at: "Created at"
         updated_at: "Updated at"
       booking:
-        is_direct: "Ckeck here if you want to do direct shooting."
+        is_direct: "Ckeck here if you want to do direct shooting. This means no date for previous model check (no Casting date below in the form), this model will go direct to the shooting date. Setting Casting date below allow you to have a day to make a live check of the model you booked here, if that is what you want, leave this unchecked."
         description_en: "Description"
         description_es: "Description"
         location_en: "Location"
@@ -287,7 +287,7 @@ en:
         payment_per_model_options:
           select: "Select payment amount"
           tfp: "TFP"
-        is_direct: "Ckeck here if you want to do direct shooting."
+        is_direct: "Ckeck here if you want to do direct shooting. This means no date for previous models selection (no Casting date below in the form), the finals models that you confirm will go direct to the shooting date. Setting Casting date below allow you to have a day to make a live selection of the models you confirm here, if that is what you want, leave this unchecked."
         access_type: "Access type"
         access_types:
           free: "Free to apply"
