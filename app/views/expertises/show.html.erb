@@ -6,11 +6,12 @@
       <div class="well-border">
         <h3><%= t('activerecord.attributes.color.name_en') %>: <%= @expertise.name_en %></h3>
         <h3><%= t('activerecord.attributes.color.name_es') %>: <%= @expertise.name_es %></h3>
+        <h3><%= t('activerecord.attributes.color.profile_type') %>: <%= @expertise.profile_type %></h3>
       </div>
 	  		
 			<%= link_to t('forms.buttons.back'), expertises_path, class: "btn btn-primary pull-right btn-small-right-margin" %>
 			<%= link_to t('forms.buttons.edit'), edit_expertise_path(@expertise), class: "btn btn-primary pull-right btn-small-right-margin" %>
-			<div class="clearfix">...</div>
+			<div class="clearfix"></div>
   	</div>
   </div>
 </div>

@@ -433,4 +433,19 @@ class ProfileModel < ApplicationRecord
 		self.is_partner = false
 		save
 	end
+
+	def set_plan(plan)
+		case plan
+		when "basic"
+			self.plan = Plan.get_model_free_plan
+		when "premium"
+			self.plan = Plan.get_model_premium_plan
+		end
+
+		save
+	end
+
+	def get_plan_type
+		return self.plan.level == "free" ? Constant::PLAN_BASIC_TEXT : Constant::PLAN_PREMIUM_TEXT
+	end
 end

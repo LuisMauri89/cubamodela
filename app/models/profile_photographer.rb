@@ -167,4 +167,17 @@ class ProfilePhotographer < ApplicationRecord
 		self.is_partner = false
 		save
 	end
+
+	def set_plan(plan)
+		case plan
+		when "basic"
+			self.plan = Plan.get_photographer_basic_plan
+		end
+
+		save
+	end
+
+	def get_plan_type
+		return self.plan.level == "basic" ? Constant::PLAN_BASIC_TEXT : Constant::PLAN_PREMIUM_TEXT
+	end
 end

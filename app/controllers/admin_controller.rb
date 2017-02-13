@@ -30,7 +30,11 @@ class AdminController < ApplicationController
 									    :exec_casting_expiration,
 									    :reprocess_images,
 									    :message_for,
-									    :send_message]
+									    :send_message,
+									    :set_as_partner,
+									    :unset_as_partner,
+									    :set_basic_plan,
+									    :set_premium_plan]
 	before_action :set_request, only: [:accept_model_request_to_upgrade, 
 									   :reject_model_request_to_upgrade]
 	before_action :set_model_level_request_action_from, only: [:accept_model_request_to_upgrade, 
@@ -200,6 +204,26 @@ class AdminController < ApplicationController
 		set_user
 
 		@user.profileable.unset_as_partner
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def set_basic_plan
+		set_user
+
+		@user.profileable.set_plan(Constant::PLAN_BASIC_TEXT)
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def set_premium_plan
+		set_user
+
+		@user.profileable.set_plan(Constant::PLAN_PREMIUM_TEXT)
 
 		respond_to do |format|
 			format.js

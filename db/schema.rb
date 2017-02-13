@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210133921) do
+ActiveRecord::Schema.define(version: 20170213134652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,8 +91,9 @@ ActiveRecord::Schema.define(version: 20170210133921) do
   create_table "categories", force: :cascade do |t|
     t.string   "name_en"
     t.string   "name_es"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "profile_type"
   end
 
   create_table "categories_profile_models", id: false, force: :cascade do |t|
@@ -162,9 +163,10 @@ ActiveRecord::Schema.define(version: 20170210133921) do
 
   create_table "expertises", force: :cascade do |t|
     t.string   "name_en"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "name_es"
+    t.string   "profile_type"
   end
 
   create_table "expertises_profile_models", id: false, force: :cascade do |t|
@@ -235,9 +237,10 @@ ActiveRecord::Schema.define(version: 20170210133921) do
 
   create_table "modalities", force: :cascade do |t|
     t.string   "name_en"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "name_es"
+    t.string   "profile_type"
   end
 
   create_table "modalities_profile_models", id: false, force: :cascade do |t|

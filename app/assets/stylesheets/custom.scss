@@ -183,35 +183,35 @@ body {
 	}
 
 	.partner-row{
-		padding: 7px 15px !important;
+		padding: 3px 10px !important;
 	}
 
 	.partner-cell{
-		padding: 7px 15px !important;
+		padding: 3px 10px !important;
 	}
 
 	.partner-container{
-		padding: 7px 15px !important;
+		padding: 3px 10px !important;
 	}
 
 	.partner-logo{
-		padding: 7px 15px !important;
-		margin-bottom: 10px;
+		padding: 5px 12px !important;
+		margin-bottom: 5px;
 	}
 
 	.partner-ocupation{
 		color: #0071bc;
-		font-size: 12px !important;
+		font-size: 16px !important;
 	}
 
 	.partner-name{
 		color: grey;
-		font-size: 14px !important;
-		margin-bottom: 15px;
+		font-size: 16px !important;
+		margin-bottom: 10px;
 	}
 
 	.partner-link{
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 	}
 
 	.partner-container .btn-primary{
@@ -264,6 +264,27 @@ body {
 		float: none !important;
 		width: 100% !important;
 		text-align: center;
+	}
+
+	#photo-modal-large{
+		/* Show photo wide */
+		width: auto !important;
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+	}
+
+	#photo-modal-medium{
+		/* Show photo wide */
+		width: auto !important;
+		margin-left: 15px !important;
+		margin-right: 15px !important;
+	}
+
+	#photo-modal-small{
+		/* Show photo wide */
+		width: auto;
+		margin-left: 20px !important;
+		margin-right: 20px !important;
 	}
 }
 
@@ -433,25 +454,25 @@ body {
 	}
 
 	.partner-row{
-		padding: 10px 30px !important;
+		padding: 7px 20px !important;
 	}
 
 	.partner-cell{
-		padding: 10px 40px !important;
+		padding: 7px 30px !important;
 	}
 
 	.partner-container{
-		padding: 10px 20px !important;
+		padding: 7px 15px !important;
 	}
 
 	.partner-logo{
-		padding: 10px 20px !important;
-		margin-bottom: 10px;
+		padding: 10px 15px !important;
+		margin-bottom: 7px;
 	}
 
 	.partner-ocupation{
 		color: #0071bc;
-		font-size: 16px !important;
+		font-size: 18px !important;
 	}
 
 	.partner-name{
@@ -502,6 +523,27 @@ body {
 
 	#footer-logo-container img{
 		width: 100px !important;
+	}
+
+	#photo-modal-large{
+		/* Show photo wide */
+		width: auto !important;
+		margin-left: 20px !important;
+		margin-right: 20px !important;
+	}
+
+	#photo-modal-medium{
+		/* Show photo wide */
+		width: auto !important;
+		margin-left: 25px !important;
+		margin-right: 25px !important;
+	}
+
+	#photo-modal-small{
+		/* Show photo wide */
+		width: auto;
+		margin-left: 30px !important;
+		margin-right: 30px !important;
 	}
 }
 
@@ -1108,6 +1150,15 @@ h3 .small-info{
 }
 
 /* END Boostrap customization */
+
+/* About us */
+
+#about-us-page-container{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+/* END About us */
 
 /* Footer */
 #footer{

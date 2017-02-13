@@ -8,6 +8,9 @@ class Modality < ApplicationRecord
 	has_and_belongs_to_many :castings, dependent: :destroy
 	has_and_belongs_to_many :searches, dependent: :destroy
 
+	# Scopes
+	scope :profile_type_model, -> { where(profile_type: "model") }
+
 	def name
 		case I18n.locale
 		when "en".to_sym

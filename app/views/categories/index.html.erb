@@ -10,6 +10,7 @@
             <tr>
               <th><%= t('activerecord.attributes.category.name_en') %></th>
               <th><%= t('activerecord.attributes.category.name_es') %></th>
+              <th><%= t('activerecord.attributes.category.profile_type') %></th>
               <th class="text-center"><%= t('table.actions') %></th>
             </tr>
           </thead>
@@ -19,6 +20,7 @@
               <tr>
                 <td><h4><%= category.name_en %></h4></td>
                 <td><h4><%= category.name_es %></h4></td>
+                <td><h4><%= category.profile_type %></h4></td>
                 <td>
                   <%= link_to t('forms.buttons.delete'), category, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
                   <%= link_to t('forms.buttons.edit'), edit_category_path(category), class: "btn btn-primary pull-right btn-small-right-margin" %>

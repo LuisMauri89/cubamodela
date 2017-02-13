@@ -6,6 +6,9 @@ class Expertise < ApplicationRecord
 	# Associations
 	has_and_belongs_to_many :profile_models
 
+	# Scopes
+	scope :profile_type_model, -> { where(profile_type: "model") }
+
 	def name
 		case I18n.locale
 		when "en".to_sym

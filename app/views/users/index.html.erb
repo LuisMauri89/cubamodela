@@ -31,7 +31,6 @@
                     <div id="btns-for-partners-container-<%= user.id %>" style="display: inline-block;">
                       <%= render 'btns_for_partners', user: user %>
                     </div>
-                    <%= link_to t('views.admin.users.buttons.send_message'), message_for_path(user_id: user.id), class: "btn btn-primary btn-sm btn-small-right-margin pull-right" %>
                   </td>
                 </tr>
               <% end %>

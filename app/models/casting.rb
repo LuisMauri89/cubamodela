@@ -104,7 +104,7 @@ class Casting < ApplicationRecord
   # Custom Validators
   def payment_per_model_valid
     if is_string_integer?(payment_per_model)
-      errors.add(:payment_per_model, :min_payment_per_model) if payment_per_model.to_i <= Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE
+      errors.add(:payment_per_model, :min_payment_per_model) if payment_per_model.to_i < Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE
     else
       errors.add(:payment_per_model, :wrong_payment_per_model) if payment_per_model != Constant::CASTING_NO_PAYMENT_PER_MODEL_TEXT
     end

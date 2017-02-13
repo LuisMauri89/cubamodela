@@ -20,88 +20,1293 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  hello: "Hola Mundo"
+  hello: "Hola"
+  date:
+    abbr_day_names:
+    - Dom
+    - Lun
+    - Mar
+    - Mie
+    - Jue
+    - Vie
+    - Sab
+    abbr_month_names:
+    -
+    - Ene
+    - Feb
+    - Mar
+    - Abr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Domingo
+    - Lunes
+    - Martes
+    - MiÈrcoles
+    - Jueves
+    - Viernes
+    - Sábado
+    formats:
+      default: "%m-%d-%Y"
+      long: "%B %d, %Y"
+      short: "%b %d"
+    month_names:
+    -
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Deciembre
+    order:
+    - :mes
+    - :día
+    - :año
+  datetime:
+    distance_in_words:
+      before_text: "in "
+      after_text: " from now"
+      after_text_past: " ago"
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} horas
+      about_x_months:
+        one: about 1 month
+        other: about %{count} meses
+      about_x_years:
+        one: about 1 year
+        other: about %{count} años
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} años
+      half_a_minute: medio minuto
+      less_than_x_minutes:
+        one: menos de un minuto
+        other: less than %{count} minutos
+      less_than_x_seconds:
+        one: menos de un segundo
+        other: less than %{count} segundos
+      over_x_years:
+        one: alrededor de un año
+        other: over %{count} años
+      x_days:
+        one: 1 day
+        other: "%{count} días"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutos"
+      x_months:
+        one: 1 month
+        other: "%{count} meses"
+      x_years:
+        one: 1 year
+        other: "%{count} años"
+      x_seconds:
+        one: 1 second
+        other: "%{count} segundos"
+    prompts:
+      day: Día
+      hour: Hora
+      minute: Minuto
+      month: Mes
+      second: Segundo
+      year: Año
+  date:
+    formats:
+      custom: "%B %d, %Y"
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %I:%M:%S %p %Z"
+      long: "%B %d, %Y %I:%M %p"
+      short: "%d %b %I:%M %p"
+      custom: "%B %d, %Y"
+    pm: pm
   menu:
     items:
       services: "Servicios"
-      us: "Nosotros"
-      partners: "Asociados"
+      us: "Sobre nosotros"
+      partners: "Socios"
       models: "Modelos"
       photographers: "Fotografos"
       discover: "Descubre"
+      articles: "Artículos"
+      gallery: "Galería"
+      more: "Más"
+    items_options:
+      models:
+        all: "Ver todos"
+        castings: "Encontrar casting"
+        search: "Buscar"
+        premium: "Modelos Premium"
+        professional: "Modelos Professional"
+        new_faces: "Nuevas Caras"
+      photographers:
+        coming_soon: "Próximamente"
+      more:
+        profile_example: "Cómo crear un buen perfil"
+        gallery: "Visita nuestra galería"
+        casting: "Ver castings"
+        registration: "Crear una cuenta ahora"
+        partner_patricio: "Conocer más sobre Patricio"
+        partner_camila: "Conocer más sobre Camila"
+        partner_xuan: "Conocer más sobre Xuan"
     messages:
-      admin: "Loggeado como Admin: "
+      admin: "Admin: "
     options:
-      control_panel: "Panel de Control"
-      inbox: "Bandeja"
-      account: "Cuenta"
+      header_text: "Panel"
+      control_panel: "Pane de Control"
+      inbox: "Bandeja de Entrada"
+      account: "Cuetna"
       profile: "Perfil"
       castings: "Castings"
-      log_out: "Salir"
+      bookings: "Reservas"
+      log_out: "Cerrar sesión"
+      reservations: "Reservaciones"
+      find_casting: "Encontrar casting"
+      new_casting: "Nuevo casting"
+      wallet:
+        header_text: "Billetera: "
+        count:
+          one: "%{count} monedas"
+          other: "%{count} monedas"
+      profile_view: "Ver perfil"
     locales:
-      en: "Ingles"
-      es: "Espanol"
+      en: "Inglés"
+      es: "Español"
   banners:
     carousel:
       slide_0:
-        header: "Encuentra las modelos que necesitas"
-        button_follow: "Ver mas..."
+        button_follow: "Ver galería"
       slide_1:
-        header: "Encuentra los mejores fotografos con increible talento"
-        button_follow: "Ver mas..."
+        button_follow: "Encontrarlos ahora"
       slide_2:
-        header: "Descubre CUBA como nunca antes"
-        button_follow: "Ver mas..."
+        button_follow: "Próximamente"
+      slide_3:
+        button_follow: "Leer más"
   forms:
     buttons:
-      log_in: "Entrar"
+      log_in: "Iniciar sesión"
       log_up: "Registrarse"
-      log_out: "Salir"
-      recover: "Recuperar"
-    remember_me: "Recordarme"
+      log_out: "Cerrar sesión"
+      confirmation_instruction: "Didn't receive confirmation instructions?"
+      lockable_instruction: "Didn't receive unlock instructions?"
+      recover: "Recover"
+      save: "Salvar"
+      save_resource: "Salvar %{resource}"
+      create: "Crear"
+      update: "Actualizar"
+      back: "Atrás"
+      show: "Mostrar"
+      cancel: "Cancelar"
+      upload: "Subir"
+      delete: "Borrar"
+      edit: "Editar"
+      new: "Nuevo"
+      close: "Cerrar"
+      search: "buscar"
+      control_panel: "Panel de Control"
+      translate: "Traducir"
+      publish: "Publicar"
+      unpublish: "Anular publicación"
+      reject: "Rechazar"
+      warning: "Advertencia"
+      send_to: "Enviar a"
+      send: "Enviar"
+      confirm: "Confirmar"
+      review: "Evaluación"
+      manage: "Administrar"
+      change: "Cambiar"
+      dont_show_again: "No mostrar otra vez"
+      read_more: "Leer más"
+    remember_me: "Recordar usuario y contraseña"
+    warnings:
+      delete: "Está seguro que desea borrar %{value}?"
+    errors:
+      header_text: "The form contains "
+      count:
+        one: "%{count} error"
+        other: "%{count} errores"
+  table:
+    title: "Título"
+    name: "Nombre"
+    model: "Modelo"
+    user: "Usuario"
+    castings: "Castings"
+    bookings: "Reserbas"
+    reviews: "Evaluaciones"
+    total: "Total"
+    actions: "Acciones"
+  exception:
+    show:
+      header_text_404: "404 NO Encontrado. Lo sentimos."
+      header_text_500: "Ups!!!! Algo no fue bien. Lo sentimos."
+      actions_text: "Algunos enlaces que pueden ser de interés"
   activerecord:
     attributes:
       user:
         email: "Correo"
-        password: "Contrasena"
-        password_confirmation: "Confirme Contrasena"
-        kind: "Que perfil buscas?"
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+        kind: "Qué tipo de perfil eres?"
         kind_options:
-          select: "Seleccione un perfil"
-          contractor: "Contratador"
+          select: "Seleccionar perfil"
+          contractor: "Empleador"
           model: "Modelo"
-          photographer: "Fotografo"
+          photographer: "Fotógrafo"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      album:
+        name: "Name"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      booking:
+        is_direct: "Marcar aquí si la intención es hacer el shooting directamente."
+        description_en: "Descripión"
+        description_es: "Descripción"
+        location_en: "Locación"
+        location_es: "Locación"
+        casting_date: "Día del Casting"
+        shooting_date: "Día de la Sesión de Fotos"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      casting:
+        payment_per_model: "Pago por modelo"
+        payment_per_model_options:
+          select: "Seleccionar cantidad a pagar"
+          tfp: "TFP"
+        is_direct: "Ckeck this if the casting is intentional just for direct shooting."
+        access_type: "Quién puede aplicar"
+        access_types:
+          free: "Todos pueden aplicar"
+          personal: "Casting Privado, solo los modelos invitados pueden aplicar"
+        title_en: "Título"
+        title_es: "Título"
+        description: "Descripción"
+        description_en: "Descripción"
+        description_es: "Descripción"
+        location: "Locación"
+        location_en: "Locación"
+        location_es: "Locación"
+        expiration_date: "Día de Expiración"
+        casting_date: "Día del Casting"
+        shooting_date: "Día de la Sesión de Fotos"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      category:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+        profile_type: "Profile Type"
+      color:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+      ethnicity:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+      expertise:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+        profile_type: "Profile Type"
+      language:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+      modality:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+        profile_type: "Profile Type"
+      nationality:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+      profile_contractor:
+        associations:
+          languages: "Idiomas"
+          expertises: "Expertises"
+          modalities: "Modalidades"
+          categories: "Categorías"
+        nationality_id: Nacionalidad
+        nationality_id_select_text: "Por favor, seleccionar nacinalidad"
+        first_name: "Primer nombre"
+        first_name_not_present: "Unavailable first name"
+        last_name: "Apellido"
+        mobile_phone: "Celular"
+        land_phone: "Teléfono Fijo"
+        address: "Dirección"
+        represent: "Representa a"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      profile_model:
+        associations:
+          languages: "Idioma"
+          expertises: "Expertises"
+          modalities: "Modalidades"
+          categories: "Categorías"
+        gender: "Gender"
+        gender_male: "Hombre"
+        gender_female: "Mujer"
+        eyes_color_id: "Color de ojos"
+        height: "Height"
+        height_select_text: "Seleccionar altura"
+        chest: "Pecho"
+        weist: "Cintura"
+        hips: "Caderas"
+        size_shoes: "Talla de zapato (EU)"
+        size_shoes_label: "Tallas de zapato"
+        size_shoes_select_text: "Seleccionar talla (EU)"
+        size_cloth: "Talla de ropa (EU)"
+        size_cloth_label: "Talla de ropa"
+        size_cloth_select_text: "Seleccionar talla de ropa (EU)"
+        current_province_id: "Provincia en la que reside"
+        current_province_id_select_text: "Seleccionar una provincia"
+        nationality_id: Nacionalidad
+        nationality_id_select_text: "Seleccionar nacionalidad"
+        ethnicity_id: Ethnicity
+        ethnicity_id_select_text: "Seleccionar etnia"
+        birth_date: "Fecha de Nacimiento"
+        birth_date_not_present: "Unavailable birth date"
+        first_name: "First name"
+        first_name_not_present: "Unavailable first name"
+        last_name: "Apellido"
+        mobile_phone: "Número Celular"
+        land_phone: "Número Teléfono fijo"
+        address: "Dirección"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      profile_photographer:
+        associations:
+          languages: "Idiomas"
+          expertises: "Expertises"
+          modalities: "Modalidaes"
+          categories: "Categorías"
+        gender: "Género"
+        gender_male: "Hombre"
+        gender_female: "Mujer"
+        current_province_id: "Provincia en la que reside"
+        current_province_id_select_text: "Seleccionar una provincia"
+        nationality_id: Nacionalidad
+        nationality_id_select_text: "Seleccionar nacionalidad"
+        first_name: "Nombre"
+        first_name_not_present: "Primer nombre no disponible"
+        last_name: "Apellido"
+        mobile_phone: "Número celular"
+        land_phone: "Teléfono fijo"
+        address: "Dirección"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      province:
+        name_en: "Nombre (EN)"
+        name_es: "Nombre (ES)"
+      review:
+        review_en: Evaluación
+        review_es: Evaluación
+      search:
+        gender_select_text: "Cualquier género"
+        new_face: "Nueva Cara"
+        professional_model: "Modelo Profesional"
+        province_id: "Provincia"
+        province_id_select_text: "Todas las Provincias"
+        nationality_id: "Nacionalidad"
+        nationality_id_select_text: "Todas las nacionalidades"
+        age: "Edad"
+        age_from: "de"
+        age_from_select_text: "edad"
+        age_to: "a"
+        age_to_select_text: "edad"
+        height: "Altura"
+        height_from: "de"
+        height_from_select_text: "Altura"
+        height_to: "a"
+        height_to_select_text: "Altura"
+        buttons:
+          more_options: "Más opciones"
+      study:
+        title: "Título"
+        place: "Lugar"
+        description: "Descripción"
+        created_at: "Created at"
+        updated_at: "Updated at"
+    errors:
+      format: "%{attribute} %{message}"
+      messages:
+        record_invalid: "Validación fallida: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Cannot delete record because a dependent %{record} exists"
+          has_many: "Cannot delete record because dependent %{record} exist"
+        accepted: "debe ser aceptado"
+        blank: "can't be blank"
+        present: "must be blank"
+        confirmation: "doesn't match %{attribute}"
+        empty: "can't be empty"
+        equal_to: "must be equal to %{count}"
+        even: "must be even"
+        exclusion: "is reserved"
+        greater_than: "Debe ser mayor a %{count}"
+        greater_than_or_equal_to: "Debe ser mayor o igual a %{count}"
+        inclusion: "no está incluido en la lista"
+        invalid: "no es válido"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor o igual a %{count}"
+        model_invalid: "Validación fallida: %{errors}"
+        not_a_number: "no es un número"
+        not_an_integer: "must be an integer"
+        odd: "must be odd"
+        required: "must exist"
+        taken: "has already been taken"
+        too_long:
+          one: "es muy largo (maximum is 1 character)"
+          other: "es muy largo (maximum is %{count} characters)"
+        too_short:
+          one: "es muy corto (minimum is 1 character)"
+          other: "es muy corto (minimum is %{count} characters)"
+        wrong_length:
+          one: "is the wrong length (should be 1 character)"
+          other: "is the wrong length (should be %{count} characters)"
+        other_than: "must be other than %{count}"
+        invited: "is already asociated with the model"
+        wrong_expiration_date: "can't be in the past"
+        wrong_expiration_date_future: "can't be in the past, move it to future in order for people involve to reconfirm their presence"
+        wrong_casting_date: "can not be in the past / can not happen before expliration date"
+        wrong_shooting_date: "can not be in the past / can not happen before casting date"
+        min_payment_per_model: "is under the minimum required"
+        wrong_payment_per_model: "is not valid"
   views:
+    application:
+      messages:
+        create: "%{value} ha sido creado satisfactoriamente."
+        destroy: "%{value} ha sido eliminado satisfactoriamente."
+        update: "%{value} ha sido actualizado satisfactoriamente."
+    footer:
+      left_text: "En colaboración con Camila´s Studio"
+      link_models_text: "Modelos"
+      link_photographers_text: "Fotógrafos"
+      link_castings_text: "Castings"
+      link_registration_text: "Registro"
+      link_build_profile_text: "Build profile example"
+      link_contact_text: "Contactanos"
+      link_help_text: "Centro de Ayuda"
+      link_gallery_text: "Visita nuestra Galería"
+      link_privacy_text: "Política de Privacidad"
+      link_conditions_text: "Condiciones de uso"
+      link_prices_text: "Precios"
+      follow_us_text: "Síguenos"
     static_pages:
       home:
         sign_up_form:
-          header: "Registrate GRATIS"
-          submit_button: "Registrate AHORA"
-          account_text: "Ya tienes una cuenta?"
-          recover_text: "Olvidaste tu contrasena?"
+          header_text: "Regístrate GRATIS"
+          submit_button: "Regístrate AHORA"
+          account_text: "¿Ya tienes una cuenta?"
+          recover_text: "¿Olvidaste la contraseña?"
         models_text: "Modelos"
         photographers_text: "Fotografos"
         places_text: "Lugares"
-        services_text: "Servicios"
-        other_text: "Otros"
         sections:
-          services:
-            header: "Servicios"
-          us:
-            header: "Nosotros"
-            text_0: "Entramos a la industria con un solo proposito"
-            text_1: "\"Llevarle los modelos hasta su mano\""
-            text_2: "On scroll animation is a technique which has gained popularity over the past several months. It suits one-page websites as well as websites with many illustrations perfectly, giving them a more dynamic appearance. However, the animations can be applied to any element as we will soon see."
-          partners:
-            header: "Asociados"
           models:
-            header: "Modelos"
-            photo_0_text: "Nuevas Caras"
-            photo_1_text: "Hombres"
-            photo_2_text: "Mujeres"
-            photo_3_text: "Estilo"
           photographers:
-            header: "Fotografos"
-          discover:
-            header: "Descubre Cuba"
-
+        provide_profile_text: "Please provide more info to reach your profile"
+        provide_profile_link_text: "Editar perfil"
+        beta_version_coming_soon_text: "Beta version, we will make the launch very soon, feel free to look around /  CubaModela se encuentra actualmente en version de prueba, las bases de datos seran limpiadas y restauradas para el lanzamiento."
+      gallery:
+        header_text: Galería
+        show:
+          header_text: Foto de Gallería
+    admin:
+      message:
+        header_text: "Escribir mensaje"
+        message_sent: "El mensaje fue enviado"
+        buttons:
+          send_message: "Enviar"
+      control_panel:
+        sections:
+          users:
+            header_text: "Usuarios"
+            users: "Users"
+            pending_review: "Pendientes de revisión"
+            pending_translations: "Traducciones pendientes"
+            model_pending_upgrade_level_review: "Level requests"
+            coupons: "Cupones"
+          nomenclators:
+            header_text: "Nomencladores"
+            colors: "Colores"
+            expertises: "Expertises"
+            languages: "Idioma"
+            modalities: "Modades"
+            nationalities: "Nationalidades"
+            provinces: "Provincias"
+            ethnicities: "Etnia"
+            categories: "Categoría"
+          tasks:
+            header_text: "Tareas"
+            task_all: "Todas las tareas"
+            task_casting_expired: "Casting expiration"
+            task_reprocess_images: "Reprocesar imágenes"
+      pending_review:
+        header_text: "Modelos pendientes de revisión"
+      pending_translations:
+        header_text: "Necesita traducción"
+      model_pending_upgrade_level_review:
+        header_text: "Models level requests"
+        messages:
+          accept_request_success: "Profile upgrade in place"
+          accept_request_failed: "Profile upgrade failed"
+          reject_request_success: "Profile upgrade rejected"
+          reject_request_failed: "Profile upgrade reject failed"
+      coupons:
+        form_text: "Generar cupón"
+        list_text: "Cupones"
+        users_filter_empty: "Ningún correo de usuario coincide"
+        form:
+          how_many: "Cuántos?"
+          amount: "Cantidad"
+          generate: "Generar"
+          search_by_email: "Buscar por correo"
+          clear_filter: "Clear filter"
+        messages:
+          coupons_generation_success: "Cupones generados satisfactoriamente"
+          coupons_generation_failed: "Generación de cupones falló"
+          coupon_to_send_text: "Cupones para enviar:"
+          coupon_sent: "Cupón enviado satisfactoriamente"
+      tasks:
+        messages:
+          task_casting_expired: "Task was successfully sent to run in background"
+          task_all: "Tasks where successfully sent to run in background"
+          task_reprocess_images: "Task was successfully sent to run in background"
+      users:
+        header_text: "Usuarios"
+        messages:
+          set_as_partner_success: "Set as partner success."
+          set_as_partner_failed: "Set as partner failed."
+          unset_as_partner_success: "Unset as partner success."
+          unset_as_partner_failed: "Unset as partner failed."
+          set_basic_plan_success: "Plan basico activado."
+          set_basic_plan_failed: "Activar plan basico fallido."
+          set_premium_plan_success: "Plan premium activado."
+          set_premium_plan_failed: "Activar plan premium fallido."
+        buttons:
+          send_message: "Enviar mensaje"
+          set_as_partner: "Asociar Partner"
+          unset_as_partner: "Cancelar Partner"
+          set_basic_plan: "Aplicar plan basico"
+          set_premium_plan: "Aplicar plan premium"
+    albums:
+      global:
+        empty_album: "Subir fotos AHORA"
+      messages:
+        create: "El album ha sido creado"
+        destroy: "El album se ha eliminado."
+        update: "El album ha sido actualizado"
+        edit_or_remove: "El album no se puede actualizar o eliminar"
+        profile_max: ""
+        professional_max: "Máxima cantidad de fotos alcanzada para su plan"
+        polaroid_max: "Máxima cantidad de fotos alcanzada de acuerdo a su plan"
+      delete:
+        header_text: "Eliminar Album"
+        yes_text: "Sí, eliminar el album"
+        no_text: "No eliminarlo"
+      index:
+        buttons:
+          new: "Nuevo album"
+    bank:
+      messages:
+        wallet_charge_failed: "Falló recarga de billetara"
+        wallet_amount_insuficient: "Insuficiente cantidad de monedas en su billetara"
+    bookings:
+      new:
+        header_text: "Nueva reserva"
+      edit:
+        header_text: "Editar reserva"
+        form_sections:
+          information: "Información"
+          dates: "Fechas"
+        warnings:
+          change_direct: "Ésto no se puede editar después"
+      contractor:
+        empty_list_text: "No hay reserva programada"
+      index:
+        bookings: "Reservas"
+      show:
+        status_text: "Estatus: %{value}"
+        headers:
+          header_text: "RESERVAS"
+          description: "Descripción"
+          location: "Locación"
+          dates: "Fechas"
+      messages:
+        create: "La reserva ha sido creada satisfactoriamente"
+        confirm: "Confirmación satisfactoria"
+        update: "La reserva ha sido actualizada satisfactoriamente"
+        cancel: "La reserva ha sido cancelada satisfactoriamente"
+        reject: "La reserva ha sido rechazada satisfactoriamente"
+        edit:
+          past_to_edit: "La reserva ha expirado"
+          past_to_confirm: "La reserva ha expirado. Ya no puedes confirmar"
+          canceled: "La reserva fue cancelada"
+          confirmed: "La reserva ha sido confirmada"
+          rejected: "La reserva ha sido rechazada"
+    castings:
+      show:
+        headers:
+          payment: "Pago"
+          referenced_photos: "Fotos de referencia"
+          description: "Descripción"
+          location: "Locación"
+          dates: "Fechas"
+          modalities: "Modalidades"
+          categories: "Categorías"
+        labels:
+          invited: "Invitados"
+          confirmed: "Confirmados"
+          applied: "Aplicaciones"
+        modalities_empty_text: "Ninguna modalidad añadida"
+        categories_empty_text: "Ninguna categoría añadida"
+      index:
+        expires_in_text: "Expira el %{value}"
+        expired_text: "Expirado"
+        private_text: "Casting privado. Solo puedes aplicar si recibiste una invitación."
+        publiched_at_text: "Published at: %{value}"
+        tooltips:
+          expired_text: "El casting cerró"
+          free_text: "Casting público"
+          private_text: "Casting privado, no puede aplicar"
+          direct_text: "Casting have direct shooting"
+      index_custom_invite:
+        header_text: "Select casting to invite to"
+      index_invite:
+        empty_text: "Well this is odd. Casting is asociated with every model in one way or another."
+      index_invited:
+        empty_text: "Lista de invitados vacía. Ningún modelo ha sido invitado"
+        here_text: "aquí"
+      index_favorites:
+        empty_text: "Favoritos está en desarrollo"
+      index_confirmed:
+        empty_text: "Lista de confirmación vacía. Ningún modelo ha sido confirmado."
+      index_applied:
+        empty_text: "Lista de aplicaciones vacía. Nadie ha aplicado al casting"
+      index_custom:
+        header_text: "Castings"
+        direct_text: "Casting is direct shooting"
+      casting_reviews:
+        description_text: "Deje una evaluación al modelo con el que trabajó"
+        here_text: "AQUÍ"
+      new:
+        header_text: "Nuevo Casting"
+        payment_per_model_sugestion_text: "Minimun required $%{min} | Recommended payment $%{recommended}"
+      edit:
+        header_text: "Editar casting"
+        form_sections:
+          information: "Información"
+          dates: "Fechas"
+          extra: "Extra"
+        warnings:
+          change_dates: "Cualquier cambio en las fechas depués de 24 horas de la creación del casting representará un costo adicional de $5 por los inconvenientes"
+          change_direct: "Ésto no se puede editar después"
+          change_dates_expired: "How the casting has expired is mandatory that any change on dates includes expiration date in the future, so models can reconfirm their presence, please give time for that until next expiration."
+      edit_photos:
+        header_text: "Editar fotos de referencia"
+      buttons:
+        references_photos: "Fotos de referencia"
+        open: "Abrir"
+        invite: "Invitar"
+        confirm: "Confirmar"
+        load: "Cargar más"
+        apply: "Aplicar"
+        details: "Detalles"
+      messages:
+        create: "El Casting se creó satisfactoriamente. Por favor adiccione fotos de referencia."
+        update: "El Casting fue actualizado satisfactoriamente"
+        references_photos_max: "Cantidad máxima de fotos alcanzada de acuerdo a su plan"
+        dont_show_again_failed: "Lo sentimos, algo no funcionó bien."
+        edit:
+          past: "Actual date of casting is in the past. Editing is not allowed."
+          canceled: "El Casting ya se ha cancelado"
+          canceled_successfully: "El Casting fue cancelado satisfactoriamente."
+          closed: "El casting ya está cerrado"
+          closed_successfully: "El casting fue cerrado satisfactoriamente"
+          active: "El casting todavía está activo"
+          active_successfully: "Casting was successfully activated. Dates has been changed, if you want to correct them go"
+          profile_pending_review: "Action denied, profile is pending review"
+        associations:
+          invited: "La invitación fue enviada satisfactoriamente."
+          applied: "Aplicación fue enviada satisfactoriamente."
+          applied_denied_personal: "El Casting es privado, no puedes aplicar."
+          applied_denied_closed: "El casting ha expirado, no puedes aplicar."
+          confirmed: "La confirmación fue enviada satisfactoriamente"
+          confirmed_denied_no_intent: "Can not confirm without been applied or invited."
+      warnings:
+        close_casting: "Are you sure you want to close the casting? This action will set expiration date to current date."
+        cancel_casting: "Are you sure you want to cancel the casting? This action will delete the casting and it can not be undone."
+    categories:
+      index:
+        header_text: "Categorías"
+      new:
+        header_text: "Nueva categoría"
+      edit:
+        header_text: "Editar categoría"
+      show:
+        header_text: "Mostrar categoría"    
+    colors:
+      index:
+        header_text: "Colores"
+      new:
+        header_text: "Nuevo color"
+      edit:
+        header_text: "Editar color"
+      show:
+        header_text: "Mostrar color"
+    coupons:
+      form:
+        coupon: "Insertar cupon:"
+        use: "Use"
+        messages:
+          cupon_success_charge: "Su billetera ha sido recargada satisfactoriamente con el cupón"
+          cupon_failed_charge: "Fallo en la recarga de cupón"
+    devise:
+      registrations:
+        new:
+          header_text: "Regístate ahora, gratis"
+        edit:
+          header_text: "cuenta"
+      sessions:
+        header_text: "Iniciar sesión"
+      passwords:
+        header_text: "¿Olvidaste tu contraseña?"
+        buttons:
+          send_inst: "Enviar instrucciones al correo para cambiar la contraseña"
+      confirmations:
+        header_text: "Reenviar instrucciones de confirmación"
+        buttons:
+          send_inst: "Reenviar instrucciones de confirmación"
+    ethnicities:
+      index:
+        header_text: "Etnias"
+      new:
+        header_text: "Nueva etnia"
+      edit:
+        header_text: "Editar etnia"
+      show:
+        header_text: "Mostrar etnia"
+    expertises:
+      index:
+        header_text: "Eperiencias"
+      new:
+        header_text: "Nueva experiencia"
+      edit:
+        header_text: "Editar experiencia"
+      show:
+        header_text: "Mostrar experiencia"  
+    languages:
+      index:
+        header_text: "Idiomas"
+      new:
+        header_text: "Nuevo idioma"
+      edit:
+        header_text: "Editar idioma"
+      show:
+        header_text: "Mostrar idioma"
+    messages:
+      show:
+        missing_data_text: "Sorry this message can not be displayed correctly."
+      index:
+        no_messages_text: "La bandeja de entrada está vacía. No tienes ningún mensaje."
+        select_message_text: "Por favor, seleccionar un mensaje en el panel a la izquierda."
+        templates:
+          casting_new_free:
+            title: "Nuevo casting"
+            description: "Un Nuevo casting se ha abierto, revísalo ahora"
+            header_text: "Casting"
+            after_description_text: "Asegúrate de que estás disponible para las fechas del casting"
+            after_dates_text: "Aplica o confirma ahora, no podrás participar en el casting después de la fecha de expriación"
+            buttons:
+              see_casting: "Detalles del casting"
+              confirm: "Confirmar"
+              apply: "Aplicar"
+          casting_translation:
+            title: "Traducción del contenido del Casting"
+            description: "Traducción hecha por el equipo de CubaModela"
+            header_text: "Traducción"
+            after_description_text: "Asegúrate de que estás disponible para las fehcas del casting"
+            after_dates_text: "Asegúrate de que aplicaste o confirmaste! No podrás hacerlo después de la fecha de expiración"
+            buttons:
+              see_casting: "Detalles del casting"
+              confirm: "Confirmar"
+              apply: "Aplicar"
+          casting_change_fields_only:
+            title: "Cambios en el contenido del casting"
+            description: "Hay cambios en el contenido del casting, revísalos ahora"
+            header_text: "Cambios en el contenido del casting"
+            after_description_text: "Asegúrate de que estás de acuerdo con las nuevas condiciones del casting"
+            after_dates_text: "Make sure you can not apply or confirm your participation in the casting after expiration date."
+            buttons:
+              see_casting: "Detalles del casting"
+              confirm: "Confirmar"
+              apply: "Aplicar"
+          casting_change_dates_only:
+            title: "Cambios en las fechas del casting"
+            description: "Hay cambios en las fechas del casting, revísalo para aplicar o confirmer otra vez"
+            header_text: "Cambios en las fechas del casting"
+            after_description_text: "Asegúrate de que estás disponible para las nuevas fechas del casting"
+            after_dates_text: "Tu estatus de confirmación o aplicación ha cambiado, tienes que confirmar o aplicar otra vez"
+            buttons:
+              see_casting: "Detalles del casting"
+              confirm: "Confirmar"
+              apply: "Aplicar"
+          casting_change_fields_and_dates:
+            title: "Cambios en las fechas y contenido del casting"
+            description: "Han habido cambios en las fechas y contenido del casting, revísalo ahora"
+            header_text: " Cambios en las fechas y contenido del casting"
+            after_description_text: " Asegúrate de que estás disponible para las nuevas fechas del casting y estás de acuerdo con los cambios en el contenido"
+            after_dates_text: " Tu estatus de confirmación o aplicación ha cambiado, tienes que confirmar o aplicar otra vez"
+            buttons:
+              see_casting: "Detalles del Casting"
+              confirm: "Confirmar"
+              apply: "Aplicar"
+          casting_expiration_proximity:
+            title: "Fecha de expiración del casting cercana"
+            description: "El casting va a expirar pronto"
+            header_text: "Fecha de expiración del casting cercana "
+            after_description_text: "Asegúrate de que estás disponible para el casting"
+            after_dates_text: "Por favor, aplica o confirma el casting antes de la fecha de expiración o perderás el chance de hacerlo"
+            buttons:
+              see_casting: "Detalles del Casting"
+              confirm: "Confirmar"
+              apply: "Aplicar"
+          casting_expired:
+            title: "El casting expiró"
+            description: "El casting ha expirado"
+            header_text: "El casting expiró"
+            after_description_text: "El casting ha expirado"
+            after_dates_text: "Ya no es possible aplicar o confirmar la llamada de casting. Por favor, asegúrese de aplicar en tiempo la próxima vez"
+            buttons:
+              see_casting: "Detalles del Casting"
+          casting_canceled:
+            title: "El casting fue cancelado "
+            description: "El casting ha sido cancelado"
+            header_text: "El casitng fue cancelado"
+            after_description_text: "Lo sentimos, el casting fue cancelado por el empleador"
+            after_dates_text: "No te desanimes, chequea CubaModela para ver nuevos castings"
+            buttons:
+              see_casting: "Detalles del Casting"
+          casting_invitation:
+            title: "Invitación a casting"
+            description: "Ha sido invitado a un casting"
+            header_text: "Invitación a casting"
+            after_description_text: "Ha sido invitado a un casting, por favor visite la session de castings en Cubamodela para más información"
+            after_dates_text: "No pierdas la oportunidad de confirmar el casting, puedes ser lo que ellos están buscando"
+            buttons:
+              see_casting: "Detalles del Casting"
+              confirm: "Confirmar"
+              apply: "Apicar"
+          casting_invitation_confirmed:
+            title: "Confirmación a la invitación al casting "
+            description: "El modelo ha confirmado la invitación al casting"
+            header_text: "Confirmación a la invitación al casting"
+            subheader_text: "%{model} ha confirmado su presencia al casting %{casting_name}"
+            after_description_text: "Felicidades, nuestro modelo está interesado en trabajar con usted"
+            after_dates_text: " xxx payment xxxxx"
+            buttons:
+              see_casting: "Detalles del Casting"
+              edit_casting: "Editar Casting"
+              manage_casting: "Adiministrar Casting"
+              see_profile: "Perfil %{value}"
+          casting_application:
+            title: "Nueva aplicación a casting"
+            description: "Un modelo aplicó a su casting, revíselo ahora"
+            header_text: "Nueva aplicación a casting"
+            subheader_text: "%{model} ha aplicado al casting %{casting_name}"
+            after_description_text: "Felicidades, nuestro modelo está interesado en trabajar con usted, revise la página de castings en CubaModela para más información y confirmar el modelo"
+            after_dates_text: ""
+            buttons:
+              see_casting: "Detalles del Casting"
+              edit_casting: "Editar Casting"
+              manage_casting: "Administrar casting"
+              see_profile: "Perfil %{value}"
+          casting_application_confirmed:
+            title: "Aplicación al casting confirmada"
+            description: "Ha sido seleccionado para el casting"
+            header_text: "Aplicación al casting confirmada"
+            subheader_text: "Usted ha sido seleccionado en el casting %{casting_name}"
+            after_description_text: "Felicidades, usted ha sido aceptada en el casting"
+            after_dates_text: "Chequea otra vez las fechas del casting y del shooting, para que no pierdas esta oportunidad por error"
+            buttons:
+              see_casting: "Detalles del Casting"
+          booking_invitation:
+            title: "Invitación para reserva directa"
+            description: "Un cliente está interesado en reservarlo directamente"
+            header_text: "Invitación para reserva directa"
+            after_description_text: "Un cliente está interesado en reservarlo directamente"
+            after_dates_text: "Por favor chequee el sitio de CubaModela para más información. No pierda la oportunidad de acceder a este nuevo trabajo"
+            buttons:
+              see_booking: "Detalles de Reserva"
+              confirm: "Confirmar Reserva"
+              reject: "Rechazar Reserva"
+          booking_confirmed:
+            title: "Reserva de modelo confirmada"
+            description: "Nuestro modelo ha confirmado su invitación de reserva"
+            header_text: "%{value} ha confirmado la reserva"
+            after_description_text: "Felicidades, nuestro modelo está interesado en trabajar con usted"
+            after_dates_text: "Por favor, visite el sitio de CubaModela para más información"
+            buttons:
+              see_booking: "Detalles de la Reserva"
+              edit_booking: "Editar Reserva"
+              see_profile: "Perfil %{value}"
+          booking_rejected:
+            title: "Reserva rechazada por el modelo"
+            description: "Su reserva de modelo ha sido rechazada"
+            header_text: "%{value} ha rechazado la reserva"
+            after_description_text: "We are sorry our model did not accept your booking invitation."
+            after_dates_text: "Feel free to explore for new options in CubaModela site."
+            buttons:
+              see_booking: "Detalles de la Reserva"
+              edit_booking: "Editar reserva"
+              see_profile: "Perfil %{value}"
+          booking_canceled:
+            title: "Reserva de modelo cancelada"
+            description: "La reserva de modelo ha sido cancelada"
+            header_text: "Reserva de modelo cancelada"
+            after_description_text: "Lo sentimos, la reserve de modelo ha sido cancelada por el contractor"
+            after_dates_text: "Revise el sitio de CubaModela para encontrar nuevas ofertas de trabajo"
+            buttons:
+              see_booking: "Detalles de la Reserva"
+          booking_translation:
+            title: "Traducción de la Reserva"
+            description: "Traducción de la invitación a reserva de modelo hecha por el equipo de CubaModela"
+            header_text: " Traducción de la invitación a reserva de modelo"
+            after_description_text: "Traducción de la invitación a reserva de modelo hecha por el equipo de CubaModela"
+            after_dates_text: "Revise el sitio para más informacón"
+            buttons:
+              see_booking: "Detalles de la Reserva"
+              confirm: "Confirmar Reserva"
+              reject: "Rechazar Reserva"
+          booking_change_fields_only:
+            title: " Cambios en el contenido de la invitación de reserva"
+            description: "El contenido de la invitación de reserva ha cambiado, por favor revíselo ahora"
+            header_text: "Cambios en el contenido de la invitación de reserva"
+            after_description_text: "El contenido de la invitación de reserva ha cambiado, por favor revíselo ahora"
+            after_dates_text: "Verifique si está de acuerdo con las modificaciones en el contenido de la reserva, no pierda esta oportunidad"
+            buttons:
+              see_booking: "Detalles de la Reserva"
+              confirm: "Confirmar Reserva"
+              reject: "Rechazar Reserva"
+          booking_change_dates_only:
+            title: "Cambios en la fecha de reserva"
+            description: "Han habido cambios en la fecha de la invitación de reserva "
+            header_text: "Cambios en la fecha de reserva"
+            after_description_text: "Han habido cambios en la fecha de la invitación de reserva, verifica si todavía estás disponible en las nuevas fechas"
+            after_dates_text: "Si todavía está interesado entonces tiene que confirmar otra vez la invitación de reserva"
+            buttons:
+              see_booking: "Detalles de la Reserva"
+              confirm: "Confirmar Reserva"
+              reject: "Rechazar Reserva"
+          booking_change_fields_and_dates:
+            title: "Cambios en el contenido y fecha de la invitación a reserva"
+            description: "Han habido cambios en la invitación de reserva en contenido y fecha, revise el sitio de CubaModela para más información"
+            header_text: "Cambios en el contenido y fecha de la invitación a reserva"
+            after_description_text: " Han habido cambios en la invitación de reserva en contenido y fecha, revise si todavía está de acuerdo con las nuevas fechas y y los cambios en el contenido"
+            after_dates_text: "Si todavía está interesado entonces debe confirmar otra vez la invitación de reserva"
+            buttons:
+              see_booking: "Booking details"
+              confirm: "Confirm presence"
+              reject: "Reject booking"
+          booking_left_review:
+            title: ""
+            description: ""
+            header_text: ""
+            subheader_text: ""
+            after_description_text: ""
+            after_dates_text: ""
+            buttons:
+              see_casting: ""
+              edit_casting: ""
+              manage_casting: ""
+              see_profile: ""
+          profile_published:
+            title: "Perfil publicado"
+            description: "Su perfil es ahora público"
+            header_text: "Perfil publicado"
+            argument_text: "Su perfil es ahora público. Ahora puede ser encontrado o aplicar a buenas ofertas de trabajo"
+            buttons:
+              see_profile: "Ver perfil"
+          profile_unpublished:
+            title: "Su perfil ya no es público"
+            description: "Su perfil ya no es público, revise el sitio los términos y condiciones de CubaModela para más información"
+            header_text: "Su perfil ya no es público"
+            list_header_text: "Posibles causas:"
+            list_item_1_text: "Importantes campos en su perfil están vacíos"
+            list_item_2_text: "No respetó nuestra política de fotos"
+            list_item_3_text: "Su libro profesional de fotos está indebidamente completado"
+            list_item_4_text: "Su libro de fotos polaroids está indebidamente completado"
+            list_item_5_text: "La información que se muestra no es real"
+            argument_text: Su perfil ya no es público debido a que usted no ha resepetado los términos y condiciones de CubaModela"
+            buttons:
+              edit_profile: "Editar perfil"
+              profile_example: "Aprende como hacer un buen perfil"
+          profile_reject:
+            title: "Perfil rechazado"
+            description: "Su perfil no ha sido aceptado"
+            header_text: "Perfil rechazado"
+            list_header_text: "Posibles causas:"
+            list_item_1_text: "Importantes campos en su perfil están vacíos"
+            list_item_2_text: "No respetó nuestra política de fotos"
+            list_item_3_text: "Su libro profesional de fotos está indebidamente completado"
+            list_item_4_text: "Su libro de fotos polaroids está indebidamente completado"
+            list_item_5_text: "La información que se muestra no es real"
+            argument_text: "Su perfil no ha sido aceptado. Your profile have not been accepted. It does not have the necessary conditions to be part of CubaModela. Please check the link below to find information about how to complete a profile successfully."
+            buttons:
+              edit_profile: "Editar perfil"
+              profile_example: "Aprende como hacer un buen perfil"
+          profile_warning:
+            title: "Advertencia a su perfil"
+            description: "Se le ha hecho una advertencia a su perfil"
+            header_text: "Advertencia a su perfil"
+            list_header_text: "Posibles causas:"
+            list_item_1_text: "Importantes campos en su perfil están vacíos"
+            list_item_2_text: "No respetó nuestra política de fotos"
+            list_item_3_text: "Su libro profesional de fotos está indebidamente completado"
+            list_item_4_text: "Su libro de fotos polaroids está indebidamente completado"
+            list_item_5_text: "La información que se muestra no es real"
+            argument_text: "Usted ha tenido comportamientos en su perfil que no son aceptados según los términos y condiciones de CubaModela. Si este problema se mantiene su perfil será ocultado al público. Revise el link de abajo para más información."
+            buttons:
+              edit_profile: "Editar perfil"
+              profile_example: "Aprende como hacer un buen perfil"
+          review_new:
+            title: "Nueva evaluación en su perfil"
+            description: "Hay una nueva evaluación en su perfil"
+            header_text: "Nueva evaluación en su perfil"
+            subheader_text: "Un cliente dejó una evaluación en su perfil. Revisa lo que los clientes piensan de ti."
+            argument_text: "Buenas evaluaciones te ayudarán a acceder a mejores oportunidades de trabajo."
+            buttons:
+              see_profile: "Ver perfil"
+          coupon_sent:
+            title: "Nuevo Cupón"
+            description: "New coupon delivery, check it out"
+            header_text: "Cupón"
+            argument_text: "Some extra text"
+          message_custom_send:
+            title: "Nuevo mensaje directo del equipo de CubaModela"
+            description: "Tenemos algo importante que decirte."
+            header_text: "Mensaje del equipo de CubaModela."
+            footer_text: "Gracias por ser parte de nosotros"
+    mailers:
+      global:
+        user_friendly: "Dear"
+        mail_footer: "Thanks for been part of us."
+      casting:
+        casting_new_free:
+          subject: "Equipo CubaModela - Nuevo Casting disponible"
+        casting_translation:
+          subject: "Equipo CubaModela - Campos del casting traducidos"
+        casting_change_fields_only:
+          subject: "Equipo CubaModela - El constenido del Casting cambió"
+        casting_change_dates_only:
+          subject: "Equipo CubaModela - Las fechas del Casting cambiaron"
+        casting_change_fields_and_dates:
+          subject: "Equipo CubaModela - Las fechas y el contenido del Casting cambiaron"
+        casting_expiration_proximity:
+          subject: "Equipo CubaModela - La fecha del cierre del casting está cercana"
+        casting_expired:
+          subject: "Equipo CubaModela - El Casting cerró"
+        casting_canceled:
+          subject: "Equipo CubaModela - El Casting se canceló"
+        casting_invitation:
+          subject: "Equipo CubaModela - Nueva invitación para un Casting"
+        casting_invitation_confirmed:
+          subject: "Equipo CubaModela - Nueva confirmación al casting"
+        casting_application:
+          subject: "Equipo CubaModela - Nueva aplicación al casting"
+        casting_application_confirmed:
+          subject: "Equipo CubaModela - Aplicación al Casting exitosa"
+      booking:
+        booking_invitation:
+          subject: "Equipo CubaModela - Nueva invitación para Reserva"
+        booking_confirmed:
+          subject: "Equipo CubaModela - Invitación para Reserva confirmada"
+        booking_rejected:
+          subject: "Equipo CubaModela - Invitación para reserva rechazada"
+        booking_canceled:
+          subject: "Equipo CubaModela - Reserva cancelada"
+        booking_translation:
+          subject: "Equipo CubaModela - Campos de la reserva traducidos al Español"
+        booking_change_fields_only:
+          subject: "Equipo CubaModela - El contenido de la Reserva fue cambiado"
+        booking_change_dates_only:
+          subject: "Equipo CubaModela - Las fechas de la Reserva fueron cambiadas"
+        booking_change_fields_and_dates:
+          subject: "Equipo CubaModela - Las fechas y el contenido de la reserva fueron cambiadas"
+        booking_left_review:
+          subject: ""
+      profile:
+        profile_published:
+          subject: "Equipo CubaModela - Perfil publicado"
+        profile_unpublished:
+          subject: "Equipo CubaModela - Perfil ocultado, ya no es público."
+        profile_reject:
+          subject: "Equipo CubaModela - Perfil rechazado"
+        profile_warning:
+          subject: "Equipo CubaModela - Advertencia a su Perfil"
+      review:
+        review_new:
+          subject: "Equipo CubaModela - Nueva evaluación de un cliente"
+      coupon:
+        coupon_sent:
+          subject: "Equipo CubaModela - Nuevo Cupón"
+      custom:
+        message_send:
+          subject: "Equipo CubaModela - Nuevo Mensaje"
+        admin_send_opinion:
+          subject: "CubaModela - Mensaje de opinión"
+    modalities:
+      index:
+        header_text: "Modalidades"
+      new:
+        header_text: "Nuevas modalidades"
+      edit:
+        header_text: "Editar modalidades"
+      show:
+        header_text: "Mostrar modalidades"
+    nationalities:
+      index:
+        header_text: "Nacionalidades"
+      new:
+        header_text: "Nuevas nacionalidades"
+      edit:
+        header_text: "Editar Nacionalidades"
+      show:
+        header_text: "Mostrar Nacionalidad"
+    profile_contractors:
+      edit:
+        menu_options:
+          profile: "Perfil"
+          payment: "Pago"
+        form_sections:
+          name: "Nombre"
+          contact: "Contacto"
+          procedence: "Procedencia"
+          aptitudes: "Aptitudes"
+          plan: "Plan"
+          coupons: "Cupones"
+    profile_models:
+      messages:
+        profile_published: "El perfil ha sido publicado exitosamente"
+        profile_unpublished: "Notificación de perfil ocultado (no público) enviada"
+        profile_warning: "Advertencia al perfil enviada"
+        profile_reject: "Notificación de rechazo de perfil enviada"
+        profile_reset_warnings: "Las advertencias al perfil han sido reiniciadas satisfactoriamente."
+        profile_update: "El perfil se ha actualizado satisfactoriamente."
+      index:
+        models: "Modelos"
+        tooltips:
+          new_face: "Nuevas Caras"
+          professional_model: "Modelo Professional"
+      index_castings:
+        castings_empty_text: "No tiene castings programados"
+      edit:
+        progress_bar_left_text: "Perfil completado al [%]"
+        current_level_text: "Actualmente eres una Nueva Cara"
+        request_upgrade_level_text: "Solicite ser modelo profesional si considera que reune la experiencia requerida así como las cualidades y el talento. Quedará pendiente de aprobación por el Equipo de CubaModela"
+        professional_level_text: "Actualmente eres un Modelo Profesional"
+        request_sent_text: "Su solicitud para subir de nivel ha sido enviada. Está pendiente de revisión y aprobación"
+        menu_options:
+          profile: "Perfil"
+          albums: "Álbumes"
+          curriculum: "Curriculum"
+          plans: "Planes"
+          payment: "Pago"
+        form_sections:
+          name: "Nombre"
+          contact: "Contacto"
+          procedence: "Procedencia"
+          body_specs: "Especificaciones físicas"
+          aptitudes: "Aptitudes"
+          level: "Nivel"
+          plan: "Plan"
+          coupons: "Cupones"
+        buttons:
+          upgrade: "Solicita nivel de Modelo Profesional"
+        messages:
+          level_request_send: "La solicitud para subir a nivel Modelo Profesional ha sido enviada."
+        wallet:
+          before_text: "Billetera actual:"
+        albums:
+          warnings:
+            professional_max_text: "De acuerdo a su plan, el máximo número de fotos es %{value}"
+            polaroid_max_text: "De acuerdo a su plan, el máximo número de fotos es %{value}"
+      show_resume:
+        pending_review_text: "El perfil está pendiente de revisión y aprobación"
+        professional_book_empty_text: "El Book Profesional está vacío"
+        buttons:
+          invite: "Invitar a casting"
+          booking: "Reservar este modelo"
+          see_profile: "Ver todo el perfil"
+      show:
+        headers:
+          information: "Información"
+          size: "Tallas"
+          languages: "Idiomas"
+          modalities: "Modalidades"
+          categories: "Categorías"
+          studies: "Estudios"
+        languages_empty_text: "No hay idioma seleccionado"
+        modalities_empty_text: "No hay modalidades seleccionadas"
+        categories_empty_text: "No hay categorías seleccionadas"
+        polaroid_book_empty_text: "No hay fotos polaroid añadidas"
+        only_contractors_text: "Lo sentimos, ésta información es solo para empleadores"
+        buttons:
+          details: "Detalles"
+        admin:
+          no_warning_made_text: "No hay advertencias en el perfil"
+          request_text: "Sulicitud realizada:"
+      votes:
+        count:
+          one: "%{count} Vote"
+          other: "%{count} Votes"
+    photos:
+      delete:
+        header_text: "Eliminar foto"
+    provinces:
+      index:
+        header_text: "Provincias"
+      new:
+        header_text: "Nueva Provincia"
+      edit:
+        header_text: "Editar Provincia"
+      show:
+        header_text: "Mostrar Provincia"
+    reviews:
+      count:
+        one: "Evaluación %{count}"
+        other: "Evaluaciones %{count}"
+      leave_review_text: "Se el primero en dejar una evaluación"
+      buttons:
+        leave_review: "Hacer Evaluación"
+        see_reviews: "Ver Evaluaciones"
+      messages:
+        create: "Evaluado satisfactoriamente"
+    shareds:
+      read_texts:
+        read_here_text: "Leer aqui"
+        casting_flow_read_text: "Como funciona el flujo de un casting?"
+        booking_flow_read_text: "Como funciona el flujo de una reserva?"
+    studies:
+      global:
+        empty_list: "No tiene estudios añadidos. Incluye alunos estudios"
+      messages:
+        create: "El estudio se ha añadido satisfactoriamente."
+        destroy: "El estudio se ha eliminado satisfactoriamente."
+        update: "El estudio se a actualizado satisfactoriamente."
+      index:
+        buttons:
+          new: "Nuevo Estudio"
+      show:
+        header_text: "Estudio"
+    wallets:
+      invalid_coupon: "El Cupón es válido"

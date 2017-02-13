@@ -169,6 +169,8 @@ Rails.application.routes.draw do
     post '/send_message_admin/', to: 'admin#send_message_admin', as: :send_message_admin
     get '/set_as_partner/:user_id', to: 'admin#set_as_partner', as: :set_as_partner
     get '/unset_as_partner/:user_id', to: 'admin#unset_as_partner', as: :unset_as_partner
+    get '/set_basic_plan/:user_id', to: 'admin#set_basic_plan', as: :set_basic_plan
+    get '/set_premium_plan/:user_id', to: 'admin#set_premium_plan', as: :set_premium_plan
   end
 
 # Coupons routes

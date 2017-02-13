@@ -40,7 +40,7 @@
               </div>
               <div id="subscribe-subheader-3" class="text-center">
                 <p>
-                  Read more about profile_models_path.
+                  Read more about profiles.
                   <%= link_to t('views.shareds.read_texts.read_here_text'), static_pages_profiles_flow_path, remote: true, class: "btn btn-link" %>
                 </p>
               </div>
@@ -171,10 +171,16 @@
     <div class="col-md-12 cell-no-space">
         <div id="us-container" class="relative-position">
             <%= image_tag "cubamodela_home_section_us_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
-            <div id="us-body" class="text-left">
-                <h2>ABOUT US</h2>
-                <p>CubaModela is the Online Network of Professionals of the fashion and photography industry in Cuba. Our mission is to connect models and photographers from Cuba with national and international clients. We provide a space for personalized advertising through the profiles that will constitute the fundamental criterion of selection to find jobs.</p>
-                <p>In addition, CubaModela provides specialized services in support of photographic, audiovisual and event productions on the Island. We also accompany the stay of foreign professionals offering unique experiences that will help them to understand the Cuban reality.</p>
+            <div id="us-body">
+                <div class="visible-xs-block visible-sm-block text-center">
+                  <h2>ABOUT US</h2>
+                  <%= link_to "Read more about us", static_pages_aboutus_path, class: "btn-article", data: { animation: "animated pulse", delay: "1.5s" } %>
+                </div>
+                <div class="visible-md-block visible-lg-block text-left">
+                  <h2>ABOUT US</h2>
+                  <p>CubaModela is the Online Network of Professionals of the fashion and photography industry in Cuba. Our mission is to connect models and photographers from Cuba with national and international clients. We provide a space for personalized advertising through the profiles that will constitute the fundamental criterion of selection to find jobs.</p>
+                  <p>In addition, CubaModela provides specialized services in support of photographic, audiovisual and event productions on the Island. We also accompany the stay of foreign professionals offering unique experiences that will help them to understand the Cuban reality.</p>
+                </div>
             </div>
             <div id="us-footer" class="text-center">
                 <%= link_to "CONTACT US", static_pages_contact_path, class: "btn-article", data: { animation: "animated pulse", delay: "2.0s" } %>

@@ -156,7 +156,7 @@ en:
       photographers:
         coming_soon: "Coming soon"
       more:
-        profile_example: "How to build your profile"
+        profile_example: "How to build a good profile"
         gallery: "Visit our gallery"
         casting: "See our castings"
         registration: "Create an account NOW"
@@ -233,9 +233,9 @@ en:
       read_more: "Read more"
     remember_me: "Remember me"
     warnings:
-      delete: "Are you sure you wish to delete %{value}?"
+      delete: "Are you sure you want to delete %{value}?"
     errors:
-      header_text: "The form contains "
+      header_text: "The form contains"
       count:
         one: "%{count} error"
         other: "%{count} errors"
@@ -253,14 +253,14 @@ en:
     show:
       header_text_404: "404 NOT FOUND. We are sorry for the inconvinience."
       header_text_500: "Ups!!!! Something went wrong. We are sorry for the inconvinience. We are working on it."
-      actions_text: "Here are some links that may be of your interest"
+      actions_text: "Here are some links that might be of your interest"
   activerecord:
     attributes:
       user:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirm Password"
-        kind: "What type of profile are you?"
+        kind: "What is your profile type?"
         kind_options:
           select: "Select profile"
           contractor: "Employer"
@@ -273,7 +273,7 @@ en:
         created_at: "Created at"
         updated_at: "Updated at"
       booking:
-        is_direct: "Ckeck this if the booking is intentional just for direct shooting."
+        is_direct: "Ckeck here if you want to do direct shooting."
         description_en: "Description"
         description_es: "Description"
         location_en: "Location"
@@ -287,11 +287,11 @@ en:
         payment_per_model_options:
           select: "Select payment amount"
           tfp: "TFP"
-        is_direct: "Ckeck this if the casting is intentional just for direct shooting."
+        is_direct: "Ckeck here if you want to do direct shooting."
         access_type: "Access type"
         access_types:
           free: "Free to apply"
-          personal: "Private, only invitations"
+          personal: "Private casting, only invited models can apply"
         title_en: "Title"
         title_es: "Title"
         description: "Description"
@@ -308,6 +308,7 @@ en:
       category:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
+        profile_type: "Profile Type"
       color:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
@@ -317,12 +318,14 @@ en:
       expertise:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
+        profile_type: "Profile Type"
       language:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
       modality:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
+        profile_type: "Profile Type"
       nationality:
         name_en: "Name (EN)"
         name_es: "Name (ES)"
@@ -356,27 +359,27 @@ en:
         height: "Height"
         height_select_text: "Select your height"
         chest: "Chest"
-        weist: "Weist"
+        weist: "Waist"
         hips: "Hips"
-        size_shoes: "Size shoes (EU)"
+        size_shoes: "Shoe size (EU)"
         size_shoes_label: "Shoe size"
         size_shoes_select_text: "Select EU normative shoe size"
-        size_cloth: "Size cloth (EU)"
-        size_cloth_label: "Cloth size"
+        size_cloth: "Clothing size cloth (EU)"
+        size_cloth_label: "Clothing size"
         size_cloth_select_text: "Select EU normative cloth size"
         current_province_id: "Current province"
-        current_province_id_select_text: "Please select a province"
+        current_province_id_select_text: "Select a province"
         nationality_id: Nationality
-        nationality_id_select_text: "Please select a nationality"
+        nationality_id_select_text: "Select a nationality"
         ethnicity_id: Ethnicity
-        ethnicity_id_select_text: "Please select your ethnicity"
+        ethnicity_id_select_text: "Select your ethnicity"
         birth_date: "Birth date"
         birth_date_not_present: "Unavailable birth date"
         first_name: "First name"
         first_name_not_present: "Unavailable first name"
         last_name: "Last name"
-        mobile_phone: "Mobile phone"
-        land_phone: "Land phone"
+        mobile_phone: "Cell phone"
+        land_phone: "Telephone"
         address: "Address"
         created_at: "Created at"
         updated_at: "Updated at"
@@ -390,14 +393,14 @@ en:
         gender_male: "Male"
         gender_female: "Female"
         current_province_id: "Current province"
-        current_province_id_select_text: "Please select a province"
+        current_province_id_select_text: "Select a province"
         nationality_id: Nationality
-        nationality_id_select_text: "Please select a nationality"
+        nationality_id_select_text: "Select a nationality"
         first_name: "First name"
         first_name_not_present: "Unavailable first name"
         last_name: "Last name"
-        mobile_phone: "Mobile phone"
-        land_phone: "Land phone"
+        mobile_phone: "Cell phone number"
+        land_phone: "Telephone number"
         address: "Address"
         created_at: "Created at"
         updated_at: "Updated at"
@@ -484,7 +487,7 @@ en:
         destroy: "%{value} has been successfully removed."
         update: "%{value} has been successfully updated."
     footer:
-      left_text: "In colaboration of Camila Studio"
+      left_text: "In colaboration with Camila Studio"
       link_models_text: "Models"
       link_photographers_text: "Photographers"
       link_castings_text: "Castings"
@@ -519,7 +522,7 @@ en:
           header_text: Gallery photo
     admin:
       message:
-        header_text: "Write your message"
+        header_text: "Write a message"
         message_sent: "Message was successfully sent"
         buttons:
           send_message: "Send message"
@@ -585,10 +588,16 @@ en:
           set_as_partner_failed: "Set as partner failed."
           unset_as_partner_success: "Unset as partner success."
           unset_as_partner_failed: "Unset as partner failed."
+          set_basic_plan_success: "Set basic plan success."
+          set_basic_plan_failed: "Set basic plan failed."
+          set_premium_plan_success: "Set premium plan success."
+          set_premium_plan_failed: "Set premium plan failed."
         buttons:
           send_message: "Send message"
-          set_as_partner: "Partner"
-          unset_as_partner: "Unpartner"
+          set_as_partner: "Create Partnership"
+          unset_as_partner: "Remove Partnership"
+          set_basic_plan: "Apply basic plan"
+          set_premium_plan: "Apply premium plan"
     albums:
       global:
         empty_album: "Upload your photos NOW"
@@ -610,7 +619,7 @@ en:
     bank:
       messages:
         wallet_charge_failed: "Wallet charge failed"
-        wallet_amount_insuficient: "Wallet insuficient coins"
+        wallet_amount_insuficient: "Insuficient coins in the wallet"
     bookings:
       new:
         header_text: "New booking"
@@ -658,8 +667,8 @@ en:
           invited: "Invited"
           confirmed: "Confirmed"
           applied: "Applied"
-        modalities_empty_text: "None modalities added"
-        categories_empty_text: "None categories added"
+        modalities_empty_text: "No modalities added"
+        categories_empty_text: "No categories added"
       index:
         expires_in_text: "Expires in %{value}"
         expired_text: "Expired"
@@ -669,20 +678,20 @@ en:
           expired_text: "Casting expired"
           free_text: "Casting free to apply"
           private_text: "Casting private, can not apply"
-          direct_text: "Casting have direct shooting"
+          direct_text: "Casting for direct shooting"
       index_custom_invite:
         header_text: "Select casting to invite to"
       index_invite:
         empty_text: "Well this is odd. Casting is asociated with every model in one way or another."
       index_invited:
-        empty_text: "Invitation list is empty. Invite some models "
+        empty_text: "No model has been invited to the casting"
         here_text: "here"
       index_favorites:
-        empty_text: "We are working on a favorites list. This feature is under development."
+        empty_text: "Favorites: Coming soon."
       index_confirmed:
-        empty_text: "Confirmation list is empty. None has confirmed the invitation."
+        empty_text: "Confirmation list is empty. No one has confirmed the invitation."
       index_applied:
-        empty_text: "Applied list is empty. None has applied the casting."
+        empty_text: "Applied list is empty. No one has applied to the casting."
       index_custom:
         header_text: "Castings"
         direct_text: "Casting is direct shooting"
@@ -699,7 +708,7 @@ en:
           dates: "Dates"
           extra: "Extra"
         warnings:
-          change_dates: "Any change on dates after 24 hours past the creation date will represent a $5 cost for the inconvinience."
+          change_dates: "Any change on dates after 24 hours of the creation of the casting will represent a $10 cost for the inconviniences."
           change_direct: "This can not be edited later."
           change_dates_expired: "How the casting has expired is mandatory that any change on dates includes expiration date in the future, so models can reconfirm their presence, please give time for that until next expiration."
       edit_photos:
@@ -715,7 +724,7 @@ en:
       messages:
         create: "Casting was successfully created. Please add some references photos."
         update: "Casting was successfully updated."
-        references_photos_max: "Max amount of photos acording to your plan reached"
+        references_photos_max: "Max amount of photos have been reached acording to your plan"
         dont_show_again_failed: "Sorry something went wrong."
         edit:
           past: "Actual date of casting is in the past. Editing is not allowed."
@@ -756,10 +765,10 @@ en:
         header_text: "Show color"
     coupons:
       form:
-        coupon: "Insert coupon:"
+        coupon: "Insert a coupon:"
         use: "Use"
         messages:
-          cupon_success_charge: "Coupon has been successfully charged to your wallet"
+          cupon_success_charge: "The Coupon has been successfully charged to your wallet"
           cupon_failed_charge: "Coupon charge failed"
     devise:
       registrations:
@@ -972,7 +981,7 @@ en:
             title: "Booking translation"
             description: "Translation of the booking invitation made by CubaModela team"
             header_text: "Booking translation"
-            after_description_text: "Translation of the booking translation made by CubaModela team."
+            after_description_text: "Translation of the booking made by CubaModela team."
             after_dates_text: "Check CubaModela site for more information."
             buttons:
               see_booking: "Booking details"
@@ -986,8 +995,8 @@ en:
             after_dates_text: "Please, make sure you are still interested in the job after the changes in the conditions. Do not miss this opportunity."
             buttons:
               see_booking: "Booking details"
-              confirm: "Confirm presence"
-              reject: "Reject booking"
+              confirm: "Confirm the booking"
+              reject: "Reject the booking"
           booking_change_dates_only:
             title: "The dates of the booking invitation have changed"
             description: "There have been changes in the date of the booking"
@@ -996,18 +1005,18 @@ en:
             after_dates_text: "If you are still interested then you have to confirm again the booking invitation."
             buttons:
               see_booking: "Booking details"
-              confirm: "Confirm presence"
-              reject: "Reject booking"
+              confirm: "Confirm the booking"
+              reject: "Reject the booking"
           booking_change_fields_and_dates:
             title: "Changes in the booking invitation fields and date"
-            description: "There have been changes in the booking invitation, check for more information"
-            header_text: " Changes in the booking invitation fields and date "
+            description: "There have been changes in the booking invitation"
+            header_text: "Changes in the booking invitation fields and date "
             after_description_text: " There have been changes in the date of the booking and the fields, check if you are available in the new dates and if you agree the new conditions."
             after_dates_text: "If you are still interested then you have to confirm again the booking invitation."
             buttons:
               see_booking: "Booking details"
-              confirm: "Confirm presence"
-              reject: "Reject booking"
+              confirm: "Confirm the booking"
+              reject: "Reject the booking"
           booking_left_review:
             title: ""
             description: ""
@@ -1026,21 +1035,21 @@ en:
             header_text: "Profile published"
             argument_text: "Your profile is now public. You can be found by right people and receive good job offers. Please check your profile often for notifications and new jobs."
             buttons:
-              see_profile: "Watch profile"
+              see_profile: "See profile"
           profile_unpublished:
             title: "Profile unpublished"
-            description: "Your profile have been unpublished, check the CubaModela site for more information"
+            description: "Your profile have been unpublished, check the terms and conditions of CubaModela for more information"
             header_text: "Profile unpublished"
             list_header_text: "Probable causes:"
             list_item_1_text: "Important profile fields are empty."
             list_item_2_text: "You did not respect our politic about photos."
-            list_item_3_text: "You did not respect our politic about photos."
-            list_item_4_text: "You did not respect our politic about photos."
-            list_item_5_text: "You did not respect our politic about photos."
+            list_item_3_text: "Your professional book is not well completed."
+            list_item_4_text: "Your polaroid book is not well completed."
+            list_item_5_text: "Some of your information is not real."
             argument_text: "Your profile have been unpublished because you did not respect the terms and conditions of CubaModela."
             buttons:
               edit_profile: "Edit profile"
-              profile_example: "Learn how to build your profile"
+              profile_example: "Learn how to build a good profile"
           profile_reject:
             title: "Profile rejected"
             description: "Your profile have not been accepted"
@@ -1048,13 +1057,13 @@ en:
             list_header_text: "Probable causes:"
             list_item_1_text: "Important profile fields are empty."
             list_item_2_text: "You did not respect our politic about photos."
-            list_item_3_text: "You did not respect our politic about photos."
-            list_item_4_text: "You did not respect our politic about photos."
-            list_item_5_text: "You did not respect our politic about photos."
+            list_item_3_text: "Your professional book is not well completed."
+            list_item_4_text: "Your polaroid book is not well completed."
+            list_item_5_text: "Some of your information is not real."
             argument_text: "Your profile have not been accepted. It does not have the necessary conditions to be part of CubaModela. Please check the link below to find information about how to complete a profile successfully."
             buttons:
               edit_profile: "Edit profile"
-              profile_example: "Learn how to build your profile"
+              profile_example: "Learn how to build a good profile"
           profile_warning:
             title: "Profile warning"
             description: "There is a profile warning"
@@ -1062,13 +1071,13 @@ en:
             list_header_text: "Probable causes:"
             list_item_1_text: "Important profile fields are empty."
             list_item_2_text: "You did not respect our politic about photos."
-            list_item_3_text: "You did not respect our politic about photos."
-            list_item_4_text: "You did not respect our politic about photos."
-            list_item_5_text: "You did not respect our politic about photos."
+            list_item_3_text: "Your professional book is not well completed."
+            list_item_4_text: "Your polaroid book is not well completed."
+            list_item_5_text: "Some of your information is not real."
             argument_text: "You are having some not accepted behaviors in your profile. If this problems persist then your profile might be unpublished. Check the link below for more information."
             buttons:
               edit_profile: "Edit profile"
-              profile_example: "Learn how to build your profile"
+              profile_example: "Learn how to build a good profile"
           review_new:
             title: "New review in your profile"
             description: "A contractor left a review in your profile"
@@ -1086,11 +1095,11 @@ en:
             title: "New message from CubaModela team"
             description: "We have something to tell you. Please check it out."
             header_text: "Message from CubaModela team"
-            footer_text: "Thanks for been part of us."
+            footer_text: "Thanks for been part of CubaModela."
     mailers:
       global:
         user_friendly: "Dear"
-        mail_footer: "Thanks for been part of us."
+        mail_footer: "Thanks for been part of CubaModela."
       casting:
         casting_new_free:
           subject: "CubaModela Team - New casting available"
@@ -1276,7 +1285,7 @@ en:
       count:
         one: "%{count} Review"
         other: "%{count} Reviews"
-      leave_review_text: "Be the first to leave a review"
+      leave_review_text: "Be the first one to leave a review"
       buttons:
         leave_review: "Leave review"
         see_reviews: "See reviews"
@@ -1285,11 +1294,11 @@ en:
     shareds:
       read_texts:
         read_here_text: "Read here"
-        casting_flow_read_text: "How casting flow works? Read this if you have not."
-        booking_flow_read_text: "How booking flow works? Read this if you have not."
+        casting_flow_read_text: "How casting flow works?"
+        booking_flow_read_text: "How booking flow works?"
     studies:
       global:
-        empty_list: "You have cero studies. Add some..."
+        empty_list: "Add some studies"
       messages:
         create: "The study has been successfully created."
         destroy: "The study has been successfully removed."
@@ -1301,4 +1310,3 @@ en:
         header_text: "Study"
     wallets:
       invalid_coupon: "Coupon is invalid"
-

@@ -80,7 +80,7 @@
 				      <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
 				      <div class="row">
 				      	<% if I18n.locale == "en".to_sym %>
-					      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |m| %>
+					      	<%= f.collection_check_boxes :modality_ids, Modality.profile_type_model.order("name_en ASC"), :id, :name_en do |m| %>
 					      		<div class="col-md-2">
 								    <div class="checkbox-container">
 								      <%= m.check_box %>
@@ -89,7 +89,7 @@
 							    </div>
 							<% end %>
 					      <% else %>
-					      	<%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |m| %>
+					      	<%= f.collection_check_boxes :modality_ids, Modality.profile_type_model.order("name_en ASC"), :id, :name_es do |m| %>
 					      		<div class="col-md-2">
 								    <div class="checkbox-container">
 								      <%= m.check_box %>
@@ -108,7 +108,7 @@
 				      <%= f.label t('activerecord.attributes.profile_model.associations.categories') << ":" %><br />
 				      <div class="row">
 				      	<% if I18n.locale == "en".to_sym %>
-					      	<%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_en do |m| %>
+					      	<%= f.collection_check_boxes :category_ids, Category.profile_type_model.order("name_en ASC"), :id, :name_en do |m| %>
 					      		<div class="col-md-2">
 								    <div class="checkbox-container">
 								      <%= m.check_box %>
@@ -117,7 +117,7 @@
 							    </div>
 							<% end %>
 					      <% else %>
-					      	<%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_es do |m| %>
+					      	<%= f.collection_check_boxes :category_ids, Category.profile_type_model.order("name_en ASC"), :id, :name_es do |m| %>
 					      		<div class="col-md-2">
 								    <div class="checkbox-container">
 								      <%= m.check_box %>

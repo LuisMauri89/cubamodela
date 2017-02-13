@@ -151,14 +151,14 @@
               <div class="form-group">
                 <%= f.label t('activerecord.attributes.profile_model.associations.modalities') << ":" %><br />
                 <% if I18n.locale == "en".to_sym %>
-                  <%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_en do |m| %>
+                  <%= f.collection_check_boxes :modality_ids, Modality.profile_type_model.order("name_en ASC"), :id, :name_en do |m| %>
                     <div class="checkbox-container">
                       <%= m.check_box %>
                       <%= m.label %>
                     </div>
                   <% end %>
                 <% else %>
-                  <%= f.collection_check_boxes :modality_ids, Modality.all.order("name_en ASC"), :id, :name_es do |m| %>
+                  <%= f.collection_check_boxes :modality_ids, Modality.profile_type_model.order("name_en ASC"), :id, :name_es do |m| %>
                     <div class="checkbox-container">
                       <%= m.check_box %>
                       <%= m.label %>
@@ -171,14 +171,14 @@
             <div class="form-group">
               <%= f.label t('activerecord.attributes.profile_model.associations.categories') << ":" %><br />
               <% if I18n.locale == "en".to_sym %>
-                  <%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_en do |c| %>
+                  <%= f.collection_check_boxes :category_ids, Category.profile_type_model.order("name_en ASC"), :id, :name_en do |c| %>
                     <div class="checkbox-container">
                       <%= c.check_box %>
                       <%= c.label %>
                     </div>
               <% end %>
               <% else %>
-                <%= f.collection_check_boxes :category_ids, Category.all.order("name_en ASC"), :id, :name_es do |c| %>
+                <%= f.collection_check_boxes :category_ids, Category.profile_type_model.order("name_en ASC"), :id, :name_es do |c| %>
                   <div class="checkbox-container">
                     <%= c.check_box %>
                     <%= c.label %>

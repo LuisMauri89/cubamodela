@@ -10,6 +10,7 @@
             <tr>
               <th class="text-center"><%= t('activerecord.attributes.expertise.name_en') %></th>
               <th class="text-center"><%= t('activerecord.attributes.expertise.name_es') %></th>
+              <th class="text-center"><%= t('activerecord.attributes.expertise.profile_type') %></th>
               <th class="text-center"><%= t('table.actions') %></th>
             </tr>
           </thead>
@@ -19,6 +20,7 @@
               <tr>
                 <td><h4><%= expertise.name_en %></h4></td>
                 <td><h4><%= expertise.name_es %></h4></td>
+                <td><h4><%= expertise.profile_type %></h4></td>
                 <td>
                   <%= link_to t('forms.buttons.delete'), expertise, method: :delete, class: "btn btn-primary pull-right btn-small-right-margin", data: { confirm: 'Are you sure?' } %>
                   <%= link_to t('forms.buttons.edit'), edit_expertise_path(expertise), class: "btn btn-primary pull-right btn-small-right-margin" %>

@@ -172,4 +172,17 @@ class ProfileContractor < ApplicationRecord
 		self.is_partner = false
 		save
 	end
+
+	def set_plan(plan)
+		case plan
+		when "basic"
+			self.plan = Plan.get_contractor_free_plan
+		end
+
+		save
+	end
+
+	def get_plan_type
+		return self.plan.level == "free" ? Constant::PLAN_BASIC_TEXT : Constant::PLAN_PREMIUM_TEXT
+	end
 end

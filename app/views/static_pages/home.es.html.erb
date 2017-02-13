@@ -1,3 +1,4 @@
+<h1 class="hide">We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos.</h1>
 <div class="row row-no-space">
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="home-line-users-amounts-container-auth-<%= user_signed_in?.to_s %>">
@@ -20,20 +21,42 @@
     <div class="row row-no-space">
         <div class="col-md-12 col-xs-12 cell-no-space">
             <div id="subscribe-container" class="relative-position">
-              <%= image_tag "cubamodela_home_subscribe_cuba_models_es.jpg", alt: "CubaModela Cuba Models Fashion Photography", class: "img-responsive img-full" %>
+              <h2 id="subscribe-form-header">SUSCRIBETE</h2>
+              <div id="subscribe-header" class="text-center">
+                <h2>
+                  Conviertete ya en uno de nuestros miembros
+                </h2>
+                <%= image_tag "cubamodela_logo_white.png", width:"150", alt: "Logo" %>
+              </div>
+              <div id="subscribe-subheader" class="text-center">
+                <h3>
+                  UD desea contratar a nuestros modelos? Registrece como EMPLEADOR.
+                </h3>
+              </div>
+              <div id="subscribe-subheader-2" class="text-center">
+                <h3>
+                  Quiere llevar su carrera como modelo al proximo nivel? Registrece como MODELO.
+                </h3>
+              </div>
+              <div id="subscribe-subheader-3" class="text-center">
+                <p>
+                  Leer mas aserca de los distintos perfiles.
+                  <%= link_to t('views.shareds.read_texts.read_here_text'), static_pages_profiles_flow_path, remote: true, class: "btn btn-link" %>
+                </p>
+              </div>
               <div id="home-subscribe-form-container">
                 <%= render "home_sign_up" %>
               </div>
             </div>
         </div>
-    </div>
+    </div>  
 <% end %>
 
 <div class="row row-no-space">
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="models-container" class="relative-position">
           <div id="models-header">
-              <p class="text-center">DESCUBRE MODELOS ESPECIALES</p>
+              <h2 class="text-center">DESCUBRE MODELOS UNICOS</h2>
           </div>
           <div class="relative-position">
               <%= image_tag "cubamodela_home_section_models_cuba_models_up.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
@@ -47,7 +70,7 @@
                 <%= link_to "PREMIUM", index_premium_models_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.0s" } %>
               </div>
               <div id="models-btn-see-all" class="text-center">
-                <%= link_to "VER TODO", profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.5s" } %>
+                <%= link_to "VER TODOS", profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.5s" } %>
               </div>
               <div class="notify"></div>
           </div>
@@ -90,7 +113,7 @@
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="follow-container" class="relative-position">
           <div id="follow-header">
-              <p class="text-center">SIGUENOS</p>
+              <h2 class="text-center">SIGUENOS</h2>
           </div>
           <div id="section-social-icons-container" class="text-center center-block">
             <ul class="list-inline">
@@ -104,35 +127,35 @@
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_instagram_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
+                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Instagram Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_pinterest_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
+                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Pinterest Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_google_plus_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
+                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Google+ Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_twitter_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
+                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Twitter Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_youtube_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
+                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela YouTube Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
                   <% end %>
                 </div>
               </li>
@@ -148,10 +171,16 @@
     <div class="col-md-12 cell-no-space">
         <div id="us-container" class="relative-position">
             <%= image_tag "cubamodela_home_section_us_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
-            <div id="us-body" class="text-left">
-                <h1>SOBRE NOSOTROS</h1>
-                <h4>CubaModela es la Red Online de Profesionales de la industria de la moda y la fotografía en Cuba. Nuestra misión es conectar a modelos y fotógrafos cubanos con clientes nacionales e internacionales. Brindamos un espacio para la publicidad personalizada a través de los perfiles que constituirán el criterio fundamental de selección para encontrar trabajos.</h4>
-                <h4>Adicionalmente, CubaModela brinda servicios especializados de apoyo a las producciones fotográficas, audiovisuales y eventos en la Isla. También acompañamos la estancia de profesionales de la industria extranjeros ofreciendo experiencias únicas que les ayudará a comprender la realidad cubana.</h4>
+            <div id="us-body">
+                <div class="visible-xs-block visible-sm-block text-center">
+                  <h2>SOBRE NOSOTROS</h2>
+                  <%= link_to "Leer mas acerca de nosotros", static_pages_aboutus_path, class: "btn-article", data: { animation: "animated pulse", delay: "1.5s" } %>
+                </div>
+                <div class="visible-md-block visible-lg-block text-left">
+                  <h2>SOBRE NOSOTROS</h2>
+                  <p>CubaModela es la Red Online de Profesionales de la industria de la moda y la fotografía en Cuba. Nuestra misión es conectar a modelos y fotógrafos cubanos con clientes nacionales e internacionales. Brindamos un espacio para la publicidad personalizada a través de los perfiles que constituirán el criterio fundamental de selección para encontrar trabajos.</p>
+                  <p>Adicionalmente, CubaModela brinda servicios especializados de apoyo a las producciones fotográficas, audiovisuales y eventos en la Isla. También acompañamos la estancia de profesionales de la industria extranjeros ofreciendo experiencias únicas que les ayudará a comprender la realidad cubana.</p>
+                </div>
             </div>
             <div id="us-footer" class="text-center">
                 <%= link_to "CONTACTANOS", static_pages_contact_path, class: "btn-article", data: { animation: "animated pulse", delay: "2.0s" } %>
@@ -165,7 +194,7 @@
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="partners-container" class="notify relative-position">
           <div id="partners-header">
-              <p class="text-center">ASOCIADOS</p>
+              <h2 class="text-center">ASOCIADOS</h2>
           </div>
           <div class="row partner-row">
               <div class="col-md-4 col-xs-4 partner-cell">
@@ -176,7 +205,7 @@
                         <p class="text-center partner-ocupation">Diseñador</p>
                         <p class="text-center partner-name">Patricio Herrera</p>
                         <div class="text-center partner-link">
-                            <%= link_to t('forms.buttons.read_more'), static_pages_patricio_path, class: "btn btn-primary" %>
+                            <%= link_to t('forms.buttons.read_more'), "#", class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
@@ -188,7 +217,7 @@
                         <p class="text-center partner-ocupation">Fotografo</p>
                         <p class="text-center partner-name">Camila Serrano</p>
                         <div class="text-center partner-link">
-                            <%= link_to t('forms.buttons.read_more'), static_pages_camila_path, class: "btn btn-primary" %>
+                            <%= link_to t('forms.buttons.read_more'), "#", class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
@@ -200,7 +229,7 @@
                         <p class="text-center partner-ocupation">Fotografo</p>
                         <p class="text-center partner-name">Xuan Linh</p>
                         <div class="text-center partner-link">
-                            <%= link_to t('forms.buttons.read_more'), static_pages_xuan_path, class: "btn btn-primary" %>
+                            <%= link_to t('forms.buttons.read_more'), "#", class: "btn btn-primary" %>
                         </div>
                     </div>
               </div>
@@ -220,3 +249,4 @@
         </div>
     </div>
 </div>
+<div id="modal-container" class="modal fade"></div>

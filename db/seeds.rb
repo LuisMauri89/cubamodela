@@ -29,12 +29,12 @@ if !Color.any?
 end
 
 if !Expertise.any?
-	Expertise.create(name_en: "Acting", name_es: "Actuación")
-	Expertise.create(name_en: "Dance", name_es: "Baile")
-	Expertise.create(name_en: "Singing", name_es: "Canto")
-    Expertise.create(name_en: "Catwalk modeling", name_es: "Modelaje de Pasarela")
-    Expertise.create(name_en: "Photography modeling", name_es: "Modelaje de Fotografía")
-    Expertise.create(name_en: "Fit modeling", name_es: "Modelaje de Físico")
+	Expertise.create(name_en: "Acting", name_es: "Actuación", profile_type: "model")
+	Expertise.create(name_en: "Dance", name_es: "Baile", profile_type: "model")
+	Expertise.create(name_en: "Singing", name_es: "Canto", profile_type: "model")
+    Expertise.create(name_en: "Catwalk modeling", name_es: "Modelaje de Pasarela", profile_type: "model")
+    Expertise.create(name_en: "Photography modeling", name_es: "Modelaje de Fotografía", profile_type: "model")
+    Expertise.create(name_en: "Fit modeling", name_es: "Modelaje de Físico", profile_type: "model")
 end
 
 if !Language.any?
@@ -59,16 +59,16 @@ if !Ethnicity.any?
 end
 
 if !Modality.any?
-	Modality.create(name_en: "Swimsuit/Bikini", name_es: "Traje de bano/Bikini")
-    Modality.create(name_en: "Lingerie", name_es: "Lencería")
-	Modality.create(name_en: "Glamour", name_es: "Glamur")
-	Modality.create(name_en: "Catalog", name_es: "Catálogo")
-	Modality.create(name_en: "Commercial", name_es: "Comercial")
+	Modality.create(name_en: "Swimsuit/Bikini", name_es: "Traje de bano/Bikini", profile_type: "model")
+    Modality.create(name_en: "Lingerie", name_es: "Lencería", profile_type: "model")
+	Modality.create(name_en: "Glamour", name_es: "Glamur", profile_type: "model")
+	Modality.create(name_en: "Catalog", name_es: "Catálogo", profile_type: "model")
+	Modality.create(name_en: "Commercial", name_es: "Comercial", profile_type: "model")
 	Modality.create(name_en: "Fitness", name_es: "Ejercicios")
-	Modality.create(name_en: "Promotional", name_es: "Promoción")
-	Modality.create(name_en: "Beauty", name_es: "Belleza")
-	Modality.create(name_en: "Clothing", name_es: "Ropa")
-	Modality.create(name_en: "Cover", name_es: "Portada")
+	Modality.create(name_en: "Promotional", name_es: "Promoción", profile_type: "model")
+	Modality.create(name_en: "Beauty", name_es: "Belleza", profile_type: "model")
+	Modality.create(name_en: "Clothing", name_es: "Ropa", profile_type: "model")
+	Modality.create(name_en: "Cover", name_es: "Portada", profile_type: "model")
 end
 
 if !Nationality.any?
@@ -114,14 +114,14 @@ if !Province.any?
 end
 
 if !Category.any?
-	Category.create(name_en: "Fashion", name_es: "Moda")
-	Category.create(name_en: "Real life & People", name_es: "Vida real & Gente")
-    Category.create(name_en: "Bodypainting", name_es: "Pintura corporal")
-    Category.create(name_en: "Underwater", name_es: "Bajo el agua")
-    Category.create(name_en: "Sports", name_es: "Deporte")
-    Category.create(name_en: "Fitness", name_es: "Físico")
-    Category.create(name_en: "Hair/Makeup", name_es: "Peinados y Maquillaje")
-    Category.create(name_en: "Art", name_es: "Arte")
+	Category.create(name_en: "Fashion", name_es: "Moda", profile_type: "model")
+	Category.create(name_en: "Real life & People", name_es: "Vida real & Gente", profile_type: "model")
+    Category.create(name_en: "Bodypainting", name_es: "Pintura corporal", profile_type: "model")
+    Category.create(name_en: "Underwater", name_es: "Bajo el agua", profile_type: "model")
+    Category.create(name_en: "Sports", name_es: "Deporte", profile_type: "model")
+    Category.create(name_en: "Fitness", name_es: "Físico", profile_type: "model")
+    Category.create(name_en: "Hair/Makeup", name_es: "Peinados y Maquillaje", profile_type: "model")
+    Category.create(name_en: "Art", name_es: "Arte", profile_type: "model")
 end
 
 if !ShoeSize.any?
