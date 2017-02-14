@@ -670,7 +670,7 @@ es:
           applied: "Aplicaciones"
         modalities_empty_text: "Ninguna modalidad añadida"
         categories_empty_text: "Ninguna categoría añadida"
-        payment_note: "Por favor recuerde que CubaModela obtendra el 20% del pago."
+        payment_note: "Por favor recuerde que CubaModela obtendra el 20% del pago y el modelo el 80%."
       index:
         expires_in_text: "Expira el %{value}"
         expired_text: "Expirado"
