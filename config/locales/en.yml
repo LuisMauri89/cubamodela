@@ -1092,7 +1092,7 @@ en:
             title: "New coupon"
             description: "New coupon delivery, check it out"
             header_text: "Coupon"
-            argument_text: "Some extra text"
+            argument_text: "You can use this coupon in the Plan section of your Profile"
           message_custom_send:
             title: "New message from CubaModela team"
             description: "We have something to tell you. Please check it out."
