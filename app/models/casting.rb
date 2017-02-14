@@ -214,11 +214,19 @@ class Casting < ApplicationRecord
   end
 
   def location_en_slice
-    return self.location_en[0..100] << "..."
+    begin
+      return self.location_en[0..100] << "..."
+    rescue
+      return I18n.locale == "en".to_sym ? "Location missing" : "Lugar no encontrado"
+    end
   end
 
   def location_es_slice
-    return self.location_es[0..100] << "..."
+    begin
+      return self.location_es[0..100] << "..."
+    rescue
+      return I18n.locale == "en".to_sym ? "Location missing" : "Lugar no encontrado"
+    end
   end
 
   # Action methods on casting

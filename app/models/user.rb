@@ -24,6 +24,35 @@ class User < ApplicationRecord
     end
   end
 
+  before_save :set_profile_meta, if: :new_record?
+
+  def set_profile_meta
+    if self.profileable.nil?
+
+      case self.kind
+      when "contractor"
+        @profile = ProfileContractor.create
+        @profile.plan = Plan.get_contractor_free_plan
+      when "model"
+        @profile = ProfileModel.create
+        @profile.albums.create(name: Constant::ALBUM_PROFESSIONAL_NAME)
+        @profile.albums.create(name: Constant::ALBUM_POLAROID_NAME)
+        @profile.plan = Plan.get_model_free_plan
+      when "photographer"
+        @profile = ProfilePhotographer.create
+        @profile.albums.create(name: Constant::ALBUM_PROFESSIONAL_NAME)
+        @profile.plan = Plan.get_photographer_basic_plan
+      end
+      
+      @profile.albums.create(name: Constant::ALBUM_PROFILE_NAME)
+      @profile.create_wallet
+
+      @profile.save
+
+      self.profileable = @profile
+    end
+  end
+
   # Scopes
   scope :admins, -> { where(role: "admin") }
   scope :users_all, -> { where(role: "user") }

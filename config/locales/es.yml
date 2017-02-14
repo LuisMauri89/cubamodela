@@ -576,6 +576,7 @@ es:
           coupons_generation_failed: "Generación de cupones falló"
           coupon_to_send_text: "Cupones para enviar:"
           coupon_sent: "Cupón enviado satisfactoriamente"
+          coupon_sent_no_profile: "No se encuentra el perfil del usuario seleccionado"
       tasks:
         messages:
           task_casting_expired: "Task was successfully sent to run in background"
@@ -669,6 +670,7 @@ es:
           applied: "Aplicaciones"
         modalities_empty_text: "Ninguna modalidad añadida"
         categories_empty_text: "Ninguna categoría añadida"
+        payment_note: "Por favor recuerde que CubaModela obtendra el 20% del pago."
       index:
         expires_in_text: "Expira el %{value}"
         expired_text: "Expirado"

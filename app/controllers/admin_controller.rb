@@ -117,20 +117,22 @@ class AdminController < ApplicationController
 		if @filter
 			@users = User.search_by_email(@filter)
 		else
-			@users = User.role_user
+			@users = User.users_all
 		end
 	end
 
 	def send_coupon
 		set_coupon
-		@coupon.give!
-
 		set_user
 
-		CouponSentJob.perform_later(@user.profileable, @coupon)
-
 		respond_to do |format|
-			format.html{ redirect_to coupons_path, notice: t('views.admin.coupons.messages.coupon_sent') }
+			if @user.profileable.nil?
+				format.html{ redirect_to coupons_path, notice: t('views.admin.coupons.messages.coupon_sent_no_profile') }
+			else
+				@coupon.give!
+				CouponSentJob.perform_later(@user.profileable, @coupon)
+				format.html { redirect_to coupons_path, notice: t('views.admin.coupons.messages.coupon_sent') }
+			end
 		end
 	end
 

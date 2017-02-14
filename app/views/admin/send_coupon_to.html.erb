@@ -39,8 +39,8 @@
               <% @users.each do |user| %>
                 <tr>
                   <td>
-                    <%= image_tag user.profileable.nil? ? "missing_profile_picture.jpg" : user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
-                    <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.full_name  %></h4>
+                    <%= image_tag user.profileable.nil? ? "missing_profile_picture_32.png" : user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
+                    <h4 class="pull-left" style="margin-left:10px;"><%= user.profileable.nil? ? "Unknown name" : user.profileable.get_first_name  %></h4>
                   </td>
                   <td class="text-center"><h4><%= user.email %></h4></td>
                   <td class="text-center"><h4><%= user.kind %></h4></td>
