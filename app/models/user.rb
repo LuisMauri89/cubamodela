@@ -71,6 +71,6 @@ class User < ApplicationRecord
   belongs_to :profileable, polymorphic: true, optional: true, dependent: :destroy
 
   def self.search_by_email(filter)
-    role_user.where("email LIKE ?", "%#{filter}%")
+    users_all.where("email LIKE ?", "%#{filter}%")
   end
 end
