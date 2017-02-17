@@ -1,27 +1,33 @@
-<% if user_signed_in? && !current_user.nil? &&  current_user.contractor? && @profile.get_polaroid_album_photos.any? %>
+<% if user_signed_in? && !current_user.nil? && @profile.get_polaroid_album_photos.any? && (current_user.contractor? || current_user.admin?) %>
 	<div class="row row-profile-imgs">
 
 		<div class="col-md-4 col-profile-imgs">
 			<% @profile.get_polaroid_album_photos.limit(@cols[0]).each do |photo| %>
-				<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
+				<%= link_to(selected_photo_profile_model_path(@profile, photo), remote: true, class: "link-image") do %>
+					<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
+				<% end %>
 			<% end %>
 		</div>
 
 		<div class="col-md-4 col-profile-imgs">
 			<% @profile.get_polaroid_album_photos.offset(@cols[0]).limit(@cols[1]).each do |photo| %>
-				<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
+				<%= link_to(selected_photo_profile_model_path(@profile, photo), remote: true, class: "link-image") do %>
+					<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
+				<% end %>
 			<% end %>
 		</div>
 
 		<div class="col-md-4 col-profile-imgs">
 			<% @profile.get_polaroid_album_photos.offset(@cols[0] + @cols[1]).limit(@cols[2]).each do |photo| %>
-				<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
+				<%= link_to(selected_photo_profile_model_path(@profile, photo), remote: true, class: "link-image") do %>
+					<%= image_tag photo.image.url(:big), alt: "Model Photo", class: "img-responsive profile-photo" %>
+				<% end %>
 			<% end %>
 		</div>
 
 	</div>
 <% else %>
-	<% if !current_user.nil? && !current_user.contractor? %>
+	<% if !user_signed_in? || (!current_user.nil? && !current_user.contractor? && !current_user.admin?) %>
 		<h4 class="text-center"><%= t('views.profile_models.show.only_contractors_text') %></h4>
 	<% else %>
 		<h4 class="text-center"><%= t('views.profile_models.show.polaroid_book_empty_text') %></h4>

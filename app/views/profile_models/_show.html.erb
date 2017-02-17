@@ -240,7 +240,7 @@
 					<h4 id="reviews-count" class="text-center">
 						<%= t('views.reviews.count', count: @profile.reviews.count) %>
 					</h4>
-					<% if @profile.reviews.count == 0 %>
+					<% if @profile.reviews.count == 0 && !current_user.nil? && current_user.contractor? %>
 						<p class="profile-value">
 							<%= t('views.reviews.leave_review_text') %>
 						</p>

@@ -5,7 +5,7 @@ class CastingReview < ApplicationRecord
   belongs_to :profile_contractor
 
   def is_valid?
-  	return (casting.casting_date.to_date + 3) <= Date.today
+  	return (casting.casting_date.to_date + 3) <= Date.today && self.casting.confirmed_intents.count > 0
   end
 
   def do_not_show_again

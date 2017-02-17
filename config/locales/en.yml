@@ -287,7 +287,7 @@ en:
         payment_per_model_options:
           select: "Select payment amount"
           tfp: "TFP"
-        is_direct: "Ckeck here if you want to do direct shooting. This means no date for previous models selection (no Casting date below in the form), the finals models that you confirm will go direct to the shooting date. Setting Casting date below allow you to have a day to make a live selection of the models you confirm here, if that is what you want, leave this unchecked."
+        is_direct: "Uncheck here if you want an extra date (Casting date below) to make a live selection of the models you confirm. If you want that the models you confirm to be the final selection for the Shooting date below, leave checked."
         access_type: "Access type"
         access_types:
           free: "Free to apply"
@@ -1257,11 +1257,16 @@ en:
           modalities: "Modalities"
           categories: "Categories"
           studies: "Studies"
+          reviews: "Reviews"
         languages_empty_text: "No languages selected"
         modalities_empty_text: "No modalities selected"
         categories_empty_text: "No categories selected"
         polaroid_book_empty_text: "Cero polaroid pictures added"
         only_contractors_text: "Sorry, this information is only for contractors"
+        selected_photo_empty_text: "Select photo to show"
+        professional_book_empty_text: "No photos added to Professional Book album"
+        polaroid_book_empty_text: "No photos added to Polaroid album"
+        reviews_empty_text: "Cero reviews made for this models"
         buttons:
           details: "Details"
         admin:

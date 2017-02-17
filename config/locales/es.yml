@@ -287,11 +287,11 @@ es:
         payment_per_model_options:
           select: "Seleccionar cantidad a pagar"
           tfp: "TFP"
-        is_direct: "Ckeck this if the casting is intentional just for direct shooting."
+        is_direct: "Desmarque aqui si ud desea especificar una fecha extra (Dia del casting abajo) para hacer una seleccion en vivo de los modelos confirmados. Si ud desea que los modelos confirmados sean la seleccion final para la fecha de shooting (Dia de la Sesion de Fotos abajo), dejelo marcado."
         access_type: "Quién puede aplicar"
         access_types:
           free: "Todos pueden aplicar"
-          personal: "Casting Privado, solo los modelos invitados pueden aplicar"
+          personal: "Casting privado, solo modelos invitados pueden aplicar"
         title_en: "Título"
         title_es: "Título"
         description: "Descripción"
@@ -513,7 +513,7 @@ es:
         sections:
           models:
           photographers:
-        provide_profile_text: "Please provide more info to reach your profile"
+        provide_profile_text: "Por favor dirigase a su perfil y complete la informacion necesaria para mejorar su perfil"
         provide_profile_link_text: "Editar perfil"
         beta_version_coming_soon_text: "Beta version, we will make the launch very soon, feel free to look around /  CubaModela se encuentra actualmente en version de prueba, las bases de datos seran limpiadas y restauradas para el lanzamiento."
       gallery:
@@ -1257,11 +1257,16 @@ es:
           modalities: "Modalidades"
           categories: "Categorías"
           studies: "Estudios"
+          reviews: "Evaluaciones"
         languages_empty_text: "No hay idioma seleccionado"
         modalities_empty_text: "No hay modalidades seleccionadas"
         categories_empty_text: "No hay categorías seleccionadas"
         polaroid_book_empty_text: "No hay fotos polaroid añadidas"
         only_contractors_text: "Lo sentimos, ésta información es solo para empleadores"
+        selected_photo_empty_text: "Seleccione una foto para mostrar"
+        professional_book_empty_text: "No se han agragado fotos al album Professional Book"
+        polaroid_book_empty_text: "No se han agragado fotos al album Polaroid"
+        reviews_empty_text: "Cero evaluaciones hechas sobre este modelo"
         buttons:
           details: "Detalles"
         admin:

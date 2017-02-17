@@ -187,6 +187,15 @@ class Casting < ApplicationRecord
     end
   end
 
+  def title_in_need
+    case I18n.locale
+    when "en".to_sym
+      return self.title_en != Constant::EN_TRANSLATION_PENDING ? self.title_en : self.title_es
+    when "es".to_sym
+      return self.title_es != Constant::ES_TRANSLATION_PENDING ? self.title_es : self.title_en
+    end
+  end
+
   def title_present
     if self.title_en.present?
       return self.title_en
