@@ -59,9 +59,10 @@ class ApplicationController < ActionController::Base
   # For meta tags
   def prepare_meta_tags(options={})
     site_name   = "CubaModela"
-    title       = "Cuban Models, Photographers, Locations"
+    title       = get_meta_title
     separator   = " | "
-    description = "We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos."
+    description = get_meta_description
+    keywords    = get_meta_keywords
     image       = options[:image] || "https://www.cubamodela.com/assets/cubamodela_logo_blue.png"
     current_url = request.url
     viewport    = "width=device-width,initial-scale=1"
@@ -76,7 +77,7 @@ class ApplicationController < ActionController::Base
       language:    I18n.locale,
       image:       image,
       description: description,
-      keywords:    %w[models photographers Cuba model photographer],
+      keywords:    keywords,
       twitter: {
         site_name: site_name,
         site: '@cubamodela',
@@ -101,6 +102,18 @@ class ApplicationController < ActionController::Base
     options.reverse_merge!(defaults)
 
     set_meta_tags options
+  end
+
+  def get_meta_title
+    return I18n.locale == "es".to_sym ? "Modelos Cubanos, Fotografos, Lugares" : "Cuban Models, Photographers, Locations"
+  end
+
+  def get_meta_description
+    return I18n.locale == "es".to_sym ? "Somos la red profesional de la moda y la fotografia en Cuba. Descubre modelos y fotografos cubanos, asi como lugares unicos para sus fotografias." : "We are the Professional Network of Fashion and Photography in Cuba. Discover Cuban models and photographers as well as unique locations for photos."
+  end
+
+  def get_meta_keywords
+    return I18n.locale == "es".to_sym ? %w[modelos fotografos Cuba modelo fotografo] : %w[models photographers Cuba model photographer]
   end
 
 end
