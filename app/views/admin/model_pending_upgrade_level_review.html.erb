@@ -19,8 +19,8 @@
             <% @requests.each do |request| %>
               <tr id="request-<%= request.id %>">
                 <td>
-                  <%= image_tag request.requester.nil? ? "missing_profile_picture.jpg" : request.requester.get_profile_picture_url(:user), alt: "Model Photo", class: "img-rounded pull-left" %>
-                  <h4 class="pull-left" style="margin-left:10px;"><%= request.requester.full_name  %></h4>
+                  <%= image_tag request.requester.nil? ? "missing_profile_picture.jpg" : request.requester.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded pull-left" %>
+                  <h4 class="pull-left" style="margin-left:10px;"><%= request.requester.get_first_name  %></h4>
                 </td>
                 <td class="text-center"><h4><%= request.requester.user.email %></h4></td>
                 <td class="text-center"><h4><%= l(request.created_at, format: :custom) << " [ " << distance_of_time_in_words(request.created_at, Date.today) << t('datetime.distance_in_words.after_text_past') << " ] " %></h4></td>
