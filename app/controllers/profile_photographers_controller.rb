@@ -16,7 +16,7 @@ class ProfilePhotographersController < ApplicationController
                                       :destroy]
 
   def index
-    @photographers = ProfilePhotographer.all
+    @photographers = ProfilePhotographer.ready
   end
 
   def show

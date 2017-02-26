@@ -424,6 +424,10 @@ class ProfileModel < ApplicationRecord
 		return self.plan.premium?
 	end
 
+	def basic?
+		return self.plan.free?
+	end
+
 	def set_as_partner
 		self.is_partner = true
 		save

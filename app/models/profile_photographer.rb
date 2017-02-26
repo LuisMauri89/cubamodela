@@ -1,4 +1,11 @@
 class ProfilePhotographer < ApplicationRecord
+
+	#Scopes
+	scope :base, -> { joins(:plan).order('plans.priority ASC') }
+	scope :base_ready, -> { base.where(reviewed: true) }
+	scope :ready, -> { base_ready.order("created_at ASC") }
+	scope :not_ready, -> { where(reviewed: false).order("created_at ASC") }
+
   	# Validations
 	validates :first_name, length: { in: 3..20 }, allow_blank: true
 	validates :last_name, length: { in: 3..20 }, allow_blank: true
@@ -179,5 +186,21 @@ class ProfilePhotographer < ApplicationRecord
 
 	def get_plan_type
 		return self.plan.level == "basic" ? Constant::PLAN_BASIC_TEXT : Constant::PLAN_PREMIUM_TEXT
+	end
+
+	def publish
+		self.reviewed = true
+	end
+
+	def unpublish
+		self.reviewed = false
+	end
+
+	def premium?
+		return self.plan.premium?
+	end
+
+	def basic?
+		return self.plan.basic?
 	end
 end

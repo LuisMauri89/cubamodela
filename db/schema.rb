@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217163210) do
+ActiveRecord::Schema.define(version: 20170226015542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -351,6 +351,7 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.integer  "plan_id"
     t.integer  "current_province_id"
     t.boolean  "is_partner",          default: false
+    t.boolean  "reviewed",            default: false
     t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id", using: :btree
     t.index ["plan_id"], name: "index_profile_photographers_on_plan_id", using: :btree
   end
