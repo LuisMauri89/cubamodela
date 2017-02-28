@@ -1,0 +1,8 @@
+<% if @profile.reviewed %>
+	<%= link_to t('forms.buttons.unpublish'), no_publish_profile_model_path(@profile), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	<%= link_to get_btn_warning_text(@profile), warning_publish_profile_model_path(@profile), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin", id: "btn-warning-model" %>
+	<%= link_to t('forms.buttons.reset_warnings'), reset_warnings_profile_model_path(@profile), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin", id: "btn-reset-warning-model" %>
+<% else %>
+	<%= link_to t('forms.buttons.publish'), publish_profile_model_path(@profile), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+	<%= link_to t('forms.buttons.reject'), reject_publish_profile_model_path(@profile), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+<% end %>

@@ -39,6 +39,13 @@ module ApplicationHelper
     return collection
   end
 
+  def get_profile_type_collection
+    collection = [[t('global_selectors.profile_type.profile_type_options.select'), 'white']]
+    Constant::PROFILE_TYPES.map {|type| collection << [t('global_selectors.profile_type.profile_type_options.option_' + type), type]}
+
+    return collection
+  end
+
   # For devise flash messages keys
   def get_bootstrap_key_from_devise_key(key)
     case key
