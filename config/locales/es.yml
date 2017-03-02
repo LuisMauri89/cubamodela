@@ -53,6 +53,7 @@ es:
     - viernes
     - sábado
     formats:
+      custom: "%A, %d de %B de %Y"
       default: "%d/%m/%Y"
       long: "%A, %d de %B de %Y"
       short: "%d de %b"
@@ -106,6 +107,7 @@ es:
     - viernes
     - sábado
     formats:
+      custom: "%A, %d de %B de %Y"
       default: "%d/%m/%Y"
       long: "%A, %d de %B de %Y"
       short: "%d de %b"
