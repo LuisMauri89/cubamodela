@@ -123,9 +123,6 @@ en:
       month: Month
       second: Seconds
       year: Year
-  date:
-    formats:
-      custom: "%B %d, %Y"
   time:
     am: am
     formats:

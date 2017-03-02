@@ -75,6 +75,58 @@ es:
     - Noviembre
     - Diciembre
   datetime:
+    abbr_day_names:
+    - dom
+    - lun
+    - mar
+    - mié
+    - jue
+    - vie
+    - sáb
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic
+    day_names:
+    - domingo
+    - lunes
+    - martes
+    - miércoles
+    - jueves
+    - viernes
+    - sábado
+    formats:
+      default: "%d/%m/%Y"
+      long: "%A, %d de %B de %Y"
+      short: "%d de %b"
+    order:
+    - :day
+    - :month
+    - :year
+    month_names:
+    -
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
     distance_in_words:
       before_text: "en "
       after_text: " a partir de ahora"
@@ -123,9 +175,6 @@ es:
       month: Mes
       second: Segundo
       year: Año
-  date:
-    formats:
-      custom: "%B %d, %Y"
   time:
     am: am
     formats:
