@@ -4,9 +4,9 @@ class Language < ApplicationRecord
 	validates :name_es, length: { in: 3..20 }
 	
 	# Associations
-	has_and_belongs_to_many :profile_models
-	has_and_belongs_to_many :profile_photographers
-	has_and_belongs_to_many :profile_contractors
+	has_and_belongs_to_many :profile_models, dependent: :destroy
+	has_and_belongs_to_many :profile_photographers, dependent: :destroy
+	has_and_belongs_to_many :profile_contractors, dependent: :destroy
 
 	def name
 		case I18n.locale

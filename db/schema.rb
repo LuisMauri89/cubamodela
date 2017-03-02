@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217163210) do
+ActiveRecord::Schema.define(version: 20170228014806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.string   "name_es"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.string   "profile_type"
+    t.integer  "profile_type"
   end
 
   create_table "categories_profile_models", id: false, force: :cascade do |t|
@@ -101,6 +101,13 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.integer "category_id"
     t.index ["category_id"], name: "index_categories_profile_models_on_category_id", using: :btree
     t.index ["profile_model_id"], name: "index_categories_profile_models_on_profile_model_id", using: :btree
+  end
+
+  create_table "categories_profile_photographers", id: false, force: :cascade do |t|
+    t.integer "profile_photographer_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_categories_profile_photographers_on_category_id", using: :btree
+    t.index ["profile_photographer_id"], name: "index_cat_prof_photographers_on_profile_photographer_id", using: :btree
   end
 
   create_table "categories_searches", id: false, force: :cascade do |t|
@@ -166,7 +173,7 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "name_es"
-    t.string   "profile_type"
+    t.integer  "profile_type"
   end
 
   create_table "expertises_profile_models", id: false, force: :cascade do |t|
@@ -207,6 +214,13 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.index ["profile_model_id"], name: "index_languages_profile_models_on_profile_model_id", using: :btree
   end
 
+  create_table "languages_profile_photographers", id: false, force: :cascade do |t|
+    t.integer "profile_photographer_id"
+    t.integer "language_id"
+    t.index ["language_id"], name: "index_languages_profile_photographers_on_language_id", using: :btree
+    t.index ["profile_photographer_id"], name: "index_lang_prof_photographers_on_profile_photographer_id", using: :btree
+  end
+
   create_table "level_requests", force: :cascade do |t|
     t.string   "requester_type"
     t.integer  "requester_id"
@@ -240,7 +254,7 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "name_es"
-    t.string   "profile_type"
+    t.integer  "profile_type"
   end
 
   create_table "modalities_profile_models", id: false, force: :cascade do |t|
@@ -248,6 +262,13 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.integer "modality_id"
     t.index ["modality_id"], name: "index_modalities_profile_models_on_modality_id", using: :btree
     t.index ["profile_model_id"], name: "index_modalities_profile_models_on_profile_model_id", using: :btree
+  end
+
+  create_table "modalities_profile_photographers", id: false, force: :cascade do |t|
+    t.integer "profile_photographer_id"
+    t.integer "modality_id"
+    t.index ["modality_id"], name: "index_modalities_profile_photographers_on_modality_id", using: :btree
+    t.index ["profile_photographer_id"], name: "index_modty_prof_photographers_on_profile_photographer_id", using: :btree
   end
 
   create_table "modalities_searches", id: false, force: :cascade do |t|
@@ -351,6 +372,10 @@ ActiveRecord::Schema.define(version: 20170217163210) do
     t.integer  "plan_id"
     t.integer  "current_province_id"
     t.boolean  "is_partner",          default: false
+    t.boolean  "reviewed",            default: false
+    t.boolean  "warnings_state",      default: false
+    t.integer  "warnings_count",      default: 0
+    t.date     "warnings_last_made"
     t.index ["nationality_id"], name: "index_profile_photographers_on_nationality_id", using: :btree
     t.index ["plan_id"], name: "index_profile_photographers_on_plan_id", using: :btree
   end
@@ -472,6 +497,8 @@ ActiveRecord::Schema.define(version: 20170217163210) do
   add_foreign_key "castings_modalities", "modalities"
   add_foreign_key "categories_profile_models", "categories"
   add_foreign_key "categories_profile_models", "profile_models"
+  add_foreign_key "categories_profile_photographers", "categories"
+  add_foreign_key "categories_profile_photographers", "profile_photographers"
   add_foreign_key "categories_searches", "categories"
   add_foreign_key "categories_searches", "searches"
   add_foreign_key "coupon_charges", "coupons"
@@ -484,8 +511,12 @@ ActiveRecord::Schema.define(version: 20170217163210) do
   add_foreign_key "languages_profile_contractors", "profile_contractors"
   add_foreign_key "languages_profile_models", "languages"
   add_foreign_key "languages_profile_models", "profile_models"
+  add_foreign_key "languages_profile_photographers", "languages"
+  add_foreign_key "languages_profile_photographers", "profile_photographers"
   add_foreign_key "modalities_profile_models", "modalities"
   add_foreign_key "modalities_profile_models", "profile_models"
+  add_foreign_key "modalities_profile_photographers", "modalities"
+  add_foreign_key "modalities_profile_photographers", "profile_photographers"
   add_foreign_key "modalities_searches", "modalities"
   add_foreign_key "modalities_searches", "searches"
   add_foreign_key "profile_contractors", "plans"

@@ -25,4 +25,5 @@ class Constant
   PLAN_BASIC_TEXT = "basic"
   PLAN_PREMIUM_TEXT = "premium"
   
+  PROFILE_TYPES = ["model", "photographer"]
 end

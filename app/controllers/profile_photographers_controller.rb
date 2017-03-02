@@ -16,7 +16,25 @@ class ProfilePhotographersController < ApplicationController
                                       :destroy]
 
   def index
-    @photographers = ProfilePhotographer.all
+    @photographers = ProfilePhotographer.ready
+  end
+
+  def index_premium_photographers
+    @photographers = ProfilePhotographer.premium_photographers
+  end
+
+  def index_search
+    @search = Search.new
+    @photographers = ProfilePhotographer.ready
+  end
+
+  def perform_search
+    @search = Search.new(search_params)
+    @photographers = @search.perform("photographers")
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
@@ -49,6 +67,68 @@ class ProfilePhotographersController < ApplicationController
 
   def create
     redirect_to new_profile_photographer_path
+  end
+
+  def vote
+    set_votant
+
+    respond_to do |format|
+      @voted = @profile.try_vote!(@votant)
+      @new_count = @profile.get_votes_count
+      format.js
+    end
+  end
+
+  def publish
+    @profile.publish
+
+    respond_to do |format|
+      if @profile.save
+        ProfilePublishedJob.perform_later(@profile)
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
+  def no_publish
+    @profile.reset_warnings(false)
+    @profile.unpublish
+
+    respond_to do |format|
+      if @profile.save
+        ProfileUnpublishedJob.perform_later(@profile)
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
+  def reject_publish
+    ProfileRejectJob.perform_later(@profile)
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def warning_publish
+    @profile.set_profile_warning
+    ProfileWarningJob.perform_later(@profile)
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def reset_warnings
+    @profile.reset_warnings(true)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def edit
@@ -110,11 +190,31 @@ class ProfilePhotographersController < ApplicationController
 
     def profile_params
       params.require(:profile_photographer).permit(:first_name, :last_name, :mobile_phone,
-                                            :land_phone, :address, :gender, :nationality_id)
+                                                   :land_phone, :address, :gender, :nationality_id,
+                                                   :current_province_id, language_ids:[], 
+                                                    modality_ids:[], category_ids:[])
+    end
+
+    def search_params
+      params.require(:search).permit(:province_id, :nationality_id, 
+                                      modality_ids:[], category_ids:[])
     end
 
     def set_profile
       @profile = ProfilePhotographer.find(params[:id])
+    end
+
+    def set_votant
+      class_name = params[:votant_type]
+
+      case class_name
+      when "ProfileContractor"
+        @votant = ProfileContractor.find(params[:votant_id])
+      when "ProfileModel"
+        @votant = ProfileModel.find(params[:votant_id])
+      when "ProfilePhotographer"
+        @votant = ProfilePhotographer.find(params[:votant_id])
+      end
     end
 
     def check_if_can

@@ -1,0 +1,6 @@
+<% if @voted %>
+	$('#btn-vote').addClass('btn-disabled');
+	$('#votes-count').text("<%= t('views.profile_models.votes.count', count: @new_count) %>");
+	$('#votes-count-up').text("<%= t('views.profile_models.votes.count', count: @new_count) %>");
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.profile_models.messages.vote' %>");
+<% end %>

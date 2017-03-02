@@ -1,0 +1,22 @@
+<div class="container-min-height" id="img-list-container">
+	<% photographers.each do |photographer| %>
+		<div class="img-thumbnail list-photo-item img-wrapper">
+			<div>
+				<%= link_to(show_resume_profile_photographer_path(photographer), remote: true, class: "link-image") do %>
+						<%= image_tag photographer.get_profile_picture_url(:medium), alt: "Photographer Photo", class: "img-responsive" %>	
+				<% end %>
+			</div>
+			<div class="text-center" style="margin-top: 5px;">
+				<%= link_to photographer.get_first_name, profile_photographer_path(photographer), class: "btn btn-default btn-block btn-xs" %>
+			</div>
+			<div class="profile-status">
+				<% if photographer.premium? %>
+					<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				<% else %>
+					<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+<div id="modal-container" class="modal fade"></div>

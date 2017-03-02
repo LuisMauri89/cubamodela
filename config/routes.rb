@@ -55,6 +55,15 @@ Rails.application.routes.draw do
     get 'studies', on: :member
     get 'plans', on: :member
     get 'show_resume', on: :member
+    get 'vote/:votant_id/:votant_type', to: 'profile_photographers#vote', as: :vote, on: :member
+    get 'publish', on: :member
+    get 'no_publish', on: :member
+    get 'reject_publish', on: :member
+    get 'warning_publish', on: :member
+    get 'reset_warnings', on: :member
+    get 'search', to: 'profile_photographers#index_search', on: :collection
+    post 'search', to: 'profile_photographers#perform_search', on: :collection
+    get 'index_premium_photographers', on: :collection
   end
 
 # Models Profile routes

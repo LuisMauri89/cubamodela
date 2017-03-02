@@ -38,5 +38,5 @@ class Photo < ApplicationRecord
   # Validations
   validates_attachment :image, :presence => true,
 							   :content_type => { :content_type => /^image\/(jpeg|jpg|png|gif)$/ },
-							   :size => { :in => 0..1.megabytes }
+							   :size => { :in => 0..1.megabytes, message: I18n.t('views.photos.messages.wrong_size', value: 1) }
 end

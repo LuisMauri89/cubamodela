@@ -21,9 +21,7 @@ class ProfileModelsController < ApplicationController
                                      :destroy]
   before_action :generate_cols_batch, only: [:show, :show_professional_photos]
   before_action :generate_cols_batch_polaroid, only: [:show_polaroid_photos]
-  before_action :check_if_can, only: [:publish, 
-                                      :no_publish, 
-                                      :edit, 
+  before_action :check_if_can, only: [:edit, 
                                       :update, 
                                       :publish, 
                                       :no_publish, 

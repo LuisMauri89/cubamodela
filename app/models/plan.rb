@@ -68,4 +68,8 @@ class Plan < ApplicationRecord
 	def self.get_photographer_basic_plan
 		return where(target: "photographer", level: "basic").first
 	end
+
+	def self.get_photographer_premium_plan
+		return where(target: "photographer", level: "premium").first
+	end
 end

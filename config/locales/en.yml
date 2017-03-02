@@ -56,6 +56,10 @@ en:
       default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
+    order:
+    - :month
+    - :day
+    - :year
     month_names:
     -
     - January
@@ -70,10 +74,6 @@ en:
     - October
     - November
     - December
-    order:
-    - :month
-    - :day
-    - :year
   datetime:
     distance_in_words:
       before_text: "in "
@@ -123,9 +123,6 @@ en:
       month: Month
       second: Seconds
       year: Year
-  date:
-    formats:
-      custom: "%B %d, %Y"
   time:
     am: am
     formats:
@@ -201,6 +198,7 @@ en:
       log_in: "Log in"
       log_up: "Sign up"
       log_out: "Log out"
+      register: "Register"
       confirmation_instruction: "Didn't receive confirmation instructions?"
       lockable_instruction: "Didn't receive unlock instructions?"
       recover: "Recover"
@@ -249,6 +247,12 @@ en:
     reviews: "Reviews"
     total: "Total"
     actions: "Actions"
+  global_selectors:
+    profile_type:
+      profile_type_options:
+        select: "Select profile type"
+        option_model: "Model"
+        option_photographer: "Photographer"
   exception:
     show:
       header_text_404: "404 NOT FOUND. We are sorry for the inconvinience."
@@ -773,6 +777,10 @@ en:
           cupon_success_charge: "The Coupon has been successfully charged to your wallet"
           cupon_failed_charge: "Coupon charge failed"
     devise:
+      unlocks:
+        header_text: "Resend unlocks instructions"
+        buttons:
+          send_inst: "Resend unlocks instructions"
       registrations:
         new:
           header_text: "Sign up NOW for FREE"
@@ -1276,9 +1284,25 @@ en:
         count:
           one: "%{count} Vote"
           other: "%{count} Votes"
+    profile_photographers:
+      show_resume:
+        pending_review_text: "This profile is pending review"
+        professional_book_empty_text: "Professional book is empty"
+        buttons:
+          booking: "Book this photographer"
+          see_profile: "See full profile"
+      edit:
+        menu_options:
+          profile: "Profile"
+          albums: "Albums"
+          curriculum: "Curriculum"
+          plans: "Plans"
+          payment: "Payment"
     photos:
       delete:
         header_text: "Remove photo"
+      messages:
+        wrong_size: must be less than %{value} megabite(s)
     provinces:
       index:
         header_text: "Provinces"
