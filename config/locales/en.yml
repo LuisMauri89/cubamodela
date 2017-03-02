@@ -53,6 +53,7 @@ en:
     - Friday
     - Saturday
     formats:
+      custom: "%B %d, %Y"
       default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
