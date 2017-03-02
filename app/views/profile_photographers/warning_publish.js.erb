@@ -1,0 +1,6 @@
+<% if @profile.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'errors' %>");
+<% else %>
+	$('#notification-messages-container').html("<%= j render 'action_info', message: 'views.profile_models.messages.profile_warning' %>");
+	$('#btn-warning-model').text("<%= get_btn_warning_text(@profile) %>");
+<% end %>

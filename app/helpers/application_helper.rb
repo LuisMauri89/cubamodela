@@ -34,7 +34,14 @@ module ApplicationHelper
 
   def get_kind_collection
     collection = [[t('activerecord.attributes.user.kind_options.select'), 'white']]
-    User.kinds.keys.reject{ |k| k == "other" || k == "photographer" || k == "white" }.map {|kind| collection << [t('activerecord.attributes.user.kind_options.' + kind),kind]}
+    User.kinds.keys.reject{ |k| k == "other" || k == "white" }.map {|kind| collection << [t('activerecord.attributes.user.kind_options.' + kind),kind]}
+
+    return collection
+  end
+
+  def get_profile_type_collection
+    collection = [[t('global_selectors.profile_type.profile_type_options.select'), 'white']]
+    Constant::PROFILE_TYPES.map {|type| collection << [t('global_selectors.profile_type.profile_type_options.option_' + type), type]}
 
     return collection
   end

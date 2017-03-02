@@ -1,4 +1,12 @@
 class ProfilePhotographer < ApplicationRecord
+
+	#Scopes
+	scope :base, -> { joins(:plan).order('plans.priority ASC') }
+	scope :base_ready, -> { base.where(reviewed: true) }
+	scope :ready, -> { base_ready.order("created_at ASC") }
+	scope :not_ready, -> { where(reviewed: false).order("created_at ASC") }
+	scope :premium_photographers, -> { ready.select{ |pm| pm.premium? } }
+
   	# Validations
 	validates :first_name, length: { in: 3..20 }, allow_blank: true
 	validates :last_name, length: { in: 3..20 }, allow_blank: true
@@ -12,6 +20,8 @@ class ProfilePhotographer < ApplicationRecord
 
 	# Nomenclators
 	has_and_belongs_to_many :languages, dependent: :destroy
+	has_and_belongs_to_many :modalities, dependent: :destroy
+	has_and_belongs_to_many :categories, dependent: :destroy
 	belongs_to :current_province, class_name: "Province", foreign_key: "current_province_id", optional: true
 	belongs_to :nationality, optional: true
 
@@ -21,6 +31,9 @@ class ProfilePhotographer < ApplicationRecord
 
 	# Inbox
 	has_many :messages, -> { order "created_at DESC" }, as: :ownerable, dependent: :destroy
+
+	# Votes
+	has_many :votes, as: :ownerable, dependent: :destroy
 
 	# Studies
 	has_many :studies, as: :ownerable, dependent: :destroy
@@ -158,6 +171,62 @@ class ProfilePhotographer < ApplicationRecord
 		end
 	end
 
+	def set_profile_warning
+		self.warnings_state = true
+		self.warnings_count += 1
+		self.warnings_last_made = Date.today
+
+		save
+	end
+
+	def reset_warnings(on_save)
+		self.warnings_state = false
+		self.warnings_count = 0
+		self.warnings_last_made = nil
+		
+		if on_save
+			save
+		end
+	end
+
+	def get_votes_count
+		begin
+			return votes.sum(:votes_number).to_i
+		rescue
+			return 0
+		end
+	end
+
+	def try_vote!(votant)
+		if votes.exists?(votable_id: votant.id, votable_type: votant.class.name)
+			vote = votes.where(votable_id: votant.id, votable_type: votant.class.name).first
+
+			if (Date.today - vote.last_vote_date) >= 180 
+				vote.update(votes_number: vote.votes_number + 1, last_vote_date: Date.today)
+				return vote.save
+			else
+				return false
+			end
+		else
+			votes.create(votable: votant, votes_number: 1, last_vote_date: Date.today)
+			return true
+		end
+	end
+
+	def can_vote?(votant)
+		begin
+			vote = votes.where(votable_id: votant.id, votable_type: votant.class.name).first
+
+			if vote != nil
+				return (Date.today - vote.last_vote_date) >= 180 
+			else
+				return true
+			end		
+		rescue
+			return false
+		end
+	end
+
 	def set_as_partner
 		self.is_partner = true
 		save
@@ -172,6 +241,8 @@ class ProfilePhotographer < ApplicationRecord
 		case plan
 		when "basic"
 			self.plan = Plan.get_photographer_basic_plan
+		when "premium"
+			self.plan = Plan.get_photographer_premium_plan
 		end
 
 		save
@@ -179,5 +250,21 @@ class ProfilePhotographer < ApplicationRecord
 
 	def get_plan_type
 		return self.plan.level == "basic" ? Constant::PLAN_BASIC_TEXT : Constant::PLAN_PREMIUM_TEXT
+	end
+
+	def publish
+		self.reviewed = true
+	end
+
+	def unpublish
+		self.reviewed = false
+	end
+
+	def premium?
+		return self.plan.premium?
+	end
+
+	def basic?
+		return self.plan.basic?
 	end
 end

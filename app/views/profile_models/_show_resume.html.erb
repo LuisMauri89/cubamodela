@@ -52,7 +52,7 @@
             <h3><b><%= t('activerecord.attributes.profile_model.current_province_id') %>:</b> <%= @profile.current_province.name %></h3>
           <% end %>
           <% if @profile.nationality.present? %>
-            <h3><b><%= t('activerecord.attributes.profile_model.nationality_id') %>:</b> <%= @profile.nationality.name_es %></h3>
+            <h3><b><%= t('activerecord.attributes.profile_model.nationality_id') %>:</b> <%= @profile.nationality.name %></h3>
           <% end %>
           <% if @profile.chest.present? %>
             <h3><b><%= t('activerecord.attributes.profile_model.chest') %>:</b> <%= @profile.chest %> / <%= (@profile.chest/2.54).to_i %>''</h3>
