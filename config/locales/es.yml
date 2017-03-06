@@ -201,6 +201,7 @@ es:
         all: "Ver todos"
         castings: "Encontrar casting"
         search: "Buscar"
+        search_random: "Vista random"
         premium: "Modelos Premium"
         professional: "Modelos Professional"
         new_faces: "Nuevas Caras"
@@ -283,6 +284,7 @@ es:
       change: "Cambiar"
       dont_show_again: "No mostrar otra vez"
       read_more: "Leer más"
+      randomize: "Randomizar de nuevo"
     remember_me: "Recordar usuario y contraseña"
     warnings:
       delete: "Está seguro que desea borrar %{value}?"

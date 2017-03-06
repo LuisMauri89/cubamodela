@@ -148,6 +148,7 @@ en:
         all: "See all"
         castings: "Find casting"
         search: "Search"
+        search_random: "Random view"
         premium: "Premium models"
         professional: "Professional models"
         new_faces: "New faces"
@@ -230,6 +231,7 @@ en:
       change: "Change"
       dont_show_again: "Don't show again"
       read_more: "Read more"
+      randomize: "Randomize again"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you want to delete %{value}?"
