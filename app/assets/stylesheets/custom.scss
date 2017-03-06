@@ -1886,6 +1886,7 @@ h3 .small-info{
 
 .list-photo-item{
 	/* Add margin-right to image in images list */
+	margin-top: 10px;
 	margin-right: 20px;
 }
 
@@ -1894,6 +1895,9 @@ a.link-image:hover{
 	background-color: transparent !important;
 	border-color: transparent !important;
 	color: transparent !important;
+}
+
+#list-models-random-container{
 }
 
 /* END Index images list */
