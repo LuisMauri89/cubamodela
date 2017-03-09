@@ -1,5 +1,5 @@
 class ChatMessagesController < ApplicationController
-  before_action :set_chat_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_chat_message, only: [:show, :edit, :update, :destroy, :reply, :respond]
 
   # GET /chat_messages
   # GET /chat_messages.json
@@ -8,8 +8,8 @@ class ChatMessagesController < ApplicationController
   end
 
   def index_owner_scoped
-    owner = params[:owner_type].constantize.find(params[:owner_id])
-    @chats = owner.chat_messages.order_desc
+    @owner = params[:owner_type].constantize.find(params[:owner_id])
+    @chats = @owner.chat_messages.order_desc
 
     respond_to do |format|
       format.js
@@ -59,6 +59,12 @@ class ChatMessagesController < ApplicationController
         format.json { render json: @chat_message.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def reply
+  end
+
+  def respond
   end
 
   # DELETE /chat_messages/1
