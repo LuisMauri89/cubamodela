@@ -97,6 +97,7 @@ class Casting < ApplicationRecord
   has_many :photos, as: :attachable, dependent: :destroy
   has_and_belongs_to_many :modalities, dependent: :destroy
   has_and_belongs_to_many :categories, dependent: :destroy
+  has_many :chat_messages, as: :ownerable, dependent: :destroy
 
   # Casting reviews
   has_one :casting_review, dependent: :destroy

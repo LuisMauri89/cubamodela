@@ -23,6 +23,7 @@ class Booking < ApplicationRecord
   # Associations
   belongs_to :profile_contractor
   belongs_to :profile_model
+  has_many :chat_messages, -> { where parent: nil }, as: :ownerable, dependent: :destroy
 
 
   # Direct booking
@@ -58,7 +59,7 @@ class Booking < ApplicationRecord
   # Custom Validators
   def payment_valid
     if is_string_integer?(payment)
-      errors.add(:payment, :min_payment_per_model) if payment.to_i <= Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE
+      errors.add(:payment, :min_payment_per_model) if payment.to_i < Constant::CASTING_MIN_PAYMENT_PER_MODEL_VALUE
     else
       errors.add(:payment, :wrong_payment_per_model) if payment != Constant::CASTING_NO_PAYMENT_PER_MODEL_TEXT
     end

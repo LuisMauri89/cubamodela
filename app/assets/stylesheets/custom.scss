@@ -955,6 +955,57 @@ h3 .small-info{
 
 /* END Spinner */
 
+/* Small Spinner */
+
+#small-spinner-container{
+	position: relative;
+	width: 20%;
+	z-index: 1030;
+	padding-top: 0px;
+  	padding-bottom: 0px;
+  	background: transparent;
+}
+
+.small-spinner {
+  	margin: 0px auto;
+  	width: 100%;
+  	height: 50px;
+  	text-align: center;
+  	font-size: 8px;
+}
+
+.small-spinner > div {
+	background-color: #337ab7;
+	height: 100%;
+	width: 6px;
+	display: inline-block;
+	  
+	-webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+	animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.small-spinner .rect2 {
+	-webkit-animation-delay: -1.1s;
+	animation-delay: -1.1s;
+}
+
+.small-spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.small-spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.small-spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+  	animation-delay: -0.8s;
+}
+
+/* END Small Spinner */
+
 /* Custom errors */
 
 #error-logo-link{
@@ -2073,6 +2124,10 @@ a.link-image:hover{
 
 .btn-small-right-margin{
 	margin-right: 5px !important;
+}
+
+.btn-small-bottom-margin{
+	margin-bottom: 5px !important;
 }
 
 .img-inline{

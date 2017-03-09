@@ -94,6 +94,11 @@ Rails.application.routes.draw do
     get 'translate', on: :member
   end
 
+  # Chat Messages routes
+  resources :chat_messages do
+    get 'chat/messages/:owner_id/:owner_type', to: 'chat_messages#index_owner_scoped', as: :owner_scoped, on: :collection
+  end
+
 # Categories routes
   resources :categories
 
