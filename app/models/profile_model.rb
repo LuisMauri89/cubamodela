@@ -331,7 +331,12 @@ class ProfileModel < ApplicationRecord
 	# Profile methods
 	def can_apply?(casting)
 		begin
-			return !casting_ids.include?(casting.id)
+			if casting_ids.include?(casting.id)
+				intent = self.intents.where(casting_id: casting.id).first
+				return intent.invited?
+			else
+				return true
+			end
 		rescue
 			return true
 		end
