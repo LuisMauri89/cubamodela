@@ -5,6 +5,17 @@
 				<div id="actions-container">
 				    <%= render 'admin_actions_container' %>
 				</div>
+				<div id="admin-model-info-container" class="profile-section">
+					<div class="row">
+						<div class="col-md-4">
+							<p class="lead">Mobile Phone: <%= @profile.mobile_phone.present? ? @profile.mobile_phone : "Missing" %></p>
+							<p class="lead">Land Phone: <%= @profile.land_phone.present? ? @profile.land_phone : "Missing" %></p>
+						</div>
+						<div class="col-md-8">
+							<p class="lead">Address: <%= @profile.address.present? ? @profile.address : "Missing" %></p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	<% end %>
@@ -16,6 +27,17 @@
 			<div class="col-md-12">
 				<div id="actions-container">
 				    <%= render 'admin_actions_container' %>
+				</div>
+				<div id="admin-model-info-container" class="profile-section">
+					<div class="row">
+						<div class="col-md-4">
+							<p>Mobile Phone: <%= @profile.mobile_phone.present? ? @profile.mobile_phone : "Missing" %></p>
+							<p>Land Phone: <%= @profile.land_phone.present? ? @profile.land_phone : "Missing" %></p>
+						</div>
+						<div class="col-md-8">
+							<p>Address: <%= @profile.address.present? ? @profile.address : "Missing" %></p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
