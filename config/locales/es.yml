@@ -813,7 +813,12 @@ es:
       edit:
         header_text: "Editar categoría"
       show:
-        header_text: "Mostrar categoría"    
+        header_text: "Mostrar categoría"
+    chat_messages:
+      index:
+        header_text: "Conversaciones"
+        header_note: "Si tiene una duda, pregunta o sugerencia acerca de la reservacion, por favor comienze una conversacion o unase a una."
+        chats_empty_text: "Cero conversaciones iniciadas." 
     colors:
       index:
         header_text: "Colores"

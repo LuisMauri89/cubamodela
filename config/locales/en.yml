@@ -760,7 +760,12 @@ en:
       edit:
         header_text: "Edit category"
       show:
-        header_text: "Show category"    
+        header_text: "Show category"
+    chat_messages:
+      index:
+        header_text: "Conversations"
+        header_note: "If you have a doubt or a question or even a sugestion about the reservation, please start a new conversation or join one."
+        chats_empty_text: "Cero conversations started."
     colors:
       index:
         header_text: "Colors"
