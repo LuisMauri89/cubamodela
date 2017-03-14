@@ -1,0 +1,8 @@
+<% if @chat_message.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'shared/errors', entity: @chat_message %>");
+<% else %>
+	$('#reply-form-container-<%= @parent.id %>').empty();
+	$('#btn-reply-<%= @parent.id %>').show();
+	$('#inner-children-container-<%= @parent.id %>').append("<%= j render 'new_reply', child: @chat_message  %>");
+	$('#notification-messages-container').html("<%= j render 'shared/action_info', message: 'views.chat_messages.messages.reply_conversation' %>");
+<% end %>

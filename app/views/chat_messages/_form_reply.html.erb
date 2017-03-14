@@ -1,0 +1,26 @@
+<%= form_for(chat_message, url: respond_chat_messages_path, remote: true, html: { class: "form-horizontal" }) do |f| %>
+  
+  <% if chat_message.errors.any? %>
+    <div class="alert alert-danger text-center">
+      <%= t('forms.errors.header_text') %> <%= t('forms.errors.count', count: chat_message.errors.count) %>.
+      <ul>
+      <% chat_message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :fromable_id, value: current_user.profileable.id %>
+  <%= f.hidden_field :fromable_type, value: current_user.profileable.class.name.to_s %>
+  <%= f.hidden_field :ownerable_id, value: @owner.id %>
+  <%= f.hidden_field :ownerable_type, value: @owner.class.name.to_s %>
+  <%= f.hidden_field :parent_id, value: @parent.id %>
+
+  <div class="form-group text-center">
+    <%= f.text_area :body, size: "60x5", class: "form-control" %>
+  </div>
+
+  <%= f.submit t('forms.buttons.save'), class: "btn btn-primary btn-xs pull-right btn-small-right-margin" %>
+  <button id="btn-reply-cancel-<%= @parent.id %>" type="button" class="btn btn-primary pull-right btn-xs btn-small-right-margin"><%= t('forms.buttons.cancel') %></button>
+<% end %>

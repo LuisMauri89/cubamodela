@@ -1,0 +1,12 @@
+<% if @from == "manage-casting" %>
+	$('#notification-messages-container').empty();
+	$(".list-group-item").removeClass('active');
+	$("#list-item-<%= @item_needs_selection %>").parent().addClass('active');
+
+	$("#current-list-item-container").empty();
+	$("#current-list-item-container").append("<%= j render 'conversation_container_and_spinner' %>");
+<% end %>
+
+$('#chat-container').empty();
+$('#chat-container').html("<%= j render 'index_owner_scoped', chats: @chats %>");
+$('#small-spinner-container').hide();

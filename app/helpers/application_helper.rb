@@ -121,11 +121,11 @@ module ApplicationHelper
 
   # For users counts
   def get_models_count
-    ProfileModel.count
+    ProfileModel.ready.count
   end
 
   def get_photographers_count
-    ProfilePhotographer.count
+    ProfilePhotographer.ready.count
   end
 
   def get_contractors_count
@@ -160,6 +160,11 @@ module ApplicationHelper
 
   def get_youtube_link
     return "#"
+  end
+
+  # Access Helpers
+  def current_user_can_start_or_join_conversation(owner, profile)
+    return owner.current_user_can_start_or_join_conversation(profile)
   end
 
 end
