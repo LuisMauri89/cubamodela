@@ -64,7 +64,7 @@ class CastingsController < ApplicationController
   end
 
   def index_invite
-    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit).reject{ |profile| !profile.can_apply?(@casting) }
+    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit).reject{ |profile| profile.involve_with_casting?(@casting) }
 
     respond_to do |format|
       format.js
@@ -182,7 +182,7 @@ class CastingsController < ApplicationController
   end
 
   def manage
-    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit).reject{ |profile| !profile.can_apply?(@casting) }
+    @models = ProfileModel.ready.offset(@index * @limit).limit(@limit).reject{ |profile| profile.involve_with_casting?(@casting) }
   end
 
   def edit

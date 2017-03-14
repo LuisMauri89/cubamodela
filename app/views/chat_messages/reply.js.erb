@@ -1,0 +1,8 @@
+$('#btn-reply-<%= @parent.id %>').hide();
+$('#reply-form-container-<%= @parent.id %>').empty();
+$('#reply-form-container-<%= @parent.id %>').html("<%= j render 'form_reply', chat_message: @chat_message %>");
+
+$('#btn-reply-cancel-<%= @parent.id %>').click(function(){
+		$('#reply-form-container-<%= @parent.id %>').empty();
+		$('#btn-reply-<%= @parent.id %>').show();
+});

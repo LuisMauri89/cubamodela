@@ -51,20 +51,44 @@
 
 <div class="row row-profile-container">
 	<div class="col-md-8">
-		<div class="profile-section">
-			<h4><%= t('views.bookings.show.headers.dates') %></h4>
-			<p class="profile-value">
-            	<b>
-            		<%= t('activerecord.attributes.booking.casting_date') %>:
-            	</b> 
-            	<%= l(@booking.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
-            </p>
-			<p class="profile-value">
-            	<b>
-            		<%= t('activerecord.attributes.booking.shooting_date') %>:
-            	</b> 
-            	<%= l(@booking.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
-            </p>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="profile-section">
+					<h4><%= t('views.bookings.show.headers.dates') %></h4>
+					<p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.booking.casting_date') %>:
+		            	</b> 
+		            	<%= l(@booking.casting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.casting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
+		            </p>
+					<p class="profile-value">
+		            	<b>
+		            		<%= t('activerecord.attributes.booking.shooting_date') %>:
+		            	</b> 
+		            	<%= l(@booking.shooting_date, format: :custom) %> [ <%= distance_of_time_in_words(Date.today, @booking.shooting_date.to_date) << t('datetime.distance_in_words.after_text') %> ]
+		            </p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="profile-section relative-position">
+					<span id="booking-id" class="hide"><%= @booking.id %></span>
+					<div id="small-spinner-container" class="pull-right">
+				        <div class="small-spinner">
+				          <div class="rect1"></div>
+				          <div class="rect2"></div>
+				          <div class="rect3"></div>
+				          <div class="rect4"></div>
+				          <div class="rect5"></div>
+				        </div>
+				    </div>
+					<h4><%= t('views.chat_messages.index.header_text') %></h4>
+					<h5><%= t('views.chat_messages.index.header_note') %></h5>
+					<div id="chat-container">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-4">
@@ -76,7 +100,7 @@
 
 <div class="row row-profile-container">
 	<div class="col-md-12">
-		<%= link_to t('forms.buttons.back'), request.referrer, class: "btn btn-primary btn-lg btn-small-right-margin pull-right" %>
+		<%= link_to t('forms.buttons.back'), request.referrer, class: "btn btn-primary btn-lg btn-small-right-margin btn-small-bottom-margin pull-right" %>
 	</div>
 </div>
 

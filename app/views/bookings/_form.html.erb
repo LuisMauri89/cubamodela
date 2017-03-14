@@ -12,6 +12,17 @@
       </div>
     <% end %>
 
+    <% if @charge_success != nil && !@charge_success %>
+      <div class="alert alert-danger alert-dismissible alert-messages-box" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">
+            &times;
+          </span>
+        </button>
+        <%= @message %>.
+      </div>
+    <% end %>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= t('views.bookings.edit.form_sections.information') %></h3>

@@ -27,7 +27,7 @@ class User < ApplicationRecord
   before_save :set_profile_meta, if: :new_record?
 
   def set_profile_meta
-    if self.profileable.nil?
+    if self.profileable.nil? && self.user?
 
       case self.kind
       when "contractor"
@@ -64,7 +64,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
   def confirmation_required?
-    !self.admin?
+    !self.admin? && !Rails.env.development?
   end
 
   # Profile

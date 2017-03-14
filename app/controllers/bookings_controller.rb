@@ -40,7 +40,6 @@ class BookingsController < ApplicationController
 		        @charge_success, @message = Bank.charge(current_user.profileable, Constant::BOOKING_CREATION_COST.to_f, "booking_creation", false)
 		        if @charge_success
 		          @booking.save
-		          # CastingReview.create(casting: @casting, profile_contractor: @casting.ownerable, show_again: true)
 		          BookingInvitationJob.perform_later(@booking.profile_model, @booking)
 		          format.html { redirect_to custom_index_contractor_bookings_path(@booking.profile_contractor), notice: I18n.t('views.bookings.messages.create') }
 		        else

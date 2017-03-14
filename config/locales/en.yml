@@ -230,6 +230,8 @@ en:
       change: "Change"
       dont_show_again: "Don't show again"
       read_more: "Read more"
+      new_conversation: "New conversation"
+      reply: "Reply"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you want to delete %{value}?"
@@ -760,7 +762,15 @@ en:
       edit:
         header_text: "Edit category"
       show:
-        header_text: "Show category"    
+        header_text: "Show category"
+    chat_messages:
+      index:
+        header_text: "Conversations"
+        header_note: "If you have a doubt or a question or even a sugestion about the reservation, please start a new conversation or join one."
+        chats_empty_text: "Cero conversations started."
+      messages:
+        create_conversation: "New conversation created"
+        reply_conversation: "Your message has been successfully added to the conversation"
     colors:
       index:
         header_text: "Colors"

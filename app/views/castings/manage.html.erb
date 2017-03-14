@@ -38,6 +38,10 @@
             <h4 id="list-item-confirmed" class="list-group-item-heading">Confirmed</h4>
             <p class="list-group-item-text">Models who confirm.</p>
           <% end %>
+          <%= link_to(owner_scoped_chat_messages_path(owner_id: @casting.id, owner_type: @casting.class.name, from: "manage-casting", item_needs_selection: 'conversations'), remote: true, class: "list-group-item show-spinner") do %>
+            <h4 id="list-item-conversations" class="list-group-item-heading">Conversations</h4>
+            <p class="list-group-item-text">On going conversations with models.</p>
+          <% end %>
         </div>
       </div>
     </div>

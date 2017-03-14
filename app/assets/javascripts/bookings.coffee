@@ -3,6 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "turbolinks:load", ->
+
+	if $('#booking-id').length > 0
+		booking_id = $('#booking-id').text();
+		$.getScript("/chat_messages/index/scoped/" + booking_id + "/Booking");
 	
 	chboxContainer = $('#chbox-direct-container');
 	chbox = chboxContainer.find(':checkbox');

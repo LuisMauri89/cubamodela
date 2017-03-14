@@ -1,0 +1,37 @@
+<%= form_for(chat_message) do |f| %>
+  <% if chat_message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chat_message.errors.count, "error") %> prohibited this chat_message from being saved:</h2>
+
+      <ul>
+      <% chat_message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ownerable_id %>
+    <%= f.text_field :ownerable_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fromable_id %>
+    <%= f.text_field :fromable_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :parent_id %>
+    <%= f.number_field :parent_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

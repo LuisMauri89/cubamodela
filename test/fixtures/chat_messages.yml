@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  ownerable: one
+  ownerable_type: Ownerable
+  fromable: one
+  fromable_type: Fromable
+  parent_id: 1
+
+two:
+  body: MyString
+  ownerable: two
+  ownerable_type: Ownerable
+  fromable: two
+  fromable_type: Fromable
+  parent_id: 1

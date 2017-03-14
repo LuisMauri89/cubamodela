@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-2">
+		<%= image_tag chat.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+	</div>
+	<div class="col-md-10">
+		<blockquote>
+		  <p><%= chat.body %></p>
+		</blockquote>
+		<p class="small-date pull-right">
+			<%= distance_of_time_in_words(chat.created_at, Time.current) << t('datetime.distance_in_words.after_text_past') %>
+		</p>
+	</div>
+</div>
+<div id="inner-children-container-<%= chat.id %>"></div>
+<div>
+	<%= link_to t('forms.buttons.reply'), reply_chat_message_path(chat, @owner.id, @owner.class.name), remote: true, class: "btn btn-primary btn-xs pull-right", id: "btn-reply-" << chat.id.to_s %>
+</div>
+<span class="clearfix end-conversation"></span>
+<div class="reply-form-container" id="reply-form-container-<%= chat.id %>"></div>
+<br/>

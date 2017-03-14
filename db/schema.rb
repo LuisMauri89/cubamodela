@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228014806) do
+ActiveRecord::Schema.define(version: 20170308153756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,20 @@ ActiveRecord::Schema.define(version: 20170228014806) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["profileable_type", "profileable_id"], name: "index_charges_on_profileable_type_and_profileable_id", using: :btree
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.string   "body"
+    t.string   "ownerable_type"
+    t.integer  "ownerable_id"
+    t.string   "fromable_type"
+    t.integer  "fromable_id"
+    t.integer  "parent_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["fromable_type", "fromable_id"], name: "index_chat_messages_on_fromable_type_and_fromable_id", using: :btree
+    t.index ["ownerable_type", "ownerable_id"], name: "index_chat_messages_on_ownerable_type_and_ownerable_id", using: :btree
+    t.index ["parent_id"], name: "index_chat_messages_on_parent_id", using: :btree
   end
 
   create_table "cloth_sizes", force: :cascade do |t|
@@ -299,6 +313,27 @@ ActiveRecord::Schema.define(version: 20170228014806) do
     t.index ["attachable_type", "attachable_id"], name: "index_photos_on_attachable_type_and_attachable_id", using: :btree
   end
 
+  create_table "plan_charges", force: :cascade do |t|
+    t.string   "plan_name"
+    t.decimal  "wallet_charge_amount"
+    t.integer  "plan_subscription_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["plan_subscription_id"], name: "index_plan_charges_on_plan_subscription_id", using: :btree
+  end
+
+  create_table "plan_subscriptions", force: :cascade do |t|
+    t.datetime "end_of_term"
+    t.datetime "last_charge"
+    t.integer  "plan_id"
+    t.string   "chargeable_type"
+    t.integer  "chargeable_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["chargeable_type", "chargeable_id"], name: "index_plan_subscriptions_on_chargeable_type_and_chargeable_id", using: :btree
+    t.index ["plan_id"], name: "index_plan_subscriptions_on_plan_id", using: :btree
+  end
+
   create_table "plans", force: :cascade do |t|
     t.integer  "target",                                                default: 0
     t.integer  "album_professional_max",                                default: 0
@@ -414,6 +449,20 @@ ActiveRecord::Schema.define(version: 20170228014806) do
     t.datetime "updated_at",         null: false
     t.index ["nationality_id"], name: "index_searches_on_nationality_id", using: :btree
     t.index ["province_id"], name: "index_searches_on_province_id", using: :btree
+  end
+
+  create_table "service_charges", force: :cascade do |t|
+    t.integer  "service"
+    t.integer  "on_action"
+    t.string   "chargeable_type"
+    t.integer  "chargeable_id"
+    t.string   "asociateable_type"
+    t.integer  "asociateable_id"
+    t.decimal  "wallet_charge_amount"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["asociateable_type", "asociateable_id"], name: "index_service_charges_on_asociateable_type_and_asociateable_id", using: :btree
+    t.index ["chargeable_type", "chargeable_id"], name: "index_service_charges_on_chargeable_type_and_chargeable_id", using: :btree
   end
 
   create_table "shoe_sizes", force: :cascade do |t|

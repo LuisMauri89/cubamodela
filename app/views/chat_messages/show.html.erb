@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @chat_message.body %>
+</p>
+
+<p>
+  <strong>Ownerable:</strong>
+  <%= @chat_message.ownerable %>
+</p>
+
+<p>
+  <strong>Fromable:</strong>
+  <%= @chat_message.fromable %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @chat_message.parent_id %>
+</p>
+
+<%= link_to 'Edit', edit_chat_message_path(@chat_message) %> |
+<%= link_to 'Back', chat_messages_path %>

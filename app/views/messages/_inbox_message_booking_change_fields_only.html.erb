@@ -20,12 +20,12 @@
 			<div class="translated-text">
 				<% if @message.asociateable.description_en.present? %>
 					<p><%= @message.asociateable.description_en %></p>
-					<footer>
+					<footer class="text_gray">
 						<%= @message.asociateable.description_es %>
 					</footer>
 				<% else %>
 					<p class="title"><%= @message.asociateable.description_es %></p>
-					<footer>
+					<footer class="text_gray">
 						<%= @message.asociateable.description_en %>
 					</footer>
 				<% end %>
