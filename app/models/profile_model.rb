@@ -342,6 +342,14 @@ class ProfileModel < ApplicationRecord
 		end
 	end
 
+	def involve_with_casting?(casting)
+		begin
+			return casting_ids.include?(casting.id)
+		rescue
+			return false
+		end
+	end
+
 	def publish
 		self.reviewed = true
 	end

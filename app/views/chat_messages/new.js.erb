@@ -1,0 +1,8 @@
+$('.btn-new-conversation').hide();
+$('#new-conversation-form-container').empty();
+$('#new-conversation-form-container').html("<%= j render 'form_conversation', chat_message: @chat_message %>");
+
+$('#btn-new-conversation-up-cancel').click(function(){
+		$('#new-conversation-form-container').empty();
+		$('.btn-new-conversation').show();
+});

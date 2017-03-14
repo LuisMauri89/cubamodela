@@ -1,51 +1,65 @@
-<div id="btn-new-conversation-up-container">
-	<%= link_to t('forms.buttons.new_conversation'), new_chat_message_path(owner_id: @owner.id, owner_type: @owner.class.name), remote: true, class: "btn btn-primary btn-xs pull-right" %>
-	<span class="clearfix"></span>
-</div>
-<% if chats.any? %>
-	<% chats.each do |chat| %>
-		<div class="row">
-			<div class="col-md-2">
-				<%= image_tag chat.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+<% @show_chat_btns = current_user_can_start_or_join_conversation(@owner, current_user.profileable) %>
+
+<% if @show_chat_btns %>
+	<div id="btn-new-conversation-up-container">
+		<%= link_to t('forms.buttons.new_conversation'), new_chat_message_path(owner_id: @owner.id, owner_type: @owner.class.name), remote: true, class: "btn btn-primary btn-xs pull-right btn-new-conversation", id: "btn-new-conversation-up" %>
+		<span class="clearfix"></span>
+		<div id="new-conversation-form-container"></div>
+	</div>
+<% end %>
+<div id="inner-chat-container">
+
+	<% if chats.any? %>
+		<% chats.each do |chat| %>
+			<div class="row">
+				<div class="col-md-2">
+					<%= image_tag chat.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+				</div>
+				<div class="col-md-10">
+					<blockquote>
+					  <p><%= chat.body %></p>
+					</blockquote>
+					<p class="small-date pull-right">
+						<%= distance_of_time_in_words(chat.created_at, Time.current) << t('datetime.distance_in_words.after_text_past') %>
+					</p>
+				</div>
 			</div>
-			<div class="col-md-10">
-				<blockquote>
-				  <p><%= chat.body %></p>
-				</blockquote>
-				<p class="small-date pull-right">
-					<%= distance_of_time_in_words(chat.created_at, Time.current) << t('datetime.distance_in_words.after_text_past') %>
-				</p>
+
+			<div id="inner-children-container-<%= chat.id %>">
+				
+				<% if chat.children.any? %>
+					<% chat.children.order_asc.each do |child| %>
+						<div class="row" style="padding-left: 50px;">
+							<div class="col-md-2">
+								<%= image_tag child.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
+							</div>
+							<div class="col-md-10">
+								<blockquote>
+								  <p><%= child.body %></p>
+								</blockquote>
+								<p class="small-date pull-right">
+									<%= distance_of_time_in_words(child.created_at, Time.current) << t('datetime.distance_in_words.after_text_past') %>
+								</p>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+
 			</div>
-		</div>
-		<% if chat.children.any? %>
-			<% chat.children.order_asc.each do |child| %>
-				<div class="row" style="padding-left: 50px;">
-					<div class="col-md-2">
-						<%= image_tag child.fromable.get_profile_picture_url(:small), alt: "Model Photo", class: "img-center-horizontal img-responsive" %>
-					</div>
-					<div class="col-md-10">
-						<blockquote>
-						  <p><%= child.body %></p>
-						</blockquote>
-						<p class="small-date pull-right">
-							<%= distance_of_time_in_words(child.created_at, Time.current) << t('datetime.distance_in_words.after_text_past') %>
-						</p>
-					</div>
+			<% if @show_chat_btns %>
+				<div>
+					<%= link_to(t('forms.buttons.reply'), reply_chat_message_path(chat, @owner.id, @owner.class.name), remote: true, class: "btn btn-primary btn-xs pull-right", id: "btn-reply-" << chat.id.to_s) %>
 				</div>
 			<% end %>
+			<span class="clearfix end-conversation"></span>
+			<div class="reply-form-container" id="reply-form-container-<%= chat.id %>"></div>
+			<br/>
 		<% end %>
-		<div>
-			<%= link_to t('forms.buttons.reply'), reply_chat_message_path(chat, @owner.id, @owner.class.name), remote: true, class: "btn btn-primary btn-xs pull-right" %>
-		</div>
-		<span class="clearfix end-conversation"></span>
 		<br/>
+		<span class="end-chat-messages"></span>
+		<span class="clearfix"></span>
+	<% else %>
+		<h4 class="text-center"><%= t('views.chat_messages.index.chats_empty_text') %></h4>
 	<% end %>
-	<br/>
-	<span class="end-chat-messages"></span>
-	<div>
-		<%= link_to t('forms.buttons.new_conversation'), new_chat_message_path(@owner.id, @owner.class.name), remote: true, class: "btn btn-primary btn-xs pull-left" %>
-	</div>
-	<span class="clearfix end-chat-messages"></span>
-<% else %>
-	<h4 class="text-center"><%= t('views.chat_messages.index.chats_empty_text') %></h4>
-<% end %>
+
+</div>

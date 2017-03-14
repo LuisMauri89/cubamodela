@@ -316,4 +316,12 @@ class Booking < ApplicationRecord
   def is_string_integer?(str)
     true if Integer(str) rescue false
   end
+
+  def current_user_can_start_or_join_conversation(profile)
+    begin
+      return profile_contractor == profile || profile_model == profile
+    rescue
+      return false
+    end
+  end
 end

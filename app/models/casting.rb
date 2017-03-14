@@ -97,7 +97,7 @@ class Casting < ApplicationRecord
   has_many :photos, as: :attachable, dependent: :destroy
   has_and_belongs_to_many :modalities, dependent: :destroy
   has_and_belongs_to_many :categories, dependent: :destroy
-  has_many :chat_messages, as: :ownerable, dependent: :destroy
+  has_many :chat_messages, -> { where parent: nil }, as: :ownerable, dependent: :destroy
 
   # Casting reviews
   has_one :casting_review, dependent: :destroy
@@ -548,5 +548,13 @@ class Casting < ApplicationRecord
 
   def is_string_integer?(str)
     true if Integer(str) rescue false
+  end
+
+  def current_user_can_start_or_join_conversation(profile)
+    begin
+      return ownerable == profile || profile_model_ids.include?(profile.id)
+    rescue
+      return false
+    end
   end
 end

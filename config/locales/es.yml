@@ -283,6 +283,8 @@ es:
       change: "Cambiar"
       dont_show_again: "No mostrar otra vez"
       read_more: "Leer más"
+      new_conversation: "Nueva conversacion"
+      reply: "Responder"
     remember_me: "Recordar usuario y contraseña"
     warnings:
       delete: "Está seguro que desea borrar %{value}?"
@@ -818,7 +820,10 @@ es:
       index:
         header_text: "Conversaciones"
         header_note: "Si tiene una duda, pregunta o sugerencia acerca de la reservacion, por favor comienze una conversacion o unase a una."
-        chats_empty_text: "Cero conversaciones iniciadas." 
+        chats_empty_text: "Cero conversaciones iniciadas."
+      messages:
+        create_conversation: "Se ha creado una nueva conversacion"
+        reply_conversation: "Su mensaje ha sido agregado satisfactoriamente a la conversacion"
     colors:
       index:
         header_text: "Colores"

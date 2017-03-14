@@ -55,6 +55,10 @@ class Ability
         end
         can :create, Review
         can :show, Study
+
+        can [:create, :reply, :respond], ChatMessage do |chat_message|
+            chat_message.ownerable.current_user_can_start_or_join_conversation(user.profileable)
+        end
     elsif user.model?
         can :read, Album
         can :index_custom_model, Booking
@@ -77,6 +81,9 @@ class Ability
         can [:read, :show, :create], Study
         can [:update, :destroy], Study do |study|
             study.try(:ownerable) == user.profileable
+        end
+        can [:create, :reply, :respond], ChatMessage do |chat_message|
+            chat_message.ownerable.current_user_can_start_or_join_conversation(user.profileable)
         end
     elsif user.photographer?
         can :read, Album
