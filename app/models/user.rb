@@ -64,7 +64,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
 
   def confirmation_required?
-    !self.admin?
+    !self.admin? && !Rails.env.development?
   end
 
   # Profile
