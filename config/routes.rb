@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     get 'index_professional_models', on: :collection
     get 'index_premium_models', on: :collection
     get 'index_castings_custom', on: :member
+    get 'index_random', on: :collection
   end
 
 # Photographers Profile routes

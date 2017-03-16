@@ -32,6 +32,7 @@ class ProfileModel < ApplicationRecord
 	scope :new_faces, -> { base_ready.where(level: "new_face").order("created_at ASC") }
 	scope :professional_models, -> { base_ready.where(level: "professional_model").order("created_at ASC") }
 	scope :premium_models, -> { ready.select{ |pm| pm.premium? } }
+	scope :models_with_professional_photos, -> { base_ready.select{ |pm| pm.get_profesional_book_album_photos_count > 0 } }
 
 	# User
 	has_one :user, as: :profileable
@@ -163,6 +164,15 @@ class ProfileModel < ApplicationRecord
 			return albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos.limit(self.plan.album_professional_max).count
 		rescue
 			return 0
+		end
+	end
+
+	def get_profesional_book_album_random_photo(size)
+		begin
+			rand_index = rand(get_profesional_book_album_photos_count)
+			return albums.where(name: Constant::ALBUM_PROFESSIONAL_NAME).first.photos[rand_index].image.url(size)
+		rescue
+			return get_missing_profile_picture(size)
 		end
 	end
 
