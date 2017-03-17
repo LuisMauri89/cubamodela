@@ -116,4 +116,25 @@ class ApplicationController < ActionController::Base
     return I18n.locale == "es".to_sym ? %w[modelos fotografos Cuba modelo fotografo] : %w[models photographers Cuba model photographer]
   end
 
+  def generate_list_on_columns_container(collection, columns)
+    if collection != nil && columns > 1
+
+      @column_size = 12 / columns
+      
+      columns_index = 0
+      @container = []
+
+      columns.times do
+        @container << []
+      end
+
+      collection.each do |item|
+        @container[columns_index] << item
+
+        columns_index = columns_index == (columns - 1) ? 0 : columns_index + 1
+      end
+
+    end
+  end
+
 end
