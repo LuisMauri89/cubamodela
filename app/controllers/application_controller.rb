@@ -113,7 +113,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_meta_keywords
-    return I18n.locale == "es".to_sym ? %w[modelos fotografos Cuba modelo fotografo] : %w[models photographers Cuba model photographer]
+    return I18n.locale == "es".to_sym ? ["modelo cubano", "modelos cubanos", "fotografo cubano", "maquillaje cubano", "agencia cubana modelos"] : ["cuban model", "cuban models", "cuban photographer", "cuban makeup", "cuban model agency"]
   end
 
   def generate_list_on_columns_container(collection, columns)
