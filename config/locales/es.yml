@@ -190,6 +190,8 @@ es:
       buttons:
         log_in: "Entrar con mi cuenta"
         log_up: "No tengo cuenta"
+        banner_log_up_header_text: "Si todavia no tienes cuenta"
+        banner_log_up_subheader_text: "CLICK aqui para crearte una gratis"
     items:
       services: "Servicios"
       us: "Sobre nosotros"

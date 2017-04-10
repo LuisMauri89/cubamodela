@@ -137,6 +137,8 @@ en:
       buttons:
         log_in: "Already have an account?"
         log_up: "I don't have an account"
+        banner_log_up_header_text: "If you don't have an account already"
+        banner_log_up_subheader_text: "CLICK here to get one for free"
     items:
       services: "Services"
       us: "About us"

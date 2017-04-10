@@ -286,6 +286,21 @@ body {
 		margin-left: 20px !important;
 		margin-right: 20px !important;
 	}
+
+	.carousel-caption > div{
+		margin-bottom: 5% !important;
+		opacity: 0.8 !important;
+	}
+
+	.carousel-caption > div > a > p:first-child{
+		margin-bottom: 5px !important;
+		font-size: 14px !important;
+	}
+
+	.carousel-caption > div > a > p:last-child{
+		margin-bottom: 3px !important;
+		font-size: 13px !important;
+	}
 }
 
 /* Tablets */
@@ -545,6 +560,21 @@ body {
 		margin-left: 30px !important;
 		margin-right: 30px !important;
 	}
+
+	.carousel-caption > div{
+		margin-bottom: 10% !important;
+		opacity: 0.8 !important;
+	}
+
+	.carousel-caption > div > a > p:first-child{
+		margin-bottom: 5px !important;
+		font-size: 22px !important;
+	}
+
+	.carousel-caption > div > a > p:last-child{
+		margin-bottom: 3px !important;
+		font-size: 18px !important;
+	}
 }
 
 /* Desktops and Laptops */
@@ -682,6 +712,21 @@ body {
 	.partner-link{
 		margin-bottom: 20px;
 	}
+
+	.carousel-caption > div{
+		margin-bottom: 15% !important;
+		opacity: 0.8 !important;
+	}
+
+	.carousel-caption > div > a > p:first-child{
+		margin-bottom: 5px !important;
+		font-size: 25px !important;
+	}
+
+	.carousel-caption > div > a > p:last-child{
+		margin-bottom: 3px !important;
+		font-size: 20px !important;
+	}
 }
 
 /* Large screens */
@@ -818,6 +863,21 @@ body {
 
 	.partner-link{
 		margin-bottom: 20px;
+	}
+
+	.carousel-caption > div{
+		margin-bottom: 20% !important;
+		opacity: 0.8 !important;
+	}
+
+	.carousel-caption > div > a > p:first-child{
+		margin-bottom: 5px !important;
+		font-size: 30px !important;
+	}
+
+	.carousel-caption > div > a > p:last-child{
+		margin-bottom: 3px !important;
+		font-size: 25px !important;
 	}
 }
 
@@ -1266,11 +1326,7 @@ h3 .small-info{
 
 /* Home banner */
 
-.carousel-caption a{
-	margin-top: 30px;
-	margin-bottom: 10px;
-	font-size: 30px !important;
-}
+
 
 /* END Home banner */
 
