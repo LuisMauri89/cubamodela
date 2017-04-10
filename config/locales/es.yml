@@ -186,6 +186,10 @@ es:
       custom: "%B %d, %Y"
     pm: pm
   menu:
+    auth:
+      buttons:
+        log_in: "Entrar con mi cuenta"
+        log_up: "No tengo cuenta"
     items:
       services: "Servicios"
       us: "Sobre nosotros"

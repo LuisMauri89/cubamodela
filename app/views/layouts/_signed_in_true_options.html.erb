@@ -3,7 +3,7 @@
 	<li><%= link_to t('menu.options.control_panel'), control_panel_path %></li>
 	<li><a href="#">t('menu.options.inbox')</a></li>
 	<li role="separator" class="divider"></li>
-	<li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+	<li class="visible-lg-block"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
 <% when "user" %>
 	<% case current_user.kind %>
 	<% when "contractor" %>
@@ -30,15 +30,15 @@
 				<% end %>
 			</li>
 			<li><%= link_to t('menu.options.new_casting'), new_casting_path %></li>
-			<li role="separator" class="divider"></li>
-			<li>
+			<li role="separator" class="divider visible-lg-block"></li>
+			<li class="visible-lg-block">
 				<div class="text-center">
 					<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
 				</div>
 			</li>
 		<% end %>
 		<li role="separator" class="divider"></li>
-		<li><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
+		<li class="visible-lg-block"><%= link_to t('menu.options.log_out'), destroy_user_session_path, method: :delete %></li>
 	<% when "model" %>
 		<li><%= link_to t('menu.options.account'), edit_user_registration_path %></li>
 		<li id="navbar-option-profile">

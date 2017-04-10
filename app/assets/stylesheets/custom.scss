@@ -1687,6 +1687,21 @@ h3 .small-info{
 	width: 170px;
 }
 
+.collapsed-separator{
+	min-height: 5px !important;
+	width: 100% !important;
+	padding-left: 35% !important;
+	padding-right: 35% !important;
+}
+
+.collapsed-separator > p{
+	min-height: 5px !important;
+	width: 100% !important;
+	border-bottom-color: #337ab7 !important;
+	border-bottom-style: solid !important;
+	border-bottom-width: 1px !important;
+}
+
 /* END Navbar */
 
 /* Forms and Tables */
@@ -2153,6 +2168,10 @@ a.link-image:hover{
 .model-bottom-actions{
 	margin-top: 20px !important;
 	margin-bottom: 10px;
+}
+
+.btn-small-all-margin{
+	margin-right: 2px !important;
 }
 
 .btn-small-right-margin{

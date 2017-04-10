@@ -133,6 +133,10 @@ en:
       custom: "%B %d, %Y"
     pm: pm
   menu:
+    auth:
+      buttons:
+        log_in: "Already have an account?"
+        log_up: "I don't have an account"
     items:
       services: "Services"
       us: "About us"
