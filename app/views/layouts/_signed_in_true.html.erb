@@ -1,4 +1,4 @@
-<div id="navbar-signed-in-settings-container" class="navbar-right">
+<div id="navbar-signed-in-settings-container" class="navbar-right visible-lg-inline">
 	<% if current_user.admin? %>
 		<span id="navbar-admin-email"><%= t('menu.messages.admin') %> <%= current_user.email %></span>
 	<% else %>
@@ -20,4 +20,62 @@
 	</div>
 	<%= link_to t('forms.buttons.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-primary navbar-btn", style: "margin-right: 20px;" %>
 	<%= render 'layouts/locales_options' %>
+</div>
+
+<div id="navbar-signed-in-settings-container" class="navbar-right visible-sm-inline visible-md-inline">
+	<div class="pull-right btn-small-right-margin">
+		<%= render 'layouts/locales_options' %>
+	</div>
+	<span class="pull-right navbar-btn btn-small-right-margin"></span>
+	<%= link_to t('forms.buttons.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-primary navbar-btn pull-right btn-small-right-margin" %>
+	<% if current_user.admin? %>
+		<span id="navbar-admin-email" class="navbar-btn pull-right btn-small-right-margin"><%= t('menu.messages.admin') %> <%= current_user.email %></span>
+	<% else %>
+		<span id="navbar-profile-photo" class="navbar-btn pull-right btn-small-right-margin">
+			<%= image_tag current_user.profileable.nil? ? "missing_profile_picture_32.png" : current_user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded" %>
+		</span>
+	<% end %>
+
+	<span class="clearfix"></span>
+
+	<div class="navbar-btn pull-right btn-small-right-margin">
+		<span class="text-primary"><%= t('menu.options.wallet.header_text') %></span> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+	</div>
+
+	<span class="clearfix"></span>
+
+	<ul id="navbar-ul" class="nav navbar-nav text-center">
+		<li><p class="lead text-primary"><%= t('menu.options.header_text') %></p></li>
+		<%= render 'layouts/signed_in_true_options' %>
+	</ul>
+</div>
+
+<div id="navbar-signed-in-settings-container" class="navbar-right visible-xs-inline">
+	<%= link_to t('forms.buttons.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-primary navbar-btn pull-right btn-small-right-margin" %>
+	<% if current_user.admin? %>
+		<span id="navbar-admin-email" class="navbar-btn pull-right btn-small-right-margin"><%= t('menu.messages.admin') %> <%= current_user.email %></span>
+	<% else %>
+		<span id="navbar-profile-photo" class="navbar-btn pull-right btn-small-right-margin">
+			<%= image_tag current_user.profileable.nil? ? "missing_profile_picture_32.png" : current_user.profileable.get_profile_picture_url(:tiny), alt: "Model Photo", class: "img-rounded" %>
+		</span>
+	<% end %>
+
+	<span class="clearfix"></span>
+
+	<div class="pull-right btn-small-right-margin">
+		<%= render 'layouts/locales_options' %>
+	</div>
+
+	<span class="clearfix"></span>
+
+	<div class="navbar-btn pull-right btn-small-right-margin">
+		<span class="text-primary"><%= t('menu.options.wallet.header_text') %></span> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+	</div>
+
+	<span class="clearfix"></span>
+
+	<ul id="navbar-ul" class="nav navbar-nav text-center">
+		<li><p class="lead text-primary"><%= t('menu.options.header_text') %></p></li>
+		<%= render 'layouts/signed_in_true_options' %>
+	</ul>
 </div>

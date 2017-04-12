@@ -71,7 +71,7 @@ class ProfileModelsController < ApplicationController
   def index_random
     @models = ProfileModel.models_with_professional_photos
 
-    generate_cols_batch_random
+    generate_list_on_columns_container(@models, 4)
 
     respond_to do |format|
       format.html
@@ -347,24 +347,6 @@ class ProfileModelsController < ApplicationController
         @cols = [value + 1, value, value]
       when 2
         @cols = [value + 1, value + 1, value]
-      end
-    end
-
-    def generate_cols_batch_random
-      @cols = []
-      count = ProfileModel.models_with_professional_photos.count
-      rest = count % 4
-      value = (count / 4).to_i
-
-      case rest
-      when 0
-        @cols = [value, value, value, value]
-      when 1
-        @cols = [value + 1, value, value, value]
-      when 2
-        @cols = [value + 1, value + 1, value, value]
-      when 3
-        @cols = [value + 1, value + 1, value + 1, value]
       end
     end
 

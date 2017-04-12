@@ -1,133 +1,37 @@
 <div class="container-min-height" id="img-list-container">
 	<div class="row row-no-space">
 
-		<div class="col-md-3 col-xs-3 cell-no-space">
-			<% models[0..(cols[0] - 1)].each do |model| %>
-				
-				<div class="img-thumbnail list-photo-item img-wrapper">
-					<div>
-						<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
-								<%= image_tag model.get_profesional_book_album_random_photo(:big), alt: "Model Photo", class: "img-responsive" %>
-						<% end %>
-					</div>
-					<div class="text-center" style="margin-top: 5px;">
-						<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
-					</div>
-					<div class="profile-status">
-						<% if model.new_face? %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+		<% @container.each do |column| %>
+			<div class="col-md-<%= @column_size %> col-xs-<%= @column_size %> cell-no-space">
+				<% column.each do |model| %>
+					<div class="img-thumbnail list-photo-item img-wrapper">
+						<div>
+							<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
+									<%= image_tag model.get_profesional_book_album_random_photo(:big), alt: "Model Photo", class: "img-responsive" %>
 							<% end %>
-						<% else %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_professional_model_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+						</div>
+						<div class="text-center" style="margin-top: 5px;">
+							<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
+						</div>
+						<div class="profile-status">
+							<% if model.new_face? %>
+								<% if model.premium? %>
+									<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+								<% else %>
+									<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
+								<% end %>
 							<% else %>
-								<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+								<% if model.premium? %>
+									<%= image_tag "cubamodela_label_professional_model_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+								<% else %>
+									<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
+								<% end %>
 							<% end %>
-						<% end %>
+						</div>
 					</div>
-				</div>
-
-			<% end %>
-		</div>
-
-		<div class="col-md-3 col-xs-3 cell-no-space">
-			<% models[cols[0]..(cols[0] * cols[1])].each do |model| %>
-				
-				<div class="img-thumbnail list-photo-item img-wrapper">
-					<div>
-						<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
-								<%= image_tag model.get_profesional_book_album_random_photo(:big), alt: "Model Photo", class: "img-responsive" %>
-						<% end %>
-					</div>
-					<div class="text-center" style="margin-top: 5px;">
-						<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
-					</div>
-					<div class="profile-status">
-						<% if model.new_face? %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% end %>
-						<% else %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_professional_model_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
-
-			<% end %>
-		</div>
-
-		<div class="col-md-3 col-xs-3 cell-no-space">
-			<% models[(cols[0] + cols[1])..((cols[0] + cols[1]) * cols[2])].each do |model| %>
-				
-				<div class="img-thumbnail list-photo-item img-wrapper">
-					<div>
-						<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
-								<%= image_tag model.get_profesional_book_album_random_photo(:big), alt: "Model Photo", class: "img-responsive" %>
-						<% end %>
-					</div>
-					<div class="text-center" style="margin-top: 5px;">
-						<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
-					</div>
-					<div class="profile-status">
-						<% if model.new_face? %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% end %>
-						<% else %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_professional_model_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
-
-			<% end %>
-		</div>
-
-		<div class="col-md-3 col-xs-3 cell-no-space">
-			<% models[(cols[0] + cols[1] + cols[2])..((cols[0] + cols[1] + cols[2]) * cols[3])].each do |model| %>
-				
-				<div class="img-thumbnail list-photo-item img-wrapper">
-					<div>
-						<%= link_to(show_resume_profile_model_path(model), remote: true, class: "link-image") do %>
-								<%= image_tag model.get_profesional_book_album_random_photo(:big), alt: "Model Photo", class: "img-responsive" %>
-						<% end %>
-					</div>
-					<div class="text-center" style="margin-top: 5px;">
-						<%= link_to model.get_first_name, profile_model_path(model), class: "btn btn-default btn-block btn-xs" %>
-					</div>
-					<div class="profile-status">
-						<% if model.new_face? %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_new_face_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_new_face_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "New face", title: t('views.profile_models.index.tooltips.new_face'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% end %>
-						<% else %>
-							<% if model.premium? %>
-								<%= image_tag "cubamodela_label_professional_model_premium_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% else %>
-								<%= image_tag "cubamodela_label_professional_model_cuba_models.png", height: 40, width: 40, class: "img-inline", alt: "Professional model", title: t('views.profile_models.index.tooltips.professional_model'), data:{ toggle: "tooltip", placement: "bottom" } %>
-							<% end %>
-						<% end %>
-					</div>
-				</div>
-
-			<% end %>
-		</div>
+				<% end %>
+			</div>
+		<% end %>
 
 	</div>
 </div>

@@ -4,7 +4,7 @@
 			<%= link_to t('forms.buttons.randomize'), index_random_profile_models_path, remote: true, class: "btn btn-primary btn-lg show-spinner" %>
 		</div>
 		<div id="list-models-random-container">
-			<%= render 'list_models_random', models: @models, cols: @cols %>
+			<%= render 'list_models_random' %>
 		</div>
 	</div>
 </div>

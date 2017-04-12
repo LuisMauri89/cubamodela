@@ -13,12 +13,13 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse">
-			<ul id="navbar-ul" class="nav navbar-nav">
+			<ul id="navbar-ul" class="nav navbar-nav visible-lg-block">
 				<li><a href="#models-container" data-turbolinks="false"><%= t('menu.items.models') %></a></li>
 				<li><a href="#photographers-container" data-turbolinks="false"><%= t('menu.items.photographers') %></a></li>
 				<li><a href="#us-container" data-turbolinks="false"><%= t('menu.items.us') %></a></li>
 				<li><a href="#gallery-home-container" data-turbolinks="false"><%= t('menu.items.gallery') %></a></li>
 			</ul>
+
 			<% if user_signed_in? %>
 				<% if current_user.model? %>
 					<%= link_to t('menu.options.find_casting'), castings_path, class: "btn btn-primary navbar-btn navbar-btn-custom-extra" %>

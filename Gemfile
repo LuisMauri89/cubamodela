@@ -40,6 +40,7 @@ gem 'cancancan'
 
 # Media proccess upload
 gem 'paperclip'
+gem 'paperclip-meta'
 
 # Css animate
 gem "animate-rails"
