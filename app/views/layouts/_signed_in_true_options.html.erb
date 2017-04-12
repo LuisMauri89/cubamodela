@@ -72,7 +72,7 @@
 				<%= link_to t('menu.options.profile_view'), profile_model_path(current_user.profileable) %>	
 			</li>
 			<li role="separator" class="divider"></li>
-			<li>
+			<li class="visible-lg-block">
 				<div class="text-center">
 					<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
 				</div>
@@ -94,7 +94,7 @@
 				<% end %>
 			</li>
 			<li role="separator" class="divider"></li>
-			<li>
+			<li class="visible-lg-block">
 				<div class="text-center">
 					<%= t('menu.options.wallet.header_text') %> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
 				</div>
