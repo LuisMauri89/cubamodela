@@ -293,6 +293,7 @@ es:
       new_conversation: "Nueva conversacion"
       reply: "Responder"
       randomize: "Randomizar de nuevo"
+      upgrade: "Subir"
     remember_me: "Recordar usuario y contraseña"
     warnings:
       delete: "Está seguro que desea borrar %{value}?"
@@ -661,6 +662,8 @@ es:
           set_basic_plan_failed: "Activar plan basico fallido."
           set_premium_plan_success: "Plan premium activado."
           set_premium_plan_failed: "Activar plan premium fallido."
+          set_model_to_professional_success: "Subir modelo a profesional exitoso"
+          set_model_to_professional_failed: "Subir modelo a profesional fallo"
         buttons:
           send_message: "Enviar mensaje"
           set_as_partner: "Asociar Partner"
@@ -1352,6 +1355,7 @@ es:
         admin:
           no_warning_made_text: "No hay advertencias en el perfil"
           request_text: "Sulicitud realizada:"
+          upgrade_model_professional_text: "Subir a profesional:"
       votes:
         count:
           one: "%{count} Vote"

@@ -77,7 +77,19 @@ class AdminController < ApplicationController
 
 	def reject_model_request_to_upgrade
 		respond_to do |format|
-		if @request.destroy
+			if @request.destroy
+				format.js
+			else
+				format.js
+			end
+		end
+	end
+
+	def upgrade_model_to_professional
+		@profile = ProfileModel.find(params[:profile_model_id])
+
+		respond_to do |format|
+			if @profile.upgrade_level!
 				format.js
 			else
 				format.js
