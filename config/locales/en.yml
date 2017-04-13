@@ -240,6 +240,7 @@ en:
       new_conversation: "New conversation"
       reply: "Reply"
       randomize: "Randomize again"
+      upgrade: "Upgrade"
     remember_me: "Remember me"
     warnings:
       delete: "Are you sure you want to delete %{value}?"
@@ -608,6 +609,8 @@ en:
           set_basic_plan_failed: "Set basic plan failed."
           set_premium_plan_success: "Set premium plan success."
           set_premium_plan_failed: "Set premium plan failed."
+          set_model_to_professional_success: "Upgrade model to professional success"
+          set_model_to_professional_failed: "Upgrade model to professional failed"
         buttons:
           send_message: "Send message"
           set_as_partner: "Create Partnership"
@@ -1299,6 +1302,7 @@ en:
         admin:
           no_warning_made_text: "No warning has been made"
           request_text: "Request made:"
+          upgrade_model_professional_text: "Upgrade to professional:"
       votes:
         count:
           one: "%{count} Vote"

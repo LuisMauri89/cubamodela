@@ -414,6 +414,15 @@ class ProfileModel < ApplicationRecord
 		self.professional_model!
 	end
 
+	def upgrade_level!
+		if can_upgrade_level?
+			upgrade_level
+			return save
+		end
+
+		return false
+	end
+
 	def upgrade_plan(plan)
 		case plan
 		when "premium"

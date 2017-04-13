@@ -13,4 +13,11 @@
 		<%= link_to t('form.buttons.accept'), accept_model_request_to_upgrade_path(@profile.level_request, from: "profile_model_show"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
 	    <%= link_to t('form.buttons.reject'), reject_model_request_to_upgrade_path(@profile.level_request, from: "profile_model_show"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
 	</div>
+<% else %>
+	<% if @profile.new_face? %>
+		<div class="content-inline" id="upgrade-container">
+			<p class="content-inline" style="margin-left: 20px;"><%= t('views.profile_models.show.admin.upgrade_model_professional_text') %></p>
+			<%= link_to t('forms.buttons.upgrade'), upgrade_model_to_professional_path(@profile, from: "profile_model_show"), remote: true, class: "btn btn-primary btn-sm btn-small-right-margin" %>
+		</div>
+	<% end %>
 <% end %>
