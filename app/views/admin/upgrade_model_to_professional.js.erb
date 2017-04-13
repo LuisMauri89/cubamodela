@@ -1,0 +1,6 @@
+<% if @profile.errors.any? %>
+	$('#notification-messages-container').html("<%= j render 'shared/error_info', message: 'views.admin.users.messages.set_model_to_professional_failed' %>");
+<% else %>
+	$('#notification-messages-container').html("<%= j render 'shared/action_info', message: 'views.admin.users.messages.set_model_to_professional_success' %>");
+	$('#upgrade-container').remove();
+<% end %>

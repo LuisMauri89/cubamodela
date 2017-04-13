@@ -173,6 +173,8 @@ Rails.application.routes.draw do
     get '/model_pending_upgrade_level_review/', to: 'admin#model_pending_upgrade_level_review', as: :model_pending_upgrade_level_review
     get '/accept_model_request_to_upgrade/:level_request_id', to: 'admin#accept_model_request_to_upgrade', as: :accept_model_request_to_upgrade
     get '/reject_model_request_to_upgrade/:level_request_id', to: 'admin#reject_model_request_to_upgrade', as: :reject_model_request_to_upgrade
+    get '/upgrade_model_to_professional/:profile_model_id', to: 'admin#upgrade_model_to_professional', as: :upgrade_model_to_professional
+    
     get '/coupons/', to: 'admin#coupons', as: :coupons
     post '/create_coupons/', to: 'admin#create_coupons', as: :create_coupons
     get '/send_coupon_to/:coupon_id', to: 'admin#send_coupon_to', as: :send_coupon_to
