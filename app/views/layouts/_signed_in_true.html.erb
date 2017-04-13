@@ -38,9 +38,11 @@
 
 	<span class="clearfix"></span>
 
-	<div class="navbar-btn pull-right btn-small-right-margin">
-		<span class="text-primary"><%= t('menu.options.wallet.header_text') %></span> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
-	</div>
+	<% if current_user.user? %>
+		<div class="navbar-btn pull-right btn-small-right-margin">
+			<span class="text-primary"><%= t('menu.options.wallet.header_text') %></span> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+		</div>
+	<% end %>
 
 	<span class="clearfix"></span>
 
@@ -68,9 +70,11 @@
 
 	<span class="clearfix"></span>
 
-	<div class="navbar-btn pull-right btn-small-right-margin">
-		<span class="text-primary"><%= t('menu.options.wallet.header_text') %></span> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
-	</div>
+	<% if current_user.user? %>
+		<div class="navbar-btn pull-right btn-small-right-margin">
+			<span class="text-primary"><%= t('menu.options.wallet.header_text') %></span> <span class="badge"><%= t('menu.options.wallet.count', count: current_user.profileable.wallet.amount.to_f) %></span>
+		</div>
+	<% end %>
 
 	<span class="clearfix"></span>
 
