@@ -319,19 +319,9 @@ class ProfileModelsController < ApplicationController
     end
 
     def generate_cols_batch
-      @cols = []
-      count = @profile.get_profesional_book_album_photos_count
-      rest = count % 3
-      value = (count / 3).to_i
+      @photos = @profile.get_profesional_book_album_photos
 
-      case rest
-      when 0
-        @cols = [value, value, value]
-      when 1
-        @cols = [value + 1, value, value]
-      when 2
-        @cols = [value + 1, value + 1, value]
-      end
+      generate_list_on_columns_container(@photos, 3)
     end
 
     def generate_cols_batch_polaroid
