@@ -3,14 +3,11 @@
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="home-line-users-amounts-container-auth-<%= user_signed_in?.to_s %>">
             <div class="row text-center">
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-6 col-xs-6">
                     <h2><%= t('views.static_pages.home.models_text').upcase %>  <span class="home-line-users-count"><%= get_models_count %></span></h2>
                 </div>
-                <div class="col-md-4 col-xs-4">
+                <div class="col-md-6 col-xs-6">
                     <h2><%= t('views.static_pages.home.photographers_text').upcase %>  <span class="home-line-users-count"><%= get_photographers_count %></span></h2>
-                </div>
-                <div class="col-md-4 col-xs-4">
-                    <h2><%= t('views.static_pages.home.places_text').upcase %>  <span class="home-line-users-count">125</span></h2>
                 </div>
             </div>
         </div>
@@ -30,7 +27,7 @@
               </div>
               <div id="subscribe-subheader" class="text-center">
                 <h3>
-                  UD desea contratar a nuestros modelos? Registrece como EMPLEADOR.
+                  UD desea contratar a nuestros modelos cubanos? Registrece como EMPLEADOR.
                 </h3>
               </div>
               <div id="subscribe-subheader-2" class="text-center">
@@ -56,10 +53,10 @@
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="models-container" class="relative-position">
           <div id="models-header">
-              <h2 class="text-center">DESCUBRE MODELOS UNICOS</h2>
+              <h2 class="text-center">DESCUBRE MODELOS CUBANOS</h2>
           </div>
           <div class="relative-position">
-              <%= image_tag "cubamodela_home_section_models_cuba_models_up.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
+              <%= image_tag "cubamodela_home_section_models_cuba_models_up.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
               <div id="models-btn-new-face" class="text-center">
                 <%= link_to "NUEVA CARA", index_new_faces_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "2.0s" } %>
               </div>
@@ -75,9 +72,9 @@
               <div class="notify"></div>
           </div>
           <div class="relative-position">
-              <%= image_tag "cubamodela_home_section_models_cuba_models_down.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
+              <%= image_tag "cubamodela_home_section_models_cuba_models_down.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
               <div id="models-btn-search" class="text-center">
-                <%= link_to "BUSCAR", search_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.0s" } %>
+                <%= link_to "BUSCAR MODELOS CUBANOS", search_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.0s" } %>
               </div>
               <div class="notify"></div>
           </div>
@@ -88,7 +85,7 @@
 <div class="row row-no-space">
     <div class="col-md-12 cell-no-space">
         <div id="learn-profile-container" class="relative-position">
-          <%= image_tag "cubamodela_home_section_lern_profile_cuba_models_es.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
+          <%= image_tag "cubamodela_home_section_lern_profile_cuba_models_es.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
           <div id="learn-profile-btn-learn" class="text-center">
             <%= link_to "APRENDER (En desarrollo)", "#", class: "btn-home", data: { animation: "animated pulse", delay: "2.0s" } %>
           </div>
@@ -100,7 +97,7 @@
 <div class="row row-no-space">
     <div class="col-md-12 cell-no-space">
         <div id="photographers-container" class="relative-position">
-            <%= image_tag "cubamodela_home_section_photographers_cuba_models_es.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
+            <%= image_tag "cubamodela_home_section_photographers_cuba_models_es.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
             <div id="photographers-footer" class="text-center">
                 <%= link_to "PRONTO", "#", class: "btn-home", data: { animation: "animated pulse", delay: "2.0s" } %>
             </div>
@@ -120,42 +117,42 @@
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_facebook_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_facebook_cuba_models.png", alt: "CubaModela Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.0s" } %> 
+                      <%= image_tag "cubamodela_icon_facebook_cuba_models.png", alt: "CubaModela Cuban Models Cuban Photographers Facebook Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.0s" } %> 
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_instagram_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Instagram Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
+                      <%= image_tag "cubamodela_icon_instagram_cuba_models.png", alt: "CubaModela Cuban Models Cuban Photographers Instagram Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "1.5s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_pinterest_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Pinterest Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
+                      <%= image_tag "cubamodela_icon_pinterest_cuba_models.png", alt: "CubaModela Cuban Models Cuban Photographers Pinterest Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_google_plus_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Google+ Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
+                      <%= image_tag "cubamodela_icon_googleplus_cuba_models.png", alt: "CubaModela Cuban Models Cuban Photographers Google+ Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "2.5s" } %> 
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_twitter_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Twitter Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
+                      <%= image_tag "cubamodela_icon_twitter_cuba_models.png", alt: "CubaModela Cuban Models Cuban Photographers Twitter Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.0s" } %>  
                   <% end %>
                 </div>
               </li>
               <li>
                 <div class="section-social-icon">          
                   <%= link_to(get_youtube_link, class: "link-image", :target => "_blank") do %>
-                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela YouTube Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
+                      <%= image_tag "cubamodela_icon_youtube_cuba_models.png", alt: "CubaModela Cuban Models Cuban Photographers YouTube Icon", class: "img-responsive", data: { animation: "animated pulse", delay: "3.5s" } %>  
                   <% end %>
                 </div>
               </li>
@@ -200,7 +197,7 @@
               <div class="col-md-4 col-xs-4 partner-cell">
                     <div class="well partner-container">
                         <div class="partner-logo">
-                            <%= image_tag "cubamodela_home_section_partners_cuba_models_designer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_designer.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
                         </div>
                         <p class="text-center partner-ocupation">Diseñador</p>
                         <p class="text-center partner-name">Patricio Herrera</p>
@@ -212,7 +209,7 @@
               <div class="col-md-4 col-xs-4 partner-cell">
                     <div class="well partner-container">
                         <div class="partner-logo">
-                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
                         </div>
                         <p class="text-center partner-ocupation">Fotografo</p>
                         <p class="text-center partner-name">Camila Serrano</p>
@@ -224,7 +221,7 @@
               <div class="col-md-4 col-xs-4 partner-cell">
                     <div class="well partner-container">
                         <div class="partner-logo">
-                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
+                            <%= image_tag "cubamodela_home_section_partners_cuba_models_photographer.jpg", alt: "CubaModela Cuban Models Cuban Photographers Cuba Havana Models Fashion Photography Partner", class: "img-circle img-responsive img-full" %>
                         </div>
                         <p class="text-center partner-ocupation">Fotografo</p>
                         <p class="text-center partner-name">Xuan Linh</p>
@@ -243,7 +240,7 @@
         <div id="gallery-home-container" class="relative-position">
             <%= image_tag "cubamodela_home_section_gallery_cuba_models.jpg", alt: "CubaModela Cuba Havana Models Fashion Photography", class: "img-responsive img-full" %>
             <div id="gallery-home-footer" class="text-center">
-                <%= link_to "VISITA NUESTRA GALERIA", static_pages_gallery_path, class: "btn-gallery", data: { animation: "animated pulse", delay: "2.0s" } %>
+                <%= link_to "VISITA NUESTRA GALERIA DE MODELOS CUBANOS", static_pages_gallery_path, class: "btn-gallery", data: { animation: "animated pulse", delay: "2.0s" } %>
             </div>
             <div class="notify"></div>
         </div>
