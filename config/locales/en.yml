@@ -151,7 +151,7 @@ en:
       more: "More"
     items_options:
       models:
-        all: "See all"
+        all: "Cuban Models"
         castings: "Find casting"
         search: "Search"
         search_random: "Random view"
@@ -175,7 +175,7 @@ en:
       control_panel: "Control Panel"
       inbox: "Inbox"
       account: "Account"
-      profile: "Profile"
+      profile: "Edit Profile"
       castings: "Castings"
       bookings: "Bookings"
       log_out: "Log out"
@@ -504,8 +504,8 @@ en:
         update: "%{value} has been successfully updated."
     footer:
       left_text: "In colaboration with Camila Studio"
-      link_models_text: "Models"
-      link_photographers_text: "Photographers"
+      link_models_text: "Cuban Models"
+      link_photographers_text: "Cuban Photographers"
       link_castings_text: "Castings"
       link_registration_text: "Registration"
       link_build_profile_text: "Build profile example"
@@ -523,13 +523,13 @@ en:
           submit_button: "Sign up NOW"
           account_text: "Already have an account?"
           recover_text: "Forgot your password?"
-        models_text: "Models"
-        photographers_text: "Photographers"
+        models_text: "Cuban Models"
+        photographers_text: "Cuban Photographers"
         places_text: "Places"
         sections:
           models:
           photographers:
-        provide_profile_text: "Please provide more info to reach your profile"
+        provide_profile_text: "Please provide more info to upgrade your profile"
         provide_profile_link_text: "Edit your profile"
         beta_version_coming_soon_text: "Beta version, we will make the launch very soon, feel free to look around. /  CubaModela se encuentra actualmente en version de prueba, las bases de datos seran limpiadas y restauradas para el lanzamiento."
       gallery:

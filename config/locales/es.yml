@@ -204,7 +204,7 @@ es:
       more: "Más"
     items_options:
       models:
-        all: "Ver todos"
+        all: "Modelos Cubanos"
         castings: "Encontrar casting"
         search: "Buscar"
         search_random: "Vista random"
@@ -228,7 +228,7 @@ es:
       control_panel: "Pane de Control"
       inbox: "Bandeja de Entrada"
       account: "Cuenta"
-      profile: "Perfil"
+      profile: "Editar Perfil"
       castings: "Castings"
       bookings: "Reservas"
       log_out: "Cerrar sesión"
@@ -557,8 +557,8 @@ es:
         update: "%{value} ha sido actualizado satisfactoriamente."
     footer:
       left_text: "En colaboración con Camila´s Studio"
-      link_models_text: "Modelos"
-      link_photographers_text: "Fotógrafos"
+      link_models_text: "Modelos Cubanos"
+      link_photographers_text: "Fotógrafos Cubanos"
       link_castings_text: "Castings"
       link_registration_text: "Registro"
       link_build_profile_text: "Build profile example"
@@ -576,8 +576,8 @@ es:
           submit_button: "Regístrate AHORA"
           account_text: "¿Ya tienes una cuenta?"
           recover_text: "¿Olvidaste la contraseña?"
-        models_text: "Modelos"
-        photographers_text: "Fotografos"
+        models_text: "Modelos Cubanos"
+        photographers_text: "Fotografos Cubanos"
         places_text: "Lugares"
         sections:
           models:
