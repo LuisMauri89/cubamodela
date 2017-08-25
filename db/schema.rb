@@ -314,27 +314,6 @@ ActiveRecord::Schema.define(version: 20170316223834) do
     t.index ["attachable_type", "attachable_id"], name: "index_photos_on_attachable_type_and_attachable_id", using: :btree
   end
 
-  create_table "plan_charges", force: :cascade do |t|
-    t.string   "plan_name"
-    t.decimal  "wallet_charge_amount"
-    t.integer  "plan_subscription_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["plan_subscription_id"], name: "index_plan_charges_on_plan_subscription_id", using: :btree
-  end
-
-  create_table "plan_subscriptions", force: :cascade do |t|
-    t.datetime "end_of_term"
-    t.datetime "last_charge"
-    t.integer  "plan_id"
-    t.string   "chargeable_type"
-    t.integer  "chargeable_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["chargeable_type", "chargeable_id"], name: "index_plan_subscriptions_on_chargeable_type_and_chargeable_id", using: :btree
-    t.index ["plan_id"], name: "index_plan_subscriptions_on_plan_id", using: :btree
-  end
-
   create_table "plans", force: :cascade do |t|
     t.integer  "target",                                                default: 0
     t.integer  "album_professional_max",                                default: 0
@@ -450,20 +429,6 @@ ActiveRecord::Schema.define(version: 20170316223834) do
     t.datetime "updated_at",         null: false
     t.index ["nationality_id"], name: "index_searches_on_nationality_id", using: :btree
     t.index ["province_id"], name: "index_searches_on_province_id", using: :btree
-  end
-
-  create_table "service_charges", force: :cascade do |t|
-    t.integer  "service"
-    t.integer  "on_action"
-    t.string   "chargeable_type"
-    t.integer  "chargeable_id"
-    t.string   "asociateable_type"
-    t.integer  "asociateable_id"
-    t.decimal  "wallet_charge_amount"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["asociateable_type", "asociateable_id"], name: "index_service_charges_on_asociateable_type_and_asociateable_id", using: :btree
-    t.index ["chargeable_type", "chargeable_id"], name: "index_service_charges_on_chargeable_type_and_chargeable_id", using: :btree
   end
 
   create_table "shoe_sizes", force: :cascade do |t|
