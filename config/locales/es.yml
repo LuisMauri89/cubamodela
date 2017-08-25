@@ -595,6 +595,7 @@ es:
         message_sent: "El mensaje fue enviado"
         buttons:
           send_message: "Enviar"
+          edit_profile: "Editar perfil"
       control_panel:
         sections:
           users:
