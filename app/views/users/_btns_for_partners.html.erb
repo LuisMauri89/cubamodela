@@ -25,5 +25,8 @@
 	<li>
 		<%= link_to t('views.admin.users.buttons.send_message'), message_for_path(user_id: user.id) %>
 	</li>
+	<li>
+		<%= link_to t('views.admin.users.buttons.edit_profile'), edit_profile_model_path(user.profileable) %>
+	</li>
   </ul>
 </div>

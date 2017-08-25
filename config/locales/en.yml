@@ -542,6 +542,7 @@ en:
         message_sent: "Message was successfully sent"
         buttons:
           send_message: "Send message"
+          edit_profile: "Edit profile"
       control_panel:
         sections:
           users:
