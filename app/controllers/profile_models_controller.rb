@@ -35,7 +35,7 @@ class ProfileModelsController < ApplicationController
                                       :destroy]
 
   def index
-    @models = ProfileModel.ready
+    @models = ProfileModel.professional_models
   end
 
   def index_new_faces
