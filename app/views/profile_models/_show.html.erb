@@ -105,10 +105,7 @@
 	            	<%= @profile.ethnicity.name %>
 	            </p>
 	        <% end %>
-		</div>
-		<div class="profile-section">
-			<h4><%= t('views.profile_models.show.headers.sizes') %></h4>
-			<% if @profile.eyes_color.present? %>
+	        <% if @profile.eyes_color.present? %>
 	            <p class="profile-value">
 	            	<b>
 	            		<%= t('activerecord.attributes.profile_model.eyes_color_id') %>:
@@ -116,6 +113,9 @@
 	            	<%= @profile.eyes_color.name %>
 	            </p>
 	        <% end %>
+		</div>
+		<div class="profile-section">
+			<h4><%= t('views.profile_models.show.headers.sizes') %></h4>
 			<% if @profile.height.present? %>
 	            <p class="profile-value">
 	            	<b>
