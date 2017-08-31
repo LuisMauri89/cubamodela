@@ -71,17 +71,17 @@ class Ability
             message.try(:ownerable) == user.profileable
         end
         can :create, ProfileModel
-        can [:update, :index_castings_custom, :albums, :studies, :plans], ProfileModel do |profile|
+        can [:update, :index_castings_custom, :albums, :plans], ProfileModel do |profile| #, :studies
             profile.try(:user) == user
         end
         can [:show, :create, :uploaded], Photo
         can :destroy, Photo do |photo|
             photo.attachable.try(:profileable) == user.profileable
         end
-        can [:read, :show, :create], Study
-        can [:update, :destroy], Study do |study|
-            study.try(:ownerable) == user.profileable
-        end
+        # can [:read, :show, :create], Study
+        # can [:update, :destroy], Study do |study|
+        #     study.try(:ownerable) == user.profileable
+        # end
         can [:create, :reply, :respond], ChatMessage do |chat_message|
             chat_message.ownerable.current_user_can_start_or_join_conversation(user.profileable)
         end

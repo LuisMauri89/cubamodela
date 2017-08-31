@@ -49,6 +49,10 @@
     </div>  
 <% end %>
 
+<div class="follow-media-btns">
+  <div class="fb-follow" data-href="https://www.facebook.com/cubamodela" data-width="200" data-height="100" data-layout="button" data-size="large" data-show-faces="true"></div>
+</div>
+
 <div class="row row-no-space">
     <div class="col-md-12 col-xs-12 cell-no-space">
         <div id="models-container" class="relative-position">
@@ -60,14 +64,8 @@
               <div id="models-btn-new-face" class="text-center">
                 <%= link_to "NEW FACE", index_new_faces_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "2.0s" } %>
               </div>
-              <div id="models-btn-professional" class="text-center">
-                <%= link_to "PROFESSIONAL", index_professional_models_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "2.5s" } %>
-              </div>
-              <div id="models-btn-premium" class="text-center">
-                <%= link_to "SEARCH", search_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.0s" } %>
-              </div>
               <div id="models-btn-see-all" class="text-center">
-                <%= link_to "VIEW ALL", profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "3.5s" } %>
+                <%= link_to "PROFESSIONAL", index_professional_models_profile_models_path, class: "btn-home", data: { animation: "animated pulse", delay: "2.5s" } %>
               </div>
               <div class="notify"></div>
           </div>
